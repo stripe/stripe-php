@@ -5481,73 +5481,12 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.billing.contract',
-                        'contract_line_details' => [
-                            '0' => [
-                                'contract_line' => 'contract_line',
-                                'contract_line_value_details' => [
-                                    'total' => 'total',
-                                ],
-                                'created' => '1970-01-12T21:42:34.472Z',
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'overrides' => [
-                                    '0' => [
-                                        'ends_at' => [
-                                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                                        ],
-                                        'starts_at' => [
-                                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                                        ],
-                                        'type' => 'service_action',
-                                    ],
-                                ],
-                                'pricing' => [],
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                            ],
-                        ],
                         'contract_number' => 'contract_number',
-                        'contract_value_details' => ['total' => 'total'],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'currency' => 'usd',
                         'customer' => 'customer',
                         'id' => 'obj_123',
-                        'license_quantities' => [
-                            '0' => [
-                                'license_pricing_id' => 'license_pricing_id',
-                                'license_pricing_type' => 'price',
-                                'pricing_line' => 'pricing_line',
-                                'quantity' => [],
-                            ],
-                        ],
                         'livemode' => [],
-                        'pricing_lines' => [
-                            '0' => [
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'pricing' => ['type' => 'price'],
-                                'pricing_line' => 'pricing_line',
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                            ],
-                        ],
-                        'pricing_overrides' => [
-                            '0' => [
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'pricing_override' => 'pricing_override',
-                                'priority' => [],
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'type' => 'multiplier',
-                            ],
-                        ],
                         'status' => 'draft',
                         'status_details' => [],
                     ],
@@ -5569,106 +5508,8 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v2/billing/contracts',
             [
-                'contract_lines' => [
-                    [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'metadata' => ['key' => 'metadata'],
-                        'overrides' => [
-                            [
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'service_action' => [
-                                    'add' => [
-                                        'credit_grant' => [
-                                            'amount' => [
-                                                'monetary' => [
-                                                    'currency' => 'USD',
-                                                    'value' => 63,
-                                                ],
-                                                'type' => 'monetary',
-                                            ],
-                                            'applicability_config' => [
-                                                'scope' => [
-                                                    'billable_items' => [
-                                                        'billable_items',
-                                                    ],
-                                                    'price_type' => 'metered',
-                                                ],
-                                            ],
-                                            'category' => 'paid',
-                                            'expiry_config' => [
-                                                'type' => 'end_of_service_period',
-                                            ],
-                                            'name' => 'name',
-                                            'priority' => 1165461084,
-                                        ],
-                                        'service_interval' => 'month',
-                                        'service_interval_count' => 1375336415,
-                                        'type' => 'credit_grant',
-                                    ],
-                                    'replace' => [
-                                        'credit_grant' => [
-                                            'amount' => [
-                                                'monetary' => [
-                                                    'currency' => 'USD',
-                                                    'value' => 63,
-                                                ],
-                                                'type' => 'monetary',
-                                            ],
-                                            'applicability_config' => [
-                                                'scope' => [
-                                                    'billable_items' => [
-                                                        'billable_items',
-                                                    ],
-                                                    'price_type' => 'metered',
-                                                ],
-                                            ],
-                                            'category' => 'paid',
-                                            'expiry_config' => [
-                                                'type' => 'end_of_service_period',
-                                            ],
-                                            'name' => 'name',
-                                            'priority' => 1165461084,
-                                        ],
-                                        'id' => 'obj_123',
-                                        'lookup_key' => 'lookup_key',
-                                        'service_interval' => 'month',
-                                        'service_interval_count' => 1375336415,
-                                        'type' => 'credit_grant',
-                                    ],
-                                    'type' => 'add',
-                                ],
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'type' => 'service_action',
-                            ],
-                        ],
-                        'pricing' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
                 'contract_number' => 'contract_number',
                 'currency' => 'usd',
-                'license_quantity_actions' => [
-                    [
-                        'effective_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'timestamp',
-                        ],
-                        'license_pricing_id' => 'license_pricing_id',
-                        'license_pricing_lookup_key' => 'license_pricing_lookup_key',
-                        'license_pricing_type' => 'price',
-                        'pricing_line' => 'pricing_line',
-                        'set' => ['quantity' => 1285004149],
-                        'type' => 'set',
-                    ],
-                ],
                 'pricing_lines' => [
                     [
                         'ends_at' => [
@@ -5680,7 +5521,43 @@ final class GeneratedExamplesTest extends TestCase
                         'pricing' => [
                             'price_details' => [
                                 'price' => 'price',
-                                'quantity' => 1285004149,
+                                'pricing_overrides' => [
+                                    [
+                                        'ends_at' => [
+                                            'timestamp' => '1970-01-01T15:18:46.294Z',
+                                            'type' => 'contract_end',
+                                        ],
+                                        'lookup_key' => 'lookup_key',
+                                        'metadata' => ['key' => 'metadata'],
+                                        'overwrite_price' => [
+                                            'tiering_mode' => 'graduated',
+                                            'tiers' => [
+                                                [
+                                                    'flat_amount' => 'flat_amount',
+                                                    'unit_amount' => 'unit_amount',
+                                                    'up_to_decimal' => '1387931359.3333333',
+                                                    'up_to_inf' => 'inf',
+                                                ],
+                                            ],
+                                            'unit_amount' => 'unit_amount',
+                                        ],
+                                        'priority' => 1165461084,
+                                        'starts_at' => [
+                                            'timestamp' => '1970-01-01T15:18:46.294Z',
+                                            'type' => 'contract_start',
+                                        ],
+                                        'type' => 'overwrite_price',
+                                    ],
+                                ],
+                                'quantity_changes' => [
+                                    [
+                                        'effective_at' => [
+                                            'timestamp' => '1970-01-01T15:18:46.294Z',
+                                            'type' => 'timestamp',
+                                        ],
+                                        'set' => '75841.33333333333',
+                                    ],
+                                ],
                             ],
                             'type' => 'price',
                         ],
@@ -5690,130 +5567,17 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                 ],
-                'pricing_overrides' => [
-                    [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'contract_end',
-                        ],
-                        'lookup_key' => 'lookup_key',
-                        'multiplier' => [
-                            'criteria' => [
-                                [
-                                    'billable_item_ids' => [
-                                        'billable_item_ids',
-                                    ],
-                                    'billable_item_lookup_keys' => [
-                                        'billable_item_lookup_keys',
-                                    ],
-                                    'billable_item_types' => ['metered'],
-                                    'metadata_conditions' => [
-                                        [
-                                            'all_of' => [
-                                                [
-                                                    'key' => 'key',
-                                                    'value' => 'value',
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                    'rate_card_ids' => ['rate_card_ids'],
-                                    'type' => 'exclude',
-                                ],
-                            ],
-                            'factor' => 'factor',
-                        ],
-                        'overwrite_price' => [
-                            'price' => 'price',
-                            'tiering_mode' => 'graduated',
-                            'tiers' => [
-                                [
-                                    'flat_amount' => 'flat_amount',
-                                    'unit_amount' => 'unit_amount',
-                                    'up_to_decimal' => '1387931359.3333333',
-                                    'up_to_inf' => 'inf',
-                                ],
-                            ],
-                            'unit_amount' => 'unit_amount',
-                        ],
-                        'priority' => 1165461084,
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'contract_start',
-                        ],
-                        'type' => 'multiplier',
-                    ],
-                ],
             ],
             [],
             false,
             [
                 'object' => 'v2.billing.contract',
-                'contract_line_details' => [
-                    '0' => [
-                        'contract_line' => 'contract_line',
-                        'contract_line_value_details' => ['total' => 'total'],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'overrides' => [
-                            '0' => [
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'type' => 'service_action',
-                            ],
-                        ],
-                        'pricing' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
                 'contract_number' => 'contract_number',
-                'contract_value_details' => ['total' => 'total'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
                 'customer' => 'customer',
                 'id' => 'obj_123',
-                'license_quantities' => [
-                    '0' => [
-                        'license_pricing_id' => 'license_pricing_id',
-                        'license_pricing_type' => 'price',
-                        'pricing_line' => 'pricing_line',
-                        'quantity' => [],
-                    ],
-                ],
                 'livemode' => [],
-                'pricing_lines' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing' => ['type' => 'price'],
-                        'pricing_line' => 'pricing_line',
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
-                'pricing_overrides' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing_override' => 'pricing_override',
-                        'priority' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'type' => 'multiplier',
-                    ],
-                ],
                 'status' => 'draft',
                 'status_details' => [],
             ],
@@ -5821,102 +5585,8 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->billing->contracts->create([
-            'contract_lines' => [
-                [
-                    'ends_at' => ['timestamp' => '1970-01-01T15:18:46.294Z'],
-                    'metadata' => ['key' => 'metadata'],
-                    'overrides' => [
-                        [
-                            'ends_at' => [
-                                'timestamp' => '1970-01-01T15:18:46.294Z',
-                            ],
-                            'service_action' => [
-                                'add' => [
-                                    'credit_grant' => [
-                                        'amount' => [
-                                            'monetary' => [
-                                                'currency' => 'USD',
-                                                'value' => 63,
-                                            ],
-                                            'type' => 'monetary',
-                                        ],
-                                        'applicability_config' => [
-                                            'scope' => [
-                                                'billable_items' => [
-                                                    'billable_items',
-                                                ],
-                                                'price_type' => 'metered',
-                                            ],
-                                        ],
-                                        'category' => 'paid',
-                                        'expiry_config' => [
-                                            'type' => 'end_of_service_period',
-                                        ],
-                                        'name' => 'name',
-                                        'priority' => 1165461084,
-                                    ],
-                                    'service_interval' => 'month',
-                                    'service_interval_count' => 1375336415,
-                                    'type' => 'credit_grant',
-                                ],
-                                'replace' => [
-                                    'credit_grant' => [
-                                        'amount' => [
-                                            'monetary' => [
-                                                'currency' => 'USD',
-                                                'value' => 63,
-                                            ],
-                                            'type' => 'monetary',
-                                        ],
-                                        'applicability_config' => [
-                                            'scope' => [
-                                                'billable_items' => [
-                                                    'billable_items',
-                                                ],
-                                                'price_type' => 'metered',
-                                            ],
-                                        ],
-                                        'category' => 'paid',
-                                        'expiry_config' => [
-                                            'type' => 'end_of_service_period',
-                                        ],
-                                        'name' => 'name',
-                                        'priority' => 1165461084,
-                                    ],
-                                    'id' => 'obj_123',
-                                    'lookup_key' => 'lookup_key',
-                                    'service_interval' => 'month',
-                                    'service_interval_count' => 1375336415,
-                                    'type' => 'credit_grant',
-                                ],
-                                'type' => 'add',
-                            ],
-                            'starts_at' => [
-                                'timestamp' => '1970-01-01T15:18:46.294Z',
-                            ],
-                            'type' => 'service_action',
-                        ],
-                    ],
-                    'pricing' => [],
-                    'starts_at' => ['timestamp' => '1970-01-01T15:18:46.294Z'],
-                ],
-            ],
             'contract_number' => 'contract_number',
             'currency' => 'usd',
-            'license_quantity_actions' => [
-                [
-                    'effective_at' => [
-                        'timestamp' => '1970-01-01T15:18:46.294Z',
-                        'type' => 'timestamp',
-                    ],
-                    'license_pricing_id' => 'license_pricing_id',
-                    'license_pricing_lookup_key' => 'license_pricing_lookup_key',
-                    'license_pricing_type' => 'price',
-                    'pricing_line' => 'pricing_line',
-                    'set' => ['quantity' => 1285004149],
-                    'type' => 'set',
-                ],
-            ],
             'pricing_lines' => [
                 [
                     'ends_at' => [
@@ -5928,7 +5598,43 @@ final class GeneratedExamplesTest extends TestCase
                     'pricing' => [
                         'price_details' => [
                             'price' => 'price',
-                            'quantity' => 1285004149,
+                            'pricing_overrides' => [
+                                [
+                                    'ends_at' => [
+                                        'timestamp' => '1970-01-01T15:18:46.294Z',
+                                        'type' => 'contract_end',
+                                    ],
+                                    'lookup_key' => 'lookup_key',
+                                    'metadata' => ['key' => 'metadata'],
+                                    'overwrite_price' => [
+                                        'tiering_mode' => 'graduated',
+                                        'tiers' => [
+                                            [
+                                                'flat_amount' => 'flat_amount',
+                                                'unit_amount' => 'unit_amount',
+                                                'up_to_decimal' => '1387931359.3333333',
+                                                'up_to_inf' => 'inf',
+                                            ],
+                                        ],
+                                        'unit_amount' => 'unit_amount',
+                                    ],
+                                    'priority' => 1165461084,
+                                    'starts_at' => [
+                                        'timestamp' => '1970-01-01T15:18:46.294Z',
+                                        'type' => 'contract_start',
+                                    ],
+                                    'type' => 'overwrite_price',
+                                ],
+                            ],
+                            'quantity_changes' => [
+                                [
+                                    'effective_at' => [
+                                        'timestamp' => '1970-01-01T15:18:46.294Z',
+                                        'type' => 'timestamp',
+                                    ],
+                                    'set' => '75841.33333333333',
+                                ],
+                            ],
                         ],
                         'type' => 'price',
                     ],
@@ -5938,60 +5644,27 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                 ],
             ],
-            'pricing_overrides' => [
-                [
-                    'ends_at' => [
-                        'timestamp' => '1970-01-01T15:18:46.294Z',
-                        'type' => 'contract_end',
-                    ],
-                    'lookup_key' => 'lookup_key',
-                    'multiplier' => [
-                        'criteria' => [
-                            [
-                                'billable_item_ids' => ['billable_item_ids'],
-                                'billable_item_lookup_keys' => [
-                                    'billable_item_lookup_keys',
-                                ],
-                                'billable_item_types' => ['metered'],
-                                'metadata_conditions' => [
-                                    [
-                                        'all_of' => [
-                                            [
-                                                'key' => 'key',
-                                                'value' => 'value',
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                                'rate_card_ids' => ['rate_card_ids'],
-                                'type' => 'exclude',
-                            ],
-                        ],
-                        'factor' => 'factor',
-                    ],
-                    'overwrite_price' => [
-                        'price' => 'price',
-                        'tiering_mode' => 'graduated',
-                        'tiers' => [
-                            [
-                                'flat_amount' => 'flat_amount',
-                                'unit_amount' => 'unit_amount',
-                                'up_to_decimal' => '1387931359.3333333',
-                                'up_to_inf' => 'inf',
-                            ],
-                        ],
-                        'unit_amount' => 'unit_amount',
-                    ],
-                    'priority' => 1165461084,
-                    'starts_at' => [
-                        'timestamp' => '1970-01-01T15:18:46.294Z',
-                        'type' => 'contract_start',
-                    ],
-                    'type' => 'multiplier',
-                ],
-            ],
         ]);
         self::assertInstanceOf(V2\Billing\Contract::class, $result);
+    }
+
+    public function testV2BillingContractDelete()
+    {
+        $this->stubRequest(
+            'delete',
+            '/v2/billing/contracts/id_123',
+            [],
+            [],
+            false,
+            [
+                'id' => 'abc_123',
+                'object' => 'some.object.tag',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->contracts->delete('id_123', []);
+        self::assertInstanceOf(V2\DeletedObject::class, $result);
     }
 
     public function testV2BillingContractGet2()
@@ -6004,71 +5677,12 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
-                'contract_line_details' => [
-                    '0' => [
-                        'contract_line' => 'contract_line',
-                        'contract_line_value_details' => ['total' => 'total'],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'overrides' => [
-                            '0' => [
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'type' => 'service_action',
-                            ],
-                        ],
-                        'pricing' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
                 'contract_number' => 'contract_number',
-                'contract_value_details' => ['total' => 'total'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
                 'customer' => 'customer',
                 'id' => 'obj_123',
-                'license_quantities' => [
-                    '0' => [
-                        'license_pricing_id' => 'license_pricing_id',
-                        'license_pricing_type' => 'price',
-                        'pricing_line' => 'pricing_line',
-                        'quantity' => [],
-                    ],
-                ],
                 'livemode' => [],
-                'pricing_lines' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing' => ['type' => 'price'],
-                        'pricing_line' => 'pricing_line',
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
-                'pricing_overrides' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing_override' => 'pricing_override',
-                        'priority' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'type' => 'multiplier',
-                    ],
-                ],
                 'status' => 'draft',
                 'status_details' => [],
             ],
@@ -6092,71 +5706,12 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
-                'contract_line_details' => [
-                    '0' => [
-                        'contract_line' => 'contract_line',
-                        'contract_line_value_details' => ['total' => 'total'],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'overrides' => [
-                            '0' => [
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'type' => 'service_action',
-                            ],
-                        ],
-                        'pricing' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
                 'contract_number' => 'contract_number',
-                'contract_value_details' => ['total' => 'total'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
                 'customer' => 'customer',
                 'id' => 'obj_123',
-                'license_quantities' => [
-                    '0' => [
-                        'license_pricing_id' => 'license_pricing_id',
-                        'license_pricing_type' => 'price',
-                        'pricing_line' => 'pricing_line',
-                        'quantity' => [],
-                    ],
-                ],
                 'livemode' => [],
-                'pricing_lines' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing' => ['type' => 'price'],
-                        'pricing_line' => 'pricing_line',
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
-                'pricing_overrides' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing_override' => 'pricing_override',
-                        'priority' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'type' => 'multiplier',
-                    ],
-                ],
                 'status' => 'draft',
                 'status_details' => [],
             ],
@@ -6177,71 +5732,12 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
-                'contract_line_details' => [
-                    '0' => [
-                        'contract_line' => 'contract_line',
-                        'contract_line_value_details' => ['total' => 'total'],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'overrides' => [
-                            '0' => [
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'type' => 'service_action',
-                            ],
-                        ],
-                        'pricing' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
                 'contract_number' => 'contract_number',
-                'contract_value_details' => ['total' => 'total'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
                 'customer' => 'customer',
                 'id' => 'obj_123',
-                'license_quantities' => [
-                    '0' => [
-                        'license_pricing_id' => 'license_pricing_id',
-                        'license_pricing_type' => 'price',
-                        'pricing_line' => 'pricing_line',
-                        'quantity' => [],
-                    ],
-                ],
                 'livemode' => [],
-                'pricing_lines' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing' => ['type' => 'price'],
-                        'pricing_line' => 'pricing_line',
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
-                'pricing_overrides' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing_override' => 'pricing_override',
-                        'priority' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'type' => 'multiplier',
-                    ],
-                ],
                 'status' => 'draft',
                 'status_details' => [],
             ],
@@ -6265,71 +5761,12 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
-                'contract_line_details' => [
-                    '0' => [
-                        'contract_line' => 'contract_line',
-                        'contract_line_value_details' => ['total' => 'total'],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'overrides' => [
-                            '0' => [
-                                'ends_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'starts_at' => [
-                                    'timestamp' => '1970-01-01T15:18:46.294Z',
-                                ],
-                                'type' => 'service_action',
-                            ],
-                        ],
-                        'pricing' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
                 'contract_number' => 'contract_number',
-                'contract_value_details' => ['total' => 'total'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
                 'customer' => 'customer',
                 'id' => 'obj_123',
-                'license_quantities' => [
-                    '0' => [
-                        'license_pricing_id' => 'license_pricing_id',
-                        'license_pricing_type' => 'price',
-                        'pricing_line' => 'pricing_line',
-                        'quantity' => [],
-                    ],
-                ],
                 'livemode' => [],
-                'pricing_lines' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing' => ['type' => 'price'],
-                        'pricing_line' => 'pricing_line',
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                    ],
-                ],
-                'pricing_overrides' => [
-                    '0' => [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'pricing_override' => 'pricing_override',
-                        'priority' => [],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                        ],
-                        'type' => 'multiplier',
-                    ],
-                ],
                 'status' => 'draft',
                 'status_details' => [],
             ],
@@ -6340,26 +5777,25 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\Contract::class, $result);
     }
 
-    public function testV2BillingContractsLicensePricingQuantityChangeGet()
+    public function testV2BillingContractsPricingLinesQuantityChangeGet()
     {
         $this->stubRequest(
             'get',
-            '/v2/billing/contracts/contract_id_123/license_pricing/license_pricing_id_123/quantity_changes',
+            '/v2/billing/contracts/contract_id_123/pricing_lines/pricing_line_id_123/quantity_changes',
             [],
             [],
             false,
             [
                 'data' => [
                     '0' => [
-                        'object' => 'v2.billing.contract_license_pricing_quantity_change',
+                        'object' => 'v2.billing.contract_pricing_line_quantity_change',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'effective_at' => '1970-01-03T20:38:28.043Z',
                         'id' => 'obj_123',
-                        'license_pricing_id' => 'license_pricing_id',
-                        'license_pricing_type' => 'price',
                         'livemode' => [],
+                        'pricing' => ['type' => 'price'],
                         'pricing_line' => 'pricing_line',
-                        'quantity' => [],
+                        'quantity' => '856669432.6666666',
                     ],
                 ],
                 'next_page_url' => null,
@@ -6368,13 +5804,13 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->billing->contracts->licensePricing->quantityChanges->allQuantityChanges(
+        $result = $this->v2Client->v2->billing->contracts->pricingLines->quantityChanges->allContractPricingLineQuantityChanges(
             'contract_id_123',
-            'license_pricing_id_123',
+            'pricing_line_id_123',
             []
         );
         self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\ContractLicensePricingQuantityChange::class, $result->data[0]);
+        self::assertInstanceOf(V2\Billing\ContractPricingLineQuantityChange::class, $result->data[0]);
     }
 
     public function testV2BillingCustomPricingUnitGet()

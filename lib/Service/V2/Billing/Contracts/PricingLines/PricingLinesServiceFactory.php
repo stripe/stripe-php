@@ -2,14 +2,14 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service\V2\Billing\Contracts\LicensePricing;
+namespace Stripe\Service\V2\Billing\Contracts\PricingLines;
 
 /**
- * Service factory class for API resources in the LicensePricing namespace.
+ * Service factory class for API resources in the PricingLines namespace.
  *
  * @property QuantityChangeService $quantityChanges
  */
-class LicensePricingServiceFactory extends \Stripe\Service\AbstractServiceFactory
+class PricingLinesServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
     /**
      * @var array<string, string>

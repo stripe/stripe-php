@@ -225,7 +225,7 @@ class ObjectTypes
         \Stripe\V2\Billing\CollectionSetting::OBJECT_NAME => \Stripe\V2\Billing\CollectionSetting::class,
         \Stripe\V2\Billing\CollectionSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\CollectionSettingVersion::class,
         \Stripe\V2\Billing\Contract::OBJECT_NAME => \Stripe\V2\Billing\Contract::class,
-        \Stripe\V2\Billing\ContractLicensePricingQuantityChange::OBJECT_NAME => \Stripe\V2\Billing\ContractLicensePricingQuantityChange::class,
+        \Stripe\V2\Billing\ContractPricingLineQuantityChange::OBJECT_NAME => \Stripe\V2\Billing\ContractPricingLineQuantityChange::class,
         \Stripe\V2\Billing\CustomPricingUnit::OBJECT_NAME => \Stripe\V2\Billing\CustomPricingUnit::class,
         \Stripe\V2\Billing\Intent::OBJECT_NAME => \Stripe\V2\Billing\Intent::class,
         \Stripe\V2\Billing\IntentAction::OBJECT_NAME => \Stripe\V2\Billing\IntentAction::class,
