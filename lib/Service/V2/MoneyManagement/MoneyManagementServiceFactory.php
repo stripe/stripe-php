@@ -17,11 +17,13 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property OutboundPaymentService $outboundPayments
  * @property OutboundSetupIntentService $outboundSetupIntents
  * @property OutboundTransferService $outboundTransfers
+ * @property PayoutIntentService $payoutIntents
  * @property PayoutMethodService $payoutMethods
  * @property PayoutMethodsBankAccountSpecService $payoutMethodsBankAccountSpec
  * @property ReceivedCreditService $receivedCredits
  * @property ReceivedDebitService $receivedDebits
  * @property RecipientVerificationService $recipientVerifications
+ * @property TestHelpers\TestHelpersServiceFactory $testHelpers
  * @property TransactionEntryService $transactionEntries
  * @property TransactionService $transactions
  */
@@ -41,11 +43,13 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'outboundPayments' => OutboundPaymentService::class,
         'outboundSetupIntents' => OutboundSetupIntentService::class,
         'outboundTransfers' => OutboundTransferService::class,
+        'payoutIntents' => PayoutIntentService::class,
         'payoutMethods' => PayoutMethodService::class,
         'payoutMethodsBankAccountSpec' => PayoutMethodsBankAccountSpecService::class,
         'receivedCredits' => ReceivedCreditService::class,
         'receivedDebits' => ReceivedDebitService::class,
         'recipientVerifications' => RecipientVerificationService::class,
+        'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
         'transactionEntries' => TransactionEntryService::class,
         'transactions' => TransactionService::class,
     ];

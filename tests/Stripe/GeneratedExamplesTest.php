@@ -9205,6 +9205,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'metadata' => ['key' => 'metadata'],
+                        'mode' => 'upsert',
                         'status' => 'awaiting_upload',
                     ],
                 ],
@@ -9238,6 +9239,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
+                'mode' => 'upsert',
                 'status' => 'awaiting_upload',
             ],
             200,
@@ -9266,6 +9268,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
+                'mode' => 'upsert',
                 'status' => 'awaiting_upload',
             ],
             200,
@@ -9621,7 +9624,7 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['storer'],
+                        'configurations' => ['merchant'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -9630,7 +9633,7 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['storer'],
+                        'configurations' => ['merchant'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -9677,7 +9680,7 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['storer'],
+                    'configurations' => ['merchant'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -9686,7 +9689,7 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['storer'],
+                    'configurations' => ['merchant'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -9917,7 +9920,6 @@ final class GeneratedExamplesTest extends TestCase
                     'http_method' => 'delete',
                     'path' => '/v1/products',
                 ],
-                'metadata' => ['key' => 'metadata'],
                 'skip_validation' => true,
             ],
             [],
@@ -9927,7 +9929,6 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'maximum_rps' => [],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => [],
                 'status' => 'batch_failed',
@@ -9940,7 +9941,6 @@ final class GeneratedExamplesTest extends TestCase
                 'http_method' => 'delete',
                 'path' => '/v1/products',
             ],
-            'metadata' => ['key' => 'metadata'],
             'skip_validation' => true,
         ]);
         self::assertInstanceOf(V2\Core\BatchJob::class, $result);
@@ -9959,7 +9959,6 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'maximum_rps' => [],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => [],
                 'status' => 'batch_failed',
@@ -9984,7 +9983,6 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'maximum_rps' => [],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => [],
                 'status' => 'batch_failed',
@@ -10616,6 +10614,117 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->core->feeEntries->retrieve('id_123', []);
         self::assertInstanceOf(V2\Core\FeeEntry::class, $result);
+    }
+
+    public function testV2CoreHealthAlertGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/health/alerts',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.core.health.alert',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'documentation_links' => [
+                            '0' => [
+                                'label' => 'label',
+                                'url' => 'url',
+                            ],
+                        ],
+                        'grouping_key' => 'grouping_key',
+                        'grouping_type' => 'incident',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'severity' => 'non_critical',
+                        'started_at' => '1970-01-19T03:34:50.959Z',
+                        'status' => 'open',
+                        'summary' => 'summary',
+                        'type' => 'api_error',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->health->alerts->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\Health\Alert::class, $result->data[0]);
+    }
+
+    public function testV2CoreHealthAlertGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/health/alerts/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.health.alert',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'documentation_links' => [
+                    '0' => [
+                        'label' => 'label',
+                        'url' => 'url',
+                    ],
+                ],
+                'grouping_key' => 'grouping_key',
+                'grouping_type' => 'incident',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'severity' => 'non_critical',
+                'started_at' => '1970-01-19T03:34:50.959Z',
+                'status' => 'open',
+                'summary' => 'summary',
+                'type' => 'api_error',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->health->alerts->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Health\Alert::class, $result);
+    }
+
+    public function testV2CoreHealthAlertsHistoryGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/health/alerts/id_123/history',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.core.health.alert_history_entry',
+                        'at' => '1970-01-01T00:00:03.123Z',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'transition' => 'impact_updated',
+                        'type' => 'api_error',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->health->alerts->history->all(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Core\Health\AlertHistoryEntry::class, $result->data[0]);
     }
 
     public function testV2CoreVaultGbBankAccountGet()
@@ -12556,6 +12665,17 @@ final class GeneratedExamplesTest extends TestCase
                 'to' => [
                     'currency' => 'usd',
                     'payout_method' => 'payout_method',
+                    'payout_method_options' => [
+                        'bank_account' => [
+                            'preferred_network_options' => [
+                                'ach' => [
+                                    'submission' => 'next_day',
+                                    'transaction_purpose' => 'payroll',
+                                ],
+                            ],
+                            'preferred_networks' => ['sepa_credit'],
+                        ],
+                    ],
                     'recipient' => 'recipient',
                 ],
             ],
@@ -12606,6 +12726,17 @@ final class GeneratedExamplesTest extends TestCase
             'to' => [
                 'currency' => 'usd',
                 'payout_method' => 'payout_method',
+                'payout_method_options' => [
+                    'bank_account' => [
+                        'preferred_network_options' => [
+                            'ach' => [
+                                'submission' => 'next_day',
+                                'transaction_purpose' => 'payroll',
+                            ],
+                        ],
+                        'preferred_networks' => ['sepa_credit'],
+                    ],
+                ],
                 'recipient' => 'recipient',
             ],
         ]);
@@ -13112,6 +13243,11 @@ final class GeneratedExamplesTest extends TestCase
                 'to' => [
                     'currency' => 'usd',
                     'payout_method' => 'payout_method',
+                    'payout_method_options' => [
+                        'bank_account' => [
+                            'preferred_networks' => ['sepa_credit'],
+                        ],
+                    ],
                 ],
             ],
             [],
@@ -13159,6 +13295,9 @@ final class GeneratedExamplesTest extends TestCase
             'to' => [
                 'currency' => 'usd',
                 'payout_method' => 'payout_method',
+                'payout_method_options' => [
+                    'bank_account' => ['preferred_networks' => ['sepa_credit']],
+                ],
             ],
         ]);
         self::assertInstanceOf(V2\MoneyManagement\OutboundTransfer::class, $result);
@@ -13254,6 +13393,232 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\OutboundTransfer::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutIntentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/payout_intents',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.money_management.payout_intent',
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'from' => [
+                            'currency' => 'usd',
+                            'financial_account' => 'financial_account',
+                        ],
+                        'id' => 'obj_123',
+                        'latest_payout' => ['type' => 'outbound_payment'],
+                        'livemode' => [],
+                        'status' => 'canceled',
+                        'to' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutIntents->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\PayoutIntent::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementPayoutIntentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_intents',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'from' => [
+                    'currency' => 'usd',
+                    'financial_account' => 'financial_account',
+                ],
+                'to' => [
+                    'currency' => 'usd',
+                    'payout_method' => 'payout_method',
+                    'payout_method_options' => [
+                        'bank_account' => [
+                            'preferred_network_options' => [
+                                'ach' => [
+                                    'submission' => 'next_day',
+                                    'transaction_purpose' => 'payroll',
+                                ],
+                            ],
+                            'preferred_networks' => ['sepa_credit'],
+                        ],
+                    ],
+                    'recipient' => 'recipient',
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.payout_intent',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'from' => [
+                    'currency' => 'usd',
+                    'financial_account' => 'financial_account',
+                ],
+                'id' => 'obj_123',
+                'latest_payout' => ['type' => 'outbound_payment'],
+                'livemode' => [],
+                'status' => 'canceled',
+                'to' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutIntents->create([
+            'amount' => [
+                'currency' => 'USD',
+                'value' => 96,
+            ],
+            'from' => [
+                'currency' => 'usd',
+                'financial_account' => 'financial_account',
+            ],
+            'to' => [
+                'currency' => 'usd',
+                'payout_method' => 'payout_method',
+                'payout_method_options' => [
+                    'bank_account' => [
+                        'preferred_network_options' => [
+                            'ach' => [
+                                'submission' => 'next_day',
+                                'transaction_purpose' => 'payroll',
+                            ],
+                        ],
+                        'preferred_networks' => ['sepa_credit'],
+                    ],
+                ],
+                'recipient' => 'recipient',
+            ],
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\PayoutIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutIntentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/payout_intents/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.payout_intent',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'from' => [
+                    'currency' => 'usd',
+                    'financial_account' => 'financial_account',
+                ],
+                'id' => 'obj_123',
+                'latest_payout' => ['type' => 'outbound_payment'],
+                'livemode' => [],
+                'status' => 'canceled',
+                'to' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutIntents->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutIntentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_intents/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.payout_intent',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'from' => [
+                    'currency' => 'usd',
+                    'financial_account' => 'financial_account',
+                ],
+                'id' => 'obj_123',
+                'latest_payout' => ['type' => 'outbound_payment'],
+                'livemode' => [],
+                'status' => 'canceled',
+                'to' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutIntents->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutIntentPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_intents/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.payout_intent',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'from' => [
+                    'currency' => 'usd',
+                    'financial_account' => 'financial_account',
+                ],
+                'id' => 'obj_123',
+                'latest_payout' => ['type' => 'outbound_payment'],
+                'livemode' => [],
+                'status' => 'canceled',
+                'to' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutIntents->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutIntent::class, $result);
     }
 
     public function testV2MoneyManagementPayoutMethodGet()
@@ -13643,6 +14008,41 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\RecipientVerification::class, $result);
+    }
+
+    public function testV2MoneyManagementTestHelpersFinancialAddressPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/test_helpers/financial_addresses/id_123/debit',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'network' => 'ach',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.financial_address_debit_simulation',
+                'livemode' => [],
+                'status' => 'status',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->testHelpers->financialAddresses->debit(
+            'id_123',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'network' => 'ach',
+            ]
+        );
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAddressDebitSimulation::class, $result);
     }
 
     public function testV2MoneyManagementTransactionGet()
@@ -15344,7 +15744,7 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/money_management/outbound_setup_intents',
+            '/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits',
             [],
             [],
             false,
@@ -15359,7 +15759,10 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
+            $this->v2Client->v2->core->vault->usBankAccounts->confirmMicrodeposits(
+                'id_123',
+                []
+            );
         } catch (Exception\ControlledByAlternateResourceException $e) {
         }
     }

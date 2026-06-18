@@ -56,7 +56,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Vault\UsBankAccount
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */
     public function confirmMicrodeposits($id, $params = null, $opts = null)
     {
@@ -107,7 +107,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Vault\UsBankAccount
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */
     public function sendMicrodeposits($id, $params = null, $opts = null)
     {
