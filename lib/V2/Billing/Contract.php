@@ -9,6 +9,7 @@ namespace Stripe\V2\Billing;
  *
  * @property string $id The ID of the contract object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
+ * @property null|(object{timestamp: int}&\Stripe\StripeObject) $billing_cycle_anchor The billing cycle anchor for the contract.
  * @property null|(object{contract_billing_details?: (object{bill_settings_details?: (object{calculation?: (object{tax?: (object{type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), invoice?: (object{time_until_due?: (object{interval: string, interval_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), billing_profile_details: (object{customer: string, default_payment_method?: string}&\Stripe\StripeObject), collection_settings_details: (object{collection_method: string, payment_method_configuration?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $billing_settings The billing settings for the contract.
  * @property string $contract_number A unique user-provided contract number e.g. C-2026-0001.
  * @property int $created Timestamp of when the object was created.
