@@ -6,16 +6,15 @@ namespace Stripe\Events;
 
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
- * @property \Stripe\EventData\V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventData $data data associated with the event
  */
-class V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent extends \Stripe\V2\Core\Event
+class V2MoneyManagementOutboundPaymentUnderReviewEvent extends \Stripe\V2\Core\Event
 {
-    const LOOKUP_TYPE = 'v2.core.account[configuration.storer].capability_status_updated';
+    const LOOKUP_TYPE = 'v2.money_management.outbound_payment.under_review';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Core\Account
+     * @return \Stripe\V2\MoneyManagement\OutboundPayment
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -28,15 +27,5 @@ class V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent exte
         ], [], $apiMode);
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
-    }
-
-    public static function constructFrom($values, $opts = null, $apiMode = 'v2')
-    {
-        $evt = parent::constructFrom($values, $opts, $apiMode);
-        if (null !== $evt->data) {
-            $evt->data = \Stripe\EventData\V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventData::constructFrom($evt->data, $opts, $apiMode);
-        }
-
-        return $evt;
     }
 }

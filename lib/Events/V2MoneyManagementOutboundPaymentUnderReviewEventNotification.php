@@ -7,15 +7,15 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification extends \Stripe\V2\Core\EventNotification
+class V2MoneyManagementOutboundPaymentUnderReviewEventNotification extends \Stripe\V2\Core\EventNotification
 {
-    const LOOKUP_TYPE = 'v2.core.account[configuration.storer].capability_status_updated';
+    const LOOKUP_TYPE = 'v2.money_management.outbound_payment.under_review';
     public $related_object;
 
     /**
      * Retrieves the full event object from the API. Make an API request on every call.
      *
-     * @return V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent
+     * @return V2MoneyManagementOutboundPaymentUnderReviewEvent
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -27,7 +27,7 @@ class V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotif
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Core\Account
+     * @return \Stripe\V2\MoneyManagement\OutboundPayment
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
