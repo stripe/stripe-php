@@ -36,30 +36,6 @@ class ContractService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
-                    'one_time_fees' => [
-                        'kind' => 'object',
-                        'fields' => [
-                            'data' => [
-                                'kind' => 'array',
-                                'element' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'bill_schedule' => [
-                                            'kind' => 'array',
-                                            'element' => [
-                                                'kind' => 'object',
-                                                'fields' => [
-                                                    'value' => [
-                                                        'kind' => 'int64_string',
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
                     'pricing_lines' => [
                         'kind' => 'object',
                         'fields' => [
@@ -123,7 +99,7 @@ class ContractService extends \Stripe\Service\AbstractService
     /**
      * List Contract objects with pagination.
      *
-     * @param null|array{customer?: string, limit?: int} $params
+     * @param null|array{customer?: string, include?: string[], limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Billing\Contract>
@@ -141,30 +117,6 @@ class ContractService extends \Stripe\Service\AbstractService
                         'element' => [
                             'kind' => 'object',
                             'fields' => [
-                                'one_time_fees' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'data' => [
-                                            'kind' => 'array',
-                                            'element' => [
-                                                'kind' => 'object',
-                                                'fields' => [
-                                                    'bill_schedule' => [
-                                                        'kind' => 'array',
-                                                        'element' => [
-                                                            'kind' => 'object',
-                                                            'fields' => [
-                                                                'value' => [
-                                                                    'kind' => 'int64_string',
-                                                                ],
-                                                            ],
-                                                        ],
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
                                 'pricing_lines' => [
                                     'kind' => 'object',
                                     'fields' => [
@@ -245,30 +197,6 @@ class ContractService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
-                    'one_time_fees' => [
-                        'kind' => 'object',
-                        'fields' => [
-                            'data' => [
-                                'kind' => 'array',
-                                'element' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'bill_schedule' => [
-                                            'kind' => 'array',
-                                            'element' => [
-                                                'kind' => 'object',
-                                                'fields' => [
-                                                    'value' => [
-                                                        'kind' => 'int64_string',
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
                     'pricing_lines' => [
                         'kind' => 'object',
                         'fields' => [
@@ -332,7 +260,7 @@ class ContractService extends \Stripe\Service\AbstractService
     /**
      * Create a Contract object.
      *
-     * @param null|array{billing_cycle_anchor?: array{config?: array{day_of_month: int, hour?: int, minute?: int, month_of_year?: int, second?: int}, timestamp?: string, type: string}, billing_settings?: array{contract_billing_details?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details: array{customer: string, default_payment_method?: string}, collection_settings_details: array{collection_method: string, payment_method_configuration?: string}}}, contract_number: string, currency: string, include?: string[], metadata?: array<string, string>, one_time_fees?: array{bill_schedule: array{bill_at: array{timestamp?: string, type: string}, value: int}[], billable_item_type: string, product_details?: array{product: string}}[], pricing_lines: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}[], pricing_overrides?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, multiplier?: array{criteria?: array{billable_item_ids: string[], billable_item_lookup_keys: string[], billable_item_types: string[], metadata_conditions: array{all_of: array{key: string, value: string}[]}[], rate_card_ids: string[], type: string}[], factor: string}, priority: int, starts_at: array{timestamp?: string, type: string}, type: string}[]} $params
+     * @param null|array{billing_cycle_anchor?: array{config?: array{day_of_month: int, hour?: int, minute?: int, month_of_year?: int, second?: int}, timestamp?: string, type: string}, billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details: array{customer: string, default_payment_method?: string}, collection_settings_details: array{collection_method: string, payment_method_configuration?: string}}, contract_number: string, currency: string, include?: string[], metadata?: array<string, string>, one_time_fees?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}, lookup_key?: string, product: string}[], pricing_lines: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}[], pricing_overrides?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, multiplier?: array{criteria?: array{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}[], factor: string}, priority: int, starts_at: array{timestamp?: string, type: string}, type: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -345,25 +273,6 @@ class ContractService extends \Stripe\Service\AbstractService
             'request_schema' => [
                 'kind' => 'object',
                 'fields' => [
-                    'one_time_fees' => [
-                        'kind' => 'array',
-                        'element' => [
-                            'kind' => 'object',
-                            'fields' => [
-                                'bill_schedule' => [
-                                    'kind' => 'array',
-                                    'element' => [
-                                        'kind' => 'object',
-                                        'fields' => [
-                                            'value' => [
-                                                'kind' => 'int64_string',
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
                     'pricing_lines' => [
                         'kind' => 'array',
                         'element' => [
@@ -422,30 +331,6 @@ class ContractService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
-                    'one_time_fees' => [
-                        'kind' => 'object',
-                        'fields' => [
-                            'data' => [
-                                'kind' => 'array',
-                                'element' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'bill_schedule' => [
-                                            'kind' => 'array',
-                                            'element' => [
-                                                'kind' => 'object',
-                                                'fields' => [
-                                                    'value' => [
-                                                        'kind' => 'int64_string',
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
                     'pricing_lines' => [
                         'kind' => 'object',
                         'fields' => [
@@ -539,30 +424,6 @@ class ContractService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
-                    'one_time_fees' => [
-                        'kind' => 'object',
-                        'fields' => [
-                            'data' => [
-                                'kind' => 'array',
-                                'element' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'bill_schedule' => [
-                                            'kind' => 'array',
-                                            'element' => [
-                                                'kind' => 'object',
-                                                'fields' => [
-                                                    'value' => [
-                                                        'kind' => 'int64_string',
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
                     'pricing_lines' => [
                         'kind' => 'object',
                         'fields' => [
@@ -627,7 +488,7 @@ class ContractService extends \Stripe\Service\AbstractService
      * Update a Contract object by ID.
      *
      * @param string $id
-     * @param null|array{include?: string[], pricing_line_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, pricing?: array{price_details?: array{pricing_override_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id?: string, lookup_key?: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id?: string, lookup_key?: string, metadata?: array<string, string>, starts_at?: array{timestamp?: string, type: string}}}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}}, starts_at?: array{timestamp?: string, type: string}}}[], pricing_override_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, multiplier?: array{criteria: array{billable_item_ids: string[], billable_item_lookup_keys: string[], billable_item_types: string[], metadata_conditions: array{all_of: array{key: string, value: string}[]}[], rate_card_ids: string[], type: string}[], factor: string}, overwrite_price?: array{tiering_mode?: string, tiers: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, starts_at?: array{timestamp?: string, type: string}}}[]} $params
+     * @param null|array{include?: string[], pricing_line_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, pricing?: array{price_details?: array{pricing_override_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id?: string, lookup_key?: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id?: string, lookup_key?: string, metadata?: array<string, string>, starts_at?: array{timestamp?: string, type: string}}}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}}, starts_at?: array{timestamp?: string, type: string}}}[], pricing_override_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, multiplier?: array{criteria: array{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}[], factor: string}, overwrite_price?: array{tiering_mode?: string, tiers: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, starts_at?: array{timestamp?: string, type: string}}}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -787,30 +648,6 @@ class ContractService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
-                    'one_time_fees' => [
-                        'kind' => 'object',
-                        'fields' => [
-                            'data' => [
-                                'kind' => 'array',
-                                'element' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'bill_schedule' => [
-                                            'kind' => 'array',
-                                            'element' => [
-                                                'kind' => 'object',
-                                                'fields' => [
-                                                    'value' => [
-                                                        'kind' => 'int64_string',
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
                     'pricing_lines' => [
                         'kind' => 'object',
                         'fields' => [
