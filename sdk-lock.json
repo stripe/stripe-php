@@ -1,0 +1,21 @@
+{
+  "runtime": {
+    "minVersion": "7.2.0",
+    "commands": [
+      {
+        "name": "php",
+        "versionFlag": "--version",
+        "versionPattern": "PHP (\\d+\\.\\d+\\.\\d+)"
+      }
+    ]
+  },
+  "recipes": {
+    "format": {
+      "commands": [
+        "composer install --quiet",
+        "./vendor/bin/php-cs-fixer fix -v --using-cache=no"
+      ],
+      "sourceHash": "sha256:51873c63ee0481f037305f05549c9d5cff81e7666ce7edbf128c125b9bf5c2de"
+    }
+  }
+}

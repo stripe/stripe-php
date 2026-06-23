@@ -1,0 +1,312 @@
+<?php
+
+namespace Stripe;
+
+/**
+ * Class Stripe.
+ */
+class Stripe
+{
+    /** @var string The Stripe API key to be used for requests. */
+    public static $apiKey;
+
+    /** @var string The Stripe client_id to be used for Connect requests. */
+    public static $clientId;
+
+    /** @var string The base URL for the Stripe API. */
+    public static $apiBase = 'https://api.stripe.com';
+
+    /** @var string The base URL for the OAuth API. */
+    public static $connectBase = 'https://connect.stripe.com';
+
+    /** @var string The base URL for the Stripe API uploads endpoint. */
+    public static $apiUploadBase = 'https://files.stripe.com';
+
+    /** @var string The version of the Stripe API to use for requests. */
+    public static $apiVersion = Util\ApiVersion::CURRENT;
+
+    /** @var null|string The account ID for connected accounts requests. */
+    public static $accountId = null;
+
+    /** @var string Path to the CA bundle used to verify SSL certificates */
+    public static $caBundlePath = null;
+
+    /** @var bool Defaults to true. */
+    public static $verifySslCerts = true;
+
+    /** @var array The application's information (name, version, URL) */
+    public static $appInfo = null;
+
+    /**
+     * @var null|Util\LoggerInterface the logger to which the library will
+     *   produce messages
+     */
+    public static $logger = null;
+
+    // this is set higher (to `2`) in all other SDKs, but PHP gets a special exception
+    // because PHP scripts are run as short one-offs rather than long-lived servers.
+    // We didn't want to risk messing up integrations by setting a higher default
+    // since that would have worse side effects than other more long-running languages.
+    /** @var int Maximum number of request retries */
+    public static $maxNetworkRetries = 0;
+
+    /** @var bool Whether client telemetry is enabled. Defaults to true. */
+    public static $enableTelemetry = true;
+
+    // this is 5s in other languages
+    // see note on `maxNetworkRetries` for more info
+    /** @var float Maximum delay between retries, in seconds */
+    private static $maxNetworkRetryDelay = 2.0;
+
+    /** @var float Maximum delay between retries, in seconds, that will be respected from the Stripe API */
+    private static $maxRetryAfter = 60.0;
+
+    /** @var float Initial delay between retries, in seconds */
+    private static $initialNetworkRetryDelay = 0.5;
+
+    const VERSION = '20.3.0-alpha.1';
+
+    /**
+     * @return string the API key used for requests
+     */
+    public static function getApiKey()
+    {
+        return self::$apiKey;
+    }
+
+    /**
+     * @return string the client_id used for Connect requests
+     */
+    public static function getClientId()
+    {
+        return self::$clientId;
+    }
+
+    /**
+     * @return Util\LoggerInterface the logger to which the library will
+     *   produce messages
+     */
+    public static function getLogger()
+    {
+        if (null === self::$logger) {
+            return new Util\DefaultLogger();
+        }
+
+        return self::$logger;
+    }
+
+    /**
+     * @param \Psr\Log\LoggerInterface|Util\LoggerInterface $logger the logger to which the library
+     *   will produce messages
+     */
+    public static function setLogger($logger)
+    {
+        self::$logger = $logger;
+    }
+
+    /**
+     * Sets the API key to be used for requests.
+     *
+     * @param string $apiKey
+     */
+    public static function setApiKey($apiKey)
+    {
+        self::$apiKey = $apiKey;
+    }
+
+    /**
+     * Sets the client_id to be used for Connect requests.
+     *
+     * @param string $clientId
+     */
+    public static function setClientId($clientId)
+    {
+        self::$clientId = $clientId;
+    }
+
+    /**
+     * @return string the API version used for requests
+     */
+    public static function getApiVersion()
+    {
+        return self::$apiVersion;
+    }
+
+    /**
+     * @param string $apiVersion the API version to use for requests
+     */
+    public static function setApiVersion($apiVersion)
+    {
+        self::$apiVersion = $apiVersion;
+    }
+
+    /**
+     * @param string $betaName the name of the feature beta
+     * @param string $betaVersion version to be used
+     */
+    public static function addBetaVersion($betaName, $betaVersion)
+    {
+        if (!preg_match('/^v\d+$/', $betaVersion)) {
+            throw new \Exception('Invalid beta version format. Expected format: "v" followed by a number.');
+        }
+
+        $pattern = '/; ' . preg_quote($betaName, '/') . '=v(\d+)/';
+        if (preg_match($pattern, self::$apiVersion, $matches)) {
+            $existingVersion = (int) $matches[1];
+            $newVersion = (int) substr($betaVersion, 1);
+
+            if ($newVersion <= $existingVersion) {
+                return; // Do nothing if the new version is not higher
+            }
+
+            // Replace the existing beta version with the new one
+            self::$apiVersion = preg_replace($pattern, '; ' . $betaName . '=' . $betaVersion, self::$apiVersion);
+        } else {
+            // Add the new beta version if it doesn't already exist
+            self::$apiVersion = self::$apiVersion . '; ' . $betaName . '=' . $betaVersion;
+        }
+    }
+
+    /**
+     * @return string
+     */
+    private static function getDefaultCABundlePath()
+    {
+        return \realpath(__DIR__ . '/../data/ca-certificates.crt');
+    }
+
+    /**
+     * @return string
+     */
+    public static function getCABundlePath()
+    {
+        return self::$caBundlePath ?: self::getDefaultCABundlePath();
+    }
+
+    /**
+     * @param string $caBundlePath
+     */
+    public static function setCABundlePath($caBundlePath)
+    {
+        self::$caBundlePath = $caBundlePath;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function getVerifySslCerts()
+    {
+        return self::$verifySslCerts;
+    }
+
+    /**
+     * @param bool $verify
+     */
+    public static function setVerifySslCerts($verify)
+    {
+        self::$verifySslCerts = $verify;
+    }
+
+    /**
+     * @return null|string The Stripe account ID for connected account
+     *   requests
+     */
+    public static function getAccountId()
+    {
+        return self::$accountId;
+    }
+
+    /**
+     * @param null|string $accountId the Stripe account ID to set for connected
+     *   account requests
+     */
+    public static function setAccountId($accountId)
+    {
+        self::$accountId = $accountId;
+    }
+
+    /**
+     * @return null|array The application's information
+     */
+    public static function getAppInfo()
+    {
+        return self::$appInfo;
+    }
+
+    /**
+     * @param string $appName The application's name
+     * @param null|string $appVersion The application's version
+     * @param null|string $appUrl The application's URL
+     * @param null|string $appPartnerId The application's partner ID
+     */
+    public static function setAppInfo($appName, $appVersion = null, $appUrl = null, $appPartnerId = null)
+    {
+        self::$appInfo = self::$appInfo ?: [];
+        self::$appInfo['name'] = $appName;
+        self::$appInfo['partner_id'] = $appPartnerId;
+        self::$appInfo['url'] = $appUrl;
+        self::$appInfo['version'] = $appVersion;
+    }
+
+    /**
+     * @return int Maximum number of request retries
+     */
+    public static function getMaxNetworkRetries()
+    {
+        return self::$maxNetworkRetries;
+    }
+
+    /**
+     * > NOTE: this value is only read during client creation, so creating a client and _then_ calling this method won't affect your client's behavior.
+     *
+     * @param int $maxNetworkRetries maximum number of request retries
+     */
+    public static function setMaxNetworkRetries($maxNetworkRetries)
+    {
+        self::$maxNetworkRetries = $maxNetworkRetries;
+    }
+
+    /**
+     * @return float Maximum delay between retries, in seconds
+     */
+    public static function getMaxNetworkRetryDelay()
+    {
+        return self::$maxNetworkRetryDelay;
+    }
+
+    /**
+     * @return float Maximum delay between retries, in seconds, that will be respected from the Stripe API
+     */
+    public static function getMaxRetryAfter()
+    {
+        return self::$maxRetryAfter;
+    }
+
+    /**
+     * @return float Initial delay between retries, in seconds
+     */
+    public static function getInitialNetworkRetryDelay()
+    {
+        return self::$initialNetworkRetryDelay;
+    }
+
+    /**
+     * @return bool Whether client telemetry is enabled
+     */
+    public static function getEnableTelemetry()
+    {
+        return self::$enableTelemetry;
+    }
+
+    /**
+     * @param bool $enableTelemetry Enables client telemetry.
+     *
+     * Client telemetry enables timing and request metrics to be sent back to Stripe as an HTTP Header
+     * with the current request. This enables Stripe to do latency and metrics analysis without adding extra
+     * overhead (such as extra network calls) on the client.
+     */
+    public static function setEnableTelemetry($enableTelemetry)
+    {
+        self::$enableTelemetry = $enableTelemetry;
+    }
+}

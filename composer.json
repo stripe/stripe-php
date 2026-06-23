@@ -1,0 +1,36 @@
+{
+  "name": "stripe/stripe-php",
+  "description": "Stripe PHP Library",
+  "require": {
+    "php": ">=7.2.0",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^8.0 || ^9.0",
+    "friendsofphp/php-cs-fixer": "3.94.0",
+    "phpstan/phpstan": "^1.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Stripe\\": "lib/"
+    },
+    "files": [
+      "lib/version_check.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Stripe\\": [
+        "tests/",
+        "tests/Stripe/"
+      ]
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.0-dev"
+    }
+  }
+}
