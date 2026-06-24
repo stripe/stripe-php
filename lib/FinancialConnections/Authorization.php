@@ -14,7 +14,7 @@ namespace Stripe\FinancialConnections;
  * @property string $institution_name The name of the institution that this authorization belongs to.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $status The status of the connection to the Authorization.
- * @property (object{inactive?: (object{action: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
+ * @property (object{active?: (object{action: string, expected_deactivation_date: int}&\Stripe\StripeObject), inactive?: (object{action: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
  */
 class Authorization extends \Stripe\ApiResource
 {

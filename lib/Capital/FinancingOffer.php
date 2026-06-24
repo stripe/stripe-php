@@ -14,6 +14,7 @@ namespace Stripe\Capital;
  * @property string $account The ID of the merchant associated with this financing object.
  * @property null|int $charged_off_at The time at which this financing offer was charged off, if applicable. Given in seconds since unix epoch.
  * @property int $created Time at which the offer was created. Given in seconds since unix epoch.
+ * @property null|string $disclaimer_variant The type of disclaimer to use for a financing offer in user-facing surfaces. The corresponding disclaimer text to use for each disclaimer_variant value can be found in the <a href="https://docs.stripe.com/capital/marketing">marketing docs</a>.
  * @property float $expires_after Time at which the offer expires. Given in seconds since unix epoch.
  * @property null|string $financing_type The type of financing being offered.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
@@ -28,6 +29,13 @@ namespace Stripe\Capital;
 class FinancingOffer extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'capital.financing_offer';
+
+    const DISCLAIMER_VARIANT_CELTIC_US_LOAN = 'celtic_us_loan';
+    const DISCLAIMER_VARIANT_FUNDBOX_AU_FINANCING = 'fundbox_au_financing';
+    const DISCLAIMER_VARIANT_YOULEND_DE_FINANCING = 'youlend_de_financing';
+    const DISCLAIMER_VARIANT_YOULEND_FR_FINANCING = 'youlend_fr_financing';
+    const DISCLAIMER_VARIANT_YOULEND_UK_MCA = 'youlend_uk_mca';
+    const DISCLAIMER_VARIANT_YOULEND_US_MCA = 'youlend_us_mca';
 
     const FINANCING_TYPE_CASH_ADVANCE = 'cash_advance';
     const FINANCING_TYPE_FLEX_LOAN = 'flex_loan';
