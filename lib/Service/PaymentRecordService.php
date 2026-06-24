@@ -118,7 +118,7 @@ class PaymentRecordService extends AbstractService
      * refunded.
      *
      * @param string $id
-     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], initiated_at?: int, metadata?: null|array<string, string>, outcome: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refunded: array{refunded_at: int}} $params
+     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], initiated_at?: int, metadata?: null|array<string, string>, outcome: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refunded?: array{refunded_at: int}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord
