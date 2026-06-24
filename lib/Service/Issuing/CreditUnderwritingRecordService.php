@@ -94,6 +94,23 @@ class CreditUnderwritingRecordService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Update a <code>CreditUnderwritingRecord</code> object to report that a credit
+     * offer has been accepted.
+     *
+     * @param string $id
+     * @param null|array{expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Issuing\CreditUnderwritingRecord
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function reportOfferAcceptance($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/issuing/credit_underwriting_records/%s/report_offer_acceptance', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves a <code>CreditUnderwritingRecord</code> object.
      *
      * @param string $id

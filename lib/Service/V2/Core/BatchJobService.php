@@ -136,7 +136,7 @@ class BatchJobService extends \Stripe\Service\AbstractService
     /**
      * Creates a new batch job.
      *
-     * @param null|array{endpoint: array{http_method: string, path: string}, maximum_rps?: int, metadata: array<string, string>, notification_suppression?: array{scope: string}, skip_validation: bool} $params
+     * @param null|array{endpoint: array{http_method: string, path: string}, metadata?: array<string, string>, notification_suppression?: array{scope: string}, skip_validation: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\BatchJob

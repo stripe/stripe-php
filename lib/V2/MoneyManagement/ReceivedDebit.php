@@ -21,8 +21,8 @@ namespace Stripe\V2\MoneyManagement;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $receipt_url A link to the Stripe-hosted receipt for this ReceivedDebit.
  * @property string $status Open Enum. The status of the ReceivedDebit.
- * @property null|(object{failed: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Detailed information about the status of the ReceivedDebit.
- * @property null|(object{canceled_at?: int, failed_at?: int, succeeded_at?: int}&\Stripe\StripeObject) $status_transitions The time at which the ReceivedDebit transitioned to a particular status.
+ * @property null|(object{failed: (object{reason: string}&\Stripe\StripeObject), returned: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Detailed information about the status of the ReceivedDebit.
+ * @property null|(object{canceled_at?: int, failed_at?: int, returned_at?: int, succeeded_at?: int}&\Stripe\StripeObject) $status_transitions The time at which the ReceivedDebit transitioned to a particular status.
  * @property null|(object{debit_agreement?: string, statement_descriptor?: string}&\Stripe\StripeObject) $stripe_balance_payment This object stores details about the Stripe Balance Payment that resulted in the ReceivedDebit.
  * @property string $type Open Enum. The type of the ReceivedDebit.
  */

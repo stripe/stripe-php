@@ -21,7 +21,9 @@ namespace Stripe;
  * @property null|string $failure_code The failure code of the operation. Only present if the status is failed.
  * @property GiftCard|string $gift_card The gift card this operation was performed on.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
+ * @property null|string $location ID of the location that this transaction's reader is assigned to.
  * @property null|string $on_behalf_of The connected account whose credentials were used to perform this operation.
+ * @property null|string $reader ID of the reader this transaction was made on.
  * @property null|(object{balance: (object{amount: int, currency: string}&StripeObject), previous_balance: null|(object{amount: int, currency: string}&StripeObject)}&StripeObject) $reload Details about a gift card reload operation.
  * @property null|(object{balance: (object{amount: int, currency: string}&StripeObject), voided_operation: string}&StripeObject) $reload_void Details about a gift card reload void operation.
  * @property string $status The status of the operation.

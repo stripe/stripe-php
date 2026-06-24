@@ -9,19 +9,17 @@ namespace Stripe\V2\Billing;
  *
  * @property string $id The ID of the contract object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|(object{contract_billing_details?: (object{bill_settings_details?: (object{calculation?: (object{tax?: (object{type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), invoice?: (object{time_until_due?: (object{interval: string, interval_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), billing_profile_details: (object{customer: string, default_payment_method?: string}&\Stripe\StripeObject), collection_settings_details: (object{collection_method: string, payment_method_configuration?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $billing_settings The billing settings for the contract.
- * @property (object{contract_line: string, contract_line_value_details: (object{total: string}&\Stripe\StripeObject), created: int, ends_at: (object{timestamp: int}&\Stripe\StripeObject), metadata?: \Stripe\StripeObject, overrides: (object{ends_at: (object{timestamp: int}&\Stripe\StripeObject), service_action?: (object{add?: (object{credit_grant?: (object{amount: (object{monetary?: \Stripe\StripeObject, type: string}&\Stripe\StripeObject), applicability_config: (object{scope: (object{billable_items?: string[], price_type?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), category?: string, expiry_config: (object{type: string}&\Stripe\StripeObject), name: string, priority?: int}&\Stripe\StripeObject), service_interval: string, service_interval_count: int, type: string}&\Stripe\StripeObject), replace?: (object{credit_grant?: (object{amount: (object{monetary?: \Stripe\StripeObject, type: string}&\Stripe\StripeObject), applicability_config: (object{scope: (object{billable_items?: string[], price_type?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), category?: string, expiry_config: (object{type: string}&\Stripe\StripeObject), name: string, priority?: int}&\Stripe\StripeObject), id?: string, lookup_key?: string, service_interval: string, service_interval_count: int, type: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), starts_at: (object{timestamp: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[], pricing: (object{}&\Stripe\StripeObject), starts_at: (object{timestamp: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)[] $contract_line_details The contract line details of the contract. Only populated when <code>contract_line_details</code> is passed in the <code>include</code> parameter.
+ * @property null|(object{timestamp: int}&\Stripe\StripeObject) $billing_cycle_anchor The billing cycle anchor for the contract.
+ * @property null|(object{bill_settings_details?: (object{calculation?: (object{tax?: (object{type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), invoice?: (object{time_until_due?: (object{interval: string, interval_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), billing_profile_details: (object{customer: string, default_payment_method?: string}&\Stripe\StripeObject), collection_settings_details: (object{collection_method: string, payment_method_configuration?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $billing_settings The billing settings for the contract.
  * @property string $contract_number A unique user-provided contract number e.g. C-2026-0001.
- * @property (object{total: string}&\Stripe\StripeObject) $contract_value_details The computed total value of all contract lines.
  * @property int $created Timestamp of when the object was created.
  * @property string $currency The currency of the contract.
  * @property string $customer The ID of the customer associated with the contract.
- * @property (object{license_pricing_id: string, license_pricing_type: string, pricing_line: string, quantity: int}&\Stripe\StripeObject)[] $license_quantities The license quantities of the contract. Only populated when <code>license_quantities</code> is passed in the <code>include</code> parameter.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object.
- * @property null|(object{bill_schedule: (object{bill_at: (object{timestamp?: int, type: string}&\Stripe\StripeObject), value: int}&\Stripe\StripeObject)[], billable_item_type: string, product_details?: (object{product: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)[] $one_time_fees The one-time fees of the contract. Only populated when <code>one_time_fees</code> is passed in the <code>include</code> parameter.
- * @property (object{ends_at: (object{timestamp: int}&\Stripe\StripeObject), lookup_key?: string, metadata?: \Stripe\StripeObject, pricing: (object{price_details?: (object{price: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), pricing_line: string, starts_at: (object{timestamp: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)[] $pricing_lines The pricing lines of the contract. Only populated when <code>pricing_lines</code> is passed in the <code>include</code> parameter.
- * @property (object{ends_at: (object{timestamp: int}&\Stripe\StripeObject), lookup_key?: string, multiplier?: (object{criteria: (object{billable_item_ids: string[], billable_item_lookup_keys: string[], billable_item_types: string[], metadata_conditions: (object{all_of: (object{key: string, value: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)[], rate_card_ids: string[], type: string}&\Stripe\StripeObject)[], factor: string}&\Stripe\StripeObject), overwrite_price?: (object{price: string, tiering_mode?: string, tiers: (object{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}&\Stripe\StripeObject)[], unit_amount?: string}&\Stripe\StripeObject), pricing_override: string, priority: int, starts_at: (object{timestamp: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[] $pricing_overrides The pricing overrides of the contract. Only populated when <code>pricing_overrides</code> is passed in the <code>include</code> parameter.
+ * @property null|(object{data: (object{amount: \Stripe\StripeObject, bill_at: (object{timestamp: int}&\Stripe\StripeObject), id: string, lookup_key?: string, product: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $one_time_fees The one-time fees of the contract. Only populated when <code>one_time_fees</code> is passed in the <code>include</code> parameter.
+ * @property null|(object{data: (object{ends_at: (object{timestamp: int}&\Stripe\StripeObject), id: string, lookup_key?: string, metadata?: \Stripe\StripeObject, pricing: (object{price_details?: (object{current_quantity: string, price: string, pricing_overrides?: (object{data: (object{ends_at: (object{timestamp: int}&\Stripe\StripeObject), lookup_key?: string, overwrite_price?: (object{tiering_mode?: string, tiers: (object{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}&\Stripe\StripeObject)[], unit_amount?: string}&\Stripe\StripeObject), pricing_override: string, starts_at: (object{timestamp: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), starts_at: (object{timestamp: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $pricing_lines The pricing lines of the contract. Only populated when <code>pricing_lines</code> is passed in the <code>include</code> parameter.
+ * @property null|(object{data: (object{ends_at: (object{timestamp: int}&\Stripe\StripeObject), id: string, lookup_key?: string, multiplier?: (object{criteria: (object{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}&\Stripe\StripeObject)[], factor: string}&\Stripe\StripeObject), priority: int, starts_at: (object{timestamp: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $pricing_overrides The pricing overrides of the contract. Only populated when <code>pricing_overrides</code> is passed in the <code>include</code> parameter.
  * @property string $status The current status of the contract.
  * @property (object{active?: (object{activated_at: int}&\Stripe\StripeObject), canceled?: (object{canceled_at: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Information about the contract status transitions.
  */
@@ -32,38 +30,52 @@ class Contract extends \Stripe\ApiResource
     public static function fieldEncodings()
     {
         return [
-            'one_time_fees' => [
-                'kind' => 'array',
-                'element' => [
-                    'kind' => 'object',
-                    'fields' => [
-                        'bill_schedule' => [
-                            'kind' => 'array',
-                            'element' => [
-                                'kind' => 'object',
-                                'fields' => [
-                                    'value' => ['kind' => 'int64_string'],
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-            'pricing_overrides' => [
-                'kind' => 'array',
-                'element' => [
-                    'kind' => 'object',
-                    'fields' => [
-                        'overwrite_price' => [
+            'pricing_lines' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
                             'kind' => 'object',
                             'fields' => [
-                                'tiers' => [
-                                    'kind' => 'array',
-                                    'element' => [
-                                        'kind' => 'object',
-                                        'fields' => [
-                                            'up_to_decimal' => [
-                                                'kind' => 'decimal_string',
+                                'pricing' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'price_details' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'current_quantity' => [
+                                                    'kind' => 'decimal_string',
+                                                ],
+                                                'pricing_overrides' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'data' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'overwrite_price' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'tiers' => [
+                                                                                'kind' => 'array',
+                                                                                'element' => [
+                                                                                    'kind' => 'object',
+                                                                                    'fields' => [
+                                                                                        'up_to_decimal' => [
+                                                                                            'kind' => 'decimal_string',
+                                                                                        ],
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
                                             ],
                                         ],
                                     ],

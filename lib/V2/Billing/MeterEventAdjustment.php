@@ -13,7 +13,7 @@ namespace Stripe\V2\Billing;
  * @property int $created The time the adjustment was created.
  * @property string $event_name The name of the meter event. Corresponds with the <code>event_name</code> field on a meter.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property string $status Open Enum. The meter event adjustment’s status.
+ * @property string $status Open Enum. The meter event adjustment's status.
  * @property string $type Open Enum. Specifies the type of cancellation. Currently supports canceling a single event.
  */
 class MeterEventAdjustment extends \Stripe\ApiResource

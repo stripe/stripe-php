@@ -18,6 +18,7 @@ namespace Stripe\Service\V2\Core;
  * @property EventService $events
  * @property FeeBatchService $feeBatches
  * @property FeeEntryService $feeEntries
+ * @property Health\HealthServiceFactory $health
  * @property Vault\VaultServiceFactory $vault
  * // Doc: The end of the section generated from our OpenAPI spec
  */
@@ -40,6 +41,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'events' => EventService::class,
         'feeBatches' => FeeBatchService::class,
         'feeEntries' => FeeEntryService::class,
+        'health' => Health\HealthServiceFactory::class,
         'vault' => Vault\VaultServiceFactory::class,
         // Class Map: The end of the section generated from our OpenAPI spec
     ];

@@ -18,6 +18,7 @@ namespace Stripe\Issuing;
  * @property null|int $decided_at Date when a decision was made.
  * @property null|(object{application_rejected: null|(object{reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject), credit_limit_approved: null|(object{amount: int, currency: string}&\Stripe\StripeObject), credit_limit_decreased: null|(object{amount: int, currency: string, reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject), credit_line_closed: null|(object{reason_other_explanation: null|string, reasons: string[]}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $decision Details about the decision.
  * @property null|int $decision_deadline For underwriting initiated by an application, a decision must be taken 30 days after the submission.
+ * @property null|int $decision_deadline_updated_at Time at which the decision deadline was last updated.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $regulatory_reporting_file File containing regulatory reporting data for the decision. Required if you are subject to this <a href="https://docs.stripe.com/issuing/credit/report-required-regulatory-data-for-credit-decisions">reporting requirement</a>.
@@ -132,6 +133,23 @@ class CreditUnderwritingRecord extends \Stripe\ApiResource
     public function reportDecision($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/report_decision';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return CreditUnderwritingRecord the reported credit underwriting record
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function reportOfferAcceptance($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/report_offer_acceptance';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 
