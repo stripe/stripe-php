@@ -86,6 +86,12 @@ class CreditNote extends ApiResource
      * <code>post_payment_credit_notes_amount</code>, or both, depending on the
      * invoice’s <code>amount_remaining</code> at the time of credit note creation.
      *
+     * For invoices that also have refunds created through the <a
+     * href="/docs/api/refunds">Refund API</a>, the credit note API subtracts those
+     * refund amounts from the maximum creditable amount. This prevents the combined
+     * credit notes and refunds from exceeding the invoice amount. If you use both,
+     * ensure the combined total does not exceed the invoice’s paid amount.
+     *
      * @param null|array{amount?: int, credit_amount?: int, effective_at?: int, email_type?: string, expand?: string[], invoice: string, lines?: (array{amount?: int, description?: string, invoice_line_item?: string, metadata?: array<string, string>, quantity?: int, tax_amounts?: null|array{amount: int, tax_rate: string, taxable_amount: int}[], tax_rates?: null|string[], type: string, unit_amount?: int, unit_amount_decimal?: string})[], memo?: string, metadata?: array<string, string>, out_of_band_amount?: int, reason?: string, refund_amount?: int, refunds?: array{amount_refunded?: int, payment_record_refund?: array{payment_record: string, refund_group: string}, refund?: string, type?: string}[], shipping_cost?: array{shipping_rate?: string}} $params
      * @param null|array|string $options
      *
