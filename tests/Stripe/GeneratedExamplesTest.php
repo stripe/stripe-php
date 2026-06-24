@@ -5662,6 +5662,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'metadata' => ['key' => 'metadata'],
+                        'mode' => 'upsert',
                         'status' => 'awaiting_upload',
                     ],
                 ],
@@ -5695,6 +5696,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
+                'mode' => 'upsert',
                 'status' => 'awaiting_upload',
             ],
             200,
@@ -5723,6 +5725,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'metadata' => ['key' => 'metadata'],
+                'mode' => 'upsert',
                 'status' => 'awaiting_upload',
             ],
             200,
@@ -5747,7 +5750,7 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.core.account',
-                        'applied_configurations' => ['0' => 'storer'],
+                        'applied_configurations' => ['0' => 'money_manager'],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'livemode' => [],
@@ -5774,7 +5777,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'storer'],
+                'applied_configurations' => ['0' => 'money_manager'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -5796,7 +5799,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'storer'],
+                'applied_configurations' => ['0' => 'money_manager'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -5818,7 +5821,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'storer'],
+                'applied_configurations' => ['0' => 'money_manager'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -5840,7 +5843,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'storer'],
+                'applied_configurations' => ['0' => 'money_manager'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -6054,7 +6057,7 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['storer'],
+                        'configurations' => ['merchant'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -6063,7 +6066,7 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['storer'],
+                        'configurations' => ['merchant'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -6092,7 +6095,7 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['storer'],
+                    'configurations' => ['merchant'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -6101,7 +6104,7 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['storer'],
+                    'configurations' => ['merchant'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -6170,7 +6173,6 @@ final class GeneratedExamplesTest extends TestCase
                     'http_method' => 'delete',
                     'path' => '/v1/subscriptions/:subscription_exposed_id',
                 ],
-                'metadata' => ['key' => 'metadata'],
                 'skip_validation' => true,
             ],
             [],
@@ -6180,7 +6182,6 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'maximum_rps' => [],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => [],
                 'status' => 'batch_failed',
@@ -6193,7 +6194,6 @@ final class GeneratedExamplesTest extends TestCase
                 'http_method' => 'delete',
                 'path' => '/v1/subscriptions/:subscription_exposed_id',
             ],
-            'metadata' => ['key' => 'metadata'],
             'skip_validation' => true,
         ]);
         self::assertInstanceOf(V2\Core\BatchJob::class, $result);
@@ -6212,7 +6212,6 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'maximum_rps' => [],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => [],
                 'status' => 'batch_failed',
@@ -6237,7 +6236,6 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'maximum_rps' => [],
                 'metadata' => ['key' => 'metadata'],
                 'skip_validation' => [],
                 'status' => 'batch_failed',
@@ -9493,20 +9491,8 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/extend/workflows/id_123/invoke',
-            [
-                'input_parameters' => [
-                    'int_key' => 123,
-                    'string_key' => 'value',
-                    'boolean_key' => true,
-                    'object_key' => [
-                        'object_int_key' => 123,
-                        'object_string_key' => 'value',
-                        'object_boolean_key' => true,
-                    ],
-                    'array_key' => [1, 2, 3],
-                ],
-            ],
+            '/v2/core/vault/us_bank_accounts/id_123/archive',
+            [],
             [],
             false,
             [
@@ -9520,22 +9506,7 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->extend->workflows->invoke(
-                'id_123',
-                [
-                    'input_parameters' => [
-                        'int_key' => 123,
-                        'string_key' => 'value',
-                        'boolean_key' => true,
-                        'object_key' => [
-                            'object_int_key' => 123,
-                            'object_string_key' => 'value',
-                            'object_boolean_key' => true,
-                        ],
-                        'array_key' => [1, 2, 3],
-                    ],
-                ]
-            );
+            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
         } catch (Exception\CannotProceedException $e) {
         }
     }

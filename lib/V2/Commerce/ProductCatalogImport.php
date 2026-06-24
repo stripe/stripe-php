@@ -13,6 +13,7 @@ namespace Stripe\V2\Commerce;
  * @property string $feed_type The type of feed data being imported into the product catalog.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Additional information about the object in a structured format.
+ * @property string $mode The import strategy for handling existing catalog data.
  * @property string $status The current status of this ProductCatalogImport.
  * @property null|(object{awaiting_upload?: (object{upload_url: (object{expires_at: int, url: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), failed?: (object{code: string, failure_message: string, type: string}&\Stripe\StripeObject), processing?: (object{error_count: int, success_count: int}&\Stripe\StripeObject), succeeded?: (object{success_count: int}&\Stripe\StripeObject), succeeded_with_errors?: (object{error_count: int, error_file: (object{content_type: string, download_url: (object{expires_at: int, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), samples: (object{error_message: string, field: string, id: string, row: int}&\Stripe\StripeObject)[], success_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Details about the current import status.
  */
@@ -69,6 +70,10 @@ class ProductCatalogImport extends \Stripe\ApiResource
     const FEED_TYPE_INVENTORY = 'inventory';
     const FEED_TYPE_PRICING = 'pricing';
     const FEED_TYPE_PRODUCT = 'product';
+    const FEED_TYPE_PROMOTION = 'promotion';
+
+    const MODE_REPLACE = 'replace';
+    const MODE_UPSERT = 'upsert';
 
     const STATUS_AWAITING_UPLOAD = 'awaiting_upload';
     const STATUS_FAILED = 'failed';

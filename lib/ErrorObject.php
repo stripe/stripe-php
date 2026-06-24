@@ -55,6 +55,7 @@ class ErrorObject extends StripeObject
     const CODE_ALIPAY_UPGRADE_REQUIRED = 'alipay_upgrade_required';
     const CODE_AMOUNT_TOO_LARGE = 'amount_too_large';
     const CODE_AMOUNT_TOO_SMALL = 'amount_too_small';
+    const CODE_ANOMALOUS_MONEY_MOVEMENT_REQUEST = 'anomalous_money_movement_request';
     const CODE_API_KEY_EXPIRED = 'api_key_expired';
     const CODE_APPLICATION_FEES_NOT_ALLOWED = 'application_fees_not_allowed';
     const CODE_APPROVAL_REQUIRED = 'approval_required';
@@ -94,6 +95,10 @@ class ErrorObject extends StripeObject
     const CODE_DEBIT_NOT_AUTHORIZED = 'debit_not_authorized';
     const CODE_EMAIL_INVALID = 'email_invalid';
     const CODE_EXPIRED_CARD = 'expired_card';
+    const CODE_FAILED_TAX_CALCULATION = 'failed_tax_calculation';
+    const CODE_FINANCIAL_ACCOUNT_BALANCE_DOES_NOT_SUPPORT_CURRENCY = 'financial_account_balance_does_not_support_currency';
+    const CODE_FINANCIAL_ACCOUNT_CAPABILITY_NOT_ENABLED = 'financial_account_capability_not_enabled';
+    const CODE_FINANCIAL_ACCOUNT_CAPABILITY_RESTRICTED = 'financial_account_capability_restricted';
     const CODE_FINANCIAL_CONNECTIONS_ACCOUNT_INACTIVE = 'financial_connections_account_inactive';
     const CODE_FINANCIAL_CONNECTIONS_ACCOUNT_PENDING_ACCOUNT_NUMBERS = 'financial_connections_account_pending_account_numbers';
     const CODE_FINANCIAL_CONNECTIONS_ACCOUNT_UNAVAILABLE_ACCOUNT_NUMBERS = 'financial_connections_account_unavailable_account_numbers';

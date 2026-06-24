@@ -11,7 +11,6 @@ namespace Stripe\V2\Core;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property int $created Timestamp at which the <code>batch_job</code> was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property int $maximum_rps The maximum requests per second defined for the <code>batch_job</code>.
  * @property \Stripe\StripeObject $metadata The metadata of the <code>batch_job</code>.
  * @property bool $skip_validation Whether validation runs before executing the <code>batch_job</code>.
  * @property string $status The current status of the <code>batch_job</code>.

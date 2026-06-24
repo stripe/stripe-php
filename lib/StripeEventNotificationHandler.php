@@ -330,6 +330,40 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.core.account[configuration.money_manager].capability_status_updated" event.
+     *
+     * @param callable(Events\V2CoreAccountIncludingConfigurationMoneyManagerCapabilityStatusUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.money_manager].capability_status_updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreAccountIncludingConfigurationMoneyManagerCapabilityStatusUpdated(
+        $handler
+    ) {
+        $this->register(
+            'v2.core.account[configuration.money_manager].capability_status_updated',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.core.account[configuration.money_manager].updated" event.
+     *
+     * @param callable(Events\V2CoreAccountIncludingConfigurationMoneyManagerUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.money_manager].updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreAccountIncludingConfigurationMoneyManagerUpdated(
+        $handler
+    ) {
+        $this->register(
+            'v2.core.account[configuration.money_manager].updated',
+            $handler
+        );
+    }
+
+    /**
      * Registers a handler for the "v2.core.account[configuration.recipient].capability_status_updated" event.
      *
      * @param callable(Events\V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.recipient].capability_status_updated events
@@ -361,36 +395,6 @@ class StripeEventNotificationHandler
             'v2.core.account[configuration.recipient].updated',
             $handler
         );
-    }
-
-    /**
-     * Registers a handler for the "v2.core.account[configuration.storer].capability_status_updated" event.
-     *
-     * @param callable(Events\V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.storer].capability_status_updated events
-     *
-     * @throws Exception\InvalidArgumentException if this event type is already registered
-     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
-     */
-    public function onV2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdated(
-        $handler
-    ) {
-        $this->register(
-            'v2.core.account[configuration.storer].capability_status_updated',
-            $handler
-        );
-    }
-
-    /**
-     * Registers a handler for the "v2.core.account[configuration.storer].updated" event.
-     *
-     * @param callable(Events\V2CoreAccountIncludingConfigurationStorerUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.storer].updated events
-     *
-     * @throws Exception\InvalidArgumentException if this event type is already registered
-     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
-     */
-    public function onV2CoreAccountIncludingConfigurationStorerUpdated($handler)
-    {
-        $this->register('v2.core.account[configuration.storer].updated', $handler);
     }
 
     /**
@@ -976,6 +980,22 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.outbound_payment.under_review" event.
+     *
+     * @param callable(Events\V2MoneyManagementOutboundPaymentUnderReviewEvent, StripeClient): void $handler Handles v2.money_management.outbound_payment.under_review events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementOutboundPaymentUnderReview($handler)
+    {
+        $this->register(
+            'v2.money_management.outbound_payment.under_review',
+            $handler
+        );
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.outbound_payment.updated" event.
      *
      * @param callable(Events\V2MoneyManagementOutboundPaymentUpdatedEvent, StripeClient): void $handler Handles v2.money_management.outbound_payment.updated events
@@ -1051,6 +1071,22 @@ class StripeEventNotificationHandler
     public function onV2MoneyManagementOutboundTransferReturned($handler)
     {
         $this->register('v2.money_management.outbound_transfer.returned', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.outbound_transfer.under_review" event.
+     *
+     * @param callable(Events\V2MoneyManagementOutboundTransferUnderReviewEvent, StripeClient): void $handler Handles v2.money_management.outbound_transfer.under_review events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementOutboundTransferUnderReview($handler)
+    {
+        $this->register(
+            'v2.money_management.outbound_transfer.under_review',
+            $handler
+        );
     }
 
     /**

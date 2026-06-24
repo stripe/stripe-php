@@ -13,11 +13,11 @@ class BalanceTransactionService extends AbstractService
 {
     /**
      * Returns a list of transactions that have contributed to the Stripe account
-     * balance (e.g., charges, transfers, and so forth). The transactions are returned
-     * in sorted order, with the most recent transactions appearing first.
+     * balance (for example, charges, transfers, and so on). The transactions return in
+     * sorted order, with the most recent transactions appearing first.
      *
-     * Note that this endpoint was previously called “Balance history” and used the
-     * path <code>/v1/balance/history</code>.
+     * The previous name of this endpoint was “Balance history,” and it used the path
+     * <code>/v1/balance/history</code>.
      *
      * @param null|array{created?: array|int, currency?: string, ending_before?: string, expand?: string[], limit?: int, payout?: string, source?: string, starting_after?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

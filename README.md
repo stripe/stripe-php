@@ -234,7 +234,7 @@ Stripe::addBetaVersion("feature_beta", "v3");
 
 ### Private Preview SDKs
 
-Stripe has features in the [private preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-alpha.X` suffix like `12.2.0-alpha.2`. These are invite-only features. Once invited, you can install the private preview SDKs by following the same instructions as for the [public preview SDKs](https://github.com/stripe/stripe-php?tab=readme-ov-file#public-preview-sdks) above and replacing the term `beta` with `alpha`.
+Stripe has features in the [private preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-alpha.X` suffix like `12.2.0-alpha.2`. You can install the private preview SDKs by following the same instructions as for the [public preview SDKs](https://github.com/stripe/stripe-php?tab=readme-ov-file#public-preview-sdks) above and replacing the term `beta` with `alpha`. Note that access to specific private preview API features may require separate approval.
 
 ### Custom requests
 
@@ -263,6 +263,9 @@ $get_response = $stripe->rawRequest('get', '/v1/beta_endpoint?caveat=emptor', nu
 New features and bug fixes are released on the latest major version of the Stripe PHP library. If you are on an older major version, we recommend that you upgrade to the latest in order to use the new features and bug fixes including those for security vulnerabilities. Older major versions of the package will continue to be available for use, but will not be receiving any updates.
 
 ## Development
+
+> [!WARNING]
+> External contributions to this repo from first-time contributors are currently on hiatus. If you'd like to see a change made to the package, please open an issue.
 
 [Contribution guidelines for this project](CONTRIBUTING.md)
 
