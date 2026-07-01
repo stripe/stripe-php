@@ -11487,7 +11487,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/money_management/financial_accounts',
-            ['type' => 'storage'],
+            ['type' => 'credit'],
             [],
             false,
             [
@@ -11523,7 +11523,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->financialAccounts->create([
-            'type' => 'storage',
+            'type' => 'credit',
         ]);
         self::assertInstanceOf(V2\MoneyManagement\FinancialAccount::class, $result);
     }
@@ -13511,7 +13511,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'inbound_transfer_reversal',
+                        'category' => 'platform_earning_refund',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -13559,7 +13559,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'inbound_transfer_reversal',
+                'category' => 'platform_earning_refund',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -13609,7 +13609,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'inbound_transfer_reversal',
+                            'category' => 'platform_earning_refund',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -13655,7 +13655,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'inbound_transfer_reversal',
+                    'category' => 'platform_earning_refund',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -15104,7 +15104,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/money_management/financial_accounts',
-            ['type' => 'storage'],
+            ['type' => 'credit'],
             [],
             false,
             [
@@ -15119,7 +15119,7 @@ final class GeneratedExamplesTest extends TestCase
 
         try {
             $this->v2Client->v2->moneyManagement->financialAccounts->create([
-                'type' => 'storage',
+                'type' => 'credit',
             ]);
         } catch (Exception\AlreadyExistsException $e) {
         }

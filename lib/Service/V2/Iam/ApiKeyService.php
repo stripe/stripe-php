@@ -30,7 +30,7 @@ class ApiKeyService extends \Stripe\Service\AbstractService
      * Create an API Key. To create a secret key in livemode, a public key for
      * encryption must be provided.
      *
-     * @param null|array{name?: string, note?: string, public_key?: array{id?: string, pem_key?: array{algorithm: string, data: string}}, type: string} $params
+     * @param null|array{connect_permissions?: string[], expires_at?: string, name?: string, note?: string, permissions?: string[], public_key?: array{id?: string, pem_key?: array{algorithm: string, data: string}}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Iam\ApiKey
@@ -97,7 +97,7 @@ class ApiKeyService extends \Stripe\Service\AbstractService
      * updated.
      *
      * @param string $id
-     * @param null|array{name?: string, note?: string} $params
+     * @param null|array{connect_permissions?: string[], name?: string, note?: string, permissions?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Iam\ApiKey
