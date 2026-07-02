@@ -6,7 +6,7 @@ namespace Stripe;
 
 /**
  * A GiftCardOperation represents an operation performed on a third-party gift card,
- * such as activation, deactivation, reload, cashout, balance check, or void.
+ * such as activation, reload, cashout, balance check, or void.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -17,7 +17,6 @@ namespace Stripe;
  * @property null|(object{balance: (object{amount: int, currency: string}&StripeObject), voided_operation: string}&StripeObject) $cashout_void Details about a gift card cashout void operation.
  * @property int $completed_at The timestamp of when this operation was completed.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property null|(object{}&StripeObject) $deactivation Details about a gift card deactivation operation.
  * @property null|string $failure_code The failure code of the operation. Only present if the status is failed.
  * @property GiftCard|string $gift_card The gift card this operation was performed on.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
@@ -63,7 +62,6 @@ class GiftCardOperation extends ApiResource
     const TYPE_BALANCE_CHECK = 'balance_check';
     const TYPE_CASHOUT = 'cashout';
     const TYPE_CASHOUT_VOID = 'cashout_void';
-    const TYPE_DEACTIVATION = 'deactivation';
     const TYPE_RELOAD = 'reload';
     const TYPE_RELOAD_VOID = 'reload_void';
 

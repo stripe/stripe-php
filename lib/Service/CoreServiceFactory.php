@@ -28,6 +28,7 @@ namespace Stripe\Service;
  * @property CountrySpecService $countrySpecs
  * @property CouponService $coupons
  * @property CreditNoteService $creditNotes
+ * @property Crypto\CryptoServiceFactory $crypto
  * @property CustomerService $customers
  * @property CustomerSessionService $customerSessions
  * @property DelegatedCheckout\DelegatedCheckoutServiceFactory $delegatedCheckout
@@ -130,6 +131,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'countrySpecs' => CountrySpecService::class,
         'coupons' => CouponService::class,
         'creditNotes' => CreditNoteService::class,
+        'crypto' => Crypto\CryptoServiceFactory::class,
         'customers' => CustomerService::class,
         'customerSessions' => CustomerSessionService::class,
         'delegatedCheckout' => DelegatedCheckout\DelegatedCheckoutServiceFactory::class,

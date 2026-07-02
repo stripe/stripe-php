@@ -33,6 +33,7 @@ namespace Stripe;
  * @property null|string $client_ip IP address of the client that generates the token.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
+ * @property null|(object{status: string}&StripeObject) $redaction Redaction status of this token. If not null, this token is associated to a redaction job.
  * @property string $type Type of the token: <code>account</code>, <code>bank_account</code>, <code>card</code>, or <code>pii</code>.
  * @property bool $used Determines if you have already used this token (you can only use tokens once).
  */
