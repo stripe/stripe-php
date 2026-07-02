@@ -18,6 +18,7 @@ namespace Stripe\Reserve;
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reason The reason for the ReserveHold.
+ * @property null|(object{amount: int, reserve_release: string}&\Stripe\StripeObject)[] $release_details List of ReserveReleases and the amounts released from this ReserveHold.
  * @property (object{release_after: null|int, scheduled_release: null|int}&\Stripe\StripeObject) $release_schedule
  * @property null|Plan|string $reserve_plan The ReservePlan which produced this ReserveHold (i.e., resplan_123)
  * @property null|string|\Stripe\Charge $source_charge The Charge which funded this ReserveHold (e.g., ch_123)

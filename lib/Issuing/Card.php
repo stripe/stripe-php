@@ -25,6 +25,8 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $number The full unredacted card number. For security reasons, this is only available for virtual cards, and will be omitted unless you explicitly request it with <a href="https://docs.stripe.com/api/expanding_objects">the <code>expand</code> parameter</a>. Additionally, it's only available via the <a href="https://docs.stripe.com/api/issuing/cards/retrieve">&quot;Retrieve a card&quot; endpoint</a>, not via &quot;List all cards&quot; or any other endpoint.
  * @property null|PersonalizationDesign|string $personalization_design The personalization design object belonging to this card.
+ * @property null|string $program The program that this card belongs to — will not be nil.
+ * @property null|(object{status: string}&\Stripe\StripeObject) $redaction Redaction status of this card. If not null, this card is associated to a redaction job.
  * @property null|Card|string $replaced_by The latest card that replaces this card, if any.
  * @property null|Card|string $replacement_for The card this card replaces, if any.
  * @property null|string $replacement_reason The reason why the previous card needed to be replaced.

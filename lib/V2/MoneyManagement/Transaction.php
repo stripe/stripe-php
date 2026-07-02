@@ -16,7 +16,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property int $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property null|string $description Description of this Transaction. When applicable, the description is copied from the Flow object at the time of transaction creation.
  * @property string $financial_account Indicates the FinancialAccount affected by this Transaction.
- * @property null|(object{adjustment?: string, application_fee?: string, application_fee_refund?: string, charge?: string, currency_conversion?: string, debit_dispute?: string, dispute?: string, fee_transaction?: string, inbound_transfer?: string, outbound_payment?: string, outbound_transfer?: string, payout?: string, received_credit?: string, received_debit?: string, refund?: string, reserve_hold?: string, reserve_release?: string, tax_fund?: string, topup?: string, transfer?: string, transfer_reversal?: string, treasury_credit_reversal?: string, treasury_debit_reversal?: string, treasury_inbound_transfer?: string, treasury_issuing_authorization?: string, treasury_outbound_payment?: string, treasury_outbound_transfer?: string, treasury_received_credit?: string, treasury_received_debit?: string, type: string}&\Stripe\StripeObject) $flow Details about the Flow object that created the Transaction.
+ * @property null|(object{account?: string, adjustment?: string, application_fee?: string, application_fee_refund?: string, charge?: string, currency_conversion?: string, debit_dispute?: string, dispute?: string, fee_transaction?: string, inbound_transfer?: string, issuing_authorization?: string, issuing_dispute?: string, issuing_transaction?: string, outbound_payment?: string, outbound_transfer?: string, payout?: string, received_credit?: string, received_debit?: string, refund?: string, reserve_hold?: string, reserve_release?: string, tax_fund?: string, topup?: string, transfer?: string, transfer_reversal?: string, treasury_credit_reversal?: string, treasury_debit_reversal?: string, treasury_inbound_transfer?: string, treasury_issuing_authorization?: string, treasury_outbound_payment?: string, treasury_outbound_transfer?: string, treasury_received_credit?: string, treasury_received_debit?: string, type: string}&\Stripe\StripeObject) $flow Details about the Flow object that created the Transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status Closed Enum. Current status of the Transaction. A Transaction is <code>pending</code> if either <code>balance_impact.inbound_pending</code> or <code>balance_impact.outbound_pending</code> is non-zero. A Transaction is <code>posted</code> if only <code>balance_impact.available</code> is non-zero. A Transaction is <code>void</code> if there is no balance impact. <code>posted</code> and <code>void</code> are terminal states, and no additional entries will be added to the Transaction.
  * @property (object{posted_at?: int, void_at?: int}&\Stripe\StripeObject) $status_transitions Timestamps for when the Transaction transitioned to a particular status.
@@ -46,10 +46,12 @@ class Transaction extends \Stripe\ApiResource
     const CATEGORY_INBOUND_TRANSFER = 'inbound_transfer';
     const CATEGORY_INBOUND_TRANSFER_REVERSAL = 'inbound_transfer_reversal';
     const CATEGORY_INDIA_MDR_PROCESSING_FEE = 'india_mdr_processing_fee';
+    const CATEGORY_ISSUING_AUTHORIZATION = 'issuing_authorization';
     const CATEGORY_ISSUING_DISPUTE = 'issuing_dispute';
     const CATEGORY_ISSUING_DISPUTE_FRAUD_LIABILITY_DEBIT = 'issuing_dispute_fraud_liability_debit';
     const CATEGORY_ISSUING_DISPUTE_PROVISIONAL_CREDIT = 'issuing_dispute_provisional_credit';
     const CATEGORY_ISSUING_DISPUTE_PROVISIONAL_CREDIT_REVERSAL = 'issuing_dispute_provisional_credit_reversal';
+    const CATEGORY_ISSUING_TRANSACTION = 'issuing_transaction';
     const CATEGORY_MINIMUM_BALANCE_HOLD = 'minimum_balance_hold';
     const CATEGORY_NETWORK_COST = 'network_cost';
     const CATEGORY_OBLIGATION = 'obligation';
@@ -63,6 +65,7 @@ class Transaction extends \Stripe\ApiResource
     const CATEGORY_PLATFORM_EARNING = 'platform_earning';
     const CATEGORY_PLATFORM_EARNING_REFUND = 'platform_earning_refund';
     const CATEGORY_PLATFORM_FEE = 'platform_fee';
+    const CATEGORY_PLATFORM_FUNDED_CREDIT_TRANSACTION = 'platform_funded_credit_transaction';
     const CATEGORY_RECEIVED_CREDIT = 'received_credit';
     const CATEGORY_RECEIVED_CREDIT_REVERSAL = 'received_credit_reversal';
     const CATEGORY_RECEIVED_DEBIT = 'received_debit';

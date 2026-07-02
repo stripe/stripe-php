@@ -95,7 +95,7 @@ class PaymentAttemptRecordService extends AbstractService
      * Report that the specified Payment Attempt Record failed.
      *
      * @param string $id
-     * @param null|array{expand?: string[], failed_at?: int, failure_code?: string, metadata?: null|array<string, string>, payment_evaluations?: string[], processor_details?: array{custom?: array{payment_reference: string}, type: string}} $params
+     * @param null|array{expand?: string[], failed_at?: int, failure_code?: string, metadata?: null|array<string, string>, payment_evaluations?: string[], payment_method_details?: array{card?: array{checks?: array{address_line1_check?: string, address_postal_code_check?: string, cvc_check?: string}}, type: string}, processor_details?: array{custom?: array{payment_reference: string}, type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentAttemptRecord
@@ -143,7 +143,7 @@ class PaymentAttemptRecordService extends AbstractService
      * Report that the specified Payment Attempt Record was refunded.
      *
      * @param string $id
-     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], failed?: array{failed_at?: int, failure_reason?: string}, initiated_at?: int, metadata?: null|array<string, string>, outcome?: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, refund_group?: string, refunded?: array{refunded_at: int}} $params
+     * @param null|array{amount?: array{currency: string, value: int}, expand?: string[], failed?: array{failed_at?: int, failure_reason?: string}, initiated_at?: int, metadata?: null|array<string, string>, outcome?: string, processor_details: array{custom?: array{refund_reference: string}, type: string}, reason?: string, refund_group?: string, refunded?: array{refunded_at: int}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentAttemptRecord

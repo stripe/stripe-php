@@ -28,6 +28,7 @@ namespace Stripe;
  * @property Service\CountrySpecService $countrySpecs
  * @property Service\CouponService $coupons
  * @property Service\CreditNoteService $creditNotes
+ * @property Service\Crypto\CryptoServiceFactory $crypto
  * @property Service\CustomerService $customers
  * @property Service\CustomerSessionService $customerSessions
  * @property Service\DelegatedCheckout\DelegatedCheckoutServiceFactory $delegatedCheckout

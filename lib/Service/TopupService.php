@@ -45,7 +45,7 @@ class TopupService extends AbstractService
     /**
      * Top up the balance of an account.
      *
-     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|array<string, string>, source?: string, statement_descriptor?: string, transfer_group?: string} $params
+     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|array<string, string>, payment_method?: string, payment_method_options?: array{us_bank_account?: array{network: string}}, source?: string, statement_descriptor?: string, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Topup

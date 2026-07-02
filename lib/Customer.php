@@ -32,6 +32,7 @@ namespace Stripe;
  * @property null|int $next_invoice_sequence The suffix of the customer's next invoice number (for example, 0001). When the account uses account level sequencing, this parameter is ignored in API requests and the field omitted in API responses.
  * @property null|string $phone The customer's phone number.
  * @property null|string[] $preferred_locales The customer's preferred locales (languages), ordered by preference.
+ * @property null|(object{status: string}&StripeObject) $redaction Redaction status of this customer. If not null, this customer is associated to a redaction job.
  * @property null|(object{address?: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject), carrier?: null|string, name?: string, phone?: null|string, tracking_number?: null|string}&StripeObject) $shipping Mailing and shipping address for the customer. Appears on invoices emailed to this customer.
  * @property null|Collection<Account|BankAccount|Card|Source> $sources The customer's payment sources, if any.
  * @property null|Collection<Subscription> $subscriptions The customer's current subscriptions, if any.

@@ -10,7 +10,7 @@ namespace Stripe\Capital;
  * You can read the status of your connected accounts.
  *
  * @property string $object The object type: financing_summary
- * @property null|(object{advance_amount: int, advance_paid_out_at: null|float, currency: string, current_repayment_interval: null|(object{due_at: float, paid_amount: null|int, remaining_amount: int}&\Stripe\StripeObject), fee_amount: int, paid_amount: int, remaining_amount: int, repayments_begin_at: null|float, withhold_rate: float}&\Stripe\StripeObject) $details <p>Additional information about the financing summary. Describes currency, advance amount, fee amount, withhold rate, remaining amount, paid amount, current repayment interval, repayment start date, and advance payout date.</p><p>Only present for financing offers with the <code>paid_out</code> status.</p>
+ * @property null|(object{advance_amount: int, advance_paid_out_at: null|float, currency: string, current_repayment_interval: null|(object{due_at: float, paid_amount: null|int, remaining_amount: int}&\Stripe\StripeObject), disclaimer_variant?: string, fee_amount: int, paid_amount: int, remaining_amount: int, repayments_begin_at: null|float, withhold_rate: float}&\Stripe\StripeObject) $details <p>Additional information about the financing summary. Describes currency, advance amount, fee amount, withhold rate, remaining amount, paid amount, current repayment interval, repayment start date, and advance payout date.</p><p>Only present for financing offers with the <code>paid_out</code> status.</p>
  * @property null|string $financing_offer The unique identifier of the Financing Offer object that corresponds to the Financing Summary object.
  * @property null|string $status The financing status of the connected account.
  */
