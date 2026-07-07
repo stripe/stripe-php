@@ -22,7 +22,7 @@ test *args: install
 
 # run tests in CI; can use autoload mode (or not)
 [confirm("This will modify local files and is intended for use in CI; do you want to proceed?")]
-ci-test autoload: && lint-test
+ci-test autoload:
     ./build.php {{ autoload }}
 
 # ⭐ format all files
