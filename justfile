@@ -36,8 +36,9 @@ format-check: (format "--dry-run")
 lint *args:
     php -d memory_limit=512M vendor/bin/phpstan analyse lib tests {{args}}
 
+# statically analyze code (strict)
 lint-test:
-    phpstan analyse examples/IteratorExample.php --level=9
+    vendor/bin/phpstan analyse examples/IteratorExample.php --level=9
 
 # for backwards compatibility; ideally removed later
 [private]
