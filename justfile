@@ -22,7 +22,7 @@ test *args: install
 
 # run tests in CI; can use autoload mode (or not)
 [confirm("This will modify local files and is intended for use in CI; do you want to proceed?")]
-ci-test autoload:
+ci-test autoload: && lint-test
     ./build.php {{ autoload }}
 
 # ⭐ format all files
@@ -35,6 +35,9 @@ format-check: (format "--dry-run")
 # ⭐ statically analyze code
 lint *args:
     php -d memory_limit=512M vendor/bin/phpstan analyse lib tests {{args}}
+
+lint-test:
+    phpstan analyse examples/IteratorExample.php --level=9
 
 # for backwards compatibility; ideally removed later
 [private]
