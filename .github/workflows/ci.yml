@@ -96,7 +96,7 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - name: Run phpstan
-        run: just lint && just lint-test
+        run: just lint-test lint
 
   tests:
     runs-on: "ubuntu-24.04"

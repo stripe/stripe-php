@@ -38,7 +38,7 @@ lint *args:
 
 # statically analyze code (strict)
 lint-test:
-    vendor/bin/phpstan analyse examples/IteratorExample.php --level=9
+    phpstan analyse examples/IteratorExample.php --level=9
 
 # for backwards compatibility; ideally removed later
 [private]
