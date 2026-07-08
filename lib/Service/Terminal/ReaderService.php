@@ -12,6 +12,23 @@ namespace Stripe\Service\Terminal;
 class ReaderService extends \Stripe\Service\AbstractService
 {
     /**
+     * Initiates a gift card activation flow on a Reader and optionally sets its
+     * balance.
+     *
+     * @param string $id
+     * @param null|array{balance?: array{amount: int, currency: string}, brand: string, expand?: string[], on_behalf_of?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function activateGiftCard($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/activate_gift_card', $id), $params, $opts);
+    }
+
+    /**
      * Returns a list of <code>Reader</code> objects.
      *
      * @param null|array{device_type?: string, ending_before?: string, expand?: string[], limit?: int, location?: string, serial_number?: string, starting_after?: string, status?: string} $params
@@ -45,6 +62,39 @@ class ReaderService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Initiates a gift card cashout flow on a Reader. A cashout sets the gift card
+     * balance to 0.
+     *
+     * @param string $id
+     * @param null|array{brand: string, expand?: string[], on_behalf_of?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function cashoutGiftCard($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/cashout_gift_card', $id), $params, $opts);
+    }
+
+    /**
+     * Initiates a gift card balance check flow on a Reader.
+     *
+     * @param string $id
+     * @param null|array{brand: string, expand?: string[], on_behalf_of?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function checkGiftCardBalance($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/check_gift_card_balance', $id), $params, $opts);
+    }
+
+    /**
      * Initiates an <a href="/docs/terminal/features/collect-inputs">input collection
      * flow</a> on a Reader to display input forms and collect information from your
      * customers.
@@ -69,7 +119,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * a Payment method</a> for more details.
      *
      * @param string $id
-     * @param null|array{collect_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}, expand?: string[], payment_intent: string} $params
+     * @param null|array{collect_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, gift_card_brand?: string, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}, expand?: string[], payment_intent: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -136,7 +186,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * the payment</a> for more details.
      *
      * @param string $id
-     * @param null|array{expand?: string[], payment_intent: string, process_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, return_url?: string, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}} $params
+     * @param null|array{expand?: string[], payment_intent: string, process_config?: array{allow_redisplay?: string, enable_customer_cancellation?: bool, gift_card_brand?: string, return_url?: string, skip_tipping?: bool, tipping?: array{amount_eligible?: int}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -182,6 +232,23 @@ class ReaderService extends \Stripe\Service\AbstractService
     public function refundPayment($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/refund_payment', $id), $params, $opts);
+    }
+
+    /**
+     * Initiates a gift card reload flow on a Reader by adding the specified amount to
+     * its balance.
+     *
+     * @param string $id
+     * @param null|array{amount: int, brand: string, currency: string, expand?: string[], on_behalf_of?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Terminal\Reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function reloadGiftCard($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/terminal/readers/%s/reload_gift_card', $id), $params, $opts);
     }
 
     /**

@@ -12,7 +12,7 @@ namespace Stripe\FinancialConnections;
  * @property null|(object{account?: string|\Stripe\Account, customer?: string|\Stripe\Customer, customer_account?: string, type: string}&\Stripe\StripeObject) $account_holder The account holder for whom accounts are collected in this session.
  * @property \Stripe\Collection<Account> $accounts The accounts that were collected as part of this Session.
  * @property null|string $client_secret A value that will be passed to the client to launch the authentication flow.
- * @property null|(object{account_subcategories: null|string[], countries: null|string[], institution?: string}&\Stripe\StripeObject) $filters
+ * @property null|(object{account_subcategories: null|string[], countries: null|string[], institution?: string, require_payment_method_support?: string}&\Stripe\StripeObject) $filters
  * @property null|(object{delivery_method?: string, return_url: null|string}&\Stripe\StripeObject) $hosted Settings for the Hosted UI mode.
  * @property null|(object{accounts: int}&\Stripe\StripeObject) $limits
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.

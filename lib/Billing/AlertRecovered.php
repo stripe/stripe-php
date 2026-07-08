@@ -6,6 +6,7 @@ namespace Stripe\Billing;
 
 /**
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|(object{ends_at: int, starts_at: int}&\Stripe\StripeObject) $aggregation_period The aggregation period for which this alert recovered
  * @property Alert $alert A billing alert is a resource that notifies you when a certain usage threshold on a meter is crossed. For example, you might create a billing alert to notify you when a certain user made 100 API requests.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency Currency for the threshold value

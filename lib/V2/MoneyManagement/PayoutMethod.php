@@ -17,6 +17,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{address: string, archived: bool, memo?: string, network: string}&\Stripe\StripeObject) $crypto_wallet The PayoutMethodCryptoWallet object details.
  * @property null|string $latest_outbound_setup_intent ID of the underlying active OutboundSetupIntent object, if any.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|(object{network_business_profile: string}&\Stripe\StripeObject) $network_business_profile_wallet The PayoutMethodNetworkBusinessProfileWallet object details.
  * @property bool $restricted Whether the Payout Method is currently unusable for money movement, despite potentially being correctly set up. Please reach out to Stripe Support for more information.
  * @property string $type Closed Enum. The type of payout method.
  * @property (object{payments: string, transfers: string}&\Stripe\StripeObject) $usage_status Indicates whether the payout method has met the necessary requirements for outbound money movement.
@@ -28,4 +29,5 @@ class PayoutMethod extends \Stripe\ApiResource
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD = 'card';
     const TYPE_CRYPTO_WALLET = 'crypto_wallet';
+    const TYPE_NETWORK_BUSINESS_PROFILE_WALLET = 'network_business_profile_wallet';
 }
