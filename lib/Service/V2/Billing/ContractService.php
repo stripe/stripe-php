@@ -20,7 +20,7 @@ class ContractService extends \Stripe\Service\AbstractService
     ];
 
     /**
-     * Activate a Draft Contract object by ID.
+     * Activate a draft contract.
      *
      * @param string $id
      * @param null|array{include?: string[]} $params
@@ -53,35 +53,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
                                                         ],
-                                                        'pricing_overrides' => [
-                                                            'kind' => 'object',
-                                                            'fields' => [
-                                                                'data' => [
-                                                                    'kind' => 'array',
-                                                                    'element' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'overwrite_price' => [
-                                                                                'kind' => 'object',
-                                                                                'fields' => [
-                                                                                    'tiers' => [
-                                                                                        'kind' => 'array',
-                                                                                        'element' => [
-                                                                                            'kind' => 'object',
-                                                                                            'fields' => [
-                                                                                                'up_to_decimal' => [
-                                                                                                    'kind' => 'decimal_string',
-                                                                                                ],
-                                                                                            ],
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
                                                     ],
                                                 ],
                                             ],
@@ -97,7 +68,7 @@ class ContractService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * List Contract objects with pagination.
+     * List contracts.
      *
      * @param null|array{customer?: string, include?: string[], limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -134,35 +105,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                                     'current_quantity' => [
                                                                         'kind' => 'decimal_string',
                                                                     ],
-                                                                    'pricing_overrides' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'data' => [
-                                                                                'kind' => 'array',
-                                                                                'element' => [
-                                                                                    'kind' => 'object',
-                                                                                    'fields' => [
-                                                                                        'overwrite_price' => [
-                                                                                            'kind' => 'object',
-                                                                                            'fields' => [
-                                                                                                'tiers' => [
-                                                                                                    'kind' => 'array',
-                                                                                                    'element' => [
-                                                                                                        'kind' => 'object',
-                                                                                                        'fields' => [
-                                                                                                            'up_to_decimal' => [
-                                                                                                                'kind' => 'decimal_string',
-                                                                                                            ],
-                                                                                                        ],
-                                                                                                    ],
-                                                                                                ],
-                                                                                            ],
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
                                                                 ],
                                                             ],
                                                         ],
@@ -181,7 +123,7 @@ class ContractService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancel a Contract object by ID.
+     * Cancel an active contract.
      *
      * @param string $id
      * @param null|array{cancel_pricing_lines?: array{id?: string, lookup_key?: string, proration_behavior?: string}[], include?: string[], proration_behavior?: string} $params
@@ -214,35 +156,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
                                                         ],
-                                                        'pricing_overrides' => [
-                                                            'kind' => 'object',
-                                                            'fields' => [
-                                                                'data' => [
-                                                                    'kind' => 'array',
-                                                                    'element' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'overwrite_price' => [
-                                                                                'kind' => 'object',
-                                                                                'fields' => [
-                                                                                    'tiers' => [
-                                                                                        'kind' => 'array',
-                                                                                        'element' => [
-                                                                                            'kind' => 'object',
-                                                                                            'fields' => [
-                                                                                                'up_to_decimal' => [
-                                                                                                    'kind' => 'decimal_string',
-                                                                                                ],
-                                                                                            ],
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
                                                     ],
                                                 ],
                                             ],
@@ -258,9 +171,9 @@ class ContractService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a Contract object.
+     * Create a draft contract.
      *
-     * @param null|array{billing_cycle_anchor?: array{config?: array{day_of_month: int, hour?: int, minute?: int, month_of_year?: int, second?: int}, timestamp?: string, type: string}, billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details: array{customer: string, default_payment_method?: string}, collection_settings_details: array{collection_method: string, payment_method_configuration?: string}}, contract_number: string, currency: string, include?: string[], metadata?: array<string, string>, one_time_fees?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}, lookup_key?: string, product: string}[], pricing_lines: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}[], pricing_overrides?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, multiplier?: array{criteria?: array{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}[], factor: string}, priority: int, starts_at: array{timestamp?: string, type: string}, type: string}[]} $params
+     * @param null|array{billing_cycle_anchor?: array{config?: array{day_of_month: int, hour?: int, minute?: int, month_of_year?: int, second?: int}, timestamp?: string, type: string}, billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details: array{customer: string, default_payment_method?: string}, collection_settings_details: array{collection_method: string, payment_method_configuration?: string}}, contract_number: string, currency: string, include?: string[], metadata?: array<string, string>, pricing_lines: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}[], pricing_overrides?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, multiply_pricing?: array{criteria?: array{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}[], factor: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -284,30 +197,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                         'price_details' => [
                                             'kind' => 'object',
                                             'fields' => [
-                                                'pricing_overrides' => [
-                                                    'kind' => 'array',
-                                                    'element' => [
-                                                        'kind' => 'object',
-                                                        'fields' => [
-                                                            'overwrite_price' => [
-                                                                'kind' => 'object',
-                                                                'fields' => [
-                                                                    'tiers' => [
-                                                                        'kind' => 'array',
-                                                                        'element' => [
-                                                                            'kind' => 'object',
-                                                                            'fields' => [
-                                                                                'up_to_decimal' => [
-                                                                                    'kind' => 'decimal_string',
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
-                                                    ],
-                                                ],
                                                 'quantity_changes' => [
                                                     'kind' => 'array',
                                                     'element' => [
@@ -348,35 +237,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
                                                         ],
-                                                        'pricing_overrides' => [
-                                                            'kind' => 'object',
-                                                            'fields' => [
-                                                                'data' => [
-                                                                    'kind' => 'array',
-                                                                    'element' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'overwrite_price' => [
-                                                                                'kind' => 'object',
-                                                                                'fields' => [
-                                                                                    'tiers' => [
-                                                                                        'kind' => 'array',
-                                                                                        'element' => [
-                                                                                            'kind' => 'object',
-                                                                                            'fields' => [
-                                                                                                'up_to_decimal' => [
-                                                                                                    'kind' => 'decimal_string',
-                                                                                                ],
-                                                                                            ],
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
                                                     ],
                                                 ],
                                             ],
@@ -392,7 +252,7 @@ class ContractService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Delete a draft Contract object by ID.
+     * Delete a draft contract.
      *
      * @param string $id
      * @param null|array $params
@@ -408,7 +268,7 @@ class ContractService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a Contract object by ID.
+     * Retrieve a contract.
      *
      * @param string $id
      * @param null|array{include?: string[]} $params
@@ -441,35 +301,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
                                                         ],
-                                                        'pricing_overrides' => [
-                                                            'kind' => 'object',
-                                                            'fields' => [
-                                                                'data' => [
-                                                                    'kind' => 'array',
-                                                                    'element' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'overwrite_price' => [
-                                                                                'kind' => 'object',
-                                                                                'fields' => [
-                                                                                    'tiers' => [
-                                                                                        'kind' => 'array',
-                                                                                        'element' => [
-                                                                                            'kind' => 'object',
-                                                                                            'fields' => [
-                                                                                                'up_to_decimal' => [
-                                                                                                    'kind' => 'decimal_string',
-                                                                                                ],
-                                                                                            ],
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
                                                     ],
                                                 ],
                                             ],
@@ -485,10 +316,10 @@ class ContractService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Update a Contract object by ID.
+     * Update a draft or active contract.
      *
      * @param string $id
-     * @param null|array{include?: string[], pricing_line_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, pricing?: array{price_details?: array{pricing_override_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{tiering_mode?: string, tiers?: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id?: string, lookup_key?: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id?: string, lookup_key?: string, metadata?: array<string, string>, starts_at?: array{timestamp?: string, type: string}}}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}}, starts_at?: array{timestamp?: string, type: string}}}[], pricing_override_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, multiplier?: array{criteria: array{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}[], factor: string}, overwrite_price?: array{tiering_mode?: string, tiers: array{flat_amount?: string, unit_amount?: string, up_to_decimal?: string, up_to_inf?: string}[], unit_amount?: string}, priority: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, starts_at?: array{timestamp?: string, type: string}}}[]} $params
+     * @param null|array{include?: string[], pricing_line_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, pricing?: array{price_details?: array{pricing_override_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{unit_amount?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id?: string, lookup_key?: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id?: string, lookup_key?: string, metadata?: array<string, string>, starts_at?: array{timestamp?: string, type: string}}}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}}, starts_at?: array{timestamp?: string, type: string}}}[], pricing_override_actions?: array{add?: array{ends_at: array{timestamp?: string, type: string}, lookup_key?: string, multiply_pricing?: array{criteria: array{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}[], factor: string}, overwrite_price?: array{unit_amount?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, starts_at?: array{timestamp?: string, type: string}}}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -515,30 +346,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 'price_details' => [
                                                     'kind' => 'object',
                                                     'fields' => [
-                                                        'pricing_overrides' => [
-                                                            'kind' => 'array',
-                                                            'element' => [
-                                                                'kind' => 'object',
-                                                                'fields' => [
-                                                                    'overwrite_price' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'tiers' => [
-                                                                                'kind' => 'array',
-                                                                                'element' => [
-                                                                                    'kind' => 'object',
-                                                                                    'fields' => [
-                                                                                        'up_to_decimal' => [
-                                                                                            'kind' => 'decimal_string',
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
                                                         'quantity_changes' => [
                                                             'kind' => 'array',
                                                             'element' => [
@@ -565,35 +372,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 'price_details' => [
                                                     'kind' => 'object',
                                                     'fields' => [
-                                                        'pricing_override_actions' => [
-                                                            'kind' => 'array',
-                                                            'element' => [
-                                                                'kind' => 'object',
-                                                                'fields' => [
-                                                                    'add' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'overwrite_price' => [
-                                                                                'kind' => 'object',
-                                                                                'fields' => [
-                                                                                    'tiers' => [
-                                                                                        'kind' => 'array',
-                                                                                        'element' => [
-                                                                                            'kind' => 'object',
-                                                                                            'fields' => [
-                                                                                                'up_to_decimal' => [
-                                                                                                    'kind' => 'decimal_string',
-                                                                                                ],
-                                                                                            ],
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
                                                         'quantity_changes' => [
                                                             'kind' => 'array',
                                                             'element' => [
@@ -603,35 +381,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                                         'kind' => 'decimal_string',
                                                                     ],
                                                                 ],
-                                                            ],
-                                                        ],
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-                    'pricing_override_actions' => [
-                        'kind' => 'array',
-                        'element' => [
-                            'kind' => 'object',
-                            'fields' => [
-                                'add' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'overwrite_price' => [
-                                            'kind' => 'object',
-                                            'fields' => [
-                                                'tiers' => [
-                                                    'kind' => 'array',
-                                                    'element' => [
-                                                        'kind' => 'object',
-                                                        'fields' => [
-                                                            'up_to_decimal' => [
-                                                                'kind' => 'decimal_string',
                                                             ],
                                                         ],
                                                     ],
@@ -664,35 +413,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                                     'fields' => [
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
-                                                        ],
-                                                        'pricing_overrides' => [
-                                                            'kind' => 'object',
-                                                            'fields' => [
-                                                                'data' => [
-                                                                    'kind' => 'array',
-                                                                    'element' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'overwrite_price' => [
-                                                                                'kind' => 'object',
-                                                                                'fields' => [
-                                                                                    'tiers' => [
-                                                                                        'kind' => 'array',
-                                                                                        'element' => [
-                                                                                            'kind' => 'object',
-                                                                                            'fields' => [
-                                                                                                'up_to_decimal' => [
-                                                                                                    'kind' => 'decimal_string',
-                                                                                                ],
-                                                                                            ],
-                                                                                        ],
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
                                                         ],
                                                     ],
                                                 ],

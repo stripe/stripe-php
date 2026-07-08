@@ -5488,7 +5488,6 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'status' => 'draft',
-                        'status_details' => [],
                     ],
                 ],
                 'next_page_url' => null,
@@ -5514,7 +5513,7 @@ final class GeneratedExamplesTest extends TestCase
                     [
                         'ends_at' => [
                             'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'contract_end',
+                            'type' => 'timestamp',
                         ],
                         'lookup_key' => 'lookup_key',
                         'metadata' => ['key' => 'metadata'],
@@ -5525,26 +5524,17 @@ final class GeneratedExamplesTest extends TestCase
                                     [
                                         'ends_at' => [
                                             'timestamp' => '1970-01-01T15:18:46.294Z',
-                                            'type' => 'contract_end',
+                                            'type' => 'timestamp',
                                         ],
                                         'lookup_key' => 'lookup_key',
                                         'metadata' => ['key' => 'metadata'],
                                         'overwrite_price' => [
-                                            'tiering_mode' => 'graduated',
-                                            'tiers' => [
-                                                [
-                                                    'flat_amount' => 'flat_amount',
-                                                    'unit_amount' => 'unit_amount',
-                                                    'up_to_decimal' => '1387931359.3333333',
-                                                    'up_to_inf' => 'inf',
-                                                ],
-                                            ],
                                             'unit_amount' => 'unit_amount',
                                         ],
                                         'priority' => 1165461084,
                                         'starts_at' => [
                                             'timestamp' => '1970-01-01T15:18:46.294Z',
-                                            'type' => 'contract_start',
+                                            'type' => 'timestamp',
                                         ],
                                         'type' => 'overwrite_price',
                                     ],
@@ -5563,7 +5553,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'starts_at' => [
                             'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'contract_start',
+                            'type' => 'timestamp',
                         ],
                     ],
                 ],
@@ -5579,7 +5569,6 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'draft',
-                'status_details' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5591,7 +5580,7 @@ final class GeneratedExamplesTest extends TestCase
                 [
                     'ends_at' => [
                         'timestamp' => '1970-01-01T15:18:46.294Z',
-                        'type' => 'contract_end',
+                        'type' => 'timestamp',
                     ],
                     'lookup_key' => 'lookup_key',
                     'metadata' => ['key' => 'metadata'],
@@ -5602,26 +5591,17 @@ final class GeneratedExamplesTest extends TestCase
                                 [
                                     'ends_at' => [
                                         'timestamp' => '1970-01-01T15:18:46.294Z',
-                                        'type' => 'contract_end',
+                                        'type' => 'timestamp',
                                     ],
                                     'lookup_key' => 'lookup_key',
                                     'metadata' => ['key' => 'metadata'],
                                     'overwrite_price' => [
-                                        'tiering_mode' => 'graduated',
-                                        'tiers' => [
-                                            [
-                                                'flat_amount' => 'flat_amount',
-                                                'unit_amount' => 'unit_amount',
-                                                'up_to_decimal' => '1387931359.3333333',
-                                                'up_to_inf' => 'inf',
-                                            ],
-                                        ],
                                         'unit_amount' => 'unit_amount',
                                     ],
                                     'priority' => 1165461084,
                                     'starts_at' => [
                                         'timestamp' => '1970-01-01T15:18:46.294Z',
-                                        'type' => 'contract_start',
+                                        'type' => 'timestamp',
                                     ],
                                     'type' => 'overwrite_price',
                                 ],
@@ -5640,7 +5620,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                     'starts_at' => [
                         'timestamp' => '1970-01-01T15:18:46.294Z',
-                        'type' => 'contract_start',
+                        'type' => 'timestamp',
                     ],
                 ],
             ],
@@ -5684,7 +5664,6 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'draft',
-                'status_details' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5713,7 +5692,6 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'draft',
-                'status_details' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5739,7 +5717,6 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'draft',
-                'status_details' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5768,7 +5745,6 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'draft',
-                'status_details' => [],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -12438,7 +12414,7 @@ final class GeneratedExamplesTest extends TestCase
                             'id' => 'obj_123',
                             'livemode' => [],
                             'restricted' => [],
-                            'type' => 'bank_account',
+                            'type' => 'crypto_wallet',
                             'usage_status' => [
                                 'payments' => 'requires_action',
                                 'transfers' => 'invalid',
@@ -12479,7 +12455,7 @@ final class GeneratedExamplesTest extends TestCase
                     'id' => 'obj_123',
                     'livemode' => [],
                     'restricted' => [],
-                    'type' => 'bank_account',
+                    'type' => 'crypto_wallet',
                     'usage_status' => [
                         'payments' => 'requires_action',
                         'transfers' => 'invalid',
@@ -12515,7 +12491,7 @@ final class GeneratedExamplesTest extends TestCase
                     'id' => 'obj_123',
                     'livemode' => [],
                     'restricted' => [],
-                    'type' => 'bank_account',
+                    'type' => 'crypto_wallet',
                     'usage_status' => [
                         'payments' => 'requires_action',
                         'transfers' => 'invalid',
@@ -12554,7 +12530,7 @@ final class GeneratedExamplesTest extends TestCase
                     'id' => 'obj_123',
                     'livemode' => [],
                     'restricted' => [],
-                    'type' => 'bank_account',
+                    'type' => 'crypto_wallet',
                     'usage_status' => [
                         'payments' => 'requires_action',
                         'transfers' => 'invalid',
@@ -12593,7 +12569,7 @@ final class GeneratedExamplesTest extends TestCase
                     'id' => 'obj_123',
                     'livemode' => [],
                     'restricted' => [],
-                    'type' => 'bank_account',
+                    'type' => 'crypto_wallet',
                     'usage_status' => [
                         'payments' => 'requires_action',
                         'transfers' => 'invalid',
@@ -13074,7 +13050,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'restricted' => [],
-                        'type' => 'bank_account',
+                        'type' => 'crypto_wallet',
                         'usage_status' => [
                             'payments' => 'requires_action',
                             'transfers' => 'invalid',
@@ -13107,7 +13083,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'crypto_wallet',
                 'usage_status' => [
                     'payments' => 'requires_action',
                     'transfers' => 'invalid',
@@ -13138,7 +13114,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'crypto_wallet',
                 'usage_status' => [
                     'payments' => 'requires_action',
                     'transfers' => 'invalid',
@@ -13169,7 +13145,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'crypto_wallet',
                 'usage_status' => [
                     'payments' => 'requires_action',
                     'transfers' => 'invalid',
@@ -13243,7 +13219,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'status' => 'returned',
-                        'type' => 'balance_transfer',
+                        'type' => 'crypto_wallet_transfer',
                     ],
                 ],
                 'next_page_url' => null,
@@ -13276,7 +13252,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'returned',
-                'type' => 'balance_transfer',
+                'type' => 'crypto_wallet_transfer',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE

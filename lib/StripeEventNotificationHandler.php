@@ -2831,6 +2831,71 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.billing.contract.activated" event.
+     *
+     * @param callable(Events\V2BillingContractActivatedEvent, StripeClient): void $handler Handles v2.billing.contract.activated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractActivated($handler)
+    {
+        $this->register('v2.billing.contract.activated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract.canceled" event.
+     *
+     * @param callable(Events\V2BillingContractCanceledEvent, StripeClient): void $handler Handles v2.billing.contract.canceled events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractCanceled($handler)
+    {
+        $this->register('v2.billing.contract.canceled', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract.created" event.
+     *
+     * @param callable(Events\V2BillingContractCreatedEvent, StripeClient): void $handler Handles v2.billing.contract.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractCreated($handler)
+    {
+        $this->register('v2.billing.contract.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract.ended" event.
+     *
+     * @param callable(Events\V2BillingContractEndedEvent, StripeClient): void $handler Handles v2.billing.contract.ended events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractEnded($handler)
+    {
+        $this->register('v2.billing.contract.ended', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract.updated" event.
+     *
+     * @param callable(Events\V2BillingContractUpdatedEvent, StripeClient): void $handler Handles v2.billing.contract.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractUpdated($handler)
+    {
+        $this->register('v2.billing.contract.updated', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.billing.license_fee.created" event.
      *
      * @param callable(Events\V2BillingLicenseFeeCreatedEvent, StripeClient): void $handler Handles v2.billing.license_fee.created events

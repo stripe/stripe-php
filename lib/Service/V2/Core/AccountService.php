@@ -24,7 +24,7 @@ class AccountService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of Accounts.
      *
-     * @param null|array{applied_configurations?: string[], closed?: bool, limit?: int} $params
+     * @param null|array{applied_configurations?: string[], closed?: bool, limit?: int, related_network_object?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Core\Account>

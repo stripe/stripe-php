@@ -11,7 +11,7 @@ namespace Stripe\Terminal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{api_error: null|(object{advice_code?: string, charge?: string, code?: string, decline_code?: string, doc_url?: string, message?: string, network_advice_code?: string, network_decline_code?: string, param?: string, payment_intent?: \Stripe\PaymentIntent, payment_method?: \Stripe\PaymentMethod, payment_method_type?: string, request_log_url?: string, setup_intent?: \Stripe\SetupIntent, source?: \Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source, type: string}&\Stripe\StripeObject), collect_inputs?: (object{inputs: ((object{custom_text: null|(object{description: null|string, skip_button: null|string, submit_button: null|string, title: null|string}&\Stripe\StripeObject), email?: (object{value: null|string}&\Stripe\StripeObject), numeric?: (object{value: null|string}&\Stripe\StripeObject), phone?: (object{value: null|string}&\Stripe\StripeObject), required: null|bool, selection?: (object{choices: ((object{id: null|string, style: null|string, text: string}&\Stripe\StripeObject))[], id: null|string, text: null|string}&\Stripe\StripeObject), signature?: (object{value: null|string}&\Stripe\StripeObject), skipped?: bool, text?: (object{value: null|string}&\Stripe\StripeObject), toggles: null|((object{default_value: null|string, description: null|string, title: null|string, value: null|string}&\Stripe\StripeObject))[], type: string}&\Stripe\StripeObject))[], metadata: null|\Stripe\StripeObject}&\Stripe\StripeObject), collect_payment_method?: (object{account?: string, collect_config?: (object{enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), payment_intent: string|\Stripe\PaymentIntent, payment_method?: \Stripe\PaymentMethod}&\Stripe\StripeObject), confirm_payment_intent?: (object{account?: string, confirm_config?: (object{return_url?: string}&\Stripe\StripeObject), payment_intent: string|\Stripe\PaymentIntent}&\Stripe\StripeObject), failure_code: null|string, failure_message: null|string, print_content?: (object{image?: (object{created_at: int, filename: string, size: int, type: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), process_payment_intent?: (object{account?: string, payment_intent: string|\Stripe\PaymentIntent, process_config?: (object{enable_customer_cancellation?: bool, return_url?: string, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), process_setup_intent?: (object{generated_card?: string, process_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject), setup_intent: string|\Stripe\SetupIntent}&\Stripe\StripeObject), refund_payment?: (object{account?: string, amount?: int, charge?: string|\Stripe\Charge, metadata?: \Stripe\StripeObject, payment_intent?: string|\Stripe\PaymentIntent, reason?: string, refund?: string|\Stripe\Refund, refund_application_fee?: bool, refund_payment_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject), reverse_transfer?: bool}&\Stripe\StripeObject), set_reader_display?: (object{cart: null|(object{currency: string, line_items: (object{amount: int, description: string, quantity: int}&\Stripe\StripeObject)[], tax: null|int, total: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), status: string, type: string}&\Stripe\StripeObject) $action The most recent action performed by the reader.
+ * @property null|(object{activate_gift_card?: (object{gift_card?: string|\Stripe\GiftCard, gift_card_operation?: string|\Stripe\GiftCardOperation}&\Stripe\StripeObject), api_error: null|(object{advice_code?: string, charge?: string, code?: string, decline_code?: string, doc_url?: string, gift_card_operation?: \Stripe\GiftCardOperation, message?: string, network_advice_code?: string, network_decline_code?: string, param?: string, payment_intent?: \Stripe\PaymentIntent, payment_method?: \Stripe\PaymentMethod, payment_method_type?: string, request_log_url?: string, setup_intent?: \Stripe\SetupIntent, source?: \Stripe\Account|\Stripe\BankAccount|\Stripe\Card|\Stripe\Source, type: string}&\Stripe\StripeObject), cashout_gift_card?: (object{gift_card?: string|\Stripe\GiftCard, gift_card_operation?: string|\Stripe\GiftCardOperation}&\Stripe\StripeObject), check_gift_card_balance?: (object{gift_card?: string|\Stripe\GiftCard, gift_card_operation?: string|\Stripe\GiftCardOperation}&\Stripe\StripeObject), collect_inputs?: (object{inputs: ((object{custom_text: null|(object{description: null|string, skip_button: null|string, submit_button: null|string, title: null|string}&\Stripe\StripeObject), email?: (object{value: null|string}&\Stripe\StripeObject), numeric?: (object{value: null|string}&\Stripe\StripeObject), phone?: (object{value: null|string}&\Stripe\StripeObject), required: null|bool, selection?: (object{choices: ((object{id: null|string, style: null|string, text: string}&\Stripe\StripeObject))[], id: null|string, text: null|string}&\Stripe\StripeObject), signature?: (object{value: null|string}&\Stripe\StripeObject), skipped?: bool, text?: (object{value: null|string}&\Stripe\StripeObject), toggles: null|((object{default_value: null|string, description: null|string, title: null|string, value: null|string}&\Stripe\StripeObject))[], type: string}&\Stripe\StripeObject))[], metadata: null|\Stripe\StripeObject}&\Stripe\StripeObject), collect_payment_method?: (object{account?: string, collect_config?: (object{enable_customer_cancellation?: bool, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), payment_intent: string|\Stripe\PaymentIntent, payment_method?: \Stripe\PaymentMethod}&\Stripe\StripeObject), confirm_payment_intent?: (object{account?: string, confirm_config?: (object{return_url?: string}&\Stripe\StripeObject), payment_intent: string|\Stripe\PaymentIntent}&\Stripe\StripeObject), deactivate_gift_card?: (object{gift_card?: string|\Stripe\GiftCard, gift_card_operation?: string|\Stripe\GiftCardOperation}&\Stripe\StripeObject), failure_code: null|string, failure_message: null|string, print_content?: (object{image?: (object{created_at: int, filename: string, size: int, type: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), process_payment_intent?: (object{account?: string, payment_intent: string|\Stripe\PaymentIntent, process_config?: (object{enable_customer_cancellation?: bool, return_url?: string, skip_tipping?: bool, tipping?: (object{amount_eligible?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), process_setup_intent?: (object{generated_card?: string, process_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject), setup_intent: string|\Stripe\SetupIntent}&\Stripe\StripeObject), refund_payment?: (object{account?: string, amount?: int, charge?: string|\Stripe\Charge, metadata?: \Stripe\StripeObject, payment_intent?: string|\Stripe\PaymentIntent, reason?: string, refund?: string|\Stripe\Refund, refund_application_fee?: bool, refund_payment_config?: (object{enable_customer_cancellation?: bool}&\Stripe\StripeObject), reverse_transfer?: bool}&\Stripe\StripeObject), reload_gift_card?: (object{gift_card?: string|\Stripe\GiftCard, gift_card_operation?: string|\Stripe\GiftCardOperation}&\Stripe\StripeObject), set_reader_display?: (object{cart: null|(object{currency: string, line_items: (object{amount: int, description: string, quantity: int}&\Stripe\StripeObject)[], tax: null|int, total: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), status: string, type: string}&\Stripe\StripeObject) $action The most recent action performed by the reader.
  * @property null|string $device_sw_version The current software version of the reader.
  * @property string $device_type Device type of the reader.
  * @property null|string $ip_address The local IP address of the reader.
@@ -159,6 +159,23 @@ class Reader extends \Stripe\ApiResource
      * @param null|array $params
      * @param null|array|string $opts
      *
+     * @return Reader the activated reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function activateGiftCard($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/activate_gift_card';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
      * @return Reader the canceled reader
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
@@ -166,6 +183,40 @@ class Reader extends \Stripe\ApiResource
     public function cancelAction($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/cancel_action';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return Reader the cashouted reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function cashoutGiftCard($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/cashout_gift_card';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return Reader the checked reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function checkGiftCardBalance($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/check_gift_card_balance';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 
@@ -268,6 +319,23 @@ class Reader extends \Stripe\ApiResource
     public function refundPayment($params = null, $opts = null)
     {
         $url = $this->instanceUrl() . '/refund_payment';
+        list($response, $opts) = $this->_request('post', $url, $params, $opts);
+        $this->refreshFrom($response, $opts);
+
+        return $this;
+    }
+
+    /**
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return Reader the reloaded reader
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function reloadGiftCard($params = null, $opts = null)
+    {
+        $url = $this->instanceUrl() . '/reload_gift_card';
         list($response, $opts) = $this->_request('post', $url, $params, $opts);
         $this->refreshFrom($response, $opts);
 
