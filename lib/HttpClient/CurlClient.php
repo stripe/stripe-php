@@ -532,7 +532,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
             if ($shouldRetry) {
                 ++$numRetries;
-                $sleepSeconds = $this->sleepTime($numRetries, $lastRHeaders);
+                $sleepSeconds = $this->sleepTime($numRetries);
                 \usleep((int) ($sleepSeconds * 1000000));
             } else {
                 break;
@@ -592,7 +592,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
             if ($shouldRetry) {
                 ++$numRetries;
-                $sleepSeconds = $this->sleepTime($numRetries, $rheaders);
+                $sleepSeconds = $this->sleepTime($numRetries);
                 \usleep((int) ($sleepSeconds * 1000000));
             } else {
                 break;
@@ -719,11 +719,10 @@ class CurlClient implements ClientInterface, StreamingClientInterface
      * Provides the number of seconds to wait before retrying a request.
      *
      * @param int $numRetries
-     * @param array|Util\CaseInsensitiveArray $rheaders
      *
      * @return int
      */
-    private function sleepTime($numRetries, $rheaders)
+    private function sleepTime($numRetries)
     {
         // Apply exponential backoff with $initialNetworkRetryDelay on the
         // number of $numRetries so far as inputs. Do not allow the number to exceed
@@ -738,15 +737,7 @@ class CurlClient implements ClientInterface, StreamingClientInterface
         $sleepSeconds *= 0.5 * (1 + $this->randomGenerator->randFloat());
 
         // But never sleep less than the base sleep seconds.
-        $sleepSeconds = \max(Stripe::getInitialNetworkRetryDelay(), $sleepSeconds);
-
-        // And never sleep less than the time the API asks us to wait, assuming it's a reasonable ask.
-        $retryAfter = isset($rheaders['retry-after']) ? (float) ($rheaders['retry-after']) : 0.0;
-        if (\floor($retryAfter) === $retryAfter && $retryAfter <= Stripe::getMaxRetryAfter()) {
-            $sleepSeconds = \max($sleepSeconds, $retryAfter);
-        }
-
-        return $sleepSeconds;
+        return \max(Stripe::getInitialNetworkRetryDelay(), $sleepSeconds);
     }
 
     /**
