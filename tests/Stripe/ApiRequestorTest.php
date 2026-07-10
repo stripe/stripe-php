@@ -101,90 +101,55 @@ final class ApiRequestorTest extends TestCase
         self::assertSame($headers['Authorization'], 'Bearer ' . $apiKey);
     }
 
-    public function testDefaultHeadersIncludeSource()
+    public function testDefaultHeadersIncludeTelemetryIdWhenTelemetryEnabled()
     {
         $this->clearAgentEnvVars();
-
-        $reflector = new \ReflectionClass(ApiRequestor::class);
-        $method = $reflector->getMethod('_defaultHeaders');
-        $method->setAccessible(true);
-
-        $headers = $method->invoke(null, 'sk_test_notarealkey');
-
-        $ua = \json_decode($headers['X-Stripe-Client-User-Agent'], true);
-        // source is either absent (when php_uname is disabled) or a 32-char hex MD5
-        if (\array_key_exists('source', $ua)) {
-            $source = $ua['source'];
-            self::assertTrue(
-                (bool) \preg_match('/^[0-9a-f]{32}$/', $source),
-                "Expected source to be a 32-char hex MD5, got: {$source}"
-            );
-        }
-    }
-
-    public function testDefaultHeadersSourceIndependentOfTelemetrySetting()
-    {
-        $this->clearAgentEnvVars();
-
-        $reflector = new \ReflectionClass(ApiRequestor::class);
-        $method = $reflector->getMethod('_defaultHeaders');
-        $method->setAccessible(true);
+        TelemetryId::reset();
 
         $originalTelemetry = Stripe::getEnableTelemetry();
+        Stripe::setEnableTelemetry(true);
 
         try {
-            Stripe::setEnableTelemetry(true);
-            $headersEnabled = $method->invoke(null, 'sk_test_notarealkey');
-            $uaEnabled = \json_decode($headersEnabled['X-Stripe-Client-User-Agent'], true);
+            $reflector = new \ReflectionClass(ApiRequestor::class);
+            $method = $reflector->getMethod('_defaultHeaders');
+            $method->setAccessible(true);
 
-            Stripe::setEnableTelemetry(false);
-            $headersDisabled = $method->invoke(null, 'sk_test_notarealkey');
-            $uaDisabled = \json_decode($headersDisabled['X-Stripe-Client-User-Agent'], true);
+            $headers = $method->invoke(null, 'sk_test_notarealkey');
 
-            // source presence is independent of the telemetry flag:
-            // both calls should agree on whether source is present
-            self::assertSame(
-                \array_key_exists('source', $uaEnabled),
-                \array_key_exists('source', $uaDisabled),
-                'source presence should not depend on the telemetry flag'
-            );
+            $ua = \json_decode($headers['X-Stripe-Client-User-Agent'], true);
+            if (\array_key_exists('telemetry_id', $ua)) {
+                // telemetry_id is a 32-char hex string (16 random bytes as hex)
+                self::assertTrue(
+                    (bool) \preg_match('/^[0-9a-f]{32}$/', $ua['telemetry_id']),
+                    'Expected telemetry_id to be a 32-char hex string, got: ' . $ua['telemetry_id']
+                );
+            }
         } finally {
             Stripe::setEnableTelemetry($originalTelemetry);
+            TelemetryId::reset();
         }
     }
 
-    public function testDefaultHeadersOmitSourceWhenPhpUnameDisabled()
+    public function testDefaultHeadersOmitTelemetryIdWhenTelemetryDisabled()
     {
         $this->clearAgentEnvVars();
+        TelemetryId::reset();
 
-        // Verify that _isDisabled correctly identifies php_uname as disabled,
-        // and that when it is, _defaultHeaders does not set source to a sentinel
-        // string — it either omits source or sets it to a valid MD5 hash.
-        //
-        // We cannot force php_uname into disable_functions at runtime (it is a
-        // PHP ini setting), and the static $cachedSource variable inside
-        // _defaultHeaders is initialised once per process, so we verify the
-        // contract indirectly: source must never be the old sentinel '(disabled)'.
-        $reflector = new \ReflectionClass(ApiRequestor::class);
-        $method = $reflector->getMethod('_defaultHeaders');
-        $method->setAccessible(true);
+        $originalTelemetry = Stripe::getEnableTelemetry();
+        Stripe::setEnableTelemetry(false);
 
-        $headers = $method->invoke(null, 'sk_test_notarealkey');
+        try {
+            $reflector = new \ReflectionClass(ApiRequestor::class);
+            $method = $reflector->getMethod('_defaultHeaders');
+            $method->setAccessible(true);
 
-        $ua = \json_decode($headers['X-Stripe-Client-User-Agent'], true);
-        if (\array_key_exists('source', $ua)) {
-            self::assertNotSame(
-                '(disabled)',
-                $ua['source'],
-                'source must not be set to the sentinel string "(disabled)"; it should be omitted when php_uname is disabled'
-            );
-            self::assertTrue(
-                (bool) \preg_match('/^[0-9a-f]{32}$/', $ua['source']),
-                'When source is present it must be a 32-char lowercase hex MD5, got: ' . $ua['source']
-            );
-        } else {
-            // source is absent — this is the correct behaviour when php_uname is disabled
-            self::assertArrayNotHasKey('source', $ua);
+            $headers = $method->invoke(null, 'sk_test_notarealkey');
+
+            $ua = \json_decode($headers['X-Stripe-Client-User-Agent'], true);
+            self::assertArrayNotHasKey('telemetry_id', $ua);
+        } finally {
+            Stripe::setEnableTelemetry($originalTelemetry);
+            TelemetryId::reset();
         }
     }
 
