@@ -734,10 +734,10 @@ class CurlClient implements ClientInterface, StreamingClientInterface
 
         // Apply some jitter by randomizing the value in the range of
         // ($sleepSeconds / 2) to ($sleepSeconds).
-        $sleepSeconds *= 0.5 * (1 + $this->randomGenerator->randFloat());
-
         // But never sleep less than the base sleep seconds.
-        return \max(Stripe::getInitialNetworkRetryDelay(), $sleepSeconds);
+        $sleepSeconds = \max(Stripe::getInitialNetworkRetryDelay(), $sleepSeconds * 0.5 * (1 + $this->randomGenerator->randFloat()));
+
+        return $sleepSeconds;
     }
 
     /**
