@@ -312,19 +312,19 @@ final class CurlClientTest extends \Stripe\TestCase
 
         self::assertSame(
             \Stripe\Stripe::getInitialNetworkRetryDelay() * 1,
-            $this->sleepTimeMethod->invoke($curlClient, 1, [])
+            $this->sleepTimeMethod->invoke($curlClient, 1)
         );
         self::assertSame(
             \Stripe\Stripe::getInitialNetworkRetryDelay() * 2,
-            $this->sleepTimeMethod->invoke($curlClient, 2, [])
+            $this->sleepTimeMethod->invoke($curlClient, 2)
         );
         self::assertSame(
             \Stripe\Stripe::getInitialNetworkRetryDelay() * 4,
-            $this->sleepTimeMethod->invoke($curlClient, 3, [])
+            $this->sleepTimeMethod->invoke($curlClient, 3)
         );
         self::assertSame(
             \Stripe\Stripe::getInitialNetworkRetryDelay() * 8,
-            $this->sleepTimeMethod->invoke($curlClient, 4, [])
+            $this->sleepTimeMethod->invoke($curlClient, 4)
         );
     }
 
@@ -335,25 +335,10 @@ final class CurlClientTest extends \Stripe\TestCase
 
         $curlClient = new CurlClient(null, $this->createFakeRandomGenerator());
 
-        self::assertSame(1.0, $this->sleepTimeMethod->invoke($curlClient, 1, []));
-        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, []));
-        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 3, []));
-        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 4, []));
-    }
-
-    public function testSleepTimeShouldRespectRetryAfter()
-    {
-        $this->setInitialNetworkRetryDelay(1.0);
-        $this->setMaxNetworkRetryDelay(2.0);
-
-        $curlClient = new CurlClient(null, $this->createFakeRandomGenerator());
-
-        // Uses max of default and header.
-        self::assertSame(10.0, $this->sleepTimeMethod->invoke($curlClient, 1, ['retry-after' => '10']));
-        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, ['retry-after' => '1']));
-
-        // Ignores excessively large values.
-        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2, ['retry-after' => '100']));
+        self::assertSame(1.0, $this->sleepTimeMethod->invoke($curlClient, 1));
+        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 2));
+        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 3));
+        self::assertSame(2.0, $this->sleepTimeMethod->invoke($curlClient, 4));
     }
 
     public function testSleepTimeShouldAddSomeRandomness()
@@ -368,12 +353,12 @@ final class CurlClientTest extends \Stripe\TestCase
 
         // the initial value cannot be smaller than the base,
         // so the randomness is ignored
-        self::assertSame(\Stripe\Stripe::getInitialNetworkRetryDelay(), $this->sleepTimeMethod->invoke($curlClient, 1, []));
+        self::assertSame(\Stripe\Stripe::getInitialNetworkRetryDelay(), $this->sleepTimeMethod->invoke($curlClient, 1));
 
         // after the first one, the randomness is applied
-        self::assertSame($baseValue * 2, $this->sleepTimeMethod->invoke($curlClient, 2, []));
-        self::assertSame($baseValue * 4, $this->sleepTimeMethod->invoke($curlClient, 3, []));
-        self::assertSame($baseValue * 8, $this->sleepTimeMethod->invoke($curlClient, 4, []));
+        self::assertSame($baseValue * 2, $this->sleepTimeMethod->invoke($curlClient, 2));
+        self::assertSame($baseValue * 4, $this->sleepTimeMethod->invoke($curlClient, 3));
+        self::assertSame($baseValue * 8, $this->sleepTimeMethod->invoke($curlClient, 4));
     }
 
     /**
