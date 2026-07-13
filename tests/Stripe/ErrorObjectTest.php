@@ -27,4 +27,14 @@ final class ErrorObjectTest extends TestCase
         self::assertNull($error->source);
         self::assertNull($error->type);
     }
+
+    public function testNetworkAdviceCode()
+    {
+        $error = ErrorObject::constructFrom([
+            'type' => 'card_error',
+            'network_advice_code' => '02',
+        ]);
+
+        self::assertSame('02', $error->network_advice_code);
+    }
 }
