@@ -58,13 +58,10 @@ class Stripe
     /** @var float Maximum delay between retries, in seconds */
     private static $maxNetworkRetryDelay = 2.0;
 
-    /** @var float Maximum delay between retries, in seconds, that will be respected from the Stripe API */
-    private static $maxRetryAfter = 60.0;
-
     /** @var float Initial delay between retries, in seconds */
     private static $initialNetworkRetryDelay = 0.5;
 
-    const VERSION = '20.3.0';
+    const VERSION = '20.3.1';
 
     /**
      * @return string the API key used for requests
@@ -245,14 +242,6 @@ class Stripe
     public static function getMaxNetworkRetryDelay()
     {
         return self::$maxNetworkRetryDelay;
-    }
-
-    /**
-     * @return float Maximum delay between retries, in seconds, that will be respected from the Stripe API
-     */
-    public static function getMaxRetryAfter()
-    {
-        return self::$maxRetryAfter;
     }
 
     /**
