@@ -172,6 +172,10 @@ This release changes the pinned API version to 2026-06-24.preview.
   * Add support for event notification `V2MoneyManagementOutboundTransferUnderReviewEvent` with related object `V2.MoneyManagement.OutboundTransfer`
   * ⚠️ Remove support for event notifications `V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationStorerUpdatedEvent` with related object `V2.Core.Account`
 
+## 20.3.1 - 2026-07-09
+* [#2093](https://github.com/stripe/stripe-php/pull/2093) Add TStripeObject to iterator PHPDoc comments (fixes [#2091](https://github.com/stripe/stripe-php/issues/2091))
+  - Fixed: PHPStan no longer infers iterated Collection values as `mixed`; loop variables are now correctly typed as the collection's generic type parameter
+
 ## 20.3.0 - 2026-06-24
 This release changes the pinned API version to 2026-06-24.dahlia.
 
