@@ -12,6 +12,7 @@ namespace Stripe;
  * @property null|string $code For some errors that could be handled programmatically, a short string indicating the [error code](https://docs.stripe.com/error-codes) reported.
  * @property null|string $decline_code For card errors resulting from a card issuer decline, a short string indicating the [card issuer's reason for the decline](https://docs.stripe.com/declines#issuer-declines) if they provide one.
  * @property null|string $doc_url A URL to more information about the [error code](https://docs.stripe.com/error-codes) reported.
+ * @property null|GiftCardOperation $gift_card_operation The GiftCardOperation object for errors returned on a request involving a GiftCardOperation.
  * @property null|string $message A human-readable message providing more details about the error. For card errors, these messages can be shown to your users.
  * @property null|string $network_advice_code For card errors resulting from a card issuer decline, a 2 digit code which indicates the advice given to merchant by the card network on how to proceed with an error.
  * @property null|string $network_decline_code For payments declined by the network, an alphanumeric code which indicates the reason the payment failed.
@@ -256,6 +257,7 @@ class ErrorObject extends StripeObject
             'code' => null,
             'decline_code' => null,
             'doc_url' => null,
+            'gift_card_operation' => null,
             'message' => null,
             'network_advice_code' => null,
             'network_decline_code' => null,
