@@ -67,6 +67,7 @@ require __DIR__ . '/lib/ApiOperations/Update.php';
 // Plumbing
 require __DIR__ . '/lib/ApiResponse.php';
 require __DIR__ . '/lib/RequestTelemetry.php';
+require __DIR__ . '/lib/TelemetryId.php';
 require __DIR__ . '/lib/StripeObject.php';
 require __DIR__ . '/lib/ApiRequestor.php';
 require __DIR__ . '/lib/ApiResource.php';
