@@ -20,7 +20,7 @@ if (0 !== $returnStatus) {
 }
 
 $config = $autoload ? 'phpunit.xml' : 'phpunit.no_autoload.xml';
-\passthru("php vendor/bin/phpunit -c {$config} --verbose", $returnStatus);
+\passthru("php vendor/bin/phpunit -c {$config} --testdox", $returnStatus);
 if (0 !== $returnStatus) {
     exit(1);
 }
