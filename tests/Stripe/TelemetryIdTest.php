@@ -106,6 +106,25 @@ final class TelemetryIdTest extends TestCase
         }
     }
 
+    public function testGetCreatesParentDirectoriesIfMissing()
+    {
+        $tmpDir = \sys_get_temp_dir() . \DIRECTORY_SEPARATOR . 'stripe_test_' . \bin2hex(\random_bytes(8));
+        $nestedDir = $tmpDir . \DIRECTORY_SEPARATOR . 'nested' . \DIRECTORY_SEPARATOR . 'deep';
+        \putenv('XDG_CONFIG_HOME=' . $nestedDir);
+
+        try {
+            self::assertDirectoryNotExists($nestedDir . \DIRECTORY_SEPARATOR . 'stripe');
+
+            $id = TelemetryId::get();
+
+            self::assertNotNull($id);
+            self::assertDirectoryExists($nestedDir . \DIRECTORY_SEPARATOR . 'stripe');
+            self::assertFileExists($nestedDir . \DIRECTORY_SEPARATOR . 'stripe' . \DIRECTORY_SEPARATOR . 'telemetry_id');
+        } finally {
+            self::cleanupDir($tmpDir);
+        }
+    }
+
     public function testGetConfigDirUsesXdgConfigHome()
     {
         \putenv('XDG_CONFIG_HOME=/custom/xdg');
