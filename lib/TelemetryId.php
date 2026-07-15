@@ -25,7 +25,7 @@ class TelemetryId
             return null;
         }
 
-        $filePath = $configDir . \DIRECTORY_SEPARATOR . 'telemetry_id';
+        $filePath = self::joinPath($configDir, 'telemetry_id');
 
         if (\file_exists($filePath)) {
             $content = @\file_get_contents($filePath);
@@ -68,12 +68,12 @@ class TelemetryId
                 return null;
             }
 
-            return $appData . \DIRECTORY_SEPARATOR . 'Stripe';
+            return self::joinPath($appData, 'Stripe');
         }
 
         $xdg = \getenv('XDG_CONFIG_HOME');
         if (false !== $xdg && '' !== $xdg) {
-            return $xdg . \DIRECTORY_SEPARATOR . 'stripe';
+            return self::joinPath($xdg, 'stripe');
         }
 
         $home = \getenv('HOME');
@@ -81,7 +81,17 @@ class TelemetryId
             return null;
         }
 
-        return $home . \DIRECTORY_SEPARATOR . '.config' . \DIRECTORY_SEPARATOR . 'stripe';
+        return self::joinPath($home, '.config', 'stripe');
+    }
+
+    /**
+     * @param string ...$segments
+     *
+     * @return string
+     */
+    private static function joinPath(...$segments)
+    {
+        return \implode(\DIRECTORY_SEPARATOR, $segments);
     }
 
     /**
