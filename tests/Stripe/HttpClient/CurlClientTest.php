@@ -492,7 +492,7 @@ final class CurlClientTest extends \Stripe\TestCase
     public function testExecuteStreamingRequestWithRetriesRetries()
     {
         if (\PHP_OS_FAMILY === 'Windows') {
-            $this->markTestSkipped('TestServer uses pkill/kill which are unavailable on Windows');
+            self::markTestSkipped('TestServer uses pkill/kill which are unavailable on Windows');
         }
         $serverCode = <<<'EOF'
 <?php
@@ -532,7 +532,7 @@ EOF;
     public function testExecuteStreamingRequestWithRetriesHandlesDisconnect()
     {
         if (\PHP_OS_FAMILY === 'Windows') {
-            $this->markTestSkipped('TestServer uses pkill/kill which are unavailable on Windows');
+            self::markTestSkipped('TestServer uses pkill/kill which are unavailable on Windows');
         }
         $serverCode = <<<'EOF'
 <?php
@@ -574,7 +574,7 @@ EOF;
     public function testExecuteStreamingRequestWithRetriesPersistentConnection()
     {
         if (\PHP_OS_FAMILY === 'Windows') {
-            $this->markTestSkipped('TestServer uses pkill/kill which are unavailable on Windows');
+            self::markTestSkipped('TestServer uses pkill/kill which are unavailable on Windows');
         }
         $curl = new CurlClient();
         $coupon = \Stripe\Coupon::retrieve('coupon_xyz');

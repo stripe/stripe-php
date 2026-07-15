@@ -142,7 +142,7 @@ final class TelemetryIdTest extends TestCase
     public function testGetConfigDirUsesXdgConfigHome()
     {
         if (self::isWindows()) {
-            $this->markTestSkipped('XDG is not used on Windows');
+            self::markTestSkipped('XDG is not used on Windows');
         }
         \putenv('XDG_CONFIG_HOME=/custom/xdg');
         $dir = TelemetryId::getConfigDir();
@@ -152,7 +152,7 @@ final class TelemetryIdTest extends TestCase
     public function testGetConfigDirFallsBackToHome()
     {
         if (self::isWindows()) {
-            $this->markTestSkipped('XDG is not used on Windows');
+            self::markTestSkipped('XDG is not used on Windows');
         }
         \putenv('XDG_CONFIG_HOME');
         \putenv('HOME=/home/testuser');
@@ -163,7 +163,7 @@ final class TelemetryIdTest extends TestCase
     public function testGetConfigDirReturnsNullWhenNoHome()
     {
         if (self::isWindows()) {
-            $this->markTestSkipped('XDG is not used on Windows');
+            self::markTestSkipped('XDG is not used on Windows');
         }
         \putenv('XDG_CONFIG_HOME');
         \putenv('HOME');
