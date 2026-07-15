@@ -9,13 +9,31 @@ namespace Stripe;
  */
 final class TelemetryIdTest extends TestCase
 {
+    private static function isWindows()
+    {
+        return \PHP_OS_FAMILY === 'Windows';
+    }
+
+    private static function stripeSubdir()
+    {
+        return self::isWindows() ? 'Stripe' : 'stripe';
+    }
+
+    private function setConfigEnv($path)
+    {
+        if (self::isWindows()) {
+            \putenv('APPDATA=' . $path);
+        } else {
+            \putenv('XDG_CONFIG_HOME=' . $path);
+        }
+    }
+
     /**
      * @after
      */
     public function resetTelemetryId()
     {
         TelemetryId::reset();
-        // Clean up any env vars we set during tests
         \putenv('XDG_CONFIG_HOME');
         \putenv('HOME');
         \putenv('APPDATA');
@@ -24,7 +42,7 @@ final class TelemetryIdTest extends TestCase
     public function testGetReturnsHexString()
     {
         $tmpDir = \sys_get_temp_dir() . \DIRECTORY_SEPARATOR . 'stripe_test_' . \bin2hex(\random_bytes(8));
-        \putenv('XDG_CONFIG_HOME=' . $tmpDir);
+        $this->setConfigEnv($tmpDir);
 
         try {
             $id = TelemetryId::get();
@@ -41,7 +59,7 @@ final class TelemetryIdTest extends TestCase
     public function testGetReturnsSameValueOnSubsequentCalls()
     {
         $tmpDir = \sys_get_temp_dir() . \DIRECTORY_SEPARATOR . 'stripe_test_' . \bin2hex(\random_bytes(8));
-        \putenv('XDG_CONFIG_HOME=' . $tmpDir);
+        $this->setConfigEnv($tmpDir);
 
         try {
             $first = TelemetryId::get();
@@ -55,7 +73,7 @@ final class TelemetryIdTest extends TestCase
     public function testGetReturnsSameValueAfterReset()
     {
         $tmpDir = \sys_get_temp_dir() . \DIRECTORY_SEPARATOR . 'stripe_test_' . \bin2hex(\random_bytes(8));
-        \putenv('XDG_CONFIG_HOME=' . $tmpDir);
+        $this->setConfigEnv($tmpDir);
 
         try {
             $first = TelemetryId::get();
@@ -72,31 +90,25 @@ final class TelemetryIdTest extends TestCase
 
     public function testGetReturnsNullWhenNoHomeDir()
     {
-        // Remove all config dir env vars so getConfigDir() returns null
         \putenv('XDG_CONFIG_HOME');
         \putenv('HOME');
-        // On Windows APPDATA would matter, but on Unix we unset HOME and XDG_CONFIG_HOME
-        if ('\\' !== \DIRECTORY_SEPARATOR) {
-            $id = TelemetryId::get();
-            self::assertNull($id, 'Should return null when no home directory is available');
-        } else {
-            \putenv('APPDATA');
-            $id = TelemetryId::get();
-            self::assertNull($id, 'Should return null when APPDATA is not set on Windows');
-        }
+        \putenv('APPDATA');
+        $id = TelemetryId::get();
+        self::assertNull($id, 'Should return null when no config directory is available');
     }
 
     public function testResetClearsCache()
     {
         $tmpDir = \sys_get_temp_dir() . \DIRECTORY_SEPARATOR . 'stripe_test_' . \bin2hex(\random_bytes(8));
-        \putenv('XDG_CONFIG_HOME=' . $tmpDir);
+        $this->setConfigEnv($tmpDir);
 
         try {
             $first = TelemetryId::get();
             TelemetryId::reset();
 
             // Delete the file so a new id is generated
-            $filePath = $tmpDir . \DIRECTORY_SEPARATOR . 'stripe' . \DIRECTORY_SEPARATOR . 'telemetry_id';
+            $subdir = self::stripeSubdir();
+            $filePath = $tmpDir . \DIRECTORY_SEPARATOR . $subdir . \DIRECTORY_SEPARATOR . 'telemetry_id';
             @\unlink($filePath);
 
             $second = TelemetryId::get();
@@ -110,16 +122,18 @@ final class TelemetryIdTest extends TestCase
     {
         $tmpDir = \sys_get_temp_dir() . \DIRECTORY_SEPARATOR . 'stripe_test_' . \bin2hex(\random_bytes(8));
         $nestedDir = $tmpDir . \DIRECTORY_SEPARATOR . 'nested' . \DIRECTORY_SEPARATOR . 'deep';
-        \putenv('XDG_CONFIG_HOME=' . $nestedDir);
+        $this->setConfigEnv($nestedDir);
+
+        $subdir = self::stripeSubdir();
 
         try {
-            self::assertDirectoryNotExists($nestedDir . \DIRECTORY_SEPARATOR . 'stripe');
+            self::assertDirectoryNotExists($nestedDir . \DIRECTORY_SEPARATOR . $subdir);
 
             $id = TelemetryId::get();
 
             self::assertNotNull($id);
-            self::assertDirectoryExists($nestedDir . \DIRECTORY_SEPARATOR . 'stripe');
-            self::assertFileExists($nestedDir . \DIRECTORY_SEPARATOR . 'stripe' . \DIRECTORY_SEPARATOR . 'telemetry_id');
+            self::assertDirectoryExists($nestedDir . \DIRECTORY_SEPARATOR . $subdir);
+            self::assertFileExists($nestedDir . \DIRECTORY_SEPARATOR . $subdir . \DIRECTORY_SEPARATOR . 'telemetry_id');
         } finally {
             self::cleanupDir($tmpDir);
         }
@@ -127,31 +141,34 @@ final class TelemetryIdTest extends TestCase
 
     public function testGetConfigDirUsesXdgConfigHome()
     {
+        if (self::isWindows()) {
+            $this->markTestSkipped('XDG is not used on Windows');
+        }
         \putenv('XDG_CONFIG_HOME=/custom/xdg');
         $dir = TelemetryId::getConfigDir();
-        if ('\\' !== \DIRECTORY_SEPARATOR) {
-            self::assertSame('/custom/xdg' . \DIRECTORY_SEPARATOR . 'stripe', $dir);
-        }
+        self::assertSame('/custom/xdg/stripe', $dir);
     }
 
     public function testGetConfigDirFallsBackToHome()
     {
+        if (self::isWindows()) {
+            $this->markTestSkipped('XDG is not used on Windows');
+        }
         \putenv('XDG_CONFIG_HOME');
         \putenv('HOME=/home/testuser');
-        if ('\\' !== \DIRECTORY_SEPARATOR) {
-            $dir = TelemetryId::getConfigDir();
-            self::assertSame('/home/testuser/.config/stripe', $dir);
-        }
+        $dir = TelemetryId::getConfigDir();
+        self::assertSame('/home/testuser/.config/stripe', $dir);
     }
 
     public function testGetConfigDirReturnsNullWhenNoHome()
     {
+        if (self::isWindows()) {
+            $this->markTestSkipped('XDG is not used on Windows');
+        }
         \putenv('XDG_CONFIG_HOME');
         \putenv('HOME');
-        if ('\\' !== \DIRECTORY_SEPARATOR) {
-            $dir = TelemetryId::getConfigDir();
-            self::assertNull($dir);
-        }
+        $dir = TelemetryId::getConfigDir();
+        self::assertNull($dir);
     }
 
     /**
