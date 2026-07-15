@@ -14,13 +14,13 @@ if (!$autoload) {
     \file_put_contents('composer.json', \json_encode($composer, \JSON_PRETTY_PRINT));
 }
 
-\passthru('composer dump-autoload', $returnStatus);
+\passthru('composer update', $returnStatus);
 if (0 !== $returnStatus) {
     exit(1);
 }
 
 $config = $autoload ? 'phpunit.xml' : 'phpunit.no_autoload.xml';
-\passthru("php vendor/bin/phpunit -c {$config}", $returnStatus);
+\passthru("php vendor/bin/phpunit -c {$config} --verbose", $returnStatus);
 if (0 !== $returnStatus) {
     exit(1);
 }
