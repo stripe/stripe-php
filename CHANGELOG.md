@@ -1,5 +1,16 @@
 # Changelog
 
+## 21.0.0 - 2026-07-15
+This release **does not** change the pinned API version. It's still `2026-06-24.dahlia`. 
+
+We're releasing it as a major out of an abundance of caution, but it should be functionally a patch release for most users. See below.
+
+* [#2097](https://github.com/stripe/stripe-php/pull/2097) ⚠️ Correctly type properties on `ErrorObject`
+  * the properties of `ErrorObject` were typed as `string` when many of them should have been `null|string`. If you (or your typechecker) were treating these as plain strings, you'll need to be more defensive in your code.
+  * to be clear: no runtime code has changed, we've just made the types more accurate. We didn't want to break any builds in a patch version, so this is released as a major
+* [#2098](https://github.com/stripe/stripe-php/pull/2098) Replace source hash with Telemetry UUID
+* [#2095](https://github.com/stripe/stripe-php/pull/2095) Remove unused Retry-After header support
+
 ## 20.3.1 - 2026-07-09
 * [#2093](https://github.com/stripe/stripe-php/pull/2093) Add TStripeObject to iterator PHPDoc comments (fixes [#2091](https://github.com/stripe/stripe-php/issues/2091))
   - Fixed: PHPStan no longer infers iterated Collection values as `mixed`; loop variables are now correctly typed as the collection's generic type parameter
