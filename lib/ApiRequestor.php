@@ -601,31 +601,17 @@ class ApiRequestor
 
         // Fallback to global configuration to maintain backwards compatibility.
         $appInfo = $appInfo ?: Stripe::getAppInfo();
-        // `static` here means it persists for the lifetime of the process
-        static $cachedSource = null;
-        if (null === $cachedSource) {
-            $uname_disabled = self::_isDisabled(\ini_get('disable_functions'), 'php_uname');
-            if ($uname_disabled) {
-                $cachedSource = false;
-            } else {
-                $parts = [\php_uname()];
-                $hostname_disabled = self::_isDisabled(\ini_get('disable_functions'), 'gethostname');
-                if (!$hostname_disabled) {
-                    $parts[] = \gethostname();
-                }
-                $cachedSource = \md5(\implode(' ', $parts));
-            }
-        }
 
         $ua = [
             'bindings_version' => Stripe::VERSION,
             'lang' => 'php',
             'lang_version' => $langVersion,
         ];
-        if ($cachedSource) {
-            $ua['source'] = $cachedSource;
-        }
         if (Stripe::getEnableTelemetry()) {
+            $telemetryId = TelemetryId::get();
+            if (null !== $telemetryId) {
+                $ua['telemetry_id'] = $telemetryId;
+            }
             $uname_disabled = self::_isDisabled(\ini_get('disable_functions'), 'php_uname');
             $ua['platform'] = $uname_disabled
                 ? '(disabled)'

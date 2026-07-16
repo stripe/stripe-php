@@ -12,7 +12,9 @@ namespace Stripe\Service\V2\Signals;
 class AccountSignalService extends \Stripe\Service\AbstractService
 {
     /**
-     * Lists AccountSignals for a given account or customer, filtered by signal type.
+     * Lists the latest AccountSignals for a given account or customer, filtered by
+     * signal type. Note that this endpoint returns only the latest signal for each
+     * requested signal type.
      *
      * @param null|array{account_details?: array{account?: string, customer?: string}, limit?: int, type: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
