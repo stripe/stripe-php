@@ -202,7 +202,7 @@ class AccountService extends AbstractService
     /**
      * Deletes an existing person’s relationship to the account’s legal entity. Any
      * person with a relationship for an account can be deleted through the API, except
-     * if the person is the <code>account_opener</code>. If your integration is using
+     * if the person is the <code>representative</code>. If your integration is using
      * the <code>executive</code> parameter, you cannot delete the only verified
      * <code>executive</code> on file.
      *

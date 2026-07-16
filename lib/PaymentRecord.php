@@ -43,6 +43,29 @@ class PaymentRecord extends ApiResource
     const REPORTED_BY_STRIPE = 'stripe';
 
     /**
+     * Report that the most recent payment attempt on the specified Payment Record  was
+     * disputed.
+     *
+     * @param null|array{amount: array{currency: string, value: int}, closed: array{closed_at: int}, expand?: string[], funded: array{amount: array{currency: string, value: int}, funded_at: int, type: string}, initiated_at?: int, metadata?: null|array<string, string>, processor_details: array{custom?: array{dispute_reference: string}, type: string}, reason?: string} $params
+     * @param null|array|string $options
+     *
+     * @return PaymentRecord the created resource
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function create($params = null, $options = null)
+    {
+        self::_validateParams($params);
+        $url = static::classUrl();
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $options);
+        $obj = Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
+    }
+
+    /**
      * Retrieves a Payment Record with the given ID.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key

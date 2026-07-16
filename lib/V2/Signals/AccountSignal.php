@@ -5,7 +5,10 @@
 namespace Stripe\V2\Signals;
 
 /**
- * An automatically evaluated signal on a v2 account.
+ * An automatically evaluated signal on an account. Each Account Signal object corresponds to
+ * exactly one signal type, indicated by type. Only the type-specific field is populated; other
+ * type-specific payload fields are null. If an account has multiple signals, Stripe creates
+ * separate account signal objects.
  *
  * @property string $id Unique identifier for the account signal.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
