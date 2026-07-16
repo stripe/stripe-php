@@ -99,7 +99,8 @@ jobs:
         run: just lint-test lint
 
   tests:
-    runs-on: "ubuntu-24.04"
+    name: Tests (php@${{ matrix.php-version }}, AUTOLOAD=${{ matrix.autoload }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
 
     permissions:
       contents: read
@@ -107,11 +108,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        os:
+          - "ubuntu-24.04"
         autoload:
           - "0"
           - "1"
         php-version:
           # https://docs.stripe.com/sdks/versioning?lang=php
+          # https://endoflife.date/php
           - "7.2"
           - "7.3"
           - "7.4"
@@ -121,7 +125,15 @@ jobs:
           - "8.3"
           - "8.4"
           - "8.5"
-    name: Tests (php@${{ matrix.php-version }}, AUTOLOAD=${{ matrix.autoload }})
+        include:
+          - os: windows-latest
+            # use any modern-ish version
+            php-version: "8.5"
+            autoload: "1"
+          - os: windows-latest
+            # use any modern-ish version
+            php-version: "8.5"
+            autoload: "0"
 
     steps:
       - uses: extractions/setup-just@v2
