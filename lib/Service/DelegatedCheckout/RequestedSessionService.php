@@ -31,7 +31,7 @@ class RequestedSessionService extends \Stripe\Service\AbstractService
      * Confirms a requested session.
      *
      * @param string $id
-     * @param null|array{affiliate_attribution?: array{campaign_id?: string, creative_id?: string, expires_at: int, identification_token: string, issued_at: int, provider: string, publisher_id?: string, shared_metadata?: array<string, string>, source?: array{platform?: string, type: string, url?: string}, sub_id?: string, touchpoint: string}, buyer_consents?: array{marketing?: array{consents?: array{channel: string, status: string}[]}}, expand?: string[], metadata?: null|array<string, string>, payment_method?: string, return_url?: string, risk_details?: array{client_device_metadata_details?: array{radar_session?: string, referrer?: string, remote_ip?: string, time_on_page_ms?: int, user_agent?: string}}} $params
+     * @param null|array{affiliate_attribution?: array{campaign_id?: string, creative_id?: string, expires_at: int, identification_token: string, issued_at: int, provider: string, publisher_id?: string, shared_metadata?: array<string, string>, source?: array{platform?: string, type: string, url?: string}, sub_id?: string, touchpoint: string}, buyer_consents?: array{marketing?: array{consents?: array{channel: string, status: string}[]}}, expand?: string[], metadata?: null|array<string, string>, payment_method?: string, return_url?: string, risk_details?: array{client_device_metadata_details?: array{radar_session?: string, referrer?: string, remote_ip?: string, time_on_page_ms?: int, user_agent?: string}}, use_stripe_sdk?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\DelegatedCheckout\RequestedSession

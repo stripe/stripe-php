@@ -16,7 +16,7 @@ class PaymentRecordService extends AbstractService
      * disputed.
      *
      * @param string $id
-     * @param null|array{amount: array{currency: string, value: int}, closed: array{closed_at: int}, expand?: string[], funded: array{amount: array{currency: string, value: int}, funded_at: int, type: string}, initiated_at?: int, metadata?: null|array<string, string>, processor_details: array{custom?: array{dispute_reference: string}, type: string}, reason?: string} $params
+     * @param null|array{amount: array{currency: string, value: int}, closed?: array{closed_at: int}, expand?: string[], funded?: array{amount: array{currency: string, value: int}, funded_at: int, type: string}, initiated_at?: int, metadata?: null|array<string, string>, processor_details: array{custom?: array{dispute_reference: string}, type: string}, reason?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentRecord

@@ -43,6 +43,23 @@ class AlertService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Lists sent billing alert triggered and recovered notifications for a billing
+     * alert.
+     *
+     * @param string $parentId
+     * @param null|array{action?: string, cadence?: string, customer: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, notified_at?: array|int, starting_after?: string, subscription?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Collection<\Stripe\Billing\AlertNotification>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function allNotifications($parentId, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v1/billing/alerts/%s/notifications', $parentId), $params, $opts);
+    }
+
+    /**
      * Archives this alert, removing it from the list view and APIs. This is
      * non-reversible.
      *

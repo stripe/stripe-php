@@ -8,6 +8,7 @@ namespace Stripe\Service\Crypto;
  * Service factory class for API resources in the Crypto namespace.
  *
  * @property CustomerService $customers
+ * @property DepositAddressService $depositAddresses
  * @property OnrampSessionService $onrampSessions
  * @property OnrampTransactionLimitsService $onrampTransactionLimits
  */
@@ -18,6 +19,7 @@ class CryptoServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'customers' => CustomerService::class,
+        'depositAddresses' => DepositAddressService::class,
         'onrampSessions' => OnrampSessionService::class,
         'onrampTransactionLimits' => OnrampTransactionLimitsService::class,
     ];
