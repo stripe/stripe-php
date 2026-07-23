@@ -39,4 +39,5 @@ class AccountSignal extends \Stripe\ApiResource
 
     const TYPE_FRAUDULENT_MERCHANT = 'fraudulent_merchant';
     const TYPE_MERCHANT_DELINQUENCY = 'merchant_delinquency';
+    const TYPE_PAYMENT_DELINQUENCY_EXPOSURE = 'payment_delinquency_exposure';
 }

@@ -21,6 +21,8 @@ class Alert extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'billing.alert';
 
+    use \Stripe\ApiOperations\NestedResource;
+
     const ALERT_TYPE_CREDIT_BALANCE_THRESHOLD = 'credit_balance_threshold';
     const ALERT_TYPE_SPEND_THRESHOLD = 'spend_threshold';
     const ALERT_TYPE_USAGE_THRESHOLD = 'usage_threshold';
@@ -136,5 +138,21 @@ class Alert extends \Stripe\ApiResource
         $this->refreshFrom($response, $opts);
 
         return $this;
+    }
+
+    const PATH_NOTIFICATIONS = '/notifications';
+
+    /**
+     * @param string $id the ID of the alert on which to retrieve the alert notifications
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return \Stripe\Collection<AlertNotification> the list of alert notifications
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function allNotifications($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_NOTIFICATIONS, $params, $opts);
     }
 }

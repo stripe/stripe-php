@@ -225,9 +225,7 @@ class AccountService extends AbstractService
      * flagged as suspicious.
      *
      * Only accounts where your platform is liable for negative account balances, which
-     * includes Custom and Express accounts, can be rejected. Test-mode accounts can be
-     * rejected at any time. Live-mode accounts can only be rejected after all balances
-     * are zero.
+     * includes Custom and Express accounts, can be rejected.
      *
      * @param string $id
      * @param null|array{expand?: string[], reason: string} $params
