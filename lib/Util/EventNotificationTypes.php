@@ -385,10 +385,17 @@ class EventNotificationTypes
         \Stripe\Events\V2MoneyManagementReceivedCreditReturnedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditReturnedEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditSucceededEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitCanceledEventNotification::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitFailedEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitPendingEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitPendingEventNotification::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitScheduledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitScheduledEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitSucceededEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEventNotification::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandateCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandateCanceledEventNotification::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandateCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandateCreatedEventNotification::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandateExpiredEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandateExpiredEventNotification::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandatePendingCancellationEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandatePendingCancellationEventNotification::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandateUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandateUpdatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementRecipientVerificationCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementRecipientVerificationCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementRecipientVerificationUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementRecipientVerificationUpdatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementTransactionCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionCreatedEventNotification::class,
@@ -425,6 +432,7 @@ class EventNotificationTypes
         \Stripe\Events\V2ReportingReportRunUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunUpdatedEventNotification::class,
         \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification::class,
         \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification::class,
+        \Stripe\Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

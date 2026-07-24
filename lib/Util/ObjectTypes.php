@@ -298,6 +298,7 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::class,
         \Stripe\V2\MoneyManagement\ReceivedCredit::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedCredit::class,
         \Stripe\V2\MoneyManagement\ReceivedDebit::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedDebit::class,
+        \Stripe\V2\MoneyManagement\ReceivedDebitMandate::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedDebitMandate::class,
         \Stripe\V2\MoneyManagement\RecipientVerification::OBJECT_NAME => \Stripe\V2\MoneyManagement\RecipientVerification::class,
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
@@ -308,6 +309,7 @@ class ObjectTypes
         \Stripe\V2\Payments\SettlementAllocationIntentSplit::OBJECT_NAME => \Stripe\V2\Payments\SettlementAllocationIntentSplit::class,
         \Stripe\V2\Reporting\Report::OBJECT_NAME => \Stripe\V2\Reporting\Report::class,
         \Stripe\V2\Reporting\ReportRun::OBJECT_NAME => \Stripe\V2\Reporting\ReportRun::class,
+        \Stripe\V2\Risk\Inquiry::OBJECT_NAME => \Stripe\V2\Risk\Inquiry::class,
         \Stripe\V2\Signals\AccountSignal::OBJECT_NAME => \Stripe\V2\Signals\AccountSignal::class,
         \Stripe\V2\Tax\ManualRule::OBJECT_NAME => \Stripe\V2\Tax\ManualRule::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec

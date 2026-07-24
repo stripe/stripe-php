@@ -19,6 +19,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $outbound_payment_quote The quote for this OutboundPayment. Only required for countries with regulatory mandates to display fee estimates before OutboundPayment creation.
+ * @property null|string $payout_intent The PayoutIntent ID that triggered this OutboundPayment.
  * @property null|string $purpose The purpose of the OutboundPayment.
  * @property null|string $receipt_url A link to the Stripe-hosted receipt for this OutboundPayment. The receipt link remains active for 60 days from the OutboundPayment creation date. After this period, the link will expire and the receipt url value will be null.
  * @property (object{setting: string}&\Stripe\StripeObject) $recipient_notification Details about the OutboundPayment notification settings for recipient.
