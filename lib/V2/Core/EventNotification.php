@@ -80,7 +80,7 @@ abstract class EventNotification
 
         if (isset($json['object']) && 'event' === $json['object']) {
             throw new \Stripe\Exception\UnexpectedValueException(
-                'You passed a webhook payload to StripeClient::parseEventNotification, which expects an event notification. Use Webhook::constructEvent instead.'
+                'You passed a webhook payload to a method that expects a thin event notification. Use the corresponding constructEvent* method instead.'
             );
         }
 
