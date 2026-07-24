@@ -489,14 +489,97 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Returns a \Stripe\V2\Core\Events instance using the provided JSON payload. Throws an
-     * Exception\UnexpectedValueException if the payload is not valid JSON, and
-     * an Exception\SignatureVerificationException if the signature
-     * verification fails for any reason.
+     * Constructs an Event from an {@link https://docs.stripe.com/event-destinations/eventbridge AWS EventBridge}
+     * or {@link https://docs.stripe.com/event-destinations/eventgrid Azure Event Grid} payload.
+     *
+     * @param string $payload the JSON payload
+     *
+     * @return Event
+     *
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or not recognized
+     */
+    public function constructEventFromCloudProvider($payload)
+    {
+        $inner = $this->extractFromCloudProviderEnvelope($payload);
+        if (isset($inner['object']) && 'v2.core.event' === $inner['object']) {
+            throw new Exception\UnexpectedValueException(
+                'It looks like this cloud event contains a thin event notification. Use parseEventNotificationFromCloudProvider instead.'
+            );
+        }
+
+        return Event::constructFrom($inner);
+    }
+
+    /**
+     * Parses an EventNotification from an {@link https://docs.stripe.com/event-destinations/eventbridge AWS EventBridge}
+     * or {@link https://docs.stripe.com/event-destinations/eventgrid Azure Event Grid} payload.
+     *
+     * @param string $payload the JSON payload
+     *
+     * @return EventNotification
+     *
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or not recognized
+     */
+    public function parseEventNotificationFromCloudProvider($payload)
+    {
+        $inner = $this->extractFromCloudProviderEnvelope($payload);
+        if (isset($inner['object']) && 'event' === $inner['object']) {
+            throw new Exception\UnexpectedValueException(
+                'It looks like this cloud event contains a v1 Event. Use constructEventFromCloudProvider instead.'
+            );
+        }
+
+        return EventNotification::fromJson(\json_encode($inner), $this);
+    }
+
+    /**
+     * Extracts the inner event data from an AWS EventBridge or Azure Event Grid envelope.
+     *
+     * @param string $payload the JSON payload
+     *
+     * @return array
+     *
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or not recognized
+     */
+    private function extractFromCloudProviderEnvelope($payload)
+    {
+        $data = \json_decode($payload, true);
+        if (\JSON_ERROR_NONE !== \json_last_error()) {
+            throw new Exception\UnexpectedValueException(
+                'Invalid JSON payload: ' . \json_last_error_msg()
+            );
+        }
+
+        // Could add as many checks as we want here, but we'll start simple
+        if (\array_key_exists('detail', $data)) {
+            // AWS
+            // https://docs.stripe.com/event-destinations/eventbridge#event-structure
+            return $data['detail'];
+        }
+        if (\array_key_exists('specversion', $data)) {
+            // Azure
+            // https://docs.stripe.com/event-destinations/eventgrid#event-structure
+            return $data['data'];
+        }
+        if (isset($data['id']) && \is_string($data['id']) && 0 === \strpos($data['id'], 'evt_')) {
+            throw new Exception\UnexpectedValueException(
+                'It looks like you passed a Stripe Event directly. Use constructEvent instead to parse a webhook payload with signature verification.'
+            );
+        }
+
+        throw new Exception\UnexpectedValueException(
+            'Unrecognized cloud event format. The payload must be an AWS EventBridge or Azure Event Grid event envelope.'
+        );
+    }
+
+    /**
+     * Returns a \Stripe\V2\Core\EventNotification instance using the provided
+     * JSON payload. Throws an Exception\UnexpectedValueException if the payload
+     * is not valid JSON, and an Exception\SignatureVerificationException if the
+     * signature verification fails for any reason.
      *
      * @param string $payload the payload sent by Stripe
-     * @param string $sigHeader the contents of the signature header sent by
-     *  Stripe
+     * @param string $sigHeader the contents of the signature header sent by Stripe
      * @param string $secret secret used to generate the signature
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time. Defaults to 300 seconds (5 min)
@@ -504,7 +587,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * @return EventNotification
      *
      * @throws Exception\SignatureVerificationException if the verification fails
-     * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON
      */
     public function parseEventNotification($payload, $sigHeader, $secret, $tolerance = Webhook::DEFAULT_TOLERANCE)
     {

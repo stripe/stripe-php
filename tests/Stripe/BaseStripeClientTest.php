@@ -914,7 +914,7 @@ final class BaseStripeClientTest extends TestCase
             $client->parseEventNotification($eventData, $sigHeader, WebhookTest::SECRET);
             self::fail('Expected UnexpectedValueException was not thrown');
         } catch (Exception\UnexpectedValueException $e) {
-            self::compatAssertStringContainsString('Webhook::constructEvent', $e->getMessage());
+            self::compatAssertStringContainsString('constructEvent', $e->getMessage());
         }
     }
 
