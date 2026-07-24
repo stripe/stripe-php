@@ -5909,7 +5909,9 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.billing.intent',
                         'amount_details' => [
+                            'amount_due' => 'amount_due',
                             'currency' => 'usd',
+                            'customer_balance_applied' => 'customer_balance_applied',
                             'discount' => 'discount',
                             'shipping' => 'shipping',
                             'subtotal' => 'subtotal',
@@ -6104,7 +6106,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.intent',
                 'amount_details' => [
+                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
+                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6294,7 +6298,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.intent',
                 'amount_details' => [
+                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
+                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6328,7 +6334,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.intent',
                 'amount_details' => [
+                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
+                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6362,7 +6370,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.intent',
                 'amount_details' => [
+                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
+                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6396,7 +6406,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.intent',
                 'amount_details' => [
+                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
+                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -6433,7 +6445,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.intent',
                 'amount_details' => [
+                    'amount_due' => 'amount_due',
                     'currency' => 'usd',
+                    'customer_balance_applied' => 'customer_balance_applied',
                     'discount' => 'discount',
                     'shipping' => 'shipping',
                     'subtotal' => 'subtotal',
@@ -13330,6 +13344,94 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\ReceivedDebit::class, $result);
     }
 
+    public function testV2MoneyManagementReceivedDebitMandateGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/received_debit_mandates',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.money_management.received_debit_mandate',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'currency' => 'usd',
+                        'financial_account' => 'financial_account',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'status' => 'expired',
+                        'type' => 'bank_transfer',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->receivedDebitMandates->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\ReceivedDebitMandate::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementReceivedDebitMandateGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/received_debit_mandates/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.received_debit_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'type' => 'bank_transfer',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->receivedDebitMandates->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\ReceivedDebitMandate::class, $result);
+    }
+
+    public function testV2MoneyManagementReceivedDebitMandatePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/received_debit_mandates/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.received_debit_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'type' => 'bank_transfer',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->receivedDebitMandates->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\ReceivedDebitMandate::class, $result);
+    }
+
     public function testV2MoneyManagementRecipientVerificationPost()
     {
         $this->stubRequest(
@@ -14650,6 +14752,90 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
+    }
+
+    public function testV2RiskInquiryGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/risk/inquiries',
+            ['account' => 'account'],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.risk.inquiry',
+                        'closed_at' => '1970-01-06T13:53:35.258Z',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'opened_at' => '1970-01-18T22:56:33.737Z',
+                        'status' => 'closed',
+                        'type' => 'appeal',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->risk->inquiries->all([
+            'account' => 'account',
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Risk\Inquiry::class, $result->data[0]);
+    }
+
+    public function testV2RiskInquiryGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/risk/inquiries/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.risk.inquiry',
+                'closed_at' => '1970-01-06T13:53:35.258Z',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'opened_at' => '1970-01-18T22:56:33.737Z',
+                'status' => 'closed',
+                'type' => 'appeal',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->risk->inquiries->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Risk\Inquiry::class, $result);
+    }
+
+    public function testV2RiskInquiryPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/risk/inquiries/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.risk.inquiry',
+                'closed_at' => '1970-01-06T13:53:35.258Z',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'opened_at' => '1970-01-18T22:56:33.737Z',
+                'status' => 'closed',
+                'type' => 'appeal',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->risk->inquiries->update('id_123', []);
+        self::assertInstanceOf(V2\Risk\Inquiry::class, $result);
     }
 
     public function testV2SignalsAccountSignalGet()

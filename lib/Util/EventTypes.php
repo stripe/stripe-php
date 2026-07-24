@@ -383,10 +383,17 @@ class EventTypes
         \Stripe\Events\V2MoneyManagementReceivedCreditReturnedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditReturnedEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditSucceededEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitCanceledEvent::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitFailedEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitPendingEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitPendingEvent::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitScheduledEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitScheduledEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitSucceededEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitUpdatedEvent::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandateCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandateCanceledEvent::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandateCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandateCreatedEvent::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandateExpiredEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandateExpiredEvent::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandatePendingCancellationEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandatePendingCancellationEvent::class,
+        \Stripe\Events\V2MoneyManagementReceivedDebitMandateUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedDebitMandateUpdatedEvent::class,
         \Stripe\Events\V2MoneyManagementRecipientVerificationCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementRecipientVerificationCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementRecipientVerificationUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementRecipientVerificationUpdatedEvent::class,
         \Stripe\Events\V2MoneyManagementTransactionCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementTransactionCreatedEvent::class,
@@ -423,6 +430,7 @@ class EventTypes
         \Stripe\Events\V2ReportingReportRunUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunUpdatedEvent::class,
         \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEvent::class,
         \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEvent::class,
+        \Stripe\Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

@@ -5230,6 +5230,19 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.received_debit.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementReceivedDebitCreatedEvent, StripeClient): void $handler Handles v2.money_management.received_debit.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementReceivedDebitCreated($handler)
+    {
+        $this->register('v2.money_management.received_debit.created', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.received_debit.failed" event.
      *
      * @param callable(Events\V2MoneyManagementReceivedDebitFailedEvent, StripeClient): void $handler Handles v2.money_management.received_debit.failed events
@@ -5256,6 +5269,19 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.received_debit.scheduled" event.
+     *
+     * @param callable(Events\V2MoneyManagementReceivedDebitScheduledEvent, StripeClient): void $handler Handles v2.money_management.received_debit.scheduled events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementReceivedDebitScheduled($handler)
+    {
+        $this->register('v2.money_management.received_debit.scheduled', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.received_debit.succeeded" event.
      *
      * @param callable(Events\V2MoneyManagementReceivedDebitSucceededEvent, StripeClient): void $handler Handles v2.money_management.received_debit.succeeded events
@@ -5279,6 +5305,87 @@ class StripeEventNotificationHandler
     public function onV2MoneyManagementReceivedDebitUpdated($handler)
     {
         $this->register('v2.money_management.received_debit.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.received_debit_mandate.canceled" event.
+     *
+     * @param callable(Events\V2MoneyManagementReceivedDebitMandateCanceledEvent, StripeClient): void $handler Handles v2.money_management.received_debit_mandate.canceled events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementReceivedDebitMandateCanceled($handler)
+    {
+        $this->register(
+            'v2.money_management.received_debit_mandate.canceled',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.received_debit_mandate.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementReceivedDebitMandateCreatedEvent, StripeClient): void $handler Handles v2.money_management.received_debit_mandate.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementReceivedDebitMandateCreated($handler)
+    {
+        $this->register(
+            'v2.money_management.received_debit_mandate.created',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.received_debit_mandate.expired" event.
+     *
+     * @param callable(Events\V2MoneyManagementReceivedDebitMandateExpiredEvent, StripeClient): void $handler Handles v2.money_management.received_debit_mandate.expired events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementReceivedDebitMandateExpired($handler)
+    {
+        $this->register(
+            'v2.money_management.received_debit_mandate.expired',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.received_debit_mandate.pending_cancellation" event.
+     *
+     * @param callable(Events\V2MoneyManagementReceivedDebitMandatePendingCancellationEvent, StripeClient): void $handler Handles v2.money_management.received_debit_mandate.pending_cancellation events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementReceivedDebitMandatePendingCancellation(
+        $handler
+    ) {
+        $this->register(
+            'v2.money_management.received_debit_mandate.pending_cancellation',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.received_debit_mandate.updated" event.
+     *
+     * @param callable(Events\V2MoneyManagementReceivedDebitMandateUpdatedEvent, StripeClient): void $handler Handles v2.money_management.received_debit_mandate.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementReceivedDebitMandateUpdated($handler)
+    {
+        $this->register(
+            'v2.money_management.received_debit_mandate.updated',
+            $handler
+        );
     }
 
     /**
@@ -5808,6 +5915,23 @@ class StripeEventNotificationHandler
     {
         $this->register(
             'v2.signals.account_signal.merchant_delinquency_ready',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.signals.account_signal.payment_delinquency_exposure_ready" event.
+     *
+     * @param callable(Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent, StripeClient): void $handler Handles v2.signals.account_signal.payment_delinquency_exposure_ready events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsAccountSignalPaymentDelinquencyExposureReady(
+        $handler
+    ) {
+        $this->register(
+            'v2.signals.account_signal.payment_delinquency_exposure_ready',
             $handler
         );
     }
