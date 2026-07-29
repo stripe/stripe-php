@@ -13,7 +13,7 @@ namespace Stripe\SharedPayment;
  * @property null|int $deactivated_at Time at which this SharedPaymentIssuedToken was deactivated.
  * @property null|string $deactivated_reason The reason why the SharedPaymentIssuedToken has been deactivated.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property null|(object{type: string, use_stripe_sdk: null|(object{value: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $next_action If present, describes the action required to make this <code>SharedPaymentIssuedToken</code> usable for payments. Present when the token is in <code>requires_action</code> state.
+ * @property null|(object{redirect_to_url: null|(object{return_url: string, url: string}&\Stripe\StripeObject), type: string, use_stripe_sdk: null|(object{value: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $next_action If present, describes the action required to make this <code>SharedPaymentIssuedToken</code> usable for payments. Present when the token is in <code>requires_action</code> state.
  * @property string $payment_method ID of an existing PaymentMethod.
  * @property null|string $return_url If the customer does not exit their browser while authenticating, they will be redirected to this specified URL after completion.
  * @property null|(object{insights: (object{bot?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_issuer_decline?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_testing?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), fraudulent_dispute: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject), stolen_card?: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $risk_details Risk details of the SharedPaymentIssuedToken.
@@ -23,6 +23,7 @@ namespace Stripe\SharedPayment;
  * @property null|string $status Status of this SharedPaymentIssuedToken, one of <code>active</code>, <code>requires_action</code>, or <code>deactivated</code>.
  * @property null|(object{amount_captured: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $usage_details Usage details of the SharedPaymentIssuedToken
  * @property null|(object{currency: string, expires_at: null|int, max_amount: int}&\Stripe\StripeObject) $usage_limits Usage limits of the SharedPaymentIssuedToken.
+ * @property null|bool $use_stripe_sdk Set to true when using Stripe.js, iOS, or Android client-side SDKs to handle next actions.
  */
 class IssuedToken extends \Stripe\ApiResource
 {
@@ -40,7 +41,7 @@ class IssuedToken extends \Stripe\ApiResource
     /**
      * Creates a new SharedPaymentIssuedToken object.
      *
-     * @param null|array{expand?: string[], payment_method: string, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int}} $params
+     * @param null|array{expand?: string[], payment_method: string, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int}, use_stripe_sdk?: bool} $params
      * @param null|array|string $options
      *
      * @return IssuedToken the created resource

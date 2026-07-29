@@ -12,8 +12,8 @@ namespace Stripe\Service;
 class FxQuoteService extends AbstractService
 {
     /**
-     * Returns a list of FX quotes that have been issued. The FX quotes are returned in
-     * sorted order, with the most recent FX quotes appearing first.
+     * Returns a list of active FX quotes. The FX quotes are returned in sorted order,
+     * with the most recent FX quotes appearing first.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * The FX Quotes API provides three functions:
  * - View Stripe's current exchange rate for any given currency pair.
- * - Extend quoted rates for a 1-hour period or a 24-hour period, minimizing uncertainty from FX fluctuations.
+ * - Extend quoted rates for up to a 24-hour period, minimizing uncertainty from FX fluctuations.
  * - Preview the FX fees Stripe will charge on your FX transaction, allowing you to anticipate specific settlement amounts before payment costs.
  *
  * <a href="/payments/currencies/localize-prices/fx-quotes-api">View the docs</a>
@@ -15,7 +15,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the quote was created, measured in seconds since the Unix epoch.
- * @property string $lock_duration The duration the exchange rate quote remains valid from creation time. Allowed values are none, hour, and day. Note that for the test mode API available in alpha, you can request an extended quote, but it won't be usable for any transactions.
+ * @property string $lock_duration The duration that the quote is locked for, from creation time. The quote will be usable for the duration specified.
  * @property null|int $lock_expires_at <p>Time at which the quote will expire, measured in seconds since the Unix epoch.</p><p>If lock_duration is set to ‘none’ this field will be set to null.</p>
  * @property string $lock_status <p>Lock status of the quote. Transitions from active to expired once past the lock_expires_at timestamp.</p><p>Can return value none, active, or expired.</p>
  * @property StripeObject $rates Information about the rates.
@@ -58,8 +58,8 @@ class FxQuote extends ApiResource
     }
 
     /**
-     * Returns a list of FX quotes that have been issued. The FX quotes are returned in
-     * sorted order, with the most recent FX quotes appearing first.
+     * Returns a list of active FX quotes. The FX quotes are returned in sorted order,
+     * with the most recent FX quotes appearing first.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
