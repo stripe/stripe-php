@@ -51,6 +51,8 @@ class TaxRate extends ApiResource
     const TAX_TYPE_IGST = 'igst';
     const TAX_TYPE_JCT = 'jct';
     const TAX_TYPE_LEASE_TAX = 'lease_tax';
+    const TAX_TYPE_MASS_TRANSIT_PARKING_TAX = 'mass_transit_parking_tax';
+    const TAX_TYPE_PARKING_TAX = 'parking_tax';
     const TAX_TYPE_PST = 'pst';
     const TAX_TYPE_QST = 'qst';
     const TAX_TYPE_RETAIL_DELIVERY_FEE = 'retail_delivery_fee';

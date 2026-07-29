@@ -43,6 +43,23 @@ class PaymentRecord extends ApiResource
     const REPORTED_BY_STRIPE = 'stripe';
 
     /**
+     * List all the Payment Records for a given merchant.
+     *
+     * @param null|array{created_after?: int, created_before?: int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array|string $opts
+     *
+     * @return Collection<PaymentRecord> of ApiResources
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, Collection::class, $params, $opts);
+    }
+
+    /**
      * Retrieves a Payment Record with the given ID.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key

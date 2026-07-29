@@ -9515,7 +9515,7 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/money_management/outbound_setup_intents',
+            '/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits',
             [],
             [],
             false,
@@ -9530,7 +9530,10 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->moneyManagement->outboundSetupIntents->create([]);
+            $this->v2Client->v2->core->vault->usBankAccounts->confirmMicrodeposits(
+                'id_123',
+                []
+            );
         } catch (Exception\ControlledByAlternateResourceException $e) {
         }
     }
