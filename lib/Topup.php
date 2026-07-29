@@ -21,8 +21,11 @@ namespace Stripe;
  * @property null|int $expected_availability_date Date the funds are expected to arrive in your Stripe account for payouts. This factors in delays like weekends or bank holidays. May not be specified depending on status of top-up.
  * @property null|string $failure_code Error code explaining reason for top-up failure if available (see <a href="/api/errors">the errors section</a> for a list of codes).
  * @property null|string $failure_message Message to user further explaining reason for top-up failure if available.
+ * @property null|string $initiated_by Indicates whether the top-up was initiated by Stripe or by the user.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
+ * @property null|PaymentMethod|string $payment_method The ID of a PaymentMethod representing the payment method used for the top-up. A PaymentMethod of type <code>us_bank_account</code> can be used.
+ * @property null|(object{us_bank_account: null|(object{network: string}&StripeObject)}&StripeObject) $payment_method_options Payment-method-specific configuration for this top-up.
  * @property null|Source $source The source field is deprecated. It might not always be present in the API response.
  * @property null|string $statement_descriptor Extra information about a top-up. This will appear on your source's bank statement. It must contain at least one letter.
  * @property string $status The status of the top-up is either <code>canceled</code>, <code>failed</code>, <code>pending</code>, <code>reversed</code>, or <code>succeeded</code>.
@@ -33,6 +36,9 @@ class Topup extends ApiResource
     const OBJECT_NAME = 'topup';
 
     use ApiOperations\Update;
+
+    const INITIATED_BY_STRIPE = 'stripe';
+    const INITIATED_BY_USER = 'user';
 
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';

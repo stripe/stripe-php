@@ -12,6 +12,21 @@ namespace Stripe\Service;
 class PaymentRecordService extends AbstractService
 {
     /**
+     * List all the Payment Records for a given merchant.
+     *
+     * @param null|array{created_after?: int, created_before?: int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Collection<\Stripe\PaymentRecord>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v1/payment_records', $params, $opts);
+    }
+
+    /**
      * Report a new Payment Record. You may report a Payment Record as it is
      * initialized and later report updates through the other report_* methods, or
      * report Payment  Records in a terminal state directly, through this method.
