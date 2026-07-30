@@ -53,6 +53,7 @@ class GiftCardOperation extends ApiResource
     const FAILURE_CODE_STOLEN_CARD = 'stolen_card';
     const FAILURE_CODE_SUSPECTED_FRAUD = 'suspected_fraud';
     const FAILURE_CODE_TIMEOUT = 'timeout';
+    const FAILURE_CODE_TRY_AGAIN_LATER = 'try_again_later';
 
     const STATUS_FAILED = 'failed';
     const STATUS_SUCCEEDED = 'succeeded';

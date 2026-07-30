@@ -50,6 +50,44 @@ class AccountSignalService extends \Stripe\Service\AbstractService
                                         ],
                                     ],
                                 ],
+                                'payment_delinquency_exposure' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'additional_details' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'gross_exposure_amount' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'value' => [
+                                                            'kind' => 'int64_string',
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                        'exposure_amount' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'value' => [
+                                                    'kind' => 'int64_string',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                'user_account_sharing' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'score' => ['kind' => 'decimal_string'],
+                                    ],
+                                ],
+                                'user_multi_accounting' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'score' => ['kind' => 'decimal_string'],
+                                    ],
+                                ],
                             ],
                         ],
                     ],
@@ -86,6 +124,38 @@ class AccountSignalService extends \Stripe\Service\AbstractService
                         'fields' => [
                             'probability' => ['kind' => 'decimal_string'],
                         ],
+                    ],
+                    'payment_delinquency_exposure' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'additional_details' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'gross_exposure_amount' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'value' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                            'exposure_amount' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'value' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                        ],
+                    ],
+                    'user_account_sharing' => [
+                        'kind' => 'object',
+                        'fields' => ['score' => ['kind' => 'decimal_string']],
+                    ],
+                    'user_multi_accounting' => [
+                        'kind' => 'object',
+                        'fields' => ['score' => ['kind' => 'decimal_string']],
                     ],
                 ],
             ],

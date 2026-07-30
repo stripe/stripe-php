@@ -28,5 +28,6 @@ class CustomerConsumerWallet extends \Stripe\ApiResource
     const NETWORK_SOLANA = 'solana';
     const NETWORK_STELLAR = 'stellar';
     const NETWORK_SUI = 'sui';
+    const NETWORK_TEMPO = 'tempo';
     const NETWORK_WORLDCHAIN = 'worldchain';
 }

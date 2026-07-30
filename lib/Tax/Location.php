@@ -11,6 +11,7 @@ namespace Stripe\Tax;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject) $address
  * @property null|string $description A descriptive text providing additional context about the tax location. This can include information about the venue, types of events held, services available, or any relevant details for better identification (e.g., &quot;A spacious auditorium suitable for large concerts and events.&quot;).
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $type The type of tax location to be defined. Currently the only option is <code>performance</code>.
  */
 class Location extends \Stripe\ApiResource

@@ -11,7 +11,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property \Stripe\StripeObject $amount Amount and currency of the ReceivedDebit.
  * @property null|(object{topup?: string, type: string}&\Stripe\StripeObject) $balance_transfer This object stores details about the balance transfer object that resulted in the ReceivedDebit.
- * @property null|(object{financial_address: string, origin_type: string, payment_method_type: string, statement_descriptor?: string, us_bank_account: (object{bank_name?: string, network: string, routing_number?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $bank_transfer This object stores details about the originating banking transaction that resulted in the ReceivedDebit. Present if <code>type</code> field value is <code>bank_transfer</code>.
+ * @property null|(object{financial_address: string, gb_bank_account?: (object{account_holder_name?: string, bank_name?: string, last4?: string, network: string, received_debit_mandate?: string, sort_code?: string}&\Stripe\StripeObject), origin_type: string, payment_method_type: string, statement_descriptor?: string, us_bank_account?: (object{bank_name?: string, network: string, routing_number?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $bank_transfer This object stores details about the originating banking transaction that resulted in the ReceivedDebit. Present if <code>type</code> field value is <code>bank_transfer</code>.
  * @property null|(object{authorization?: (object{amount: \Stripe\StripeObject, issuing_authorization_v1: string}&\Stripe\StripeObject), card_transactions: (object{amount: \Stripe\StripeObject, issuing_transaction_v1: string}&\Stripe\StripeObject)[], card_v1_id: string}&\Stripe\StripeObject) $card_spend This object stores details about the issuing transactions that resulted in the ReceivedDebit. Present if <code>type</code> field value is <code>card_spend</code>.
  * @property int $created The time at which the ReceivedDebit was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: <code>2022-09-18T13:22:18.123Z</code>.
  * @property null|string $description Freeform string sent by the originator of the ReceivedDebit.
@@ -20,6 +20,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $financial_account Financial Account on which funds for ReceivedDebit were debited.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $receipt_url A link to the Stripe-hosted receipt for this ReceivedDebit.
+ * @property null|int $settles_at The time at which the scheduled ReceivedDebit is expected to settle. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: <code>2022-09-18T13:22:18.123Z</code>. Only present when status is <code>scheduled</code>.
  * @property string $status Open Enum. The status of the ReceivedDebit.
  * @property null|(object{failed: (object{reason: string}&\Stripe\StripeObject), returned: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Detailed information about the status of the ReceivedDebit.
  * @property null|(object{canceled_at?: int, failed_at?: int, returned_at?: int, succeeded_at?: int}&\Stripe\StripeObject) $status_transitions The time at which the ReceivedDebit transitioned to a particular status.
@@ -34,6 +35,7 @@ class ReceivedDebit extends \Stripe\ApiResource
     const STATUS_FAILED = 'failed';
     const STATUS_PENDING = 'pending';
     const STATUS_RETURNED = 'returned';
+    const STATUS_SCHEDULED = 'scheduled';
     const STATUS_SUCCEEDED = 'succeeded';
 
     const TYPE_BALANCE_TRANSFER = 'balance_transfer';
