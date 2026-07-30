@@ -7,15 +7,17 @@ namespace Stripe\Crypto;
 /**
  * A crypto deposit address is a blockchain address that can be used by a merchant for deposit mode crypto payments.
  *
+ * Related guide: <a href="/payments/machine">Machine payments</a>
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property string $address
- * @property int $created
- * @property null|string $customer
- * @property bool $livemode
+ * @property string $address The on-chain address where funds can be received.
+ * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
+ * @property null|string $customer If set, this deposit address is scoped to a <a href="https://docs.stripe.com/api/customers/object">Customer</a> and can only receive funds from that customer. Otherwise, this deposit address can receive funds from any customer.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
- * @property string $network
- * @property (object{token_contract_address: string, token_currency: string}&\Stripe\StripeObject)[] $supported_tokens
+ * @property string $network The blockchain network where this address can accept funds.
+ * @property (object{token_contract_address: string, token_currency: string}&\Stripe\StripeObject)[] $supported_tokens The tokens that can be sent to this deposit address on its network.
  */
 class DepositAddress extends \Stripe\ApiResource
 {

@@ -14,7 +14,7 @@ class IssuedTokenService extends \Stripe\Service\AbstractService
     /**
      * Creates a new SharedPaymentIssuedToken object.
      *
-     * @param null|array{expand?: string[], payment_method: string, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring_interval?: string}} $params
+     * @param null|array{expand?: string[], payment_method: string, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring_interval?: string}, use_stripe_sdk?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\SharedPayment\IssuedToken

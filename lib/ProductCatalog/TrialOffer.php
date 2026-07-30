@@ -44,4 +44,40 @@ class TrialOffer extends \Stripe\ApiResource
 
         return $obj;
     }
+
+    /**
+     * Returns a list of trial offers.
+     *
+     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, prices?: string[], starting_after?: string} $params
+     * @param null|array|string $opts
+     *
+     * @return \Stripe\Collection<TrialOffer> of ApiResources
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
+
+    /**
+     * Retrieves the trial offer with the given ID.
+     *
+     * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
+     * @param null|array|string $opts
+     *
+     * @return TrialOffer
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function retrieve($id, $opts = null)
+    {
+        $opts = \Stripe\Util\RequestOptions::parse($opts);
+        $instance = new static($id, $opts);
+        $instance->refresh();
+
+        return $instance;
+    }
 }
