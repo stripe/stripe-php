@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.1.1 - 2026-07-30
+* [#2110](https://github.com/stripe/stripe-php/pull/2110) suppress warnings when we can't access a directory
+
 ## 21.1.0 - 2026-07-29
 This release changes the pinned API version to 2026-07-29.dahlia.
 
