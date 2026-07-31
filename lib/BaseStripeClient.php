@@ -489,94 +489,24 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Constructs an Event from an {@link https://docs.stripe.com/event-destinations/eventbridge AWS EventBridge}
-     * or {@link https://docs.stripe.com/event-destinations/eventgrid Azure Event Grid} payload.
+     * Constructs a {@link https://docs.stripe.com/event-destinations#snapshot-payload snapshot event} from an incoming webhook without first verifying its authenticity.
+     * Should be used after calling {@see WebhookSignature::verifyHeader()} or with input from a trusted source (such as {@link https://docs.stripe.com/event-destinations/eventbridge AWS EventBridge}, or {@link https://docs.stripe.com/event-destinations/eventgrid Azure Event Grid} payload).
+     * Or, to verify & construct in a single call, use {@see Webhook::constructEvent()} instead.
      *
      * @param string $payload the JSON payload
      *
      * @return Event
      *
-     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or not recognized
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or is a v2 thin event
      */
-    public function constructEventFromCloudProvider($payload)
+    public function constructEventWithoutVerification($payload)
     {
-        $inner = $this->extractFromCloudProviderEnvelope($payload);
-        if (isset($inner['object']) && 'v2.core.event' === $inner['object']) {
-            throw new Exception\UnexpectedValueException(
-                'It looks like this cloud event contains a thin event notification. Use parseEventNotificationFromCloudProvider instead.'
-            );
-        }
-
-        return Event::constructFrom($inner);
+        return Webhook::constructEventWithoutVerification($payload);
     }
 
     /**
-     * Parses an EventNotification from an {@link https://docs.stripe.com/event-destinations/eventbridge AWS EventBridge}
-     * or {@link https://docs.stripe.com/event-destinations/eventgrid Azure Event Grid} payload.
-     *
-     * @param string $payload the JSON payload
-     *
-     * @return EventNotification
-     *
-     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or not recognized
-     */
-    public function parseEventNotificationFromCloudProvider($payload)
-    {
-        $inner = $this->extractFromCloudProviderEnvelope($payload);
-        if (isset($inner['object']) && 'event' === $inner['object']) {
-            throw new Exception\UnexpectedValueException(
-                'It looks like this cloud event contains a v1 Event. Use constructEventFromCloudProvider instead.'
-            );
-        }
-
-        return EventNotification::fromJson(\json_encode($inner), $this);
-    }
-
-    /**
-     * Extracts the inner event data from an AWS EventBridge or Azure Event Grid envelope.
-     *
-     * @param string $payload the JSON payload
-     *
-     * @return array
-     *
-     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or not recognized
-     */
-    private function extractFromCloudProviderEnvelope($payload)
-    {
-        $data = \json_decode($payload, true);
-        if (\JSON_ERROR_NONE !== \json_last_error()) {
-            throw new Exception\UnexpectedValueException(
-                'Invalid JSON payload: ' . \json_last_error_msg()
-            );
-        }
-
-        // Could add as many checks as we want here, but we'll start simple
-        if (\array_key_exists('detail', $data)) {
-            // AWS
-            // https://docs.stripe.com/event-destinations/eventbridge#event-structure
-            return $data['detail'];
-        }
-        if (\array_key_exists('specversion', $data)) {
-            // Azure
-            // https://docs.stripe.com/event-destinations/eventgrid#event-structure
-            return $data['data'];
-        }
-        if (isset($data['id']) && \is_string($data['id']) && 0 === \strpos($data['id'], 'evt_')) {
-            throw new Exception\UnexpectedValueException(
-                'It looks like you passed a Stripe Event directly. Use constructEvent instead to parse a webhook payload with signature verification.'
-            );
-        }
-
-        throw new Exception\UnexpectedValueException(
-            'Unrecognized cloud event format. The payload must be an AWS EventBridge or Azure Event Grid event envelope.'
-        );
-    }
-
-    /**
-     * Returns a \Stripe\V2\Core\EventNotification instance using the provided
-     * JSON payload. Throws an Exception\UnexpectedValueException if the payload
-     * is not valid JSON, and an Exception\SignatureVerificationException if the
-     * signature verification fails for any reason.
+     * Constructs a {@link https://docs.stripe.com/event-destinations#thin-payload thin event notification} from an incoming webhook after verifying its authenticity.
+     * To work with a webhook that has already been verified (i.e. one from a cloud provider, an asynchronous queue, or during testing), see {@see BaseStripeClient::parseEventNotificationWithoutVerification()}.
      *
      * @param string $payload the payload sent by Stripe
      * @param string $sigHeader the contents of the signature header sent by Stripe
@@ -586,14 +516,29 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      *
      * @return EventNotification
      *
-     * @throws Exception\SignatureVerificationException if the verification fails
-     * @throws Exception\UnexpectedValueException if the payload is not valid JSON
+     * @throws Exception\SignatureVerificationException if the verification fails for any reason
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or is a v1 event
      */
     public function parseEventNotification($payload, $sigHeader, $secret, $tolerance = Webhook::DEFAULT_TOLERANCE)
     {
-        $eventData = Util::utf8($payload);
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 
-        return EventNotification::fromJson($eventData, $this);
+        return EventNotification::fromJson(Util::utf8($payload), $this);
+    }
+
+    /**
+     * Constructs a {@link https://docs.stripe.com/event-destinations#thin-payload thin event notification} from an incoming webhook without first verifying its authenticity.
+     * Should be used after calling {@see WebhookSignature::verifyHeader()} or with input from a trusted source (such as {@link https://docs.stripe.com/event-destinations/eventbridge AWS EventBridge}, or {@link https://docs.stripe.com/event-destinations/eventgrid Azure Event Grid} payload).
+     * Or, to verify & parse in a single call, use {@see BaseStripeClient::parseEventNotification()} instead.
+     *
+     * @param string $payload the JSON payload
+     *
+     * @return EventNotification
+     *
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or is a v1 event
+     */
+    public function parseEventNotificationWithoutVerification($payload)
+    {
+        return EventNotification::fromJson(Webhook::maybeExtractFromCloudProviderEnvelope($payload), $this);
     }
 }

@@ -69,18 +69,20 @@ abstract class EventNotification
      * initial handling. This is useful in unit tests and working with EventNotifications that you've
      * already validated the authenticity of.
      *
-     * @param string $jsonStr the raw json payload
+     * @param array<string, mixed>|string $payload the raw JSON string or already-parsed array
      * @param \Stripe\StripeClient $client a StripeClient instance that this can use to make requests
      *
      * @return EventNotification
+     *
+     * @throws \Stripe\Exception\UnexpectedValueException if the payload is a v1 event
      */
-    public static function fromJson($jsonStr, $client)
+    public static function fromJson($payload, $client)
     {
-        $json = json_decode($jsonStr, true);
+        $json = \Stripe\Webhook::parsePayload($payload);
 
         if (isset($json['object']) && 'event' === $json['object']) {
             throw new \Stripe\Exception\UnexpectedValueException(
-                'You passed a webhook payload to a method that expects a thin event notification. Use the corresponding constructEvent* method instead.'
+                'You passed a v1 Event to a method that expects a thin event notification. Use the corresponding constructEvent* method instead.'
             );
         }
 

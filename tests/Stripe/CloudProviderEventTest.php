@@ -97,12 +97,10 @@ final class CloudProviderEventTest extends TestCase
         ]);
     }
 
-    // constructEventFromCloudProvider tests
-
     public function testEventBridge()
     {
         $client = new StripeClient('sk_test_fake');
-        $event = $client->constructEventFromCloudProvider($this->eventBridgePayloadV1);
+        $event = $client->constructEventWithoutVerification($this->eventBridgePayloadV1);
         self::assertInstanceOf(Event::class, $event);
         self::assertSame('evt_test_123', $event->id);
         self::assertSame('customer.created', $event->type);
@@ -111,7 +109,7 @@ final class CloudProviderEventTest extends TestCase
     public function testEventGrid()
     {
         $client = new StripeClient('sk_test_fake');
-        $event = $client->constructEventFromCloudProvider($this->eventGridPayloadV1);
+        $event = $client->constructEventWithoutVerification($this->eventGridPayloadV1);
         self::assertInstanceOf(Event::class, $event);
         self::assertSame('evt_test_456', $event->id);
         self::assertSame('customer.created', $event->type);
@@ -121,16 +119,20 @@ final class CloudProviderEventTest extends TestCase
     {
         $client = new StripeClient('sk_test_fake');
         $this->expectException(Exception\UnexpectedValueException::class);
-        $client->constructEventFromCloudProvider('not valid json');
+        $client->constructEventWithoutVerification('not valid json');
     }
 
-    public function testRawEventSuggestsConstructEvent()
+    public function testRawEventSucceeds()
     {
-        $rawEvent = '{"id":"evt_test_123","object":"event","type":"customer.created"}';
+        $rawEvent = \json_encode([
+            'id' => 'evt_test_123',
+            'object' => 'event',
+            'type' => 'customer.created',
+        ]);
         $client = new StripeClient('sk_test_fake');
-        $this->expectException(Exception\UnexpectedValueException::class);
-        $this->expectExceptionMessageMatches('/constructEvent/');
-        $client->constructEventFromCloudProvider($rawEvent);
+        $event = $client->constructEventWithoutVerification($rawEvent);
+        self::assertInstanceOf(Event::class, $event);
+        self::assertSame('evt_test_123', $event->id);
     }
 
     public function testUnrecognizedFormat()
@@ -138,44 +140,138 @@ final class CloudProviderEventTest extends TestCase
         $client = new StripeClient('sk_test_fake');
         $this->expectException(Exception\UnexpectedValueException::class);
         $this->expectExceptionMessageMatches('/Unrecognized cloud event format/');
-        $client->constructEventFromCloudProvider('{"foo":"bar"}');
+        $client->constructEventWithoutVerification('{"foo":"bar"}');
     }
 
-    public function testConstructEventFromCloudProviderRejectsV2Event()
+    public function testConstructEventWithoutVerificationRejectsV2Event()
     {
         $client = new StripeClient('sk_test_fake');
         $this->expectException(Exception\UnexpectedValueException::class);
         $this->expectExceptionMessageMatches('/parseEventNotification/');
-        $client->constructEventFromCloudProvider($this->eventBridgePayloadV2);
+        $client->constructEventWithoutVerification($this->eventBridgePayloadV2);
     }
 
-    // parseEventNotificationFromCloudProvider tests
+    // parseEventNotificationWithoutVerification tests
 
-    public function testParseEventNotificationFromCloudProviderEventBridge()
+    public function testParseEventNotificationWithoutVerificationEventBridge()
     {
         $client = new StripeClient('sk_test_fake');
-        $event = $client->parseEventNotificationFromCloudProvider($this->eventBridgePayloadV2);
+        $event = $client->parseEventNotificationWithoutVerification($this->eventBridgePayloadV2);
         self::assertInstanceOf(UnknownEventNotification::class, $event);
         self::assertSame('evt_234', $event->id);
         self::assertSame('v2.imaginary.event', $event->type);
         self::assertFalse($event->livemode);
     }
 
-    public function testParseEventNotificationFromCloudProviderEventGrid()
+    public function testParseEventNotificationWithoutVerificationEventGrid()
     {
         $client = new StripeClient('sk_test_fake');
-        $event = $client->parseEventNotificationFromCloudProvider($this->eventGridPayloadV2);
+        $event = $client->parseEventNotificationWithoutVerification($this->eventGridPayloadV2);
         self::assertInstanceOf(UnknownEventNotification::class, $event);
         self::assertSame('evt_234', $event->id);
         self::assertSame('v2.imaginary.event', $event->type);
         self::assertTrue($event->livemode);
     }
 
-    public function testParseEventNotificationFromCloudProviderRejectsV1Event()
+    public function testParseEventNotificationWithoutVerificationRejectsV1Event()
     {
         $client = new StripeClient('sk_test_fake');
         $this->expectException(Exception\UnexpectedValueException::class);
         $this->expectExceptionMessageMatches('/constructEvent/');
-        $client->parseEventNotificationFromCloudProvider($this->eventBridgePayloadV1);
+        $client->parseEventNotificationWithoutVerification($this->eventBridgePayloadV1);
+    }
+
+    public function testParseEventNotificationWithoutVerificationInvalidJsonThrows()
+    {
+        $client = new StripeClient('sk_test_fake');
+        $this->expectException(Exception\UnexpectedValueException::class);
+        $client->parseEventNotificationWithoutVerification('not valid json');
+    }
+
+    public function testParseEventNotificationWithoutVerificationUnrecognizedFormatThrows()
+    {
+        $client = new StripeClient('sk_test_fake');
+        $this->expectException(Exception\UnexpectedValueException::class);
+        $this->expectExceptionMessageMatches('/Unrecognized cloud event format/');
+        $client->parseEventNotificationWithoutVerification(\json_encode(['foo' => 'bar']));
+    }
+
+    public function testParseEventNotificationWithoutVerificationRawV2Passthrough()
+    {
+        $rawV2Payload = \json_encode([
+            'id' => 'evt_234',
+            'object' => 'v2.core.event',
+            'type' => 'v2.imaginary.event',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'livemode' => false,
+        ]);
+        $client = new StripeClient('sk_test_fake');
+        $event = $client->parseEventNotificationWithoutVerification($rawV2Payload);
+        self::assertInstanceOf(V2\Core\EventNotification::class, $event);
+        self::assertSame('evt_234', $event->id);
+    }
+
+    public function testConstructEventWithoutVerificationViaWebhookStatic()
+    {
+        $event = Webhook::constructEventWithoutVerification($this->eventBridgePayloadV1);
+        self::assertInstanceOf(Event::class, $event);
+        self::assertSame('evt_test_123', $event->id);
+        self::assertSame('customer.created', $event->type);
+    }
+
+    // parseEventNotification tests
+
+    public function testParseEventNotificationValidSignature()
+    {
+        $secret = 'whsec_test_secret';
+        $payload = \json_encode([
+            'id' => 'evt_234',
+            'object' => 'v2.core.event',
+            'type' => 'v2.imaginary.event',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'livemode' => false,
+        ]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($payload, $secret);
+
+        $client = new StripeClient('sk_test_fake');
+        $event = $client->parseEventNotification($payload, $sigHeader, $secret);
+
+        self::assertInstanceOf(V2\Core\EventNotification::class, $event);
+        self::assertSame('evt_234', $event->id);
+        self::assertSame('v2.imaginary.event', $event->type);
+        self::assertFalse($event->livemode);
+    }
+
+    public function testParseEventNotificationRejectsV1Payload()
+    {
+        $secret = 'whsec_test_secret';
+        $payload = \json_encode([
+            'id' => 'evt_test_webhook',
+            'object' => 'event',
+            'data' => ['object' => ['id' => 'rdr_123', 'object' => 'terminal.reader']],
+        ]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($payload, $secret);
+
+        $client = new StripeClient('sk_test_fake');
+        $this->expectException(Exception\UnexpectedValueException::class);
+        $this->expectExceptionMessageMatches('/constructEvent/');
+        $client->parseEventNotification($payload, $sigHeader, $secret);
+    }
+
+    public function testParseEventNotificationBadSignatureThrows()
+    {
+        $secret = 'whsec_test_secret';
+        $payload = \json_encode([
+            'id' => 'evt_234',
+            'object' => 'v2.core.event',
+            'type' => 'v2.imaginary.event',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'livemode' => false,
+        ]);
+        $badSigHeader = 't=12345,v1=bad_signature';
+
+        $client = new StripeClient('sk_test_fake');
+        $this->expectException(Exception\SignatureVerificationException::class);
+        $client->parseEventNotification($payload, $badSigHeader, $secret);
     }
 }
