@@ -124,7 +124,7 @@ final class WebhookTest extends TestCase
 
     public function testGenerateSignatureHeader()
     {
-        $timestamp = 1_614_000_000;
+        $timestamp = 1614000000;
         $header = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET, $timestamp);
 
         // Assert the format is t=<timestamp>,v1=<hex>
