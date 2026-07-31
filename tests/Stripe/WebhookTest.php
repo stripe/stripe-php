@@ -128,7 +128,7 @@ final class WebhookTest extends TestCase
         $header = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET, $timestamp);
 
         // Assert the format is t=<timestamp>,v1=<hex>
-        self::assertMatchesRegularExpression('/^t=\d+,v1=[0-9a-f]+$/', $header);
+        self::compatAssertMatchesRegularExpression('/^t=\d+,v1=[0-9a-f]+$/', $header);
         self::assertStringStartsWith("t={$timestamp},v1=", $header);
 
         // Assert the generated header passes verification
