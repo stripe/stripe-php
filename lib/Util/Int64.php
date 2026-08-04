@@ -3,16 +3,16 @@
 namespace Stripe\Util;
 
 /**
- * Handles coercion between PHP int and JSON string for int64_string fields.
+ * Handles coercion for V2 API fields with special wire encoding.
  *
- * V2 API fields marked as int64_string are transmitted as JSON strings on
- * the wire but exposed as PHP ints in the SDK.
+ * V2 API fields may require coercion between PHP native types and their
+ * wire representations (e.g. int64_string, decimal_string), and may be
+ * wrapped in nullable or discriminatedUnion schemas.
  */
 class Int64
 {
     /**
-     * Coerce outbound request params: convert PHP ints to strings where
-     * the request schema indicates an int64_string field.
+     * Coerce outbound request params according to the field's wire schema.
      *
      * @param mixed $params
      * @param array $schema e.g. ['kind' => 'object', 'fields' => ['amount' => ['kind' => 'int64_string']]]
@@ -32,6 +32,29 @@ class Int64
         if ('int64_string' === $schema['kind']) {
             if (\is_int($params)) {
                 return (string) $params;
+            }
+
+            return $params;
+        }
+
+        if ('decimal_string' === $schema['kind']) {
+            if (\is_float($params) || \is_int($params)) {
+                return (string) $params;
+            }
+
+            return $params;
+        }
+
+        if ('nullable' === $schema['kind'] && isset($schema['inner'])) {
+            return self::coerceRequestParams($params, $schema['inner']);
+        }
+
+        if ('discriminatedUnion' === $schema['kind'] && isset($schema['discriminator'], $schema['variants'])) {
+            if (\is_array($params) && \array_key_exists($schema['discriminator'], $params)) {
+                $discriminatorValue = $params[$schema['discriminator']];
+                if (\array_key_exists($discriminatorValue, $schema['variants'])) {
+                    return self::coerceRequestParams($params, $schema['variants'][$discriminatorValue]);
+                }
             }
 
             return $params;
@@ -97,6 +120,17 @@ class Int64
             if ('int64_string' === $encoding['kind']) {
                 if (\is_string($value) && \is_numeric($value)) {
                     $values[$field] = (int) $value;
+                }
+            } elseif ('nullable' === $encoding['kind'] && isset($encoding['inner'])) {
+                if (null !== $value) {
+                    $values = self::coerceResponseValues($values, [$field => $encoding['inner']]);
+                }
+            } elseif ('discriminatedUnion' === $encoding['kind'] && isset($encoding['discriminator'], $encoding['variants'])) {
+                if (\is_array($value) && \array_key_exists($encoding['discriminator'], $value)) {
+                    $discriminatorValue = $value[$encoding['discriminator']];
+                    if (\array_key_exists($discriminatorValue, $encoding['variants'])) {
+                        $values = self::coerceResponseValues($values, [$field => $encoding['variants'][$discriminatorValue]]);
+                    }
                 }
             } elseif ('array' === $encoding['kind'] && isset($encoding['items'])) {
                 if (\is_array($value)) {

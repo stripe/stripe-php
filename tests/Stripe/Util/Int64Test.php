@@ -317,4 +317,325 @@ final class Int64Test extends \Stripe\TestCase
         $schema = ['kind' => 'int64_string'];
         self::assertSame('-500', Int64::coerceRequestParams(-500, $schema));
     }
+
+    public function testCoerceRequestParamsConvertsFloatToStringForDecimalField()
+    {
+        $schema = ['kind' => 'decimal_string'];
+        self::assertSame('3.14', Int64::coerceRequestParams(3.14, $schema));
+    }
+
+    public function testCoerceRequestParamsConvertsIntToStringForDecimalField()
+    {
+        $schema = ['kind' => 'decimal_string'];
+        self::assertSame('42', Int64::coerceRequestParams(42, $schema));
+    }
+
+    public function testCoerceRequestParamsPassesThroughStringForDecimalField()
+    {
+        $schema = ['kind' => 'decimal_string'];
+        self::assertSame('3.14', Int64::coerceRequestParams('3.14', $schema));
+    }
+
+    public function testCoerceRequestParamsNullableReturnsNullForNullValue()
+    {
+        $schema = ['kind' => 'nullable', 'inner' => ['kind' => 'int64_string']];
+        self::assertNull(Int64::coerceRequestParams(null, $schema));
+    }
+
+    public function testCoerceRequestParamsNullableRecursesIntoInnerSchema()
+    {
+        $schema = ['kind' => 'nullable', 'inner' => ['kind' => 'int64_string']];
+        self::assertSame('100', Int64::coerceRequestParams(100, $schema));
+    }
+
+    public function testCoerceRequestParamsNullableWithObjectInner()
+    {
+        $schema = [
+            'kind' => 'nullable',
+            'inner' => [
+                'kind' => 'object',
+                'fields' => [
+                    'amount' => ['kind' => 'int64_string'],
+                ],
+            ],
+        ];
+        $params = ['amount' => 500, 'currency' => 'usd'];
+        $result = Int64::coerceRequestParams($params, $schema);
+
+        self::assertSame('500', $result['amount']);
+        self::assertSame('usd', $result['currency']);
+    }
+
+    public function testCoerceRequestParamsDiscriminatedUnionSelectsMatchingVariant()
+    {
+        $schema = [
+            'kind' => 'discriminatedUnion',
+            'discriminator' => 'type',
+            'variants' => [
+                'transfer' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'amount' => ['kind' => 'int64_string'],
+                    ],
+                ],
+                'fee' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'fee_amount' => ['kind' => 'int64_string'],
+                    ],
+                ],
+            ],
+        ];
+        $params = ['type' => 'transfer', 'amount' => 200, 'currency' => 'usd'];
+        $result = Int64::coerceRequestParams($params, $schema);
+
+        self::assertSame('200', $result['amount']);
+        self::assertSame('usd', $result['currency']);
+        self::assertSame('transfer', $result['type']);
+    }
+
+    public function testCoerceRequestParamsDiscriminatedUnionUsesCorrectVariant()
+    {
+        $schema = [
+            'kind' => 'discriminatedUnion',
+            'discriminator' => 'type',
+            'variants' => [
+                'transfer' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'amount' => ['kind' => 'int64_string'],
+                    ],
+                ],
+                'fee' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'fee_amount' => ['kind' => 'int64_string'],
+                    ],
+                ],
+            ],
+        ];
+        $params = ['type' => 'fee', 'fee_amount' => 50, 'currency' => 'usd'];
+        $result = Int64::coerceRequestParams($params, $schema);
+
+        self::assertSame('50', $result['fee_amount']);
+        self::assertSame('usd', $result['currency']);
+    }
+
+    public function testCoerceRequestParamsDiscriminatedUnionPassesThroughForUnknownVariant()
+    {
+        $schema = [
+            'kind' => 'discriminatedUnion',
+            'discriminator' => 'type',
+            'variants' => [
+                'transfer' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'amount' => ['kind' => 'int64_string'],
+                    ],
+                ],
+            ],
+        ];
+        $params = ['type' => 'unknown', 'amount' => 100];
+        $result = Int64::coerceRequestParams($params, $schema);
+
+        self::assertSame(100, $result['amount']);
+    }
+
+    public function testCoerceRequestParamsDiscriminatedUnionPassesThroughForMissingDiscriminator()
+    {
+        $schema = [
+            'kind' => 'discriminatedUnion',
+            'discriminator' => 'type',
+            'variants' => [
+                'transfer' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'amount' => ['kind' => 'int64_string'],
+                    ],
+                ],
+            ],
+        ];
+        $params = ['amount' => 100];
+        $result = Int64::coerceRequestParams($params, $schema);
+
+        self::assertSame(100, $result['amount']);
+    }
+
+    public function testCoerceRequestParamsDiscriminatedUnionPassesThroughNonArray()
+    {
+        $schema = [
+            'kind' => 'discriminatedUnion',
+            'discriminator' => 'type',
+            'variants' => [
+                'transfer' => ['kind' => 'object', 'fields' => []],
+            ],
+        ];
+        self::assertSame('not-an-array', Int64::coerceRequestParams('not-an-array', $schema));
+    }
+
+    // ——— coerceResponseValues — nullable ———
+
+    public function testCoerceResponseValuesNullableSkipsNullValue()
+    {
+        $encodings = [
+            'amount' => ['kind' => 'nullable', 'inner' => ['kind' => 'int64_string']],
+        ];
+        $values = ['amount' => null];
+        $result = Int64::coerceResponseValues($values, $encodings);
+
+        self::assertNull($result['amount']);
+    }
+
+    public function testCoerceResponseValuesNullableRecursesForNonNull()
+    {
+        $encodings = [
+            'amount' => ['kind' => 'nullable', 'inner' => ['kind' => 'int64_string']],
+        ];
+        $values = ['amount' => '999'];
+        $result = Int64::coerceResponseValues($values, $encodings);
+
+        self::assertSame(999, $result['amount']);
+    }
+
+    public function testCoerceResponseValuesNullableWithObjectInner()
+    {
+        $encodings = [
+            'details' => [
+                'kind' => 'nullable',
+                'inner' => [
+                    'kind' => 'object',
+                    'fields' => [
+                        'amount' => ['kind' => 'int64_string'],
+                    ],
+                ],
+            ],
+        ];
+        $values = ['details' => ['amount' => '300', 'label' => 'test']];
+        $result = Int64::coerceResponseValues($values, $encodings);
+
+        self::assertSame(300, $result['details']['amount']);
+        self::assertSame('test', $result['details']['label']);
+    }
+
+    // ——— coerceResponseValues — discriminatedUnion ———
+
+    public function testCoerceResponseValuesDiscriminatedUnionSelectsMatchingVariant()
+    {
+        $encodings = [
+            'adjustment' => [
+                'kind' => 'discriminatedUnion',
+                'discriminator' => 'type',
+                'variants' => [
+                    'transfer' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                    'fee' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'fee_amount' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $values = ['adjustment' => ['type' => 'transfer', 'amount' => '750', 'currency' => 'usd']];
+        $result = Int64::coerceResponseValues($values, $encodings);
+
+        self::assertSame(750, $result['adjustment']['amount']);
+        self::assertSame('usd', $result['adjustment']['currency']);
+        self::assertSame('transfer', $result['adjustment']['type']);
+    }
+
+    public function testCoerceResponseValuesDiscriminatedUnionUsesCorrectVariant()
+    {
+        $encodings = [
+            'adjustment' => [
+                'kind' => 'discriminatedUnion',
+                'discriminator' => 'type',
+                'variants' => [
+                    'transfer' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                    'fee' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'fee_amount' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $values = ['adjustment' => ['type' => 'fee', 'fee_amount' => '25', 'currency' => 'usd']];
+        $result = Int64::coerceResponseValues($values, $encodings);
+
+        self::assertSame(25, $result['adjustment']['fee_amount']);
+        self::assertSame('usd', $result['adjustment']['currency']);
+    }
+
+    public function testCoerceResponseValuesDiscriminatedUnionPassesThroughForUnknownVariant()
+    {
+        $encodings = [
+            'adjustment' => [
+                'kind' => 'discriminatedUnion',
+                'discriminator' => 'type',
+                'variants' => [
+                    'transfer' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $values = ['adjustment' => ['type' => 'unknown', 'amount' => '100']];
+        $result = Int64::coerceResponseValues($values, $encodings);
+
+        self::assertSame('100', $result['adjustment']['amount']);
+    }
+
+    public function testCoerceResponseValuesDiscriminatedUnionPassesThroughForMissingDiscriminator()
+    {
+        $encodings = [
+            'adjustment' => [
+                'kind' => 'discriminatedUnion',
+                'discriminator' => 'type',
+                'variants' => [
+                    'transfer' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $values = ['adjustment' => ['amount' => '100']];
+        $result = Int64::coerceResponseValues($values, $encodings);
+
+        self::assertSame('100', $result['adjustment']['amount']);
+    }
+
+    public function testCoerceResponseValuesDiscriminatedUnionPassesThroughNonArrayValue()
+    {
+        $encodings = [
+            'adjustment' => [
+                'kind' => 'discriminatedUnion',
+                'discriminator' => 'type',
+                'variants' => [
+                    'transfer' => ['kind' => 'object', 'fields' => []],
+                ],
+            ],
+        ];
+        $values = ['adjustment' => 'not-an-array'];
+        $result = Int64::coerceResponseValues($values, $encodings);
+
+        self::assertSame('not-an-array', $result['adjustment']);
+    }
 }
