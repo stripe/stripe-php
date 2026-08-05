@@ -23,7 +23,7 @@ namespace Stripe;
  * @property null|int $cancel_at A date in the future at which the subscription will automatically get canceled
  * @property bool $cancel_at_period_end Whether this subscription will (if <code>status=active</code>) or did (if <code>status=canceled</code>) cancel at the end of the current billing period.
  * @property null|int $canceled_at If the subscription has been canceled, the date of that cancellation. If the subscription was canceled with <code>cancel_at_period_end</code>, <code>canceled_at</code> will reflect the time of the most recent update request, not the end of the subscription period when the subscription is automatically moved to a canceled state.
- * @property null|(object{comment: null|string, feedback: null|string, reason: null|string}&StripeObject) $cancellation_details Details about why this subscription was cancelled
+ * @property null|(object{comment: null|string, feedback: null|string, feedback_option?: null|Billing\FeedbackOptions|string, reason: null|string}&StripeObject) $cancellation_details Details about why this subscription was cancelled
  * @property string $collection_method Either <code>charge_automatically</code>, or <code>send_invoice</code>. When charging automatically, Stripe will attempt to pay this subscription at the end of the cycle using the default source attached to the customer. When sending an invoice, Stripe will email your customer an invoice with payment instructions and mark the subscription as <code>active</code>.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
@@ -166,7 +166,10 @@ class Subscription extends ApiResource
      * subscription, plus a <currency>50</currency> prorating adjustment for half of
      * the previous month’s <currency>100</currency> difference). Similarly, a
      * downgrade generates a credit that is applied to the next invoice. We also
-     * prorate when you make quantity changes.
+     * prorate when you make quantity changes. You can also <a
+     * href="/billing/scripts/stripe-authored/proration">use scripts to prorate your
+     * billing</a>. To learn more, see <a
+     * href="/billing/subscriptions/prorations">Prorations</a>.
      *
      * Switching prices does not normally change the billing date or generate an
      * immediate charge unless:

@@ -5506,58 +5506,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/billing/contracts',
-            [
-                'contract_number' => 'contract_number',
-                'currency' => 'usd',
-                'pricing_lines' => [
-                    [
-                        'ends_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'timestamp',
-                        ],
-                        'lookup_key' => 'lookup_key',
-                        'metadata' => ['key' => 'metadata'],
-                        'pricing' => [
-                            'price_details' => [
-                                'price' => 'price',
-                                'pricing_overrides' => [
-                                    [
-                                        'ends_at' => [
-                                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                                            'type' => 'timestamp',
-                                        ],
-                                        'lookup_key' => 'lookup_key',
-                                        'metadata' => ['key' => 'metadata'],
-                                        'overwrite_price' => [
-                                            'unit_amount' => 'unit_amount',
-                                        ],
-                                        'priority' => 1165461084,
-                                        'starts_at' => [
-                                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                                            'type' => 'timestamp',
-                                        ],
-                                        'type' => 'overwrite_price',
-                                    ],
-                                ],
-                                'quantity_changes' => [
-                                    [
-                                        'effective_at' => [
-                                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                                            'type' => 'timestamp',
-                                        ],
-                                        'set' => '75841.33333333333',
-                                    ],
-                                ],
-                            ],
-                            'type' => 'price',
-                        ],
-                        'starts_at' => [
-                            'timestamp' => '1970-01-01T15:18:46.294Z',
-                            'type' => 'timestamp',
-                        ],
-                    ],
-                ],
-            ],
+            ['contract_number' => 'contract_number', 'currency' => 'usd'],
             [],
             false,
             [
@@ -5576,54 +5525,6 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->billing->contracts->create([
             'contract_number' => 'contract_number',
             'currency' => 'usd',
-            'pricing_lines' => [
-                [
-                    'ends_at' => [
-                        'timestamp' => '1970-01-01T15:18:46.294Z',
-                        'type' => 'timestamp',
-                    ],
-                    'lookup_key' => 'lookup_key',
-                    'metadata' => ['key' => 'metadata'],
-                    'pricing' => [
-                        'price_details' => [
-                            'price' => 'price',
-                            'pricing_overrides' => [
-                                [
-                                    'ends_at' => [
-                                        'timestamp' => '1970-01-01T15:18:46.294Z',
-                                        'type' => 'timestamp',
-                                    ],
-                                    'lookup_key' => 'lookup_key',
-                                    'metadata' => ['key' => 'metadata'],
-                                    'overwrite_price' => [
-                                        'unit_amount' => 'unit_amount',
-                                    ],
-                                    'priority' => 1165461084,
-                                    'starts_at' => [
-                                        'timestamp' => '1970-01-01T15:18:46.294Z',
-                                        'type' => 'timestamp',
-                                    ],
-                                    'type' => 'overwrite_price',
-                                ],
-                            ],
-                            'quantity_changes' => [
-                                [
-                                    'effective_at' => [
-                                        'timestamp' => '1970-01-01T15:18:46.294Z',
-                                        'type' => 'timestamp',
-                                    ],
-                                    'set' => '75841.33333333333',
-                                ],
-                            ],
-                        ],
-                        'type' => 'price',
-                    ],
-                    'starts_at' => [
-                        'timestamp' => '1970-01-01T15:18:46.294Z',
-                        'type' => 'timestamp',
-                    ],
-                ],
-            ],
         ]);
         self::assertInstanceOf(V2\Billing\Contract::class, $result);
     }

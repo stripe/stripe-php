@@ -121,6 +121,7 @@ require __DIR__ . '/lib/Billing/Analytics/MeterUsageRow.php';
 require __DIR__ . '/lib/Billing/CreditBalanceSummary.php';
 require __DIR__ . '/lib/Billing/CreditBalanceTransaction.php';
 require __DIR__ . '/lib/Billing/CreditGrant.php';
+require __DIR__ . '/lib/Billing/FeedbackOptions.php';
 require __DIR__ . '/lib/Billing/Meter.php';
 require __DIR__ . '/lib/Billing/MeterEvent.php';
 require __DIR__ . '/lib/Billing/MeterEventAdjustment.php';

@@ -27,7 +27,7 @@ namespace Stripe;
  * @property null|(object{configuration: StripeObject, display_name: string, id: string}&StripeObject) $script Configuration of the <a href="https://docs.stripe.com/billing/subscriptions/script-coupons">script</a> used to calculate the discount.
  * @property null|(object{interval: string, interval_count: int, iterations: (object{count: null|int, type: string}&StripeObject)}&StripeObject) $service_period
  * @property int $times_redeemed Number of times this coupon has been applied to a customer.
- * @property null|string $type One of <code>amount_off</code>, <code>percent_off</code>, or <code>script</code>. Describes the type of coupon logic used to calculate the discount.
+ * @property null|string $type The type of coupon logic used to calculate the discount.
  * @property bool $valid Taking account of the above properties, whether this coupon can still be applied to a customer.
  */
 class Coupon extends ApiResource
