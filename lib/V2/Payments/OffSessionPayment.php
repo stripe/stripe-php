@@ -17,6 +17,7 @@ namespace Stripe\V2\Payments;
  * @property null|\Stripe\StripeObject $amount_capturable The amount available to be captured.
  * @property null|(object{discount_amount?: int, error?: (object{code?: string, message?: string}&\Stripe\StripeObject), line_items: (object{discount_amount?: int, product_code?: string, product_name: string, quantity: int, tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject), unit_cost: int, unit_of_measure?: string}&\Stripe\StripeObject)[], shipping?: (object{amount?: int, from_postal_code?: string, to_postal_code?: string}&\Stripe\StripeObject), tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $amount_details Provides industry-specific information about the amount.
  * @property \Stripe\StripeObject $amount_requested The “presentment amount” to be collected from the customer.
+ * @property null|string $application The application associated with this OffSessionPayment.
  * @property null|\Stripe\StripeObject $application_fee_amount_requested The amount of the application fee requested to be applied to the payment.
  * @property string $cadence The frequency of the underlying payment.
  * @property null|(object{capture_before?: int, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.

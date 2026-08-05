@@ -15,7 +15,7 @@ class StatementService extends \Stripe\Service\AbstractService
      * Returns a list of statements for a Financial Account.
      *
      * @param string $id
-     * @param null|array{limit?: int, order_by?: string} $params
+     * @param null|array{limit?: int, order_by?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\FinancialAccountStatement>

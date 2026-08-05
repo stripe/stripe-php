@@ -27,7 +27,7 @@ class TelemetryId
 
         $filePath = self::joinPath($configDir, 'telemetry_id');
 
-        if (\file_exists($filePath)) {
+        if (@\file_exists($filePath)) {
             $content = @\file_get_contents($filePath);
             if (false !== $content) {
                 $content = \trim($content);
@@ -41,7 +41,7 @@ class TelemetryId
 
         self::$cachedId = \bin2hex(\random_bytes(16));
 
-        if (!\is_dir($configDir)) {
+        if (!@\is_dir($configDir)) {
             if (!@\mkdir($configDir, 0700, true)) {
                 self::$cachedId = null;
 

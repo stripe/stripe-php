@@ -25,6 +25,9 @@ class Stripe
     /** @var string The version of the Stripe API to use for requests. */
     public static $apiVersion = Util\ApiVersion::CURRENT;
 
+    /** @var string The major API version (release train). */
+    public static $majorApiVersion = Util\ApiVersion::CURRENT_MAJOR;
+
     /** @var null|string The account ID for connected accounts requests. */
     public static $accountId = null;
 
