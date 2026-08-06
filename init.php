@@ -207,6 +207,7 @@ require __DIR__ . '/lib/FileLink.php';
 require __DIR__ . '/lib/FinancialConnections/Account.php';
 require __DIR__ . '/lib/FinancialConnections/AccountOwner.php';
 require __DIR__ . '/lib/FinancialConnections/AccountOwnership.php';
+require __DIR__ . '/lib/FinancialConnections/Authorization.php';
 require __DIR__ . '/lib/FinancialConnections/Session.php';
 require __DIR__ . '/lib/FinancialConnections/Transaction.php';
 require __DIR__ . '/lib/Forwarding/Request.php';

@@ -68,6 +68,7 @@ class ObjectTypes
             \Stripe\FinancialConnections\Account::OBJECT_NAME => \Stripe\FinancialConnections\Account::class,
             \Stripe\FinancialConnections\AccountOwner::OBJECT_NAME => \Stripe\FinancialConnections\AccountOwner::class,
             \Stripe\FinancialConnections\AccountOwnership::OBJECT_NAME => \Stripe\FinancialConnections\AccountOwnership::class,
+            \Stripe\FinancialConnections\Authorization::OBJECT_NAME => \Stripe\FinancialConnections\Authorization::class,
             \Stripe\FinancialConnections\Session::OBJECT_NAME => \Stripe\FinancialConnections\Session::class,
             \Stripe\FinancialConnections\Transaction::OBJECT_NAME => \Stripe\FinancialConnections\Transaction::class,
             \Stripe\Forwarding\Request::OBJECT_NAME => \Stripe\Forwarding\Request::class,
