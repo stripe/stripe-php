@@ -52,7 +52,7 @@ class Int64
         if ('discriminatedUnion' === $schema['kind'] && isset($schema['discriminator'], $schema['variants'])) {
             if (\is_array($params) && \array_key_exists($schema['discriminator'], $params)) {
                 $discriminatorValue = $params[$schema['discriminator']];
-                if (\array_key_exists($discriminatorValue, $schema['variants'])) {
+                if (\is_string($discriminatorValue) && \array_key_exists($discriminatorValue, $schema['variants'])) {
                     return self::coerceRequestParams($params, $schema['variants'][$discriminatorValue]);
                 }
             }
@@ -128,7 +128,7 @@ class Int64
             } elseif ('discriminatedUnion' === $encoding['kind'] && isset($encoding['discriminator'], $encoding['variants'])) {
                 if (\is_array($value) && \array_key_exists($encoding['discriminator'], $value)) {
                     $discriminatorValue = $value[$encoding['discriminator']];
-                    if (\array_key_exists($discriminatorValue, $encoding['variants'])) {
+                    if (\is_string($discriminatorValue) && \array_key_exists($discriminatorValue, $encoding['variants'])) {
                         $values = self::coerceResponseValues($values, [$field => $encoding['variants'][$discriminatorValue]]);
                     }
                 }
