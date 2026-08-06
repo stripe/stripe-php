@@ -182,7 +182,7 @@ final class WebhookTest extends TestCase
     public function testMaybeExtractThrowsForUnrecognizedFormat()
     {
         $this->expectException(Exception\UnexpectedValueException::class);
-        $this->expectExceptionMessage('Unrecognized cloud event format');
+        $this->expectExceptionMessage('Unrecognized event format');
 
         $payload = json_encode(['id' => 'some_unknown_id', 'foo' => 'bar']);
 

@@ -139,7 +139,7 @@ final class CloudProviderEventTest extends TestCase
     {
         $client = new StripeClient('sk_test_fake');
         $this->expectException(Exception\UnexpectedValueException::class);
-        $this->expectExceptionMessageMatches('/Unrecognized cloud event format/');
+        $this->expectExceptionMessageMatches('/Unrecognized event format/');
         $client->constructEventWithoutVerification('{"foo":"bar"}');
     }
 
@@ -192,7 +192,7 @@ final class CloudProviderEventTest extends TestCase
     {
         $client = new StripeClient('sk_test_fake');
         $this->expectException(Exception\UnexpectedValueException::class);
-        $this->expectExceptionMessageMatches('/Unrecognized cloud event format/');
+        $this->expectExceptionMessageMatches('/Unrecognized event format/');
         $client->parseEventNotificationWithoutVerification(\json_encode(['foo' => 'bar']));
     }
 
@@ -273,5 +273,54 @@ final class CloudProviderEventTest extends TestCase
         $client = new StripeClient('sk_test_fake');
         $this->expectException(Exception\SignatureVerificationException::class);
         $client->parseEventNotification($payload, $badSigHeader, $secret);
+    }
+
+    public function testEventGridMissingDataFieldThrows()
+    {
+        $payload = \json_encode([
+            'specversion' => '1.0',
+            'type' => 'customer.created',
+            'source' => '/providers/stripe/ed_test_123',
+            'id' => 'test-missing-data',
+        ]);
+        $client = new StripeClient('sk_test_fake');
+        $this->expectException(Exception\UnexpectedValueException::class);
+        $this->expectExceptionMessageMatches('/Unrecognized event format/i');
+        $client->constructEventWithoutVerification($payload);
+    }
+
+    public function testEventGridMissingDataFieldThrowsForEventNotification()
+    {
+        $payload = \json_encode([
+            'specversion' => '1.0',
+            'type' => 'v2.imaginary.event',
+            'source' => '/providers/stripe/ed_test_123',
+            'id' => 'test-missing-data',
+        ]);
+        $client = new StripeClient('sk_test_fake');
+        $this->expectException(Exception\UnexpectedValueException::class);
+        $this->expectExceptionMessageMatches('/Unrecognized event format/i');
+        $client->parseEventNotificationWithoutVerification($payload);
+    }
+
+    public function testUnexpectedObjectTypeThrows()
+    {
+        // The inner payload (inside an EventGrid envelope) has an object type
+        // that is neither 'event' nor 'v2.core.event'.
+        $payload = \json_encode([
+            'specversion' => '1.0',
+            'type' => 'customer.created',
+            'source' => '/providers/stripe/ed_test_123',
+            'id' => '9aeb0fdf-c01e-0131-0922-9eb54906e209',
+            'data' => [
+                'object' => 'customer',
+                'type' => 'customer.created',
+                'id' => 'cus_123',
+            ],
+        ]);
+        $client = new StripeClient('sk_test_fake');
+        $this->expectException(Exception\UnexpectedValueException::class);
+        $this->expectExceptionMessageMatches('/Unexpected object type/');
+        $client->parseEventNotificationWithoutVerification($payload);
     }
 }

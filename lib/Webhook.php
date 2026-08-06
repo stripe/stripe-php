@@ -114,7 +114,7 @@ abstract class Webhook
             // https://docs.stripe.com/event-destinations/eventbridge#event-structure
             return $data['detail'];
         }
-        if (\array_key_exists('specversion', $data)) {
+        if (\array_key_exists('specversion', $data) && \array_key_exists('data', $data)) {
             // Azure
             // https://docs.stripe.com/event-destinations/eventgrid#event-structure
             return $data['data'];
@@ -125,7 +125,7 @@ abstract class Webhook
         }
 
         throw new Exception\UnexpectedValueException(
-            'Unrecognized cloud event format. The payload must be an AWS EventBridge / Azure Event Grid event envelope or a stripe webhook.'
+            'Unrecognized event format. The payload must be an AWS EventBridge/Azure Event Grid event envelope or a Stripe webhook (thin event notification or snapshot).'
         );
     }
 }
