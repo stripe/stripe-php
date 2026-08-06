@@ -12,9 +12,9 @@ namespace Stripe\V2\Core;
  * @property string $account The account ID which the individual belongs to.
  * @property null|(object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, purpose: string, state?: string, town?: string}&\Stripe\StripeObject)[] $additional_addresses Additional addresses associated with the person.
  * @property null|(object{full_name?: string, given_name?: string, purpose: string, surname?: string}&\Stripe\StripeObject)[] $additional_names Additional names (e.g. aliases) associated with the person.
- * @property null|(object{account?: (object{date?: int, ip?: string, user_agent?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $additional_terms_of_service Attestations of accepted terms of service agreements.
+ * @property null|(object{account?: (object{date?: string, ip?: string, user_agent?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $additional_terms_of_service Attestations of accepted terms of service agreements.
  * @property null|(object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}&\Stripe\StripeObject) $address The person's residential address.
- * @property int $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
+ * @property string $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property null|(object{day: int, month: int, year: int}&\Stripe\StripeObject) $date_of_birth The person's date of birth.
  * @property null|(object{company_authorization?: (object{files: string[], type: string}&\Stripe\StripeObject), passport?: (object{files: string[], type: string}&\Stripe\StripeObject), primary_verification?: (object{front_back: (object{back?: string, front: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), secondary_verification?: (object{front_back: (object{back?: string, front: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), visa?: (object{files: string[], type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $documents Documents that may be submitted to satisfy various informational requests.
  * @property null|string $email The person's email address.
@@ -30,7 +30,7 @@ namespace Stripe\V2\Core;
  * @property null|(object{kana?: (object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}&\Stripe\StripeObject), kanji?: (object{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string, town?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $script_addresses The script addresses (e.g., non-Latin characters) associated with the person.
  * @property null|(object{kana?: (object{given_name?: string, surname?: string}&\Stripe\StripeObject), kanji?: (object{given_name?: string, surname?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $script_names The script names (e.g. non-Latin characters) associated with the person.
  * @property null|string $surname The person's last name.
- * @property int $updated Time at which the object was last updated. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
+ * @property string $updated Time at which the object was last updated. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  */
 class AccountPerson extends \Stripe\ApiResource
 {
