@@ -30,7 +30,8 @@
       "Stripe\\": "lib/"
     },
     "files": [
-      "lib/version_check.php"
+      "lib/version_check.php",
+      "lib/agent_plugin_hint.php"
     ]
   },
   "autoload-dev": {
