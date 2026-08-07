@@ -1,8 +1,9 @@
 <?php
 
-if (getenv('CLAUDECODE') || getenv('CLAUDE_CODE_CHILD_SESSION')) {
+if (getenv('CLAUDECODE') !== false || getenv('CLAUDE_CODE_CHILD_SESSION') !== false) {
     try {
-        fwrite(STDERR, '<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />' . "\n");
+        $stderr = defined('STDERR') ? STDERR : fopen('php://stderr', 'w');
+        fwrite($stderr, '<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />' . "\n");
     } catch (Throwable $e) {
         // never let hint emission crash the SDK
     }

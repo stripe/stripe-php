@@ -5,7 +5,7 @@ namespace Stripe;
 /**
  * @internal
  *
- * @covers \Stripe\agent_check
+ * @coversNothing
  */
 final class AgentPluginHintTest extends TestCase
 {
@@ -39,6 +39,10 @@ final class AgentPluginHintTest extends TestCase
             null,
             $env
         );
+
+        if (!\is_resource($proc)) {
+            self::fail('proc_open failed to start subprocess');
+        }
 
         $stdout = \stream_get_contents($pipes[1]);
         $stderr = \stream_get_contents($pipes[2]);
