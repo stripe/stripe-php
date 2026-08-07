@@ -489,28 +489,56 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
-     * Returns a \Stripe\V2\Core\Events instance using the provided JSON payload. Throws an
-     * Exception\UnexpectedValueException if the payload is not valid JSON, and
-     * an Exception\SignatureVerificationException if the signature
-     * verification fails for any reason.
+     * Constructs a {@link https://docs.stripe.com/event-destinations#snapshot-payload snapshot event} from an incoming webhook without first verifying its authenticity.
+     * Should be used after calling {@see WebhookSignature::verifyHeader()} or with input from a trusted source (such as {@link https://docs.stripe.com/event-destinations/eventbridge AWS EventBridge}, or {@link https://docs.stripe.com/event-destinations/eventgrid Azure Event Grid} payload).
+     * Or, to verify & construct in a single call, use {@see Webhook::constructEvent()} instead.
+     *
+     * @param string $payload the JSON payload
+     *
+     * @return Event
+     *
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or is a v2 thin event
+     */
+    public function constructEventWithoutVerification($payload)
+    {
+        return Webhook::constructEventWithoutVerification($payload);
+    }
+
+    /**
+     * Constructs a {@link https://docs.stripe.com/event-destinations#thin-payload thin event notification} from an incoming webhook after verifying its authenticity.
+     * To work with a webhook that has already been verified (i.e. one from a cloud provider, an asynchronous queue, or during testing), see {@see BaseStripeClient::parseEventNotificationWithoutVerification()}.
      *
      * @param string $payload the payload sent by Stripe
-     * @param string $sigHeader the contents of the signature header sent by
-     *  Stripe
+     * @param string $sigHeader the contents of the signature header sent by Stripe
      * @param string $secret secret used to generate the signature
      * @param int $tolerance maximum difference allowed between the header's
      *  timestamp and the current time. Defaults to 300 seconds (5 min)
      *
      * @return EventNotification
      *
-     * @throws Exception\SignatureVerificationException if the verification fails
-     * @throws Exception\UnexpectedValueException if the payload is not valid JSON,
+     * @throws Exception\SignatureVerificationException if the verification fails for any reason
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or is a v1 event
      */
     public function parseEventNotification($payload, $sigHeader, $secret, $tolerance = Webhook::DEFAULT_TOLERANCE)
     {
-        $eventData = Util::utf8($payload);
         WebhookSignature::verifyHeader($payload, $sigHeader, $secret, $tolerance);
 
-        return EventNotification::fromJson($eventData, $this);
+        return EventNotification::fromJson(Util::utf8($payload), $this);
+    }
+
+    /**
+     * Constructs a {@link https://docs.stripe.com/event-destinations#thin-payload thin event notification} from an incoming webhook without first verifying its authenticity.
+     * Should be used after calling {@see WebhookSignature::verifyHeader()} or with input from a trusted source (such as {@link https://docs.stripe.com/event-destinations/eventbridge AWS EventBridge}, or {@link https://docs.stripe.com/event-destinations/eventgrid Azure Event Grid} payload).
+     * Or, to verify & parse in a single call, use {@see BaseStripeClient::parseEventNotification()} instead.
+     *
+     * @param string $payload the JSON payload
+     *
+     * @return EventNotification
+     *
+     * @throws Exception\UnexpectedValueException if the payload is not valid JSON or is a v1 event
+     */
+    public function parseEventNotificationWithoutVerification($payload)
+    {
+        return EventNotification::fromJson(Webhook::maybeExtractFromCloudProviderEnvelope($payload), $this);
     }
 }

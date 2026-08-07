@@ -125,6 +125,27 @@ abstract class WebhookSignature
     }
 
     /**
+     * Compute the `Stripe-Signature` header for a given webhook body & secret. Useful for signing payloads in unit tests.
+     *
+     * @param string $payload the webhook body to sign
+     * @param string $secret the webhook endpoint's signing secret
+     * @param null|int $timestamp unix timestamp to use (defaults to current time)
+     *
+     * @return string the full `Stripe-Signature` header value
+     */
+    public static function generateSignatureHeader($payload, $secret, $timestamp = null)
+    {
+        if (null === $timestamp) {
+            $timestamp = \time();
+        }
+        $scheme = self::EXPECTED_SCHEME;
+        $signedPayload = "{$timestamp}.{$payload}";
+        $signature = self::computeSignature($signedPayload, $secret);
+
+        return "t={$timestamp},{$scheme}={$signature}";
+    }
+
+    /**
      * Computes the signature for a given payload and secret.
      *
      * The current scheme used by Stripe ("v1") is HMAC/SHA-256.
