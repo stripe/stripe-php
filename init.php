@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__ . '/lib/version_check.php';
-require __DIR__ . '/lib/agent_check.php';
+require __DIR__ . '/lib/agent_plugin_hint.php';
 
 require __DIR__ . '/lib/Util/ApiVersion.php';
 

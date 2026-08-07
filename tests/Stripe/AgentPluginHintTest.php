@@ -7,7 +7,7 @@ namespace Stripe;
  *
  * @covers \Stripe\agent_check
  */
-final class AgentCheckTest extends TestCase
+final class AgentPluginHintTest extends TestCase
 {
     private static $bootstrap;
     private static $hint = '<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />';
