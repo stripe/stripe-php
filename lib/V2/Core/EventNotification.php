@@ -13,6 +13,7 @@ use Stripe\Util\EventNotificationTypes;
  * If you want more details, use `$stripeClient->v2->core->events->retrieve(thin_event.id)` to fetch the full event object.
  *
  * @property string             $id       Unique identifier for the event.
+ * @property string             $object   String representing the object's type. Objects of the same type share the same value.
  * @property string             $type     The type of the event.
  * @property string             $created  Time at which the object was created.
  * @property null|\Stripe\StripeContext        $context  Authentication context needed to fetch the event or related object.
@@ -22,6 +23,7 @@ use Stripe\Util\EventNotificationTypes;
 abstract class EventNotification
 {
     public $id;
+    public $object;
     public $type;
     public $created;
     public $context;
@@ -42,6 +44,9 @@ abstract class EventNotification
 
         if (\array_key_exists('id', $json)) {
             $this->id = $json['id'];
+        }
+        if (\array_key_exists('object', $json)) {
+            $this->object = $json['object'];
         }
         if (\array_key_exists('type', $json)) {
             $this->type = $json['type'];

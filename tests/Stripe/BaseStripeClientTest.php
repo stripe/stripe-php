@@ -856,6 +856,7 @@ final class BaseStripeClientTest extends TestCase
         $event = $client->parseEventNotification($eventData, $sigHeader, WebhookTest::SECRET);
 
         self::assertSame('evt_234', $event->id);
+        self::assertSame('v2.core.event', $event->object);
         self::assertSame('v1.billing.meter.error_report_triggered', $event->type);
         self::assertSame('acct_123', (string) $event->context);
         self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
