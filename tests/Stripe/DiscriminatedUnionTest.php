@@ -16,8 +16,8 @@ namespace Stripe;
  *
  * @internal
  *
- * @covers \Stripe\Util\Util
  * @covers \Stripe\StripeObject
+ * @covers \Stripe\Util\Util
  */
 final class DiscriminatedUnionTest extends TestCase
 {
@@ -190,10 +190,10 @@ final class DiscriminatedUnionTest extends TestCase
         );
 
         self::assertInstanceOf(StripeObject::class, $obj);
-        self::assertSame('rgb', $obj->model);
-        self::assertSame(255, $obj->r);
-        self::assertSame(128, $obj->g);
-        self::assertSame(0, $obj->b);
+        self::assertSame('rgb', $obj->model); // @phpstan-ignore-line
+        self::assertSame(255, $obj->r); // @phpstan-ignore-line
+        self::assertSame(128, $obj->g); // @phpstan-ignore-line
+        self::assertSame(0, $obj->b); // @phpstan-ignore-line
     }
 
     /**
@@ -236,14 +236,14 @@ final class DiscriminatedUnionTest extends TestCase
 
         self::assertInstanceOf(StripeObject::class, $obj);
         // Discriminator is directly accessible.
-        self::assertSame('card', $obj->type);
+        self::assertSame('card', $obj->type); // @phpstan-ignore-line
 
         // Nested variant data is deserialized into a StripeObject.
-        self::assertInstanceOf(StripeObject::class, $obj->card);
-        self::assertSame('visa', $obj->card->brand);
-        self::assertSame('4242', $obj->card->last4);
-        self::assertSame(12, $obj->card->exp_month);
-        self::assertSame(2026, $obj->card->exp_year);
+        self::assertInstanceOf(StripeObject::class, $obj->card); // @phpstan-ignore-line
+        self::assertSame('visa', $obj->card->brand); // @phpstan-ignore-line
+        self::assertSame('4242', $obj->card->last4); // @phpstan-ignore-line
+        self::assertSame(12, $obj->card->exp_month); // @phpstan-ignore-line
+        self::assertSame(2026, $obj->card->exp_year); // @phpstan-ignore-line
     }
 
     /**
@@ -266,14 +266,14 @@ final class DiscriminatedUnionTest extends TestCase
         );
 
         self::assertInstanceOf(StripeObject::class, $obj);
-        self::assertSame('sunset', $obj->name);
+        self::assertSame('sunset', $obj->name); // @phpstan-ignore-line
 
         // Nested discriminated union is also a StripeObject.
-        self::assertInstanceOf(StripeObject::class, $obj->color);
-        self::assertSame('rgb', $obj->color->model);
-        self::assertSame(255, $obj->color->r);
-        self::assertSame(128, $obj->color->g);
-        self::assertSame(0, $obj->color->b);
+        self::assertInstanceOf(StripeObject::class, $obj->color); // @phpstan-ignore-line
+        self::assertSame('rgb', $obj->color->model); // @phpstan-ignore-line
+        self::assertSame(255, $obj->color->r); // @phpstan-ignore-line
+        self::assertSame(128, $obj->color->g); // @phpstan-ignore-line
+        self::assertSame(0, $obj->color->b); // @phpstan-ignore-line
     }
 
     // -------------------------------------------------------------------------
