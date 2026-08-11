@@ -9,7 +9,7 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id ID of the outbound setup intent.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property int $created Created timestamp.
+ * @property string $created Created timestamp.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{confirmation_of_payee?: (object{object: string, status: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $next_action Specifies which actions needs to be taken next to continue setup of the credential.
  * @property PayoutMethod $payout_method Use the PayoutMethods API to list and interact with PayoutMethod objects.

@@ -10,7 +10,7 @@ namespace Stripe\V2\Billing;
  * @property string $id The ID of the CollectionSettingVersion object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|string $collection_method Either automatic, or send_invoice. When charging automatically, Stripe attempts to pay this bill at the end of the period using the payment method attached to the billing profile. When sending an invoice, Stripe emails your billing profile an invoice with payment instructions. Defaults to automatic.
- * @property int $created Timestamp of when the object was created.
+ * @property string $created Timestamp of when the object was created.
  * @property null|(object{payment_due?: (object{enabled: bool, include_payment_link: bool}&\Stripe\StripeObject)}&\Stripe\StripeObject) $email_delivery Email delivery settings.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $payment_method_configuration The ID of the PaymentMethodConfiguration object, which controls which payment methods are displayed to your customers.
