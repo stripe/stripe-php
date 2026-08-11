@@ -11,8 +11,8 @@ namespace Stripe\V2\Iam;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property (object{api_key?: (object{id: string}&\Stripe\StripeObject), type: string, user?: (object{email: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $actor The actor that performed the action.
  * @property string $context The account on which the action was performed.
- * @property int $created Timestamp when the activity log entry was created.
- * @property (object{api_key?: (object{created: int, expires_at?: int, id: string, ip_allowlist: string[], managed_by?: (object{application?: (object{id: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), name?: string, new_key?: string, note?: string, type: string}&\Stripe\StripeObject), type: string, user_invite?: (object{invited_user_email: string, roles: string[]}&\Stripe\StripeObject), user_roles?: (object{new_roles: string[], old_roles: string[], source: string, user_email: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $details Action-specific details of the activity log entry.
+ * @property string $created Timestamp when the activity log entry was created.
+ * @property (object{api_key?: (object{created: string, expires_at?: string, id: string, ip_allowlist: string[], managed_by?: (object{application?: (object{id: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), name?: string, new_key?: string, note?: string, type: string}&\Stripe\StripeObject), type: string, user_invite?: (object{invited_user_email: string, roles: string[]}&\Stripe\StripeObject), user_roles?: (object{new_roles: string[], old_roles: string[], source: string, user_email: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $details Action-specific details of the activity log entry.
  * @property bool $livemode Whether the action was performed in live mode.
  * @property string $type The type of action that was performed.
  */

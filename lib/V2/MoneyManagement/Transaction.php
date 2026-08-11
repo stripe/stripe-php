@@ -13,13 +13,13 @@ namespace Stripe\V2\MoneyManagement;
  * @property (object{available: \Stripe\StripeObject, inbound_pending: \Stripe\StripeObject, outbound_pending: \Stripe\StripeObject}&\Stripe\StripeObject) $balance_impact The delta to the FinancialAccount's balance. The balance_impact for the Transaction is equal to sum of its TransactionEntries that have <code>effective_at</code>s in the past.
  * @property string $category Open Enum. A descriptive category used to classify the Transaction.
  * @property null|(object{name?: string}&\Stripe\StripeObject) $counterparty Counterparty to this Transaction.
- * @property int $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
+ * @property string $created Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property null|string $description Description of this Transaction. When applicable, the description is copied from the Flow object at the time of transaction creation.
  * @property string $financial_account Indicates the FinancialAccount affected by this Transaction.
  * @property null|(object{adjustment?: string, currency_conversion?: string, fee_transaction?: string, inbound_transfer?: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string, received_debit?: string, type: string}&\Stripe\StripeObject) $flow Details about the Flow object that created the Transaction.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status Closed Enum. Current status of the Transaction. A Transaction is <code>pending</code> if either <code>balance_impact.inbound_pending</code> or <code>balance_impact.outbound_pending</code> is non-zero. A Transaction is <code>posted</code> if only <code>balance_impact.available</code> is non-zero. A Transaction is <code>void</code> if there is no balance impact. <code>posted</code> and <code>void</code> are terminal states, and no additional entries will be added to the Transaction.
- * @property (object{posted_at?: int, void_at?: int}&\Stripe\StripeObject) $status_transitions Timestamps for when the Transaction transitioned to a particular status.
+ * @property (object{posted_at?: string, void_at?: string}&\Stripe\StripeObject) $status_transitions Timestamps for when the Transaction transitioned to a particular status.
  */
 class Transaction extends \Stripe\ApiResource
 {

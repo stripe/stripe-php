@@ -10,7 +10,7 @@ namespace Stripe\V2\Extend;
  *
  * @property string $id The unique ID of the Workflow.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property int $created When the Workflow was created.
+ * @property string $created When the Workflow was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status Whether this Workflow is active, inactive, or in some other state. Only active Workflows may be invoked.
  * @property string $title Workflow title.
