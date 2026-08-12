@@ -11,7 +11,7 @@ namespace Stripe\V2\Core;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|(object{aws_account_id: string, aws_event_source_arn: string, aws_event_source_status: string}&\Stripe\StripeObject) $amazon_eventbridge Amazon EventBridge configuration.
  * @property null|(object{azure_partner_topic_name: string, azure_partner_topic_status: string, azure_region: string, azure_resource_group_name: string, azure_subscription_id: string}&\Stripe\StripeObject) $azure_event_grid Azure Event Grid configuration.
- * @property int $created Time at which the object was created.
+ * @property string $created Time at which the object was created.
  * @property string $description An optional description of what the event destination is used for.
  * @property string[] $enabled_events The list of events to enable for this endpoint.
  * @property string $event_payload Payload type of events being subscribed to.
@@ -23,7 +23,7 @@ namespace Stripe\V2\Core;
  * @property string $status Status. It can be set to either enabled or disabled.
  * @property null|(object{disabled?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Additional information about event destination status.
  * @property string $type Event destination type.
- * @property int $updated Time at which the object was last updated.
+ * @property string $updated Time at which the object was last updated.
  * @property null|(object{signing_secret?: string, url?: string}&\Stripe\StripeObject) $webhook_endpoint Webhook endpoint configuration.
  */
 class EventDestination extends \Stripe\ApiResource

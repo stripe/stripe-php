@@ -16,11 +16,11 @@ namespace Stripe\V2\Core;
  * @property string $id Unique identifier for the Claimable sandbox.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property string $app_channel The app channel that will be used when pre-installing your app on the claimable sandbox.
- * @property null|int $claimed_at The timestamp the sandbox was claimed. The value will be null if the sandbox status is not <code>claimed</code>.
- * @property int $created When the sandbox is created.
- * @property null|int $expires_at The timestamp the sandbox will expire. The value will be null if the sandbox is <code>claimed</code>.
+ * @property null|string $claimed_at The timestamp the sandbox was claimed. The value will be null if the sandbox status is not <code>claimed</code>.
+ * @property string $created When the sandbox is created.
+ * @property null|string $expires_at The timestamp the sandbox will expire. The value will be null if the sandbox is <code>claimed</code>.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property (object{expires_at: int, refresh_url: string, url: string}&\Stripe\StripeObject) $onboarding_link_details Details about the onboarding link.
+ * @property (object{expires_at: string, refresh_url: string, url: string}&\Stripe\StripeObject) $onboarding_link_details Details about the onboarding link.
  * @property null|(object{account?: string, app_install_status: string}&\Stripe\StripeObject) $owner_details Details about the livemode owner account of the sandbox. This will be null until the sandbox is claimed.
  * @property (object{country: string, email: string, name: string}&\Stripe\StripeObject) $prefill Values prefilled during the creation of the sandbox. When a user claims the sandbox, they will be able to update these values.
  * @property (object{account: string, api_keys?: (object{mcp?: string, publishable: string, secret: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $sandbox_details Data about the Stripe sandbox object.

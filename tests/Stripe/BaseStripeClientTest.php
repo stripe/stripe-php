@@ -852,10 +852,11 @@ final class BaseStripeClientTest extends TestCase
         $eventData = json_encode($jsonEvent);
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
 
-        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($eventData, WebhookTest::SECRET);
         $event = $client->parseEventNotification($eventData, $sigHeader, WebhookTest::SECRET);
 
         self::assertSame('evt_234', $event->id);
+        self::assertSame('v2.core.event', $event->object);
         self::assertSame('v1.billing.meter.error_report_triggered', $event->type);
         self::assertSame('acct_123', (string) $event->context);
         self::assertSame('2022-02-15T00:27:45.330Z', $event->created);
@@ -881,7 +882,7 @@ final class BaseStripeClientTest extends TestCase
         $eventData = json_encode($jsonEvent);
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
 
-        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($eventData, WebhookTest::SECRET);
         $event = $client->parseEventNotification($eventData, $sigHeader, WebhookTest::SECRET);
 
         self::assertSame('evt_234', $event->id);
@@ -908,13 +909,13 @@ final class BaseStripeClientTest extends TestCase
         $eventData = json_encode($jsonEvent);
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL, 'stripe_account' => 'acc_123']);
 
-        $sigHeader = WebhookTest::generateHeader(['payload' => $eventData]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($eventData, WebhookTest::SECRET);
 
         try {
             $client->parseEventNotification($eventData, $sigHeader, WebhookTest::SECRET);
             self::fail('Expected UnexpectedValueException was not thrown');
         } catch (Exception\UnexpectedValueException $e) {
-            self::compatAssertStringContainsString('Webhook::constructEvent', $e->getMessage());
+            self::compatAssertStringContainsString('constructEvent', $e->getMessage());
         }
     }
 

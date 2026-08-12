@@ -9,7 +9,7 @@ namespace Stripe\V2\Billing;
  *
  * @property string $id The ID of the billing profile object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property int $created Timestamp of when the object was created.
+ * @property string $created Timestamp of when the object was created.
  * @property null|string $customer The ID of the customer object.
  * @property null|string $default_payment_method The ID of the payment method object.
  * @property null|string $display_name A customer-facing name for the billing profile. Maximum length of 250 characters.

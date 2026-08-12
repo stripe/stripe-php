@@ -16,12 +16,12 @@ namespace Stripe\V2\Payments;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|\Stripe\StripeObject $amount_capturable The amount available to be captured.
  * @property null|(object{discount_amount?: int, error?: (object{code?: string, message?: string}&\Stripe\StripeObject), line_items: (object{discount_amount?: int, product_code?: string, product_name: string, quantity: int, tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject), unit_cost: int, unit_of_measure?: string}&\Stripe\StripeObject)[], shipping?: (object{amount?: int, from_postal_code?: string, to_postal_code?: string}&\Stripe\StripeObject), tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $amount_details Provides industry-specific information about the amount.
- * @property \Stripe\StripeObject $amount_requested The “presentment amount” to be collected from the customer.
+ * @property \Stripe\StripeObject $amount_requested The &quot;presentment amount&quot; to be collected from the customer.
  * @property null|string $application The application associated with this OffSessionPayment.
  * @property null|\Stripe\StripeObject $application_fee_amount_requested The amount of the application fee requested to be applied to the payment.
  * @property string $cadence The frequency of the underlying payment.
- * @property null|(object{capture_before?: int, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
- * @property int $created Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
+ * @property null|(object{capture_before?: string, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
+ * @property string $created Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property string $customer ID of the Customer to which this OffSessionPayment belongs.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|string $failure_reason The reason why the OffSessionPayment failed.
@@ -34,9 +34,9 @@ namespace Stripe\V2\Payments;
  * @property string $payment_method ID of the payment method used in this OffSessionPayment.
  * @property null|string $payment_record Payment record associated with the OffSessionPayment.
  * @property (object{enabled: bool}&\Stripe\StripeObject) $payments_orchestration Details about the payments orchestration configuration.
- * @property (object{attempts: int, retry_policy?: string, retry_strategy: string, retry_until?: int}&\Stripe\StripeObject) $retry_details Details about the OffSessionPayment retries.
- * @property null|string $statement_descriptor Text that appears on the customer’s statement as the statement descriptor for a non-card charge. This value overrides the account’s default statement descriptor. For information about requirements, including the 22-character limit, see the <a href="https://docs.stripe.com/get-started/account/statement-descriptors">Statement Descriptor docs</a>.
- * @property null|string $statement_descriptor_suffix Provides information about a card charge. Concatenated to the account’s <a href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement descriptor prefix</a> to form the complete statement descriptor that appears on the customer’s statement.
+ * @property (object{attempts: int, retry_policy?: string, retry_strategy: string, retry_until?: string}&\Stripe\StripeObject) $retry_details Details about the OffSessionPayment retries.
+ * @property null|string $statement_descriptor Text that appears on the customer's statement as the statement descriptor for a non-card charge. This value overrides the account's default statement descriptor. For information about requirements, including the 22-character limit, see the <a href="https://docs.stripe.com/get-started/account/statement-descriptors">Statement Descriptor docs</a>.
+ * @property null|string $statement_descriptor_suffix Provides information about a card charge. Concatenated to the account's <a href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement descriptor prefix</a> to form the complete statement descriptor that appears on the customer's statement.
  * @property string $status Status of this OffSessionPayment, one of <code>pending</code>, <code>pending_retry</code>, <code>processing</code>, <code>failed</code>, <code>canceled</code>, <code>requires_capture</code>, or <code>succeeded</code>.
  * @property null|string $target_date Provides a way to schedule deferred payments for cards and debits, in YYYY-MM-DD format.
  * @property null|string $test_clock Test clock that can be used to advance the retry attempts in a sandbox.

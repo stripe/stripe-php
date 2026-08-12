@@ -11,7 +11,7 @@ namespace Stripe\V2\Billing;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property int $created Time at which the object was created.
+ * @property string $created Time at which the object was created.
  * @property null|(object{id: string, version?: string}&\Stripe\StripeObject) $license_fee Details if this component is a License Fee.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $lookup_key An internal key you can use to search for a particular PricingPlanComponent.

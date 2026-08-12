@@ -365,6 +365,16 @@ class ApiRequestor
                     $code
                 );
 
+            case 'fx_quote_needs_refresh':
+                return Exception\FxQuoteNeedsRefreshException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'insufficient_funds':
                 return Exception\InsufficientFundsException::factory(
                     $msg,

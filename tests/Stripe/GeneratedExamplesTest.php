@@ -12738,6 +12738,7 @@ final class GeneratedExamplesTest extends TestCase
                             'currency' => 'USD',
                             'value' => [],
                         ],
+                        'confirmation_method' => 'manual',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'from' => [
                             'currency' => 'usd',
@@ -12800,6 +12801,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => [],
                 ],
+                'confirmation_method' => 'manual',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'currency' => 'usd',
@@ -12857,6 +12859,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => [],
                 ],
+                'confirmation_method' => 'manual',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'currency' => 'usd',
@@ -12892,6 +12895,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => [],
                 ],
+                'confirmation_method' => 'manual',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'currency' => 'usd',
@@ -12927,6 +12931,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => [],
                 ],
+                'confirmation_method' => 'manual',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'from' => [
                     'currency' => 'usd',
@@ -12942,6 +12947,78 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->payoutIntents->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutIntentPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_intents/id_123/confirm',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.payout_intent',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'confirmation_method' => 'manual',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'from' => [
+                    'currency' => 'usd',
+                    'financial_account' => 'financial_account',
+                ],
+                'id' => 'obj_123',
+                'latest_payout' => ['type' => 'outbound_payment'],
+                'livemode' => [],
+                'status' => 'canceled',
+                'to' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutIntents->confirm(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutIntent::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutIntentPost5()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_intents/id_123/fx_quote',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.payout_intent',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'confirmation_method' => 'manual',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'from' => [
+                    'currency' => 'usd',
+                    'financial_account' => 'financial_account',
+                ],
+                'id' => 'obj_123',
+                'latest_payout' => ['type' => 'outbound_payment'],
+                'livemode' => [],
+                'status' => 'canceled',
+                'to' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutIntents->fxQuote(
             'id_123',
             []
         );
@@ -15201,6 +15278,51 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Tax\ManualRule::class, $result);
     }
 
+    public function testV2TaxOperationPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/operations/resolve_address',
+            [
+                'address' => [
+                    'city' => 'city',
+                    'country' => 'country',
+                    'line1' => 'line1',
+                    'postal_code' => 'postal_code',
+                    'state' => 'state',
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.tax.operations_resolve_address_result',
+                'address' => [],
+                'livemode' => [],
+                'precision' => 'none',
+                'precision_details' => [
+                    'issues' => [
+                        '0' => [
+                            'code' => 'required_for_improved_precision',
+                            'field' => 'country',
+                        ],
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->operations->resolveAddress([
+            'address' => [
+                'city' => 'city',
+                'country' => 'country',
+                'line1' => 'line1',
+                'postal_code' => 'postal_code',
+                'state' => 'state',
+            ],
+        ]);
+        self::assertInstanceOf(V2\Tax\OperationsResolveAddressResult::class, $result);
+    }
+
     public function testV2TestHelpersFinancialAddressPost()
     {
         $this->stubRequest(
@@ -15535,6 +15657,33 @@ final class GeneratedExamplesTest extends TestCase
                 'to' => [],
             ]);
         } catch (Exception\FxQuoteExpiredException $e) {
+        }
+    }
+
+    public function testFxQuoteNeedsRefreshError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/payout_intents/id_123/confirm',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'fx_quote_needs_refresh',
+                    'code' => 'payout_intent_fx_quote_expired',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->payoutIntents->confirm(
+                'id_123',
+                []
+            );
+        } catch (Exception\FxQuoteNeedsRefreshException $e) {
         }
     }
 

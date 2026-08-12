@@ -15,8 +15,8 @@ namespace Stripe\V2\Billing;
  * @property null|(object{comment?: string, feedback?: string, reason?: string}&\Stripe\StripeObject) $cancellation_details Details about why the subscription was canceled, if applicable. Includes system-generated reason.
  * @property string $collection_status Current collection status of this subscription.
  * @property (object{awaiting_customer_action_at?: string, current_at?: string, past_due_at?: string, paused_at?: string, unpaid_at?: string}&\Stripe\StripeObject) $collection_status_transitions Timestamps for collection status transitions.
- * @property int $created Time at which the object was created.
- * @property null|(object{discount: string, end?: int, promotion_code?: string, source: (object{coupon?: string, type: string}&\Stripe\StripeObject), start: int}&\Stripe\StripeObject)[] $discount_details Details about Discounts applied to this subscription.
+ * @property string $created Time at which the object was created.
+ * @property null|(object{discount: string, end?: string, promotion_code?: string, source: (object{coupon?: string, type: string}&\Stripe\StripeObject), start: string}&\Stripe\StripeObject)[] $discount_details Details about Discounts applied to this subscription.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="/docs/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $pricing_plan The ID of the Pricing Plan for this subscription.

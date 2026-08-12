@@ -129,7 +129,7 @@ class CustomerService extends AbstractService
      * href="/docs/billing/customer/balance">balance</a>.
      *
      * @param string $parentId
-     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|array<string, string>} $params
+     * @param null|array{amount: int, applied_to_invoice?: array{invoice: string}, currency: string, description?: string, expand?: string[], metadata?: null|array<string, string>, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\CustomerBalanceTransaction
@@ -592,7 +592,7 @@ class CustomerService extends AbstractService
      * line.
      *
      * @param string $customer
-     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], metadata?: null|array<string, string>} $params
+     * @param null|array{amount: int, applied_to_invoice?: array{invoice: string}, currency: string, description?: string, expand?: string[], metadata?: null|array<string, string>, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string

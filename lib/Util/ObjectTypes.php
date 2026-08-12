@@ -315,6 +315,7 @@ class ObjectTypes
         \Stripe\V2\Signals\AccountEvaluation::OBJECT_NAME => \Stripe\V2\Signals\AccountEvaluation::class,
         \Stripe\V2\Signals\AccountSignal::OBJECT_NAME => \Stripe\V2\Signals\AccountSignal::class,
         \Stripe\V2\Tax\ManualRule::OBJECT_NAME => \Stripe\V2\Tax\ManualRule::class,
+        \Stripe\V2\Tax\OperationsResolveAddressResult::OBJECT_NAME => \Stripe\V2\Tax\OperationsResolveAddressResult::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }
