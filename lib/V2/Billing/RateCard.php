@@ -12,7 +12,7 @@ namespace Stripe\V2\Billing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property bool $active Whether this RateCard is active. Inactive RateCards cannot be used in new activations or have new rates added.
- * @property int $created Timestamp of when the object was created.
+ * @property string $created Timestamp of when the object was created.
  * @property string $currency Three-letter ISO currency code, in lowercase. Must be a supported currency.
  * @property string $display_name A customer-facing name for the Rate Card. This name is used in Stripe-hosted products like the Customer Portal and Checkout. It does not show up on Invoices. Maximum length of 250 characters.
  * @property string $live_version The ID of the Rate Card Version used by all subscriptions when no specific version is specified.

@@ -14,7 +14,7 @@ namespace Stripe\V2\Core;
  * @property null|string[] $allowed_connection_types The Connection types that the Connection Session is allowed to establish.
  * @property string $client_secret The client secret of this Connection Session. Used on the client to set up secure access to the given Account.
  * @property null|(object{granted_access?: string[], type: string}&\Stripe\StripeObject) $connection The Connection created by the ConnectionSession.
- * @property int $created Time at which the ConnectionSession was created.
+ * @property string $created Time at which the ConnectionSession was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string[] $requested_access The access that is collected with the Connection Session.
  */

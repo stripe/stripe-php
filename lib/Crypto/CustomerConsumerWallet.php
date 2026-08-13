@@ -22,6 +22,7 @@ class CustomerConsumerWallet extends \Stripe\ApiResource
     const NETWORK_AVALANCHE = 'avalanche';
     const NETWORK_BASE = 'base';
     const NETWORK_BITCOIN = 'bitcoin';
+    const NETWORK_CELO = 'celo';
     const NETWORK_ETHEREUM = 'ethereum';
     const NETWORK_OPTIMISM = 'optimism';
     const NETWORK_POLYGON = 'polygon';

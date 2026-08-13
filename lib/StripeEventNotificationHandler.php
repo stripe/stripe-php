@@ -284,6 +284,19 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v1.balance_settings.updated" event.
+     *
+     * @param callable(Events\V1BalanceSettingsUpdatedEvent, StripeClient): void $handler Handles v1.balance_settings.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1BalanceSettingsUpdated($handler)
+    {
+        $this->register('v1.balance_settings.updated', $handler);
+    }
+
+    /**
      * Registers a handler for the "v1.billing.alert.triggered" event.
      *
      * @param callable(Events\V1BillingAlertTriggeredEvent, StripeClient): void $handler Handles v1.billing.alert.triggered events
@@ -294,6 +307,71 @@ class StripeEventNotificationHandler
     public function onV1BillingAlertTriggered($handler)
     {
         $this->register('v1.billing.alert.triggered', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.billing.credit_balance_transaction.created" event.
+     *
+     * @param callable(Events\V1BillingCreditBalanceTransactionCreatedEvent, StripeClient): void $handler Handles v1.billing.credit_balance_transaction.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1BillingCreditBalanceTransactionCreated($handler)
+    {
+        $this->register('v1.billing.credit_balance_transaction.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.billing.credit_grant.created" event.
+     *
+     * @param callable(Events\V1BillingCreditGrantCreatedEvent, StripeClient): void $handler Handles v1.billing.credit_grant.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1BillingCreditGrantCreated($handler)
+    {
+        $this->register('v1.billing.credit_grant.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.billing.credit_grant.updated" event.
+     *
+     * @param callable(Events\V1BillingCreditGrantUpdatedEvent, StripeClient): void $handler Handles v1.billing.credit_grant.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1BillingCreditGrantUpdated($handler)
+    {
+        $this->register('v1.billing.credit_grant.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.billing.meter.created" event.
+     *
+     * @param callable(Events\V1BillingMeterCreatedEvent, StripeClient): void $handler Handles v1.billing.meter.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1BillingMeterCreated($handler)
+    {
+        $this->register('v1.billing.meter.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.billing.meter.deactivated" event.
+     *
+     * @param callable(Events\V1BillingMeterDeactivatedEvent, StripeClient): void $handler Handles v1.billing.meter.deactivated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1BillingMeterDeactivated($handler)
+    {
+        $this->register('v1.billing.meter.deactivated', $handler);
     }
 
     /**
@@ -320,6 +398,32 @@ class StripeEventNotificationHandler
     public function onV1BillingMeterNoMeterFound($handler)
     {
         $this->register('v1.billing.meter.no_meter_found', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.billing.meter.reactivated" event.
+     *
+     * @param callable(Events\V1BillingMeterReactivatedEvent, StripeClient): void $handler Handles v1.billing.meter.reactivated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1BillingMeterReactivated($handler)
+    {
+        $this->register('v1.billing.meter.reactivated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.billing.meter.updated" event.
+     *
+     * @param callable(Events\V1BillingMeterUpdatedEvent, StripeClient): void $handler Handles v1.billing.meter.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1BillingMeterUpdated($handler)
+    {
+        $this->register('v1.billing.meter.updated', $handler);
     }
 
     /**
@@ -1008,6 +1112,23 @@ class StripeEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v1.financial_connections.account.account_numbers_updated" event.
+     *
+     * @param callable(Events\V1FinancialConnectionsAccountAccountNumbersUpdatedEvent, StripeClient): void $handler Handles v1.financial_connections.account.account_numbers_updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1FinancialConnectionsAccountAccountNumbersUpdated(
+        $handler
+    ) {
+        $this->register(
+            'v1.financial_connections.account.account_numbers_updated',
+            $handler
+        );
+    }
+
+    /**
      * Registers a handler for the "v1.financial_connections.account.created" event.
      *
      * @param callable(Events\V1FinancialConnectionsAccountCreatedEvent, StripeClient): void $handler Handles v1.financial_connections.account.created events
@@ -1044,6 +1165,23 @@ class StripeEventNotificationHandler
     public function onV1FinancialConnectionsAccountDisconnected($handler)
     {
         $this->register('v1.financial_connections.account.disconnected', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.financial_connections.account.expected_deactivation_date_updated" event.
+     *
+     * @param callable(Events\V1FinancialConnectionsAccountExpectedDeactivationDateUpdatedEvent, StripeClient): void $handler Handles v1.financial_connections.account.expected_deactivation_date_updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1FinancialConnectionsAccountExpectedDeactivationDateUpdated(
+        $handler
+    ) {
+        $this->register(
+            'v1.financial_connections.account.expected_deactivation_date_updated',
+            $handler
+        );
     }
 
     /**
@@ -1104,6 +1242,56 @@ class StripeEventNotificationHandler
     ) {
         $this->register(
             'v1.financial_connections.account.refreshed_transactions',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v1.financial_connections.account.supported_payment_method_types_updated" event.
+     *
+     * @param callable(Events\V1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdatedEvent, StripeClient): void $handler Handles v1.financial_connections.account.supported_payment_method_types_updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1FinancialConnectionsAccountSupportedPaymentMethodTypesUpdated(
+        $handler
+    ) {
+        $this->register(
+            'v1.financial_connections.account.supported_payment_method_types_updated',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v1.financial_connections.account.upcoming_account_number_expiry" event.
+     *
+     * @param callable(Events\V1FinancialConnectionsAccountUpcomingAccountNumberExpiryEvent, StripeClient): void $handler Handles v1.financial_connections.account.upcoming_account_number_expiry events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1FinancialConnectionsAccountUpcomingAccountNumberExpiry(
+        $handler
+    ) {
+        $this->register(
+            'v1.financial_connections.account.upcoming_account_number_expiry',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v1.financial_connections.account.upcoming_deactivation" event.
+     *
+     * @param callable(Events\V1FinancialConnectionsAccountUpcomingDeactivationEvent, StripeClient): void $handler Handles v1.financial_connections.account.upcoming_deactivation events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1FinancialConnectionsAccountUpcomingDeactivation($handler)
+    {
+        $this->register(
+            'v1.financial_connections.account.upcoming_deactivation',
             $handler
         );
     }
@@ -1304,6 +1492,19 @@ class StripeEventNotificationHandler
     public function onV1InvoicePaymentActionRequired($handler)
     {
         $this->register('v1.invoice.payment_action_required', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.invoice.payment_attempt_required" event.
+     *
+     * @param callable(Events\V1InvoicePaymentAttemptRequiredEvent, StripeClient): void $handler Handles v1.invoice.payment_attempt_required events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1InvoicePaymentAttemptRequired($handler)
+    {
+        $this->register('v1.invoice.payment_attempt_required', $handler);
     }
 
     /**

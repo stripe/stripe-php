@@ -9,7 +9,7 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id The id of the CurrencyConversion.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property int $created The time the CurrencyConversion was created at.
+ * @property string $created The time the CurrencyConversion was created at.
  * @property string $exchange_rate The exchange rate used when processing the CurrencyConversion.
  * @property null|string $financial_account The FinancialAccount the CurrencyConversion was performed on.
  * @property (object{amount: \Stripe\StripeObject}&\Stripe\StripeObject) $from The from block containing what was debited.

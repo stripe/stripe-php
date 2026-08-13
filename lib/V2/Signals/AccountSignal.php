@@ -14,7 +14,7 @@ namespace Stripe\V2\Signals;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|(object{account?: string, customer?: string}&\Stripe\StripeObject) $account_details The account or customer this signal is associated with.
  * @property null|string $account_evaluation The account evaluation that produced this signal, if applicable.
- * @property int $created Timestamp at which the signal was created.
+ * @property string $created Timestamp at which the signal was created.
  * @property null|(object{indicators: (object{explanation: string, impact: string, indicator: string}&\Stripe\StripeObject)[], probability?: string, risk_level: string}&\Stripe\StripeObject) $fraudulent_merchant Data for the fraudulent merchant signal. Present only when type is fraudulent_merchant.
  * @property null|(object{details?: string, risk_level: string}&\Stripe\StripeObject) $fraudulent_website Data for the fraudulent website signal. Present only when type is fraudulent_website.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

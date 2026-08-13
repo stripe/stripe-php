@@ -12,7 +12,7 @@ namespace Stripe\V2\Billing;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property bool $active Whether this License Fee is active. Inactive License Fees cannot be used in new activations or be modified.
- * @property int $created Timestamp of when the object was created.
+ * @property string $created Timestamp of when the object was created.
  * @property string $currency Three-letter ISO currency code, in lowercase. Must be a supported currency.
  * @property string $display_name A customer-facing name for the license fee. This name is used in Stripe-hosted products like the Customer Portal and Checkout. It does not show up on Invoices. Maximum length of 250 characters.
  * @property LicensedItem $licensed_item A Licensed Item represents a billable item whose pricing is based on license fees. You can use license fees to specify the pricing and create subscriptions to these items.

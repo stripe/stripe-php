@@ -10,8 +10,8 @@ namespace Stripe\V2\Payments;
  * @property string $id Unique identifier for the SettlementAllocationIntent.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property \Stripe\StripeObject $amount The amount and currency of the SettlementAllocationIntent.
- * @property int $created Timestamp at which SettlementAllocationIntent was created .
- * @property int $expected_settlement_date Date when we expect to receive the funds.
+ * @property string $created Timestamp at which SettlementAllocationIntent was created .
+ * @property string $expected_settlement_date Date when we expect to receive the funds.
  * @property string $financial_account FinancialAccount ID where the funds are expected.
  * @property string[] $linked_credits List of ReceivedCredits that matched with the SettlementAllocationIntent.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

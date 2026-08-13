@@ -36,7 +36,7 @@ final class WebhookTest extends TestCase
 
     public function testValidJsonAndHeader()
     {
-        $sigHeader = $this->generateHeader();
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET);
         $event = Webhook::constructEvent(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
         self::assertSame('evt_test_webhook', $event->id);
         self::assertInstanceOf(Terminal\Reader::class, $event->data->__get('object'));
@@ -47,7 +47,7 @@ final class WebhookTest extends TestCase
         $this->expectException(Exception\UnexpectedValueException::class);
 
         $payload = 'this is not valid JSON';
-        $sigHeader = $this->generateHeader(['payload' => $payload]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($payload, self::SECRET);
         Webhook::constructEvent($payload, $sigHeader, self::SECRET);
     }
 
@@ -91,7 +91,7 @@ final class WebhookTest extends TestCase
         $this->expectException(Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('Timestamp outside the tolerance zone');
 
-        $sigHeader = $this->generateHeader(['timestamp' => \time() - 15]);
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET, \time() - 15);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10);
     }
 
@@ -100,26 +100,39 @@ final class WebhookTest extends TestCase
         $this->expectException(Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('Timestamp outside the tolerance zone');
 
-        $sigHeader = $this->generateHeader(['timestamp' => \time() + 15]);
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET, \time() + 15);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10);
     }
 
     public function testValidHeaderAndSignature()
     {
-        $sigHeader = $this->generateHeader();
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET);
         self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
     public function testHeaderContainsValidSignature()
     {
-        $sigHeader = $this->generateHeader() . ',v1=bad_signature';
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET) . ',v1=bad_signature';
         self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
     public function testTimestampOffButNoTolerance()
     {
-        $sigHeader = $this->generateHeader(['timestamp' => 12345]);
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET, 12345);
         self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET));
+    }
+
+    public function testGenerateSignatureHeader()
+    {
+        $timestamp = 1614000000;
+        $header = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET, $timestamp);
+
+        // Assert the format is t=<timestamp>,v1=<hex>
+        self::compatAssertMatchesRegularExpression('/^t=\d+,v1=[0-9a-f]+$/', $header);
+        self::assertStringStartsWith("t={$timestamp},v1=", $header);
+
+        // Assert the generated header passes verification
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $header, self::SECRET));
     }
 
     public function testConstructEventRejectsV2Payload()
@@ -129,13 +142,50 @@ final class WebhookTest extends TestCase
             'object' => 'v2.core.event',
             'type' => 'v1.billing.meter.error_report_triggered',
         ]);
-        $sigHeader = $this->generateHeader(['payload' => $payload]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($payload, self::SECRET);
 
         try {
             Webhook::constructEvent($payload, $sigHeader, self::SECRET);
             self::fail('Expected UnexpectedValueException was not thrown');
         } catch (Exception\UnexpectedValueException $e) {
-            self::compatAssertStringContainsString('StripeClient::parseEventNotification', $e->getMessage());
+            self::compatAssertStringContainsString('parseEventNotification', $e->getMessage());
         }
+    }
+
+    public function testMaybeExtractPassesThroughV1Event()
+    {
+        $payload = json_encode([
+            'id' => 'evt_test_webhook',
+            'object' => 'event',
+            'data' => ['object' => ['id' => 'rdr_123', 'object' => 'terminal.reader']],
+        ]);
+
+        $result = Webhook::maybeExtractFromCloudProviderEnvelope($payload);
+
+        self::assertSame('event', $result['object']);
+        self::assertSame('evt_test_webhook', $result['id']);
+    }
+
+    public function testMaybeExtractPassesThroughV2Event()
+    {
+        $payload = json_encode([
+            'id' => 'evt_test_webhook',
+            'object' => 'v2.core.event',
+            'type' => 'v1.billing.meter.error_report_triggered',
+        ]);
+
+        $result = Webhook::maybeExtractFromCloudProviderEnvelope($payload);
+
+        self::assertSame('v2.core.event', $result['object']);
+    }
+
+    public function testMaybeExtractThrowsForUnrecognizedFormat()
+    {
+        $this->expectException(Exception\UnexpectedValueException::class);
+        $this->expectExceptionMessage('Unrecognized event format');
+
+        $payload = json_encode(['id' => 'some_unknown_id', 'foo' => 'bar']);
+
+        Webhook::maybeExtractFromCloudProviderEnvelope($payload);
     }
 }

@@ -10,10 +10,10 @@ namespace Stripe\V2\Iam;
  * @property string $id Unique identifier of the API key.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|string[] $connect_permissions List of connect permissions for this API key.
- * @property int $created Timestamp when the API key was created.
- * @property null|int $expires_at Timestamp when the API key expires.
+ * @property string $created Timestamp when the API key was created.
+ * @property null|string $expires_at Timestamp when the API key expires.
  * @property string[] $ip_allowlist List of IP addresses allowed to use this API key. Addresses use IPv4 protocol, and may be a CIDR range (e.g., [100.10.38.255, 100.10.38.0/24]).
- * @property null|int $last_used Timestamp when the API key was last used.
+ * @property null|string $last_used Timestamp when the API key was last used.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{application?: (object{id: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $managed_by Account that manages this API key (for keys managed by platforms).
  * @property null|string $name Name of the API key.

@@ -8,6 +8,7 @@ namespace Stripe\Service\V2\Tax;
  * Service factory class for API resources in the Tax namespace.
  *
  * @property ManualRuleService $manualRules
+ * @property OperationService $operations
  */
 class TaxServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -16,6 +17,7 @@ class TaxServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'manualRules' => ManualRuleService::class,
+        'operations' => OperationService::class,
     ];
 
     protected function getServiceClass($name)

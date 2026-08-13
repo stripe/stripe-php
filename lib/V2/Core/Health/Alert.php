@@ -11,8 +11,8 @@ namespace Stripe\V2\Core\Health;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|(object{canonical_path: string, error_code?: string, http_method: string, http_status: string, impacted_requests: int, impacted_requests_percentage?: string, top_impacted_accounts?: (object{account: string, impacted_requests: int, impacted_requests_percentage?: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $api_error Populated when type is api_error.
  * @property null|(object{canonical_path: string, http_method: string, http_status: string, impacted_requests: int, impacted_requests_percentage?: string, top_impacted_accounts?: (object{account: string, impacted_requests: int, impacted_requests_percentage?: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $api_latency Populated when type is api_latency.
- * @property null|(object{charge_type: string, current_percentage: string, dimensions?: (object{issuer?: string, type: string}&\Stripe\StripeObject)[], payment_method_type: string, previous_percentage: string}&\Stripe\StripeObject) $authorization_rate_drop Populated when type is authorization_rate_drop.
- * @property int $created Time at which the health alert was created.
+ * @property null|(object{charge_type: string, current_percentage: string, dimensions?: (object{acquirer?: string, issuer?: string, type: string}&\Stripe\StripeObject)[], payment_method_type: string, previous_percentage: string}&\Stripe\StripeObject) $authorization_rate_drop Populated when type is authorization_rate_drop.
+ * @property string $created Time at which the health alert was created.
  * @property (object{label: string, url: string}&\Stripe\StripeObject)[] $documentation_links Links to relevant documentation for diagnosing and resolving the alert.
  * @property null|(object{element_type?: string, impacted_sessions: int}&\Stripe\StripeObject) $elements_error Populated when type is elements_error.
  * @property null|(object{context?: string, event_type: string, related_object: (object{id: string, type: string, url: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $event_generation_failure Populated when type is event_generation_failure.
@@ -26,10 +26,10 @@ namespace Stripe\V2\Core\Health;
  * @property null|(object{ingestion_method?: string}&\Stripe\StripeObject) $meter_event_summaries_delayed Populated when type is meter_event_summaries_delayed.
  * @property null|(object{pipeline: string}&\Stripe\StripeObject) $metronome_notification_latency Populated when type is metronome_notification_latency.
  * @property null|(object{error_code?: string, impacted_requests: int, impacted_requests_percentage?: string, payment_method_type: string, top_impacted_accounts?: (object{account: string, impacted_requests: int, impacted_requests_percentage?: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $payment_method_error Populated when type is payment_method_error.
- * @property null|int $resolved_at The time when the user experience has returned to expected levels. Null if the alert is still open.
+ * @property null|string $resolved_at The time when the user experience has returned to expected levels. Null if the alert is still open.
  * @property null|(object{impacted_payments: int, impacted_payments_percentage: string}&\Stripe\StripeObject) $sepa_debit_delayed Populated when type is sepa_debit_delayed.
  * @property string $severity The severity of the alert.
- * @property int $started_at The time when impact on the user experience was first detected.
+ * @property string $started_at The time when impact on the user experience was first detected.
  * @property string $status The current status of the alert.
  * @property string $summary A short description of the alert.
  * @property null|(object{actual_traffic: int, canonical_path?: string, expected_traffic?: int, time_window: string}&\Stripe\StripeObject) $traffic_volume_drop Populated when type is traffic_volume_drop.

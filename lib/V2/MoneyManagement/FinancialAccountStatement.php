@@ -9,7 +9,7 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id Unique identifier for the statement.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property int $created Time at which the statement was created, in ISO 8601 format (UTC).
+ * @property string $created Time at which the statement was created, in ISO 8601 format (UTC).
  * @property \Stripe\StripeObject $ending_balance Available balance at the end of the statement period.
  * @property null|\Stripe\StripeObject $files_by_currency Currency-specific files and file metadata. Null by default, populated by specifying include=files_by_currency in the Retrieve endpoint.
  * @property string $financial_account The Financial Account this statement belongs to.
