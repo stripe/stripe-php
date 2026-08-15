@@ -28,12 +28,35 @@ $handler->onV1BillingMeterErrorReportTriggered(static function ($event_notificat
     echo "Handling V1BillingMeterErrorReportTriggeredEventNotification for meter: {$meter->name}\n";
 });
 
+// Handles events delivered through a channel that has already authenticated them, such as
+// AWS EventBridge or Azure Event Grid. Those payloads carry no Stripe-Signature header, so
+// this handler skips verification. Callbacks are registered separately from the one above.
+$unverified_handler = $client->notificationHandlerWithoutVerification(static function ($event_notification, $client, $details) {
+    echo "Received event notification of type {$event_notification->type}\n";
+});
+
+$unverified_handler->onV1BillingMeterErrorReportTriggered(static function ($event_notification, $client) {
+    $meter = $event_notification->fetchRelatedObject();
+    echo "Handling V1BillingMeterErrorReportTriggeredEventNotification for meter: {$meter->name}\n";
+});
+
 $app->post('/webhook', static function ($request, $response) use ($handler) {
     $webhook_body = $request->getBody()->getContents();
     $sig_header = $request->getHeaderLine('Stripe-Signature');
 
     try {
         $handler->handle($webhook_body, $sig_header);
+
+        return $response->withStatus(200);
+    } catch (Exception $e) {
+        return $response->withStatus(400)->withJson(['error' => $e->getMessage()]);
+    }
+});
+
+$app->post('/webhook-from-cloud-provider', static function ($request, $response) use ($unverified_handler) {
+    // handle() takes only the body here; there's no signature to check
+    try {
+        $unverified_handler->handle($request->getBody()->getContents());
 
         return $response->withStatus(200);
     } catch (Exception $e) {

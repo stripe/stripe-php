@@ -528,4 +528,150 @@ final class StripeEventNotificationHandlerTest extends TestCase
 
         self::assertSame($expected, $types);
     }
+
+    public function testWithoutVerificationRoutesEventToHandler()
+    {
+        $callbackCalled = false;
+        $receivedEvent = null;
+
+        $fallbackCallback = static function ($event, $client, $info) {
+            // no-op
+        };
+
+        $handler = new StripeEventNotificationHandlerWithoutVerification(
+            $this->client,
+            $fallbackCallback
+        );
+
+        $callback = static function ($event, $client) use (&$callbackCalled, &$receivedEvent) {
+            $callbackCalled = true;
+            $receivedEvent = $event;
+        };
+
+        $handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        $payload = $this->getV1BillingMeterPayload();
+        $handler->handle($payload);
+
+        self::assertTrue($callbackCalled);
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $receivedEvent);
+    }
+
+    public function testWithoutVerificationFallbackForUnregisteredEvent()
+    {
+        $onUnhandledCalled = false;
+        $receivedInfo = null;
+
+        $fallbackCallback = static function ($event, $client, $info) use (&$onUnhandledCalled, &$receivedInfo) {
+            $onUnhandledCalled = true;
+            $receivedInfo = $info;
+        };
+
+        $handler = new StripeEventNotificationHandlerWithoutVerification(
+            $this->client,
+            $fallbackCallback
+        );
+
+        $payload = $this->getV1BillingMeterPayload();
+        $handler->handle($payload);
+
+        self::assertTrue($onUnhandledCalled);
+        self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
+        self::assertTrue($receivedInfo->isKnownEventType);
+    }
+
+    public function testWithoutVerificationUnknownEventType()
+    {
+        $onUnhandledCalled = false;
+        $receivedEvent = null;
+        $receivedInfo = null;
+
+        $fallbackCallback = static function ($event, $client, $info) use (&$onUnhandledCalled, &$receivedEvent, &$receivedInfo) {
+            $onUnhandledCalled = true;
+            $receivedEvent = $event;
+            $receivedInfo = $info;
+        };
+
+        $handler = new StripeEventNotificationHandlerWithoutVerification(
+            $this->client,
+            $fallbackCallback
+        );
+
+        $payload = $this->getUnknownEventPayload();
+        $handler->handle($payload);
+
+        self::assertTrue($onUnhandledCalled);
+        self::assertInstanceOf(Events\UnknownEventNotification::class, $receivedEvent);
+        self::assertInstanceOf(UnhandledNotificationDetails::class, $receivedInfo);
+        self::assertFalse($receivedInfo->isKnownEventType);
+    }
+
+    public function testWithoutVerificationContextPropagation()
+    {
+        $receivedContext = null;
+
+        $fallbackCallback = static function ($event, $client, $info) {
+            // no-op
+        };
+
+        $handler = new StripeEventNotificationHandlerWithoutVerification(
+            $this->client,
+            $fallbackCallback
+        );
+
+        $callback = static function ($event, $client) use (&$receivedContext) {
+            $receivedContext = $client->getStripeContextHeader();
+        };
+
+        $handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        $payload = $this->getV1BillingMeterPayload();
+        $handler->handle($payload);
+
+        self::assertSame('event_context_456', $receivedContext);
+    }
+
+    public function testWithoutVerificationHandleAcceptsOnlyThePayload()
+    {
+        // The two handlers are siblings rather than parent and child, so this one
+        // declares no signature parameter at all. PHP silently ignores extra arguments
+        // to a userland method, so the guarantee has to be asserted on the signature.
+        $method = new \ReflectionMethod(
+            StripeEventNotificationHandlerWithoutVerification::class,
+            'handle'
+        );
+
+        self::assertSame(1, $method->getNumberOfParameters());
+        self::assertSame('payload', $method->getParameters()[0]->getName());
+    }
+
+    public function testWithoutVerificationStaticFactory()
+    {
+        $fallbackCallback = static function ($event, $client, $info) {
+            // no-op
+        };
+
+        $handler = StripeEventNotificationHandler::withoutVerification($this->client, $fallbackCallback);
+
+        self::assertInstanceOf(StripeEventNotificationHandlerWithoutVerification::class, $handler);
+    }
+
+    public function testWithoutVerificationClientFactory()
+    {
+        $fallbackCallback = static function ($event, $client, $info) {
+            // no-op
+        };
+
+        $handler = $this->client->notificationHandlerWithoutVerification($fallbackCallback);
+
+        self::assertInstanceOf(StripeEventNotificationHandlerWithoutVerification::class, $handler);
+    }
+
+    public function testConstructorRejectsEmptySecret()
+    {
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->compatExpectExceptionMessageMatches('/webhookSecret must be a non-empty string/');
+
+        new StripeEventNotificationHandler($this->client, '', $this->fallbackCallback);
+    }
 }
