@@ -63,6 +63,7 @@ namespace Stripe;
  * @property Service\PaymentMethodConfigurationService $paymentMethodConfigurations
  * @property Service\PaymentMethodDomainService $paymentMethodDomains
  * @property Service\PaymentMethodService $paymentMethods
+ * @property Service\PaymentPlanService $paymentPlans
  * @property Service\PaymentRecordService $paymentRecords
  * @property Service\PayoutService $payouts
  * @property Service\PlanService $plans

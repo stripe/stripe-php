@@ -41,4 +41,20 @@ class TransactionService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v2/money_management/transactions/%s', $id), $params, $opts);
     }
+
+    /**
+     * Updates the description of an existing Transaction.
+     *
+     * @param string $id
+     * @param null|array{description?: string, metadata?: array<string, null|string>} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\MoneyManagement\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/money_management/transactions/%s', $id), $params, $opts);
+    }
 }
