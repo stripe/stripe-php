@@ -226,6 +226,11 @@ class Event extends ApiResource
     const PAYMENT_METHOD_AUTOMATICALLY_UPDATED = 'payment_method.automatically_updated';
     const PAYMENT_METHOD_DETACHED = 'payment_method.detached';
     const PAYMENT_METHOD_UPDATED = 'payment_method.updated';
+    const PAYMENT_PLAN_CREATED = 'payment_plan.created';
+    const PAYMENT_PLAN_INSTALLMENT_DUE = 'payment_plan.installment_due';
+    const PAYMENT_PLAN_INSTALLMENT_PAID = 'payment_plan.installment_paid';
+    const PAYMENT_PLAN_INSTALLMENT_WILL_BE_DUE = 'payment_plan.installment_will_be_due';
+    const PAYMENT_PLAN_UPDATED = 'payment_plan.updated';
     const PAYOUT_CANCELED = 'payout.canceled';
     const PAYOUT_CREATED = 'payout.created';
     const PAYOUT_FAILED = 'payout.failed';
@@ -534,6 +539,11 @@ class Event extends ApiResource
     const TYPE_PAYMENT_METHOD_AUTOMATICALLY_UPDATED = 'payment_method.automatically_updated';
     const TYPE_PAYMENT_METHOD_DETACHED = 'payment_method.detached';
     const TYPE_PAYMENT_METHOD_UPDATED = 'payment_method.updated';
+    const TYPE_PAYMENT_PLAN_CREATED = 'payment_plan.created';
+    const TYPE_PAYMENT_PLAN_INSTALLMENT_DUE = 'payment_plan.installment_due';
+    const TYPE_PAYMENT_PLAN_INSTALLMENT_PAID = 'payment_plan.installment_paid';
+    const TYPE_PAYMENT_PLAN_INSTALLMENT_WILL_BE_DUE = 'payment_plan.installment_will_be_due';
+    const TYPE_PAYMENT_PLAN_UPDATED = 'payment_plan.updated';
     const TYPE_PAYOUT_CANCELED = 'payout.canceled';
     const TYPE_PAYOUT_CREATED = 'payout.created';
     const TYPE_PAYOUT_FAILED = 'payout.failed';

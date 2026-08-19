@@ -5,7 +5,7 @@
 namespace Stripe\V2\Data\Analytics;
 
 /**
- * The result of a metric query.
+ * The result of a metric query. For the full list of supported metrics, see <a href="https://docs.stripe.com/data/analytics/supported-metrics">Supported metrics</a>.
  *
  * @property string $id The unique identifier of this metric query result.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.

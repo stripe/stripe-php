@@ -14,9 +14,9 @@ namespace Stripe\Billing;
  * @property string $status The feedback option's status.
  * @property (object{deactivated_at: null|int}&\Stripe\StripeObject) $status_transitions
  */
-class FeedbackOptions extends \Stripe\ApiResource
+class FeedbackOption extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = 'billing.feedback_options';
+    const OBJECT_NAME = 'billing.feedback_option';
 
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';

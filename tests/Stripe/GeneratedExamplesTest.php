@@ -12183,6 +12183,17 @@ final class GeneratedExamplesTest extends TestCase
                 'to' => [
                     'currency' => 'usd',
                     'payout_method' => 'payout_method',
+                    'payout_method_options' => [
+                        'bank_account' => [
+                            'preferred_network_options' => [
+                                'ach' => [
+                                    'submission' => 'next_day',
+                                    'transaction_purpose' => 'payroll',
+                                ],
+                            ],
+                            'preferred_networks' => ['sepa_credit'],
+                        ],
+                    ],
                     'recipient' => 'recipient',
                 ],
             ],
@@ -12243,6 +12254,17 @@ final class GeneratedExamplesTest extends TestCase
             'to' => [
                 'currency' => 'usd',
                 'payout_method' => 'payout_method',
+                'payout_method_options' => [
+                    'bank_account' => [
+                        'preferred_network_options' => [
+                            'ach' => [
+                                'submission' => 'next_day',
+                                'transaction_purpose' => 'payroll',
+                            ],
+                        ],
+                        'preferred_networks' => ['sepa_credit'],
+                    ],
+                ],
                 'recipient' => 'recipient',
             ],
         ]);
@@ -13627,6 +13649,52 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->transactions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\Transaction::class, $result);
+    }
+
+    public function testV2MoneyManagementTransactionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/transactions/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.transaction',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'balance_impact' => [
+                    'available' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'inbound_pending' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                    'outbound_pending' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                ],
+                'category' => 'platform_earning_refund',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'pending',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->transactions->update(
             'id_123',
             []
         );

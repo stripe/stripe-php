@@ -63,6 +63,7 @@ namespace Stripe\Service;
  * @property PaymentMethodConfigurationService $paymentMethodConfigurations
  * @property PaymentMethodDomainService $paymentMethodDomains
  * @property PaymentMethodService $paymentMethods
+ * @property PaymentPlanService $paymentPlans
  * @property PaymentRecordService $paymentRecords
  * @property PayoutService $payouts
  * @property PlanService $plans
@@ -165,6 +166,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'paymentMethodConfigurations' => PaymentMethodConfigurationService::class,
         'paymentMethodDomains' => PaymentMethodDomainService::class,
         'paymentMethods' => PaymentMethodService::class,
+        'paymentPlans' => PaymentPlanService::class,
         'paymentRecords' => PaymentRecordService::class,
         'payouts' => PayoutService::class,
         'plans' => PlanService::class,

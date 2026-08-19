@@ -27,6 +27,7 @@ namespace Stripe;
  * @property null|string[] $frozen_fields Array of field names that can't be modified. Attempting to update a frozen field returns an error.
  * @property null|Invoice|string $invoice The ID of the invoice this invoice item belongs to.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
+ * @property null|(object{enabled: bool}&StripeObject) $managed_payments
  * @property null|(Margin|string)[] $margins The margins which apply to the invoice item. When set, the <code>default_margins</code> on the invoice do not apply to this invoice item.
  * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|int $net_amount The amount after discounts, but before credits and taxes. This field is <code>null</code> for <code>discountable=true</code> items.
@@ -51,7 +52,7 @@ class InvoiceItem extends ApiResource
      * no invoice is specified, the item will be on the next invoice created for the
      * customer specified.
      *
-     * @param null|array{amount?: int, currency?: string, customer?: string, customer_account?: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, margins?: string[], metadata?: null|array<string, string>, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, quantity_decimal?: string, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount_decimal?: string} $params
+     * @param null|array{amount?: int, currency?: string, customer?: string, customer_account?: string, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], invoice?: string, managed_payments?: array{enabled?: bool}, margins?: string[], metadata?: null|array<string, string>, period?: array{end: int, start: int}, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, quantity_decimal?: string, subscription?: string, tax_behavior?: string, tax_code?: null|string, tax_rates?: string[], unit_amount_decimal?: string} $params
      * @param null|array|string $options
      *
      * @return InvoiceItem the created resource
