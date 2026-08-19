@@ -143,6 +143,21 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * FOR INTERNAL USE ONLY. MAY CHANGE WITHOUT WARNING. Gets the Stripe Context used by the client to send requests.
+     *
+     * @return null|string the Stripe Context used by the client to send requests
+     */
+    public function getStripeContextHeader()
+    {
+        // use opts instead of config because we modify the default opts and want to make sure we get fresh reads
+        if (!isset($this->defaultOpts->headers['Stripe-Context'])) {
+            return null;
+        }
+
+        return $this->defaultOpts->headers['Stripe-Context'];
+    }
+
+    /**
      * Gets the Stripe Version used by the client to send requests.
      *
      * @return null|string the Stripe Context ID used by the client to send requests
@@ -540,5 +555,31 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     public function parseEventNotificationWithoutVerification($payload)
     {
         return EventNotification::fromJson(Webhook::maybeExtractFromCloudProviderEnvelope($payload), $this);
+    }
+
+    /**
+     * Creates a new StripeEventNotificationHandler associated with this client.
+     *
+     * @param string $webhookSecret The webhook secret to use for verifying incoming webhook signatures
+     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback a function to call if no other handler processes an event notification
+     *
+     * @return StripeEventNotificationHandler A new StripeEventNotificationHandler instance
+     */
+    public function notificationHandler($webhookSecret, $fallbackCallback)
+    {
+        return new StripeEventNotificationHandler($this, $webhookSecret, $fallbackCallback);
+    }
+
+    /**
+     * Creates a handler that processes events without webhook signature verification.
+     * Intended for pre-authenticated channels like AWS EventBridge or Azure Event Grid.
+     *
+     * @param callable $fallbackCallback A callback that's invoked for unhandled events
+     *
+     * @return StripeEventNotificationHandlerWithoutVerification
+     */
+    public function notificationHandlerWithoutVerification($fallbackCallback)
+    {
+        return StripeEventNotificationHandler::withoutVerification($this, $fallbackCallback);
     }
 }
