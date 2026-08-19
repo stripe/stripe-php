@@ -569,4 +569,17 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     {
         return new StripeEventNotificationHandler($this, $webhookSecret, $fallbackCallback);
     }
+
+    /**
+     * Creates a handler that processes events without webhook signature verification.
+     * Intended for pre-authenticated channels like AWS EventBridge or Azure Event Grid.
+     *
+     * @param callable $fallbackCallback A callback that's invoked for unhandled events
+     *
+     * @return StripeEventNotificationHandlerWithoutVerification
+     */
+    public function notificationHandlerWithoutVerification($fallbackCallback)
+    {
+        return StripeEventNotificationHandler::withoutVerification($this, $fallbackCallback);
+    }
 }
