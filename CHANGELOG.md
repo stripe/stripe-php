@@ -79,6 +79,9 @@ This release changes the pinned API version to 2026-08-12.preview.
   * Add support for event notification `V1InvoicePaymentAttemptRequiredEvent` with related object `Invoice`
   * Add support for error type `FxQuoteNeedsRefreshException`
 
+## 21.2.1 - 2026-08-20
+* [#2126](https://github.com/stripe/stripe-php/pull/2126) Don't emit agent hint during tests. Fixes [#2125](https://github.com/stripe/stripe-php/issues/2125)
+
 ## 21.2.0 - 2026-08-10
 * [#2119](https://github.com/stripe/stripe-php/pull/2119) Surface `object` property on `EventNotification`
 * [#2117](https://github.com/stripe/stripe-php/pull/2117) Emit Claude Code plugin hint at module load time
