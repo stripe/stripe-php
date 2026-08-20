@@ -639,6 +639,8 @@ class ApiRequestor
      */
     private function _prepareRequest($method, $url, $params, $headers, $apiMode)
     {
+        Util\AgentPluginHint::maybeEmit();
+
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
             $myApiKey = Stripe::$apiKey;
