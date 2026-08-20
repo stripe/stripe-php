@@ -1,7 +1,6 @@
 <?php
 
 require __DIR__ . '/lib/version_check.php';
-require_once __DIR__ . '/lib/agent_plugin_hint.php';
 
 require __DIR__ . '/lib/Util/ApiVersion.php';
 
@@ -12,6 +11,7 @@ require __DIR__ . '/lib/Stripe.php';
 require __DIR__ . '/lib/StripeContext.php';
 
 // Utilities
+require __DIR__ . '/lib/Util/AgentPluginHint.php';
 require __DIR__ . '/lib/Util/CaseInsensitiveArray.php';
 require __DIR__ . '/lib/Util/LoggerInterface.php';
 require __DIR__ . '/lib/Util/DefaultLogger.php';
