@@ -12,6 +12,7 @@ final class AgentPluginHintTest extends TestCase
     private static $init;
     private static $composerAutoload;
     private static $hint = '<claude-code-hint v="1" type="plugin" value="stripe@claude-plugins-official" />';
+    private static $apiKey = 'sk_test_123';
 
     public static function setUpBeforeClass(): void
     {
@@ -33,6 +34,15 @@ final class AgentPluginHintTest extends TestCase
             \array_flip(['CLAUDECODE'])
         );
         $env = \array_merge($base, $extra);
+
+        // On Windows, escapeshellarg() replaces double quotes, percent signs, and exclamation
+        // marks with spaces, which silently corrupts the snippet. Build scripts out of
+        // single-quoted literals only -- var_export() is the easy way to get them.
+        self::assertSame(
+            0,
+            \preg_match('/["%!]/', $script),
+            'subprocess scripts must avoid characters that Windows mangles: " % !'
+        );
 
         $cmd = \escapeshellarg(\PHP_BINARY) . ' -r ' . \escapeshellarg($script);
 
@@ -77,7 +87,7 @@ final class AgentPluginHintTest extends TestCase
     private function constructClients(array $extra, $numClients = 1): array
     {
         $script = 'require ' . \var_export(self::$init, true) . ';'
-            . \str_repeat('new \Stripe\StripeClient("sk_test_123");', $numClients);
+            . \str_repeat('new \Stripe\StripeClient(' . \var_export(self::$apiKey, true) . ');', $numClients);
 
         return $this->runPhpWithEnv($extra, $script);
     }
@@ -90,7 +100,7 @@ final class AgentPluginHintTest extends TestCase
     private function requestWithoutClient(array $extra): array
     {
         $script = 'require ' . \var_export(self::$init, true) . ';'
-            . '\Stripe\Stripe::setApiKey("sk_test_123");'
+            . '\Stripe\Stripe::setApiKey(' . \var_export(self::$apiKey, true) . ');'
             . '\Stripe\Stripe::$apiBase = ' . \var_export(MOCK_URL, true) . ';'
             . 'try { \Stripe\Customer::all(); } catch (\Throwable $e) {}';
 
@@ -168,7 +178,7 @@ final class AgentPluginHintTest extends TestCase
 
         try {
             \putenv('CLAUDECODE=1');
-            new StripeClient('sk_test_123');
+            new StripeClient(self::$apiKey);
         } finally {
             false === $original ? \putenv('CLAUDECODE') : \putenv("CLAUDECODE={$original}");
         }
