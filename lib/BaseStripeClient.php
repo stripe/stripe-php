@@ -100,6 +100,8 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
             'stripe_version' => $config['stripe_version'],
             'max_network_retries' => $config['max_network_retries'],
         ]);
+
+        \Stripe\Util\AgentPluginHint::maybeEmit();
     }
 
     /**
