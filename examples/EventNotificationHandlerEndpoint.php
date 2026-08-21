@@ -7,6 +7,7 @@
  *     - create a StripeClient called client
  *     - Initialize an EventNotificationHandler with the client, webhook secret, and fallback callback
  *     - register a specific handler for the "v1.billing.meter.error_report_triggered" event notification type
+ *     - register a preHandle hook that skips events we've already processed
  *     - use handler->handle() to process the received notification webhook body.
  */
 require 'vendor/autoload.php';
@@ -17,9 +18,28 @@ $webhook_secret = getenv('WEBHOOK_SECRET');
 $app = new Slim\App();
 $client = new Stripe\StripeClient($api_key);
 
+// Stripe can deliver the same event more than once, and our docs warn against processing one
+// twice. A preHandle hook is a single place to enforce that: returning false stops handling
+// before any callback below runs, including the fallback. In a real integration this would be
+// backed by a database or cache rather than an in-memory array.
+$processed_event_ids = [];
+$skip_already_processed = static function ($event_notification, $client) use (&$processed_event_ids) {
+    if (\in_array($event_notification->id, $processed_event_ids, true)) {
+        echo "Skipping duplicate delivery of {$event_notification->id}\n";
+
+        return false;
+    }
+
+    $processed_event_ids[] = $event_notification->id;
+
+    return true;
+};
+
 $handler = $client->notificationHandler($webhook_secret, static function ($event_notification, $client, $details) {
     echo "Received event notification of type {$event_notification->type}\n";
 });
+
+$handler->preHandle($skip_already_processed);
 
 $handler->onV1BillingMeterErrorReportTriggered(static function ($event_notification, $client) {
     $meter = $event_notification->fetchRelatedObject();
@@ -32,6 +52,8 @@ $handler->onV1BillingMeterErrorReportTriggered(static function ($event_notificat
 $unverified_handler = $client->notificationHandlerWithoutVerification(static function ($event_notification, $client, $details) {
     echo "Received event notification of type {$event_notification->type}\n";
 });
+
+$unverified_handler->preHandle($skip_already_processed);
 
 $unverified_handler->onV1BillingMeterErrorReportTriggered(static function ($event_notification, $client) {
     $meter = $event_notification->fetchRelatedObject();

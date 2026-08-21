@@ -672,4 +672,248 @@ final class StripeEventNotificationHandlerTest extends TestCase
 
         new StripeEventNotificationHandler($this->client, '', $this->fallbackCallback);
     }
+
+    public function testHandlerStillRunsWithNoPreHandleRegistered()
+    {
+        $callbackCalled = false;
+
+        $callback = static function ($event, $client) use (&$callbackCalled) {
+            $callbackCalled = true;
+        };
+
+        $this->handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        $payload = $this->getV1BillingMeterPayload();
+        $sigHeader = $this->generateHeader($payload);
+        $this->handler->handle($payload, $sigHeader);
+
+        self::assertTrue($callbackCalled);
+    }
+
+    public function testPreHandleReturningTrueRunsFirstThenHandler()
+    {
+        $order = [];
+
+        $this->handler->preHandle(static function ($event, $client) use (&$order) {
+            $order[] = 'preHandle';
+
+            return true;
+        });
+
+        $callback = static function ($event, $client) use (&$order) {
+            $order[] = 'handler';
+        };
+
+        $this->handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        $payload = $this->getV1BillingMeterPayload();
+        $sigHeader = $this->generateHeader($payload);
+        $this->handler->handle($payload, $sigHeader);
+
+        self::assertSame(['preHandle', 'handler'], $order);
+    }
+
+    public function testPreHandleReturningFalsePreventsRegisteredHandler()
+    {
+        $handlerCalled = false;
+
+        $this->handler->preHandle(static function ($event, $client) {
+            return false;
+        });
+
+        $callback = static function ($event, $client) use (&$handlerCalled) {
+            $handlerCalled = true;
+        };
+
+        $this->handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        $payload = $this->getV1BillingMeterPayload();
+        $sigHeader = $this->generateHeader($payload);
+        $this->handler->handle($payload, $sigHeader);
+
+        self::assertFalse($handlerCalled);
+    }
+
+    public function testPreHandleReturningFalsePreventsFallback()
+    {
+        $fallbackCalled = false;
+
+        $fallbackCallback = static function ($event, $client, $info) use (&$fallbackCalled) {
+            $fallbackCalled = true;
+        };
+
+        $handler = new StripeEventNotificationHandler($this->client, self::WEBHOOK_SECRET, $fallbackCallback);
+        $handler->preHandle(static function ($event, $client) {
+            return false;
+        });
+
+        $payload = $this->getUnknownEventPayload();
+        $sigHeader = $this->generateHeader($payload);
+        $handler->handle($payload, $sigHeader);
+
+        self::assertFalse($fallbackCalled);
+    }
+
+    public function testPreHandleReceivesContextScopedClientAndHandlerClientIsUnmutated()
+    {
+        $preHandleContext = 'not_set';
+
+        $this->handler->preHandle(static function ($event, $client) use (&$preHandleContext) {
+            $preHandleContext = $client->getStripeContextHeader();
+
+            return true;
+        });
+
+        $callback = static function ($event, $client) {
+            // no-op
+        };
+
+        $this->handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        self::assertSame('original_context_123', $this->client->getStripeContext());
+
+        $payload = $this->getV1BillingMeterPayload();
+        $sigHeader = $this->generateHeader($payload);
+        $this->handler->handle($payload, $sigHeader);
+
+        self::assertSame('event_context_456', $preHandleContext);
+        self::assertSame('original_context_123', $this->client->getStripeContext());
+    }
+
+    public function testPreHandleThrowingPropagatesAndPreventsHandler()
+    {
+        $handlerCalled = false;
+
+        $this->handler->preHandle(static function ($event, $client) {
+            throw new \RuntimeException('preHandle error!');
+        });
+
+        $callback = static function ($event, $client) use (&$handlerCalled) {
+            $handlerCalled = true;
+        };
+
+        $this->handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        $payload = $this->getV1BillingMeterPayload();
+        $sigHeader = $this->generateHeader($payload);
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('preHandle error!');
+
+        try {
+            $this->handler->handle($payload, $sigHeader);
+        } finally {
+            self::assertFalse($handlerCalled);
+        }
+    }
+
+    public function testCannotRegisterPreHandleAfterHandling()
+    {
+        $payload = $this->getV1BillingMeterPayload();
+        $sigHeader = $this->generateHeader($payload);
+        $this->handler->handle($payload, $sigHeader);
+
+        $this->expectException(Exception\BadMethodCallException::class);
+        $this->compatExpectExceptionMessageMatches('/Cannot register new event handlers after .handle\(\) has been called/');
+
+        $this->handler->preHandle(static function ($event, $client) {
+            return true;
+        });
+    }
+
+    public function testCannotRegisterDuplicatePreHandle()
+    {
+        $this->handler->preHandle(static function ($event, $client) {
+            return true;
+        });
+
+        $this->expectException(Exception\InvalidArgumentException::class);
+
+        $this->handler->preHandle(static function ($event, $client) {
+            return true;
+        });
+    }
+
+    public function testWithoutVerificationPreHandleReturningFalsePreventsHandler()
+    {
+        $handlerCalled = false;
+
+        $fallbackCallback = static function ($event, $client, $info) {
+            // no-op
+        };
+
+        $handler = new StripeEventNotificationHandlerWithoutVerification(
+            $this->client,
+            $fallbackCallback
+        );
+
+        $handler->preHandle(static function ($event, $client) {
+            return false;
+        });
+
+        $callback = static function ($event, $client) use (&$handlerCalled) {
+            $handlerCalled = true;
+        };
+
+        $handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        $payload = $this->getV1BillingMeterPayload();
+        $handler->handle($payload);
+
+        self::assertFalse($handlerCalled);
+    }
+
+    public function testWithoutVerificationPreHandleReturningFalsePreventsFallback()
+    {
+        $fallbackCalled = false;
+
+        $fallbackCallback = static function ($event, $client, $info) use (&$fallbackCalled) {
+            $fallbackCalled = true;
+        };
+
+        $handler = new StripeEventNotificationHandlerWithoutVerification(
+            $this->client,
+            $fallbackCallback
+        );
+
+        $handler->preHandle(static function ($event, $client) {
+            return false;
+        });
+
+        $payload = $this->getUnknownEventPayload();
+        $handler->handle($payload);
+
+        self::assertFalse($fallbackCalled);
+    }
+
+    public function testWithoutVerificationPreHandleReturningTrueRunsHandler()
+    {
+        $order = [];
+
+        $fallbackCallback = static function ($event, $client, $info) {
+            // no-op
+        };
+
+        $handler = new StripeEventNotificationHandlerWithoutVerification(
+            $this->client,
+            $fallbackCallback
+        );
+
+        $handler->preHandle(static function ($event, $client) use (&$order) {
+            $order[] = 'preHandle';
+
+            return true;
+        });
+
+        $callback = static function ($event, $client) use (&$order) {
+            $order[] = 'handler';
+        };
+
+        $handler->onV1BillingMeterErrorReportTriggered($callback);
+
+        $payload = $this->getV1BillingMeterPayload();
+        $handler->handle($payload);
+
+        self::assertSame(['preHandle', 'handler'], $order);
+    }
 }

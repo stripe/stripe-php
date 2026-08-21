@@ -22,6 +22,8 @@ abstract class AbstractEventNotificationHandler
     protected $fallbackCallback;
     /** @var array<string, mixed> everything we need to duplicate a client */
     protected $clientConfig;
+    /** @var null|callable(V2\Core\EventNotification, StripeClient): bool */
+    protected $preHandleCallback = null;
 
     /**
      * @param StripeClient $client The Stripe client to use for API interactions
@@ -74,6 +76,10 @@ abstract class AbstractEventNotificationHandler
         // Create a new client instance with the event's context instead of modifying the shared client
         $eventClient = $this->createClientWithContext($notif->context);
 
+        if (null !== $this->preHandleCallback && !\call_user_func($this->preHandleCallback, $notif, $eventClient)) {
+            return;
+        }
+
         if (isset($this->registeredHandlers[$eventType])) {
             \call_user_func($this->registeredHandlers[$eventType], $notif, $eventClient);
         } else {
@@ -97,6 +103,19 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Callbacks are expected to be registered once on startup, so registering anything
+     * after handling has begun indicates a bug.
+     *
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    private function assertCanRegister()
+    {
+        if ($this->hasHandledEvents) {
+            throw new Exception\BadMethodCallException('Cannot register new event handlers after .handle() has been called. This is indicative of a bug.');
+        }
+    }
+
+    /**
      * Registers a handler for a specific event type.
      *
      * @param string $eventType The event type to register the handler for
@@ -107,14 +126,30 @@ abstract class AbstractEventNotificationHandler
      */
     protected function register($eventType, $handler)
     {
-        if ($this->hasHandledEvents) {
-            throw new Exception\BadMethodCallException('Cannot register new event handlers after .handle() has been called. This is indicative of a bug.');
-        }
+        $this->assertCanRegister();
         if (isset($this->registeredHandlers[$eventType])) {
             throw new Exception\InvalidArgumentException("Handler for event type \"{$eventType}\" is already registered");
         }
 
         $this->registeredHandlers[$eventType] = $handler;
+    }
+
+    /**
+     * Registers a hook that runs after an event notification is parsed but before any callback callback is invoked.
+     *
+     * @param callable(V2\Core\EventNotification, StripeClient): bool $handler Return false to stop handling before any callback runs
+     *
+     * @throws Exception\InvalidArgumentException if a pre-handle hook is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function preHandle($handler)
+    {
+        $this->assertCanRegister();
+        if (null !== $this->preHandleCallback) {
+            throw new Exception\InvalidArgumentException('A preHandle callback is already registered');
+        }
+
+        $this->preHandleCallback = $handler;
     }
 
     // event-handler-methods: The beginning of the section generated from our OpenAPI spec
