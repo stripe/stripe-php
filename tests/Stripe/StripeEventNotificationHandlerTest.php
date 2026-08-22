@@ -187,7 +187,7 @@ final class StripeEventNotificationHandlerTest extends TestCase
         $this->handler->handle($payload, $sigHeader);
 
         $this->expectException(Exception\BadMethodCallException::class);
-        $this->compatExpectExceptionMessageMatches('/Cannot register new event handlers after .handle\(\) has been called/');
+        $this->compatExpectExceptionMessageMatches('/Cannot register new callbacks after an event has been handled/');
 
         $this->handler->onV1BillingMeterNoMeterFound($callback);
     }
@@ -204,7 +204,7 @@ final class StripeEventNotificationHandlerTest extends TestCase
         $this->handler->onV1BillingMeterErrorReportTriggered($callback1);
 
         $this->expectException(Exception\InvalidArgumentException::class);
-        $this->compatExpectExceptionMessageMatches('/Handler for event type "v1.billing.meter.error_report_triggered" is already registered/');
+        $this->compatExpectExceptionMessageMatches('/Callback for event type "v1.billing.meter.error_report_triggered" is already registered/');
 
         $this->handler->onV1BillingMeterErrorReportTriggered($callback2);
     }
@@ -814,7 +814,7 @@ final class StripeEventNotificationHandlerTest extends TestCase
         $this->handler->handle($payload, $sigHeader);
 
         $this->expectException(Exception\BadMethodCallException::class);
-        $this->compatExpectExceptionMessageMatches('/Cannot register new event handlers after .handle\(\) has been called/');
+        $this->compatExpectExceptionMessageMatches('/Cannot register new callbacks after an event has been handled/');
 
         $this->handler->preHandle(static function ($event, $client) {
             return true;

@@ -111,7 +111,7 @@ abstract class AbstractEventNotificationHandler
     private function assertCanRegister()
     {
         if ($this->hasHandledEvents) {
-            throw new Exception\BadMethodCallException('Cannot register new event handlers after .handle() has been called. This is indicative of a bug.');
+            throw new Exception\BadMethodCallException('Cannot register new callbacks after an event has been handled. This is indicative of a bug.');
         }
     }
 
@@ -128,7 +128,7 @@ abstract class AbstractEventNotificationHandler
     {
         $this->assertCanRegister();
         if (isset($this->registeredHandlers[$eventType])) {
-            throw new Exception\InvalidArgumentException("Handler for event type \"{$eventType}\" is already registered");
+            throw new Exception\InvalidArgumentException("Callback for event type \"{$eventType}\" is already registered");
         }
 
         $this->registeredHandlers[$eventType] = $handler;
