@@ -441,9 +441,43 @@ final class Int64Test extends \Stripe\TestCase
         self::assertSame(100, $result['amount']);
     }
 
-    public function testCoerceRequestParamsDiscriminatedUnionPassesThroughForMissingDiscriminator()
+    public function testCoerceRequestParamsDiscriminatedUnionThrowsForMissingDiscriminator()
     {
-        $schema = [
+        // Skipping coercion here would send `amount` as a raw JSON number
+        // rather than the int64_string the wire format expects.
+        $this->expectException(\Stripe\Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('discriminator `type`');
+        Int64::coerceRequestParams(['amount' => 100], self::discriminatedUnionSchema());
+    }
+
+    public function testCoerceRequestParamsDiscriminatedUnionListsVariantsWhenItThrows()
+    {
+        $this->expectExceptionMessage('one of: transfer.');
+        Int64::coerceRequestParams(['amount' => 100], self::discriminatedUnionSchema());
+    }
+
+    public function testCoerceRequestParamsDiscriminatedUnionThrowsForNonStringDiscriminator()
+    {
+        // A discriminator that is present but not a string is the same failure
+        // as one that is absent: there is no key to look a variant schema up by.
+        foreach ([123, true, 1.5, [], null] as $discriminator) {
+            $described = \var_export($discriminator, true);
+
+            try {
+                Int64::coerceRequestParams(
+                    ['type' => $discriminator, 'amount' => 100],
+                    self::discriminatedUnionSchema()
+                );
+                self::fail("expected discriminator {$described} to be rejected");
+            } catch (\Stripe\Exception\InvalidArgumentException $e) {
+                self::assertStringContainsString('discriminator `type`', $e->getMessage());
+            }
+        }
+    }
+
+    private static function discriminatedUnionSchema()
+    {
+        return [
             'kind' => 'discriminatedUnion',
             'discriminator' => 'type',
             'variants' => [
@@ -455,10 +489,6 @@ final class Int64Test extends \Stripe\TestCase
                 ],
             ],
         ];
-        $params = ['amount' => 100];
-        $result = Int64::coerceRequestParams($params, $schema);
-
-        self::assertSame(100, $result['amount']);
     }
 
     public function testCoerceRequestParamsDiscriminatedUnionPassesThroughNonArray()

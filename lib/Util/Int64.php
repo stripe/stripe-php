@@ -50,11 +50,31 @@ class Int64
         }
 
         if ('discriminatedUnion' === $schema['kind'] && isset($schema['discriminator'], $schema['variants'])) {
-            if (\is_array($params) && \array_key_exists($schema['discriminator'], $params)) {
-                $discriminatorValue = $params[$schema['discriminator']];
-                if (\is_string($discriminatorValue) && \array_key_exists($discriminatorValue, $schema['variants'])) {
-                    return self::coerceRequestParams($params, $schema['variants'][$discriminatorValue]);
-                }
+            if (!\is_array($params)) {
+                return $params;
+            }
+
+            $discriminatorValue = $params[$schema['discriminator']] ?? null;
+
+            // A discriminator that is absent, or present but not a string, is
+            // equally unusable: either way there is no way to pick a variant
+            // schema. Skipping coercion silently sends int64_string fields as
+            // raw JSON numbers, which the API rejects or truncates, so fail
+            // here rather than send a wrong amount.
+            if (!\is_string($discriminatorValue)) {
+                throw new \Stripe\Exception\InvalidArgumentException(
+                    "Missing or invalid discriminator `{$schema['discriminator']}` for a polymorphic "
+                    . 'parameter. Stripe uses this field to determine the shape of the value, so we '
+                    . "cannot encode the request without it. Provide `{$schema['discriminator']}` with "
+                    . 'one of: ' . \implode(', ', \array_keys($schema['variants'])) . '.'
+                );
+            }
+
+            // An unrecognized discriminator passes through untouched: we
+            // support sending undocumented params when the caller uses the
+            // right shape.
+            if (\array_key_exists($discriminatorValue, $schema['variants'])) {
+                return self::coerceRequestParams($params, $schema['variants'][$discriminatorValue]);
             }
 
             return $params;
