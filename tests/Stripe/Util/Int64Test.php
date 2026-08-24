@@ -68,7 +68,7 @@ final class Int64Test extends \Stripe\TestCase
     {
         $schema = [
             'kind' => 'array',
-            'items' => ['kind' => 'int64_string'],
+            'element' => ['kind' => 'int64_string'],
         ];
         $params = [1, 2, 3];
         $result = Int64::coerceRequestParams($params, $schema);
@@ -80,7 +80,7 @@ final class Int64Test extends \Stripe\TestCase
     {
         $schema = [
             'kind' => 'array',
-            'items' => [
+            'element' => [
                 'kind' => 'object',
                 'fields' => [
                     'amount' => ['kind' => 'int64_string'],
@@ -134,7 +134,7 @@ final class Int64Test extends \Stripe\TestCase
     {
         $schema = [
             'kind' => 'array',
-            'items' => ['kind' => 'int64_string'],
+            'element' => ['kind' => 'int64_string'],
         ];
         self::assertSame('not-an-array', Int64::coerceRequestParams('not-an-array', $schema));
     }
@@ -205,7 +205,7 @@ final class Int64Test extends \Stripe\TestCase
         $encodings = [
             'amounts' => [
                 'kind' => 'array',
-                'items' => ['kind' => 'int64_string'],
+                'element' => ['kind' => 'int64_string'],
             ],
         ];
         $values = ['amounts' => ['100', '200', '300']];
@@ -219,7 +219,7 @@ final class Int64Test extends \Stripe\TestCase
         $encodings = [
             'line_items' => [
                 'kind' => 'array',
-                'items' => [
+                'element' => [
                     'kind' => 'object',
                     'fields' => [
                         'amount' => ['kind' => 'int64_string'],
@@ -263,7 +263,7 @@ final class Int64Test extends \Stripe\TestCase
         $encodings = [
             'amounts' => [
                 'kind' => 'array',
-                'items' => ['kind' => 'int64_string'],
+                'element' => ['kind' => 'int64_string'],
             ],
         ];
         $values = ['amounts' => 'not-an-array'];
@@ -667,5 +667,109 @@ final class Int64Test extends \Stripe\TestCase
         $result = Int64::coerceResponseValues($values, $encodings);
 
         self::assertSame('not-an-array', $result['adjustment']);
+    }
+
+    // ——— generated schema shapes ———
+    //
+    // The schemas below are copied verbatim out of generated code rather than
+    // written by hand. Every other array test in this file invented its own key
+    // for the element schema, so they all passed while the runtime read a key
+    // the generator never emits and the array branch was dead. Pinning these to
+    // real generated output means a future rename fails here instead of
+    // silently skipping coercion again.
+
+    public function testCoerceRequestParamsHandlesGeneratedArraySchema()
+    {
+        // From znapshots/php-private-preview Service/V2/Billing/IntentService: create().
+        $schema = [
+            'kind' => 'object',
+            'fields' => [
+                'actions' => [
+                    'kind' => 'array',
+                    'element' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'apply' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'invoice_discount_rule' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percent_off' => [
+                                                'kind' => 'object',
+                                                'fields' => [
+                                                    'percent_off' => [
+                                                        'kind' => 'decimal_string',
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $params = [
+            'actions' => [
+                ['apply' => ['invoice_discount_rule' => ['percent_off' => ['percent_off' => 12.5]]]],
+            ],
+        ];
+        $result = Int64::coerceRequestParams($params, $schema);
+
+        self::assertSame(
+            '12.5',
+            $result['actions'][0]['apply']['invoice_discount_rule']['percent_off']['percent_off']
+        );
+    }
+
+    public function testCoerceResponseValuesHandlesGeneratedArraySchema()
+    {
+        // From znapshots/php V2/Commerce/ProductCatalogImport: fieldEncodings().
+        $encodings = [
+            'status_details' => [
+                'kind' => 'object',
+                'fields' => [
+                    'succeeded_with_errors' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'error_count' => ['kind' => 'int64_string'],
+                            'samples' => [
+                                'kind' => 'array',
+                                'element' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'row' => ['kind' => 'int64_string'],
+                                    ],
+                                ],
+                            ],
+                            'success_count' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        $values = [
+            'status_details' => [
+                'succeeded_with_errors' => [
+                    'error_count' => '2',
+                    'samples' => [
+                        ['row' => '7', 'field' => 'price'],
+                        ['row' => '9', 'field' => 'sku'],
+                    ],
+                    'success_count' => '98',
+                ],
+            ],
+        ];
+        $result = Int64::coerceResponseValues($values, $encodings);
+        $details = $result['status_details']['succeeded_with_errors'];
+
+        self::assertSame(2, $details['error_count']);
+        self::assertSame(98, $details['success_count']);
+        self::assertSame(7, $details['samples'][0]['row']);
+        self::assertSame(9, $details['samples'][1]['row']);
+        self::assertSame('price', $details['samples'][0]['field']);
     }
 }

@@ -80,11 +80,11 @@ class Int64
             return $params;
         }
 
-        if ('array' === $schema['kind'] && isset($schema['items'])) {
+        if ('array' === $schema['kind'] && isset($schema['element'])) {
             if (\is_array($params)) {
                 $result = [];
                 foreach ($params as $key => $value) {
-                    $result[$key] = self::coerceRequestParams($value, $schema['items']);
+                    $result[$key] = self::coerceRequestParams($value, $schema['element']);
                 }
 
                 return $result;
@@ -152,20 +152,20 @@ class Int64
                         $values = self::coerceResponseValues($values, [$field => $encoding['variants'][$discriminatorValue]]);
                     }
                 }
-            } elseif ('array' === $encoding['kind'] && isset($encoding['items'])) {
+            } elseif ('array' === $encoding['kind'] && isset($encoding['element'])) {
                 if (\is_array($value)) {
                     foreach ($value as $i => $item) {
-                        if (!isset($encoding['items']['kind'])) {
+                        if (!isset($encoding['element']['kind'])) {
                             continue;
                         }
 
-                        if ('int64_string' === $encoding['items']['kind']) {
+                        if ('int64_string' === $encoding['element']['kind']) {
                             if (\is_string($item) && \is_numeric($item)) {
                                 $values[$field][$i] = (int) $item;
                             }
-                        } elseif ('object' === $encoding['items']['kind'] && isset($encoding['items']['fields'])) {
+                        } elseif ('object' === $encoding['element']['kind'] && isset($encoding['element']['fields'])) {
                             if (\is_array($item)) {
-                                $values[$field][$i] = self::coerceResponseValues($item, $encoding['items']['fields']);
+                                $values[$field][$i] = self::coerceResponseValues($item, $encoding['element']['fields']);
                             }
                         }
                     }
