@@ -135,7 +135,12 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
-     * Registers a hook that runs after an event notification is parsed but before any callback callback is invoked.
+     * Registers a function that will be run before any event-specific callbacks. A useful place to
+     * store event-agnostic logic, such as logging or checking for
+     * [duplicate event deliveries](https://docs.stripe.com/webhooks#handle-duplicate-events).
+     *
+     * Returning `true` causes handling to continue as normal; returning `false` returns from
+     * `.handle()` immediately, so neither the registered callback nor the fallback callback are called.
      *
      * @param callable(V2\Core\EventNotification, StripeClient): bool $handler Return false to stop handling before any callback runs
      *
