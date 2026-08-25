@@ -41,18 +41,6 @@ jobs:
         with:
           php-version: "8.2"
 
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          # Conventionally you would hash "composer.lock", but we don't commit
-          # that, so we hash on "composer.json" instead.
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
-
       - name: Validate composer.json
         run: composer validate
 
@@ -80,18 +68,6 @@ jobs:
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: "8.2"
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          # Conventionally you would hash "composer.lock", but we don't commit
-          # that, so we hash on "composer.json" instead.
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Validate composer.json
         run: composer validate
@@ -149,20 +125,6 @@ jobs:
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ matrix.php-version }}
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        # This job also runs on windows, where the default shell is pwsh and
-        # `$GITHUB_OUTPUT` would resolve as an undefined pwsh variable, not the
-        # env var. Without bash the redirect target is empty and `dir` never gets
-        # set.
-        shell: bash
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
       # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
       # with all the versions of PHP that we want to execute PHPUnit upon
