@@ -384,6 +384,36 @@ final class StripeEventNotificationHandlerTest extends TestCase
         self::assertTrue($receivedInfo->isKnownEventType);
     }
 
+    public function testFallbackAcceptsTheDocumentedNotificationType()
+    {
+        $received = [];
+
+        // typed exactly as the documented callable signature. PHP enforces static function parameter types at
+        // call time, so narrowing this to Events\UnknownEventNotification - as the docblock used
+        // to promise - would TypeError on the known-event case below.
+        $fallbackCallback = static function (V2\Core\EventNotification $event, StripeClient $client, UnhandledNotificationDetails $info) use (&$received) {
+            $received[] = [$event, $info];
+        };
+
+        $handler = new StripeEventNotificationHandler($this->client, self::WEBHOOK_SECRET, $fallbackCallback);
+
+        $knownPayload = $this->getV1BillingMeterPayload();
+        $handler->handle($knownPayload, $this->generateHeader($knownPayload));
+
+        $unknownPayload = $this->getUnknownEventPayload();
+        $handler->handle($unknownPayload, $this->generateHeader($unknownPayload));
+
+        self::assertCount(2, $received);
+
+        // a type this SDK knows about arrives as its specific subclass...
+        self::assertInstanceOf(Events\V1BillingMeterErrorReportTriggeredEventNotification::class, $received[0][0]);
+        self::assertTrue($received[0][1]->isKnownEventType);
+
+        // ...and one it doesn't arrives as UnknownEventNotification
+        self::assertInstanceOf(Events\UnknownEventNotification::class, $received[1][0]);
+        self::assertFalse($received[1][1]->isKnownEventType);
+    }
+
     public function testRegisteredEventDoesNotCallOnUnhandled()
     {
         $callbackCalled = false;
