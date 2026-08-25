@@ -652,6 +652,35 @@ final class Int64Test extends \Stripe\TestCase
         self::assertSame('100', $result['adjustment']['amount']);
     }
 
+    public function testCoerceResponseValuesDiscriminatedUnionPassesThroughForNonStringDiscriminator()
+    {
+        // The request side throws here, because encoding without knowing the
+        // variant loses precision silently. Decoding has nothing to lose: the
+        // value is already a string on the wire, so an unusable discriminator
+        // just means we hand back what the API sent.
+        $encodings = [
+            'adjustment' => [
+                'kind' => 'discriminatedUnion',
+                'discriminator' => 'type',
+                'variants' => [
+                    'transfer' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'amount' => ['kind' => 'int64_string'],
+                        ],
+                    ],
+                ],
+            ],
+        ];
+        foreach ([123, true, 1.5, [], null] as $bad) {
+            $values = ['adjustment' => ['type' => $bad, 'amount' => '100']];
+            $result = Int64::coerceResponseValues($values, $encodings);
+
+            self::assertSame('100', $result['adjustment']['amount']);
+            self::assertSame($bad, $result['adjustment']['type']);
+        }
+    }
+
     public function testCoerceResponseValuesDiscriminatedUnionPassesThroughNonArrayValue()
     {
         $encodings = [
