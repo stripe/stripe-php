@@ -152,6 +152,11 @@ jobs:
 
       - name: Get Composer Cache Directory
         id: composer-cache
+        # This job also runs on windows, where the default shell is pwsh and
+        # `$GITHUB_OUTPUT` would resolve as an undefined pwsh variable, not the
+        # env var. Without bash the redirect target is empty and `dir` never gets
+        # set.
+        shell: bash
         run: |
           echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
