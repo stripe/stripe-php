@@ -11,6 +11,7 @@ require __DIR__ . '/lib/Stripe.php';
 require __DIR__ . '/lib/StripeContext.php';
 
 // Utilities
+require __DIR__ . '/lib/Util/AgentPluginHint.php';
 require __DIR__ . '/lib/Util/CaseInsensitiveArray.php';
 require __DIR__ . '/lib/Util/LoggerInterface.php';
 require __DIR__ . '/lib/Util/DefaultLogger.php';
@@ -92,6 +93,12 @@ require __DIR__ . '/lib/StripeClientInterface.php';
 require __DIR__ . '/lib/StripeStreamingClientInterface.php';
 require __DIR__ . '/lib/BaseStripeClient.php';
 require __DIR__ . '/lib/StripeClient.php';
+
+// EventRouter
+require __DIR__ . '/lib/UnhandledNotificationDetails.php';
+require __DIR__ . '/lib/AbstractEventNotificationHandler.php';
+require __DIR__ . '/lib/StripeEventNotificationHandler.php';
+require __DIR__ . '/lib/StripeEventNotificationHandlerWithoutVerification.php';
 
 // The beginning of the section generated from our OpenAPI spec
 require __DIR__ . '/lib/Account.php';

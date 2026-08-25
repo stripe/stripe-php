@@ -13,6 +13,7 @@ use Stripe\Util\EventNotificationTypes;
  * If you want more details, use `$stripeClient->v2->core->events->retrieve(thin_event.id)` to fetch the full event object.
  *
  * @property string             $id       Unique identifier for the event.
+ * @property string             $object   String representing the object's type. Objects of the same type share the same value.
  * @property string             $type     The type of the event.
  * @property string             $created  Time at which the object was created.
  * @property null|\Stripe\StripeContext        $context  Authentication context needed to fetch the event or related object.
@@ -22,6 +23,7 @@ use Stripe\Util\EventNotificationTypes;
 abstract class EventNotification
 {
     public $id;
+    public $object;
     public $type;
     public $created;
     public $context;
@@ -42,6 +44,9 @@ abstract class EventNotification
 
         if (\array_key_exists('id', $json)) {
             $this->id = $json['id'];
+        }
+        if (\array_key_exists('object', $json)) {
+            $this->object = $json['object'];
         }
         if (\array_key_exists('type', $json)) {
             $this->type = $json['type'];
@@ -67,21 +72,30 @@ abstract class EventNotification
      * Helper for constructing an Event Notification. Doesn't perform signature validation, so you
      * should use \Stripe\BaseStripeClient::parseEventNotification instead for
      * initial handling. This is useful in unit tests and working with EventNotifications that you've
-     * already validated the authenticity of.
+     * whose authenticity you've already validated.
      *
-     * @param string $jsonStr the raw json payload
+     * @param array<string, mixed>|string $payload the raw JSON string or already-parsed array
      * @param \Stripe\StripeClient $client a StripeClient instance that this can use to make requests
      *
      * @return EventNotification
+     *
+     * @throws \Stripe\Exception\UnexpectedValueException if the payload is a v1 event
      */
-    public static function fromJson($jsonStr, $client)
+    public static function fromJson($payload, $client)
     {
-        $json = json_decode($jsonStr, true);
+        $json = \Stripe\Webhook::parsePayload($payload);
 
-        if (isset($json['object']) && 'event' === $json['object']) {
-            throw new \Stripe\Exception\UnexpectedValueException(
-                'You passed a webhook payload to StripeClient::parseEventNotification, which expects an event notification. Use Webhook::constructEvent instead.'
-            );
+        if (isset($json['object'])) {
+            if ('event' === $json['object']) {
+                throw new \Stripe\Exception\UnexpectedValueException(
+                    'You passed a v1 Event to a method that expects a thin event notification. Use the corresponding constructEvent* method instead.'
+                );
+            }
+            if ('v2.core.event' !== $json['object']) {
+                throw new \Stripe\Exception\UnexpectedValueException(
+                    "Unexpected object type '" . $json['object'] . "'. Expected 'v2.core.event' for an event notification."
+                );
+            }
         }
 
         $class = UnknownEventNotification::class;
