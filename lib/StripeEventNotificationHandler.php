@@ -12,7 +12,7 @@ class StripeEventNotificationHandler extends AbstractEventNotificationHandler
      *
      * @param StripeClient $client The Stripe client to use for API interactions
      * @param string $webhookSecret The webhook secret for verifying signatures
-     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A callback that's invoked when
+     * @param callable(V2\Core\EventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A callback that's invoked for unhandled events
      */
     public function __construct($client, $webhookSecret, $fallbackCallback)
     {
@@ -29,7 +29,7 @@ class StripeEventNotificationHandler extends AbstractEventNotificationHandler
      * Intended for pre-authenticated channels like AWS EventBridge or Azure Event Grid.
      *
      * @param StripeClient $client The Stripe client to use for API interactions
-     * @param callable $fallbackCallback A callback that's invoked for unhandled events
+     * @param callable(V2\Core\EventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A callback that's invoked for unhandled events
      *
      * @return StripeEventNotificationHandlerWithoutVerification
      */

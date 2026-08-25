@@ -19,6 +19,7 @@ abstract class AbstractEventNotificationHandler
     /** @var StripeClient */
     protected $client;
     protected $hasHandledEvents = false;
+    /** @var callable(V2\Core\EventNotification, StripeClient, UnhandledNotificationDetails): void */
     protected $fallbackCallback;
     /** @var array<string, mixed> everything we need to duplicate a client */
     protected $clientConfig;
@@ -27,7 +28,7 @@ abstract class AbstractEventNotificationHandler
 
     /**
      * @param StripeClient $client The Stripe client to use for API interactions
-     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A callback that's invoked for unhandled events
+     * @param callable(V2\Core\EventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A callback that's invoked for unhandled events. It receives the notification as parsed, so it's a specific subclass for event types this SDK knows about and an Events\UnknownEventNotification otherwise; check UnhandledNotificationDetails::$isKnownEventType or use instanceof to narrow
      */
     public function __construct($client, $fallbackCallback)
     {
@@ -161,7 +162,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v1.billing.meter.error_report_triggered" event.
      *
-     * @param callable(Events\V1BillingMeterErrorReportTriggeredEvent, StripeClient): void $handler Handles v1.billing.meter.error_report_triggered events
+     * @param callable(Events\V1BillingMeterErrorReportTriggeredEventNotification, StripeClient): void $handler Handles v1.billing.meter.error_report_triggered events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -174,7 +175,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v1.billing.meter.no_meter_found" event.
      *
-     * @param callable(Events\V1BillingMeterNoMeterFoundEvent, StripeClient): void $handler Handles v1.billing.meter.no_meter_found events
+     * @param callable(Events\V1BillingMeterNoMeterFoundEventNotification, StripeClient): void $handler Handles v1.billing.meter.no_meter_found events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -187,7 +188,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.commerce.product_catalog.imports.failed" event.
      *
-     * @param callable(Events\V2CommerceProductCatalogImportsFailedEvent, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.failed events
+     * @param callable(Events\V2CommerceProductCatalogImportsFailedEventNotification, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.failed events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -200,7 +201,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.commerce.product_catalog.imports.processing" event.
      *
-     * @param callable(Events\V2CommerceProductCatalogImportsProcessingEvent, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.processing events
+     * @param callable(Events\V2CommerceProductCatalogImportsProcessingEventNotification, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.processing events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -213,7 +214,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.commerce.product_catalog.imports.succeeded" event.
      *
-     * @param callable(Events\V2CommerceProductCatalogImportsSucceededEvent, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.succeeded events
+     * @param callable(Events\V2CommerceProductCatalogImportsSucceededEventNotification, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.succeeded events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -226,7 +227,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.commerce.product_catalog.imports.succeeded_with_errors" event.
      *
-     * @param callable(Events\V2CommerceProductCatalogImportsSucceededWithErrorsEvent, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.succeeded_with_errors events
+     * @param callable(Events\V2CommerceProductCatalogImportsSucceededWithErrorsEventNotification, StripeClient): void $handler Handles v2.commerce.product_catalog.imports.succeeded_with_errors events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -243,7 +244,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account.closed" event.
      *
-     * @param callable(Events\V2CoreAccountClosedEvent, StripeClient): void $handler Handles v2.core.account.closed events
+     * @param callable(Events\V2CoreAccountClosedEventNotification, StripeClient): void $handler Handles v2.core.account.closed events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -256,7 +257,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account.created" event.
      *
-     * @param callable(Events\V2CoreAccountCreatedEvent, StripeClient): void $handler Handles v2.core.account.created events
+     * @param callable(Events\V2CoreAccountCreatedEventNotification, StripeClient): void $handler Handles v2.core.account.created events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -269,7 +270,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account.updated" event.
      *
-     * @param callable(Events\V2CoreAccountUpdatedEvent, StripeClient): void $handler Handles v2.core.account.updated events
+     * @param callable(Events\V2CoreAccountUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account.updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -282,7 +283,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[configuration.customer].capability_status_updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.customer].capability_status_updated events
+     * @param callable(Events\V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[configuration.customer].capability_status_updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -299,7 +300,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[configuration.customer].updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingConfigurationCustomerUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.customer].updated events
+     * @param callable(Events\V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[configuration.customer].updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -316,7 +317,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[configuration.merchant].capability_status_updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.merchant].capability_status_updated events
+     * @param callable(Events\V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[configuration.merchant].capability_status_updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -333,7 +334,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[configuration.merchant].updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingConfigurationMerchantUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.merchant].updated events
+     * @param callable(Events\V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[configuration.merchant].updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -350,7 +351,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[configuration.recipient].capability_status_updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.recipient].capability_status_updated events
+     * @param callable(Events\V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[configuration.recipient].capability_status_updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -367,7 +368,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[configuration.recipient].updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingConfigurationRecipientUpdatedEvent, StripeClient): void $handler Handles v2.core.account[configuration.recipient].updated events
+     * @param callable(Events\V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[configuration.recipient].updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -384,7 +385,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[defaults].updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingDefaultsUpdatedEvent, StripeClient): void $handler Handles v2.core.account[defaults].updated events
+     * @param callable(Events\V2CoreAccountIncludingDefaultsUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[defaults].updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -397,7 +398,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[future_requirements].updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingFutureRequirementsUpdatedEvent, StripeClient): void $handler Handles v2.core.account[future_requirements].updated events
+     * @param callable(Events\V2CoreAccountIncludingFutureRequirementsUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[future_requirements].updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -410,7 +411,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[identity].updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingIdentityUpdatedEvent, StripeClient): void $handler Handles v2.core.account[identity].updated events
+     * @param callable(Events\V2CoreAccountIncludingIdentityUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[identity].updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -423,7 +424,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account[requirements].updated" event.
      *
-     * @param callable(Events\V2CoreAccountIncludingRequirementsUpdatedEvent, StripeClient): void $handler Handles v2.core.account[requirements].updated events
+     * @param callable(Events\V2CoreAccountIncludingRequirementsUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account[requirements].updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -436,7 +437,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account_link.returned" event.
      *
-     * @param callable(Events\V2CoreAccountLinkReturnedEvent, StripeClient): void $handler Handles v2.core.account_link.returned events
+     * @param callable(Events\V2CoreAccountLinkReturnedEventNotification, StripeClient): void $handler Handles v2.core.account_link.returned events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -449,7 +450,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account_person.created" event.
      *
-     * @param callable(Events\V2CoreAccountPersonCreatedEvent, StripeClient): void $handler Handles v2.core.account_person.created events
+     * @param callable(Events\V2CoreAccountPersonCreatedEventNotification, StripeClient): void $handler Handles v2.core.account_person.created events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -462,7 +463,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account_person.deleted" event.
      *
-     * @param callable(Events\V2CoreAccountPersonDeletedEvent, StripeClient): void $handler Handles v2.core.account_person.deleted events
+     * @param callable(Events\V2CoreAccountPersonDeletedEventNotification, StripeClient): void $handler Handles v2.core.account_person.deleted events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -475,7 +476,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.account_person.updated" event.
      *
-     * @param callable(Events\V2CoreAccountPersonUpdatedEvent, StripeClient): void $handler Handles v2.core.account_person.updated events
+     * @param callable(Events\V2CoreAccountPersonUpdatedEventNotification, StripeClient): void $handler Handles v2.core.account_person.updated events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
@@ -488,7 +489,7 @@ abstract class AbstractEventNotificationHandler
     /**
      * Registers a handler for the "v2.core.event_destination.ping" event.
      *
-     * @param callable(Events\V2CoreEventDestinationPingEvent, StripeClient): void $handler Handles v2.core.event_destination.ping events
+     * @param callable(Events\V2CoreEventDestinationPingEventNotification, StripeClient): void $handler Handles v2.core.event_destination.ping events
      *
      * @throws Exception\InvalidArgumentException if this event type is already registered
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
