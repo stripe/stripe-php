@@ -103,12 +103,12 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
-     * Callbacks are expected to be registered once on startup, so registering anything
-     * after handling has begun indicates a bug.
+     * Callbacks are expected to be registered on startup, so registering anything
+     * after handling an event indicates a bug.
      *
      * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
      */
-    private function assertCanRegister()
+    private function assertHasntHandledYet()
     {
         if ($this->hasHandledEvents) {
             throw new Exception\BadMethodCallException('Cannot register new callbacks after an event has been handled. This is indicative of a bug.');
@@ -126,7 +126,7 @@ abstract class AbstractEventNotificationHandler
      */
     protected function register($eventType, $handler)
     {
-        $this->assertCanRegister();
+        $this->assertHasntHandledYet();
         if (isset($this->registeredHandlers[$eventType])) {
             throw new Exception\InvalidArgumentException("Callback for event type \"{$eventType}\" is already registered");
         }
@@ -149,7 +149,7 @@ abstract class AbstractEventNotificationHandler
      */
     public function preHandle($handler)
     {
-        $this->assertCanRegister();
+        $this->assertHasntHandledYet();
         if (null !== $this->preHandleCallback) {
             throw new Exception\InvalidArgumentException('A preHandle callback is already registered');
         }
