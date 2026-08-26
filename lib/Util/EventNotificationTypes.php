@@ -33,6 +33,13 @@ class EventNotificationTypes
         \Stripe\Events\V2CoreAccountPersonCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonCreatedEventNotification::class,
         \Stripe\Events\V2CoreAccountPersonDeletedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonDeletedEventNotification::class,
         \Stripe\Events\V2CoreAccountPersonUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonUpdatedEventNotification::class,
+        \Stripe\Events\V2CoreApprovalRequestApprovedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestApprovedEventNotification::class,
+        \Stripe\Events\V2CoreApprovalRequestCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestCanceledEventNotification::class,
+        \Stripe\Events\V2CoreApprovalRequestCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestCreatedEventNotification::class,
+        \Stripe\Events\V2CoreApprovalRequestExpiredEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestExpiredEventNotification::class,
+        \Stripe\Events\V2CoreApprovalRequestFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestFailedEventNotification::class,
+        \Stripe\Events\V2CoreApprovalRequestRejectedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestRejectedEventNotification::class,
+        \Stripe\Events\V2CoreApprovalRequestSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestSucceededEventNotification::class,
         \Stripe\Events\V2CoreBatchJobBatchFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobBatchFailedEventNotification::class,
         \Stripe\Events\V2CoreBatchJobCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCanceledEventNotification::class,
         \Stripe\Events\V2CoreBatchJobCompletedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCompletedEventNotification::class,
@@ -94,6 +101,7 @@ class EventNotificationTypes
         \Stripe\Events\V2OrchestratedCommerceAgreementCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementCreatedEventNotification::class,
         \Stripe\Events\V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementPartiallyConfirmedEventNotification::class,
         \Stripe\Events\V2OrchestratedCommerceAgreementTerminatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementTerminatedEventNotification::class,
+        \Stripe\Events\V2SignalsAccountEvaluationCompleteEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountEvaluationCompleteEventNotification::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

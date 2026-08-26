@@ -17,6 +17,7 @@ namespace Stripe\V2\Core\Vault;
  * @property string $created Creation time.
  * @property string $last4 The last 4 digits of the account number or IBAN.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $restricted Whether the GB Bank Account is currently unusable for money movement, despite potentially being correctly set up. Please reach out to Stripe Support for more information.
  * @property null|string $sort_code The Sort Code of the bank account.
  * @property string[] $supported_currencies The list of currencies supported by this bank account.
  */

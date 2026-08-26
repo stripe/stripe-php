@@ -31,6 +31,13 @@ class EventTypes
         \Stripe\Events\V2CoreAccountPersonCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonCreatedEvent::class,
         \Stripe\Events\V2CoreAccountPersonDeletedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonDeletedEvent::class,
         \Stripe\Events\V2CoreAccountPersonUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreAccountPersonUpdatedEvent::class,
+        \Stripe\Events\V2CoreApprovalRequestApprovedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestApprovedEvent::class,
+        \Stripe\Events\V2CoreApprovalRequestCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestCanceledEvent::class,
+        \Stripe\Events\V2CoreApprovalRequestCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestCreatedEvent::class,
+        \Stripe\Events\V2CoreApprovalRequestExpiredEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestExpiredEvent::class,
+        \Stripe\Events\V2CoreApprovalRequestFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestFailedEvent::class,
+        \Stripe\Events\V2CoreApprovalRequestRejectedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestRejectedEvent::class,
+        \Stripe\Events\V2CoreApprovalRequestSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreApprovalRequestSucceededEvent::class,
         \Stripe\Events\V2CoreBatchJobBatchFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobBatchFailedEvent::class,
         \Stripe\Events\V2CoreBatchJobCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCanceledEvent::class,
         \Stripe\Events\V2CoreBatchJobCompletedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreBatchJobCompletedEvent::class,
@@ -92,6 +99,7 @@ class EventTypes
         \Stripe\Events\V2OrchestratedCommerceAgreementCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementCreatedEvent::class,
         \Stripe\Events\V2OrchestratedCommerceAgreementPartiallyConfirmedEvent::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementPartiallyConfirmedEvent::class,
         \Stripe\Events\V2OrchestratedCommerceAgreementTerminatedEvent::LOOKUP_TYPE => \Stripe\Events\V2OrchestratedCommerceAgreementTerminatedEvent::class,
+        \Stripe\Events\V2SignalsAccountEvaluationCompleteEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountEvaluationCompleteEvent::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

@@ -34,6 +34,7 @@ class ObjectTypes
             \Stripe\Billing\CreditBalanceSummary::OBJECT_NAME => \Stripe\Billing\CreditBalanceSummary::class,
             \Stripe\Billing\CreditBalanceTransaction::OBJECT_NAME => \Stripe\Billing\CreditBalanceTransaction::class,
             \Stripe\Billing\CreditGrant::OBJECT_NAME => \Stripe\Billing\CreditGrant::class,
+            \Stripe\Billing\FeedbackOption::OBJECT_NAME => \Stripe\Billing\FeedbackOption::class,
             \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
             \Stripe\Billing\MeterEvent::OBJECT_NAME => \Stripe\Billing\MeterEvent::class,
             \Stripe\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\Billing\MeterEventAdjustment::class,
@@ -211,6 +212,7 @@ class ObjectTypes
         \Stripe\V2\Core\AccountPerson::OBJECT_NAME => \Stripe\V2\Core\AccountPerson::class,
         \Stripe\V2\Core\AccountPersonToken::OBJECT_NAME => \Stripe\V2\Core\AccountPersonToken::class,
         \Stripe\V2\Core\AccountToken::OBJECT_NAME => \Stripe\V2\Core\AccountToken::class,
+        \Stripe\V2\Core\ApprovalRequest::OBJECT_NAME => \Stripe\V2\Core\ApprovalRequest::class,
         \Stripe\V2\Core\BatchJob::OBJECT_NAME => \Stripe\V2\Core\BatchJob::class,
         \Stripe\V2\Core\Event::OBJECT_NAME => \Stripe\V2\Core\Event::class,
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
@@ -238,6 +240,9 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         \Stripe\V2\Network\BusinessProfile::OBJECT_NAME => \Stripe\V2\Network\BusinessProfile::class,
         \Stripe\V2\OrchestratedCommerce\Agreement::OBJECT_NAME => \Stripe\V2\OrchestratedCommerce\Agreement::class,
+        \Stripe\V2\Signals\AccountActivity::OBJECT_NAME => \Stripe\V2\Signals\AccountActivity::class,
+        \Stripe\V2\Signals\AccountEvaluation::OBJECT_NAME => \Stripe\V2\Signals\AccountEvaluation::class,
+        \Stripe\V2\Signals\AccountSignal::OBJECT_NAME => \Stripe\V2\Signals\AccountSignal::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }
