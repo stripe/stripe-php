@@ -94,6 +94,22 @@ class CustomerService extends AbstractService
     }
 
     /**
+     * List all location specific tax exemptions for a customer.
+     *
+     * @param string $parentId
+     * @param null|array{country?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Collection<\Stripe\CustomerTaxExemption>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function allTaxExemptions($parentId, $params = null, $opts = null)
+    {
+        return $this->requestCollection('get', $this->buildPath('/v1/customers/%s/tax_exemptions', $parentId), $params, $opts);
+    }
+
+    /**
      * Returns a list of tax IDs for a customer.
      *
      * @param string $parentId
@@ -184,6 +200,22 @@ class CustomerService extends AbstractService
     }
 
     /**
+     * Create a location specific tax exemption for a customer.
+     *
+     * @param string $parentId
+     * @param null|array{ca?: array{state?: string, tax_type: string}, country: string, effective_date: string, expand?: string[], expiration_date?: string, us?: array{state: string}} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\CustomerTaxExemption
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function createTaxExemption($parentId, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/customers/%s/tax_exemptions', $parentId), $params, $opts);
+    }
+
+    /**
      * Creates a new <code>tax_id</code> object for a customer.
      *
      * @param string $parentId
@@ -247,6 +279,23 @@ class CustomerService extends AbstractService
     public function deleteSource($parentId, $id, $params = null, $opts = null)
     {
         return $this->request('delete', $this->buildPath('/v1/customers/%s/sources/%s', $parentId, $id), $params, $opts);
+    }
+
+    /**
+     * Delete a location specific tax exemption for a customer.
+     *
+     * @param string $parentId
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\CustomerTaxExemption
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function deleteTaxExemption($parentId, $id, $params = null, $opts = null)
+    {
+        return $this->request('delete', $this->buildPath('/v1/customers/%s/tax_exemptions/%s', $parentId, $id), $params, $opts);
     }
 
     /**
@@ -366,6 +415,23 @@ class CustomerService extends AbstractService
     public function retrieveSource($parentId, $id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/customers/%s/sources/%s', $parentId, $id), $params, $opts);
+    }
+
+    /**
+     * Retrieve a location specific tax exemption for a customer.
+     *
+     * @param string $parentId
+     * @param string $id
+     * @param null|array{expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\CustomerTaxExemption
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function retrieveTaxExemption($parentId, $id, $params = null, $opts = null)
+    {
+        return $this->request('get', $this->buildPath('/v1/customers/%s/tax_exemptions/%s', $parentId, $id), $params, $opts);
     }
 
     /**

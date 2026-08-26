@@ -2842,7 +2842,7 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->expectsRequest('post', '/v1/setup_intents');
         $result = $this->client->setupIntents->create([
-            'payment_method_types' => ['card'],
+            'allowed_payment_method_types' => ['card'],
         ]);
         self::assertInstanceOf(SetupIntent::class, $result);
     }
@@ -7861,7 +7861,7 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                         ],
                         'transform_quantity' => [
-                            'divide_by' => 1592560163,
+                            'divide_by' => '1592560163',
                             'round' => 'down',
                         ],
                         'unit_amount' => 'unit_amount',
@@ -10821,7 +10821,7 @@ final class GeneratedExamplesTest extends TestCase
                         'actor' => ['type' => 'api_key'],
                         'context' => 'context',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'details' => ['type' => 'api_key'],
+                        'details' => ['type' => 'user_invite'],
                         'id' => 'obj_123',
                         'livemode' => [],
                         'type' => 'api_key_created',
@@ -10851,7 +10851,7 @@ final class GeneratedExamplesTest extends TestCase
                 'actor' => ['type' => 'api_key'],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'details' => ['type' => 'api_key'],
+                'details' => ['type' => 'user_invite'],
                 'id' => 'obj_123',
                 'livemode' => [],
                 'type' => 'api_key_created',

@@ -159,6 +159,7 @@ require __DIR__ . '/lib/Customer.php';
 require __DIR__ . '/lib/CustomerBalanceTransaction.php';
 require __DIR__ . '/lib/CustomerCashBalanceTransaction.php';
 require __DIR__ . '/lib/CustomerSession.php';
+require __DIR__ . '/lib/CustomerTaxExemption.php';
 require __DIR__ . '/lib/DelegatedCheckout/Order.php';
 require __DIR__ . '/lib/DelegatedCheckout/OrderEvent.php';
 require __DIR__ . '/lib/DelegatedCheckout/RequestedSession.php';

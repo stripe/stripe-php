@@ -72,6 +72,7 @@ class ObjectTypes
             \Stripe\CustomerBalanceTransaction::OBJECT_NAME => \Stripe\CustomerBalanceTransaction::class,
             \Stripe\CustomerCashBalanceTransaction::OBJECT_NAME => \Stripe\CustomerCashBalanceTransaction::class,
             \Stripe\CustomerSession::OBJECT_NAME => \Stripe\CustomerSession::class,
+            \Stripe\CustomerTaxExemption::OBJECT_NAME => \Stripe\CustomerTaxExemption::class,
             \Stripe\DelegatedCheckout\Order::OBJECT_NAME => \Stripe\DelegatedCheckout\Order::class,
             \Stripe\DelegatedCheckout\OrderEvent::OBJECT_NAME => \Stripe\DelegatedCheckout\OrderEvent::class,
             \Stripe\DelegatedCheckout\RequestedSession::OBJECT_NAME => \Stripe\DelegatedCheckout\RequestedSession::class,

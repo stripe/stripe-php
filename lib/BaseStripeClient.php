@@ -563,7 +563,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * Creates a new StripeEventNotificationHandler associated with this client.
      *
      * @param string $webhookSecret The webhook secret to use for verifying incoming webhook signatures
-     * @param callable(Events\UnknownEventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback a function to call if no other handler processes an event notification
+     * @param callable(EventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback a function to call if no other handler processes an event notification
      *
      * @return StripeEventNotificationHandler A new StripeEventNotificationHandler instance
      */
@@ -576,7 +576,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * Creates a handler that processes events without webhook signature verification.
      * Intended for pre-authenticated channels like AWS EventBridge or Azure Event Grid.
      *
-     * @param callable $fallbackCallback A callback that's invoked for unhandled events
+     * @param callable(EventNotification, StripeClient, UnhandledNotificationDetails): void $fallbackCallback A callback that's invoked for unhandled events
      *
      * @return StripeEventNotificationHandlerWithoutVerification
      */
