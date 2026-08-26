@@ -23,7 +23,7 @@ namespace Stripe\Climate;
  * @property null|int $delayed_at Time at which the order's expected_delivery_year was delayed. Measured in seconds since the Unix epoch.
  * @property null|int $delivered_at Time at which the order was delivered. Measured in seconds since the Unix epoch.
  * @property ((object{delivered_at: int, location: null|(object{city: null|string, country: string, latitude: null|float, longitude: null|float, region: null|string}&\Stripe\StripeObject), metric_tons: string, registry_url: null|string, supplier: Supplier}&\Stripe\StripeObject))[] $delivery_details Details about the delivery of carbon removal for this order.
- * @property int $expected_delivery_year The year this order is expected to be delivered.
+ * @property int $expected_delivery_year The year this order is expected to be delivered. If the year is in the past, the order is a spot purchase and will be delivered within 30 days of purchase.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $metric_tons Quantity of carbon removal that is included in this order.
