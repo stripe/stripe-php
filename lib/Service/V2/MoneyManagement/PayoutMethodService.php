@@ -47,6 +47,25 @@ class PayoutMethodService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Disable a PayoutMethod object. The payout method will not be available for use
+     * in outbound money movement. To re-enable the payout method, create an
+     * OutboundSetupIntent using [`POST
+     * /v2/money_management/outbound_setup_intents`](https://docs.stripe.com/api/v2/money-management/outbound-setup-intents/create).
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\MoneyManagement\PayoutMethod
+     *
+     * @throws \Stripe\Exception\CannotProceedException
+     */
+    public function disable($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/money_management/payout_methods/%s/disable', $id), $params, $opts);
+    }
+
+    /**
      * Retrieve a PayoutMethod object.
      *
      * @param string $id
