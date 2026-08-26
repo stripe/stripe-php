@@ -31,6 +31,7 @@ class ObjectTypes
             \Stripe\Billing\CreditBalanceSummary::OBJECT_NAME => \Stripe\Billing\CreditBalanceSummary::class,
             \Stripe\Billing\CreditBalanceTransaction::OBJECT_NAME => \Stripe\Billing\CreditBalanceTransaction::class,
             \Stripe\Billing\CreditGrant::OBJECT_NAME => \Stripe\Billing\CreditGrant::class,
+            \Stripe\Billing\FeedbackOption::OBJECT_NAME => \Stripe\Billing\FeedbackOption::class,
             \Stripe\Billing\Meter::OBJECT_NAME => \Stripe\Billing\Meter::class,
             \Stripe\Billing\MeterEvent::OBJECT_NAME => \Stripe\Billing\MeterEvent::class,
             \Stripe\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\Billing\MeterEventAdjustment::class,
