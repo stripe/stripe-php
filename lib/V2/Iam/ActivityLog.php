@@ -12,7 +12,7 @@ namespace Stripe\V2\Iam;
  * @property (object{api_key?: (object{id: string}&\Stripe\StripeObject), type: string, user?: (object{email: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $actor The actor that performed the action.
  * @property string $context The account on which the action was performed.
  * @property string $created Timestamp when the activity log entry was created.
- * @property (object{api_key?: (object{created: string, expires_at?: string, id: string, ip_allowlist: string[], managed_by?: (object{application?: (object{id: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), name?: string, new_key?: string, note?: string, type: string}&\Stripe\StripeObject), type: string, user_invite?: (object{invited_user_email: string, roles: string[]}&\Stripe\StripeObject), user_roles?: (object{new_roles: string[], old_roles: string[], source: string, user_email: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $details Action-specific details of the activity log entry.
+ * @property (object{api_key?: (object{created: string, expires_at?: string, id: string, ip_allowlist: string[], managed_by?: (object{application?: (object{id: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), name?: string, new_key?: string, note?: string, type: string}&\Stripe\StripeObject), type: string, user_access?: (object{authentication: (object{primary_factor: (object{sso_provider?: string, type: string}&\Stripe\StripeObject), secondary_factors: (object{sso_provider?: string, type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), dashboard_client?: (object{browser: string, browser_version: string, device_type: string, os: string}&\Stripe\StripeObject), expires_at: string, network: (object{city: string, country: string, ip_address: string, region: string}&\Stripe\StripeObject), risk: (object{level: string, signals: (object{novel_device?: (object{}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), roles: string[], session_fingerprint: string, surface: string}&\Stripe\StripeObject), user_invite?: (object{invited_user_email: string, roles: string[]}&\Stripe\StripeObject), user_roles?: (object{new_roles: string[], old_roles: string[], source: string, user_email: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $details Action-specific details of the activity log entry.
  * @property bool $livemode Whether the action was performed in live mode.
  * @property string $type The type of action that was performed.
  */
@@ -24,6 +24,7 @@ class ActivityLog extends \Stripe\ApiResource
     const TYPE_API_KEY_DELETED = 'api_key_deleted';
     const TYPE_API_KEY_UPDATED = 'api_key_updated';
     const TYPE_API_KEY_VIEWED = 'api_key_viewed';
+    const TYPE_USER_ACCESS_STARTED = 'user_access_started';
     const TYPE_USER_INVITE_ACCEPTED = 'user_invite_accepted';
     const TYPE_USER_INVITE_CREATED = 'user_invite_created';
     const TYPE_USER_INVITE_DELETED = 'user_invite_deleted';

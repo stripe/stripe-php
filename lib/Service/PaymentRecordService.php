@@ -38,7 +38,7 @@ class PaymentRecordService extends AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
-    public function create($id, $params = null, $opts = null)
+    public function reportDispute($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/payment_records/%s/report_dispute', $id), $params, $opts);
     }

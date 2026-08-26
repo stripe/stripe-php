@@ -368,6 +368,65 @@ class Customer extends ApiResource
     {
         return self::_retrieveNestedResource($id, static::PATH_CASH_BALANCE_TRANSACTIONS, $cashBalanceTransactionId, $params, $opts);
     }
+    const PATH_TAX_EXEMPTIONS = '/tax_exemptions';
+
+    /**
+     * @param string $id the ID of the customer on which to retrieve the customer tax exemptions
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return Collection<CustomerTaxExemption> the list of customer tax exemptions
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function allTaxExemptions($id, $params = null, $opts = null)
+    {
+        return self::_allNestedResources($id, static::PATH_TAX_EXEMPTIONS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the customer on which to create the customer tax exemption
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return CustomerTaxExemption
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function createTaxExemption($id, $params = null, $opts = null)
+    {
+        return self::_createNestedResource($id, static::PATH_TAX_EXEMPTIONS, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the customer to which the customer tax exemption belongs
+     * @param string $taxExemptionId the ID of the customer tax exemption to delete
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return CustomerTaxExemption
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function deleteTaxExemption($id, $taxExemptionId, $params = null, $opts = null)
+    {
+        return self::_deleteNestedResource($id, static::PATH_TAX_EXEMPTIONS, $taxExemptionId, $params, $opts);
+    }
+
+    /**
+     * @param string $id the ID of the customer to which the customer tax exemption belongs
+     * @param string $taxExemptionId the ID of the customer tax exemption to retrieve
+     * @param null|array $params
+     * @param null|array|string $opts
+     *
+     * @return CustomerTaxExemption
+     *
+     * @throws Exception\ApiErrorException if the request fails
+     */
+    public static function retrieveTaxExemption($id, $taxExemptionId, $params = null, $opts = null)
+    {
+        return self::_retrieveNestedResource($id, static::PATH_TAX_EXEMPTIONS, $taxExemptionId, $params, $opts);
+    }
     const PATH_SOURCES = '/sources';
 
     /**

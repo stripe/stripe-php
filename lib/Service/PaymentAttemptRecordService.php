@@ -46,7 +46,7 @@ class PaymentAttemptRecordService extends AbstractService
      * Report that the specified Payment Attempt Record was authorized.
      *
      * @param string $id
-     * @param null|array{authorized_at?: int, expand?: string[], metadata?: null|array<string, string>, processor_details?: array{custom?: array{payment_reference: string}, type: string}} $params
+     * @param null|array{authorized_at?: int, expand?: string[], metadata?: null|array<string, string>, payment_evaluations?: string[], payment_method_details?: array{card?: array{checks?: array{address_line1_check?: string, address_postal_code_check?: string, cvc_check?: string}}, type: string}, processor_details?: array{custom?: array{payment_reference: string}, type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentAttemptRecord

@@ -38,6 +38,7 @@ namespace Stripe\Issuing;
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|(object{acquiring_institution_country?: null|string, acquiring_institution_id: null|string, retrieval_reference_number?: null|string, system_trace_audit_number: null|string, transaction_id: null|string}&\Stripe\StripeObject) $network_data Details about the authorization, such as identifiers, set by the card network.
  * @property null|(object{amount: int, amount_details: null|(object{atm_fee: null|int, cashback_amount: null|int}&\Stripe\StripeObject), currency: string, hold_amount?: null|(object{currency: string, value: int}&\Stripe\StripeObject), hold_amount_details?: null|(object{estimated_fee: null|(object{currency: string, value: int}&\Stripe\StripeObject), estimated_fee_details: null|((object{amount: (object{currency: string, value: int}&\Stripe\StripeObject), charged_by: (object{application: null|(object{feature_name: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject))[], network: (object{currency: string, value: int}&\Stripe\StripeObject), reserve: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), is_amount_controllable: bool, merchant_amount: int, merchant_currency: string, network_risk_score: null|int}&\Stripe\StripeObject) $pending_request The pending authorization request. This field will only be non-null during an <code>issuing_authorization.request</code> webhook.
+ * @property null|string $pos_condition The point-of-sale initiation condition. This is null when the card network did not provide one.
  * @property null|(object{status: string}&\Stripe\StripeObject) $redaction Redaction status of this authorization. If the authorization is not redacted, this field will be null.
  * @property ((object{amount: int, amount_details: null|(object{atm_fee: null|int, cashback_amount: null|int}&\Stripe\StripeObject), approved: bool, authorization_code: null|string, created: int, currency: string, hold_amount?: null|(object{currency: string, value: int}&\Stripe\StripeObject), hold_amount_details?: null|(object{estimated_fee: null|(object{currency: string, value: int}&\Stripe\StripeObject), estimated_fee_details: null|((object{amount: (object{currency: string, value: int}&\Stripe\StripeObject), charged_by: (object{application: null|(object{feature_name: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject))[], network: (object{currency: string, value: int}&\Stripe\StripeObject), reserve: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), merchant_amount: int, merchant_currency: string, network_data?: null|(object{trace_id: null|(object{banknet_reference_number: null|string, financial_network_code: null|string, network_date: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject), network_risk_score: null|int, reason: string, reason_message: null|string, requested_at: null|int}&\Stripe\StripeObject))[] $request_history History of every time a <code>pending_request</code> authorization was approved/declined, either by you directly or by Stripe (e.g. based on your spending_controls). If the merchant changes the authorization by performing an incremental authorization, you can look at this field to see the previous requests for the authorization. This field can be helpful in determining why a given authorization was approved/declined.
  * @property string $status The current status of the authorization in its lifecycle.
@@ -64,6 +65,15 @@ class Authorization extends \Stripe\ApiResource
 
     const CARD_PRESENCE_NOT_PRESENT = 'not_present';
     const CARD_PRESENCE_PRESENT = 'present';
+
+    const POS_CONDITION_ACCOUNT_VERIFICATION = 'account_verification';
+    const POS_CONDITION_CARD_NOT_PRESENT = 'card_not_present';
+    const POS_CONDITION_CARD_PRESENT = 'card_present';
+    const POS_CONDITION_E_COMMERCE = 'e_commerce';
+    const POS_CONDITION_KEY_ENTERED_POS = 'key_entered_pos';
+    const POS_CONDITION_OTHER = 'other';
+    const POS_CONDITION_PIN_ENTERED = 'pin_entered';
+    const POS_CONDITION_RECURRING_OR_MOTO = 'recurring_or_moto';
 
     const STATUS_CLOSED = 'closed';
     const STATUS_EXPIRED = 'expired';
