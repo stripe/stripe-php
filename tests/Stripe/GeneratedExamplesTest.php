@@ -2831,7 +2831,7 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->expectsRequest('post', '/v1/setup_intents');
         $result = $this->client->setupIntents->create([
-            'payment_method_types' => ['card'],
+            'allowed_payment_method_types' => ['card'],
         ]);
         self::assertInstanceOf(SetupIntent::class, $result);
     }

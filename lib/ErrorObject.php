@@ -50,6 +50,7 @@ class ErrorObject extends StripeObject
     const CODE_API_KEY_EXPIRED = 'api_key_expired';
     const CODE_APPLICATION_FEES_NOT_ALLOWED = 'application_fees_not_allowed';
     const CODE_APPROVAL_REQUIRED = 'approval_required';
+    const CODE_AUTHENTICATION_FAILURE = 'authentication_failure';
     const CODE_AUTHENTICATION_REQUIRED = 'authentication_required';
     const CODE_BALANCE_INSUFFICIENT = 'balance_insufficient';
     const CODE_BALANCE_INVALID_PARAMETER = 'balance_invalid_parameter';
@@ -62,6 +63,7 @@ class ErrorObject extends StripeObject
     const CODE_BANK_ACCOUNT_VERIFICATION_FAILED = 'bank_account_verification_failed';
     const CODE_BILLING_INVALID_MANDATE = 'billing_invalid_mandate';
     const CODE_BITCOIN_UPGRADE_REQUIRED = 'bitcoin_upgrade_required';
+    const CODE_CAPABILITY_NOT_ACTIVE = 'capability_not_active';
     const CODE_CAPTURE_CHARGE_AUTHORIZATION_EXPIRED = 'capture_charge_authorization_expired';
     const CODE_CAPTURE_UNAUTHORIZED_PAYMENT = 'capture_unauthorized_payment';
     const CODE_CARD_DECLINE_RATE_LIMIT_EXCEEDED = 'card_decline_rate_limit_exceeded';
@@ -86,6 +88,7 @@ class ErrorObject extends StripeObject
     const CODE_DEBIT_NOT_AUTHORIZED = 'debit_not_authorized';
     const CODE_EMAIL_INVALID = 'email_invalid';
     const CODE_EXPIRED_CARD = 'expired_card';
+    const CODE_EXPIRED_PAYMENT_METHOD = 'expired_payment_method';
     const CODE_FAILED_TAX_CALCULATION = 'failed_tax_calculation';
     const CODE_FINANCIAL_ACCOUNT_BALANCE_DOES_NOT_SUPPORT_CURRENCY = 'financial_account_balance_does_not_support_currency';
     const CODE_FINANCIAL_ACCOUNT_CAPABILITY_NOT_ENABLED = 'financial_account_capability_not_enabled';
@@ -104,6 +107,7 @@ class ErrorObject extends StripeObject
     const CODE_INCORRECT_ADDRESS = 'incorrect_address';
     const CODE_INCORRECT_CVC = 'incorrect_cvc';
     const CODE_INCORRECT_NUMBER = 'incorrect_number';
+    const CODE_INCORRECT_POSTAL_CODE = 'incorrect_postal_code';
     const CODE_INCORRECT_ZIP = 'incorrect_zip';
     const CODE_INDIA_RECURRING_PAYMENT_MANDATE_CANCELED = 'india_recurring_payment_mandate_canceled';
     const CODE_INSTANT_PAYOUTS_CONFIG_DISABLED = 'instant_payouts_config_disabled';
@@ -113,6 +117,7 @@ class ErrorObject extends StripeObject
     const CODE_INSUFFICIENT_FUNDS = 'insufficient_funds';
     const CODE_INTENT_INVALID_STATE = 'intent_invalid_state';
     const CODE_INTENT_VERIFICATION_METHOD_MISSING = 'intent_verification_method_missing';
+    const CODE_INVALID_CANCELED_SUBSCRIPTION_FIELDS = 'invalid_canceled_subscription_fields';
     const CODE_INVALID_CARD_TYPE = 'invalid_card_type';
     const CODE_INVALID_CHARACTERS = 'invalid_characters';
     const CODE_INVALID_CHARGE_AMOUNT = 'invalid_charge_amount';
@@ -172,6 +177,7 @@ class ErrorObject extends StripeObject
     const CODE_PAYMENT_METHOD_NOT_AVAILABLE = 'payment_method_not_available';
     const CODE_PAYMENT_METHOD_PROVIDER_DECLINE = 'payment_method_provider_decline';
     const CODE_PAYMENT_METHOD_PROVIDER_TIMEOUT = 'payment_method_provider_timeout';
+    const CODE_PAYMENT_METHOD_RESTRICTED = 'payment_method_restricted';
     const CODE_PAYMENT_METHOD_UNACTIVATED = 'payment_method_unactivated';
     const CODE_PAYMENT_METHOD_UNEXPECTED_STATE = 'payment_method_unexpected_state';
     const CODE_PAYMENT_METHOD_UNSUPPORTED_TYPE = 'payment_method_unsupported_type';
