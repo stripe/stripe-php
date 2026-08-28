@@ -542,6 +542,13 @@ class ApiRequestor
         }
     }
 
+    /**
+     * @param 'delete'|'get'|'post' $method
+     * @param string $url
+     * @param array $params
+     * @param array $headers
+     * @param 'v1'|'v2' $apiMode
+     */
     private function _prepareRequest($method, $url, $params, $headers, $apiMode)
     {
         Util\AgentPluginHint::maybeEmit();
