@@ -475,9 +475,6 @@ class ApiRequestor
     }
 
     /**
-     * @param string $url
-     */
-    /**
      * Asserts that a request path is origin-relative: that it begins with a
      * single "/" and carries no scheme, authority or userinfo.
      *
