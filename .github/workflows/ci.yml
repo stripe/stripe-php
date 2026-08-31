@@ -7,6 +7,7 @@ on:
     branches:
       - master
       - beta
+      - private-preview
       - sdk-release/**
       - feature/**
     tags:
@@ -31,25 +32,15 @@ jobs:
       contents: read
 
     steps:
-      - uses: extractions/setup-just@v2
-      - uses: actions/checkout@v3
+      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: "8.2"
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          # Conventionally you would hash "composer.lock", but we don't commit
-          # that, so we hash on "composer.json" instead.
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Validate composer.json
         run: composer validate
@@ -69,25 +60,15 @@ jobs:
       contents: read
 
     steps:
-      - uses: extractions/setup-just@v2
-      - uses: actions/checkout@v3
+      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: "8.2"
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-
-      - uses: actions/cache@v3
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          # Conventionally you would hash "composer.lock", but we don't commit
-          # that, so we hash on "composer.json" instead.
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
       - name: Validate composer.json
         run: composer validate
@@ -136,22 +117,15 @@ jobs:
             autoload: "0"
 
     steps:
-      - uses: extractions/setup-just@v2
-      - uses: actions/checkout@v3
+      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
         with:
           php-version: ${{ matrix.php-version }}
-
-      - name: Get Composer Cache Directory
-        id: composer-cache
-        run: |
-          echo "dir=$(composer config cache-files-dir)" >> $GITHUB_OUTPUT
-      - uses: actions/cache@v3
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('composer.json') }}
 
       # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
       # with all the versions of PHP that we want to execute PHPUnit upon
@@ -182,7 +156,9 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: stripe/openapi/actions/notify-release@master
         if: always()
         with:
