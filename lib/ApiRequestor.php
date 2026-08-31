@@ -480,14 +480,14 @@ class ApiRequestor
      *
      * The absolute URL is built by concatenating the API base onto this path,
      * and no base URL ends in a slash. A path like "@evil.example/v1/x" or
-     * ".evil.example/v1/x" would therefore land inside the authority component
-     * and send the request — Authorization header included — to a host of the
-     * path's choosing. Some request paths originate in remote data (a webhook
-     * body's related_object.url, a response's next_page_url), so this cannot be
-     * assumed to be well-formed.
+     * ".evil.example/v1/x" would modify the resulting host and direct the
+     * request (including the API key) to a non-Stripe host.
      *
-     * Stripe only ever issues plain paths, so anything else is tampering and is
-     * rejected rather than sanitized.
+     * Because some relative urls arrive from potentially untrusted sources (like
+     * webhook bodies), we have to be a little defensive.
+     *
+     * So, we require that a path starts with a leading slash and that
+     * parse_url() finds no scheme or authority in it.
      *
      * @param string $url
      *
