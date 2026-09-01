@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.3.1 - 2026-09-01
+* [#2138](https://github.com/stripe/stripe-php/pull/2138) Harden API requestor code against malicious URLs
+
 ## 21.3.0 - 2026-08-26
 This release changes the pinned API version to 2026-08-26.dahlia.
 
