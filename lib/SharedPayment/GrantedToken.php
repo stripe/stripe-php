@@ -19,7 +19,7 @@ namespace Stripe\SharedPayment;
  * @property null|(object{insights: (object{bot?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_issuer_decline?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_testing?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), fraudulent_dispute: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject), stolen_card?: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $risk_details Risk details of the SharedPaymentGrantedToken.
  * @property null|\Stripe\StripeObject $shared_metadata Metadata about the SharedPaymentGrantedToken.
  * @property null|(object{amount_captured: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $usage_details Some details about how the SharedPaymentGrantedToken has been used already.
- * @property null|(object{currency: string, expires_at: null|int, max_amount: int, recurring_interval?: null|string}&\Stripe\StripeObject) $usage_limits Limits on how this SharedPaymentGrantedToken can be used.
+ * @property null|(object{currency: string, expires_at: null|int, max_amount: int, recurring?: null|(object{interval: string, interval_count: int}&\Stripe\StripeObject), recurring_interval?: null|string}&\Stripe\StripeObject) $usage_limits Limits on how this SharedPaymentGrantedToken can be used.
  */
 class GrantedToken extends \Stripe\ApiResource
 {

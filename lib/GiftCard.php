@@ -21,6 +21,8 @@ class GiftCard extends ApiResource
 {
     const OBJECT_NAME = 'gift_card';
 
+    const BRAND_SVS = 'svs';
+
     /**
      * Creates a gift card object.
      *

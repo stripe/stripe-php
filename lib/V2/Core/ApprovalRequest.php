@@ -12,15 +12,15 @@ namespace Stripe\V2\Core;
  * @property string $action The action that was requested.
  * @property string $created Time this ApprovalRequest was created.
  * @property null|string $dashboard_url The URL to the dashboard for this ApprovalRequest.
- * @property null|string $description A description of the approval request.
  * @property string $expires_at The timestamp at which this ApprovalRequest will expire.
  * @property bool $livemode Whether this ApprovalRequest is livemode.
- * @property (object{id: string, name?: string}&\Stripe\StripeObject) $requested_by The requester of this ApprovalRequest.
- * @property null|(object{reason?: string, result: string, reviewed_at: string, reviewed_by: (object{id: string, name: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $review The review of this ApprovalRequest if it has been reviewed.
+ * @property null|string $reason Context provided by the requester (e.g. an agent) to help reviewers evaluate the request.
+ * @property (object{api_key?: (object{id: string, name?: string}&\Stripe\StripeObject), type: string, user?: (object{email: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $requested_by The requester of this ApprovalRequest.
+ * @property null|(object{reason?: string, result: string, reviewed_at: string, reviewed_by: (object{api_key?: (object{id: string, name?: string}&\Stripe\StripeObject), type: string, user?: (object{email: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $review The review of this ApprovalRequest if it has been reviewed.
  * @property null|(object{name: string}&\Stripe\StripeObject) $rule The rule associated with this ApprovalRequest.
  * @property string $status The status of this ApprovalRequest.
  * @property null|(object{approved?: (object{reason?: string}&\Stripe\StripeObject), canceled?: (object{}&\Stripe\StripeObject), execution_failed?: (object{code: string, message: string, type: string}&\Stripe\StripeObject), execution_started?: (object{}&\Stripe\StripeObject), execution_succeeded?: (object{result: (object{id: string, object: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), expired?: (object{}&\Stripe\StripeObject), failed?: (object{error_code: string, error_message: string, error_type: string}&\Stripe\StripeObject), pending?: (object{}&\Stripe\StripeObject), rejected?: (object{reason?: string}&\Stripe\StripeObject), succeeded?: (object{result: (object{id: string, object: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details The details of the status of this ApprovalRequest.
- * @property null|(object{canceled_at?: string, expired_at?: string, failed_at?: string, rejected_at?: string, requires_execution_at?: string, succeeded_at?: string}&\Stripe\StripeObject) $status_transitions The transitions of the status of this ApprovalRequest.
+ * @property null|(object{approved_at?: string, canceled_at?: string, expired_at?: string, failed_at?: string, rejected_at?: string, succeeded_at?: string}&\Stripe\StripeObject) $status_transitions The transitions of the status of this ApprovalRequest.
  */
 class ApprovalRequest extends \Stripe\ApiResource
 {

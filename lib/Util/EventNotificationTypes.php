@@ -334,6 +334,8 @@ class EventNotificationTypes
         \Stripe\Events\V2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEventNotification::class,
         \Stripe\Events\V2CoreHealthMeterEventSummariesDelayedFiringEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthMeterEventSummariesDelayedFiringEventNotification::class,
         \Stripe\Events\V2CoreHealthMeterEventSummariesDelayedResolvedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthMeterEventSummariesDelayedResolvedEventNotification::class,
+        \Stripe\Events\V2CoreHealthMetronomeNotificationLatencyFiringEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthMetronomeNotificationLatencyFiringEventNotification::class,
+        \Stripe\Events\V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification::class,
         \Stripe\Events\V2CoreHealthPaymentMethodErrorFiringEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthPaymentMethodErrorFiringEventNotification::class,
         \Stripe\Events\V2CoreHealthPaymentMethodErrorResolvedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthPaymentMethodErrorResolvedEventNotification::class,
         \Stripe\Events\V2CoreHealthSepaDebitDelayedFiringEventNotification::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthSepaDebitDelayedFiringEventNotification::class,
@@ -392,6 +394,11 @@ class EventNotificationTypes
         \Stripe\Events\V2MoneyManagementOutboundTransferReturnedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferReturnedEventNotification::class,
         \Stripe\Events\V2MoneyManagementOutboundTransferUnderReviewEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferUnderReviewEventNotification::class,
         \Stripe\Events\V2MoneyManagementOutboundTransferUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferUpdatedEventNotification::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentCanceledEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentCanceledEventNotification::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentCreatedEventNotification::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentPostedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentPostedEventNotification::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentProcessingEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentProcessingEventNotification::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentRequiresActionEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentRequiresActionEventNotification::class,
         \Stripe\Events\V2MoneyManagementPayoutMethodCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutMethodCreatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementPayoutMethodUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutMethodUpdatedEventNotification::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditAvailableEventNotification::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditAvailableEventNotification::class,
@@ -449,6 +456,7 @@ class EventNotificationTypes
         \Stripe\Events\V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification::class,
         \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification::class,
         \Stripe\Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEventNotification::class,
+        \Stripe\Events\V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

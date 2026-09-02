@@ -332,6 +332,8 @@ class EventTypes
         \Stripe\Events\V2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEvent::class,
         \Stripe\Events\V2CoreHealthMeterEventSummariesDelayedFiringEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthMeterEventSummariesDelayedFiringEvent::class,
         \Stripe\Events\V2CoreHealthMeterEventSummariesDelayedResolvedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthMeterEventSummariesDelayedResolvedEvent::class,
+        \Stripe\Events\V2CoreHealthMetronomeNotificationLatencyFiringEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthMetronomeNotificationLatencyFiringEvent::class,
+        \Stripe\Events\V2CoreHealthMetronomeNotificationLatencyResolvedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthMetronomeNotificationLatencyResolvedEvent::class,
         \Stripe\Events\V2CoreHealthPaymentMethodErrorFiringEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthPaymentMethodErrorFiringEvent::class,
         \Stripe\Events\V2CoreHealthPaymentMethodErrorResolvedEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthPaymentMethodErrorResolvedEvent::class,
         \Stripe\Events\V2CoreHealthSepaDebitDelayedFiringEvent::LOOKUP_TYPE => \Stripe\Events\V2CoreHealthSepaDebitDelayedFiringEvent::class,
@@ -390,6 +392,11 @@ class EventTypes
         \Stripe\Events\V2MoneyManagementOutboundTransferReturnedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferReturnedEvent::class,
         \Stripe\Events\V2MoneyManagementOutboundTransferUnderReviewEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferUnderReviewEvent::class,
         \Stripe\Events\V2MoneyManagementOutboundTransferUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementOutboundTransferUpdatedEvent::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentCanceledEvent::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentCreatedEvent::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentPostedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentPostedEvent::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentProcessingEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentProcessingEvent::class,
+        \Stripe\Events\V2MoneyManagementPayoutIntentRequiresActionEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutIntentRequiresActionEvent::class,
         \Stripe\Events\V2MoneyManagementPayoutMethodCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutMethodCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementPayoutMethodUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementPayoutMethodUpdatedEvent::class,
         \Stripe\Events\V2MoneyManagementReceivedCreditAvailableEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementReceivedCreditAvailableEvent::class,
@@ -447,6 +454,7 @@ class EventTypes
         \Stripe\Events\V2SignalsAccountSignalFraudulentWebsiteReadyEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentWebsiteReadyEvent::class,
         \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEvent::class,
         \Stripe\Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent::class,
+        \Stripe\Events\V2SignalsPaymentRetryEvaluationsRetryRecommendedEvent::LOOKUP_TYPE => \Stripe\Events\V2SignalsPaymentRetryEvaluationsRetryRecommendedEvent::class,
         // The end of the section generated from our OpenAPI spec
     ];
 }

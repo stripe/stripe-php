@@ -9110,7 +9110,7 @@ final class GeneratedExamplesTest extends TestCase
                         'expires_at' => '1970-01-10T15:36:51.170Z',
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'requested_by' => ['id' => 'obj_123'],
+                        'requested_by' => ['type' => 'api_key'],
                         'status' => 'failed',
                     ],
                 ],
@@ -9140,7 +9140,7 @@ final class GeneratedExamplesTest extends TestCase
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'requested_by' => ['id' => 'obj_123'],
+                'requested_by' => ['type' => 'api_key'],
                 'status' => 'failed',
             ],
             200,
@@ -9157,6 +9157,34 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
+            '/v2/core/approval_requests/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.approval_request',
+                'action' => 'refund.create',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'expires_at' => '1970-01-10T15:36:51.170Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'requested_by' => ['type' => 'api_key'],
+                'status' => 'failed',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->approvalRequests->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\ApprovalRequest::class, $result);
+    }
+
+    public function testV2CoreApprovalRequestPost2()
+    {
+        $this->stubRequest(
+            'post',
             '/v2/core/approval_requests/id_123/cancel',
             [],
             [],
@@ -9168,69 +9196,13 @@ final class GeneratedExamplesTest extends TestCase
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'requested_by' => ['id' => 'obj_123'],
+                'requested_by' => ['type' => 'api_key'],
                 'status' => 'failed',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->approvalRequests->cancel(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Core\ApprovalRequest::class, $result);
-    }
-
-    public function testV2CoreApprovalRequestPost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/approval_requests/id_123/execute',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.core.approval_request',
-                'action' => 'refund.create',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'expires_at' => '1970-01-10T15:36:51.170Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'requested_by' => ['id' => 'obj_123'],
-                'status' => 'failed',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->approvalRequests->execute(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Core\ApprovalRequest::class, $result);
-    }
-
-    public function testV2CoreApprovalRequestPost3()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/approval_requests/id_123/submit',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.core.approval_request',
-                'action' => 'refund.create',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'expires_at' => '1970-01-10T15:36:51.170Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'requested_by' => ['id' => 'obj_123'],
-                'status' => 'failed',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->approvalRequests->submit(
             'id_123',
             []
         );
@@ -9814,7 +9786,7 @@ final class GeneratedExamplesTest extends TestCase
                                     'currency' => 'usd',
                                     'value' => 'value',
                                 ],
-                                'type' => 'money_management_transaction',
+                                'type' => 'balance_transaction',
                             ],
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -9856,7 +9828,7 @@ final class GeneratedExamplesTest extends TestCase
                             'currency' => 'usd',
                             'value' => 'value',
                         ],
-                        'type' => 'money_management_transaction',
+                        'type' => 'balance_transaction',
                     ],
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -10086,6 +10058,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'last4' => 'last4',
                         'livemode' => [],
+                        'restricted' => [],
                         'supported_currencies' => [
                             '0' => 'supported_currencies',
                         ],
@@ -10132,6 +10105,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
             ],
             200,
@@ -10173,6 +10147,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
             ],
             200,
@@ -10215,6 +10190,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
             ],
             200,
@@ -10257,6 +10233,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
             ],
             200,
@@ -10299,6 +10276,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
             ],
             200,
@@ -10330,6 +10308,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'last4' => 'last4',
                         'livemode' => [],
+                        'restricted' => [],
                         'supported_currencies' => [
                             '0' => 'supported_currencies',
                         ],
@@ -10364,6 +10343,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
             ],
@@ -10394,6 +10374,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
             ],
@@ -10424,6 +10405,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
             ],
@@ -10454,6 +10436,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
             ],
@@ -10484,6 +10467,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
             ],
@@ -10514,6 +10498,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'last4' => 'last4',
                 'livemode' => [],
+                'restricted' => [],
                 'supported_currencies' => ['0' => 'supported_currencies'],
                 'verification' => ['status' => 'verification_failed'],
             ],
@@ -11359,7 +11344,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'status' => 'closed',
-                        'type' => 'accrued_fees',
+                        'type' => 'other',
                     ],
                 ],
                 'next_page_url' => null,
@@ -11408,7 +11393,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'closed',
-                'type' => 'accrued_fees',
+                'type' => 'other',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -11454,7 +11439,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'closed',
-                'type' => 'accrued_fees',
+                'type' => 'other',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -11501,7 +11486,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'closed',
-                'type' => 'accrued_fees',
+                'type' => 'other',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -11548,7 +11533,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'closed',
-                'type' => 'accrued_fees',
+                'type' => 'other',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -12353,8 +12338,8 @@ final class GeneratedExamplesTest extends TestCase
                             'restricted' => [],
                             'type' => 'crypto_wallet',
                             'usage_status' => [
-                                'payments' => 'requires_action',
-                                'transfers' => 'invalid',
+                                'payments' => 'eligible',
+                                'transfers' => 'disabled',
                             ],
                         ],
                         'status' => 'requires_payout_method',
@@ -12394,8 +12379,8 @@ final class GeneratedExamplesTest extends TestCase
                     'restricted' => [],
                     'type' => 'crypto_wallet',
                     'usage_status' => [
-                        'payments' => 'requires_action',
-                        'transfers' => 'invalid',
+                        'payments' => 'eligible',
+                        'transfers' => 'disabled',
                     ],
                 ],
                 'status' => 'requires_payout_method',
@@ -12430,8 +12415,8 @@ final class GeneratedExamplesTest extends TestCase
                     'restricted' => [],
                     'type' => 'crypto_wallet',
                     'usage_status' => [
-                        'payments' => 'requires_action',
-                        'transfers' => 'invalid',
+                        'payments' => 'eligible',
+                        'transfers' => 'disabled',
                     ],
                 ],
                 'status' => 'requires_payout_method',
@@ -12469,8 +12454,8 @@ final class GeneratedExamplesTest extends TestCase
                     'restricted' => [],
                     'type' => 'crypto_wallet',
                     'usage_status' => [
-                        'payments' => 'requires_action',
-                        'transfers' => 'invalid',
+                        'payments' => 'eligible',
+                        'transfers' => 'disabled',
                     ],
                 ],
                 'status' => 'requires_payout_method',
@@ -12508,8 +12493,8 @@ final class GeneratedExamplesTest extends TestCase
                     'restricted' => [],
                     'type' => 'crypto_wallet',
                     'usage_status' => [
-                        'payments' => 'requires_action',
-                        'transfers' => 'invalid',
+                        'payments' => 'eligible',
+                        'transfers' => 'disabled',
                     ],
                 ],
                 'status' => 'requires_payout_method',
@@ -13066,8 +13051,8 @@ final class GeneratedExamplesTest extends TestCase
                         'restricted' => [],
                         'type' => 'crypto_wallet',
                         'usage_status' => [
-                            'payments' => 'requires_action',
-                            'transfers' => 'invalid',
+                            'payments' => 'eligible',
+                            'transfers' => 'disabled',
                         ],
                     ],
                 ],
@@ -13099,8 +13084,8 @@ final class GeneratedExamplesTest extends TestCase
                 'restricted' => [],
                 'type' => 'crypto_wallet',
                 'usage_status' => [
-                    'payments' => 'requires_action',
-                    'transfers' => 'invalid',
+                    'payments' => 'eligible',
+                    'transfers' => 'disabled',
                 ],
             ],
             200,
@@ -13130,8 +13115,8 @@ final class GeneratedExamplesTest extends TestCase
                 'restricted' => [],
                 'type' => 'crypto_wallet',
                 'usage_status' => [
-                    'payments' => 'requires_action',
-                    'transfers' => 'invalid',
+                    'payments' => 'eligible',
+                    'transfers' => 'disabled',
                 ],
             ],
             200,
@@ -13148,6 +13133,37 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
+            '/v2/money_management/payout_methods/id_123/disable',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.payout_method',
+                'available_payout_speeds' => ['0' => 'standard'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'restricted' => [],
+                'type' => 'crypto_wallet',
+                'usage_status' => [
+                    'payments' => 'eligible',
+                    'transfers' => 'disabled',
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->payoutMethods->disable(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\PayoutMethod::class, $result);
+    }
+
+    public function testV2MoneyManagementPayoutMethodPost3()
+    {
+        $this->stubRequest(
+            'post',
             '/v2/money_management/payout_methods/id_123/unarchive',
             [],
             [],
@@ -13161,8 +13177,8 @@ final class GeneratedExamplesTest extends TestCase
                 'restricted' => [],
                 'type' => 'crypto_wallet',
                 'usage_status' => [
-                    'payments' => 'requires_action',
-                    'transfers' => 'invalid',
+                    'payments' => 'eligible',
+                    'transfers' => 'disabled',
                 ],
             ],
             200,
@@ -14889,7 +14905,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/signals/account_activity',
-            ['type' => 'registration_attempt'],
+            ['type' => 'account_restricted'],
             [],
             false,
             [
@@ -14898,13 +14914,13 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'occurred_at' => '1970-01-10T01:49:44.717Z',
-                'type' => 'registration_attempt',
+                'type' => 'account_restricted',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->signals->accountActivity->create([
-            'type' => 'registration_attempt',
+            'type' => 'account_restricted',
         ]);
         self::assertInstanceOf(V2\Signals\AccountActivity::class, $result);
     }
@@ -14945,7 +14961,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'occurred_at' => '1970-01-10T01:49:44.717Z',
-                'type' => 'registration_attempt',
+                'type' => 'account_restricted',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -15102,6 +15118,225 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Signals\AccountSignal::class, $result);
+    }
+
+    public function testV2SignalsPaymentRetryEvaluationPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/signals/payment_retry_evaluations',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.signals.payment_retry_evaluation',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'latest_signal' => [
+                    'object' => 'v2.signals.payment_retry_signal',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'evaluation' => 'evaluation',
+                    'id' => 'obj_123',
+                    'livemode' => [],
+                    'payment_record' => 'payment_record',
+                    'recommendation' => [
+                        'action' => 'wait',
+                        'reason' => 'reason',
+                    ],
+                ],
+                'livemode' => [],
+                'status' => 'expired',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->signals->paymentRetryEvaluations->create([]);
+        self::assertInstanceOf(V2\Signals\PaymentRetryEvaluation::class, $result);
+    }
+
+    public function testV2SignalsPaymentRetryEvaluationGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/signals/payment_retry_evaluations/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.signals.payment_retry_evaluation',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'latest_signal' => [
+                    'object' => 'v2.signals.payment_retry_signal',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'evaluation' => 'evaluation',
+                    'id' => 'obj_123',
+                    'livemode' => [],
+                    'payment_record' => 'payment_record',
+                    'recommendation' => [
+                        'action' => 'wait',
+                        'reason' => 'reason',
+                    ],
+                ],
+                'livemode' => [],
+                'status' => 'expired',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->signals->paymentRetryEvaluations->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Signals\PaymentRetryEvaluation::class, $result);
+    }
+
+    public function testV2SignalsPaymentRetryEvaluationPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/signals/payment_retry_evaluations/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.signals.payment_retry_evaluation',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'latest_signal' => [
+                    'object' => 'v2.signals.payment_retry_signal',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'evaluation' => 'evaluation',
+                    'id' => 'obj_123',
+                    'livemode' => [],
+                    'payment_record' => 'payment_record',
+                    'recommendation' => [
+                        'action' => 'wait',
+                        'reason' => 'reason',
+                    ],
+                ],
+                'livemode' => [],
+                'status' => 'expired',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->signals->paymentRetryEvaluations->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Signals\PaymentRetryEvaluation::class, $result);
+    }
+
+    public function testV2SignalsPaymentRetryEvaluationPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/signals/payment_retry_evaluations/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.signals.payment_retry_evaluation',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'latest_signal' => [
+                    'object' => 'v2.signals.payment_retry_signal',
+                    'created' => '1970-01-12T21:42:34.472Z',
+                    'evaluation' => 'evaluation',
+                    'id' => 'obj_123',
+                    'livemode' => [],
+                    'payment_record' => 'payment_record',
+                    'recommendation' => [
+                        'action' => 'wait',
+                        'reason' => 'reason',
+                    ],
+                ],
+                'livemode' => [],
+                'status' => 'expired',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->signals->paymentRetryEvaluations->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Signals\PaymentRetryEvaluation::class, $result);
+    }
+
+    public function testV2SignalsPaymentRetrySignalGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/signals/payment_retry_signals/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.signals.payment_retry_signal',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'evaluation' => 'evaluation',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'payment_record' => 'payment_record',
+                'recommendation' => [
+                    'action' => 'wait',
+                    'reason' => 'reason',
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->signals->paymentRetrySignals->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Signals\PaymentRetrySignal::class, $result);
+    }
+
+    public function testV2TaxIntegrationConfigurationGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/tax/integration_configurations',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.tax.integration_configuration',
+                'checkout_sessions' => [
+                    'automatic_tax_default_value' => 'enabled_when_possible',
+                ],
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->integrationConfigurations->retrieve([]);
+        self::assertInstanceOf(V2\Tax\IntegrationConfiguration::class, $result);
+    }
+
+    public function testV2TaxIntegrationConfigurationPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/integration_configurations',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.tax.integration_configuration',
+                'checkout_sessions' => [
+                    'automatic_tax_default_value' => 'enabled_when_possible',
+                ],
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->integrationConfigurations->update([]);
+        self::assertInstanceOf(V2\Tax\IntegrationConfiguration::class, $result);
     }
 
     public function testV2TaxManualRuleGet()
@@ -15520,8 +15755,8 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/money_management/financial_accounts',
-            ['type' => 'credit'],
+            '/v2/billing/contracts',
+            ['contract_number' => 'contract_number', 'currency' => 'usd'],
             [],
             false,
             [
@@ -15535,8 +15770,9 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->moneyManagement->financialAccounts->create([
-                'type' => 'credit',
+            $this->v2Client->v2->billing->contracts->create([
+                'contract_number' => 'contract_number',
+                'currency' => 'usd',
             ]);
         } catch (Exception\AlreadyExistsException $e) {
         }
@@ -15573,7 +15809,7 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/core/vault/us_bank_accounts/id_123/archive',
+            '/v2/billing/contracts/id_123',
             [],
             [],
             false,
@@ -15588,7 +15824,7 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
+            $this->v2Client->v2->billing->contracts->update('id_123', []);
         } catch (Exception\CannotProceedException $e) {
         }
     }

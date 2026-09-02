@@ -41,6 +41,8 @@ class RequestedSession extends \Stripe\ApiResource
 
     use \Stripe\ApiOperations\Update;
 
+    const SETUP_FUTURE_USAGE_ON_SESSION = 'on_session';
+
     const STATUS_COMPLETED = 'completed';
     const STATUS_EXPIRED = 'expired';
     const STATUS_OPEN = 'open';

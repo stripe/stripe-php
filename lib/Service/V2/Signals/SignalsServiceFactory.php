@@ -10,6 +10,8 @@ namespace Stripe\Service\V2\Signals;
  * @property AccountActivityService $accountActivity
  * @property AccountEvaluationService $accountEvaluations
  * @property AccountSignalService $accountSignals
+ * @property PaymentRetryEvaluationService $paymentRetryEvaluations
+ * @property PaymentRetrySignalService $paymentRetrySignals
  */
 class SignalsServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -20,6 +22,8 @@ class SignalsServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'accountActivity' => AccountActivityService::class,
         'accountEvaluations' => AccountEvaluationService::class,
         'accountSignals' => AccountSignalService::class,
+        'paymentRetryEvaluations' => PaymentRetryEvaluationService::class,
+        'paymentRetrySignals' => PaymentRetrySignalService::class,
     ];
 
     protected function getServiceClass($name)

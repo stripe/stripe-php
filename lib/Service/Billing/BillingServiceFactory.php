@@ -12,6 +12,7 @@ namespace Stripe\Service\Billing;
  * @property CreditBalanceSummaryService $creditBalanceSummary
  * @property CreditBalanceTransactionService $creditBalanceTransactions
  * @property CreditGrantService $creditGrants
+ * @property FeedbackOptionService $feedbackOptions
  * @property MeterEventAdjustmentService $meterEventAdjustments
  * @property MeterEventService $meterEvents
  * @property MeterService $meters
@@ -27,6 +28,7 @@ class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'creditBalanceSummary' => CreditBalanceSummaryService::class,
         'creditBalanceTransactions' => CreditBalanceTransactionService::class,
         'creditGrants' => CreditGrantService::class,
+        'feedbackOptions' => FeedbackOptionService::class,
         'meterEventAdjustments' => MeterEventAdjustmentService::class,
         'meterEvents' => MeterEventService::class,
         'meters' => MeterService::class,

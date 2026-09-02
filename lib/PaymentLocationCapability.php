@@ -23,6 +23,8 @@ class PaymentLocationCapability extends ApiResource
 
     use ApiOperations\Update;
 
+    const CAPABILITY_FR_MEAL_VOUCHERS_CONECS_PAYMENTS = 'fr_meal_vouchers_conecs_payments';
+
     const STATUS_ACTIVE = 'active';
     const STATUS_INACTIVE = 'inactive';
     const STATUS_PENDING = 'pending';

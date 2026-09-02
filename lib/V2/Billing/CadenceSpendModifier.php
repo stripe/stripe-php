@@ -18,4 +18,6 @@ namespace Stripe\V2\Billing;
 class CadenceSpendModifier extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.billing.cadence_spend_modifier';
+
+    const TYPE_MAX_BILLING_PERIOD_SPEND = 'max_billing_period_spend';
 }
