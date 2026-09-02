@@ -36,6 +36,8 @@ class OutboundPayment extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.money_management.outbound_payment';
 
+    const PURPOSE_PAYROLL = 'payroll';
+
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
     const STATUS_POSTED = 'posted';

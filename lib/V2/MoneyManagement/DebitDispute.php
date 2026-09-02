@@ -27,4 +27,6 @@ class DebitDispute extends \Stripe\ApiResource
     const STATUS_FAILED = 'failed';
     const STATUS_SUBMITTED = 'submitted';
     const STATUS_SUCCEEDED = 'succeeded';
+
+    const TYPE_BANK_TRANSFER = 'bank_transfer';
 }

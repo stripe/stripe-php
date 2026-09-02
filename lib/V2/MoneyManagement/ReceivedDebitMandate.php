@@ -27,4 +27,6 @@ class ReceivedDebitMandate extends \Stripe\ApiResource
     const STATUS_CANCELED = 'canceled';
     const STATUS_EXPIRED = 'expired';
     const STATUS_PENDING_CANCELLATION = 'pending_cancellation';
+
+    const TYPE_BANK_TRANSFER = 'bank_transfer';
 }

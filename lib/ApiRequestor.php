@@ -651,6 +651,71 @@ class ApiRequestor
     }
 
     /**
+     * Asserts that a request path is origin-relative: that it begins with a
+     * single "/" and carries no scheme, authority or userinfo.
+     *
+     * The absolute URL is built by concatenating the API base onto this path,
+     * and no base URL ends in a slash. A path like "@evil.example/v1/x" or
+     * ".evil.example/v1/x" would modify the resulting host and direct the
+     * request (including the API key) to a non-Stripe host.
+     *
+     * Because some relative urls arrive from potentially untrusted sources (like
+     * webhook bodies), we have to be a little defensive.
+     *
+     * So, we require that a path starts with a leading slash and that
+     * parse_url() finds no scheme or authority in it.
+     *
+     * @param string $url
+     *
+     * @throws Exception\InvalidArgumentException
+     */
+    private static function validatePath($url)
+    {
+        if (!\is_string($url) || '/' !== \substr($url, 0, 1) || '//' === \substr($url, 0, 2)) {
+            throw new Exception\InvalidArgumentException(
+                'Request path must be a string beginning with a single "/".'
+            );
+        }
+
+        $parts = \parse_url($url);
+        if (false === $parts || isset($parts['scheme']) || isset($parts['host']) || isset($parts['user'])) {
+            throw new Exception\InvalidArgumentException(
+                'Request path may not contain a scheme or authority.'
+            );
+        }
+    }
+
+    /**
+     * Rejects CR, LF and NUL in a header name or value.
+     *
+     * Header lines are assembled by concatenation, so a newline in either half
+     * would let the remainder be parsed as additional headers. Some of these
+     * values originate in remote data - fetchRelatedObject() sets Stripe-Context
+     * and Stripe-Request-Trigger from the webhook body - and a per-request
+     * api_key reaches the Authorization value without the whitespace check that
+     * Stripe::setApiKey() applies.
+     *
+     * @param string $header
+     * @param mixed  $value
+     *
+     * @throws Exception\InvalidArgumentException
+     */
+    private static function assertNoHeaderInjection($header, $value)
+    {
+        foreach ([$header, $value] as $part) {
+            if (!\is_string($part)) {
+                continue;
+            }
+
+            if (false !== \strpbrk($part, "\r\n") || false !== \strpos($part, "\0")) {
+                throw new Exception\InvalidArgumentException(
+                    'Header names and values may not contain CR, LF or NUL characters.'
+                );
+            }
+        }
+    }
+
+    /**
      * @param 'delete'|'get'|'post' $method
      * @param string $url
      * @param array $params
@@ -698,6 +763,7 @@ class ApiRequestor
             }
         }
 
+        self::validatePath($url);
         $absUrl = $this->_apiBase . $url;
         if ('v1' === $apiMode) {
             $params = self::_encodeObjects($params);
@@ -736,6 +802,7 @@ class ApiRequestor
         $rawHeaders = [];
 
         foreach ($combinedHeaders as $header => $value) {
+            self::assertNoHeaderInjection($header, $value);
             $rawHeaders[] = $header . ': ' . $value;
         }
 

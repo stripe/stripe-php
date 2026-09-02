@@ -22,7 +22,7 @@ namespace Stripe\SharedPayment;
  * @property null|\Stripe\StripeObject $shared_metadata Metadata about the SharedPaymentIssuedToken.
  * @property null|string $status Status of this SharedPaymentIssuedToken, one of <code>active</code>, <code>requires_action</code>, or <code>deactivated</code>.
  * @property null|(object{amount_captured: null|(object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $usage_details Usage details of the SharedPaymentIssuedToken
- * @property null|(object{currency: string, expires_at: null|int, max_amount: int, recurring_interval?: null|string}&\Stripe\StripeObject) $usage_limits Usage limits of the SharedPaymentIssuedToken.
+ * @property null|(object{currency: string, expires_at: null|int, max_amount: int, recurring?: null|(object{interval: string, interval_count: int}&\Stripe\StripeObject), recurring_interval?: null|string}&\Stripe\StripeObject) $usage_limits Usage limits of the SharedPaymentIssuedToken.
  * @property null|bool $use_stripe_sdk Set to true when using Stripe.js, iOS, or Android client-side SDKs to handle next actions.
  */
 class IssuedToken extends \Stripe\ApiResource
@@ -41,7 +41,7 @@ class IssuedToken extends \Stripe\ApiResource
     /**
      * Creates a new SharedPaymentIssuedToken object.
      *
-     * @param null|array{expand?: string[], payment_method: string, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring_interval?: string}, use_stripe_sdk?: bool} $params
+     * @param null|array{expand?: string[], payment_method: string, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring?: array{interval: string, interval_count?: int}, recurring_interval?: string}, use_stripe_sdk?: bool} $params
      * @param null|array|string $options
      *
      * @return IssuedToken the created resource

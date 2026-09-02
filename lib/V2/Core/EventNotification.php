@@ -118,7 +118,10 @@ abstract class EventNotification
     {
         $response = $this->client->rawRequest(
             'get',
-            "/v2/core/events/{$this->id}",
+            // `id` comes from the notification body, so encode it the way
+            // buildPath() does for generated services -- otherwise it can inject
+            // extra path or query segments.
+            '/v2/core/events/' . \urlencode($this->id),
             null,
             [
                 'stripe_context' => $this->context,

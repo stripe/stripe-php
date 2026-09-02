@@ -18,6 +18,7 @@ namespace Stripe\V2\Core\Vault;
  * @property null|string $financial_connections_account The ID of the Financial Connections Account used to create the bank account.
  * @property string $last4 The last 4 digits of the account number.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $restricted Whether the US Bank Account is currently unusable for money movement, despite potentially being correctly set up. Please reach out to Stripe Support for more information.
  * @property null|string $routing_number The ACH routing number of the bank account.
  * @property string[] $supported_currencies The list of currencies supported by this bank account.
  * @property (object{microdeposit_verification_details?: (object{expires: string, microdeposit_type: string, sent: string}&\Stripe\StripeObject), status: string}&\Stripe\StripeObject) $verification The bank account verification details.

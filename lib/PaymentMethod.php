@@ -158,6 +158,7 @@ class PaymentMethod extends ApiResource
     const TYPE_SATISPAY = 'satispay';
     const TYPE_SCALAPAY = 'scalapay';
     const TYPE_SEPA_DEBIT = 'sepa_debit';
+    const TYPE_SEQURA = 'sequra';
     const TYPE_SHOPEEPAY = 'shopeepay';
     const TYPE_SOFORT = 'sofort';
     const TYPE_STRIPE_BALANCE = 'stripe_balance';

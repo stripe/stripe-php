@@ -4572,6 +4572,38 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.core.health.metronome_notification_latency.firing" event.
+     *
+     * @param callable(Events\V2CoreHealthMetronomeNotificationLatencyFiringEventNotification, StripeClient): void $handler Handles v2.core.health.metronome_notification_latency.firing events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreHealthMetronomeNotificationLatencyFiring($handler)
+    {
+        $this->register(
+            'v2.core.health.metronome_notification_latency.firing',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.core.health.metronome_notification_latency.resolved" event.
+     *
+     * @param callable(Events\V2CoreHealthMetronomeNotificationLatencyResolvedEventNotification, StripeClient): void $handler Handles v2.core.health.metronome_notification_latency.resolved events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreHealthMetronomeNotificationLatencyResolved($handler)
+    {
+        $this->register(
+            'v2.core.health.metronome_notification_latency.resolved',
+            $handler
+        );
+    }
+
+    /**
      * Registers a handler for the "v2.core.health.payment_method_error.firing" event.
      *
      * @param callable(Events\V2CoreHealthPaymentMethodErrorFiringEventNotification, StripeClient): void $handler Handles v2.core.health.payment_method_error.firing events
@@ -5356,6 +5388,74 @@ abstract class AbstractEventNotificationHandler
     public function onV2MoneyManagementOutboundTransferUpdated($handler)
     {
         $this->register('v2.money_management.outbound_transfer.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.payout_intent.canceled" event.
+     *
+     * @param callable(Events\V2MoneyManagementPayoutIntentCanceledEventNotification, StripeClient): void $handler Handles v2.money_management.payout_intent.canceled events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementPayoutIntentCanceled($handler)
+    {
+        $this->register('v2.money_management.payout_intent.canceled', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.payout_intent.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementPayoutIntentCreatedEventNotification, StripeClient): void $handler Handles v2.money_management.payout_intent.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementPayoutIntentCreated($handler)
+    {
+        $this->register('v2.money_management.payout_intent.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.payout_intent.posted" event.
+     *
+     * @param callable(Events\V2MoneyManagementPayoutIntentPostedEventNotification, StripeClient): void $handler Handles v2.money_management.payout_intent.posted events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementPayoutIntentPosted($handler)
+    {
+        $this->register('v2.money_management.payout_intent.posted', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.payout_intent.processing" event.
+     *
+     * @param callable(Events\V2MoneyManagementPayoutIntentProcessingEventNotification, StripeClient): void $handler Handles v2.money_management.payout_intent.processing events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementPayoutIntentProcessing($handler)
+    {
+        $this->register('v2.money_management.payout_intent.processing', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.payout_intent.requires_action" event.
+     *
+     * @param callable(Events\V2MoneyManagementPayoutIntentRequiresActionEventNotification, StripeClient): void $handler Handles v2.money_management.payout_intent.requires_action events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementPayoutIntentRequiresAction($handler)
+    {
+        $this->register(
+            'v2.money_management.payout_intent.requires_action',
+            $handler
+        );
     }
 
     /**
@@ -6181,6 +6281,22 @@ abstract class AbstractEventNotificationHandler
     ) {
         $this->register(
             'v2.signals.account_signal.payment_delinquency_exposure_ready',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.signals.payment_retry_evaluations.retry_recommended" event.
+     *
+     * @param callable(Events\V2SignalsPaymentRetryEvaluationsRetryRecommendedEventNotification, StripeClient): void $handler Handles v2.signals.payment_retry_evaluations.retry_recommended events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsPaymentRetryEvaluationsRetryRecommended($handler)
+    {
+        $this->register(
+            'v2.signals.payment_retry_evaluations.retry_recommended',
             $handler
         );
     }

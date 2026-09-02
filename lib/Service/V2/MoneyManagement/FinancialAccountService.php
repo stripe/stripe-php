@@ -31,7 +31,39 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      */
     public function all($params = null, $opts = null)
     {
-        return $this->requestCollection('get', '/v2/money_management/financial_accounts', $params, $opts);
+        return $this->requestCollection('get', '/v2/money_management/financial_accounts', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'savings' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'interest' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'rate' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'percentage' => [
+                                                            'kind' => 'decimal_string',
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -47,13 +79,37 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      */
     public function close($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/money_management/financial_accounts/%s/close', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/money_management/financial_accounts/%s/close', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'savings' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'interest' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'rate' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
      * Creates a new FinancialAccount.
      *
-     * @param null|array{display_name?: string, metadata?: array<string, string>, storage?: array{funds_usage_type?: string, holds_currencies: string[]}, type: string} $params
+     * @param null|array{display_name?: string, metadata?: array<string, string>, savings?: array{holds_currencies: string[]}, storage?: array{funds_usage_type?: string, holds_currencies: string[]}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount
@@ -63,7 +119,31 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/money_management/financial_accounts', $params, $opts);
+        return $this->request('post', '/v2/money_management/financial_accounts', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'savings' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'interest' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'rate' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -79,7 +159,31 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/money_management/financial_accounts/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/money_management/financial_accounts/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'savings' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'interest' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'rate' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     /**
@@ -95,7 +199,31 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      */
     public function update($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/money_management/financial_accounts/%s', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/money_management/financial_accounts/%s', $id), $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'savings' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'interest' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'rate' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'percentage' => [
+                                                'kind' => 'decimal_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
     }
 
     protected function getServiceClass($name)

@@ -154,6 +154,7 @@ class ObjectTypes
             \Stripe\QuotePreviewInvoice::OBJECT_NAME => \Stripe\QuotePreviewInvoice::class,
             \Stripe\QuotePreviewSubscriptionSchedule::OBJECT_NAME => \Stripe\QuotePreviewSubscriptionSchedule::class,
             \Stripe\Radar\AccountEvaluation::OBJECT_NAME => \Stripe\Radar\AccountEvaluation::class,
+            \Stripe\Radar\BillingEvaluation::OBJECT_NAME => \Stripe\Radar\BillingEvaluation::class,
             \Stripe\Radar\CustomerEvaluation::OBJECT_NAME => \Stripe\Radar\CustomerEvaluation::class,
             \Stripe\Radar\EarlyFraudWarning::OBJECT_NAME => \Stripe\Radar\EarlyFraudWarning::class,
             \Stripe\Radar\IssuingAuthorizationEvaluation::OBJECT_NAME => \Stripe\Radar\IssuingAuthorizationEvaluation::class,
@@ -316,6 +317,9 @@ class ObjectTypes
         \Stripe\V2\Signals\AccountActivity::OBJECT_NAME => \Stripe\V2\Signals\AccountActivity::class,
         \Stripe\V2\Signals\AccountEvaluation::OBJECT_NAME => \Stripe\V2\Signals\AccountEvaluation::class,
         \Stripe\V2\Signals\AccountSignal::OBJECT_NAME => \Stripe\V2\Signals\AccountSignal::class,
+        \Stripe\V2\Signals\PaymentRetryEvaluation::OBJECT_NAME => \Stripe\V2\Signals\PaymentRetryEvaluation::class,
+        \Stripe\V2\Signals\PaymentRetrySignal::OBJECT_NAME => \Stripe\V2\Signals\PaymentRetrySignal::class,
+        \Stripe\V2\Tax\IntegrationConfiguration::OBJECT_NAME => \Stripe\V2\Tax\IntegrationConfiguration::class,
         \Stripe\V2\Tax\ManualRule::OBJECT_NAME => \Stripe\V2\Tax\ManualRule::class,
         \Stripe\V2\Tax\OperationsResolveAddressResult::OBJECT_NAME => \Stripe\V2\Tax\OperationsResolveAddressResult::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec

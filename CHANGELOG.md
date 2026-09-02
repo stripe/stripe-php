@@ -32,6 +32,46 @@ This release changes the pinned API version to 2026-08-26.preview.
   * Add support for new value `blik_recurring_payments` on enum `EventsV2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent.updated_capability`
 * [#2123](https://github.com/stripe/stripe-php/pull/2123) Add non-verified manged handlers
 
+## 21.3.1 - 2026-09-01
+* [#2138](https://github.com/stripe/stripe-php/pull/2138) Harden API requestor code against malicious URLs
+
+## 21.3.0 - 2026-08-26
+This release changes the pinned API version to 2026-08-26.dahlia.
+
+* [#2113](https://github.com/stripe/stripe-php/pull/2113) Support discriminated unions in the V2 runtime and fix array coercion
+  
+  - Adds support for `nullable` and `discriminatedUnion` field encodings in the V2 coercion runtime, so `int64` and `decimal` fields wrapped in those schema kinds convert correctly.
+  - Encoding a V2 request throws `\Stripe\Exception\InvalidArgumentException` when a polymorphic (discriminated union) parameter is missing its discriminator field, or that field is not a string.
+  - Fixes `int64_string` and `decimal_string` fields inside arrays not being coerced in either direction.
+* [#2124](https://github.com/stripe/stripe-php/pull/2124) Add new `EventNotificationHandler` class for better thin event management
+  
+  - We've been putting a lot of time into rethinking the event handling experience in the SDKs. This new class is the culmination [of that effort](https://stripe.dev/blog/event-notification-handlers-thin-events).
+  - They're designed for a tight coupling with both `StripeClient` and the fully-typed nature of [thin events](https://docs.stripe.com/event-destinations#thin-events). This delivers painless event destination upgrades, in-editor checks for common mistakes, and better code modularity.
+  - Now that we've released [thin event notifications for v1 objects](https://docs.stripe.com/changelog#2026-08-26.dahlia), these new handlers are our recommended path for all integrations using thin event notifications.
+  - See more detailed docs here: https://docs.stripe.com/webhooks/event-notification-handlers
+* [#2118](https://github.com/stripe/stripe-php/pull/2118) Update generated code
+  * Add support for new resource `Billing.FeedbackOption`
+  * Add support for `all`, `create`, `deactivate`, `retrieve`, and `update` methods on resource `Billing.FeedbackOption`
+  * Add support for `payment_method_settings` on `AccountSession.components` and `AccountSession.create().$params.component`
+  * Add support for `feedback_options` on `BillingPortal.Configuration.features.subscription_cancel.cancellation_reason`, `BillingPortal\Configuration.create().$params.feature.subscription_cancel.cancellation_reason`, and `BillingPortal\Configuration.update().$params.feature.subscription_cancel.cancellation_reason`
+  * Add support for `customer_update` on `BillingPortal.Session.flow`
+  * Add support for new value `customer_update` on enum `BillingPortal.Session.flow.type`
+  * Add support for `funding_source_group` on `Charge.payment_method_details.card.wallet.link` and `Charge.payment_method_details.link`
+  * Add support for `funding_types_blocked` on `Checkout.Session.payment_method_options.card.restrictions` and `Checkout\Session.create().$params.payment_method_option.card.restriction`
+  * Add support for `metadata` on `ConfirmationToken`
+  * Add support for `active_entitlements` and `customer_portal` on `CustomerSession.components` and `CustomerSession.create().$params.component`
+  * Add support for `country` on `FinancialConnections.Session.filters`
+  * Add support for `frozen_fields` on `InvoiceItem`
+  * Add support for `billie` on `Invoice.create().$params.payment_setting.payment_method_option`, `Invoice.payment_settings.payment_method_options`, `Invoice.update().$params.payment_setting.payment_method_option`, `Subscription.create().$params.payment_setting.payment_method_option`, `Subscription.payment_settings.payment_method_options`, and `Subscription.update().$params.payment_setting.payment_method_option`
+  * Add support for new value `billie` on enums `Invoice.payment_settings.payment_method_types` and `Subscription.payment_settings.payment_method_types`
+  * ⚠️ Remove support for `cryptogram` on `PaymentAttemptRecord.payment_method_details.card.three_d_secure` and `PaymentRecord.payment_method_details.card.three_d_secure`
+  * Add support for new value `touch_n_go` on enums `PaymentIntent.allowed_payment_method_types` and `SetupIntent.allowed_payment_method_types`
+  * Change `PaymentIntent.allowed_payment_method_types` and `SetupIntent.allowed_payment_method_types` to be required
+  * Add support for `application_fee_amount`, `application_fee_percent`, `on_behalf_of`, and `transfer_data` on `PaymentLink.update().$params`
+  * Add support for `feedback_option` on `Subscription.cancel().$params.cancellation_detail`, `Subscription.cancellation_details`, and `Subscription.update().$params.cancellation_detail`
+  * Add support for `igic` on `Tax.Registration.country_options.at`, `Tax.Registration.country_options.be`, `Tax.Registration.country_options.bg`, `Tax.Registration.country_options.cy`, `Tax.Registration.country_options.cz`, `Tax.Registration.country_options.de`, `Tax.Registration.country_options.dk`, `Tax.Registration.country_options.ee`, `Tax.Registration.country_options.es`, `Tax.Registration.country_options.fi`, `Tax.Registration.country_options.fr`, `Tax.Registration.country_options.gr`, `Tax.Registration.country_options.hr`, `Tax.Registration.country_options.hu`, `Tax.Registration.country_options.ie`, `Tax.Registration.country_options.it`, `Tax.Registration.country_options.lt`, `Tax.Registration.country_options.lu`, `Tax.Registration.country_options.lv`, `Tax.Registration.country_options.mt`, `Tax.Registration.country_options.nl`, `Tax.Registration.country_options.pl`, `Tax.Registration.country_options.pt`, `Tax.Registration.country_options.ro`, `Tax.Registration.country_options.se`, `Tax.Registration.country_options.si`, `Tax.Registration.country_options.sk`, `Tax\Registration.create().$params.country_option.at`, `Tax\Registration.create().$params.country_option.be`, `Tax\Registration.create().$params.country_option.bg`, `Tax\Registration.create().$params.country_option.cy`, `Tax\Registration.create().$params.country_option.cz`, `Tax\Registration.create().$params.country_option.de`, `Tax\Registration.create().$params.country_option.dk`, `Tax\Registration.create().$params.country_option.e`, `Tax\Registration.create().$params.country_option.ee`, `Tax\Registration.create().$params.country_option.fi`, `Tax\Registration.create().$params.country_option.fr`, `Tax\Registration.create().$params.country_option.gr`, `Tax\Registration.create().$params.country_option.hr`, `Tax\Registration.create().$params.country_option.hu`, `Tax\Registration.create().$params.country_option.ie`, `Tax\Registration.create().$params.country_option.it`, `Tax\Registration.create().$params.country_option.lt`, `Tax\Registration.create().$params.country_option.lu`, `Tax\Registration.create().$params.country_option.lv`, `Tax\Registration.create().$params.country_option.mt`, `Tax\Registration.create().$params.country_option.nl`, `Tax\Registration.create().$params.country_option.pl`, `Tax\Registration.create().$params.country_option.pt`, `Tax\Registration.create().$params.country_option.ro`, `Tax\Registration.create().$params.country_option.se`, `Tax\Registration.create().$params.country_option.si`, and `Tax\Registration.create().$params.country_option.sk`
+  * Add support for error codes `authentication_failure`, `capability_not_active`, `expired_payment_method`, `incorrect_postal_code`, `invalid_canceled_subscription_fields`, and `payment_method_restricted` on `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `SetupAttempt.setup_error`, `SetupIntent.last_setup_error`, `StripeError`, and `Terminal.Reader.action.api_error`
+
 ## 21.3.0-alpha.2 - 2026-08-19
 * [#2120](https://github.com/stripe/stripe-php/pull/2120) Update generated code for private-preview
   * Add support for new resources `Billing.FeedbackOption` and `PaymentPlan`
