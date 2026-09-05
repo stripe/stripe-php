@@ -5,9 +5,7 @@
 namespace Stripe\Capital;
 
 /**
- * A financing summary object describes a connected account's financing status in real time.
- * A financing status is either <code>accepted</code>, <code>delivered</code>, or <code>none</code>.
- * You can read the status of your connected accounts.
+ * A financing summary object describes a connected account's financing details in real time.
  *
  * @property string $object The object type: financing_summary
  * @property null|(object{advance_amount: int, advance_paid_out_at: null|float, currency: string, current_repayment_interval: null|(object{due_at: float, paid_amount: null|int, remaining_amount: int}&\Stripe\StripeObject), disclaimer_variant?: string, fee_amount: int, paid_amount: int, remaining_amount: int, repayments_begin_at: null|float, withhold_rate: float}&\Stripe\StripeObject) $details <p>Additional information about the financing summary. Describes currency, advance amount, fee amount, withhold rate, remaining amount, paid amount, current repayment interval, repayment start date, and advance payout date.</p><p>Only present for financing offers with a <code>status</code> other than <code>none</code>.</p>
