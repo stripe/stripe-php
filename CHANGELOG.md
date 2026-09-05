@@ -26,6 +26,9 @@ This release changes the pinned API version to 2026-08-26.preview.
   * Add support for error codes `authentication_failure`, `capability_not_active`, `expired_payment_method`, `incorrect_postal_code`, `invalid_canceled_subscription_fields`, and `payment_method_restricted` on `QuotePreviewInvoice.last_finalization_error`
 * [#2121](https://github.com/stripe/stripe-php/pull/2121) Add non-verified methods to managed handlers
 
+## 21.3.1 - 2026-09-01
+* [#2138](https://github.com/stripe/stripe-php/pull/2138) Harden API requestor code against malicious URLs
+
 ## 21.3.0 - 2026-08-26
 This release changes the pinned API version to 2026-08-26.dahlia.
 
