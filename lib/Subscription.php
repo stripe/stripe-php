@@ -59,7 +59,7 @@ namespace Stripe;
  * @property null|string|TestHelpers\TestClock $test_clock ID of the test clock this subscription belongs to.
  * @property null|(object{amount_percent: null|float, destination: Account|string}&StripeObject) $transfer_data The account (if any) the subscription's payments will be attributed to for tax reporting, and where funds from each payment will be transferred to for each of the subscription's invoices.
  * @property null|int $trial_end If the subscription has a trial, the end of that trial.
- * @property null|(object{end_behavior: (object{billing_cycle_anchor?: null|string, missing_payment_method: string}&StripeObject)}&StripeObject) $trial_settings Settings related to subscription trials.
+ * @property null|(object{end_behavior: (object{billing_cycle_anchor: null|string, missing_payment_method: string}&StripeObject)}&StripeObject) $trial_settings Settings related to subscription trials.
  * @property null|int $trial_start If the subscription has a trial, the beginning of that trial.
  */
 class Subscription extends ApiResource
