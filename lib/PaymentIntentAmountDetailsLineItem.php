@@ -15,6 +15,7 @@ namespace Stripe;
  * @property null|int $quantity_precision The number of decimal places implied in the quantity. For example, if quantity is 10000 and quantity_precision is 2, the actual quantity is 100.00. Defaults to 0 if not provided.
  * @property null|(object{total_tax_amount: int}&StripeObject) $tax Contains information about the tax on the item.
  * @property int $unit_cost The unit cost of the line item represented in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. Required for L3 rates. An integer greater than or equal to 0.
+ * @property null|int $unit_cost_precision The number of decimal places implied in the unit_cost. For example, if unit_cost is 10000 and unit_cost_precision is 1, the actual unit cost is 1000.0. Defaults to 0 if not provided.
  * @property null|string $unit_of_measure A unit of measure for the line item, such as gallons, feet, meters, etc. Required for L3 rates. At most 12 alphanumeric characters long.
  */
 class PaymentIntentAmountDetailsLineItem extends ApiResource
