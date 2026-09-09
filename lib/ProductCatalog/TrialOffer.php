@@ -48,7 +48,7 @@ class TrialOffer extends \Stripe\ApiResource
     /**
      * Returns a list of trial offers.
      *
-     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, prices?: string[], starting_after?: string} $params
+     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], limit?: int, prices?: string[], starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<TrialOffer> of ApiResources
