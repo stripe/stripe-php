@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.3.2 - 2026-09-09
+* [#2142](https://github.com/stripe/stripe-php/pull/2142) Validate that webhook secrets are non-empty
+
 ## 21.3.1 - 2026-09-01
 * [#2138](https://github.com/stripe/stripe-php/pull/2138) Harden API requestor code against malicious URLs
 
