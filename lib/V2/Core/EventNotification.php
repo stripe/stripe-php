@@ -22,6 +22,11 @@ use Stripe\Util\EventNotificationTypes;
  */
 abstract class EventNotification
 {
+    /**
+     * The class used to deserialize the `related_object` payload. EventNotifications whose related object is a singleton override this with `\Stripe\RelatedSingletonObject`.
+     */
+    const RELATED_OBJECT_CLASS = RelatedObject::class;
+
     public $id;
     public $object;
     public $type;
@@ -60,8 +65,10 @@ abstract class EventNotification
         if (\array_key_exists('livemode', $json)) {
             $this->livemode = $json['livemode'];
         }
-        if (\array_key_exists('related_object', $json)) {
-            $this->related_object = new RelatedObject($json['related_object']);
+        if (\array_key_exists('related_object', $json) && null !== $json['related_object']) {
+            // late static binding, so a subclass' RELATED_OBJECT_CLASS wins
+            $relatedObjectClass = static::RELATED_OBJECT_CLASS;
+            $this->related_object = new $relatedObjectClass($json['related_object']);
         }
         if (\array_key_exists('reason', $json)) {
             $this->reason = new Reason($json['reason']);
