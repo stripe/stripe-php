@@ -120,6 +120,9 @@ This release changes the pinned API version to 2026-08-26.preview.
   * Add support for new value `blik_recurring_payments` on enum `EventsV2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent.updated_capability`
 * [#2123](https://github.com/stripe/stripe-php/pull/2123) Add non-verified manged handlers
 
+## 21.3.2 - 2026-09-09
+* [#2142](https://github.com/stripe/stripe-php/pull/2142) Validate that webhook secrets are non-empty
+
 ## 21.3.1 - 2026-09-01
 * [#2138](https://github.com/stripe/stripe-php/pull/2138) Harden API requestor code against malicious URLs
 
