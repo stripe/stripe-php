@@ -94,7 +94,7 @@ class AccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the details of an Financial Connections <code>Account</code>.
+     * Retrieves the details of a Financial Connections <code>Account</code>.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

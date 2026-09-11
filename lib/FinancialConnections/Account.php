@@ -74,7 +74,7 @@ class Account extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieves the details of an Financial Connections <code>Account</code>.
+     * Retrieves the details of a Financial Connections <code>Account</code>.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

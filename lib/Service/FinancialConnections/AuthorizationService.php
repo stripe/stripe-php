@@ -12,7 +12,7 @@ namespace Stripe\Service\FinancialConnections;
 class AuthorizationService extends \Stripe\Service\AbstractService
 {
     /**
-     * Retrieves the details of an Financial Connections <code>Authorization</code>.
+     * Retrieves the details of a Financial Connections <code>Authorization</code>.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
