@@ -1,0 +1,1 @@
+It is built on top of SDK version 18.0.0 which contains breaking changes. Please review the [changelog for 18.0.0](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#1800---2025-09-30) if upgrading from older SDK versions.
