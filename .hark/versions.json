@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "language": "php",
+    "channel": "beta"
+  },
   "versions": [
     {
       "version": "21.4.0-beta.1",
