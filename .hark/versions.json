@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "language": "php",
+    "channel": "private-preview"
+  },
   "versions": [
     {
       "version": "21.4.0-alpha.3",
