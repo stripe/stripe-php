@@ -1,6 +1,6 @@
 ---
 title: Support discriminated unions in the V2 runtime and fix array coercion
-pr_link: https://github.com/stripe/stripe-php/pull/2113
+pr_url: https://github.com/stripe/stripe-php/pull/2113
 released_in_version: 21.3.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Add new `EventNotificationHandler` class for better thin event management
-pr_link: https://github.com/stripe/stripe-php/pull/2124
+pr_url: https://github.com/stripe/stripe-php/pull/2124
 released_in_version: 21.3.0
 ---
 

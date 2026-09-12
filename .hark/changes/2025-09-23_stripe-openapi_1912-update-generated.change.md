@@ -1,6 +1,6 @@
 ---
 title: ", [#1912](https://github.com/stripe/stripe-php/pull/1912) Update generated code based on incoming API changes in the `2025-09-30.clover` API version."
-pr_link: https://github.com/stripe/stripe-php/pull/1900
+pr_url: https://github.com/stripe/stripe-php/pull/1900
 is_breaking: true
 is_stripe_api_change: true
 released_in_version: 18.0.0

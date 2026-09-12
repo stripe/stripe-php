@@ -1,6 +1,6 @@
 ---
 title: Remove stdClass from object shapes
-pr_link: https://github.com/stripe/stripe-php/pull/1847
+pr_url: https://github.com/stripe/stripe-php/pull/1847
 released_in_version: 17.1.1
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Build SDK w/ V2 OpenAPI spec
-pr_link: https://github.com/stripe/stripe-php/pull/1898
+pr_url: https://github.com/stripe/stripe-php/pull/1898
 is_breaking: true
 released_in_version: 18.0.0
 ---

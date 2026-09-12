@@ -1,6 +1,6 @@
 ---
 title: Update generated code
-pr_link: https://github.com/stripe/stripe-php/pull/1956
+pr_url: https://github.com/stripe/stripe-php/pull/1956
 is_stripe_api_change: true
 released_in_version: 19.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 title: Deserialize into correct v2 EventData types
-pr_link: https://github.com/stripe/stripe-php/pull/1775
+pr_url: https://github.com/stripe/stripe-php/pull/1775
 released_in_version: 16.1.1
 ---
 

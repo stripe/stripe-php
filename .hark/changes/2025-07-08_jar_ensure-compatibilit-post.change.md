@@ -1,6 +1,6 @@
 ---
 title: Ensure compatibility with POST on older versions of libcurl
-pr_link: https://github.com/stripe/stripe-php/pull/1881
+pr_url: https://github.com/stripe/stripe-php/pull/1881
 released_in_version: 17.5.0
 ---
 

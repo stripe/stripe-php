@@ -1,6 +1,6 @@
 ---
 title: Add strongly typed EventNotifications
-pr_link: https://github.com/stripe/stripe-php/pull/1903
+pr_url: https://github.com/stripe/stripe-php/pull/1903
 is_breaking: true
 released_in_version: 18.0.0
 ---

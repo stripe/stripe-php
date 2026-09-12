@@ -1,6 +1,6 @@
 ---
 title: Preserve null values in v2 JSON request bodies
-pr_link: https://github.com/stripe/stripe-php/pull/2042
+pr_url: https://github.com/stripe/stripe-php/pull/2042
 is_breaking: true
 released_in_version: 20.0.0
 ---

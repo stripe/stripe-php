@@ -1,5 +1,5 @@
 ---
 title: "PHPDoc: use union of literals for $method parameter throughout"
-pr_link: https://github.com/stripe/stripe-php/pull/1487
+pr_url: https://github.com/stripe/stripe-php/pull/1487
 released_in_version: 10.18.0
 ---

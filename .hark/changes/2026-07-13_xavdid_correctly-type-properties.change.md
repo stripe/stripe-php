@@ -1,6 +1,6 @@
 ---
 title: Correctly type properties on `ErrorObject`
-pr_link: https://github.com/stripe/stripe-php/pull/2097
+pr_url: https://github.com/stripe/stripe-php/pull/2097
 is_breaking: true
 released_in_version: 21.0.0
 ---

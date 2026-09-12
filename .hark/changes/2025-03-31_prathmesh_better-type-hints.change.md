@@ -1,6 +1,6 @@
 ---
 title: Better type hints in your editor!!
-pr_link: https://github.com/stripe/stripe-php/pull/1837
+pr_url: https://github.com/stripe/stripe-php/pull/1837
 released_in_version: 17.0.0
 ---
 

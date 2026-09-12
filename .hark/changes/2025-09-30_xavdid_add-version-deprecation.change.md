@@ -1,6 +1,6 @@
 ---
 title: add version deprecation note to README
-pr_link: https://github.com/stripe/stripe-php/pull/1925
+pr_url: https://github.com/stripe/stripe-php/pull/1925
 released_in_version: 18.0.0
 ---
 

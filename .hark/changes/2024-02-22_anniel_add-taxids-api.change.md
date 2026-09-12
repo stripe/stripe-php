@@ -1,6 +1,6 @@
 ---
 title: Add TaxIds API
-pr_link: https://github.com/stripe/stripe-php/pull/1650
+pr_url: https://github.com/stripe/stripe-php/pull/1650
 released_in_version: 13.12.0
 ---
 

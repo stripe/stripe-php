@@ -1,6 +1,6 @@
 ---
 title: Report usage of .save and StripeClient
-pr_link: https://github.com/stripe/stripe-php/pull/1612
+pr_url: https://github.com/stripe/stripe-php/pull/1612
 released_in_version: 13.6.0
 ---
 

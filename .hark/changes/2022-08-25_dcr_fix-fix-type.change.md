@@ -1,6 +1,6 @@
 ---
 title: "fix: Fix type hints for error objects."
-pr_link: https://github.com/stripe/stripe-php/pull/1361
+pr_url: https://github.com/stripe/stripe-php/pull/1361
 released_in_version: 9.4.0
 ---
 

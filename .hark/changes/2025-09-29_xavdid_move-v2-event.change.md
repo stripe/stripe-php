@@ -1,6 +1,6 @@
 ---
 title: Move `V2.Event` API resources to `V2.Core.Events`
-pr_link: https://github.com/stripe/stripe-php/pull/1920
+pr_url: https://github.com/stripe/stripe-php/pull/1920
 is_breaking: true
 released_in_version: 18.0.0
 ---

@@ -1,6 +1,6 @@
 ---
 title: add/adjust event parsing helpers
-pr_link: https://github.com/stripe/stripe-php/pull/2105
+pr_url: https://github.com/stripe/stripe-php/pull/2105
 released_in_version: 21.2.0
 ---
 

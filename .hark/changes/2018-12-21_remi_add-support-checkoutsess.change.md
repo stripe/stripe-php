@@ -1,5 +1,5 @@
 ---
 title: Add support for the `CheckoutSession` resource
-pr_link: https://github.com/stripe/stripe-php/pull/571
+pr_url: https://github.com/stripe/stripe-php/pull/571
 released_in_version: 6.27.0
 ---

@@ -1,6 +1,6 @@
 ---
 title: Please read the [API Changelog](https://docs.stripe.com/changelog/2024-06-20) and carefully review the API changes before upgrading.
-pr_link: https://github.com/stripe/stripe-php/pull/1714
+pr_url: https://github.com/stripe/stripe-php/pull/1714
 released_in_version: 15.0.0
 ---
 

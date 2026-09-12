@@ -1,6 +1,6 @@
 ---
 title: Support for APIs in the new API version 2025-03-31.basil
-pr_link: https://github.com/stripe/stripe-php/pull/1818
+pr_url: https://github.com/stripe/stripe-php/pull/1818
 is_breaking: true
 is_stripe_api_change: true
 released_in_version: 17.0.0

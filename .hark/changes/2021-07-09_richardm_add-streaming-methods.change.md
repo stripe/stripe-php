@@ -1,6 +1,6 @@
 ---
 title: Add streaming methods to Service infra
-pr_link: https://github.com/stripe/stripe-php/pull/1155
+pr_url: https://github.com/stripe/stripe-php/pull/1155
 released_in_version: 7.88.0
 ---
 

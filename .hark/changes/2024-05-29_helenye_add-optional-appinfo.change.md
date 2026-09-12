@@ -1,6 +1,6 @@
 ---
 title: Add optional appInfo to StripeClient config
-pr_link: https://github.com/stripe/stripe-php/pull/1700
+pr_url: https://github.com/stripe/stripe-php/pull/1700
 released_in_version: 14.9.0
 ---
 

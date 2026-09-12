@@ -1,6 +1,6 @@
 ---
 title: Add static methods to manipulate resources from parent
-pr_link: https://github.com/stripe/stripe-php/pull/383
+pr_url: https://github.com/stripe/stripe-php/pull/383
 released_in_version: 5.4.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: update object tags for meter-related classes
-pr_link: https://github.com/stripe/stripe-php/pull/1776
+pr_url: https://github.com/stripe/stripe-php/pull/1776
 released_in_version: 16.1.1
 ---
 

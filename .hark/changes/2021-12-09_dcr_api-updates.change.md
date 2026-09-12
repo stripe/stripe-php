@@ -1,6 +1,6 @@
 ---
 title: API Updates
-pr_link: https://github.com/stripe/stripe-php/pull/1218
+pr_url: https://github.com/stripe/stripe-php/pull/1218
 is_stripe_api_change: true
 released_in_version: 7.106.0
 ---

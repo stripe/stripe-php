@@ -1,6 +1,6 @@
 ---
 title: Remove broken methods on CustomerCashBalanceTransaction
-pr_link: https://github.com/stripe/stripe-php/pull/1648
+pr_url: https://github.com/stripe/stripe-php/pull/1648
 released_in_version: 13.11.0
 ---
 

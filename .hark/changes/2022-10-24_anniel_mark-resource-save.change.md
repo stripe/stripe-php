@@ -1,6 +1,6 @@
 ---
 title: Mark `resource.save` as deprecated. Prefer the static update method that doesn't require retrieval of the resource to update it.
-pr_link: https://github.com/stripe/stripe-php/pull/1382
+pr_url: https://github.com/stripe/stripe-php/pull/1382
 section: Deprecated
 released_in_version: 10.0.0
 ---

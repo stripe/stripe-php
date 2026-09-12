@@ -1,6 +1,6 @@
 ---
 title: Update PHPDocs
-pr_link: https://github.com/stripe/stripe-php/pull/1087
+pr_url: https://github.com/stripe/stripe-php/pull/1087
 is_stripe_api_change: true
 released_in_version: 7.71.0
 ---

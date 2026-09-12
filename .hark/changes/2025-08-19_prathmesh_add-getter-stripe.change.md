@@ -1,6 +1,6 @@
 ---
 title: Add getter for Stripe Account on BaseStripeClient
-pr_link: https://github.com/stripe/stripe-php/pull/1894
+pr_url: https://github.com/stripe/stripe-php/pull/1894
 released_in_version: 17.6.0
 ---
 
