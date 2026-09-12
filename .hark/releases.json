@@ -3,7 +3,7 @@
     "language": "php",
     "channel": "ga"
   },
-  "versions": [
+  "releases": [
     {
       "version": "21.3.2",
       "released_on": "2026-09-09",
