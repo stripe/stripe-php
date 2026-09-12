@@ -1,6 +1,6 @@
 ---
 title: generate private-preview SDK w/ mid Sept changes
-pr_link: https://github.com/stripe/stripe-php/pull/1904
+pr_url: https://github.com/stripe/stripe-php/pull/1904
 is_stripe_api_change: true
 released_in_version: 17.7.0-alpha.2
 ---

@@ -1,6 +1,6 @@
 ---
 title: Update generated code for private-preview
-pr_link: https://github.com/stripe/stripe-php/pull/2062
+pr_url: https://github.com/stripe/stripe-php/pull/2062
 is_breaking: true
 is_stripe_api_change: true
 released_in_version: 20.2.0-alpha.2
