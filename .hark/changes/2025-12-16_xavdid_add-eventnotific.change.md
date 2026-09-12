@@ -1,6 +1,6 @@
 ---
 title: Add EventNotificationHandler
-pr_link: https://github.com/stripe/stripe-php/pull/1955
+pr_url: https://github.com/stripe/stripe-php/pull/1955
 released_in_version: 19.2.0-beta.1
 ---
 

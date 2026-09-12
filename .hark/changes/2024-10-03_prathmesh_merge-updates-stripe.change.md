@@ -1,6 +1,6 @@
 ---
 title: Merge updates from stripe-php master to beta
-pr_link: https://github.com/stripe/stripe-php/pull/1766
+pr_url: https://github.com/stripe/stripe-php/pull/1766
 released_in_version: 16.7.0-beta.1
 ---
 

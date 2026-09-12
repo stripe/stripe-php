@@ -1,6 +1,6 @@
 ---
 title: API Updates for beta branch
-pr_link: https://github.com/stripe/stripe-php/pull/1358
+pr_url: https://github.com/stripe/stripe-php/pull/1358
 is_stripe_api_change: true
 released_in_version: 9.4.0-beta.1
 ---

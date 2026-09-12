@@ -1,6 +1,6 @@
 ---
 title: Beta SDK updates between Open API versions 1473 and 1505
-pr_link: https://github.com/stripe/stripe-php/pull/1820
+pr_url: https://github.com/stripe/stripe-php/pull/1820
 released_in_version: 16.7.0-beta.1
 ---
 

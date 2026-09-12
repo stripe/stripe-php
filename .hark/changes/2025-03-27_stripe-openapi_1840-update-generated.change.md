@@ -1,6 +1,6 @@
 ---
 title: ", [#1840](https://github.com/stripe/stripe-php/pull/1840) Update generated code for beta"
-pr_link: https://github.com/stripe/stripe-php/pull/1814
+pr_url: https://github.com/stripe/stripe-php/pull/1814
 is_stripe_api_change: true
 released_in_version: 17.2.0-beta.1
 ---

@@ -1,6 +1,6 @@
 ---
 title: "The `Preview` class has been removed. Please use [rawRequest](https://github.com/stripe/stripe-php?tab=readme-ov-file#custom-requests) instead which accepts"
-pr_link: https://github.com/stripe/stripe-php/pull/1766
+pr_url: https://github.com/stripe/stripe-php/pull/1766
 released_in_version: 16.2.0-beta.1
 ---
 

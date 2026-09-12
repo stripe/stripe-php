@@ -1,6 +1,6 @@
 ---
 title: Handle external_account field
-pr_link: https://github.com/stripe/stripe-php/pull/1851
+pr_url: https://github.com/stripe/stripe-php/pull/1851
 released_in_version: 17.2.0-beta.3
 ---
 

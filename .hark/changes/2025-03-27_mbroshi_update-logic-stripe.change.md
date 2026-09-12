@@ -1,6 +1,6 @@
 ---
 title: Update logic for Stripe::addBetaVersion
-pr_link: https://github.com/stripe/stripe-php/pull/1830
+pr_url: https://github.com/stripe/stripe-php/pull/1830
 released_in_version: 17.2.0-beta.1
 ---
 

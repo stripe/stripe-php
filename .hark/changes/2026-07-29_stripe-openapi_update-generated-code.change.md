@@ -1,6 +1,6 @@
 ---
 title: Update generated code for beta
-pr_link: https://github.com/stripe/stripe-php/pull/2090
+pr_url: https://github.com/stripe/stripe-php/pull/2090
 is_breaking: true
 is_stripe_api_change: true
 released_in_version: 21.2.0-beta.1

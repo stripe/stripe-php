@@ -1,6 +1,6 @@
 ---
 title: Improved php type hints
-pr_link: https://github.com/stripe/stripe-php/pull/1794
+pr_url: https://github.com/stripe/stripe-php/pull/1794
 released_in_version: 16.7.0-beta.1
 ---
 
