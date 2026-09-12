@@ -1,4 +1,8 @@
 {
+  "metadata": {
+    "language": "php",
+    "channel": "ga"
+  },
   "versions": [
     {
       "version": "21.3.2",
