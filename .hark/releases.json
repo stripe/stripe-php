@@ -3,7 +3,7 @@
     "language": "php",
     "channel": "private-preview"
   },
-  "versions": [
+  "releases": [
     {
       "version": "21.4.0-alpha.3",
       "released_on": "2026-09-09",
