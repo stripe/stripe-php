@@ -7,7 +7,7 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
 
 > This changelog only covers the **public preview** releases. Each release builds on the most recent GA release; see those notes in [the GA changelog](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md).
 
-## 21.4.0-beta.1 - 2026-08-26
+## <a id="21-4-0-beta-1"></a>21.4.0-beta.1 - 2026-08-26
 This release changes the pinned API version to `2026-08-26.preview`.
 
 * [#2121](https://github.com/stripe/stripe-php/pull/2121) Add non-verified methods to managed handlers
@@ -33,7 +33,7 @@ This release changes the pinned API version to `2026-08-26.preview`.
   * Add support for event notification `V2SignalsAccountEvaluationCompleteEvent` with related object `V2.Signals.AccountEvaluation`
   * Add support for error codes `authentication_failure`, `capability_not_active`, `expired_payment_method`, `incorrect_postal_code`, `invalid_canceled_subscription_fields`, and `payment_method_restricted` on `QuotePreviewInvoice.last_finalization_error`
 
-## 21.2.0-beta.1 - 2026-07-29
+## <a id="21-2-0-beta-1"></a>21.2.0-beta.1 - 2026-07-29
 This release changes the pinned API version to `2026-07-29.preview`.
 
 * ⚠️ [#2090](https://github.com/stripe/stripe-php/pull/2090) Update generated code for beta
@@ -60,7 +60,7 @@ This release changes the pinned API version to `2026-07-29.preview`.
   * Add support for new value `payout` on enum `V2.MoneyManagement.ReceivedCredit.balance_transfer.type`
   * ⚠️ Change `V2.MoneyManagement.ReceivedDebit.bank_transfer.us_bank_account` to be optional
 
-## 20.4.0-beta.1 - 2026-06-24
+## <a id="20-4-0-beta-1"></a>20.4.0-beta.1 - 2026-06-24
 This release changes the pinned API version to `2026-06-24.preview`.
 
 * ⚠️ [#2075](https://github.com/stripe/stripe-php/pull/2075) Update generated code for beta
@@ -98,7 +98,7 @@ This release changes the pinned API version to `2026-06-24.preview`.
   * ⚠️ Remove support for event notifications `V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationStorerUpdatedEvent` with related object `V2.Core.Account`
   * Add support for error codes `anomalous_money_movement_request`, `failed_tax_calculation`, `financial_account_balance_does_not_support_currency`, `financial_account_capability_not_enabled`, and `financial_account_capability_restricted` on `QuotePreviewInvoice.last_finalization_error`
 
-## 20.3.0-beta.1 - 2026-05-27
+## <a id="20-3-0-beta-1"></a>20.3.0-beta.1 - 2026-05-27
 This release changes the pinned API version to `2026-05-27.preview`.
 
 * ⚠️ [#2064](https://github.com/stripe/stripe-php/pull/2064) Update generated code for beta
@@ -120,7 +120,7 @@ This release changes the pinned API version to `2026-05-27.preview`.
   * ⚠️ Change type of `V2.MoneyManagement.ReceivedCredit.bank_transfer.gb_bank_account.network` from `literal('fps')` to `enum('chaps'|'fps')`
   * Add support for error codes `payment_method_microdeposit_processing_error` and `siret_invalid` on `QuotePreviewInvoice.last_finalization_error`
 
-## 20.2.0-beta.2 - 2026-04-24
+## <a id="20-2-0-beta-2"></a>20.2.0-beta.2 - 2026-04-24
 * ⚠️ [#2060](https://github.com/stripe/stripe-php/pull/2060) Update generated code for beta
   * Add support for new resources `V2.Commerce.ProductCatalogImport`, `V2.Data.Reporting.QueryRun`, `V2.Extend.WorkflowRun`, `V2.Extend.Workflow`, `V2.Iam.ActivityLog`, `V2.Network.BusinessProfile`, and `V2.OrchestratedCommerce.Agreement`
   * Add support for `all`, `confirm`, `create`, `retrieve`, and `terminate` methods on resource `V2.OrchestratedCommerce.Agreement`
@@ -148,7 +148,7 @@ This release changes the pinned API version to `2026-05-27.preview`.
   * Add support for event notifications `V2OrchestratedCommerceAgreementConfirmedEvent`, `V2OrchestratedCommerceAgreementCreatedEvent`, `V2OrchestratedCommerceAgreementPartiallyConfirmedEvent`, and `V2OrchestratedCommerceAgreementTerminatedEvent` with related object `V2.OrchestratedCommerce.Agreement`
   * Add support for error type `CannotProceedException`
 
-## 20.2.0-beta.1 - 2026-04-23
+## <a id="20-2-0-beta-1"></a>20.2.0-beta.1 - 2026-04-23
 This release changes the pinned API version to `2026-04-22.preview`.
 
 * ⚠️ [#2050](https://github.com/stripe/stripe-php/pull/2050) Update generated code for beta
@@ -176,7 +176,7 @@ This release changes the pinned API version to `2026-04-22.preview`.
   * Add support for `purpose` on `Treasury.OutboundPayment` and `Treasury\OutboundPayment.create().$params`
   * Add support for error codes `action_blocked` and `approval_required` on `QuotePreviewInvoice.last_finalization_error`
 
-## 20.1.0-beta.1 - 2026-03-25
+## <a id="20-1-0-beta-1"></a>20.1.0-beta.1 - 2026-03-25
 This release changes the pinned API version to `2026-03-25.preview`.
 
 It is built on top of SDK version 20.0.0 which contains breaking changes. Please review the [changelog for 20.0.0](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#2000---2026-03-25) if upgrading from older SDK versions.
@@ -228,7 +228,7 @@ It is built on top of SDK version 20.0.0 which contains breaking changes. Please
   * Release specs are identical.
 * [#2047](https://github.com/stripe/stripe-php/pull/2047) Update generated code for beta
 
-## 19.5.0-beta.1 - 2026-02-25
+## <a id="19-5-0-beta-1"></a>19.5.0-beta.1 - 2026-02-25
 This release changes the pinned API version to `2026-02-25.preview`.
 
 * [#2006](https://github.com/stripe/stripe-php/pull/2006) Update generated code for beta
@@ -243,7 +243,7 @@ This release changes the pinned API version to `2026-02-25.preview`.
   * Change `V2.MoneyManagement.Transaction.flow` and `V2.MoneyManagement.TransactionEntry.transaction_details.flow` to be optional
   * Add support for error codes `storer_capability_missing` and `storer_capability_not_active` on `QuotePreviewInvoice.last_finalization_error`
 
-## 19.4.0-beta.1 - 2026-01-28
+## <a id="19-4-0-beta-1"></a>19.4.0-beta.1 - 2026-01-28
 This release changes the pinned API version to `2026-01-28.preview`.
 
 * [#1981](https://github.com/stripe/stripe-php/pull/1981) Add EventNotificationHandler example
@@ -274,7 +274,7 @@ This release changes the pinned API version to `2026-01-28.preview`.
   * Add support for snapshot event `INVOICE_PAYMENT_DETACHED` with resource `InvoicePayment`
   * Add support for error code `request_blocked` on `QuotePreviewInvoice.last_finalization_error`
 
-## 19.2.0-beta.1 - 2025-12-16
+## <a id="19-2-0-beta-1"></a>19.2.0-beta.1 - 2025-12-16
 This release changes the pinned API version to `2025-12-15.preview`.
 
 * [#1955](https://github.com/stripe/stripe-php/pull/1955) Add EventNotificationHandler
@@ -319,7 +319,7 @@ This release changes the pinned API version to `2025-12-15.preview`.
   * Remove support for error type `RateLimitException`
   * Add support for error code `account_token_required_for_v2_account` on `QuotePreviewInvoice.last_finalization_error`
 
-## 19.1.0-beta.1 - 2025-11-18
+## <a id="19-1-0-beta-1"></a>19.1.0-beta.1 - 2025-11-18
 This release changes the pinned API version to `2025-11-17.preview`.
 
 * [#1952](https://github.com/stripe/stripe-php/pull/1952) Update generated code for beta
@@ -353,7 +353,7 @@ This release changes the pinned API version to `2025-11-17.preview`.
   * Add support for thin event `V2CoreHealthEventGenerationFailureResolvedEvent`
   * Remove support for thin events `V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent`, `V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent`, `V2PaymentsOffSessionPaymentCanceledEvent`, `V2PaymentsOffSessionPaymentCreatedEvent`, `V2PaymentsOffSessionPaymentFailedEvent`, `V2PaymentsOffSessionPaymentRequiresCaptureEvent`, and `V2PaymentsOffSessionPaymentSucceededEvent` with related object `V2.Payments.OffSessionPayment`
 
-## 18.2.0-beta.1 - 2025-10-29
+## <a id="18-2-0-beta-1"></a>18.2.0-beta.1 - 2025-10-29
 This release changes the pinned API version to `2025-10-29.preview`.
 
 * [#1930](https://github.com/stripe/stripe-php/pull/1930) Update generated code for beta
@@ -384,7 +384,7 @@ This release changes the pinned API version to `2025-10-29.preview`.
 * [#1945](https://github.com/stripe/stripe-php/pull/1945) Update generated code for beta
   * Add support for `crypto_storer` on `V2\Core\Account.update().$params.identity.attestation.terms_of_service`
 
-## 18.1.0-beta.1 - 2025-09-30
+## <a id="18-1-0-beta-1"></a>18.1.0-beta.1 - 2025-09-30
 This release changes the pinned API version to `2025-09-30.preview`.
 
 It is built on top of SDK version 18.0.0 which contains breaking changes. Please review the [changelog for 18.0.0](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#1800---2025-09-30) if upgrading from older SDK versions.
@@ -449,7 +449,7 @@ It is built on top of SDK version 18.0.0 which contains breaking changes. Please
   * Add support for `billing_cadence_details` on `Invoice.parent` and `QuotePreviewInvoice.parent`
   * Add support for new value `billing_cadence_details` on enums `Invoice.parent.type` and `QuotePreviewInvoice.parent.type`
 
-## 17.7.0-beta.1 - 2025-08-27
+## <a id="17-7-0-beta-1"></a>17.7.0-beta.1 - 2025-08-27
 This release changes the pinned API version to `2025-08-27.preview`.
 
 * [#1888](https://github.com/stripe/stripe-php/pull/1888) Update generated code for beta
@@ -486,12 +486,12 @@ This release changes the pinned API version to `2025-08-27.preview`.
   * Add support for `reader_security` on `Terminal.Configuration`, `Terminal\Configuration.create().$params`, and `Terminal\Configuration.update().$params`
   * Add support for error codes `customer_session_expired` and `india_recurring_payment_mandate_canceled` on `QuotePreviewInvoice.last_finalization_error`
 
-## 17.6.0-beta.2 - 2025-08-08
+## <a id="17-6-0-beta-2"></a>17.6.0-beta.2 - 2025-08-08
 * [#1891](https://github.com/stripe/stripe-php/pull/1891) Bring back invoice payments APIs that were missing in the public preview SDKs
   * Add support for new resource `InvoicePayment`
   * Add support for `all` and `retrieve` methods on resource `InvoicePayment`
 
-## 17.6.0-beta.1 - 2025-07-30
+## <a id="17-6-0-beta-1"></a>17.6.0-beta.1 - 2025-07-30
 This release changes the pinned API version to `2025-07-30.preview`.
 
 * [#1885](https://github.com/stripe/stripe-php/pull/1885) Update generated code for beta
@@ -505,7 +505,7 @@ This release changes the pinned API version to `2025-07-30.preview`.
   * Remove support for thin event `V2CoreAccountLinkCompletedEvent`
   * Remove support for thin event `V2OffSessionPaymentRequiresCaptureEvent` with related object `V2.Payments.OffSessionPayment`
 
-## 17.5.0-beta.2 - 2025-07-09
+## <a id="17-5-0-beta-2"></a>17.5.0-beta.2 - 2025-07-09
 * [#1886](https://github.com/stripe/stripe-php/pull/1886) Pull in V2 FinancialAccount changes for June release
   * Add support for `close` and `create` methods on resource `V2.MoneyManagement.FinancialAccount`
   * Add support for new value `storer` on enum `V2.Core.Account.applied_configurations`
@@ -513,7 +513,7 @@ This release changes the pinned API version to `2025-07-30.preview`.
   * Add support for thin events `V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationStorerUpdatedEvent` with related object `V2.Core.Account`
   * Add support for error types `AlreadyExistsException` and `NonZeroBalanceException`
 
-## 17.5.0-beta.1 - 2025-07-01
+## <a id="17-5-0-beta-1"></a>17.5.0-beta.1 - 2025-07-01
 This release changes the pinned API version to `2025-06-30.preview`.
 
 * [#1876](https://github.com/stripe/stripe-php/pull/1876) Update generated code for beta
@@ -531,10 +531,10 @@ This release changes the pinned API version to `2025-06-30.preview`.
   * Change type of `V2.MoneyManagement.ReceivedCredit.balance_transfer.type` from `literal('payout_v1')` to `enum('outbound_payment'|'outbound_transfer'|'payout_v1')`
   * Change type of `V2.MoneyManagement.ReceivedCredit.balance_transfer.payout_v1` from `string` to `nullable(string)`
 
-## 17.4.0-beta.2 - 2025-06-26
+## <a id="17-4-0-beta-2"></a>17.4.0-beta.2 - 2025-06-26
 * [#1883](https://github.com/stripe/stripe-php/pull/1883) Pull in OffSessionPayment changes for the May release
 
-## 17.4.0-beta.1 - 2025-05-29
+## <a id="17-4-0-beta-1"></a>17.4.0-beta.1 - 2025-05-29
 This release changes the pinned API version to `2025-05-28.preview`.
 
 * [#1864](https://github.com/stripe/stripe-php/pull/1864) Update generated code for beta
@@ -568,7 +568,7 @@ This release changes the pinned API version to `2025-05-28.preview`.
   * Add support for `tax_transaction_attempts` on `Tax.Association`
   * Add support for error code `forwarding_api_upstream_error` on `QuotePreviewInvoice.last_finalization_error`
 
-## 17.3.0-beta.1 - 2025-04-30
+## <a id="17-3-0-beta-1"></a>17.3.0-beta.1 - 2025-04-30
 This release changes the pinned API version to `2025-04-30.preview`.
 
 * [#1859](https://github.com/stripe/stripe-php/pull/1859) Update generated code for beta
@@ -578,7 +578,7 @@ This release changes the pinned API version to `2025-04-30.preview`.
   * Add support for new values `aw_tin`, `az_tin`, `bd_bin`, `bf_ifu`, `bj_ifu`, `cm_niu`, `cv_nif`, `et_tin`, `kg_tin`, and `la_tin` on enum `QuotePreviewInvoice.customer_tax_ids[].type`
   * Add support for `billing_mode` on `QuotePreviewSubscriptionSchedule`, `SubscriptionSchedule`, and `Subscription`
 
-## 17.2.0-beta.4 - 2025-04-17
+## <a id="17-2-0-beta-4"></a>17.2.0-beta.4 - 2025-04-17
 * [#1855](https://github.com/stripe/stripe-php/pull/1855) Update generated code for beta
   * Add support for new resources `FxQuote` and `PaymentIntentAmountDetailsLineItem`
   * Add support for `all`, `create`, and `retrieve` methods on resource `FxQuote`
@@ -592,7 +592,7 @@ This release changes the pinned API version to `2025-04-30.preview`.
   * Add support for `pending_reason` on `Refund`
   * Add support for snapshot event `FX_QUOTE_EXPIRED` with resource `FxQuote`
 
-## 17.2.0-beta.3 - 2025-04-10
+## <a id="17-2-0-beta-3"></a>17.2.0-beta.3 - 2025-04-10
 * [#1851](https://github.com/stripe/stripe-php/pull/1851) Handle external_account field
   - Changes `external_account` field in `externalAccounts.create` from a `string` to a union type.
 * [#1849](https://github.com/stripe/stripe-php/pull/1849) Update generated code for beta
@@ -611,11 +611,11 @@ This release changes the pinned API version to `2025-04-30.preview`.
   * Add support for `klarna` on `PaymentMethodDomain`
   * Change type of `Tax.CalculationLineItem.reference` from `nullable(string)` to `string`
 
-## 17.2.0-beta.2 - 2025-04-04
+## <a id="17-2-0-beta-2"></a>17.2.0-beta.2 - 2025-04-04
 * [#1847](https://github.com/stripe/stripe-php/pull/1847) Remove stdClass from object shapes
   * Remove intersection with `stdClass` in resource properties and fixed `instanceof` checks.
 
-## 17.2.0-beta.1 - 2025-04-02
+## <a id="17-2-0-beta-1"></a>17.2.0-beta.1 - 2025-04-02
 This release changes the pinned API version to `2025-03-31.preview`.
 
 * [#1830](https://github.com/stripe/stripe-php/pull/1830) Update logic for Stripe::addBetaVersion
@@ -688,7 +688,7 @@ This release changes the pinned API version to `2025-03-31.preview`.
   * Change type of `InvoicePayment.is_default` from `nullable(boolean)` to `boolean`
   * Change type of `PaymentAttemptRecord.payment_method_details.custom` and `PaymentRecord.payment_method_details.custom` from `nullable(PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCustomDetails)` to `PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCustomDetails`
 
-## 16.7.0-beta.1 - 2025-03-18
+## <a id="16-7-0-beta-1"></a>16.7.0-beta.1 - 2025-03-18
 This release changes the pinned API version to `2025-02-24.acacia`.
 
 * [#1766](https://github.com/stripe/stripe-php/pull/1766) Merge updates from stripe-php master to beta
@@ -819,23 +819,23 @@ This release changes the pinned API version to `2025-02-24.acacia`.
   * V2 Events now are subclass of `\Stripe\V2\Event`.
 * [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
 
-## 16.6.0-beta.1 - 2025-02-07
+## <a id="16-6-0-beta-1"></a>16.6.0-beta.1 - 2025-02-07
 * [#1808](https://github.com/stripe/stripe-php/pull/1808) Update generated code for beta
 
-## 16.5.0-beta.3 - 2025-01-23
+## <a id="16-5-0-beta-3"></a>16.5.0-beta.3 - 2025-01-23
 This release changes the pinned API version to `2025-01-27.acacia`.
 
 * [#1803](https://github.com/stripe/stripe-php/pull/1803) Update generated code for beta
   * V2 Events now are subclass of `\Stripe\V2\Event`.
 
-## 16.5.0-beta.2 - 2025-01-09
+## <a id="16-5-0-beta-2"></a>16.5.0-beta.2 - 2025-01-09
 * [#1796](https://github.com/stripe/stripe-php/pull/1796) Update generated code for beta
   * Add support for `close` method on resource `Treasury.FinancialAccount`
   * Add support for `advice_code` on `StripeError`
   * Add support for `brand_product` on `Card`
   * Add support for `is_default` and `nickname` on `Treasury.FinancialAccount`
 
-## 16.5.0-beta.1 - 2024-12-20
+## <a id="16-5-0-beta-1"></a>16.5.0-beta.1 - 2024-12-20
 * [#1794](https://github.com/stripe/stripe-php/pull/1794) Improved php type hints
   ### Adds Create/Update/Retrieve/Delete/All/Search parameters
 
@@ -859,30 +859,30 @@ This release changes the pinned API version to `2025-01-27.acacia`.
    */
   ```
 
-## 16.4.0-beta.3 - 2024-12-12
+## <a id="16-4-0-beta-3"></a>16.4.0-beta.3 - 2024-12-12
 This release changes the pinned API version to `2024-12-18.acacia`.
 
 * [#1792](https://github.com/stripe/stripe-php/pull/1792) Update generated code for beta
   * Add support for `allow_redisplay` on `Card` and `Source`
   * Remove support for `amount_refunded` on `PaymentRecord`
 
-## 16.4.0-beta.2 - 2024-12-05
+## <a id="16-4-0-beta-2"></a>16.4.0-beta.2 - 2024-12-05
 * [#1790](https://github.com/stripe/stripe-php/pull/1790) Update generated code for beta
   * Add support for new values `payout_minimum_balance_hold` and `payout_minimum_balance_release` on enum `BalanceTransaction.type`
 
-## 16.4.0-beta.1 - 2024-11-21
+## <a id="16-4-0-beta-1"></a>16.4.0-beta.1 - 2024-11-21
 * [#1788](https://github.com/stripe/stripe-php/pull/1788) Update generated code for beta
   * Add support for `network_advice_code` and `network_decline_code` on `StripeError`
   * Add support for new value `invoice.overpaid` on enum `Event.type`
   * Add support for `adjustable_quantity`, `display`, and `metadata` on `LineItem`
   * Change type of `LineItem.description` from `string` to `nullable(string)`
 
-## 16.3.0-beta.3 - 2024-11-14
+## <a id="16-3-0-beta-3"></a>16.3.0-beta.3 - 2024-11-14
 This release changes the pinned API version to `2024-11-20.acacia`.
 
 * [#1784](https://github.com/stripe/stripe-php/pull/1784) Update generated code for beta
 
-## 16.3.0-beta.2 - 2024-11-07
+## <a id="16-3-0-beta-2"></a>16.3.0-beta.2 - 2024-11-07
 * [#1783](https://github.com/stripe/stripe-php/pull/1783) Update generated code for beta
   * Add support for new resources `Issuing.FraudLiabilityDebit`, `PaymentAttemptRecord`, and `PaymentRecord`
   * Add support for `all` and `retrieve` methods on resources `FraudLiabilityDebit` and `PaymentAttemptRecord`
@@ -894,7 +894,7 @@ This release changes the pinned API version to `2024-11-20.acacia`.
   * Add support for new value `service_tax` on enum `TaxRate.tax_type`
   * Change type of `Treasury.InboundTransfer.origin_payment_method` from `string` to `nullable(string)`
 
-## 16.3.0-beta.1 - 2024-10-29
+## <a id="16-3-0-beta-1"></a>16.3.0-beta.1 - 2024-10-29
 This release changes the pinned API version to `2024-10-28.acacia`.
 
 * [#1780](https://github.com/stripe/stripe-php/pull/1780) Update generated code for beta
@@ -903,7 +903,7 @@ This release changes the pinned API version to `2024-10-28.acacia`.
   * Add support for `id_bank_transfer` on `PaymentMethodConfiguration` and `PaymentMethod`
   * Add support for `gopay`, `qris`, and `shopeepay` on `PaymentMethodConfiguration`
 
-## 16.2.0-beta.3 - 2024-10-18
+## <a id="16-2-0-beta-3"></a>16.2.0-beta.3 - 2024-10-18
 * [#1774](https://github.com/stripe/stripe-php/pull/1774) Update generated code for beta
   * Remove support for value `expired` from enum `Issuing.Authorization.status`
   * Add support for new values `alma`, `gopay`, `qris`, and `shopeepay` on enum `PaymentLink.payment_method_types[]`
@@ -914,7 +914,7 @@ This release changes the pinned API version to `2024-10-28.acacia`.
   * Add support for `au_serr`, `ca_mrdp`, `eu_dac7`, `gb_mrdp`, and `nz_mrdp` on `Tax.Form`
   * Add support for new values `au_serr`, `ca_mrdp`, `eu_dac7`, `gb_mrdp`, and `nz_mrdp` on enum `Tax.Form.type`
 
-## 16.2.0-beta.2 - 2024-10-08
+## <a id="16-2-0-beta-2"></a>16.2.0-beta.2 - 2024-10-08
 This release changes the pinned API version to `2024-09-30.acacia`.
 
 * [#1749](https://github.com/stripe/stripe-php/pull/1749) Update generated code for beta
@@ -930,18 +930,18 @@ This release changes the pinned API version to `2024-09-30.acacia`.
   * Add support for `flat_amount` and `rate_type` on `TaxRate`
   * Add support for new value `retail_delivery_fee` on enum `TaxRate.tax_type`
 
-## 16.2.0-beta.1 - 2024-10-03
+## <a id="16-2-0-beta-1"></a>16.2.0-beta.1 - 2024-10-03
 * [#1766](https://github.com/stripe/stripe-php/pull/1766) The `Preview` class has been removed. Please use [rawRequest](https://github.com/stripe/stripe-php?tab=readme-ov-file#custom-requests) instead which accepts
   * the http method as parameter instead of the dedicated methods in the `Preview` class
   * an `apiMode` of `v1` instead of `standard` and `v2` instead of `preview`.
 
-## 15.11.0-beta.1 - 2024-09-18
+## <a id="15-11-0-beta-1"></a>15.11.0-beta.1 - 2024-09-18
 * [#1748](https://github.com/stripe/stripe-php/pull/1748) Update generated code for beta
   * Remove support for resource `QuotePhase`
   * Remove support for `list_line_items` and `retrieve` methods on resource `QuotePhase`
   * Add support for new value `rechnung` on enum `PaymentLink.payment_method_types[]`
 
-## 15.10.0-beta.1 - 2024-09-13
+## <a id="15-10-0-beta-1"></a>15.10.0-beta.1 - 2024-09-13
 * [#1743](https://github.com/stripe/stripe-php/pull/1743) Update generated code for beta
   * Add support for new resources `Issuing.DisputeSettlementDetail` and `Issuing.Settlement`
   * Add support for `all` and `retrieve` methods on resource `DisputeSettlementDetail`
@@ -949,7 +949,7 @@ This release changes the pinned API version to `2024-09-30.acacia`.
   * Add support for new values `issuing_dispute_settlement_detail.created`, `issuing_dispute_settlement_detail.updated`, `issuing_settlement.created`, and `issuing_settlement.updated` on enum `Event.type`
   * Add support for `settlement` on `Issuing.Transaction`
 
-## 15.9.0-beta.1 - 2024-09-05
+## <a id="15-9-0-beta-1"></a>15.9.0-beta.1 - 2024-09-05
 * [#1738](https://github.com/stripe/stripe-php/pull/1738) Update generated code for beta
   * Add support for new resources `Billing.MeterErrorReport` and `Terminal.ReaderCollectedData`
   * Add support for `retrieve` method on resource `ReaderCollectedData`
@@ -960,21 +960,21 @@ This release changes the pinned API version to `2024-09-30.acacia`.
   * Add support for `mb_way` on `PaymentMethod`
   * Add support for new value `mb_way` on enum `PaymentMethod.type`
 
-## 15.8.0-beta.1 - 2024-08-15
+## <a id="15-8-0-beta-1"></a>15.8.0-beta.1 - 2024-08-15
 * [#1735](https://github.com/stripe/stripe-php/pull/1735) Update generated code for beta
   * Add support for `collected_information` and `permissions` on `Checkout.Session`
 
-## 15.7.0-beta.1 - 2024-08-12
+## <a id="15-7-0-beta-1"></a>15.7.0-beta.1 - 2024-08-12
 * [#1730](https://github.com/stripe/stripe-php/pull/1730) Update generated code for beta
   * Add support for new value `custom` on enum `Checkout.Session.ui_mode`
   * Add support for new value `payto` on enum `PaymentLink.payment_method_types[]`
 
-## 15.6.0-beta.1 - 2024-08-01
+## <a id="15-6-0-beta-1"></a>15.6.0-beta.1 - 2024-08-01
 * [#1728](https://github.com/stripe/stripe-php/pull/1728) Update generated code for beta
   * Add support for `attach_payment` method on resource `Invoice`
   * Add support for `last_price_migration_error` on `SubscriptionSchedule` and `Subscription`
 
-## 15.5.0-beta.1 - 2024-07-25
+## <a id="15-5-0-beta-1"></a>15.5.0-beta.1 - 2024-07-25
 * [#1723](https://github.com/stripe/stripe-php/pull/1723) Update generated code for beta
   * Add support for new resources `Billing.AlertTriggered`, `Billing.Alert`, and `Tax.Association`
   * Add support for `activate`, `all`, `archive`, `create`, `deactivate`, and `retrieve` methods on resource `Alert`
@@ -984,10 +984,10 @@ This release changes the pinned API version to `2024-09-30.acacia`.
   * Add support for `payto` on `PaymentMethodConfiguration`
   * Add support for `display_name` on `Treasury.FinancialAccount`
 
-## 15.3.0-beta.1 - 2024-07-11
+## <a id="15-3-0-beta-1"></a>15.3.0-beta.1 - 2024-07-11
 * [#1720](https://github.com/stripe/stripe-php/pull/1720) Update generated code for beta
 
-## 15.2.0-beta.1 - 2024-07-05
+## <a id="15-2-0-beta-1"></a>15.2.0-beta.1 - 2024-07-05
 This release changes the pinned API version to `2024-06-20`.
 
 * [#1712](https://github.com/stripe/stripe-php/pull/1712) Update generated code for beta
@@ -996,46 +996,46 @@ This release changes the pinned API version to `2024-06-20`.
   * Add support for `all` and `retrieve` methods on resource `Institution`
   * Add support for new value `balance` on enum `FinancialConnections.Account.subscriptions[]`
 
-## 14.11.0-beta.1 - 2024-06-13
+## <a id="14-11-0-beta-1"></a>14.11.0-beta.1 - 2024-06-13
 * [#1705](https://github.com/stripe/stripe-php/pull/1705) Syncing changes from 14.10.0 release
 
-## 14.10.0-beta.1 - 2024-05-30
+## <a id="14-10-0-beta-1"></a>14.10.0-beta.1 - 2024-05-30
 * [#1699](https://github.com/stripe/stripe-php/pull/1699) Update generated code for beta
   * Keeping up with the changes from version 14.9.0
 
-## 14.9.0-beta.1 - 2024-05-23
+## <a id="14-9-0-beta-1"></a>14.9.0-beta.1 - 2024-05-23
 * [#1696](https://github.com/stripe/stripe-php/pull/1696) Update generated code for beta
 
-## 14.8.0-beta.1 - 2024-05-16
+## <a id="14-8-0-beta-1"></a>14.8.0-beta.1 - 2024-05-16
 * [#1693](https://github.com/stripe/stripe-php/pull/1693) Update generated code for beta
 
-## 14.7.0-beta.1 - 2024-05-09
+## <a id="14-7-0-beta-1"></a>14.7.0-beta.1 - 2024-05-09
 * [#1691](https://github.com/stripe/stripe-php/pull/1691) Update generated code for beta
   * No new beta features. Merging changes from the main branch.
 
-## 14.6.0-beta.1 - 2024-05-02
+## <a id="14-6-0-beta-1"></a>14.6.0-beta.1 - 2024-05-02
 * [#1689](https://github.com/stripe/stripe-php/pull/1689) Update generated code for beta
   * Add support for `rechnung` on `PaymentMethod`
   * Add support for new value `rechnung` on enum `PaymentMethod.type`
 
-## 14.5.0-beta.1 - 2024-04-25
+## <a id="14-5-0-beta-1"></a>14.5.0-beta.1 - 2024-04-25
 * [#1683](https://github.com/stripe/stripe-php/pull/1683) Update generated code for beta
   * Add support for `cancel_subscription_schedule` on `QuoteLine`
 
-## 14.4.0-beta.1 - 2024-04-18
+## <a id="14-4-0-beta-1"></a>14.4.0-beta.1 - 2024-04-18
 * [#1679](https://github.com/stripe/stripe-php/pull/1679) Update generated code for beta
 
-## 14.2.0-beta.1 - 2024-04-11
+## <a id="14-2-0-beta-1"></a>14.2.0-beta.1 - 2024-04-11
 This release changes the pinned API version to `2024-04-10`.
 
-## 13.18.0-beta.1 - 2024-04-04
+## <a id="13-18-0-beta-1"></a>13.18.0-beta.1 - 2024-04-04
 * [#1665](https://github.com/stripe/stripe-php/pull/1665) Update generated code for beta
 * [#1671](https://github.com/stripe/stripe-php/pull/1671) Update generated code for beta
   * Add support for `update` method on resource `Entitlements.Feature`
   * Add support for `risk_controls` on `Account`
   * Change type of `Subscription.discounts` and `SubscriptionItem.discounts` from `nullable(array(expandable($Discount)))` to `array(expandable($Discount))`
 
-## 13.16.0-beta.1 - 2024-03-21
+## <a id="13-16-0-beta-1"></a>13.16.0-beta.1 - 2024-03-21
 * [#1661](https://github.com/stripe/stripe-php/pull/1661) Update generated code for beta
   * Add support for new resources `Entitlements.ActiveEntitlementSummary` and `Entitlements.ActiveEntitlement`
   * Add support for `all` method on resource `ActiveEntitlement`
@@ -1046,7 +1046,7 @@ This release changes the pinned API version to `2024-04-10`.
   * Add support for new value `entitlements.active_entitlement_summary.updated` on enum `Event.type`
   * Remove support for value `customer.entitlement_summary.updated` from enum `Event.type`
 
-## 13.15.0-beta.1 - 2024-03-14
+## <a id="13-15-0-beta-1"></a>13.15.0-beta.1 - 2024-03-14
 * [#1659](https://github.com/stripe/stripe-php/pull/1659) Update generated code for beta
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
   * Add support for `all`, `create`, `deactivate`, `reactivate`, `retrieve`, and `update` methods on resource `Meter`
@@ -1057,7 +1057,7 @@ This release changes the pinned API version to `2024-04-10`.
   * Add support for new value `multibanco` on enum `PaymentMethod.type`
   * Add support for `meter` on `Plan`
 
-## 13.14.0-beta.1 - 2024-02-29
+## <a id="13-14-0-beta-1"></a>13.14.0-beta.1 - 2024-02-29
 * [#1656](https://github.com/stripe/stripe-php/pull/1656) Add helper to set beta version
 * [#1655](https://github.com/stripe/stripe-php/pull/1655) Update generated code for beta
   * Remove support for resource `Entitlements.Event`
@@ -1065,67 +1065,67 @@ This release changes the pinned API version to `2024-04-10`.
   * Remove support for `quantity` and `type` on `Entitlements.Feature`
   * Add support for `livemode` on `Issuing.PersonalizationDesign`
 
-## 13.13.0-beta.1 - 2024-02-23
+## <a id="13-13-0-beta-1"></a>13.13.0-beta.1 - 2024-02-23
 * [#1652](https://github.com/stripe/stripe-php/pull/1652) Update generated code for beta
 
-## 13.12.0-beta.1 - 2024-02-16
+## <a id="13-12-0-beta-1"></a>13.12.0-beta.1 - 2024-02-16
 * [#1643](https://github.com/stripe/stripe-php/pull/1643) Update generated code for beta
   * Add support for `decrement_authorization` method on resource `PaymentIntent`
   * Add support for `payment_method_options` on `ConfirmationToken`
   * Add support for `payto` and `twint` on `PaymentMethod`
   * Add support for new values `payto` and `twint` on enum `PaymentMethod.type`
 
-## 13.11.0-beta.1 - 2024-02-01
+## <a id="13-11-0-beta-1"></a>13.11.0-beta.1 - 2024-02-01
 * [#1637](https://github.com/stripe/stripe-php/pull/1637) Update generated code for beta
   * Add support for new resources `Entitlements.Event` and `Entitlements.Feature`
   * Add support for `create` method on resource `Event`
   * Add support for `all` and `create` methods on resource `Feature`
   * Add support for new value `customer.entitlement_summary.updated` on enum `Event.type`
 
-## 13.10.0-beta.3 - 2024-01-25
+## <a id="13-10-0-beta-3"></a>13.10.0-beta.3 - 2024-01-25
 * [#1634](https://github.com/stripe/stripe-php/pull/1634) Update generated code for beta
   * Add support for `create_preview` method on resource `Invoice`
   * Add support for `charged_off_at` on `Capital.FinancingOffer`
   * Add support for `enhanced_eligibility_types` on `Dispute`
 
-## 13.10.0-beta.2 - 2024-01-19
+## <a id="13-10-0-beta-2"></a>13.10.0-beta.2 - 2024-01-19
 * [#1632](https://github.com/stripe/stripe-php/pull/1632) Beta: report usage of `rawRequest`
 
-## 13.10.0-beta.1 - 2024-01-12
+## <a id="13-10-0-beta-1"></a>13.10.0-beta.1 - 2024-01-12
 * [#1626](https://github.com/stripe/stripe-php/pull/1626) Update generated code for beta
 * [#1628](https://github.com/stripe/stripe-php/pull/1628) Update generated code for beta
 
-## 13.9.0-beta.1 - 2024-01-04
+## <a id="13-9-0-beta-1"></a>13.9.0-beta.1 - 2024-01-04
 * [#1626](https://github.com/stripe/stripe-php/pull/1626) Update generated code for beta
   * Updated stable APIs to the latest version
 
-## 13.8.0-beta.1 - 2023-12-22
+## <a id="13-8-0-beta-1"></a>13.8.0-beta.1 - 2023-12-22
 * [#1618](https://github.com/stripe/stripe-php/pull/1618) Update generated code for beta
 * [#1622](https://github.com/stripe/stripe-php/pull/1622) Update generated code for beta
   * Add support for new value `shipping_address_invalid` on enum `StripeError.code`
   * Change type of `Invoice.issuer` from `nullable(ConnectAccountReference)` to `ConnectAccountReference`
   * Add support for `ship_from_details` on `Tax.Calculation` and `Tax.Transaction`
 
-## 13.7.0-beta.1 - 2023-12-08
+## <a id="13-7-0-beta-1"></a>13.7.0-beta.1 - 2023-12-08
 * [#1617](https://github.com/stripe/stripe-php/pull/1617) Update generated code for beta
   * Add support for `retrieve` method on resource `FinancialConnections.Transaction`
 
-## 13.6.0-beta.1 - 2023-11-30
+## <a id="13-6-0-beta-1"></a>13.6.0-beta.1 - 2023-11-30
 * [#1610](https://github.com/stripe/stripe-php/pull/1610) Update generated code for beta
 
-## 13.5.0-beta.1 - 2023-11-21
+## <a id="13-5-0-beta-1"></a>13.5.0-beta.1 - 2023-11-21
 * [#1600](https://github.com/stripe/stripe-php/pull/1600) Update generated code for beta
   * Add support for new value `quote.reestimate_failed` on enum `Event.type`
   * Add support for `metadata` on `QuotePhase`
 * [#1606](https://github.com/stripe/stripe-php/pull/1606) Update generated code for beta
   * Add support for `components` and `created` on `CustomerSession`
 
-## 13.4.0-beta.1 - 2023-11-10
+## <a id="13-4-0-beta-1"></a>13.4.0-beta.1 - 2023-11-10
 * [#1600](https://github.com/stripe/stripe-php/pull/1600) Update generated code for beta
   * Add support for new value `quote.reestimate_failed` on enum `Event.type`
   * Add support for `metadata` on `QuotePhase`
 
-## 13.3.0-beta.1 - 2023-11-02
+## <a id="13-3-0-beta-1"></a>13.3.0-beta.1 - 2023-11-02
 * [#1598](https://github.com/stripe/stripe-php/pull/1598) Update generated code for beta
   * Add support for `attach_payment_intent` method on resource `Invoice`
   * Add support for `post_payment_amount`, `pre_payment_amount`, and `refunds` on `CreditNote`
@@ -1133,47 +1133,47 @@ This release changes the pinned API version to `2024-04-10`.
   * Add support for `amounts_due` and `payments` on `Invoice`
   * Add support for `created` on `Issuing.PersonalizationDesign`
 
-## 13.2.0-beta.1 - 2023-10-26
+## <a id="13-2-0-beta-1"></a>13.2.0-beta.1 - 2023-10-26
 * [#1596](https://github.com/stripe/stripe-php/pull/1596) Update generated code for beta
   * Add support for new resource `Margin`
   * Add support for `all`, `create`, `retrieve`, and `update` methods on resource `Margin`
   * Add support for `default_margins` and `total_margin_amounts` on `Invoice`
   * Add support for `margins` on `InvoiceItem`
 
-## 13.1.0-beta.1 - 2023-10-17
+## <a id="13-1-0-beta-1"></a>13.1.0-beta.1 - 2023-10-17
 This release changes the pinned API version to `2023-10-16`.
 
 * [#1594](https://github.com/stripe/stripe-php/pull/1594) Update generated code for beta
   - Update pinned API version to `2023-10-16`
 
-## 12.9.0-beta.1 - 2023-10-16
+## <a id="12-9-0-beta-1"></a>12.9.0-beta.1 - 2023-10-16
 * [#1591](https://github.com/stripe/stripe-php/pull/1591) Update generated code for beta
 
-## 12.8.0-beta.1 - 2023-10-11
+## <a id="12-8-0-beta-1"></a>12.8.0-beta.1 - 2023-10-11
 * [#1588](https://github.com/stripe/stripe-php/pull/1588) Update generated code for beta
   * Add support for new resources `AccountNotice` and `Issuing.CreditUnderwritingRecord`
   * Add support for `all`, `retrieve`, and `update` methods on resource `AccountNotice`
   * Add support for `all`, `correct`, `create_from_application`, `create_from_proactive_review`, `report_decision`, and `retrieve` methods on resource `CreditUnderwritingRecord`
   * Add support for new values `account_notice.created` and `account_notice.updated` on enum `Event.type`
 
-## 12.7.0-beta.1 - 2023-10-05
+## <a id="12-7-0-beta-1"></a>12.7.0-beta.1 - 2023-10-05
 * [#1587](https://github.com/stripe/stripe-php/pull/1587) Update generated code for beta
   * Add support for `mark_draft` and `mark_stale` methods on resource `Quote`
   * Remove support for `draft_quote` and `mark_stale_quote` methods on resource `Quote`
   * Add support for `allow_backdated_lines` on `Quote`
   * Rename `previewInvoiceLines` to `allPreviewInvoiceLines` on resource `Quote`
 
-## 12.6.0-beta.1 - 2023-09-28
+## <a id="12-6-0-beta-1"></a>12.6.0-beta.1 - 2023-09-28
 * [#1585](https://github.com/stripe/stripe-php/pull/1585) Update generated code for beta
   * Rename resources `Issuing.CardDesign` and `Issuing.CardBundle` to `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
   * Add support for `reason` on `Event`
 
-## 12.5.0-beta.1 - 2023-09-21
+## <a id="12-5-0-beta-1"></a>12.5.0-beta.1 - 2023-09-21
 * [#1578](https://github.com/stripe/stripe-php/pull/1578) Update generated code for beta
   * Remove support for `customer` on `ConfirmationToken`
   * Add support for `issuer` on `Invoice`
 
-## 12.4.0-beta.1 - 2023-09-14
+## <a id="12-4-0-beta-1"></a>12.4.0-beta.1 - 2023-09-14
 * [#1575](https://github.com/stripe/stripe-php/pull/1575) Update generated code for beta
   * Add support for new resource `ConfirmationToken`
   * Add support for `retrieve` method on resource `ConfirmationToken`
@@ -1184,33 +1184,33 @@ This release changes the pinned API version to `2023-10-16`.
   * Add support for `card_logo`, `carrier_text`, `preferences`, and `rejection_reasons` on `Issuing.CardDesign`
   * Remove support for `preference` on `Issuing.CardDesign`
 
-## 12.3.0-beta.1 - 2023-09-07
+## <a id="12-3-0-beta-1"></a>12.3.0-beta.1 - 2023-09-07
 * [#1574](https://github.com/stripe/stripe-php/pull/1574) Update generated code for beta
   * Release specs are identical.
 * [#1572](https://github.com/stripe/stripe-php/pull/1572) Update generated code for beta
   * Remove support for `submit_card` test helper method on resource `Issuing.Card`
   * Add support for new value `platform_default` on enum `Issuing.CardDesign.preference`
 
-## 12.2.0-beta.1 - 2023-08-31
+## <a id="12-2-0-beta-1"></a>12.2.0-beta.1 - 2023-08-31
 * [#1559](https://github.com/stripe/stripe-php/pull/1559) Update generated code for beta
   * Rename `Quote.previewInvoices` to `Quote.allPreviewInvoices` and `Quote.previewSubscriptionSchedules` to `Quote.allSubscriptionSchedules`
 
-## 12.0.0-beta.1 - 2023-08-24
+## <a id="12-0-0-beta-1"></a>12.0.0-beta.1 - 2023-08-24
 This release changes the pinned API version to `2023-08-16`.
 
 * [#1549](https://github.com/stripe/stripe-php/pull/1549) Update generated code for beta
   * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
   * Remove support for `applies_to` on `Invoice` and `SubscriptionSchedule`
 
-## 10.22.0-beta.1 - 2023-08-10
+## <a id="10-22-0-beta-1"></a>10.22.0-beta.1 - 2023-08-10
 * [#1545](https://github.com/stripe/stripe-php/pull/1545) Update generated code for beta
   * Add support for `paypal` on `PaymentMethodConfiguration`
 
-## 10.21.0-beta.1 - 2023-08-03
+## <a id="10-21-0-beta-1"></a>10.21.0-beta.1 - 2023-08-03
 * [#1541](https://github.com/stripe/stripe-php/pull/1541) Update generated code for beta
   * Add support for `submit_card` test helper method on resource `Issuing.Card`
 
-## 10.20.0-beta.2 - 2023-07-28
+## <a id="10-20-0-beta-2"></a>10.20.0-beta.2 - 2023-07-28
 * [#1532](https://github.com/stripe/stripe-php/pull/1532) Update generated code for beta
 * [#1535](https://github.com/stripe/stripe-php/pull/1535) Update generated code for beta
   * Add support for new resource `Tax.Form`
@@ -1219,10 +1219,10 @@ This release changes the pinned API version to `2023-08-16`.
 * [#1537](https://github.com/stripe/stripe-php/pull/1537) Update generated code for beta
   * Release specs are identical.
 
-## 10.20.0-beta.1 - 2023-07-27
-  * Updated stable APIs to the latest version
+## <a id="10-20-0-beta-1"></a>10.20.0-beta.1 - 2023-07-27
+* Updated stable APIs to the latest version
 
-## 10.18.0-beta.1 - 2023-07-13
+## <a id="10-18-0-beta-1"></a>10.18.0-beta.1 - 2023-07-13
 * [#1519](https://github.com/stripe/stripe-php/pull/1519) Update generated code for beta
   * Rename `Tax.SettingsService` -> `Tax.SettingService`
 * [#1527](https://github.com/stripe/stripe-php/pull/1527) Update generated code for beta
@@ -1233,7 +1233,7 @@ This release changes the pinned API version to `2023-08-16`.
   * Add support for `payment_method_configuration_details` on `PaymentIntent`
   * Rename `Tax.SettingService` -> `Tax.SettingsService` (parity with main release)
 
-## 10.16.0-beta.1 - 2023-06-22
+## <a id="10-16-0-beta-1"></a>10.16.0-beta.1 - 2023-06-22
 * [#1510](https://github.com/stripe/stripe-php/pull/1510) Update generated code for beta
 * [#1513](https://github.com/stripe/stripe-php/pull/1513) Update generated code for beta
   * Add support for `payment_details` on `PaymentIntent`
@@ -1241,47 +1241,47 @@ This release changes the pinned API version to `2023-08-16`.
   * Add support for new resource `CustomerSession`
   * Add support for `create` method on resource `CustomerSession`
 
-## 10.15.0-beta.2 - 2023-06-01
+## <a id="10-15-0-beta-2"></a>10.15.0-beta.2 - 2023-06-01
 * [#1507](https://github.com/stripe/stripe-php/pull/1507) Update generated code for beta
   * Add support for `subscription_details` on `Invoice`
   * Add support for `set_pause_collection` on `QuoteLine`
   * Remove support for `locations` on `Tax.Settings`
 
-## 10.15.0-beta.1 - 2023-05-25
+## <a id="10-15-0-beta-1"></a>10.15.0-beta.1 - 2023-05-25
 * [#1504](https://github.com/stripe/stripe-php/pull/1504) Add default values for preview and raw_request parameters
 * [#1505](https://github.com/stripe/stripe-php/pull/1505) Handle developer message in preview error responses
 * [#1500](https://github.com/stripe/stripe-php/pull/1500) Update generated code for beta
 
-## 10.14.0-beta.2 - 2023-05-19
+## <a id="10-14-0-beta-2"></a>10.14.0-beta.2 - 2023-05-19
 * [#1486](https://github.com/stripe/stripe-php/pull/1486) Add $stripe->rawRequest
 * [#1498](https://github.com/stripe/stripe-php/pull/1498) Update generated code for beta
   * Add support for `subscribe` and `unsubscribe` methods on resource `FinancialConnections.Account`
   * Add support for `status_details` and `status` on `Tax.Settings`
 
-## 10.14.0-beta.1 - 2023-05-11
+## <a id="10-14-0-beta-1"></a>10.14.0-beta.1 - 2023-05-11
 * [#1497](https://github.com/stripe/stripe-php/pull/1497) Fix phpstan errors
 * [#1484](https://github.com/stripe/stripe-php/pull/1484) Update generated code for beta
 * [#1489](https://github.com/stripe/stripe-php/pull/1489) Update generated code for beta
   * Add support for `head_office` on `Tax.Settings`
 
-## 10.13.0-beta.4 - 2023-04-20
+## <a id="10-13-0-beta-4"></a>10.13.0-beta.4 - 2023-04-20
 * [#1481](https://github.com/stripe/stripe-php/pull/1481) Update generated code for beta
   * Add support for `country_options` on `Tax.Registration`
   * Remove support for `state` and `type` on `Tax.Registration`
 
-## 10.13.0-beta.3 - 2023-04-13
+## <a id="10-13-0-beta-3"></a>10.13.0-beta.3 - 2023-04-13
 * [#1477](https://github.com/stripe/stripe-php/pull/1477) Update generated code for beta
   * Add support for `collect_payment_method` and `confirm_payment_intent` methods on resource `Terminal.Reader`
 
-## 10.13.0-beta.2 - 2023-04-06
+## <a id="10-13-0-beta-2"></a>10.13.0-beta.2 - 2023-04-06
 * [#1472](https://github.com/stripe/stripe-php/pull/1472) Update generated code for beta
   * Updated stable APIs to the latest version
 
-## 10.13.0-beta.1 - 2023-03-30
+## <a id="10-13-0-beta-1"></a>10.13.0-beta.1 - 2023-03-30
 * [#1469](https://github.com/stripe/stripe-php/pull/1469) Update generated code
   * Add support for new value `ioss` on enum `Tax.Registration.type`
 
-## 10.12.0-beta.1 - 2023-03-23
+## <a id="10-12-0-beta-1"></a>10.12.0-beta.1 - 2023-03-23
 * [#1459](https://github.com/stripe/stripe-php/pull/1459) Update generated code for beta (new)
   * Add support for new resources `Tax.CalculationLineItem` and `Tax.TransactionLineItem`
   * Add support for `collect_inputs` method on resource `Terminal.Reader`
@@ -1289,7 +1289,7 @@ This release changes the pinned API version to `2023-08-16`.
   * Add support for new value `link` on enum `PaymentLink.payment_method_types[]`
   * Add support for `automatic_payment_methods` on `SetupIntent`
 
-## 10.11.0-beta.1 - 2023-03-16
+## <a id="10-11-0-beta-1"></a>10.11.0-beta.1 - 2023-03-16
 * [#1456](https://github.com/stripe/stripe-php/pull/1456) API Updates
   * Add support for `create_from_calculation` method on resource `Tax.Transaction`
   * Change type of `Invoice.applies_to` from `nullable(QuotesResourceQuoteLinesAppliesTo)` to `QuotesResourceQuoteLinesAppliesTo`
@@ -1297,7 +1297,7 @@ This release changes the pinned API version to `2023-08-16`.
   * Add support for `tax_breakdown` on `Tax.Calculation`
   * Remove support for `tax_summary` on `Tax.Calculation`
 
-## 10.10.0-beta.1 - 2023-03-09
+## <a id="10-10-0-beta-1"></a>10.10.0-beta.1 - 2023-03-09
 * [#1451](https://github.com/stripe/stripe-php/pull/1451) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Remove support for `list_transactions` method on resource `Tax.Transaction`
@@ -1305,7 +1305,7 @@ This release changes the pinned API version to `2023-08-16`.
   * Add support for `tax_summary` on `Tax.Calculation`
   * Remove support for `tax_breakdown` on `Tax.Calculation`
 
-## 10.9.0-beta.1 - 2023-03-02
+## <a id="10-9-0-beta-1"></a>10.9.0-beta.1 - 2023-03-02
 * [#1448](https://github.com/stripe/stripe-php/pull/1448) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for new resources `Issuing.CardBundle` and `Issuing.CardDesign`
@@ -1313,18 +1313,18 @@ This release changes the pinned API version to `2023-08-16`.
   * Add support for `all`, `retrieve`, and `update` methods on resource `CardDesign`
   * Add support for `card_design` on `Issuing.Card`
 
-## 10.8.0-beta.1 - 2023-02-23
+## <a id="10-8-0-beta-1"></a>10.8.0-beta.1 - 2023-02-23
 * [#1445](https://github.com/stripe/stripe-php/pull/1445) API Updates for beta branch
   * Updated stable APIs to the latest version
 
-## 10.7.0-beta.1 - 2023-02-16
+## <a id="10-7-0-beta-1"></a>10.7.0-beta.1 - 2023-02-16
 * [#1442](https://github.com/stripe/stripe-php/pull/1442) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for `currency_conversion` on `Checkout.Session`
   * Add support for `limits` on `FinancialConnections.Session`
   * Remove support for `reference` on `Tax.Calculation`
 
-## 10.6.0-beta.1 - 2023-02-02
+## <a id="10-6-0-beta-1"></a>10.6.0-beta.1 - 2023-02-02
 * [#1440](https://github.com/stripe/stripe-php/pull/1440) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for `all` method on resource `Transaction`
@@ -1332,40 +1332,40 @@ This release changes the pinned API version to `2023-08-16`.
   * Add support for `manual_entry`, `prefetch`, `status_details`, and `status` on `FinancialConnections.Session`
   * Add support for new resource `FinancialConnections.Transaction`
 
-## 10.5.0-beta.2 - 2023-01-26
+## <a id="10-5-0-beta-2"></a>10.5.0-beta.2 - 2023-01-26
 * [#1429](https://github.com/stripe/stripe-php/pull/1429) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for `list_transactions` method on resource `Tax.Transaction`
 
-## 10.5.0-beta.1 - 2023-01-19
+## <a id="10-5-0-beta-1"></a>10.5.0-beta.1 - 2023-01-19
 * [#1427](https://github.com/stripe/stripe-php/pull/1427) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for `Tax.Settings` resource.
 
-## 10.4.0-beta.3 - 2023-01-12
+## <a id="10-4-0-beta-3"></a>10.4.0-beta.3 - 2023-01-12
 * [#1423](https://github.com/stripe/stripe-php/pull/1423) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for `Tax.Registration` resource.
   * Change `draft_quote` method implementation from hitting `/v1/quotes/{quotes}/draft` to `/v1/quotes/{quotes}/mark_draft`
 
-## 10.4.0-beta.2 - 2023-01-05
+## <a id="10-4-0-beta-2"></a>10.4.0-beta.2 - 2023-01-05
 * [#1420](https://github.com/stripe/stripe-php/pull/1420) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for `mark_stale_quote` method on resource `Quote`
 
-## 10.4.0-beta.1 - 2022-12-22
+## <a id="10-4-0-beta-1"></a>10.4.0-beta.1 - 2022-12-22
 * [#1414](https://github.com/stripe/stripe-php/pull/1414) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Move `$stripe->taxCalculations` to `$stripe->tax->calculations` and `$stripe->taxTransactions` to `$stripe->tax->transactions`
 
-## 10.3.0-beta.1 - 2022-12-15
+## <a id="10-3-0-beta-1"></a>10.3.0-beta.1 - 2022-12-15
 * [#1412](https://github.com/stripe/stripe-php/pull/1412) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for new resources `QuoteLine`, `TaxCalculation`, and `TaxTransaction`
   * Add support for `create` and `list_line_items` methods on resource `TaxCalculation`
   * Add support for `create_reversal`, `create`, and `retrieve` methods on resource `TaxTransaction`
 
-## 10.2.0-beta.1 - 2022-12-08
+## <a id="10-2-0-beta-1"></a>10.2.0-beta.1 - 2022-12-08
 This release changes the pinned API version to `2022-11-15`.
 
 * [#1398](https://github.com/stripe/stripe-php/pull/1398) API Updates for beta branch
@@ -1375,47 +1375,47 @@ This release changes the pinned API version to `2022-11-15`.
 * [#1406](https://github.com/stripe/stripe-php/pull/1406) API Updates for beta branch
   * Updated stable APIs to the latest version
 
-## 9.9.0-beta.2 - 2022-11-02
+## <a id="9-9-0-beta-2"></a>9.9.0-beta.2 - 2022-11-02
 * [#1390](https://github.com/stripe/stripe-php/pull/1390) API Updates for beta branch
   * Updated beta APIs to the latest stable version
 
-## 9.9.0-beta.1 - 2022-10-21
+## <a id="9-9-0-beta-1"></a>9.9.0-beta.1 - 2022-10-21
 * [#1384](https://github.com/stripe/stripe-php/pull/1384) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for `network_data` on `Issuing.Transaction`
   * Add support for `paypal` on `Source`
   * Add support for new value `paypal` on enum `Source.type`
 
-## 9.7.0-beta.2 - 2022-10-07
+## <a id="9-7-0-beta-2"></a>9.7.0-beta.2 - 2022-10-07
 * [#1373](https://github.com/stripe/stripe-php/pull/1373) API Updates for beta branch
   * Updated stable APIs to the latest version
 
-## 9.7.0-beta.1 - 2022-09-26
+## <a id="9-7-0-beta-1"></a>9.7.0-beta.1 - 2022-09-26
 * [#1368](https://github.com/stripe/stripe-php/pull/1368) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add `FinancingOffer`, `FinancingSummary` and `FinancingTransaction` resources.
 
-## 9.4.0-beta.1 - 2022-08-26
+## <a id="9-4-0-beta-1"></a>9.4.0-beta.1 - 2022-08-26
 * [#1358](https://github.com/stripe/stripe-php/pull/1358) API Updates for beta branch
   * Updated stable APIs to the latest version
   * Add support for the beta [Gift Card API](https://stripe.com/docs/gift-cards).
 
-## 9.3.0-beta.1 - 2022-08-23
+## <a id="9-3-0-beta-1"></a>9.3.0-beta.1 - 2022-08-23
 * [#1354](https://github.com/stripe/stripe-php/pull/1354) API Updates for beta branch
   - Updated stable APIs to the latest version
   - `Stripe-Version` beta headers are not pinned by-default and need to be manually specified, please refer to [beta SDKs README section](https://github.com/stripe/stripe-php/blob/master/README.md#beta-sdks)
 
-## 9.2.0-beta.1 - 2022-08-11
+## <a id="9-2-0-beta-1"></a>9.2.0-beta.1 - 2022-08-11
 * [#1349](https://github.com/stripe/stripe-php/pull/1349) API Updates for beta branch
   - Updated stable APIs to the latest version
   - Add `refundPayment` method to Terminal resource
 
-## 9.1.0-beta.1 - 2022-08-03
+## <a id="9-1-0-beta-1"></a>9.1.0-beta.1 - 2022-08-03
 * [#1345](https://github.com/stripe/stripe-php/pull/1345) API Updates for beta branch
   - Updated stable APIs to the latest version
   - Added the `Order` resource support
 
-## 8.12.0-beta.1 - 2022-07-22
+## <a id="8-12-0-beta-1"></a>8.12.0-beta.1 - 2022-07-22
 * [#1317](https://github.com/stripe/stripe-php/pull/1317) API Updates for beta branch
   - Updated stable APIs to the latest version
 * [#1320](https://github.com/stripe/stripe-php/pull/1320) API Updates for beta branch
@@ -1436,10 +1436,10 @@ This release changes the pinned API version to `2022-11-15`.
 * [#1331](https://github.com/stripe/stripe-php/pull/1331) API Updates for beta branch
   - Updated stable APIs to the latest version
 
-## 8.125.0-beta.4 - 2022-04-13
+## <a id="8-125-0-beta-4"></a>8.125.0-beta.4 - 2022-04-13
 
-## 7.125.0-beta.1 - 2022-04-13
+## <a id="7-125-0-beta-1"></a>7.125.0-beta.1 - 2022-04-13
 
-## 7.124.0-beta.1 - 2022-04-13
+## <a id="7-124-0-beta-1"></a>7.124.0-beta.1 - 2022-04-13
 
-## 7.123.0-beta.1 - 2022-04-13
+## <a id="7-123-0-beta-1"></a>7.123.0-beta.1 - 2022-04-13
