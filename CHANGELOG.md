@@ -7,7 +7,7 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
 
 > This changelog only covers the **private preview** releases. Each release builds on the most recent GA release; see those notes in [the GA changelog](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md).
 
-## 21.4.0-alpha.3 - 2026-09-09
+## <a id="21-4-0-alpha-3"></a>21.4.0-alpha.3 - 2026-09-09
 * [#2141](https://github.com/stripe/stripe-php/pull/2141) Update generated code for private-preview
   * Add support for `customer_tax_exemption` on `Tax.Calculation.shipping_cost.tax_breakdown[]`, `Tax.CalculationLineItem.tax_breakdown[]`, and `Tax.Transaction.shipping_cost.tax_breakdown[]`
   * Add support for new value `data_share_only` on enums `Charge.payment_method_details.card.three_d_secure.result`, `PaymentAttemptRecord.payment_method_details.card.three_d_secure.result`, `PaymentRecord.payment_method_details.card.three_d_secure.result`, and `SetupAttempt.payment_method_details.card.three_d_secure.result`
@@ -21,7 +21,7 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
   * Add support for new value `rtp` on enum `Treasury.FinancialAccount.financial_addresses[].supported_networks`
   * Add support for new value `blik_recurring_payments` on enums `V2.Core.Account.future_requirements.entries[].impact.restricts_capabilities[].capability` and `V2.Core.Account.requirements.entries[].impact.restricts_capabilities[].capability`
 
-## 21.4.0-alpha.2 - 2026-09-02
+## <a id="21-4-0-alpha-2"></a>21.4.0-alpha.2 - 2026-09-02
 * ⚠️ [#2135](https://github.com/stripe/stripe-php/pull/2135) Update generated code for private-preview
   * Add support for new resources `Radar.BillingEvaluation`, `V2.Signals.PaymentRetryEvaluation`, `V2.Signals.PaymentRetrySignal`, and `V2.Tax.IntegrationConfiguration`
   * Add support for `create` method on resource `Radar.BillingEvaluation`
@@ -95,7 +95,7 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
   * Add support for event notifications `V2MoneyManagementPayoutIntentCanceledEvent`, `V2MoneyManagementPayoutIntentCreatedEvent`, `V2MoneyManagementPayoutIntentPostedEvent`, `V2MoneyManagementPayoutIntentProcessingEvent`, and `V2MoneyManagementPayoutIntentRequiresActionEvent` with related object `V2.MoneyManagement.PayoutIntent`
   * Add support for error codes `authentication_failure`, `capability_not_active`, `expired_payment_method`, `incorrect_postal_code`, `invalid_canceled_subscription_fields`, and `payment_method_restricted` on `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `QuotePreviewInvoice.last_finalization_error`, `SetupAttempt.setup_error`, `SetupIntent.last_setup_error`, `StripeError`, and `Terminal.Reader.action.api_error`
 
-## 21.4.0-alpha.1 - 2026-08-26
+## <a id="21-4-0-alpha-1"></a>21.4.0-alpha.1 - 2026-08-26
 This release changes the pinned API version to `2026-08-26.preview`.
 
 * [#2123](https://github.com/stripe/stripe-php/pull/2123) Add non-verified manged handlers
@@ -127,7 +127,7 @@ This release changes the pinned API version to `2026-08-26.preview`.
   * Add support for new value `user_access_started` on enum `V2.Iam.ActivityLog.type`
   * Add support for new value `blik_recurring_payments` on enum `EventsV2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent.updated_capability`
 
-## 21.3.0-alpha.2 - 2026-08-19
+## <a id="21-3-0-alpha-2"></a>21.3.0-alpha.2 - 2026-08-19
 * ⚠️ [#2120](https://github.com/stripe/stripe-php/pull/2120) Update generated code for private-preview
   * Add support for new resources `Billing.FeedbackOption` and `PaymentPlan`
   * ⚠️ Remove support for resource `Billing.FeedbackOptions`
@@ -158,7 +158,7 @@ This release changes the pinned API version to `2026-08-26.preview`.
   * Change type of `V2\Billing\Contract.update().$params.pricing_line_action.update.pricing.price_detail.pricing_override_action.update.metadata` from `string` to `emptyable(string)`
   * Add support for snapshot events `PAYMENT_PLAN_CREATED`, `PAYMENT_PLAN_INSTALLMENT_DUE`, `PAYMENT_PLAN_INSTALLMENT_PAID`, `PAYMENT_PLAN_INSTALLMENT_WILL_BE_DUE`, and `PAYMENT_PLAN_UPDATED` with resource `PaymentPlan`
 
-## 21.3.0-alpha.1 - 2026-08-12
+## <a id="21-3-0-alpha-1"></a>21.3.0-alpha.1 - 2026-08-12
 This release changes the pinned API version to `2026-08-12.preview`.
 
 * ⚠️ [#2116](https://github.com/stripe/stripe-php/pull/2116) Update generated code for private-preview
@@ -206,7 +206,7 @@ This release changes the pinned API version to `2026-08-12.preview`.
   * Add support for event notification `V1InvoicePaymentAttemptRequiredEvent` with related object `Invoice`
   * Add support for error type `FxQuoteNeedsRefreshException`
 
-## 21.2.0-alpha.2 - 2026-08-05
+## <a id="21-2-0-alpha-2"></a>21.2.0-alpha.2 - 2026-08-05
 * [#2108](https://github.com/stripe/stripe-php/pull/2108) Update generated code for private-preview
   * Add support for new resource `Billing.FeedbackOptions`
   * Add support for `sequra_payments` on `Account.capabilities`
@@ -230,7 +230,7 @@ This release changes the pinned API version to `2026-08-12.preview`.
   * Add support for `status` on `V2\MoneyManagement\FinancialAccountStatement.all().$params`
   * Change `V2\Billing\Contract.create().$params.pricing_lines` to be optional
 
-## 21.2.0-alpha.1 - 2026-07-29
+## <a id="21-2-0-alpha-1"></a>21.2.0-alpha.1 - 2026-07-29
 This release changes the pinned API version to `2026-07-29.preview`.
 
 * ⚠️ [#2104](https://github.com/stripe/stripe-php/pull/2104) Update generated code for private-preview
@@ -281,7 +281,7 @@ This release changes the pinned API version to `2026-07-29.preview`.
   * Add support for event notification `V2SignalsAccountEvaluationCompleteEvent` with related object `V2.Signals.AccountEvaluation`
   * Add support for event notifications `V2SignalsAccountSignalFraudulentWebsiteReadyEvent` and `V2SignalsAccountSignalPaymentDelinquencyExposureReadyEvent` with related object `V2.Signals.AccountSignal`
 
-## 21.1.0-alpha.2 - 2026-07-22
+## <a id="21-1-0-alpha-2"></a>21.1.0-alpha.2 - 2026-07-22
 * ⚠️ [#2103](https://github.com/stripe/stripe-php/pull/2103) Update generated code for private-preview
   * Add support for new resources `Billing.AlertNotification` and `Crypto.DepositAddress`
   * Add support for `all`, `create`, and `retrieve` methods on resource `Crypto.DepositAddress`
@@ -312,7 +312,7 @@ This release changes the pinned API version to `2026-07-29.preview`.
   * Add support for new value `payment_delinquency_exposure` on enum `V2.Signals.AccountSignal.type`
   * Add support for new value `commercial.stripe.spend_card` on enum `EventsV2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent.updated_capability`
 
-## 21.1.0-alpha.1 - 2026-07-16
+## <a id="21-1-0-alpha-1"></a>21.1.0-alpha.1 - 2026-07-16
 * ⚠️ [#2096](https://github.com/stripe/stripe-php/pull/2096) Update generated code for private-preview
   * ⚠️ Remove support for resource `FrMealVouchersOnboarding`
   * ⚠️ Remove support for `all`, `create`, `retrieve`, and `update` methods on resource `FrMealVouchersOnboarding`
@@ -336,7 +336,7 @@ This release changes the pinned API version to `2026-07-29.preview`.
   * Add support for snapshot events `FINANCIAL_CONNECTIONS_ACCOUNT_EXPECTED_DEACTIVATION_DATE_UPDATED`, `FINANCIAL_CONNECTIONS_ACCOUNT_SUPPORTED_PAYMENT_METHOD_TYPES_UPDATED`, and `FINANCIAL_CONNECTIONS_ACCOUNT_UPCOMING_DEACTIVATION` with resource `FinancialConnections.Account`
   * Add support for snapshot events `FINANCIAL_CONNECTIONS_AUTHORIZATION_EXPECTED_DEACTIVATION_DATE_UPDATED` and `FINANCIAL_CONNECTIONS_AUTHORIZATION_UPCOMING_DEACTIVATION` with resource `FinancialConnections.Authorization`
 
-## 20.4.0-alpha.3 - 2026-07-08
+## <a id="20-4-0-alpha-3"></a>20.4.0-alpha.3 - 2026-07-08
 This release changes the pinned API version to `2026-07-08.preview`.
 
 * ⚠️ [#2092](https://github.com/stripe/stripe-php/pull/2092) Update generated code for private-preview
@@ -382,7 +382,7 @@ This release changes the pinned API version to `2026-07-08.preview`.
   * ⚠️ Change type of `V2\Billing\Contract.update().$params.pricing_line_action.add.starts_at.type`, `V2\Billing\Contract.update().$params.pricing_line_action.update.pricing.price_detail.pricing_override_action.add.starts_at.type`, `V2\Billing\Contract.update().$params.pricing_line_action.update.pricing.price_detail.pricing_override_action.update.starts_at.type`, `V2\Billing\Contract.update().$params.pricing_line_action.update.starts_at.type`, `V2\Billing\Contract.update().$params.pricing_override_action.add.starts_at.type`, and `V2\Billing\Contract.update().$params.pricing_override_action.update.starts_at.type` from `enum('billing_period_start'|'timestamp')` to `literal('timestamp')`
   * Add support for event notifications `V2BillingContractActivatedEvent`, `V2BillingContractCanceledEvent`, `V2BillingContractCreatedEvent`, `V2BillingContractEndedEvent`, and `V2BillingContractUpdatedEvent` with related object `V2.Billing.Contract`
 
-## 20.4.0-alpha.2 - 2026-07-01
+## <a id="20-4-0-alpha-2"></a>20.4.0-alpha.2 - 2026-07-01
 This release changes the pinned API version to `2026-07-01.preview`.
 
 * ⚠️ [#2089](https://github.com/stripe/stripe-php/pull/2089) Update generated code for private-preview
@@ -413,7 +413,7 @@ This release changes the pinned API version to `2026-07-01.preview`.
   * Change type of `V2\MoneyManagement\FinancialAccount.create().$params.type` from `literal('storage')` to `enum('credit'|'storage')`
   * Add support for `expires_at` on `V2\Iam\ApiKey.create().$params`
 
-## 20.4.0-alpha.1 - 2026-06-24
+## <a id="20-4-0-alpha-1"></a>20.4.0-alpha.1 - 2026-06-24
 This release changes the pinned API version to `2026-06-24.preview`.
 
 * ⚠️ [#2086](https://github.com/stripe/stripe-php/pull/2086) Update generated code for private-preview
@@ -507,7 +507,7 @@ This release changes the pinned API version to `2026-06-24.preview`.
   * Add support for event notification `V2MoneyManagementOutboundTransferUnderReviewEvent` with related object `V2.MoneyManagement.OutboundTransfer`
   * ⚠️ Remove support for event notifications `V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationStorerUpdatedEvent` with related object `V2.Core.Account`
 
-## 20.3.0-alpha.4 - 2026-06-17
+## <a id="20-3-0-alpha-4"></a>20.3.0-alpha.4 - 2026-06-17
 * ⚠️ [#2083](https://github.com/stripe/stripe-php/pull/2083) Update generated code for private-preview
   * Add support for `retrieve` method on resource `Radar.CustomerEvaluation`
   * Add support for `disable_stripe_user_authentication` on `AccountSession.components.bills.features`
@@ -551,7 +551,7 @@ This release changes the pinned API version to `2026-06-24.preview`.
   * Add support for `payment_record` on `Refund.all().$params`
   * Add support for `protections` on `V2.Core.Account.configuration.card_creator.capabilities.commercial.celtic.charge_card`, `V2.Core.Account.configuration.card_creator.capabilities.commercial.celtic.spend_card`, `V2.Core.Account.configuration.card_creator.capabilities.commercial.cross_river_bank.charge_card`, `V2.Core.Account.configuration.card_creator.capabilities.commercial.cross_river_bank.prepaid_card`, `V2.Core.Account.configuration.card_creator.capabilities.commercial.cross_river_bank.spend_card`, `V2.Core.Account.configuration.card_creator.capabilities.commercial.fifth_third.charge_card`, `V2.Core.Account.configuration.card_creator.capabilities.commercial.lead.prepaid_card`, `V2.Core.Account.configuration.card_creator.capabilities.commercial.stripe.charge_card`, `V2.Core.Account.configuration.card_creator.capabilities.commercial.stripe.prepaid_card`, `V2.Core.Account.configuration.card_creator.capabilities.consumer.celtic.revolving_credit_card`, `V2.Core.Account.configuration.card_creator.capabilities.consumer.cross_river_bank.prepaid_card`, `V2.Core.Account.configuration.card_creator.capabilities.consumer.lead.debit_card`, `V2.Core.Account.configuration.card_creator.capabilities.consumer.lead.prepaid_card`, `V2.Core.Account.configuration.customer.capabilities.automatic_indirect_tax`, `V2.Core.Account.configuration.merchant.capabilities.ach_debit_payments`, `V2.Core.Account.configuration.merchant.capabilities.acss_debit_payments`, `V2.Core.Account.configuration.merchant.capabilities.affirm_payments`, `V2.Core.Account.configuration.merchant.capabilities.afterpay_clearpay_payments`, `V2.Core.Account.configuration.merchant.capabilities.alma_payments`, `V2.Core.Account.configuration.merchant.capabilities.amazon_pay_payments`, `V2.Core.Account.configuration.merchant.capabilities.au_becs_debit_payments`, `V2.Core.Account.configuration.merchant.capabilities.bacs_debit_payments`, `V2.Core.Account.configuration.merchant.capabilities.bancontact_payments`, `V2.Core.Account.configuration.merchant.capabilities.blik_payments`, `V2.Core.Account.configuration.merchant.capabilities.boleto_payments`, `V2.Core.Account.configuration.merchant.capabilities.card_payments`, `V2.Core.Account.configuration.merchant.capabilities.cartes_bancaires_payments`, `V2.Core.Account.configuration.merchant.capabilities.cashapp_payments`, `V2.Core.Account.configuration.merchant.capabilities.eps_payments`, `V2.Core.Account.configuration.merchant.capabilities.fpx_payments`, `V2.Core.Account.configuration.merchant.capabilities.gb_bank_transfer_payments`, `V2.Core.Account.configuration.merchant.capabilities.grabpay_payments`, `V2.Core.Account.configuration.merchant.capabilities.ideal_payments`, `V2.Core.Account.configuration.merchant.capabilities.jcb_payments`, `V2.Core.Account.configuration.merchant.capabilities.jp_bank_transfer_payments`, `V2.Core.Account.configuration.merchant.capabilities.kakao_pay_payments`, `V2.Core.Account.configuration.merchant.capabilities.klarna_payments`, `V2.Core.Account.configuration.merchant.capabilities.konbini_payments`, `V2.Core.Account.configuration.merchant.capabilities.kr_card_payments`, `V2.Core.Account.configuration.merchant.capabilities.link_payments`, `V2.Core.Account.configuration.merchant.capabilities.mobilepay_payments`, `V2.Core.Account.configuration.merchant.capabilities.multibanco_payments`, `V2.Core.Account.configuration.merchant.capabilities.mx_bank_transfer_payments`, `V2.Core.Account.configuration.merchant.capabilities.naver_pay_payments`, `V2.Core.Account.configuration.merchant.capabilities.oxxo_payments`, `V2.Core.Account.configuration.merchant.capabilities.p24_payments`, `V2.Core.Account.configuration.merchant.capabilities.pay_by_bank_payments`, `V2.Core.Account.configuration.merchant.capabilities.payco_payments`, `V2.Core.Account.configuration.merchant.capabilities.paynow_payments`, `V2.Core.Account.configuration.merchant.capabilities.promptpay_payments`, `V2.Core.Account.configuration.merchant.capabilities.revolut_pay_payments`, `V2.Core.Account.configuration.merchant.capabilities.samsung_pay_payments`, `V2.Core.Account.configuration.merchant.capabilities.sepa_bank_transfer_payments`, `V2.Core.Account.configuration.merchant.capabilities.sepa_debit_payments`, `V2.Core.Account.configuration.merchant.capabilities.stripe_balance.payouts`, `V2.Core.Account.configuration.merchant.capabilities.swish_payments`, `V2.Core.Account.configuration.merchant.capabilities.twint_payments`, `V2.Core.Account.configuration.merchant.capabilities.us_bank_transfer_payments`, `V2.Core.Account.configuration.merchant.capabilities.zip_payments`, `V2.Core.Account.configuration.recipient.capabilities.bank_accounts.instant`, `V2.Core.Account.configuration.recipient.capabilities.bank_accounts.local`, `V2.Core.Account.configuration.recipient.capabilities.bank_accounts.wire`, `V2.Core.Account.configuration.recipient.capabilities.cards`, `V2.Core.Account.configuration.recipient.capabilities.crypto_wallets`, `V2.Core.Account.configuration.recipient.capabilities.paper_checks`, `V2.Core.Account.configuration.recipient.capabilities.stripe_balance.payouts`, `V2.Core.Account.configuration.recipient.capabilities.stripe_balance.stripe_transfers`, `V2.Core.Account.configuration.storer.capabilities.consumer.holds_currencies.usd`, `V2.Core.Account.configuration.storer.capabilities.financial_addresses.bank_accounts`, `V2.Core.Account.configuration.storer.capabilities.financial_addresses.crypto_wallets`, `V2.Core.Account.configuration.storer.capabilities.holds_currencies.eur`, `V2.Core.Account.configuration.storer.capabilities.holds_currencies.gbp`, `V2.Core.Account.configuration.storer.capabilities.holds_currencies.usd`, `V2.Core.Account.configuration.storer.capabilities.holds_currencies.usdc`, `V2.Core.Account.configuration.storer.capabilities.inbound_transfers.bank_accounts`, `V2.Core.Account.configuration.storer.capabilities.outbound_payments.bank_accounts`, `V2.Core.Account.configuration.storer.capabilities.outbound_payments.cards`, `V2.Core.Account.configuration.storer.capabilities.outbound_payments.crypto_wallets`, `V2.Core.Account.configuration.storer.capabilities.outbound_payments.financial_accounts`, `V2.Core.Account.configuration.storer.capabilities.outbound_payments.paper_checks`, `V2.Core.Account.configuration.storer.capabilities.outbound_transfers.bank_accounts`, `V2.Core.Account.configuration.storer.capabilities.outbound_transfers.crypto_wallets`, `V2.Core.Account.configuration.storer.capabilities.outbound_transfers.financial_accounts`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.celtic.charge_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.celtic.spend_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.cross_river_bank.charge_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.cross_river_bank.prepaid_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.cross_river_bank.spend_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.fifth_third.charge_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.lead.prepaid_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.stripe.charge_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.commercial.stripe.prepaid_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.consumer.celtic.revolving_credit_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.consumer.cross_river_bank.prepaid_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.consumer.lead.debit_card`, `V2\Core\Account.create().$params.configuration.card_creator.capability.consumer.lead.prepaid_card`, `V2\Core\Account.create().$params.configuration.customer.capability.automatic_indirect_tax`, `V2\Core\Account.create().$params.configuration.merchant.capability.ach_debit_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.acss_debit_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.affirm_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.afterpay_clearpay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.alma_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.amazon_pay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.au_becs_debit_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.bacs_debit_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.bancontact_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.blik_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.boleto_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.card_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.cartes_bancaires_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.cashapp_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.eps_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.fpx_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.gb_bank_transfer_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.grabpay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.ideal_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.jcb_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.jp_bank_transfer_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.kakao_pay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.klarna_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.konbini_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.kr_card_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.link_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.mobilepay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.multibanco_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.mx_bank_transfer_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.naver_pay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.oxxo_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.p24_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.pay_by_bank_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.payco_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.paynow_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.promptpay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.revolut_pay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.samsung_pay_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.sepa_bank_transfer_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.sepa_debit_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.swish_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.twint_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.us_bank_transfer_payment`, `V2\Core\Account.create().$params.configuration.merchant.capability.zip_payment`, `V2\Core\Account.create().$params.configuration.recipient.capability.bank_account.instant`, `V2\Core\Account.create().$params.configuration.recipient.capability.bank_account.local`, `V2\Core\Account.create().$params.configuration.recipient.capability.bank_account.wire`, `V2\Core\Account.create().$params.configuration.recipient.capability.card`, `V2\Core\Account.create().$params.configuration.recipient.capability.crypto_wallet`, `V2\Core\Account.create().$params.configuration.recipient.capability.paper_check`, `V2\Core\Account.create().$params.configuration.recipient.capability.stripe_balance.stripe_transfer`, `V2\Core\Account.create().$params.configuration.storer.capability.consumer.holds_currency.usd`, `V2\Core\Account.create().$params.configuration.storer.capability.financial_address.bank_account`, `V2\Core\Account.create().$params.configuration.storer.capability.financial_address.crypto_wallet`, `V2\Core\Account.create().$params.configuration.storer.capability.holds_currency.eur`, `V2\Core\Account.create().$params.configuration.storer.capability.holds_currency.gbp`, `V2\Core\Account.create().$params.configuration.storer.capability.holds_currency.usd`, `V2\Core\Account.create().$params.configuration.storer.capability.holds_currency.usdc`, `V2\Core\Account.create().$params.configuration.storer.capability.inbound_transfer.bank_account`, `V2\Core\Account.create().$params.configuration.storer.capability.outbound_payment.bank_account`, `V2\Core\Account.create().$params.configuration.storer.capability.outbound_payment.card`, `V2\Core\Account.create().$params.configuration.storer.capability.outbound_payment.crypto_wallet`, `V2\Core\Account.create().$params.configuration.storer.capability.outbound_payment.financial_account`, `V2\Core\Account.create().$params.configuration.storer.capability.outbound_payment.paper_check`, `V2\Core\Account.create().$params.configuration.storer.capability.outbound_transfer.bank_account`, `V2\Core\Account.create().$params.configuration.storer.capability.outbound_transfer.crypto_wallet`, `V2\Core\Account.create().$params.configuration.storer.capability.outbound_transfer.financial_account`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.celtic.charge_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.celtic.spend_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.cross_river_bank.charge_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.cross_river_bank.prepaid_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.cross_river_bank.spend_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.fifth_third.charge_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.lead.prepaid_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.stripe.charge_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.commercial.stripe.prepaid_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.consumer.celtic.revolving_credit_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.consumer.cross_river_bank.prepaid_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.consumer.lead.debit_card`, `V2\Core\Account.update().$params.configuration.card_creator.capability.consumer.lead.prepaid_card`, `V2\Core\Account.update().$params.configuration.customer.capability.automatic_indirect_tax`, `V2\Core\Account.update().$params.configuration.merchant.capability.ach_debit_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.acss_debit_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.affirm_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.afterpay_clearpay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.alma_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.amazon_pay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.au_becs_debit_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.bacs_debit_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.bancontact_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.blik_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.boleto_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.card_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.cartes_bancaires_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.cashapp_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.eps_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.fpx_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.gb_bank_transfer_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.grabpay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.ideal_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.jcb_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.jp_bank_transfer_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.kakao_pay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.klarna_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.konbini_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.kr_card_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.link_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.mobilepay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.multibanco_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.mx_bank_transfer_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.naver_pay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.oxxo_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.p24_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.pay_by_bank_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.payco_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.paynow_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.promptpay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.revolut_pay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.samsung_pay_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.sepa_bank_transfer_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.sepa_debit_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.swish_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.twint_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.us_bank_transfer_payment`, `V2\Core\Account.update().$params.configuration.merchant.capability.zip_payment`, `V2\Core\Account.update().$params.configuration.recipient.capability.bank_account.instant`, `V2\Core\Account.update().$params.configuration.recipient.capability.bank_account.local`, `V2\Core\Account.update().$params.configuration.recipient.capability.bank_account.wire`, `V2\Core\Account.update().$params.configuration.recipient.capability.card`, `V2\Core\Account.update().$params.configuration.recipient.capability.crypto_wallet`, `V2\Core\Account.update().$params.configuration.recipient.capability.paper_check`, `V2\Core\Account.update().$params.configuration.recipient.capability.stripe_balance.stripe_transfer`, `V2\Core\Account.update().$params.configuration.storer.capability.consumer.holds_currency.usd`, `V2\Core\Account.update().$params.configuration.storer.capability.financial_address.bank_account`, `V2\Core\Account.update().$params.configuration.storer.capability.financial_address.crypto_wallet`, `V2\Core\Account.update().$params.configuration.storer.capability.holds_currency.eur`, `V2\Core\Account.update().$params.configuration.storer.capability.holds_currency.gbp`, `V2\Core\Account.update().$params.configuration.storer.capability.holds_currency.usd`, `V2\Core\Account.update().$params.configuration.storer.capability.holds_currency.usdc`, `V2\Core\Account.update().$params.configuration.storer.capability.inbound_transfer.bank_account`, `V2\Core\Account.update().$params.configuration.storer.capability.outbound_payment.bank_account`, `V2\Core\Account.update().$params.configuration.storer.capability.outbound_payment.card`, `V2\Core\Account.update().$params.configuration.storer.capability.outbound_payment.crypto_wallet`, `V2\Core\Account.update().$params.configuration.storer.capability.outbound_payment.financial_account`, `V2\Core\Account.update().$params.configuration.storer.capability.outbound_payment.paper_check`, `V2\Core\Account.update().$params.configuration.storer.capability.outbound_transfer.bank_account`, `V2\Core\Account.update().$params.configuration.storer.capability.outbound_transfer.crypto_wallet`, and `V2\Core\Account.update().$params.configuration.storer.capability.outbound_transfer.financial_account`
 
-## 20.3.0-alpha.3 - 2026-06-10
+## <a id="20-3-0-alpha-3"></a>20.3.0-alpha.3 - 2026-06-10
 This release changes the pinned API version to `2026-06-10.preview`.
 
 * ⚠️ [#2082](https://github.com/stripe/stripe-php/pull/2082) Update generated code for private-preview
@@ -589,7 +589,7 @@ This release changes the pinned API version to `2026-06-10.preview`.
   * Add support for `tax_fund` on `V2.MoneyManagement.Transaction.flow` and `V2.MoneyManagement.TransactionEntry.transaction_details.flow`
   * Add support for new value `tax_fund` on enums `V2.MoneyManagement.Transaction.flow.type` and `V2.MoneyManagement.TransactionEntry.transaction_details.flow.type`
 
-## 20.3.0-alpha.2 - 2026-06-03
+## <a id="20-3-0-alpha-2"></a>20.3.0-alpha.2 - 2026-06-03
 This release changes the pinned API version to `2026-06-03.preview`.
 
 * ⚠️ [#2074](https://github.com/stripe/stripe-php/pull/2074) Update generated code for private-preview
@@ -617,7 +617,7 @@ This release changes the pinned API version to `2026-06-03.preview`.
   * Add support for `requirements_collector` on `V2\Core\Account.create().$params.default.responsibility` and `V2\Core\Account.update().$params.default.responsibility`
   * Add support for event notification `V2SignalsAccountSignalMerchantDelinquencyReadyEvent` with related object `V2.Signals.AccountSignal`
 
-## 20.3.0-alpha.1 - 2026-05-27
+## <a id="20-3-0-alpha-1"></a>20.3.0-alpha.1 - 2026-05-27
 This release changes the pinned API version to `2026-05-27.preview`.
 
 * ⚠️ [#2073](https://github.com/stripe/stripe-php/pull/2073) Update generated code for private-preview
@@ -637,7 +637,7 @@ This release changes the pinned API version to `2026-05-27.preview`.
   * Add support for snapshot event `PAYMENT_INTENT_EXPIRED` with resource `PaymentIntent`
   * Add support for event notifications `V2CoreHealthElementsErrorFiringEvent`, `V2CoreHealthElementsErrorResolvedEvent`, `V2CoreHealthInvoiceCountDroppedFiringEvent`, and `V2CoreHealthInvoiceCountDroppedResolvedEvent`
 
-## 20.2.0-alpha.6 - 2026-05-20
+## <a id="20-2-0-alpha-6"></a>20.2.0-alpha.6 - 2026-05-20
 * ⚠️ [#2068](https://github.com/stripe/stripe-php/pull/2068) Update generated code for private-preview
   * Add support for new resource `PaymentLocationCapability`
   * Add support for `all`, `retrieve`, and `update` methods on resource `PaymentLocationCapability`
@@ -657,7 +657,7 @@ This release changes the pinned API version to `2026-05-27.preview`.
   * ⚠️ Remove support for `payment_behavior` on `Subscription.resume().$params`
   * ⚠️ Remove support for `status_details` on `Subscription`
 
-## 20.2.0-alpha.5 - 2026-05-13
+## <a id="20-2-0-alpha-5"></a>20.2.0-alpha.5 - 2026-05-13
 * ⚠️ [#2067](https://github.com/stripe/stripe-php/pull/2067) Update generated code for private-preview
   * Add support for new resources `V2.Core.FeeBatch`, `V2.Core.FeeEntry`, `V2.MoneyManagement.DebitDispute`, and `V2.MoneyManagement.FinancialAccountStatement`
   * Add support for `simulate_network_lifecycle_pre_arbitration_response` and `simulate_network_lifecycle_pre_arbitration_submission` test helper methods on resource `Issuing.Dispute`
@@ -683,7 +683,7 @@ This release changes the pinned API version to `2026-05-27.preview`.
   * Add support for `payment_attempt_record` on `EventsV2PaymentsOffSessionPaymentAttemptFailedEvent` and `EventsV2PaymentsOffSessionPaymentFailedEvent`
   * Add support for event notifications `V2MoneyManagementFinancialAccountStatementCreatedEvent` and `V2MoneyManagementFinancialAccountStatementRestatedEvent` with related object `V2.MoneyManagement.FinancialAccountStatement`
 
-## 20.2.0-alpha.4 - 2026-05-06
+## <a id="20-2-0-alpha-4"></a>20.2.0-alpha.4 - 2026-05-06
 * [#2066](https://github.com/stripe/stripe-php/pull/2066) Add EventNotificationHandler (private preview)
 * [#2065](https://github.com/stripe/stripe-php/pull/2065) Update generated code for private-preview
   * Add support for new resource `PaymentLocation`
@@ -697,13 +697,13 @@ This release changes the pinned API version to `2026-05-27.preview`.
   * Add support for new value `gift_card` on enums `PaymentIntent.excluded_payment_method_types` and `SetupIntent.excluded_payment_method_types`
   * Add support for `status_details` on `Subscription`
 
-## 20.2.0-alpha.3 - 2026-04-28
+## <a id="20-2-0-alpha-3"></a>20.2.0-alpha.3 - 2026-04-28
 * [#2063](https://github.com/stripe/stripe-php/pull/2063) Update generated code for private-preview
   * Add support for `debit_card` on `V2.Core.Account.configuration.card_creator.capabilities.consumer.lead`, `V2.Core.Account.identity.attestations.terms_of_service.card_creator.consumer.lead`, `V2\Core\Account.create().$params.configuration.card_creator.capability.consumer.lead`, `V2\Core\Account.create().$params.identity.attestation.terms_of_service.card_creator.consumer.lead`, `V2\Core\Account.update().$params.configuration.card_creator.capability.consumer.lead`, and `V2\Core\Account.update().$params.identity.attestation.terms_of_service.card_creator.consumer.lead`
   * Add support for new value `consumer.lead.debit_card` on enums `V2.Core.Account.future_requirements.entries[].impact.restricts_capabilities[].capability` and `V2.Core.Account.requirements.entries[].impact.restricts_capabilities[].capability`
   * Add support for new value `consumer.lead.debit_card` on enum `EventsV2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent.updated_capability`
 
-## 20.2.0-alpha.2 - 2026-04-28
+## <a id="20-2-0-alpha-2"></a>20.2.0-alpha.2 - 2026-04-28
 * ⚠️ [#2062](https://github.com/stripe/stripe-php/pull/2062) Update generated code for private-preview
   * Add support for new resource `V2.Data.Analytics.MetricQueryResult`
   * Add support for `create`, `retrieve`, and `revoke` methods on resource `SharedPayment.IssuedToken`
@@ -765,7 +765,7 @@ This release changes the pinned API version to `2026-05-27.preview`.
   * Add support for event notification `V2ExtendExtensionRunFailedEvent`
   * Add support for error codes `action_blocked` and `approval_required` on `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `QuotePreviewInvoice.last_finalization_error`, `SetupAttempt.setup_error`, `SetupIntent.last_setup_error`, and `StripeError`
 
-## 20.2.0-alpha.1 - 2026-04-24
+## <a id="20-2-0-alpha-1"></a>20.2.0-alpha.1 - 2026-04-24
 This release changes the pinned API version to `2026-04-22.preview`.
 
 * ⚠️ [#2058](https://github.com/stripe/stripe-php/pull/2058) Update generated code for private-preview
@@ -894,7 +894,7 @@ This release changes the pinned API version to `2026-04-22.preview`.
   * ⚠️ Remove support for event notification `V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent` with related object `V2.Core.ClaimableSandbox`
   * Add support for error type `FxQuoteExpiredException`
 
-## 20.1.0-alpha.4 - 2026-04-15
+## <a id="20-1-0-alpha-4"></a>20.1.0-alpha.4 - 2026-04-15
 * [#2057](https://github.com/stripe/stripe-php/pull/2057) Update generated code for private-preview
   * Add support for `latest_version` on `V2.Billing.LicenseFee`, `V2.Billing.PricingPlan`, and `V2.Billing.RateCard`
   * Add support for `service_interval_count` and `service_interval` on `V2.Billing.LicenseFee` and `V2.Billing.RateCard`
@@ -923,7 +923,7 @@ This release changes the pinned API version to `2026-04-22.preview`.
   * ⚠️ Remove support for `external_reference` on `Plan`
   * Change `SharedPayment.GrantedToken.payment_method_details.billing_details` to be required
 
-## 20.1.0-alpha.3 - 2026-04-08
+## <a id="20-1-0-alpha-3"></a>20.1.0-alpha.3 - 2026-04-08
 This release changes the pinned API version to `2026-04-08.preview`.
 
 * ⚠️ [#2053](https://github.com/stripe/stripe-php/pull/2053) Update generated code for private-preview
@@ -946,7 +946,7 @@ This release changes the pinned API version to `2026-04-08.preview`.
   * ⚠️ Remove support for values `bm_pp`, `bo_ci`, `bt_cid`, `eg_tin`, `gh_pin`, `gy_tin`, `hn_rtn`, `jm_trn`, `jo_pin`, `ky_pp`, `lk_nic`, `mo_bir`, `mt_nic`, `mv_tin`, `pa_ruc`, `ph_tin`, `py_ruc`, `si_pin`, `sv_nit`, and `vg_pp` from enums `V2.Core.Account.identity.individual.id_numbers[].type` and `V2.Core.AccountPerson.id_numbers[].type`
   * Add support for error type `CannotProceedException`
 
-## 20.1.0-alpha.2 - 2026-04-01
+## <a id="20-1-0-alpha-2"></a>20.1.0-alpha.2 - 2026-04-01
 This release changes the pinned API version to `2026-04-01.preview`.
 
 * [#2052](https://github.com/stripe/stripe-php/pull/2052) Fixes an issue encoding two-dimensional array request params where the SDK incorrectly flattens the array.
@@ -998,7 +998,7 @@ This release changes the pinned API version to `2026-04-01.preview`.
   * Add support for event notifications `V2DataReportingQueryRunCreatedEvent`, `V2DataReportingQueryRunFailedEvent`, `V2DataReportingQueryRunSucceededEvent`, and `V2DataReportingQueryRunUpdatedEvent` with related object `V2.Data.Reporting.QueryRun`
   * Add support for event notifications `V2PaymentsOffSessionPaymentPausedEvent` and `V2PaymentsOffSessionPaymentResumedEvent` with related object `V2.Payments.OffSessionPayment`
 
-## 20.1.0-alpha.1 - 2026-03-25
+## <a id="20-1-0-alpha-1"></a>20.1.0-alpha.1 - 2026-03-25
 This release changes the pinned API version to `2026-03-25.preview`.
 
 This release contains additional breaking changes. See the [GA changelog](https://github.com/stripe/stripe-php/blob/master/CHANGELOG.md#2000---2026-03-25) for more information.
@@ -1103,7 +1103,7 @@ This release contains additional breaking changes. See the [GA changelog](https:
 * [#2048](https://github.com/stripe/stripe-php/pull/2048) Update generated code for private-preview
   * Release specs are identical.
 
-## 19.5.0-alpha.4 - 2026-03-18
+## <a id="19-5-0-alpha-4"></a>19.5.0-alpha.4 - 2026-03-18
 * ⚠️ [#2031](https://github.com/stripe/stripe-php/pull/2031) Update generated code for private-preview
   * Add support for new resources `Orchestration.PaymentAttempt` and `Radar.CustomerEvaluation`
   * Add support for `retrieve` method on resource `Orchestration.PaymentAttempt`
@@ -1139,7 +1139,7 @@ This release contains additional breaking changes. See the [GA changelog](https:
   * Add support for `deposit_options` and `mode` on `PaymentIntent.confirm().$params.payment_method_option.crypto`, `PaymentIntent.create().$params.payment_method_option.crypto`, `PaymentIntent.payment_method_options.crypto`, and `PaymentIntent.update().$params.payment_method_option.crypto`
   * Add support for `crypto_display_details` on `PaymentIntent.next_action`
 
-## 19.5.0-alpha.3 - 2026-03-11
+## <a id="19-5-0-alpha-3"></a>19.5.0-alpha.3 - 2026-03-11
 * ⚠️ [#2026](https://github.com/stripe/stripe-php/pull/2026) Update generated code for private-preview
   * Add support for new resource `Radar.IssuingAuthorizationEvaluation`
   * Add support for `create` method on resource `Radar.IssuingAuthorizationEvaluation`
@@ -1156,7 +1156,7 @@ This release contains additional breaking changes. See the [GA changelog](https:
   * Change `V2\Payments\OffSessionPayment.create().$params.payment_method` to be optional
   * Add support for new values `commercial.cross_river_bank.prepaid_card`, `commercial.fifth_third.charge_card`, `consumer.celtic.revolving_credit_card`, `consumer.cross_river_bank.prepaid_card`, and `consumer.lead.prepaid_card` on enum `EventsV2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent.updated_capability`
 
-## 19.5.0-alpha.2 - 2026-03-04
+## <a id="19-5-0-alpha-2"></a>19.5.0-alpha.2 - 2026-03-04
 This release changes the pinned API version to `2026-03-04.preview`.
 
 * ⚠️ [#2021](https://github.com/stripe/stripe-php/pull/2021) Update generated code for private-preview
@@ -1213,7 +1213,7 @@ This release changes the pinned API version to `2026-03-04.preview`.
   * Add support for event notifications `V2IamStripeAccessGrantApprovedEvent`, `V2IamStripeAccessGrantCanceledEvent`, `V2IamStripeAccessGrantDeniedEvent`, `V2IamStripeAccessGrantRemovedEvent`, `V2IamStripeAccessGrantRequestedEvent`, and `V2IamStripeAccessGrantUpdatedEvent`
   * Add support for error codes `storer_capability_missing` and `storer_capability_not_active` on `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `QuotePreviewInvoice.last_finalization_error`, `SetupAttempt.setup_error`, `SetupIntent.last_setup_error`, and `StripeError`
 
-## 19.5.0-alpha.1 - 2026-02-25
+## <a id="19-5-0-alpha-1"></a>19.5.0-alpha.1 - 2026-02-25
 This release uses the API version `2026-01-28.preview`.
 
 * [#2013](https://github.com/stripe/stripe-php/pull/2013) Update generated code for private-preview
@@ -1227,7 +1227,7 @@ This release uses the API version `2026-01-28.preview`.
   * Add support for `url` on `FinancialConnections.Session`
   * Add support for `billing_cycle_anchor` on `Subscription.create().$params.trial_setting.end_behavior` and `Subscription.update().$params.trial_setting.end_behavior`
 
-## 19.4.0-alpha.4 - 2026-02-19
+## <a id="19-4-0-alpha-4"></a>19.4.0-alpha.4 - 2026-02-19
 * ⚠️ [#2010](https://github.com/stripe/stripe-php/pull/2010) Update generated code for private-preview
   * Add support for `spend_threshold` on `Billing.Alert` and `Billing\Alert.create().$params`
   * ⚠️ Add support for new value `spend_threshold` on enum `Billing.Alert.alert_type`
@@ -1238,7 +1238,7 @@ This release uses the API version `2026-01-28.preview`.
   * ⚠️ Remove support for `outstanding_usage` and `unused_time` on `Subscription.pause().$params.bill_for`
   * ⚠️ Remove support for `payment_behavior` on `Subscription.resume().$params`
 
-## 19.4.0-alpha.3 - 2026-02-11
+## <a id="19-4-0-alpha-3"></a>19.4.0-alpha.3 - 2026-02-11
 * [#2008](https://github.com/stripe/stripe-php/pull/2008) Update generated code for private-preview
   * Add support for new resources `V2.Billing.CadenceSpendModifier`, `V2.Billing.OneTimeItem`, and `V2.Billing.RateCardCustomPricingUnitOverageRate`
   * Add support for `all`, `create`, `delete`, and `retrieve` methods on resource `V2.Billing.RateCardCustomPricingUnitOverageRate`
@@ -1255,7 +1255,7 @@ This release uses the API version `2026-01-28.preview`.
   * Add support for `effective_at` and `spend_modifier_rule` on `V2.Billing.IntentAction.apply`, `V2.Billing.IntentAction.remove`, `V2\Billing\Intent.create().$params.action.apply`, and `V2\Billing\Intent.create().$params.action.remove`
   * Change type of `V2.Billing.IntentAction.apply.type`, `V2.Billing.IntentAction.remove.type`, `V2\Billing\Intent.create().$params.action.apply.type`, and `V2\Billing\Intent.create().$params.action.remove.type` from `literal('invoice_discount_rule')` to `enum('invoice_discount_rule'|'spend_modifier_rule')`
 
-## 19.4.0-alpha.2 - 2026-02-04
+## <a id="19-4-0-alpha-2"></a>19.4.0-alpha.2 - 2026-02-04
 * [#2005](https://github.com/stripe/stripe-php/pull/2005) Update generated code for private-preview
   * Add support for new resource `V2.Core.ConnectionSession`
   * Add support for `create` and `retrieve` methods on resource `V2.Core.ConnectionSession`
@@ -1284,7 +1284,7 @@ This release uses the API version `2026-01-28.preview`.
   * Change `V2.Payments.SettlementAllocationIntentSplit.flow` to be optional
   * Change `V2\Billing\RateCardRate.create().$params.metered_item` to be required
 
-## 19.4.0-alpha.1 - 2026-01-28
+## <a id="19-4-0-alpha-1"></a>19.4.0-alpha.1 - 2026-01-28
 This release changes the pinned API version to `2026-01-28.preview`.
 
 * [#2002](https://github.com/stripe/stripe-php/pull/2002) Update generated code for private-preview
@@ -1303,12 +1303,12 @@ This release changes the pinned API version to `2026-01-28.preview`.
   * Add support for `subtotal` on `InvoiceLineItem`
   * Add support for `billing_cadence` on `Subscription.all().$params`
 
-## 19.3.0-alpha.1 - 2026-01-21
+## <a id="19-3-0-alpha-1"></a>19.3.0-alpha.1 - 2026-01-21
 * [#1998](https://github.com/stripe/stripe-php/pull/1998) Update generated code for private-preview
   * Remove support for `pause` method on resource `Subscription`
   * Change type of `Quote.subscription_data.phase_effective_at` and `Quote.subscription_data_overrides[].phase_effective_at` from `enum('billing_period_start'|'phase_start')` to `nullable(enum('billing_period_start'|'phase_start'))`
 
-## 19.2.0-alpha.3 - 2026-01-14
+## <a id="19-2-0-alpha-3"></a>19.2.0-alpha.3 - 2026-01-14
 * [#1996](https://github.com/stripe/stripe-php/pull/1996) Update generated code for private-preview
   * Add support for `risk_details` on `DelegatedCheckout.RequestedSession`
   * Remove support for `description`, `images`, and `name` on `DelegatedCheckout.RequestedSession.line_item_details[]`
@@ -1316,7 +1316,7 @@ This release changes the pinned API version to `2026-01-28.preview`.
   * Add support for `login_failed` and `registration_failed` on `Radar.AccountEvaluation.events[]` and `Radar\AccountEvaluation.update().$params`
   * Change type of `Radar\AccountEvaluation.update().$params.type` from `literal('registration_succeeded')` to `enum('login_failed'|'login_succeeded'|'registration_failed'|'registration_succeeded')`
 
-## 19.2.0-alpha.2 - 2026-01-07
+## <a id="19-2-0-alpha-2"></a>19.2.0-alpha.2 - 2026-01-07
 * [#1979](https://github.com/stripe/stripe-php/pull/1979) Update generated code for private-preview
   * Add support for new resource `Tax.Location`
   * Add support for `all`, `create`, and `retrieve` methods on resource `Tax.Location`
@@ -1341,7 +1341,7 @@ This release changes the pinned API version to `2026-01-28.preview`.
   * Add support for `paper_check` on `V2.MoneyManagement.OutboundPayment.delivery_options` and `V2\MoneyManagement\OutboundPayment.create().$params.delivery_option`
   * Add support for event notification `V2CoreAccountIncludingFutureRequirementsUpdatedEvent` with related object `V2.Core.Account`
 
-## 19.2.0-alpha.1 - 2025-12-14
+## <a id="19-2-0-alpha-1"></a>19.2.0-alpha.1 - 2025-12-14
 This release changes the pinned API version to `2025-12-15.preview`.
 
 * [#1978](https://github.com/stripe/stripe-php/pull/1978) Update generated code for private-preview
@@ -1380,7 +1380,7 @@ This release changes the pinned API version to `2025-12-15.preview`.
   * Add support for event notifications `V2PaymentsSettlementAllocationIntentCanceledEvent`, `V2PaymentsSettlementAllocationIntentCreatedEvent`, `V2PaymentsSettlementAllocationIntentErroredEvent`, `V2PaymentsSettlementAllocationIntentFundsNotReceivedEvent`, `V2PaymentsSettlementAllocationIntentMatchedEvent`, `V2PaymentsSettlementAllocationIntentSettledEvent`, and `V2PaymentsSettlementAllocationIntentSubmittedEvent` with related object `V2.Payments.SettlementAllocationIntent`
   * Add support for event notifications `V2PaymentsSettlementAllocationIntentSplitCanceledEvent`, `V2PaymentsSettlementAllocationIntentSplitCreatedEvent`, and `V2PaymentsSettlementAllocationIntentSplitSettledEvent` with related object `V2.Payments.SettlementAllocationIntentSplit`
 
-## 19.1.0-alpha.4 - 2025-12-04
+## <a id="19-1-0-alpha-4"></a>19.1.0-alpha.4 - 2025-12-04
 * [#1977](https://github.com/stripe/stripe-php/pull/1977) Update generated code for private-preview
   * Add support for event notifications `V2IamApiKeyCreatedEvent`, `V2IamApiKeyDefaultSecretRevealedEvent`, `V2IamApiKeyExpiredEvent`, `V2IamApiKeyPermissionsUpdatedEvent`, `V2IamApiKeyRotatedEvent`, and `V2IamApiKeyUpdatedEvent`
 * [#1974](https://github.com/stripe/stripe-php/pull/1974) Update generated code for private-preview
@@ -1392,7 +1392,7 @@ This release changes the pinned API version to `2025-12-15.preview`.
   * Add support for new values `balance_transfer` and `stripe_balance_payment` on enum `V2.MoneyManagement.ReceivedDebit.type`
   * Add support for `include` on `V2\Core\Event.all().$params` and `V2\Core\Event.retrieve().$params`
 
-## 19.1.0-alpha.3 - 2025-11-24
+## <a id="19-1-0-alpha-3"></a>19.1.0-alpha.3 - 2025-11-24
 * [#1971](https://github.com/stripe/stripe-php/pull/1971) Update generated code for private-preview
   * Add support for new resource `ProductCatalog.TrialOffer`
   * Add support for `create` method on resource `ProductCatalog.TrialOffer`
@@ -1402,7 +1402,7 @@ This release changes the pinned API version to `2025-12-15.preview`.
   * Remove support for `amount_discount` on `DelegatedCheckout.RequestedSession.total_details`
   * Add support for `payments_orchestration` on `PaymentIntent.create().$params` and `PaymentIntent`
 
-## 19.1.0-alpha.2 - 2025-11-20
+## <a id="19-1-0-alpha-2"></a>19.1.0-alpha.2 - 2025-11-20
 This release changes the pinned API version to `2025-11-17.preview`.
 
 * [#1967](https://github.com/stripe/stripe-php/pull/1967) Update CHANGELOG.md for private preview
@@ -1510,7 +1510,7 @@ This release changes the pinned API version to `2025-11-17.preview`.
   * Remove support for thin events `V1TopupCanceledEvent`, `V1TopupCreatedEvent`, `V1TopupFailedEvent`, `V1TopupReversedEvent`, and `V1TopupSucceededEvent` with related object `Topup`
   * Remove support for thin events `V1TransferCreatedEvent`, `V1TransferReversedEvent`, and `V1TransferUpdatedEvent` with related object `Transfer`
 
-## 19.1.0-alpha.1 - 2025-11-18
+## <a id="19-1-0-alpha-1"></a>19.1.0-alpha.1 - 2025-11-18
 This release changes the pinned API version to `2025-11-17.preview`.
 
 * [#1962](https://github.com/stripe/stripe-php/pull/1962) Update generated code for private-preview
@@ -1543,7 +1543,7 @@ This release changes the pinned API version to `2025-11-17.preview`.
 * [#1963](https://github.com/stripe/stripe-php/pull/1963) Update generated code for private-preview
   * Add support for `billing_schedules_actions` on `Invoice.create_preview().$params.schedule_detail.amendment` and `SubscriptionSchedule.amend().$params.amendment`
 
-## 18.3.0-alpha.2 - 2025-11-13
+## <a id="18-3-0-alpha-2"></a>18.3.0-alpha.2 - 2025-11-13
 This release changes the pinned API version to `2025-10-29.preview`.
 
 * [#1954](https://github.com/stripe/stripe-php/pull/1954) Update generated code for private-preview
@@ -1567,7 +1567,7 @@ This release changes the pinned API version to `2025-10-29.preview`.
   * Add support for `latest_invoice` on `QuotePreviewSubscriptionSchedule` and `SubscriptionSchedule`
   * Add support for `phase_effective_at` on `QuotePreviewSubscriptionSchedule.default_settings`, `SubscriptionSchedule.create().$params.default_setting`, `SubscriptionSchedule.default_settings`, and `SubscriptionSchedule.update().$params.default_setting`
 
-## 18.3.0-alpha.1 - 2025-11-06
+## <a id="18-3-0-alpha-1"></a>18.3.0-alpha.1 - 2025-11-06
 * [#1951](https://github.com/stripe/stripe-php/pull/1951) Update generated code for private-preview
   * Add support for new resources `TransitBalance`, `V2.Reporting.ReportRun`, `V2.Reporting.Report`
   * Add support for `create` and `retrieve` methods on resource `V2.Reporting.ReportRun`
@@ -1576,7 +1576,7 @@ This release changes the pinned API version to `2025-10-29.preview`.
   * Add support for `allocated_funds` on `Charge`, `PaymentIntent.confirm().$params`, `PaymentIntent.create().$params`, and `PaymentIntent.update().$params`
   * Add support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
 
-## 18.2.0-alpha.2 - 2025-10-30
+## <a id="18-2-0-alpha-2"></a>18.2.0-alpha.2 - 2025-10-30
 * [#1949](https://github.com/stripe/stripe-php/pull/1949) Update generated code for private-preview
   * Change `DelegatedCheckout\RequestedSession.update().$params.line_item_detail.quantity` to be required
   * Add support for `payment_method_preview` on `DelegatedCheckout.RequestedSession`
@@ -1586,7 +1586,7 @@ This release changes the pinned API version to `2025-10-29.preview`.
   * Add support for new value `commercial.lead.prepaid_card` on enum `V2.Core.Account.requirements.entries[].impact.restricts_capabilities[].capability`
   * Add support for new value `commercial.lead.prepaid_card` on enum `EventsV2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent.updated_capability`
 
-## 18.2.0-alpha.1 - 2025-10-29
+## <a id="18-2-0-alpha-1"></a>18.2.0-alpha.1 - 2025-10-29
 * [#1944](https://github.com/stripe/stripe-php/pull/1944) Update generated code for private-preview
   * Add support for `report_refund` method on resource `PaymentRecord`
   * Add support for new value `verification_data_not_found` on enums `Account.future_requirements.errors[].code`, `Account.requirements.errors[].code`, `BankAccount.future_requirements.errors[].code`, `BankAccount.requirements.errors[].code`, `Capability.future_requirements.errors[].code`, `Capability.requirements.errors[].code`, `Person.future_requirements.errors[].code`, and `Person.requirements.errors[].code`
@@ -1635,7 +1635,7 @@ This release changes the pinned API version to `2025-10-29.preview`.
   * Add support for `external_amount` on `V2.MoneyManagement.ReceivedCredit` and `V2.MoneyManagement.ReceivedDebit`
   * Add support for error code `payment_intent_rate_limit_exceeded` on `Invoice.last_finalization_error`, `PaymentIntent.last_payment_error`, `QuotePreviewInvoice.last_finalization_error`, `SetupAttempt.setup_error`, `SetupIntent.last_setup_error`, and `StripeError`
 
-## 18.1.0-alpha.4 - 2025-10-23
+## <a id="18-1-0-alpha-4"></a>18.1.0-alpha.4 - 2025-10-23
 * [#1941](https://github.com/stripe/stripe-php/pull/1941) Update generated code for private-preview
   * Add support for new resource `V2.Billing.PricingPlanSubscriptionComponents`
   * Add support for `retrieve` method on resource `V2.Billing.PricingPlanSubscriptionComponents`
@@ -1650,14 +1650,14 @@ This release changes the pinned API version to `2025-10-29.preview`.
   * Add support for `address`, `email`, `fulfillment_options`, `name`, `phone`, and `selected_fulfillment_option` on `DelegatedCheckout.RequestedSession.fulfillment_details`
   * Add support for new values `billie`, `crypto`, `kr_card`, `kriya`, `mb_way`, `mondu`, `ng_bank_transfer`, `ng_bank`, `ng_card`, `ng_market`, `ng_ussd`, `ng_wallet`, `payco`, `paypay`, `rechnung`, `samsung_pay`, `satispay`, `scalapay`, `sequra`, `sunbit`, `us_bank_account`, and `vipps` on enums `EventsV2CoreHealthAuthorizationRateDropFiringEvent.impact.payment_method_type`, `EventsV2CoreHealthAuthorizationRateDropResolvedEvent.impact.payment_method_type`, `EventsV2CoreHealthPaymentMethodErrorFiringEvent.impact.payment_method_type`, and `EventsV2CoreHealthPaymentMethodErrorResolvedEvent.impact.payment_method_type`
 
-## 18.1.0-alpha.3 - 2025-10-17
+## <a id="18-1-0-alpha-3"></a>18.1.0-alpha.3 - 2025-10-17
 * [#1939](https://github.com/stripe/stripe-php/pull/1939) Update generated code for private-preview
   * Add support for new resources `DelegatedCheckout.RequestedSession` and `Identity.BlocklistEntry`
   * Add support for `confirm`, `create`, `expire`, `retrieve`, and `update` methods on resource `DelegatedCheckout.RequestedSession`
   * Add support for `all`, `create`, `disable`, and `retrieve` methods on resource `Identity.BlocklistEntry`
   * Add support for `blocked_by_entry` on `Identity.VerificationReport.document`, `Identity.VerificationReport.selfie`, and `Identity\VerificationReport.all().$params`
 
-## 18.1.0-alpha.2 - 2025-10-09
+## <a id="18-1-0-alpha-2"></a>18.1.0-alpha.2 - 2025-10-09
 * [#1933](https://github.com/stripe/stripe-php/pull/1933) Update private preview changelog
 * [#1938](https://github.com/stripe/stripe-php/pull/1938) Update generated code for private-preview
   * Add support for new resource `PaymentMethodBalance`
@@ -1672,7 +1672,7 @@ This release changes the pinned API version to `2025-10-29.preview`.
   * Add support for thin events `V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent` with related object `V2.Core.Account`
   * Remove support for thin events `V1CustomerDiscountCreatedEvent`, `V1CustomerDiscountDeletedEvent`, and `V1CustomerDiscountUpdatedEvent` with related object `Discount`
 
-## 18.1.0-alpha.1 - 2025-10-01
+## <a id="18-1-0-alpha-1"></a>18.1.0-alpha.1 - 2025-10-01
 This release changes the pinned API version to `2025-09-30.preview`.
 
 It is built on top of SDK version 18.0.0 and 18.1.0-beta.1 which contain breaking changes. Please review the changelog for these versions if upgrading from older SDK versions.
@@ -1721,7 +1721,7 @@ It is built on top of SDK version 18.0.0 and 18.1.0-beta.1 which contain breakin
   * Remove support for resources `V2.Reporting.ReportRun`, `V2.Reporting.Report`
   * Remove support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
 
-## 17.7.0-alpha.2 - 2025-09-17
+## <a id="17-7-0-alpha-2"></a>17.7.0-alpha.2 - 2025-09-17
 * [#1904](https://github.com/stripe/stripe-php/pull/1904) generate private-preview SDK w/ mid Sept changes
   * Add support for `retrieve` method on resource `V2.Core.ClaimableSandbox`
   * Add support for `month_of_year` on `V2.Billing.Cadence.billing_cycle.month` and `V2\Billing\Cadence.create().$params.billing_cycle.month`
@@ -1736,7 +1736,7 @@ It is built on top of SDK version 18.0.0 and 18.1.0-beta.1 which contain breakin
   * Add support for thin events `V2CoreClaimableSandboxClaimedEvent`, `V2CoreClaimableSandboxExpiredEvent`, `V2CoreClaimableSandboxExpiringEvent`, and `V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent` with related object `V2.Core.ClaimableSandbox`
   * Remove support for thin event `V2BillingCadenceErroredEvent` with related object `V2.Billing.Cadence`
 
-## 17.7.0-alpha.1 - 2025-08-27
+## <a id="17-7-0-alpha-1"></a>17.7.0-alpha.1 - 2025-08-27
 * [#1897](https://github.com/stripe/stripe-php/pull/1897) Use the right API version 2025-08-27.preview
 * [#1892](https://github.com/stripe/stripe-php/pull/1892) Update generated code for private-preview
   * Add support for `attach_cadence` method on resource `Subscription`
