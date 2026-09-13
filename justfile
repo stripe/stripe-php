@@ -64,3 +64,7 @@ phpdoc:
     fi
 
     phpdoc
+
+# the lowest PHP this SDK supports, for the changelog
+minimum-runtime-version:
+    rg -N --color never -o '"php": ">=([^"]+)"' --replace '$1' composer.json
