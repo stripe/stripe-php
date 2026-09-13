@@ -65,6 +65,9 @@ phpdoc:
 
     phpdoc
 
-# the lowest PHP this SDK supports, for the changelog
-minimum-runtime-version:
-    rg -N --color never -o '"php": ">=([^"]+)"' --replace '$1' composer.json
+# ⭐ print the API version this SDK pins and the lowest runtime it supports
+print-version-info:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    echo "pinned-api-version: $(rg -N --color never -m1 -o '[0-9]{4}-[0-9]{2}-[0-9]{2}[.\w-]*' lib/Util/ApiVersion.php)"
+    echo "minimum-runtime-version: $(rg -N --color never -o '"php": ">=([^"]+)"' --replace '$1' composer.json)"
