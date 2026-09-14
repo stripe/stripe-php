@@ -1,7 +1,7 @@
 ---
 title: Update generated code for beta
 pr_url: https://github.com/stripe/stripe-php/pull/2020
-is_breaking: true
+semver_level: major
 is_stripe_api_change: true
 released_in_version: 20.1.0-beta.1
 ---
