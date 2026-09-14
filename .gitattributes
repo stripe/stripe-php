@@ -5,6 +5,7 @@
 /.editorconfig export-ignore
 /.gitattributes export-ignore
 /.github export-ignore
+/.hark export-ignore
 /.php-cs-fixer.php export-ignore
 /.vscode export-ignore
 /build.php export-ignore
