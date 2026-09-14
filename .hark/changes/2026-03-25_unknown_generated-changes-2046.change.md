@@ -1,6 +1,6 @@
 ---
 title: "Generated changes from [#2046](https://github.com/stripe/stripe-php/pull/2046), [#2044](https://github.com/stripe/stripe-php/pull/2044), [#2025](https://github.com/stripe/stripe-php/pull/2025)"
-is_breaking: true
+semver_level: major
 is_stripe_api_change: true
 section: ⚠️ Breaking changes due to changes in the Stripe API
 released_in_version: 20.0.0

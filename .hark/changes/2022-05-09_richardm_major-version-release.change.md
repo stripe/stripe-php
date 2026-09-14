@@ -1,7 +1,7 @@
 ---
 title: Major version release of v8.0.0. The [migration guide](https://github.com/stripe/stripe-php/wiki/Migration-Guide-for-v8) contains more information.
 pr_url: https://github.com/stripe/stripe-php/pull/1283
-is_breaking: true
+semver_level: major
 released_in_version: 8.0.0
 ---
 

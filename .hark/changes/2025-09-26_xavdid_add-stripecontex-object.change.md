@@ -1,7 +1,7 @@
 ---
 title: Add `StripeContext` object
 pr_url: https://github.com/stripe/stripe-php/pull/1916
-is_breaking: true
+semver_level: major
 released_in_version: 18.0.0
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Added StripeContext, StripeAccount and StripeVersion to BaseStripeClientInterface
 pr_url: https://github.com/stripe/stripe-php/pull/1905
-is_breaking: true
+semver_level: major
 released_in_version: 18.0.0
 ---
 

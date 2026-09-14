@@ -1,6 +1,6 @@
 ---
 title: Remove `all` method from `LineItem`.
-is_breaking: true
+semver_level: major
 section: ⚠️ Removed
 released_in_version: 9.0.0
 ---
