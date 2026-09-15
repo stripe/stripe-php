@@ -77,7 +77,7 @@ class Payout extends ApiResource
      * from. The <a href="/api/balances/object">balance object</a> details available
      * and pending amounts by source type.
      *
-     * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: array<string, string>, method?: string, payout_method?: string, source_type?: string, statement_descriptor?: string} $params
+     * @param null|array{amount: int, currency: string, description?: string, destination?: string, expand?: string[], metadata?: array<string, string>, method?: string, payout_method?: string, payout_method_options?: array{financial_account?: array{destination_currency?: string}}, source_type?: string, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
      * @return Payout the created resource
