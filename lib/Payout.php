@@ -101,7 +101,7 @@ class Payout extends ApiResource
      * that Stripe sent to you. The payouts return in sorted order, with the most
      * recently created payouts appearing first.
      *
-     * @param null|array{arrival_date?: array|int, created?: array|int, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{arrival_date?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Payout> of ApiResources

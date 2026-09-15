@@ -88,7 +88,7 @@ class VerificationSession extends \Stripe\ApiResource
     /**
      * Returns a list of VerificationSessions.
      *
-     * @param null|array{client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, related_customer_account?: string, starting_after?: string, status?: string} $params
+     * @param null|array{client_reference_id?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, related_customer_account?: string, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<VerificationSession> of ApiResources

@@ -159,7 +159,7 @@ class Session extends \Stripe\ApiResource
     /**
      * Returns a list of Checkout Sessions.
      *
-     * @param null|array{created?: array|int, customer?: string, customer_account?: string, customer_details?: array{email: string}, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, payment_link?: string, starting_after?: string, status?: string, subscription?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, customer?: string, customer_account?: string, customer_details?: array{email: string}, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, payment_link?: string, starting_after?: string, status?: string, subscription?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Session> of ApiResources

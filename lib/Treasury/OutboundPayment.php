@@ -69,7 +69,7 @@ class OutboundPayment extends \Stripe\ApiResource
     /**
      * Returns a list of OutboundPayments sent from the specified FinancialAccount.
      *
-     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, customer?: string, ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<OutboundPayment> of ApiResources
