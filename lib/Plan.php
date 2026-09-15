@@ -60,7 +60,7 @@ class Plan extends ApiResource
      * API</a>. It replaces the Plans API and is backwards compatible to simplify your
      * migration.
      *
-     * @param null|array{active?: bool, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|array<string, string>, meter?: string, nickname?: string, product?: array|string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
+     * @param null|array{active?: bool, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|array<string, string>, meter?: string, nickname?: string, product?: array{active?: bool, id?: string, metadata?: array<string, string>, name: string, statement_descriptor?: string, tax_code?: string, unit_label?: string}|string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: int|string})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
      * @param null|array|string $options
      *
      * @return Plan the created resource
@@ -104,7 +104,7 @@ class Plan extends ApiResource
     /**
      * Returns a list of your plans.
      *
-     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
+     * @param null|array{active?: bool, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Plan> of ApiResources

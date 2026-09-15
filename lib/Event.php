@@ -582,7 +582,7 @@ class Event extends ApiResource
      * <code>api_version</code> attribute (not according to your current Stripe API
      * version or <code>Stripe-Version</code> header).
      *
-     * @param null|array{created?: array|int, delivery_success?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, types?: string[]} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, delivery_success?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, types?: string[]} $params
      * @param null|array|string $opts
      *
      * @return Collection<Event> of ApiResources

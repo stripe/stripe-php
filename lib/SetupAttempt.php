@@ -34,7 +34,7 @@ class SetupAttempt extends ApiResource
     /**
      * Returns a list of SetupAttempts that associate with a provided SetupIntent.
      *
-     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, setup_intent: string, starting_after?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, setup_intent: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<SetupAttempt> of ApiResources

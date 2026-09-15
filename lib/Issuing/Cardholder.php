@@ -66,7 +66,7 @@ class Cardholder extends \Stripe\ApiResource
      * sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
-     * @param null|array{created?: array|int, email?: string, ending_before?: string, expand?: string[], limit?: int, phone_number?: string, starting_after?: string, status?: string, type?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, email?: string, ending_before?: string, expand?: string[], limit?: int, phone_number?: string, starting_after?: string, status?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Cardholder> of ApiResources
