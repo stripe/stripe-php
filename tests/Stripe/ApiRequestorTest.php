@@ -971,7 +971,7 @@ final class ApiRequestorTest extends TestCase
     public function testStripeNoticeTellsHumansHowToSuppressNotices()
     {
         self::assertSame(
-            "test notice\nTo suppress Stripe notices in test and sandbox environments, set STRIPE_SUPPRESS_NOTICES=true.",
+            "test notice\nTo suppress Stripe notices in test and sandbox environments, set the STRIPE_SUPPRESS_NOTICES environment variable to true.",
             $this->captureStripeNoticeWarning(['stripe-notice' => 'test notice'], [])
         );
     }
