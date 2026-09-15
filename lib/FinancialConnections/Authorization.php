@@ -25,7 +25,7 @@ class Authorization extends \Stripe\ApiResource
     const STATUS_INACTIVE = 'inactive';
 
     /**
-     * Retrieves the details of an Financial Connections <code>Authorization</code>.
+     * Retrieves the details of a Financial Connections <code>Authorization</code>.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

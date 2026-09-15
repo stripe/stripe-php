@@ -573,6 +573,7 @@ class ApiRequestor
         ['CODEX_CI', 'codex_cli'],
         ['CURSOR_AGENT', 'cursor'],
         ['GEMINI_CLI', 'gemini_cli'],
+        ['HERMES_AGENT', 'hermes'],
         ['OPENCLAW_SHELL', 'openclaw'],
         ['OPENCODE', 'open_code'],
         // aiAgents: The end of the section generated from our OpenAPI spec
