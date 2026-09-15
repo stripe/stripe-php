@@ -1,4 +1,5 @@
-# Expanded PHPDoc union parameter shapes
+# Migration guide for v22
+## Expanded PHPDoc union parameter shapes
 
 Request-parameter PHPDoc now preserves complete object and list shapes within unions instead of representing those variants as a generic `array`.
 
