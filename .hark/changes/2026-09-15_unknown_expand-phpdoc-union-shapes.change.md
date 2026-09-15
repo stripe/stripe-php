@@ -1,5 +1,6 @@
 ---
 title: Expand PHPDoc union parameter shapes
+pr_url: https://github.com/stripe/stripe-php/pull/2148
 semver_level: major
 ---
 
