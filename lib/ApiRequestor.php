@@ -647,7 +647,7 @@ class ApiRequestor
         $suppressionValue = $getEnv('STRIPE_SUPPRESS_NOTICES');
         $shouldSuppress = '' === $aiAgent
             && false !== $suppressionValue
-            && \in_array(\strtolower($suppressionValue), ['true', '1'], true);
+            && 'true' === \strtolower($suppressionValue);
         if ($shouldSuppress) {
             return;
         }

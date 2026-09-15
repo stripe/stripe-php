@@ -991,7 +991,7 @@ final class ApiRequestorTest extends TestCase
 
     public static function provideSuppressesStripeNoticesForHumansCases(): iterable
     {
-        return [['true'], ['TRUE'], ['1']];
+        return [['true'], ['TRUE']];
     }
 
     /**
@@ -1009,7 +1009,7 @@ final class ApiRequestorTest extends TestCase
 
     public static function provideDoesNotSuppressStripeNoticesForOtherValuesCases(): iterable
     {
-        return [[''], ['false'], ['invalid']];
+        return [[''], ['false'], ['1'], ['invalid']];
     }
 
     public function testDoesNotSuppressStripeNoticesForAIAgents()
