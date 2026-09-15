@@ -960,4 +960,159 @@ final class ApiRequestorTest extends TestCase
 
         self::assertFalse($warningEmitted);
     }
+
+    private function assertOriginRelativePath($url)
+    {
+        $reflector = new \ReflectionClass(ApiRequestor::class);
+        $method = $reflector->getMethod('validatePath');
+        $method->setAccessible(true);
+        $method->invoke(null, $url);
+    }
+
+    public function testAssertOriginRelativePathAcceptsPlainPaths()
+    {
+        $valid = [
+            '/v1/customers/cus_123',
+            '/v1/customers',
+            '/v2/core/accounts?page=page_123&limit=2',
+            // '@' is legal inside a path or query string -- it only opens an
+            // authority when it precedes the first '/'.
+            '/v1/customers?email=user%40example.com',
+            '/v1/invoices/in_123@456',
+            // A backslash does not open an authority: the '/' already closed it.
+            '/v1/\evil.example',
+        ];
+
+        foreach ($valid as $url) {
+            $this->assertOriginRelativePath($url);
+        }
+
+        // Reaching here without an exception is the assertion.
+        self::assertTrue(true);
+    }
+
+    public function testAssertOriginRelativePathRejectsHostilePaths()
+    {
+        $hostile = [
+            // Concatenated onto a base URL with no trailing slash, each of these
+            // moves the request's authority off api.stripe.com.
+            '@evil.example/v1/leak',
+            ':pw@evil.example/v1/leak',
+            ':80@evil.example/v1/leak',
+            // Extends the host into an attacker-owned subdomain
+            // (api.stripe.com.evil.example), which has a valid certificate.
+            '.evil.example/v1/leak',
+            '-evil.example/v1/leak',
+            'https://evil.example/v1/leak',
+            '//evil.example/v1/leak',
+            '',
+            'v1/customers',
+            null,
+            42,
+        ];
+
+        foreach ($hostile as $url) {
+            try {
+                $this->assertOriginRelativePath($url);
+                self::fail('Expected InvalidArgumentException for path: ' . \var_export($url, true));
+            } catch (Exception\InvalidArgumentException $e) {
+                self::assertNotNull($e);
+            }
+        }
+    }
+
+    public function testRawRequestRejectsHostilePathWithoutIssuingRequest()
+    {
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::never())->method('request');
+
+        $client = new StripeClient(['api_key' => 'sk_test_123']);
+
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $client->rawRequest('get', '@evil.example/v1/leak');
+    }
+
+    public function testFetchRelatedObjectRejectsHostileUrlWithoutIssuingRequest()
+    {
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::never())->method('request');
+
+        $client = new StripeClient(['api_key' => 'sk_test_123']);
+        $payload = \json_encode([
+            'id' => 'evt_123',
+            'object' => 'v2.core.event',
+            'type' => 'v2.core.account.created',
+            'created' => '2026-01-01T00:00:00Z',
+            'related_object' => [
+                'id' => 'acct_123',
+                'type' => 'account',
+                'url' => '@evil.example/v1/leak',
+            ],
+        ]);
+        $secret = 'whsec_test_secret';
+        $sigHeader = WebhookSignature::generateSignatureHeader($payload, $secret);
+
+        $notification = $client->parseEventNotification($payload, $sigHeader, $secret);
+        // fetchRelatedObject() is protected on the base class and re-exposed
+        // publicly by each generated notification subclass.
+        self::assertInstanceOf(Events\V2CoreAccountCreatedEventNotification::class, $notification);
+
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $notification->fetchRelatedObject();
+    }
+
+    public function testAutoPagingIteratorRejectsHostileNextPageUrlWithoutIssuingRequest()
+    {
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::never())->method('request');
+
+        $collection = V2\Collection::constructFrom([
+            'data' => [['id' => 'il_123']],
+            'next_page_url' => '@evil.example/v2/leak',
+        ]);
+
+        $this->expectException(Exception\InvalidArgumentException::class);
+        foreach ($collection->autoPagingIterator() as $item) {
+            // The single element of `data` is yielded before any page is
+            // fetched; the exception must arrive when turning the page.
+        }
+    }
+
+    private function assertNoHeaderInjection($header, $value)
+    {
+        $reflector = new \ReflectionClass(ApiRequestor::class);
+        $method = $reflector->getMethod('assertNoHeaderInjection');
+        $method->setAccessible(true);
+        $method->invoke(null, $header, $value);
+    }
+
+    public function testAssertNoHeaderInjectionAcceptsOrdinaryHeaders()
+    {
+        $this->assertNoHeaderInjection('Stripe-Context', 'acct_123/wksp_456');
+        $this->assertNoHeaderInjection('Authorization', 'Bearer sk_test_123');
+        // Non-string values are stringified by concatenation and cannot inject.
+        $this->assertNoHeaderInjection('Content-Length', 42);
+
+        self::assertTrue(true);
+    }
+
+    public function testAssertNoHeaderInjectionRejectsControlCharacters()
+    {
+        $hostile = [
+            ['Stripe-Context', "acct_123\r\nX-Injected: 1"],
+            ['Stripe-Request-Trigger', "event=evt_1\nX-Injected: 1"],
+            ['Authorization', "Bearer sk_test_123\r\n"],
+            ['Authorization', "Bearer sk_test_123\0"],
+            ["X-Injected\r\nEvil", 'value'],
+        ];
+
+        foreach ($hostile as list($header, $value)) {
+            try {
+                $this->assertNoHeaderInjection($header, $value);
+                self::fail('Expected InvalidArgumentException for header: ' . \var_export($header, true));
+            } catch (Exception\InvalidArgumentException $e) {
+                self::assertNotNull($e);
+            }
+        }
+    }
 }
