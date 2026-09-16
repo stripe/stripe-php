@@ -70,6 +70,7 @@ class PayoutIntentService extends \Stripe\Service\AbstractService
      * @return \Stripe\V2\MoneyManagement\PayoutIntent
      *
      * @throws \Stripe\Exception\FeatureNotEnabledException
+     * @throws \Stripe\Exception\RecipientNotNotifiableException
      */
     public function create($params = null, $opts = null)
     {
@@ -120,6 +121,7 @@ class PayoutIntentService extends \Stripe\Service\AbstractService
      * @return \Stripe\V2\MoneyManagement\PayoutIntent
      *
      * @throws \Stripe\Exception\FeatureNotEnabledException
+     * @throws \Stripe\Exception\RecipientNotNotifiableException
      */
     public function update($id, $params = null, $opts = null)
     {

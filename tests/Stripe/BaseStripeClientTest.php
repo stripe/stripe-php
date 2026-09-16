@@ -869,6 +869,54 @@ final class BaseStripeClientTest extends TestCase
         self::assertSame('meter_123', $event->related_object->id);
     }
 
+    /**
+     * Codegen emits `const RELATED_OBJECT_CLASS = \Stripe\RelatedSingletonObject::class`
+     * on singleton event notifications. No such event exists in the spec yet, so stand in
+     * for one with the same shape codegen produces and check the base constructor's late
+     * static binding picks it up.
+     */
+    public function testRelatedObjectClassOverrideSelectsSingletonObject()
+    {
+        $json = [
+            'id' => 'evt_234',
+            'object' => 'v2.core.event',
+            'type' => 'v1.balance.available',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'livemode' => false,
+            'related_object' => [
+                'id' => null,
+                'type' => 'balance',
+                'url' => '/v1/balance',
+            ],
+        ];
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+
+        $notification = new class($json, $client) extends V2\Core\EventNotification {
+            const RELATED_OBJECT_CLASS = RelatedSingletonObject::class;
+            public $related_object;
+        };
+
+        self::assertInstanceOf(RelatedSingletonObject::class, $notification->related_object);
+        self::assertSame('balance', $notification->related_object->type);
+        self::assertSame('/v1/balance', $notification->related_object->url);
+
+        // the base class default is unaffected
+        self::assertSame(RelatedObject::class, V2\Core\EventNotification::RELATED_OBJECT_CLASS);
+    }
+
+    public function testRelatedSingletonObjectExposesNoId()
+    {
+        $related = new RelatedSingletonObject([
+            'type' => 'balance',
+            'url' => '/v1/balance',
+        ]);
+
+        self::assertSame('balance', $related->type);
+        self::assertSame('/v1/balance', $related->url);
+        self::assertFalse(property_exists($related, 'id'));
+        self::assertSame(['type', 'url'], array_keys(get_object_vars($related)));
+    }
+
     public function testParseUnknownEventNotification()
     {
         $jsonEvent = [
