@@ -101,7 +101,7 @@ class Refund extends ApiResource
      * order, with the most recent refunds appearing first. The 10 most recent refunds
      * are always available by default on the Charge object.
      *
-     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
+     * @param null|array{charge?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Refund> of ApiResources

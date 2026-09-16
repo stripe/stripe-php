@@ -14,7 +14,7 @@ class SetupIntentService extends AbstractService
     /**
      * Returns a list of SetupIntents.
      *
-     * @param null|array{attach_to_self?: bool, created?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, payment_method?: string, starting_after?: string} $params
+     * @param null|array{attach_to_self?: bool, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, payment_method?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\SetupIntent>

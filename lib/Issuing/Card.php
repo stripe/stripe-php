@@ -86,7 +86,7 @@ class Card extends \Stripe\ApiResource
      * descending order by creation date, with the most recently created object
      * appearing first.
      *
-     * @param null|array{cardholder?: string, created?: array|int, ending_before?: string, exp_month?: int, exp_year?: int, expand?: string[], last4?: string, limit?: int, personalization_design?: string, starting_after?: string, status?: string, type?: string} $params
+     * @param null|array{cardholder?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, exp_month?: int, exp_year?: int, expand?: string[], last4?: string, limit?: int, personalization_design?: string, starting_after?: string, status?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Card> of ApiResources

@@ -58,7 +58,7 @@ class PromotionCode extends ApiResource
     /**
      * Returns a list of your promotion codes.
      *
-     * @param null|array{active?: bool, code?: string, coupon?: string, created?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{active?: bool, code?: string, coupon?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<PromotionCode> of ApiResources

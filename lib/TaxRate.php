@@ -87,7 +87,7 @@ class TaxRate extends ApiResource
      * Returns a list of your tax rates. Tax rates are returned sorted by creation
      * date, with the most recently created tax rates appearing first.
      *
-     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], inclusive?: bool, limit?: int, starting_after?: string} $params
+     * @param null|array{active?: bool, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], inclusive?: bool, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<TaxRate> of ApiResources
