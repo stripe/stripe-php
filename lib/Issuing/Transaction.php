@@ -52,7 +52,7 @@ class Transaction extends \Stripe\ApiResource
      * sorted in descending order by creation date, with the most recently created
      * object appearing first.
      *
-     * @param null|array{card?: string, cardholder?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
+     * @param null|array{card?: string, cardholder?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Transaction> of ApiResources
