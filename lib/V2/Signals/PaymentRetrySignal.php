@@ -14,7 +14,7 @@ namespace Stripe\V2\Signals;
  * @property string $evaluation The evaluation that generated this signal.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|string $payment_intent The payment intent this signal relates to.
- * @property string $payment_record The payment record this signal relates to.
+ * @property null|string $payment_record The payment record this signal relates to.
  * @property (object{action: string, reason: string}&\Stripe\StripeObject) $recommendation The retry recommendation.
  */
 class PaymentRetrySignal extends \Stripe\ApiResource

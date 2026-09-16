@@ -8,6 +8,7 @@ namespace Stripe\Service\V2\Core\Vault;
  * Service factory class for API resources in the Vault namespace.
  *
  * @property GbBankAccountService $gbBankAccounts
+ * @property NetworkTokenService $networkTokens
  * @property UsBankAccountService $usBankAccounts
  */
 class VaultServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -17,6 +18,7 @@ class VaultServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'gbBankAccounts' => GbBankAccountService::class,
+        'networkTokens' => NetworkTokenService::class,
         'usBankAccounts' => UsBankAccountService::class,
     ];
 

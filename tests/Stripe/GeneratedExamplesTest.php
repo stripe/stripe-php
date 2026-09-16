@@ -10289,6 +10289,104 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
     }
 
+    public function testV2CoreVaultNetworkTokenPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/network_tokens',
+            ['type' => 'card'],
+            [],
+            false,
+            [
+                'object' => 'v2.core.vault.network_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->networkTokens->create([
+            'type' => 'card',
+        ]);
+        self::assertInstanceOf(V2\Core\Vault\NetworkToken::class, $result);
+    }
+
+    public function testV2CoreVaultNetworkTokenPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/network_tokens/create_from_credential',
+            ['type' => 'card'],
+            [],
+            false,
+            [
+                'object' => 'v2.core.vault.network_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->networkTokens->createFromCredential([
+            'type' => 'card',
+        ]);
+        self::assertInstanceOf(V2\Core\Vault\NetworkToken::class, $result);
+    }
+
+    public function testV2CoreVaultNetworkTokenGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/vault/network_tokens/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.vault.network_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->networkTokens->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\NetworkToken::class, $result);
+    }
+
+    public function testV2CoreVaultNetworkTokenPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/network_tokens/id_123/generate_cryptogram',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.vault.network_token',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->vault->networkTokens->generateCryptogram(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\Vault\NetworkToken::class, $result);
+    }
+
     public function testV2CoreVaultUsBankAccountGet()
     {
         $this->stubRequest(
@@ -11650,11 +11748,11 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.money_management.financial_address',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'currency' => 'usd',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
                         'livemode' => [],
                         'status' => 'failed',
+                        'type' => 'bank_account',
                     ],
                 ],
                 'next_page_url' => null,
@@ -11675,25 +11773,25 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/financial_addresses',
             [
                 'financial_account' => 'financial_account',
-                'type' => 'ca_bank_account',
+                'type' => 'bank_account',
             ],
             [],
             false,
             [
                 'object' => 'v2.money_management.financial_address',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'currency' => 'usd',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'failed',
+                'type' => 'bank_account',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->financialAddresses->create([
             'financial_account' => 'financial_account',
-            'type' => 'ca_bank_account',
+            'type' => 'bank_account',
         ]);
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
@@ -11709,11 +11807,11 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.money_management.financial_address',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'currency' => 'usd',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'failed',
+                'type' => 'bank_account',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -13244,6 +13342,10 @@ final class GeneratedExamplesTest extends TestCase
                             'currency' => 'USD',
                             'value' => [],
                         ],
+                        'amount_received' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -13274,6 +13376,10 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.money_management.received_credit',
                 'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'amount_received' => [
                     'currency' => 'USD',
                     'value' => [],
                 ],
@@ -14905,7 +15011,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/signals/account_activity',
-            ['type' => 'account_restricted'],
+            ['type' => 'login_attempt'],
             [],
             false,
             [
@@ -14914,13 +15020,13 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'occurred_at' => '1970-01-10T01:49:44.717Z',
-                'type' => 'account_restricted',
+                'type' => 'login_attempt',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->signals->accountActivity->create([
-            'type' => 'account_restricted',
+            'type' => 'login_attempt',
         ]);
         self::assertInstanceOf(V2\Signals\AccountActivity::class, $result);
     }
@@ -14961,7 +15067,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'occurred_at' => '1970-01-10T01:49:44.717Z',
-                'type' => 'account_restricted',
+                'type' => 'login_attempt',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -15138,7 +15244,6 @@ final class GeneratedExamplesTest extends TestCase
                     'evaluation' => 'evaluation',
                     'id' => 'obj_123',
                     'livemode' => [],
-                    'payment_record' => 'payment_record',
                     'recommendation' => [
                         'action' => 'wait',
                         'reason' => 'reason',
@@ -15172,7 +15277,6 @@ final class GeneratedExamplesTest extends TestCase
                     'evaluation' => 'evaluation',
                     'id' => 'obj_123',
                     'livemode' => [],
-                    'payment_record' => 'payment_record',
                     'recommendation' => [
                         'action' => 'wait',
                         'reason' => 'reason',
@@ -15209,7 +15313,6 @@ final class GeneratedExamplesTest extends TestCase
                     'evaluation' => 'evaluation',
                     'id' => 'obj_123',
                     'livemode' => [],
-                    'payment_record' => 'payment_record',
                     'recommendation' => [
                         'action' => 'wait',
                         'reason' => 'reason',
@@ -15246,7 +15349,6 @@ final class GeneratedExamplesTest extends TestCase
                     'evaluation' => 'evaluation',
                     'id' => 'obj_123',
                     'livemode' => [],
-                    'payment_record' => 'payment_record',
                     'recommendation' => [
                         'action' => 'wait',
                         'reason' => 'reason',
@@ -15279,7 +15381,6 @@ final class GeneratedExamplesTest extends TestCase
                 'evaluation' => 'evaluation',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'payment_record' => 'payment_record',
                 'recommendation' => [
                     'action' => 'wait',
                     'reason' => 'reason',
@@ -15782,8 +15883,8 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number', 'currency' => 'usd'],
+            '/v2/core/vault/network_tokens',
+            ['type' => 'card'],
             [],
             false,
             [
@@ -15797,9 +15898,8 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->core->vault->usBankAccounts->create([
-                'account_number' => 'account_number',
-                'currency' => 'usd',
+            $this->v2Client->v2->core->vault->networkTokens->create([
+                'type' => 'card',
             ]);
         } catch (Exception\BlockedByStripeException $e) {
         }
@@ -15816,7 +15916,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'error' => [
                     'type' => 'cannot_proceed',
-                    'code' => 'default_payout_method_cannot_be_archived',
+                    'code' => 'card_brand_not_supported',
                 ],
             ],
             400,
@@ -15914,7 +16014,7 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/financial_addresses',
             [
                 'financial_account' => 'financial_account',
-                'type' => 'ca_bank_account',
+                'type' => 'bank_account',
             ],
             [],
             false,
@@ -15931,7 +16031,7 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->moneyManagement->financialAddresses->create([
                 'financial_account' => 'financial_account',
-                'type' => 'ca_bank_account',
+                'type' => 'bank_account',
             ]);
         } catch (Exception\FinancialAccountNotOpenException $e) {
         }
@@ -16086,6 +16186,32 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
+    public function testMerchantNotGatedError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/network_tokens',
+            ['type' => 'card'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'merchant_not_gated',
+                    'code' => 'permission_denied',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->networkTokens->create([
+                'type' => 'card',
+            ]);
+        } catch (Exception\MerchantNotGatedException $e) {
+        }
+    }
+
     public function testNonZeroBalanceError()
     {
         $this->stubRequest(
@@ -16170,8 +16296,8 @@ final class GeneratedExamplesTest extends TestCase
     public function testRateLimitError()
     {
         $this->stubRequest(
-            'get',
-            '/v2/core/accounts',
+            'delete',
+            '/v2/billing/contracts/id_123',
             [],
             [],
             false,
@@ -16186,7 +16312,7 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->core->accounts->all([]);
+            $this->v2Client->v2->billing->contracts->delete('id_123', []);
         } catch (Exception\RateLimitException $e) {
         }
     }
