@@ -633,11 +633,31 @@ class ApiRequestor
         return [$absUrl, $rawHeaders, $params, $hasFile, $myApiKey];
     }
 
-    private function _maybeEmitStripeNotice($rheaders)
+    private function _maybeEmitStripeNotice($rheaders, $getEnv = null)
     {
-        if (isset($rheaders['stripe-notice']) && \is_string($rheaders['stripe-notice'])) {
-            \trigger_error($rheaders['stripe-notice'], \E_USER_WARNING);
+        if (!isset($rheaders['stripe-notice']) || !\is_string($rheaders['stripe-notice'])) {
+            return;
         }
+
+        if (null === $getEnv) {
+            $getEnv = '\getenv';
+        }
+
+        $aiAgent = self::_detectAIAgent($getEnv);
+        $suppressionValue = $getEnv('STRIPE_SUPPRESS_NOTICES');
+        $shouldSuppress = '' === $aiAgent
+            && false !== $suppressionValue
+            && 'true' === \strtolower($suppressionValue);
+        if ($shouldSuppress) {
+            return;
+        }
+
+        $notice = $rheaders['stripe-notice'];
+        if ('' === $aiAgent) {
+            $notice .= "\nTo suppress Stripe notices in test and sandbox environments, set the STRIPE_SUPPRESS_NOTICES environment variable to true.";
+        }
+
+        \trigger_error($notice, \E_USER_WARNING);
     }
 
     /**

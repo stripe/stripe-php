@@ -929,7 +929,98 @@ final class ApiRequestorTest extends TestCase
         ;
         ApiRequestor::setHttpClient($stub);
 
-        Charge::retrieve('ch_123');
+        $originalClaudeCode = \getenv('CLAUDECODE');
+        \putenv('CLAUDECODE=1');
+
+        try {
+            Charge::retrieve('ch_123');
+        } finally {
+            false === $originalClaudeCode
+                ? \putenv('CLAUDECODE')
+                : \putenv("CLAUDECODE={$originalClaudeCode}");
+        }
+    }
+
+    private function captureStripeNoticeWarning($headers, $env)
+    {
+        $warning = null;
+        \set_error_handler(static function ($errno, $errstr) use (&$warning) {
+            $warning = $errstr;
+
+            return true;
+        }, \E_USER_WARNING);
+
+        try {
+            $reflector = new \ReflectionClass(ApiRequestor::class);
+            $method = $reflector->getMethod('_maybeEmitStripeNotice');
+            $method->setAccessible(true);
+            $method->invoke(
+                new ApiRequestor(),
+                $headers,
+                static function ($key) use ($env) {
+                    return \array_key_exists($key, $env) ? $env[$key] : false;
+                }
+            );
+        } finally {
+            \restore_error_handler();
+        }
+
+        return $warning;
+    }
+
+    public function testStripeNoticeTellsHumansHowToSuppressNotices()
+    {
+        self::assertSame(
+            "test notice\nTo suppress Stripe notices in test and sandbox environments, set the STRIPE_SUPPRESS_NOTICES environment variable to true.",
+            $this->captureStripeNoticeWarning(['stripe-notice' => 'test notice'], [])
+        );
+    }
+
+    /**
+     * @dataProvider provideSuppressesStripeNoticesForHumansCases
+     *
+     * @param mixed $suppressionValue
+     */
+    public function testSuppressesStripeNoticesForHumans($suppressionValue)
+    {
+        self::assertNull($this->captureStripeNoticeWarning(
+            ['stripe-notice' => 'test notice'],
+            ['STRIPE_SUPPRESS_NOTICES' => $suppressionValue]
+        ));
+    }
+
+    public static function provideSuppressesStripeNoticesForHumansCases(): iterable
+    {
+        return [['true'], ['TRUE']];
+    }
+
+    /**
+     * @dataProvider provideDoesNotSuppressStripeNoticesForOtherValuesCases
+     *
+     * @param mixed $suppressionValue
+     */
+    public function testDoesNotSuppressStripeNoticesForOtherValues($suppressionValue)
+    {
+        self::assertNotNull($this->captureStripeNoticeWarning(
+            ['stripe-notice' => 'test notice'],
+            ['STRIPE_SUPPRESS_NOTICES' => $suppressionValue]
+        ));
+    }
+
+    public static function provideDoesNotSuppressStripeNoticesForOtherValuesCases(): iterable
+    {
+        return [[''], ['false'], ['1'], ['invalid']];
+    }
+
+    public function testDoesNotSuppressStripeNoticesForAIAgents()
+    {
+        self::assertSame(
+            'test notice',
+            $this->captureStripeNoticeWarning(
+                ['stripe-notice' => 'test notice'],
+                ['STRIPE_SUPPRESS_NOTICES' => 'true', 'CODEX_SANDBOX' => '1']
+            )
+        );
     }
 
     public function testNoWarningWhenStripeNoticeHeaderAbsent()
