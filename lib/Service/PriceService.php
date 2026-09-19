@@ -128,13 +128,13 @@ class PriceService extends AbstractService
     /**
      * Serializes a Price update request into a batch job JSONL line.
      *
-     * @param string $price
+     * @param string $id
      * @param null|array{active?: bool, currency_options?: null|array<string, array{custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], unit_amount?: int, unit_amount_decimal?: string}>, expand?: string[], external_reference?: null|string, lookup_key?: string, metadata?: null|array<string, string>, migrate_to?: null|array{behavior: string, effective_after?: int, price: string}, nickname?: string, tax_behavior?: string, transfer_lookup_key?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchUpdate($price, $params = null, $opts = null)
+    public function serializeBatchUpdate($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -145,7 +145,7 @@ class PriceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['price' => $price];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

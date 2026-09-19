@@ -5,7 +5,7 @@
 namespace Stripe\Events;
 
 /**
- * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
+ * @property \Stripe\RelatedSingletonObject $related_object Object containing the reference to API resource relevant to the event
  */
 class V1BalanceSettingsUpdatedEvent extends \Stripe\V2\Core\Event
 {

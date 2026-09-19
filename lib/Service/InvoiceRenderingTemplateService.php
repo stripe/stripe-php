@@ -85,13 +85,13 @@ class InvoiceRenderingTemplateService extends AbstractService
      * Serializes an InvoiceRenderingTemplate archive request into a batch job JSONL
      * line.
      *
-     * @param string $template
+     * @param string $id
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchArchive($template, $params = null, $opts = null)
+    public function serializeBatchArchive($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -102,7 +102,7 @@ class InvoiceRenderingTemplateService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['template' => $template];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -115,13 +115,13 @@ class InvoiceRenderingTemplateService extends AbstractService
      * Serializes an InvoiceRenderingTemplate unarchive request into a batch job JSONL
      * line.
      *
-     * @param string $template
+     * @param string $id
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchUnarchive($template, $params = null, $opts = null)
+    public function serializeBatchUnarchive($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -132,7 +132,7 @@ class InvoiceRenderingTemplateService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['template' => $template];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

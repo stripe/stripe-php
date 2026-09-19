@@ -108,13 +108,13 @@ class PromotionCodeService extends AbstractService
     /**
      * Serializes a PromotionCode update request into a batch job JSONL line.
      *
-     * @param string $promotion_code
+     * @param string $id
      * @param null|array{active?: bool, expand?: string[], metadata?: null|array<string, string>, restrictions?: array{currency_options?: array<string, array{minimum_amount?: int}>}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchUpdate($promotion_code, $params = null, $opts = null)
+    public function serializeBatchUpdate($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -125,7 +125,7 @@ class PromotionCodeService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['promotion_code' => $promotion_code];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

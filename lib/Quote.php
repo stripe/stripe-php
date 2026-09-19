@@ -261,7 +261,7 @@ class Quote extends ApiResource
 
     /**
      * @param string $id
-     * @param string $preview_invoice
+     * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -269,9 +269,9 @@ class Quote extends ApiResource
      *
      * @throws Exception\ApiErrorException if the request fails
      */
-    public static function allPreviewInvoiceLines($id, $preview_invoice, $params = null, $opts = null)
+    public static function allPreviewInvoiceLines($id, $id, $params = null, $opts = null)
     {
-        $url = static::resourceUrl($id) . '/preview_invoices/' . $preview_invoice . '/lines';
+        $url = static::resourceUrl($id) . '/preview_invoices/' . $id . '/lines';
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
         $obj = Util\Util::convertToStripeObject($response->json, $opts);
         $obj->setLastResponse($response);

@@ -103,13 +103,13 @@ class TaxIdService extends AbstractService
     /**
      * Serializes a TaxId create request into a batch job JSONL line.
      *
-     * @param string $customer
+     * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchCreateForCustomer($customer, $params = null, $opts = null)
+    public function serializeBatchCreateForCustomer($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -120,7 +120,7 @@ class TaxIdService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['customer' => $customer];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -132,14 +132,14 @@ class TaxIdService extends AbstractService
     /**
      * Serializes a TaxId delete request into a batch job JSONL line.
      *
-     * @param string $customer
+     * @param string $customer_id
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchDelete($customer, $id, $params = null, $opts = null)
+    public function serializeBatchDelete($customer_id, $id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -150,7 +150,7 @@ class TaxIdService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['customer' => $customer, 'id' => $id];
+        $item['path_params'] = ['customer_id' => $customer_id, 'id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

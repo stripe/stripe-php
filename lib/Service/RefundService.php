@@ -112,13 +112,13 @@ class RefundService extends AbstractService
     /**
      * Serializes a Refund cancel request into a batch job JSONL line.
      *
-     * @param string $refund
+     * @param string $id
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchCancel($refund, $params = null, $opts = null)
+    public function serializeBatchCancel($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -129,7 +129,7 @@ class RefundService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['refund' => $refund];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

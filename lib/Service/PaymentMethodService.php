@@ -140,7 +140,7 @@ class PaymentMethodService extends AbstractService
      * to be updated.
      *
      * @param string $id
-     * @param null|array{allow_redisplay?: string, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, card?: array{exp_month?: int, exp_year?: int, networks?: array{preferred?: null|string}}, custom?: array{payment_method_reference?: string, usage?: string}, expand?: string[], metadata?: null|array<string, string>, payto?: array{account_number?: string, bsb_number?: string, pay_id?: string}, us_bank_account?: array{account_holder_type?: string, account_type?: string}} $params
+     * @param null|array{allow_redisplay?: string, billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string, tax_id?: string}, card?: array{exp_month?: int, exp_year?: int, networks?: array{preferred?: null|string}}, custom?: array{payment_method_reference?: string, usage?: string}, expand?: string[], metadata?: null|array<string, string>, us_bank_account?: array{account_holder_type?: string, account_type?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentMethod
@@ -155,13 +155,13 @@ class PaymentMethodService extends AbstractService
     /**
      * Serializes a PaymentMethod attach request into a batch job JSONL line.
      *
-     * @param string $payment_method
+     * @param string $id
      * @param null|array{customer?: string, customer_account?: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchAttach($payment_method, $params = null, $opts = null)
+    public function serializeBatchAttach($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -172,7 +172,7 @@ class PaymentMethodService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['payment_method' => $payment_method];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

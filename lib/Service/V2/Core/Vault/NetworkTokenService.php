@@ -12,8 +12,7 @@ namespace Stripe\Service\V2\Core\Vault;
 class NetworkTokenService extends \Stripe\Service\AbstractService
 {
     /**
-     * Creates or returns a NetworkToken from raw card data for POST
-     * /v2/core/vault/network_tokens.
+     * Create or Return a Network Token Using Raw Card Data.
      *
      * @param null|array{card?: array{exp_month: string, exp_year: string, number: string, origin?: string, owner_details?: array{email?: string, phone?: string}}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -30,8 +29,7 @@ class NetworkTokenService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates or returns a NetworkToken from an existing card reference for POST
-     * /v2/core/vault/network_tokens/create_from_credential.
+     * Creates or returns a Network Token from an existing card reference.
      *
      * @param null|array{card?: array{origin?: string, reference: string}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -47,10 +45,9 @@ class NetworkTokenService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Generates a single-use cryptogram for POST
-     * /v2/core/vault/network_tokens/:id/generate_cryptogram. Every successful call
-     * generates a new cryptogram, and retrying can generate another cryptogram. The
-     * cryptogram is returned only in this response and is never persisted.
+     * Every successful call generates a new cryptogram, and retrying can generate
+     * another cryptogram. The cryptogram is returned only in this response and is
+     * never persisted.
      *
      * @param string $id
      * @param null|array{type?: string} $params
@@ -67,8 +64,7 @@ class NetworkTokenService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the persisted NetworkToken projection for GET
-     * /v2/core/vault/network_tokens/:id.
+     * Retrieves an existing network token.
      *
      * @param string $id
      * @param null|array $params

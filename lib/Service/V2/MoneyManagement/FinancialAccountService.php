@@ -6,6 +6,7 @@ namespace Stripe\Service\V2\MoneyManagement;
 
 /**
  * @property FinancialAccounts\StatementService $statements
+ * @property FinancialAccounts\WalletExportService $walletExport
  *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
  *
@@ -17,6 +18,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
 
     protected static $classMap = [
         'statements' => FinancialAccounts\StatementService::class,
+        'walletExport' => FinancialAccounts\WalletExportService::class,
     ];
 
     /**
@@ -70,7 +72,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * Closes a FinancialAccount with or without forwarding settings.
      *
      * @param string $id
-     * @param null|array{forwarding_settings?: array{payment_method?: string, payout_method?: string}} $params
+     * @param null|array{forwarding_settings?: array{payment_method?: string, payout_method?: string, skip_exportable_balances?: bool}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount
@@ -109,7 +111,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     /**
      * Creates a new FinancialAccount.
      *
-     * @param null|array{display_name?: string, metadata?: array<string, string>, savings?: array{holds_currencies: string[]}, storage?: array{funds_usage_type?: string, holds_currencies: string[]}, type: string} $params
+     * @param null|array{display_name?: string, metadata?: array<string, string>, savings?: array{holds_currencies: string[]}, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, funds_usage_type?: string, holds_currencies: string[]}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount
@@ -190,7 +192,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * Updates an existing FinancialAccount.
      *
      * @param string $id
-     * @param null|array{display_name?: string, metadata?: array<string, null|string>, storage?: array{holds_currencies?: string[]}} $params
+     * @param null|array{display_name?: string, forwarding_settings?: array{payment_method?: string, payout_method?: string, skip_exportable_balances?: bool}, metadata?: array<string, null|string>, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, holds_currencies?: string[]}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount

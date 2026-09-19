@@ -5481,6 +5481,8 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.billing.contract',
+                        'collection_status' => 'unpaid',
+                        'collection_status_transitions' => [],
                         'contract_number' => 'contract_number',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'currency' => 'usd',
@@ -5511,6 +5513,8 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
+                'collection_status' => 'unpaid',
+                'collection_status_transitions' => [],
                 'contract_number' => 'contract_number',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
@@ -5558,6 +5562,8 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
+                'collection_status' => 'unpaid',
+                'collection_status_transitions' => [],
                 'contract_number' => 'contract_number',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
@@ -5586,6 +5592,8 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
+                'collection_status' => 'unpaid',
+                'collection_status_transitions' => [],
                 'contract_number' => 'contract_number',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
@@ -5611,6 +5619,8 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
+                'collection_status' => 'unpaid',
+                'collection_status_transitions' => [],
                 'contract_number' => 'contract_number',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
@@ -5639,6 +5649,8 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.contract',
+                'collection_status' => 'unpaid',
+                'collection_status_transitions' => [],
                 'contract_number' => 'contract_number',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'currency' => 'usd',
@@ -8620,7 +8632,7 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.core.account',
-                        'applied_configurations' => ['0' => 'card_creator'],
+                        'applied_configurations' => ['0' => 'money_manager'],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'livemode' => [],
@@ -8647,7 +8659,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'card_creator'],
+                'applied_configurations' => ['0' => 'money_manager'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -8669,7 +8681,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'card_creator'],
+                'applied_configurations' => ['0' => 'money_manager'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -8691,7 +8703,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'card_creator'],
+                'applied_configurations' => ['0' => 'money_manager'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -8713,7 +8725,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.account',
-                'applied_configurations' => ['0' => 'card_creator'],
+                'applied_configurations' => ['0' => 'money_manager'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -8951,7 +8963,7 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['merchant'],
+                        'configurations' => ['developer'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -8960,7 +8972,7 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['merchant'],
+                        'configurations' => ['developer'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -9007,7 +9019,7 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['merchant'],
+                    'configurations' => ['developer'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -9016,7 +9028,7 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['merchant'],
+                    'configurations' => ['developer'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -11735,6 +11747,75 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\FinancialAccountStatement::class, $result);
     }
 
+    public function testV2MoneyManagementFinancialAccountsWalletExportGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/financial_accounts/id_123/wallet_export',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.financial_account_wallet_export',
+                'financial_account' => 'financial_account',
+                'livemode' => [],
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAccounts->walletExport->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAccountWalletExport::class, $result);
+    }
+
+    public function testV2MoneyManagementFinancialAccountsWalletExportPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts/id_123/wallet_export/export_credentials',
+            [
+                'encryption' => [
+                    'recipient_public_key' => 'recipient_public_key',
+                    'type' => 'hpke',
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.financial_account_wallet_export_credentials',
+                'credentials_available_until' => '1970-01-18T02:11:26.629Z',
+                'livemode' => [],
+                'wallets' => [
+                    '0' => [
+                        'address' => 'address',
+                        'credentials_encrypted' => [
+                            'ciphertext' => 'ciphertext',
+                            'encapsulated_key' => 'encapsulated_key',
+                            'type' => 'hpke',
+                        ],
+                        'currency_networks' => ['key' => 'tempo'],
+                        'network_type' => 'ethereum',
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->financialAccounts->walletExport->exportCredentials(
+            'id_123',
+            [
+                'encryption' => [
+                    'recipient_public_key' => 'recipient_public_key',
+                    'type' => 'hpke',
+                ],
+            ]
+        );
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAccountWalletExportCredentials::class, $result);
+    }
+
     public function testV2MoneyManagementFinancialAddressGet()
     {
         $this->stubRequest(
@@ -12434,7 +12515,7 @@ final class GeneratedExamplesTest extends TestCase
                             'id' => 'obj_123',
                             'livemode' => [],
                             'restricted' => [],
-                            'type' => 'crypto_wallet',
+                            'type' => 'apple_pay',
                             'usage_status' => [
                                 'payments' => 'eligible',
                                 'transfers' => 'disabled',
@@ -12475,7 +12556,7 @@ final class GeneratedExamplesTest extends TestCase
                     'id' => 'obj_123',
                     'livemode' => [],
                     'restricted' => [],
-                    'type' => 'crypto_wallet',
+                    'type' => 'apple_pay',
                     'usage_status' => [
                         'payments' => 'eligible',
                         'transfers' => 'disabled',
@@ -12511,7 +12592,7 @@ final class GeneratedExamplesTest extends TestCase
                     'id' => 'obj_123',
                     'livemode' => [],
                     'restricted' => [],
-                    'type' => 'crypto_wallet',
+                    'type' => 'apple_pay',
                     'usage_status' => [
                         'payments' => 'eligible',
                         'transfers' => 'disabled',
@@ -12550,7 +12631,7 @@ final class GeneratedExamplesTest extends TestCase
                     'id' => 'obj_123',
                     'livemode' => [],
                     'restricted' => [],
-                    'type' => 'crypto_wallet',
+                    'type' => 'apple_pay',
                     'usage_status' => [
                         'payments' => 'eligible',
                         'transfers' => 'disabled',
@@ -12589,7 +12670,7 @@ final class GeneratedExamplesTest extends TestCase
                     'id' => 'obj_123',
                     'livemode' => [],
                     'restricted' => [],
-                    'type' => 'crypto_wallet',
+                    'type' => 'apple_pay',
                     'usage_status' => [
                         'payments' => 'eligible',
                         'transfers' => 'disabled',
@@ -13147,7 +13228,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'restricted' => [],
-                        'type' => 'crypto_wallet',
+                        'type' => 'apple_pay',
                         'usage_status' => [
                             'payments' => 'eligible',
                             'transfers' => 'disabled',
@@ -13180,7 +13261,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'crypto_wallet',
+                'type' => 'apple_pay',
                 'usage_status' => [
                     'payments' => 'eligible',
                     'transfers' => 'disabled',
@@ -13211,7 +13292,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'crypto_wallet',
+                'type' => 'apple_pay',
                 'usage_status' => [
                     'payments' => 'eligible',
                     'transfers' => 'disabled',
@@ -13242,7 +13323,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'crypto_wallet',
+                'type' => 'apple_pay',
                 'usage_status' => [
                     'payments' => 'eligible',
                     'transfers' => 'disabled',
@@ -13273,7 +13354,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'crypto_wallet',
+                'type' => 'apple_pay',
                 'usage_status' => [
                     'payments' => 'eligible',
                     'transfers' => 'disabled',
@@ -13711,7 +13792,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'platform_earning_refund',
+                        'category' => 'transfer_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -13759,7 +13840,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'platform_earning_refund',
+                'category' => 'transfer_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -13805,7 +13886,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'platform_earning_refund',
+                'category' => 'transfer_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -13855,7 +13936,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'platform_earning_refund',
+                            'category' => 'transfer_reversal',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -13901,7 +13982,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'platform_earning_refund',
+                    'category' => 'transfer_reversal',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -14780,6 +14861,723 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Payments\SettlementAllocationIntentSplit::class, $result);
+    }
+
+    public function testV2ProvisioningCatalogProviderGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/provisioning/catalog/providers',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.provisioning.provider',
+                        'capabilities' => ['0' => 'capabilities'],
+                        'categories' => ['0' => 'categories'],
+                        'configuration_schema' => [
+                            'int_key' => [],
+                            'string_key' => 'value',
+                            'boolean_key' => [],
+                            'object_key' => [
+                                'object_int_key' => [],
+                                'object_string_key' => 'value',
+                                'object_boolean_key' => [],
+                            ],
+                            'array_key' => [
+                                '0' => [],
+                                '1' => [],
+                                '2' => [],
+                            ],
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'deep_link_purposes' => ['0' => 'deep_link_purposes'],
+                        'description' => 'description',
+                        'development' => [],
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'name' => 'name',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->catalog->providers->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Provisioning\Provider::class, $result->data[0]);
+    }
+
+    public function testV2ProvisioningCatalogServiceGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/provisioning/catalog/services',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.provisioning.provider_service_detail',
+                        'allowed_updates' => [
+                            '0' => [
+                                'direction' => 'down',
+                                'service' => 'service',
+                            ],
+                        ],
+                        'availability' => 'not_in_country',
+                        'categories' => ['0' => 'categories'],
+                        'configuration_schema' => [
+                            'int_key' => [],
+                            'string_key' => 'value',
+                            'boolean_key' => [],
+                            'object_key' => [
+                                'object_int_key' => [],
+                                'object_string_key' => 'value',
+                                'object_boolean_key' => [],
+                            ],
+                            'array_key' => [
+                                '0' => [],
+                                '1' => [],
+                                '2' => [],
+                            ],
+                        ],
+                        'constraints' => ['0' => ['type' => 'count']],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'description' => 'description',
+                        'development' => [],
+                        'id' => 'obj_123',
+                        'kind' => 'deployable',
+                        'livemode' => [],
+                        'pricing' => [
+                            'component' => [
+                                'options' => [
+                                    '0' => [
+                                        'paid' => ['type' => 'free'],
+                                        'parent_services' => [
+                                            '0' => 'parent_services',
+                                        ],
+                                        'type' => 'free',
+                                    ],
+                                ],
+                            ],
+                            'paid' => ['type' => 'free'],
+                            'paid_pricing' => [
+                                '0' => [
+                                    'configuration' => [
+                                        'int_key' => [],
+                                        'string_key' => 'value',
+                                        'boolean_key' => [],
+                                        'object_key' => [
+                                            'object_int_key' => [],
+                                            'object_string_key' => 'value',
+                                            'object_boolean_key' => [],
+                                        ],
+                                        'array_key' => [
+                                            '0' => [],
+                                            '1' => [],
+                                            '2' => [],
+                                        ],
+                                    ],
+                                    'type' => 'free',
+                                ],
+                            ],
+                            'type' => 'component',
+                        ],
+                        'provider' => 'provider',
+                        'provider_name' => 'provider_name',
+                        'scope' => 'account',
+                        'service_id' => 'service_id',
+                        'updateable_to' => ['0' => 'updateable_to'],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->catalog->services->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Provisioning\ProviderServiceDetail::class, $result->data[0]);
+    }
+
+    public function testV2ProvisioningEligibilityGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/provisioning/eligibility',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.eligibility',
+                'is_eligible' => [],
+                'livemode' => [],
+                'requirements' => ['0' => 'requirements'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->eligibility->retrieve([]);
+        self::assertInstanceOf(V2\Provisioning\Eligibility::class, $result);
+    }
+
+    public function testV2ProvisioningPaymentMethodRequestPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/payment_method_requests',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.payment_method_request',
+                'checkout_session_url' => 'checkout_session_url',
+                'livemode' => [],
+                'status' => 'checkout_initiated',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->paymentMethodRequests->create([]);
+        self::assertInstanceOf(V2\Provisioning\PaymentMethodRequest::class, $result);
+    }
+
+    public function testV2ProvisioningPaymentProfileGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/provisioning/payment_profile',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.payment_profile',
+                'card_last4' => 'card_last4',
+                'livemode' => [],
+                'providers' => ['0' => ['provider' => 'provider']],
+                'shared_with_providers' => ['0' => 'shared_with_providers'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->paymentProfile->retrieve([]);
+        self::assertInstanceOf(V2\Provisioning\PaymentProfile::class, $result);
+    }
+
+    public function testV2ProvisioningPaymentProfileUpdateLimitPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/payment_profile/update_limit',
+            [
+                'usage_limits' => [
+                    'currency' => 'usd',
+                    'max_amount' => '803901331',
+                    'recurring_interval' => 'year',
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.payment_profile',
+                'card_last4' => 'card_last4',
+                'livemode' => [],
+                'providers' => ['0' => ['provider' => 'provider']],
+                'shared_with_providers' => ['0' => 'shared_with_providers'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->paymentProfile->updateLimit->update([
+            'usage_limits' => [
+                'currency' => 'usd',
+                'max_amount' => 803901331,
+                'recurring_interval' => 'year',
+            ],
+        ]);
+        self::assertInstanceOf(V2\Provisioning\PaymentProfile::class, $result);
+    }
+
+    public function testV2ProvisioningProjectPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/projects',
+            ['name' => 'name'],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.project',
+                'catalog' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'name' => 'name',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->projects->create([
+            'name' => 'name',
+        ]);
+        self::assertInstanceOf(V2\Provisioning\Project::class, $result);
+    }
+
+    public function testV2ProvisioningProviderConnectionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/provisioning/provider_connections',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.provisioning.provider_connection',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'provider' => 'provider',
+                        'status' => 'active',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->providerConnections->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Provisioning\ProviderConnection::class, $result->data[0]);
+    }
+
+    public function testV2ProvisioningProviderConnectionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/provider_connections/id_123/unlink',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.provider_connection',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'status' => 'active',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->providerConnections->unlink(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Provisioning\ProviderConnection::class, $result);
+    }
+
+    public function testV2ProvisioningProviderConnectionRequestPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/provider_connection_requests',
+            [
+                'configuration' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.provider_connection_request',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'request_status' => 'error',
+                'scopes' => ['0' => 'scopes'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->providerConnectionRequests->create([
+            'configuration' => [
+                'int_key' => 123,
+                'string_key' => 'value',
+                'boolean_key' => true,
+                'object_key' => [
+                    'object_int_key' => 123,
+                    'object_string_key' => 'value',
+                    'object_boolean_key' => true,
+                ],
+                'array_key' => [1, 2, 3],
+            ],
+        ]);
+        self::assertInstanceOf(V2\Provisioning\ProviderConnectionRequest::class, $result);
+    }
+
+    public function testV2ProvisioningProviderConnectionRequestGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/provisioning/provider_connection_requests/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.provider_connection_request',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'request_status' => 'error',
+                'scopes' => ['0' => 'scopes'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->providerConnectionRequests->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Provisioning\ProviderConnectionRequest::class, $result);
+    }
+
+    public function testV2ProvisioningProviderConnectionRequestPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/provider_connection_requests/id_123/submit_information',
+            [
+                'information' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.provider_connection_request',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'request_status' => 'error',
+                'scopes' => ['0' => 'scopes'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->providerConnectionRequests->submitInformation(
+            'id_123',
+            [
+                'information' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ]
+        );
+        self::assertInstanceOf(V2\Provisioning\ProviderConnectionRequest::class, $result);
+    }
+
+    public function testV2ProvisioningResourcePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/resources',
+            [
+                'configuration' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.resource',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'environment' => 'prod',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->resources->create([
+            'configuration' => [
+                'int_key' => 123,
+                'string_key' => 'value',
+                'boolean_key' => true,
+                'object_key' => [
+                    'object_int_key' => 123,
+                    'object_string_key' => 'value',
+                    'object_boolean_key' => true,
+                ],
+                'array_key' => [1, 2, 3],
+            ],
+            'provider' => 'provider',
+            'service_ref' => 'service_ref',
+        ]);
+        self::assertInstanceOf(V2\Provisioning\Resource::class, $result);
+    }
+
+    public function testV2ProvisioningResourcePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/resources/link',
+            ['provider' => 'provider', 'service_ref' => 'service_ref'],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.resource',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'environment' => 'prod',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->resources->link([
+            'provider' => 'provider',
+            'service_ref' => 'service_ref',
+        ]);
+        self::assertInstanceOf(V2\Provisioning\Resource::class, $result);
+    }
+
+    public function testV2ProvisioningResourceGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/provisioning/resources/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.resource',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'environment' => 'prod',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->resources->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Provisioning\Resource::class, $result);
+    }
+
+    public function testV2ProvisioningResourcePost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/resources/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.resource',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'environment' => 'prod',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->resources->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Provisioning\Resource::class, $result);
+    }
+
+    public function testV2ProvisioningResourcePost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/resources/id_123/remove',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.resource',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'environment' => 'prod',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->resources->remove(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Provisioning\Resource::class, $result);
+    }
+
+    public function testV2ProvisioningResourcePost5()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/resources/id_123/rotate_credentials',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.resource',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'environment' => 'prod',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->resources->rotateCredentials(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Provisioning\Resource::class, $result);
+    }
+
+    public function testV2ProvisioningResourcePost6()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/resources/id_123/submit_information',
+            [
+                'submitted_information' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.resource',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'environment' => 'prod',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->resources->submitInformation(
+            'id_123',
+            [
+                'submitted_information' => [
+                    'int_key' => 123,
+                    'string_key' => 'value',
+                    'boolean_key' => true,
+                    'object_key' => [
+                        'object_int_key' => 123,
+                        'object_string_key' => 'value',
+                        'object_boolean_key' => true,
+                    ],
+                    'array_key' => [1, 2, 3],
+                ],
+            ]
+        );
+        self::assertInstanceOf(V2\Provisioning\Resource::class, $result);
+    }
+
+    public function testV2ProvisioningResourcePost7()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/provisioning/resources/id_123/unlink',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.provisioning.resource',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'environment' => 'prod',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'provider' => 'provider',
+                'service_ref' => 'service_ref',
+                'status' => 'complete',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->provisioning->resources->unlink(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Provisioning\Resource::class, $result);
     }
 
     public function testV2ReportingReportGet()
@@ -16358,6 +17156,43 @@ final class GeneratedExamplesTest extends TestCase
                 'to' => ['recipient' => 'recipient'],
             ]);
         } catch (Exception\RecipientNotNotifiableException $e) {
+        }
+    }
+
+    public function testServiceUnavailableError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/financial_accounts/id_123/wallet_export/export_credentials',
+            [
+                'encryption' => [
+                    'recipient_public_key' => 'recipient_public_key',
+                    'type' => 'hpke',
+                ],
+            ],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'service_unavailable',
+                    'code' => 'financial_account_wallet_export_temporarily_unavailable',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->moneyManagement->financialAccounts->walletExport->exportCredentials(
+                'id_123',
+                [
+                    'encryption' => [
+                        'recipient_public_key' => 'recipient_public_key',
+                        'type' => 'hpke',
+                    ],
+                ]
+            );
+        } catch (Exception\ServiceUnavailableException $e) {
         }
     }
 

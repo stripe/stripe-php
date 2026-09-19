@@ -17,6 +17,7 @@ namespace Stripe\Service\V2;
  * @property Network\NetworkServiceFactory $network
  * @property OrchestratedCommerce\OrchestratedCommerceServiceFactory $orchestratedCommerce
  * @property Payments\PaymentsServiceFactory $payments
+ * @property Provisioning\ProvisioningServiceFactory $provisioning
  * @property Reporting\ReportingServiceFactory $reporting
  * @property Risk\RiskServiceFactory $risk
  * @property Signals\SignalsServiceFactory $signals
@@ -39,6 +40,7 @@ class V2ServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'network' => Network\NetworkServiceFactory::class,
         'orchestratedCommerce' => OrchestratedCommerce\OrchestratedCommerceServiceFactory::class,
         'payments' => Payments\PaymentsServiceFactory::class,
+        'provisioning' => Provisioning\ProvisioningServiceFactory::class,
         'reporting' => Reporting\ReportingServiceFactory::class,
         'risk' => Risk\RiskServiceFactory::class,
         'signals' => Signals\SignalsServiceFactory::class,

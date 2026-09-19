@@ -410,13 +410,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice add_lines request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{expand?: string[], invoice_metadata?: null|array<string, string>, lines: (array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], invoice_item?: string, margins?: null|string[], metadata?: null|array<string, string>, period?: array{end: int, start: int}, price_data?: array{currency: string, product?: string, product_data?: array{description?: string, images?: string[], metadata?: array<string, string>, name: string, tax_code?: string, tax_details?: array{performance_location?: string, tax_code?: null|string}, unit_label?: string}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, quantity_decimal?: string, tax_amounts?: null|array{amount: int, tax_rate_data: array{country?: string, description?: string, display_name: string, inclusive: bool, jurisdiction?: string, jurisdiction_level?: string, percentage: float, state?: string, tax_type?: string}, taxability_reason?: string, taxable_amount: int}[], tax_rates?: null|string[]})[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchAddLines($invoice, $params = null, $opts = null)
+    public function serializeBatchAddLines($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -427,7 +427,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -493,13 +493,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice delete request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchDelete($invoice, $params = null, $opts = null)
+    public function serializeBatchDelete($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -510,7 +510,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -522,13 +522,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice finalize_invoice request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{auto_advance?: bool, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchFinalizeInvoice($invoice, $params = null, $opts = null)
+    public function serializeBatchFinalizeInvoice($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -539,7 +539,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -551,14 +551,14 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an InvoiceLineItem update request into a batch job JSONL line.
      *
-     * @param string $invoice
-     * @param string $line_item_id
+     * @param string $invoice_id
+     * @param string $id
      * @param null|array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], expand?: string[], margins?: null|string[], metadata?: null|array<string, string>, period?: array{end: int, start: int}, price_data?: array{currency: string, product?: string, product_data?: array{description?: string, images?: string[], metadata?: array<string, string>, name: string, tax_code?: string, tax_details?: array{performance_location?: string, tax_code?: null|string}, unit_label?: string}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, quantity_decimal?: string, tax_amounts?: null|array{amount: int, tax_rate_data: array{country?: string, description?: string, display_name: string, inclusive: bool, jurisdiction?: string, jurisdiction_level?: string, percentage: float, state?: string, tax_type?: string}, taxability_reason?: string, taxable_amount: int}[], tax_rates?: null|string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchInvoiceLineItemUpdate($invoice, $line_item_id, $params = null, $opts = null)
+    public function serializeBatchInvoiceLineItemUpdate($invoice_id, $id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -569,7 +569,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice, 'line_item_id' => $line_item_id];
+        $item['path_params'] = ['invoice_id' => $invoice_id, 'id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -581,13 +581,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice mark_uncollectible request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchMarkUncollectible($invoice, $params = null, $opts = null)
+    public function serializeBatchMarkUncollectible($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -598,7 +598,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -610,13 +610,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice pay request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{expand?: string[], forgive?: bool, mandate?: null|string, off_session?: bool, paid_out_of_band?: bool, payment_method?: string, source?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchPay($invoice, $params = null, $opts = null)
+    public function serializeBatchPay($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -627,7 +627,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -639,13 +639,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice remove_lines request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{expand?: string[], invoice_metadata?: null|array<string, string>, lines: array{behavior: string, id: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchRemoveLines($invoice, $params = null, $opts = null)
+    public function serializeBatchRemoveLines($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -656,7 +656,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -668,13 +668,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice send_invoice request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchSendInvoice($invoice, $params = null, $opts = null)
+    public function serializeBatchSendInvoice($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -685,7 +685,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -697,13 +697,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice update request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{account_tax_ids?: null|string[], amounts_due?: null|array{amount: int, days_until_due?: int, description: string, due_date?: int}[], application_fee_amount?: int, auto_advance?: bool, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, automatically_finalizes_at?: int, collection_method?: string, custom_fields?: null|array{name: string, value: string}[], days_until_due?: int, default_margins?: null|string[], default_payment_method?: string, default_source?: null|string, default_tax_rates?: null|string[], description?: string, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], due_date?: int, effective_at?: null|int, expand?: string[], footer?: string, issuer?: array{account?: string, type: string}, metadata?: null|array<string, string>, number?: null|string, on_behalf_of?: null|string, payment_settings?: array{default_mandate?: null|string, payment_method_options?: array{acss_debit?: null|array{mandate_options?: array{transaction_type?: string}, verification_method?: string}, bacs_debit?: null|array{target_date?: string, verification_method?: string}, bancontact?: null|array{preferred_language?: string}, billie?: null|array{company_details?: null|array{registered_address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, registered_name?: string, registration_number?: string, registration_type?: null|string, vat?: string}, reference?: string}, bizum?: null|array{}, blik?: null|array{}, card?: null|array{installments?: array{enabled?: bool, plan?: null|array{count?: int, interval?: string, type: string}}, request_three_d_secure?: string}, check_scan?: null|array{}, customer_balance?: null|array{bank_transfer?: array{eu_bank_transfer?: array{country: string}, type?: string}, funding_type?: string}, id_bank_transfer?: null|array{}, konbini?: null|array{}, payto?: null|array{mandate_options?: array{amount?: int, purpose?: string}}, pix?: null|array{amount_includes_iof?: string, expires_after_seconds?: int}, sepa_debit?: null|array{}, upi?: null|array{mandate_options?: array{amount?: int, amount_type?: string, description?: string, end_date?: int}}, us_bank_account?: null|array{financial_connections?: array{filters?: array{account_subcategories?: string[], institution?: string}, permissions?: string[], prefetch?: string[]}, verification_method?: string}, wechat_pay?: null|array{app_id?: string, client?: string}}, payment_method_types?: null|string[]}, rendering?: array{amount_tax_display?: null|string, pdf?: array{page_size?: string}, template?: string, template_version?: null|int}, shipping_cost?: null|array{shipping_rate?: string, shipping_rate_data?: array{delivery_estimate?: array{maximum?: array{unit: string, value: int}, minimum?: array{unit: string, value: int}}, display_name: string, fixed_amount?: array{amount: int, currency: string, currency_options?: array<string, array{amount: int, tax_behavior?: string}>}, metadata?: array<string, string>, tax_behavior?: string, tax_code?: string, type?: string}}, shipping_details?: null|array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, name: string, phone?: null|string}, statement_descriptor?: string, transfer_data?: null|array{amount?: int, destination: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchUpdate($invoice, $params = null, $opts = null)
+    public function serializeBatchUpdate($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -714,7 +714,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -726,13 +726,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice update_lines request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{expand?: string[], invoice_metadata?: null|array<string, string>, lines: (array{amount?: int, description?: string, discountable?: bool, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], id: string, margins?: null|string[], metadata?: null|array<string, string>, period?: array{end: int, start: int}, price_data?: array{currency: string, product?: string, product_data?: array{description?: string, images?: string[], metadata?: array<string, string>, name: string, tax_code?: string, tax_details?: array{performance_location?: string, tax_code?: null|string}, unit_label?: string}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, pricing?: array{price?: string}, quantity?: int, quantity_decimal?: string, tax_amounts?: null|array{amount: int, tax_rate_data: array{country?: string, description?: string, display_name: string, inclusive: bool, jurisdiction?: string, jurisdiction_level?: string, percentage: float, state?: string, tax_type?: string}, taxability_reason?: string, taxable_amount: int}[], tax_rates?: null|string[]})[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchUpdateLines($invoice, $params = null, $opts = null)
+    public function serializeBatchUpdateLines($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -743,7 +743,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -755,13 +755,13 @@ class InvoiceService extends AbstractService
     /**
      * Serializes an Invoice void_invoice request into a batch job JSONL line.
      *
-     * @param string $invoice
+     * @param string $id
      * @param null|array{expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchVoidInvoice($invoice, $params = null, $opts = null)
+    public function serializeBatchVoidInvoice($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -772,7 +772,7 @@ class InvoiceService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['invoice' => $invoice];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

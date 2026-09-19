@@ -240,13 +240,13 @@ class ProductService extends AbstractService
     /**
      * Serializes a ProductFeature create request into a batch job JSONL line.
      *
-     * @param string $product
+     * @param string $id
      * @param null|array{entitlement_feature: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchProductFeatureCreate($product, $params = null, $opts = null)
+    public function serializeBatchProductFeatureCreate($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -257,7 +257,7 @@ class ProductService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['product' => $product];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -269,14 +269,14 @@ class ProductService extends AbstractService
     /**
      * Serializes a ProductFeature delete request into a batch job JSONL line.
      *
-     * @param string $product
+     * @param string $product_id
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchProductFeatureDelete($product, $id, $params = null, $opts = null)
+    public function serializeBatchProductFeatureDelete($product_id, $id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -287,7 +287,7 @@ class ProductService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['product' => $product, 'id' => $id];
+        $item['path_params'] = ['product_id' => $product_id, 'id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
