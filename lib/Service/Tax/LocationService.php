@@ -16,7 +16,7 @@ class LocationService extends \Stripe\Service\AbstractService
      * services, tickets, or other product types.
      *
      * The response includes detailed information for each tax location, such as its
-     * address, name, description, and current operational status.
+     * address, type, and description.
      *
      * You can paginate through the list by using the <code>limit</code> parameter to
      * control the number of results returned in each request.
@@ -35,8 +35,8 @@ class LocationService extends \Stripe\Service\AbstractService
 
     /**
      * Create a tax location to use in calculating taxes for a service, ticket, or
-     * other type of product. The resulting object contains the id, address, name,
-     * description, and current operational status of the tax location.
+     * other type of product. The resulting object contains the ID, address, type, and
+     * description of the tax location.
      *
      * @param null|array{address: array{city?: null|string, country: string, line1?: null|string, line2?: null|string, postal_code?: null|string, state?: null|string}, description?: string, expand?: string[], type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

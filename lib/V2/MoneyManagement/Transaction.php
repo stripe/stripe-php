@@ -36,6 +36,7 @@ class Transaction extends \Stripe\ApiResource
     const CATEGORY_CONNECT_COLLECTION_TRANSFER = 'connect_collection_transfer';
     const CATEGORY_CONNECT_RESERVED_FUNDS = 'connect_reserved_funds';
     const CATEGORY_CONTRIBUTION = 'contribution';
+    const CATEGORY_CRYPTO_WALLET_EXPORT = 'crypto_wallet_export';
     const CATEGORY_CURRENCY_CONVERSION = 'currency_conversion';
     const CATEGORY_DEBIT_DISPUTE = 'debit_dispute';
     const CATEGORY_DISPUTE = 'dispute';

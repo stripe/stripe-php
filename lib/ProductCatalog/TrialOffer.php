@@ -6,9 +6,9 @@ namespace Stripe\ProductCatalog;
 
 /**
  * Trial offers let you define free or paid introductory pricing for a subscription item.
- * A TrialOffer specifies the price to charge during the trial, how long the trial lasts
- * (a fixed end timestamp or a number of billing intervals), and what price the subscription
- * item transitions to when the trial ends. You attach a TrialOffer to a subscription item
+ * A TrialOffer specifies the price to charge during the trial, how many billing intervals
+ * the trial lasts, and what price the subscription item transitions to when the trial ends.
+ * You attach a TrialOffer to a subscription item
  * using <code>items[current_trial][trial_offer]</code> when creating or updating a subscription.
  *
  * @property string $id Unique identifier for the object.

@@ -104,13 +104,13 @@ class TaxRateService extends AbstractService
     /**
      * Serializes a TaxRate update request into a batch job JSONL line.
      *
-     * @param string $tax_rate
+     * @param string $id
      * @param null|array{active?: bool, country?: string, description?: string, display_name?: string, expand?: string[], jurisdiction?: string, metadata?: null|array<string, string>, state?: string, tax_type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchUpdate($tax_rate, $params = null, $opts = null)
+    public function serializeBatchUpdate($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -121,7 +121,7 @@ class TaxRateService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['tax_rate' => $tax_rate];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

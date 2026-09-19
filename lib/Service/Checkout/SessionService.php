@@ -50,7 +50,7 @@ class SessionService extends \Stripe\Service\AbstractService
      * <code>approval_method</code> set to <code>manual</code>.
      *
      * @param string $id
-     * @param null|array{attempt: string, expand?: string[], payment_intent_data?: array{application_fee_amount?: int}, return_url?: string, subscription_data?: array{application_fee_percent?: float}} $params
+     * @param null|array{attempt: string, expand?: string[], payment_intent_data?: array{application_fee_amount?: int}, payment_method_options?: array{card?: array{request_three_d_secure?: string}}, return_url?: string, subscription_data?: array{application_fee_percent?: float}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Checkout\Session

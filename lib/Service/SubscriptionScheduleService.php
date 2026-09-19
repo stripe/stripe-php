@@ -135,13 +135,13 @@ class SubscriptionScheduleService extends AbstractService
     /**
      * Serializes a SubscriptionSchedule cancel request into a batch job JSONL line.
      *
-     * @param string $schedule
+     * @param string $id
      * @param null|array{expand?: string[], invoice_now?: bool, prorate?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchCancel($schedule, $params = null, $opts = null)
+    public function serializeBatchCancel($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -152,7 +152,7 @@ class SubscriptionScheduleService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['schedule' => $schedule];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -191,13 +191,13 @@ class SubscriptionScheduleService extends AbstractService
     /**
      * Serializes a SubscriptionSchedule release request into a batch job JSONL line.
      *
-     * @param string $schedule
+     * @param string $id
      * @param null|array{expand?: string[], preserve_cancel_date?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchRelease($schedule, $params = null, $opts = null)
+    public function serializeBatchRelease($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -208,7 +208,7 @@ class SubscriptionScheduleService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['schedule' => $schedule];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -220,13 +220,13 @@ class SubscriptionScheduleService extends AbstractService
     /**
      * Serializes a SubscriptionSchedule update request into a batch job JSONL line.
      *
-     * @param string $schedule
+     * @param string $id
      * @param null|array{billing_behavior?: string, billing_schedules?: null|array{applies_to?: array{price?: string, type: string}[], bill_until?: array{duration?: array{interval: string, interval_count?: int}, timestamp?: int, type: string}, key?: string}[], default_settings?: array{application_fee_percent?: float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, billing_cycle_anchor?: string, billing_thresholds?: null|array{amount_gte?: int, reset_billing_cycle_anchor?: bool}, collection_method?: string, default_payment_method?: string, description?: null|string, invoice_settings?: array{account_tax_ids?: null|string[], custom_fields?: null|array{name: string, value: string}[], days_until_due?: int, description?: null|string, footer?: null|string, issuer?: array{account?: string, type: string}}, on_behalf_of?: null|string, phase_effective_at?: string, transfer_data?: null|array{amount_percent?: float, destination: string}}, end_behavior?: string, expand?: string[], metadata?: null|array<string, string>, pause_schedules?: null|(array{key?: string, pause?: array{pause_at?: array{timestamp?: int, type: string}, settings?: array{bill_for?: array{outstanding_usage_through?: array{type?: string}, unused_time_from?: array{type?: string}}, invoicing_behavior?: string, type?: string}}, resume?: null|array{resume_at?: array{duration?: array{interval: string, interval_count?: int}, timestamp?: int, type: string}, settings?: array{billing_cycle_anchor?: string, payment_behavior?: string, proration_behavior?: string}}})[], phases?: (array{add_invoice_items?: (array{discountable?: bool, discounts?: array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string}[], metadata?: array<string, string>, period?: array{end: array{timestamp?: int, type: string}, start: array{timestamp?: int, type: string}}, price?: string, price_data?: array{currency: string, product: string, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[]})[], application_fee_percent?: float, automatic_tax?: array{enabled: bool, liability?: array{account?: string, type: string}}, billing_cycle_anchor?: string, billing_thresholds?: null|array{amount_gte?: int, reset_billing_cycle_anchor?: bool}, collection_method?: string, currency?: string, default_payment_method?: string, default_tax_rates?: null|string[], description?: null|string, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string, settings?: array{service_period_anchor_config?: array{custom?: array{day_of_month: int, hour?: int, minute?: int, month?: int, second?: int}, type?: string}, start_date?: string}}[], duration?: array{interval: string, interval_count?: int}, effective_at?: string, end_date?: array|int|string, invoice_settings?: array{account_tax_ids?: null|string[], custom_fields?: null|array{name: string, value: string}[], days_until_due?: int, description?: null|string, footer?: null|string, issuer?: array{account?: string, type: string}}, items: (array{billing_thresholds?: null|array{usage_gte: int}, discounts?: null|array{coupon?: string, discount?: string, discount_end?: array{duration?: array{interval: string, interval_count: int}, timestamp?: int, type: string}, promotion_code?: string, settings?: array{service_period_anchor_config?: array{custom?: array{day_of_month: int, hour?: int, minute?: int, month?: int, second?: int}, type?: string}, start_date?: string}}[], metadata?: array<string, string>, plan?: string, price?: string, price_data?: array{currency: string, product: string, recurring: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, quantity?: int, tax_rates?: null|string[], trial?: array{converts_to?: string[], type: string}, trial_offer?: string})[], metadata?: array<string, string>, on_behalf_of?: string, pause_collection?: array{behavior: string}, proration_behavior?: string, start_date?: array|int|string, transfer_data?: array{amount_percent?: float, destination: string}, trial?: bool, trial_continuation?: string, trial_end?: array|int|string, trial_settings?: array{end_behavior?: array{prorate_up_front?: string}}})[], prebilling?: array{iterations: int, update_behavior?: string}, proration_behavior?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchUpdate($schedule, $params = null, $opts = null)
+    public function serializeBatchUpdate($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -237,7 +237,7 @@ class SubscriptionScheduleService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['schedule' => $schedule];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

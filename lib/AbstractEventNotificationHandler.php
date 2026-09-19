@@ -98,6 +98,7 @@ abstract class AbstractEventNotificationHandler
     protected function createClientWithContext($context)
     {
         $config = $this->clientConfig;
+        $config['stripe_account'] = null;
         $config['stripe_context'] = $context;
 
         return new StripeClient($config);
@@ -3077,6 +3078,58 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.billing.contract.collection_blocked" event.
+     *
+     * @param callable(Events\V2BillingContractCollectionBlockedEventNotification, StripeClient): void $handler Handles v2.billing.contract.collection_blocked events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractCollectionBlocked($handler)
+    {
+        $this->register('v2.billing.contract.collection_blocked', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract.collection_current" event.
+     *
+     * @param callable(Events\V2BillingContractCollectionCurrentEventNotification, StripeClient): void $handler Handles v2.billing.contract.collection_current events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractCollectionCurrent($handler)
+    {
+        $this->register('v2.billing.contract.collection_current', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract.collection_past_due" event.
+     *
+     * @param callable(Events\V2BillingContractCollectionPastDueEventNotification, StripeClient): void $handler Handles v2.billing.contract.collection_past_due events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractCollectionPastDue($handler)
+    {
+        $this->register('v2.billing.contract.collection_past_due', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract.collection_unpaid" event.
+     *
+     * @param callable(Events\V2BillingContractCollectionUnpaidEventNotification, StripeClient): void $handler Handles v2.billing.contract.collection_unpaid events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractCollectionUnpaid($handler)
+    {
+        $this->register('v2.billing.contract.collection_unpaid', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.billing.contract.created" event.
      *
      * @param callable(Events\V2BillingContractCreatedEventNotification, StripeClient): void $handler Handles v2.billing.contract.created events
@@ -4708,6 +4761,75 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.core.vault.network_token.activated" event.
+     *
+     * @param callable(Events\V2CoreVaultNetworkTokenActivatedEventNotification, StripeClient): void $handler Handles v2.core.vault.network_token.activated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreVaultNetworkTokenActivated($handler)
+    {
+        $this->register('v2.core.vault.network_token.activated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.vault.network_token.authorization_requirements_changed" event.
+     *
+     * @param callable(Events\V2CoreVaultNetworkTokenAuthorizationRequirementsChangedEventNotification, StripeClient): void $handler Handles v2.core.vault.network_token.authorization_requirements_changed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreVaultNetworkTokenAuthorizationRequirementsChanged(
+        $handler
+    ) {
+        $this->register(
+            'v2.core.vault.network_token.authorization_requirements_changed',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.core.vault.network_token.deactivated" event.
+     *
+     * @param callable(Events\V2CoreVaultNetworkTokenDeactivatedEventNotification, StripeClient): void $handler Handles v2.core.vault.network_token.deactivated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreVaultNetworkTokenDeactivated($handler)
+    {
+        $this->register('v2.core.vault.network_token.deactivated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.vault.network_token.details_updated" event.
+     *
+     * @param callable(Events\V2CoreVaultNetworkTokenDetailsUpdatedEventNotification, StripeClient): void $handler Handles v2.core.vault.network_token.details_updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreVaultNetworkTokenDetailsUpdated($handler)
+    {
+        $this->register('v2.core.vault.network_token.details_updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.vault.network_token.suspended" event.
+     *
+     * @param callable(Events\V2CoreVaultNetworkTokenSuspendedEventNotification, StripeClient): void $handler Handles v2.core.vault.network_token.suspended events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreVaultNetworkTokenSuspended($handler)
+    {
+        $this->register('v2.core.vault.network_token.suspended', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.data.reporting.query_run.created" event.
      *
      * @param callable(Events\V2DataReportingQueryRunCreatedEventNotification, StripeClient): void $handler Handles v2.data.reporting.query_run.created events
@@ -5043,6 +5165,57 @@ abstract class AbstractEventNotificationHandler
     public function onV2MoneyManagementFinancialAccountUpdated($handler)
     {
         $this->register('v2.money_management.financial_account.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.financial_account.wallet_export.completed" event.
+     *
+     * @param callable(Events\V2MoneyManagementFinancialAccountWalletExportCompletedEventNotification, StripeClient): void $handler Handles v2.money_management.financial_account.wallet_export.completed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementFinancialAccountWalletExportCompleted(
+        $handler
+    ) {
+        $this->register(
+            'v2.money_management.financial_account.wallet_export.completed',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.financial_account.wallet_export.pending" event.
+     *
+     * @param callable(Events\V2MoneyManagementFinancialAccountWalletExportPendingEventNotification, StripeClient): void $handler Handles v2.money_management.financial_account.wallet_export.pending events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementFinancialAccountWalletExportPending(
+        $handler
+    ) {
+        $this->register(
+            'v2.money_management.financial_account.wallet_export.pending',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.financial_account.wallet_export.ready" event.
+     *
+     * @param callable(Events\V2MoneyManagementFinancialAccountWalletExportReadyEventNotification, StripeClient): void $handler Handles v2.money_management.financial_account.wallet_export.ready events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementFinancialAccountWalletExportReady(
+        $handler
+    ) {
+        $this->register(
+            'v2.money_management.financial_account.wallet_export.ready',
+            $handler
+        );
     }
 
     /**

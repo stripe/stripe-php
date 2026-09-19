@@ -137,13 +137,13 @@ class CouponService extends AbstractService
     /**
      * Serializes a Coupon delete request into a batch job JSONL line.
      *
-     * @param string $coupon
+     * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchDelete($coupon, $params = null, $opts = null)
+    public function serializeBatchDelete($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -154,7 +154,7 @@ class CouponService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['coupon' => $coupon];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;
@@ -166,13 +166,13 @@ class CouponService extends AbstractService
     /**
      * Serializes a Coupon update request into a batch job JSONL line.
      *
-     * @param string $coupon
+     * @param string $id
      * @param null|array{currency_options?: array<string, array{amount_off: int}>, expand?: string[], metadata?: null|array<string, string>, name?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return string
      */
-    public function serializeBatchUpdate($coupon, $params = null, $opts = null)
+    public function serializeBatchUpdate($id, $params = null, $opts = null)
     {
         $itemId = (new \Stripe\Util\RandomGenerator())->uuid();
         $opts = \Stripe\Util\RequestOptions::parse($opts);
@@ -183,7 +183,7 @@ class CouponService extends AbstractService
             'params' => $params,
             'stripe_version' => $stripeVersion,
         ];
-        $item['path_params'] = ['coupon' => $coupon];
+        $item['path_params'] = ['id' => $id];
         $stripeContext = isset($opts->headers['Stripe-Context']) ? $opts->headers['Stripe-Context'] : null;
         if (null !== $stripeContext) {
             $item['context'] = $stripeContext;

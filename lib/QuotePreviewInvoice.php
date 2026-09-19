@@ -8,7 +8,7 @@ namespace Stripe;
  * Invoices are statements of amounts owed by a customer, and are either
  * generated one-off, or generated periodically from a subscription.
  *
- * They contain <a href="https://api.stripe.com#invoiceitems">invoice items</a>, and proration adjustments
+ * They contain <a href="https://docs.stripe.com/api#invoiceitems">invoice items</a>, and proration adjustments
  * that may be caused by subscription upgrades/downgrades (if necessary).
  *
  * If your invoice is configured to be billed through automatic charges,

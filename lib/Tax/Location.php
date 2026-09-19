@@ -10,7 +10,7 @@ namespace Stripe\Tax;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject) $address
- * @property null|string $description A descriptive text providing additional context about the tax location. This can include information about the venue, types of events held, services available, or any relevant details for better identification (e.g., &quot;A spacious auditorium suitable for large concerts and events.&quot;).
+ * @property null|string $description A descriptive text providing additional context about the tax location. This can include information about the venue, types of events held, services available, or any relevant details for better identification (for example, &quot;A spacious auditorium suitable for large concerts and events.&quot;).
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $type The type of tax location to be defined. Currently the only option is <code>performance</code>.
  */
@@ -20,8 +20,8 @@ class Location extends \Stripe\ApiResource
 
     /**
      * Create a tax location to use in calculating taxes for a service, ticket, or
-     * other type of product. The resulting object contains the id, address, name,
-     * description, and current operational status of the tax location.
+     * other type of product. The resulting object contains the ID, address, type, and
+     * description of the tax location.
      *
      * @param null|array{address: array{city?: null|string, country: string, line1?: null|string, line2?: null|string, postal_code?: null|string, state?: null|string}, description?: string, expand?: string[], type: string} $params
      * @param null|array|string $options
@@ -47,7 +47,7 @@ class Location extends \Stripe\ApiResource
      * services, tickets, or other product types.
      *
      * The response includes detailed information for each tax location, such as its
-     * address, name, description, and current operational status.
+     * address, type, and description.
      *
      * You can paginate through the list by using the <code>limit</code> parameter to
      * control the number of results returned in each request.

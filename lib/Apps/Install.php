@@ -17,8 +17,8 @@ namespace Stripe\Apps;
  * @property string[] $authorized_endpoints The endpoint URLs authorized by the installer.
  * @property string[] $authorized_permissions The permissions authorized by the installer.
  * @property string $channel The distribution channel associated with the app install.
- * @property null|(object{connect_src: null|string[], image_src: null|string[]}&\Stripe\StripeObject) $content_security_policy_granted The content security policy entries authorized by the installer.
- * @property (object{connect_src: null|string[], image_src: null|string[]}&\Stripe\StripeObject) $content_security_policy_pending
+ * @property null|(object{connect_src: string[], image_src: string[]}&\Stripe\StripeObject) $content_security_policy_granted The content security policy entries authorized by the installer.
+ * @property (object{connect_src: string[], image_src: string[]}&\Stripe\StripeObject) $content_security_policy_pending
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $created_by The ID of the embedding platform that created the install, if applicable.
  * @property null|string[] $endpoints_granted The endpoint URLs authorized by the installer.

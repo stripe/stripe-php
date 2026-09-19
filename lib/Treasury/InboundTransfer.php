@@ -5,7 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * Use <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a> to add funds to your <a href="https://api.stripe.com#financial_accounts">FinancialAccount</a> via a PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
+ * Use <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a> to add funds to your <a href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a> via a PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
  *
  * Related guide: <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">Moving money with Treasury using InboundTransfer objects</a>
  *
@@ -16,7 +16,7 @@ namespace Stripe\Treasury;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
- * @property null|(object{code: string}&\Stripe\StripeObject) $failure_details Details about this InboundTransfer's failure. Only set when status is <code>failed</code>.
+ * @property null|(object{code: string}&\Stripe\StripeObject) $failure_details Details about this InboundTransfer's failure. Will be set when <code>status=failed</code> or <code>returned=true</code>.
  * @property string $financial_account The FinancialAccount that received the funds.
  * @property null|string $hosted_regulatory_receipt_url A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted transaction receipt</a> URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property (object{received_debit: null|string}&\Stripe\StripeObject) $linked_flows

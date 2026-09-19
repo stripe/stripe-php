@@ -10,7 +10,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $address The customer's address.
+ * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $address The customer's billing address.
  * @property null|int $balance The current balance, if any, that's stored on the customer in their default currency. If negative, the customer has credit to apply to their next invoice. If positive, the customer has an amount owed that's added to their next invoice. The balance only considers amounts that Stripe hasn't successfully applied to any invoice. It doesn't reflect unpaid invoices. This balance is only taken into account after invoices finalize. For multi-currency balances, see <a href="https://docs.stripe.com/api/customers/object#customer_object-invoice_credit_balance">invoice_credit_balance</a>.
  * @property null|string $business_name The customer's business name.
  * @property null|CashBalance $cash_balance The current funds being held by Stripe on behalf of the customer. You can apply these funds towards payment intents when the source is &quot;cash_balance&quot;. The <code>settings[reconciliation_mode]</code> field describes if these funds apply to these payment intents manually or automatically.
@@ -215,7 +215,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @param string $payment_method
+     * @param string $id
      * @param null|array $params
      * @param null|array|string $opts
      *
@@ -223,9 +223,9 @@ class Customer extends ApiResource
      *
      * @throws Exception\ApiErrorException if the request fails
      */
-    public function retrievePaymentMethod($payment_method, $params = null, $opts = null)
+    public function retrievePaymentMethod($id, $params = null, $opts = null)
     {
-        $url = $this->instanceUrl() . '/payment_methods/' . $payment_method;
+        $url = $this->instanceUrl() . '/payment_methods/' . $id;
         list($response, $opts) = $this->_request('get', $url, $params, $opts);
         $obj = Util\Util::convertToStripeObject($response, $opts);
         $obj->setLastResponse($response);
