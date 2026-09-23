@@ -45,7 +45,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     /**
      * Creates an InboundTransfer.
      *
-     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], financial_account: string, metadata?: array<string, string>, origin_payment_method: string, statement_descriptor?: string} $params
+     * @param null|array{amount: int, currency: string, description?: string, expand?: string[], financial_account: string, metadata?: array<string, string>, origin_payment_method: string, origin_payment_method_options?: array{us_bank_account?: array{ach?: array{addenda?: string}}}, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Treasury\InboundTransfer

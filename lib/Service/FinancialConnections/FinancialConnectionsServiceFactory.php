@@ -9,6 +9,7 @@ namespace Stripe\Service\FinancialConnections;
  *
  * @property AccountService $accounts
  * @property AuthorizationService $authorizations
+ * @property ConsentService $consents
  * @property InstitutionService $institutions
  * @property SessionService $sessions
  * @property TransactionService $transactions
@@ -21,6 +22,7 @@ class FinancialConnectionsServiceFactory extends \Stripe\Service\AbstractService
     private static $classMap = [
         'accounts' => AccountService::class,
         'authorizations' => AuthorizationService::class,
+        'consents' => ConsentService::class,
         'institutions' => InstitutionService::class,
         'sessions' => SessionService::class,
         'transactions' => TransactionService::class,

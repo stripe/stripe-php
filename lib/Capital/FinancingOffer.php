@@ -10,7 +10,7 @@ namespace Stripe\Capital;
  *
  * @property string $id A unique identifier for the financing object.
  * @property string $object The object type: financing_offer.
- * @property null|(object{advance_amount: int, currency: string, fee_amount: int, previous_financing_fee_discount_amount: null|int, withhold_rate: float}&\Stripe\StripeObject) $accepted_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents the terms accepted by the Connected account, which may differ from those offered.
+ * @property null|(object{advance_amount: int, currency: string, fee_amount: int, previous_financing_fee_discount_amount: null|int, total_due_amount?: int, withhold_rate: float}&\Stripe\StripeObject) $accepted_terms This is an object representing the terms of an offer of financing from Stripe Capital to a Connected account. This resource represents the terms accepted by the Connected account, which may differ from those offered.
  * @property string $account The ID of the merchant associated with this financing object.
  * @property null|int $charged_off_at The time at which this financing offer was charged off, if applicable. Given in seconds since unix epoch.
  * @property int $created Time at which the offer was created. Given in seconds since unix epoch.

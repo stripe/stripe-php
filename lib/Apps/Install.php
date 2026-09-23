@@ -5,20 +5,23 @@
 namespace Stripe\Apps;
 
 /**
- * An object representing an app installation.
+ * An app install represents a Stripe App that is installed on an account. It reports the permissions,
+ * content security policy entries, and endpoints that the installing account has authorized, along with any
+ * that the app's latest version requests but the account has not authorized yet. Use the Install API to
+ * install, reauthorize, and uninstall apps, and to check the state of existing installs.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $account The ID of the account that the app install belongs to.
  * @property string $app The ID of the app installed.
- * @property bool $approval_required Whether the installer must authorize pending permissions, content security policy entries, or endpoints.
+ * @property bool $approval_required Whether the installer must authorize pending permissions, content security policy entries, or endpoints. For private apps, <code>approval_required</code> stays <code>false</code>. Install a new version from the Dashboard to grant its permissions.
  * @property null|string $auth_code The authorization code for an oauth app install.
  * @property (object{connect_src: null|string[], image_src: null|string[], purpose: null|string}&\Stripe\StripeObject) $authorized_content_security_policy
  * @property string[] $authorized_endpoints The endpoint URLs authorized by the installer.
  * @property string[] $authorized_permissions The permissions authorized by the installer.
  * @property string $channel The distribution channel associated with the app install.
- * @property null|(object{connect_src: null|string[], image_src: null|string[]}&\Stripe\StripeObject) $content_security_policy_granted The content security policy entries authorized by the installer.
- * @property (object{connect_src: null|string[], image_src: null|string[]}&\Stripe\StripeObject) $content_security_policy_pending
+ * @property null|(object{connect_src: string[], image_src: string[]}&\Stripe\StripeObject) $content_security_policy_granted The content security policy entries authorized by the installer.
+ * @property (object{connect_src: string[], image_src: string[]}&\Stripe\StripeObject) $content_security_policy_pending
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $created_by The ID of the embedding platform that created the install, if applicable.
  * @property null|string[] $endpoints_granted The endpoint URLs authorized by the installer.
