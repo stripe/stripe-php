@@ -40,7 +40,7 @@ class BalanceSettings extends SingletonApiResource
      * href="/connect/authentication">Making API calls for connected accounts</a>.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], payments?: array{debit_negative_balances?: bool, payouts?: array{automatic_transfer_rules_by_currency?: null|array<string, null|array{payout_method: string, transfer_up_to_amount?: int, type: string}[]>, minimum_balance_by_currency?: null|array<string, null|int>, schedule?: array{interval?: string, monthly_payout_days?: int[], weekly_payout_days?: string[]}, statement_descriptor?: string}, settlement_currencies?: array<string, string>, settlement_timing?: array{delay_days_override?: null|int, start_of_day?: null|array{hour?: int, minutes?: int, timezone?: string}}}} $params
+     * @param null|array{expand?: string[], payments?: array{debit_negative_balances?: bool, payouts?: array{automatic_transfer_rules_by_currency?: null|array<string, null|array{destination_currency?: string, payout_method: string, transfer_up_to_amount?: int, type: string}[]>, minimum_balance_by_currency?: null|array<string, null|int>, schedule?: array{interval?: string, monthly_payout_days?: int[], weekly_payout_days?: string[]}, statement_descriptor?: string}, settlement_currencies?: array<string, string>, settlement_timing?: array{delay_days_override?: null|int, start_of_day?: null|array{hour?: int, minutes?: int, timezone?: string}}}} $params
      * @param null|array|string $opts
      *
      * @return BalanceSettings the updated resource

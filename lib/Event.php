@@ -55,6 +55,9 @@ class Event extends ApiResource
     const APPLICATION_FEE_CREATED = 'application_fee.created';
     const APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
+    const APPS_INSTALL_CREATED = 'apps.install.created';
+    const APPS_INSTALL_DELETED = 'apps.install.deleted';
+    const APPS_INSTALL_UPDATED = 'apps.install.updated';
     const BALANCE_AVAILABLE = 'balance.available';
     const BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const BILLING_ALERT_RECOVERED = 'billing.alert.recovered';
@@ -366,6 +369,9 @@ class Event extends ApiResource
     const TYPE_APPLICATION_FEE_CREATED = 'application_fee.created';
     const TYPE_APPLICATION_FEE_REFUNDED = 'application_fee.refunded';
     const TYPE_APPLICATION_FEE_REFUND_UPDATED = 'application_fee.refund.updated';
+    const TYPE_APPS_INSTALL_CREATED = 'apps.install.created';
+    const TYPE_APPS_INSTALL_DELETED = 'apps.install.deleted';
+    const TYPE_APPS_INSTALL_UPDATED = 'apps.install.updated';
     const TYPE_BALANCE_AVAILABLE = 'balance.available';
     const TYPE_BALANCE_SETTINGS_UPDATED = 'balance_settings.updated';
     const TYPE_BILLING_ALERT_RECOVERED = 'billing.alert.recovered';

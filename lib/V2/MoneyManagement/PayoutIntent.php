@@ -25,7 +25,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|string $statement_descriptor The description that appears on the receiving end for the payout (for example, on a bank statement).
  * @property string $status Open Enum. Current status of the PayoutIntent: <code>pending</code>, <code>processing</code>, <code>posted</code>, <code>canceled</code>, <code>requires_action</code>.
  * @property null|(object{canceled_at?: string, posted_at?: string, processing_at?: string, requires_action_at?: string}&\Stripe\StripeObject) $status_transitions Hash containing timestamps of when transitioned to a particular status.
- * @property (object{credited?: \Stripe\StripeObject, currency?: string, payout_method?: string, payout_method_options?: (object{bank_account?: (object{preferred_network_options?: (object{ach?: (object{submission?: string, transaction_purpose?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), preferred_networks: string[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), recipient?: string}&\Stripe\StripeObject) $to To which payout method the payout is sent.
+ * @property (object{credited?: \Stripe\StripeObject, currency?: string, payout_method?: string, payout_method_options?: (object{bank_account?: (object{preferred_network_options?: (object{ach?: (object{addenda?: string, submission?: string, transaction_purpose?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), preferred_networks: string[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), recipient?: string}&\Stripe\StripeObject) $to To which payout method the payout is sent.
  */
 class PayoutIntent extends \Stripe\ApiResource
 {

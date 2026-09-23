@@ -5,11 +5,12 @@
 namespace Stripe\Events;
 
 /**
- * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
+ * @property \Stripe\RelatedSingletonObject $related_object Object containing the reference to API resource relevant to the event
  */
 class V1TaxSettingsUpdatedEventNotification extends \Stripe\V2\Core\EventNotification
 {
     const LOOKUP_TYPE = 'v1.tax.settings.updated';
+    const RELATED_OBJECT_CLASS = \Stripe\RelatedSingletonObject::class;
     public $related_object;
 
     /**
