@@ -121,6 +121,10 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
+      - name: Read OpenAPI version
+        id: openapi
+        shell: bash
+        run: echo "version=$(< OPENAPI_VERSION)" >> "$GITHUB_OUTPUT"
 
       - name: Setup PHP
         uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
@@ -139,6 +143,8 @@ jobs:
         run: composer install --prefer-dist --no-progress
 
       - uses: stripe/openapi/actions/stripe-mock@master
+        with:
+          openapi_version: ${{ steps.openapi.outputs.version }}
 
       - name: Run test suite
         # --yes skips the confirmation dialogue for the CI test, which modifies files
