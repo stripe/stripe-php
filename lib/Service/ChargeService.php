@@ -28,15 +28,9 @@ class ChargeService extends AbstractService
     }
 
     /**
-     * Capture the payment of an existing, uncaptured charge that was created with the
-     * <code>capture</code> option set to false.
-     *
-     * Uncaptured payments expire a set number of days after they are created (<a
-     * href="/docs/charges/placing-a-hold">7 by default</a>), after which they are
-     * marked as refunded and capture attempts will fail.
-     *
-     * Don’t use this method to capture a PaymentIntent-initiated charge. Use <a
-     * href="/docs/api/payment_intents/capture">Capture a PaymentIntent</a>.
+     * This method is deprecated and will be removed soon. If your integration uses it,
+     * you need to update it to use a different payment flow, such as <a
+     * href="/docs/payments/payment-intents">the Payment Intents API</a>.
      *
      * @param string $id
      * @param null|array{amount?: int, application_fee?: int, application_fee_amount?: int, expand?: string[], receipt_email?: string, statement_descriptor?: string, statement_descriptor_suffix?: string, transfer_data?: array{amount?: int}, transfer_group?: string} $params
@@ -52,10 +46,9 @@ class ChargeService extends AbstractService
     }
 
     /**
-     * This method is no longer recommended—use the <a
-     * href="/docs/api/payment_intents">Payment Intents API</a> to initiate a new
-     * payment instead. Confirmation of the PaymentIntent creates the
-     * <code>Charge</code> object used to request payment.
+     * This method is deprecated and will be removed soon. If your integration uses it,
+     * you need to update it to use a different payment flow, such as <a
+     * href="/docs/payments/payment-intents">the Payment Intents API</a>.
      *
      * @param null|array{amount?: int, application_fee?: int, application_fee_amount?: int, capture?: bool, currency?: string, customer?: string, description?: string, destination?: array{account: string, amount?: int}, expand?: string[], metadata?: null|array<string, string>, on_behalf_of?: string, radar_options?: array{session?: string}, receipt_email?: string, shipping?: array{address: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, carrier?: string, name: string, phone?: string, tracking_number?: string}, source?: string, statement_descriptor?: string, statement_descriptor_suffix?: string, transfer_data?: array{amount?: int, description?: string, destination: string}, transfer_group?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

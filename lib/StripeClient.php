@@ -53,6 +53,7 @@ namespace Stripe;
  * @property Service\PayoutService $payouts
  * @property Service\PlanService $plans
  * @property Service\PriceService $prices
+ * @property Service\ProductCatalog\ProductCatalogServiceFactory $productCatalog
  * @property Service\ProductService $products
  * @property Service\PromotionCodeService $promotionCodes
  * @property Service\QuoteService $quotes
@@ -74,6 +75,7 @@ namespace Stripe;
  * @property Service\TaxRateService $taxRates
  * @property Service\Terminal\TerminalServiceFactory $terminal
  * @property Service\TestHelpers\TestHelpersServiceFactory $testHelpers
+ * @property Service\ThreeDSecure\ThreeDSecureServiceFactory $threeDSecure
  * @property Service\TokenService $tokens
  * @property Service\TopupService $topups
  * @property Service\TransferService $transfers

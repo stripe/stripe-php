@@ -22,4 +22,6 @@ class MeterEventAdjustment extends \Stripe\ApiResource
 
     const STATUS_COMPLETE = 'complete';
     const STATUS_PENDING = 'pending';
+
+    const TYPE_CANCEL = 'cancel';
 }

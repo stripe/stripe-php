@@ -1281,7 +1281,7 @@ final class GeneratedExamplesTest extends TestCase
                 'customer' => 'cus_xxxxxxxxxxxxx',
             ],
             'permissions' => ['payment_method', 'balances'],
-            'filters' => ['countries' => ['US']],
+            'filters' => ['country' => 'US'],
         ]);
         self::assertInstanceOf(FinancialConnections\Session::class, $result);
     }

@@ -12,7 +12,7 @@ namespace Stripe\Service\Billing;
 class FeedbackOptionService extends \Stripe\Service\AbstractService
 {
     /**
-     * An API method for listing the feedback options model.
+     * Returns a list of your feedback options.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -59,7 +59,7 @@ class FeedbackOptionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves a feedback options object given an ID.
+     * Retrieves a feedback option object given an ID.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
