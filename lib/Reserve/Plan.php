@@ -12,9 +12,11 @@ namespace Stripe\Reserve;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_by Indicates which party created this ReservePlan.
  * @property null|string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>. An unset currency indicates that the plan applies to all currencies.
+ * @property string $destination The balance destination to which the reserved funds are sent.
  * @property null|int $disabled_at Time at which the ReservePlan was disabled.
  * @property null|(object{release_after: int, scheduled_release: int}&\Stripe\StripeObject) $fixed_release
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
+ * @property null|(object{}&\Stripe\StripeObject) $manual_release
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property int $percent The percent of each Charge to reserve.
  * @property null|(object{days_after_charge: int, expires_on: null|int}&\Stripe\StripeObject) $rolling_release
@@ -28,12 +30,37 @@ class Plan extends \Stripe\ApiResource
     const CREATED_BY_APPLICATION = 'application';
     const CREATED_BY_STRIPE = 'stripe';
 
+    const DESTINATION_OTHER = 'other';
+    const DESTINATION_RISK_RESERVED = 'risk_reserved';
+    const DESTINATION_SETTLEMENT_RESERVED = 'settlement_reserved';
+
     const STATUS_ACTIVE = 'active';
     const STATUS_DISABLED = 'disabled';
     const STATUS_EXPIRED = 'expired';
+    const STATUS_OTHER = 'other';
 
     const TYPE_FIXED_RELEASE = 'fixed_release';
+    const TYPE_MANUAL_RELEASE = 'manual_release';
+    const TYPE_OTHER = 'other';
     const TYPE_ROLLING_RELEASE = 'rolling_release';
+
+    /**
+     * Returns a list of ReservePlans previously created. The ReservePlans are returned
+     * in sorted order, with the most recent ReservePlans appearing first.
+     *
+     * @param null|array{destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array|string $opts
+     *
+     * @return \Stripe\Collection<Plan> of ApiResources
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function all($params = null, $opts = null)
+    {
+        $url = static::classUrl();
+
+        return static::_requestPage($url, \Stripe\Collection::class, $params, $opts);
+    }
 
     /**
      * Retrieve a ReservePlan.

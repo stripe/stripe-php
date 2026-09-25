@@ -98,6 +98,7 @@ abstract class AbstractEventNotificationHandler
     protected function createClientWithContext($context)
     {
         $config = $this->clientConfig;
+        $config['stripe_account'] = null;
         $config['stripe_context'] = $context;
 
         return new StripeClient($config);

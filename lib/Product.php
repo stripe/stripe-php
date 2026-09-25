@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * Products describe the specific goods or services you offer to your customers.
  * For example, you might offer a Standard and Premium version of your goods or service; each version would be a separate Product.
- * They can be used in conjunction with <a href="https://api.stripe.com#prices">Prices</a> to configure pricing in Payment Links, Checkout, and Subscriptions.
+ * They can be used in conjunction with <a href="https://docs.stripe.com/api#prices">Prices</a> to configure pricing in Payment Links, Checkout, and Subscriptions.
  *
  * Related guides: <a href="https://docs.stripe.com/billing/subscriptions/set-up-subscription">Set up a subscription</a>,
  * <a href="https://docs.stripe.com/payment-links">share a Payment Link</a>,

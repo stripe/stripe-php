@@ -212,7 +212,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->expectsRequest('post', '/v1/accounts/acct_xxxxxxxxxxxxx/reject');
         $result = $this->client->accounts->reject(
             'acct_xxxxxxxxxxxxx',
-            ['reason' => 'fraud']
+            ['reason' => 'fraud_other']
         );
         self::assertInstanceOf(Account::class, $result);
     }
@@ -1281,7 +1281,7 @@ final class GeneratedExamplesTest extends TestCase
                 'customer' => 'cus_xxxxxxxxxxxxx',
             ],
             'permissions' => ['payment_method', 'balances'],
-            'filters' => ['countries' => ['US']],
+            'filters' => ['country' => 'US'],
         ]);
         self::assertInstanceOf(FinancialConnections\Session::class, $result);
     }
