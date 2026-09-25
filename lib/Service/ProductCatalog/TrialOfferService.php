@@ -14,7 +14,7 @@ class TrialOfferService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of trial offers.
      *
-     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, prices?: string[], starting_after?: string} $params
+     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], limit?: int, prices?: string[], starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\ProductCatalog\TrialOffer>
@@ -29,7 +29,7 @@ class TrialOfferService extends \Stripe\Service\AbstractService
     /**
      * Creates a trial offer.
      *
-     * @param null|array{duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], name?: string, price: string} $params
+     * @param null|array{active?: bool, duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], nickname?: string, price: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\ProductCatalog\TrialOffer
@@ -55,5 +55,22 @@ class TrialOfferService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v1/product_catalog/trial_offers/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Updates the specified trial offer by setting the values of the parameters
+     * passed. Any parameters not provided are left unchanged.
+     *
+     * @param string $id
+     * @param null|array{active?: bool, expand?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\ProductCatalog\TrialOffer
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/product_catalog/trial_offers/%s', $id), $params, $opts);
     }
 }

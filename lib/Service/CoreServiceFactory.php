@@ -84,6 +84,7 @@ namespace Stripe\Service;
  * @property TaxRateService $taxRates
  * @property Terminal\TerminalServiceFactory $terminal
  * @property TestHelpers\TestHelpersServiceFactory $testHelpers
+ * @property ThreeDSecure\ThreeDSecureServiceFactory $threeDSecure
  * @property TokenService $tokens
  * @property TopupService $topups
  * @property TransferService $transfers
@@ -177,6 +178,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'taxRates' => TaxRateService::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
         'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
+        'threeDSecure' => ThreeDSecure\ThreeDSecureServiceFactory::class,
         'tokens' => TokenService::class,
         'topups' => TopupService::class,
         'transfers' => TransferService::class,
