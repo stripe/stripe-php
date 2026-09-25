@@ -94,6 +94,7 @@ namespace Stripe;
  * @property Service\TaxRateService $taxRates
  * @property Service\Terminal\TerminalServiceFactory $terminal
  * @property Service\TestHelpers\TestHelpersServiceFactory $testHelpers
+ * @property Service\ThreeDSecure\ThreeDSecureServiceFactory $threeDSecure
  * @property Service\TokenService $tokens
  * @property Service\TopupService $topups
  * @property Service\TransferService $transfers

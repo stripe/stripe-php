@@ -5142,6 +5142,19 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.earned_credit.succeeded" event.
+     *
+     * @param callable(Events\V2MoneyManagementEarnedCreditSucceededEventNotification, StripeClient): void $handler Handles v2.money_management.earned_credit.succeeded events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementEarnedCreditSucceeded($handler)
+    {
+        $this->register('v2.money_management.earned_credit.succeeded', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.financial_account.created" event.
      *
      * @param callable(Events\V2MoneyManagementFinancialAccountCreatedEventNotification, StripeClient): void $handler Handles v2.money_management.financial_account.created events

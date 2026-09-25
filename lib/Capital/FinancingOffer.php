@@ -32,6 +32,7 @@ class FinancingOffer extends \Stripe\ApiResource
 
     const DISCLAIMER_VARIANT_CELTIC_US_LOAN = 'celtic_us_loan';
     const DISCLAIMER_VARIANT_FUNDBOX_AU_FINANCING = 'fundbox_au_financing';
+    const DISCLAIMER_VARIANT_FUNDBOX_CA_FINANCING = 'fundbox_ca_financing';
     const DISCLAIMER_VARIANT_YOULEND_DE_FINANCING = 'youlend_de_financing';
     const DISCLAIMER_VARIANT_YOULEND_FR_FINANCING = 'youlend_fr_financing';
     const DISCLAIMER_VARIANT_YOULEND_UK_MCA = 'youlend_uk_mca';

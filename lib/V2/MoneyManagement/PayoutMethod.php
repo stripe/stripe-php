@@ -11,11 +11,12 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|(object{id: string, type: string}&\Stripe\StripeObject) $alternative_reference The alternative reference for this payout method, if it's a projected payout method.
  * @property null|(object{dynamic_last4: string, exp_month: string, exp_year: string, fingerprint: string, last4: string, supported_currencies: string[]}&\Stripe\StripeObject) $apple_pay The PayoutMethodApplePay object details.
+ * @property bool $archived Whether the payout method was archived. Payout methods can be archived through the /archive API, and they will not be automatically archived by Stripe. Archived payout methods cannot be used for outbound money movement.
  * @property string[] $available_payout_speeds A set of available payout speeds for this payout method.
- * @property null|(object{archived: bool, bank_account_type: string, bank_name: string, branch_number?: string, country: string, enabled_delivery_schemes: string[], financial_connections_account?: string, last4: string, routing_number?: string, supported_currencies: string[], swift_code?: string}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
- * @property null|(object{archived: bool, exp_month: string, exp_year: string, fingerprint: string, last4: string, supported_currencies: string[]}&\Stripe\StripeObject) $card The PayoutMethodCard object details.
+ * @property null|(object{bank_account_type: string, bank_name: string, branch_number?: string, country: string, enabled_delivery_schemes: string[], financial_connections_account?: string, last4: string, routing_number?: string, supported_currencies: string[], swift_code?: string}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
+ * @property null|(object{exp_month: string, exp_year: string, fingerprint: string, last4: string, supported_currencies: string[]}&\Stripe\StripeObject) $card The PayoutMethodCard object details.
  * @property string $created Created timestamp.
- * @property null|(object{address: string, archived: bool, memo?: string, network: string}&\Stripe\StripeObject) $crypto_wallet The PayoutMethodCryptoWallet object details.
+ * @property null|(object{address: string, memo?: string, network: string}&\Stripe\StripeObject) $crypto_wallet The PayoutMethodCryptoWallet object details.
  * @property null|string $latest_outbound_setup_intent ID of the underlying active OutboundSetupIntent object, if any.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{network_business_profile: string}&\Stripe\StripeObject) $network_business_profile_wallet The PayoutMethodNetworkBusinessProfileWallet object details.

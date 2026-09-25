@@ -14,7 +14,7 @@ class AdjustmentService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of Adjustments that match the provided filters.
      *
-     * @param null|array{adjusted_flow?: string, created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int} $params
+     * @param null|array{adjusted_flow?: string, created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\Adjustment>

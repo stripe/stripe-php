@@ -58,7 +58,8 @@ class GbBankAccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Vault\GbBankAccount
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\CannotProceedException
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */
     public function archive($id, $params = null, $opts = null)
     {
@@ -73,7 +74,10 @@ class GbBankAccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Vault\GbBankAccount
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\BlockedByStripeException
+     * @throws \Stripe\Exception\CannotProceedException
+     * @throws \Stripe\Exception\InvalidVaultedCredentialException
+     * @throws \Stripe\Exception\QuotaExceededException
      */
     public function create($params = null, $opts = null)
     {

@@ -15,7 +15,7 @@ class FormService extends \Stripe\Service\AbstractService
      * Returns a list of tax forms which were previously created. The tax forms are
      * returned in sorted order, with the oldest tax forms appearing first.
      *
-     * @param null|array{ending_before?: string, expand?: string[], limit?: int, payee: array{account?: string, external_reference?: string, type?: string}, starting_after?: string, type?: string} $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, payee: array{account?: string, external_reference?: string, type?: string}, starting_after?: string, status?: string, type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Tax\Form>

@@ -27,7 +27,7 @@ class ScheduledQueryRunService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the details of an scheduled query run.
+     * Retrieves the details of a scheduled query run.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

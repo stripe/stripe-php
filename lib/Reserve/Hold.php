@@ -14,6 +14,7 @@ namespace Stripe\Reserve;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_by Indicates which party created this ReserveHold.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $destination The balance destination to which the reserved funds are sent.
  * @property null|bool $is_releasable Whether there are any funds available to release on this ReserveHold. Note that if the ReserveHold is in the process of being released, this could be false, even though the funds haven't been fully released yet.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -30,6 +31,10 @@ class Hold extends \Stripe\ApiResource
 
     const CREATED_BY_APPLICATION = 'application';
     const CREATED_BY_STRIPE = 'stripe';
+
+    const DESTINATION_OTHER = 'other';
+    const DESTINATION_RISK_RESERVED = 'risk_reserved';
+    const DESTINATION_SETTLEMENT_RESERVED = 'settlement_reserved';
 
     const REASON_CHARGE = 'charge';
     const REASON_STANDALONE = 'standalone';

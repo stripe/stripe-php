@@ -15,6 +15,7 @@ namespace Stripe;
  * @property string $customer ID of the customer this tax exemption belongs to.
  * @property null|bool $deleted Present and true when the exemption has been deleted.
  * @property string $effective_date ISO 8601 date (YYYY-MM-DD) when the exemption becomes effective.
+ * @property null|(object{state?: string}&StripeObject) $es
  * @property null|string $expiration_date ISO 8601 date (YYYY-MM-DD) when the exemption expires.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{state: string}&StripeObject) $us

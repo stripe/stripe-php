@@ -35,7 +35,7 @@ namespace Stripe\V2\Payments;
  * @property string $payment_method ID of the payment method used in this OffSessionPayment.
  * @property null|string $payment_record Payment record associated with the OffSessionPayment.
  * @property (object{enabled: bool}&\Stripe\StripeObject) $payments_orchestration Details about the payments orchestration configuration.
- * @property (object{attempts: int, retry_policy?: string, retry_strategy: string, retry_until?: string}&\Stripe\StripeObject) $retry_details Details about the OffSessionPayment retries.
+ * @property (object{attempts: int, retry_policy?: string, retry_strategy: string}&\Stripe\StripeObject) $retry_details Details about the OffSessionPayment retries.
  * @property null|string $statement_descriptor Text that appears on the customer's statement as the statement descriptor for a non-card charge. This value overrides the account's default statement descriptor. For information about requirements, including the 22-character limit, see the <a href="https://docs.stripe.com/get-started/account/statement-descriptors">Statement Descriptor docs</a>.
  * @property null|string $statement_descriptor_suffix Provides information about a card charge. Concatenated to the account's <a href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement descriptor prefix</a> to form the complete statement descriptor that appears on the customer's statement.
  * @property string $status Status of this OffSessionPayment, one of <code>pending</code>, <code>pending_retry</code>, <code>processing</code>, <code>failed</code>, <code>canceled</code>, <code>requires_capture</code>, or <code>succeeded</code>.

@@ -21,14 +21,18 @@ namespace Stripe\Tax;
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{reporting_period_end_date: string, reporting_period_start_date: string}&\Stripe\StripeObject) $nz_mrdp
  * @property (object{account: null|string|\Stripe\Account, external_reference: null|string, type: string}&\Stripe\StripeObject) $payee
+ * @property null|string $status Whether the tax form is a mutable draft or a finalized form.
  * @property string $type The type of the tax form. An additional hash is included on the tax form with a name matching this value. It contains additional information specific to the tax form type.
- * @property null|(object{reporting_year: int}&\Stripe\StripeObject) $us_1099_k
- * @property null|(object{reporting_year: int}&\Stripe\StripeObject) $us_1099_misc
- * @property null|(object{reporting_year: int}&\Stripe\StripeObject) $us_1099_nec
+ * @property null|(object{card_not_present_transactions?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), cash_tips?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), currency?: string, federal_income_tax_withheld?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), gross_amount_of_transactions_decimal?: string, monthly_volumes?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject)[], payment_transactions_count?: (object{count?: int, delta?: int}&\Stripe\StripeObject), reporting_year: int, state_income_tax_withheld?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $us_1099_k
+ * @property null|(object{cash_tips?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), crop_insurance_proceeds?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), currency?: string, direct_sales_for_resale?: bool, excess_golden_parachute_payments?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), fatca_filing_required?: bool, federal_income_tax_withheld?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), fish_purchased_for_resale?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), fishing_boat_proceeds?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), gross_proceeds_paid_to_an_attorney?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), medical_and_health_care_payments?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), nonqualified_deferred_compensation?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), other_income?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), overtime_compensation?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), rents?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), reporting_year: int, royalties?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), section_409a_deferrals?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), state_income?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), state_tax_withheld?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), substitute_payments?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $us_1099_misc
+ * @property null|(object{cash_tips?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), currency?: string, direct_sales_indicator?: bool, fatca_filing_requirement?: bool, federal_income_tax_withheld?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), nonemployee_compensation?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), overtime_compensation?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), reporting_year: int, state_income?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject), state_tax_withheld?: (object{delta_decimal?: string, volume_decimal?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $us_1099_nec
  */
 class Form extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.form';
+
+    const STATUS_DRAFT = 'draft';
+    const STATUS_FINALIZED = 'finalized';
 
     const TYPE_AU_SERR = 'au_serr';
     const TYPE_CA_MRDP = 'ca_mrdp';
@@ -43,7 +47,7 @@ class Form extends \Stripe\ApiResource
      * Returns a list of tax forms which were previously created. The tax forms are
      * returned in sorted order, with the oldest tax forms appearing first.
      *
-     * @param null|array{ending_before?: string, expand?: string[], limit?: int, payee: array{account?: string, external_reference?: string, type?: string}, starting_after?: string, type?: string} $params
+     * @param null|array{ending_before?: string, expand?: string[], limit?: int, payee: array{account?: string, external_reference?: string, type?: string}, starting_after?: string, status?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Form> of ApiResources

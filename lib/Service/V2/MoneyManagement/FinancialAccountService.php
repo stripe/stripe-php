@@ -111,7 +111,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     /**
      * Creates a new FinancialAccount.
      *
-     * @param null|array{display_name?: string, metadata?: array<string, string>, savings?: array{holds_currencies: string[]}, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, funds_usage_type?: string, holds_currencies: string[]}, type: string} $params
+     * @param null|array{display_name?: string, metadata?: array<string, string>, savings?: array{holds_currencies: string[]}, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, deposit_insurance_eligibility?: array{bank_name: string, currencies: string[], type: string}[], funds_usage_type?: string, holds_currencies: string[]}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount
