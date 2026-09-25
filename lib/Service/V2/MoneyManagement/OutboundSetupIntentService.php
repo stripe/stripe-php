@@ -45,12 +45,13 @@ class OutboundSetupIntentService extends \Stripe\Service\AbstractService
     /**
      * Create an OutboundSetupIntent object.
      *
-     * @param null|array{payout_method?: string, payout_method_data?: array{apple_pay?: array{pk_token?: string, pk_token_display_name: string}, bank_account?: array{account_number: string, bank_account_type?: string, branch_number?: string, country: string, currency: string, routing_number?: string, swift_code?: string}, card?: array{currency: string, exp_month: string, exp_year: string, number: string}, crypto_wallet?: array{address: string, memo?: string, network: string}, type: string}, usage_intent?: string} $params
+     * @param null|array{from_resource?: array{id: string, type: string}, payout_method?: string, payout_method_data?: array{apple_pay?: array{pk_token?: string, pk_token_display_name: string}, bank_account?: array{account_number: string, bank_account_type?: string, branch_number?: string, country: string, currency: string, routing_number?: string, swift_code?: string}, card?: array{currency: string, exp_month: string, exp_year: string, number: string}, crypto_wallet?: array{address: string, memo?: string, network: string}, type: string}, usage_intent?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\OutboundSetupIntent
      *
      * @throws \Stripe\Exception\BlockedByStripeException
+     * @throws \Stripe\Exception\CannotProceedException
      * @throws \Stripe\Exception\InvalidPayoutMethodException
      * @throws \Stripe\Exception\QuotaExceededException
      * @throws \Stripe\Exception\ControlledByAlternateResourceException

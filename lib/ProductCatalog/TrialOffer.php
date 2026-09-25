@@ -13,20 +13,23 @@ namespace Stripe\ProductCatalog;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property bool $active Whether the trial offer is active. Set to false to archive the trial offer.
  * @property (object{relative?: (object{iterations: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $duration
  * @property (object{transition?: (object{price: string|\Stripe\Price}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $end_behavior
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property null|string $name A brief, user-friendly name for the trial offer-for identification purposes.
+ * @property null|string $nickname A brief description of the trial offer, hidden from customers.
  * @property string|\Stripe\Price $price The price during the trial offer.
  */
 class TrialOffer extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'product_catalog.trial_offer';
 
+    use \Stripe\ApiOperations\Update;
+
     /**
      * Creates a trial offer.
      *
-     * @param null|array{duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], name?: string, price: string} $params
+     * @param null|array{active?: bool, duration: array{relative?: array{iterations: int}, type: string}, end_behavior: array{transition: array{price: string}}, expand?: string[], nickname?: string, price: string} $params
      * @param null|array|string $options
      *
      * @return TrialOffer the created resource
@@ -79,5 +82,29 @@ class TrialOffer extends \Stripe\ApiResource
         $instance->refresh();
 
         return $instance;
+    }
+
+    /**
+     * Updates the specified trial offer by setting the values of the parameters
+     * passed. Any parameters not provided are left unchanged.
+     *
+     * @param string $id the ID of the resource to update
+     * @param null|array{active?: bool, expand?: string[]} $params
+     * @param null|array|string $opts
+     *
+     * @return TrialOffer the updated resource
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public static function update($id, $params = null, $opts = null)
+    {
+        self::_validateParams($params);
+        $url = static::resourceUrl($id);
+
+        list($response, $opts) = static::_staticRequest('post', $url, $params, $opts);
+        $obj = \Stripe\Util\Util::convertToStripeObject($response->json, $opts);
+        $obj->setLastResponse($response);
+
+        return $obj;
     }
 }

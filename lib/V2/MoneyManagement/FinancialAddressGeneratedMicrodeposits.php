@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\V2;
+namespace Stripe\V2\MoneyManagement;
 
 /**
  * Generated Microdeposits represent verification deposits sent to a financial address for ownership verification, containing the deposited amounts and status.
@@ -14,5 +14,5 @@ namespace Stripe\V2;
  */
 class FinancialAddressGeneratedMicrodeposits extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = 'financial_address_generated_microdeposits';
+    const OBJECT_NAME = 'v2.money_management.financial_address_generated_microdeposits';
 }

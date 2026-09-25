@@ -14,7 +14,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     /**
      * Retrieves a list of InboundTransfers.
      *
-     * @param null|array{created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int} $params
+     * @param null|array{created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\InboundTransfer>

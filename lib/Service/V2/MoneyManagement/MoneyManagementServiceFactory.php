@@ -10,6 +10,7 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property AdjustmentService $adjustments
  * @property CurrencyConversionService $currencyConversions
  * @property DebitDisputeService $debitDisputes
+ * @property EarnedCreditService $earnedCredits
  * @property FinancialAccountService $financialAccounts
  * @property FinancialAddressService $financialAddresses
  * @property InboundTransferService $inboundTransfers
@@ -24,7 +25,7 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property ReceivedDebitMandateService $receivedDebitMandates
  * @property ReceivedDebitService $receivedDebits
  * @property RecipientVerificationService $recipientVerifications
- * @property TestHelpers\TestHelpersServiceFactory $testHelpers
+ * @property TestHelperService $testHelpers
  * @property TransactionEntryService $transactionEntries
  * @property TransactionService $transactions
  */
@@ -37,6 +38,7 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'adjustments' => AdjustmentService::class,
         'currencyConversions' => CurrencyConversionService::class,
         'debitDisputes' => DebitDisputeService::class,
+        'earnedCredits' => EarnedCreditService::class,
         'financialAccounts' => FinancialAccountService::class,
         'financialAddresses' => FinancialAddressService::class,
         'inboundTransfers' => InboundTransferService::class,
@@ -51,7 +53,7 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'receivedDebitMandates' => ReceivedDebitMandateService::class,
         'receivedDebits' => ReceivedDebitService::class,
         'recipientVerifications' => RecipientVerificationService::class,
-        'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
+        'testHelpers' => TestHelperService::class,
         'transactionEntries' => TransactionEntryService::class,
         'transactions' => TransactionService::class,
     ];

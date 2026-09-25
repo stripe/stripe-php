@@ -24,7 +24,7 @@ class AccountActivityService extends \Stripe\Service\AbstractService
      */
     public function create($params = null, $opts = null)
     {
-        return $this->request('post', '/v2/signals/account_activity', $params, $opts);
+        return $this->request('post', '/v2/signals/account_activities', $params, $opts);
     }
 
     /**
@@ -40,7 +40,7 @@ class AccountActivityService extends \Stripe\Service\AbstractService
      */
     public function delete($id, $params = null, $opts = null)
     {
-        return $this->request('delete', $this->buildPath('/v2/signals/account_activity/%s', $id), $params, $opts);
+        return $this->request('delete', $this->buildPath('/v2/signals/account_activities/%s', $id), $params, $opts);
     }
 
     /**
@@ -56,6 +56,6 @@ class AccountActivityService extends \Stripe\Service\AbstractService
      */
     public function retrieve($id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/signals/account_activity/%s', $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/signals/account_activities/%s', $id), $params, $opts);
     }
 }

@@ -36,6 +36,7 @@ class ReceivedCredit extends \Stripe\ApiResource
 
     const NETWORK_ACH = 'ach';
     const NETWORK_CARD = 'card';
+    const NETWORK_RTP = 'rtp';
     const NETWORK_STRIPE = 'stripe';
     const NETWORK_US_DOMESTIC_WIRE = 'us_domestic_wire';
 

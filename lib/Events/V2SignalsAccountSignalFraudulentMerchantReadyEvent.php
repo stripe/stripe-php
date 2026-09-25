@@ -6,7 +6,6 @@ namespace Stripe\Events;
 
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
- * @property \Stripe\EventData\V2SignalsAccountSignalFraudulentMerchantReadyEventData $data data associated with the event
  */
 class V2SignalsAccountSignalFraudulentMerchantReadyEvent extends \Stripe\V2\Core\Event
 {
@@ -28,15 +27,5 @@ class V2SignalsAccountSignalFraudulentMerchantReadyEvent extends \Stripe\V2\Core
         ], [], $apiMode);
 
         return \Stripe\Util\Util::convertToStripeObject($object, $options, $apiMode);
-    }
-
-    public static function constructFrom($values, $opts = null, $apiMode = 'v2')
-    {
-        $evt = parent::constructFrom($values, $opts, $apiMode);
-        if (null !== $evt->data) {
-            $evt->data = \Stripe\EventData\V2SignalsAccountSignalFraudulentMerchantReadyEventData::constructFrom($evt->data, $opts, $apiMode);
-        }
-
-        return $evt;
     }
 }

@@ -7,7 +7,6 @@ namespace Stripe\Service\V2\TestHelpers;
 /**
  * Service factory class for API resources in the TestHelpers namespace.
  *
- * @property FinancialAddressService $financialAddresses
  * @property MoneyManagementService $moneyManagement
  */
 class TestHelpersServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -16,7 +15,6 @@ class TestHelpersServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-        'financialAddresses' => FinancialAddressService::class,
         'moneyManagement' => MoneyManagementService::class,
     ];
 

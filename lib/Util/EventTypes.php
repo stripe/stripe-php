@@ -375,6 +375,7 @@ class EventTypes
         \Stripe\Events\V2MoneyManagementDebitDisputeFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementDebitDisputeFailedEvent::class,
         \Stripe\Events\V2MoneyManagementDebitDisputeSubmittedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementDebitDisputeSubmittedEvent::class,
         \Stripe\Events\V2MoneyManagementDebitDisputeSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementDebitDisputeSucceededEvent::class,
+        \Stripe\Events\V2MoneyManagementEarnedCreditSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementEarnedCreditSucceededEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountCreatedEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountUpdatedEvent::class,
         \Stripe\Events\V2MoneyManagementFinancialAccountWalletExportCompletedEvent::LOOKUP_TYPE => \Stripe\Events\V2MoneyManagementFinancialAccountWalletExportCompletedEvent::class,

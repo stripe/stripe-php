@@ -203,7 +203,7 @@ class CustomerService extends AbstractService
      * Create a location specific tax exemption for a customer.
      *
      * @param string $parentId
-     * @param null|array{ca?: array{state?: string, tax_type: string}, country: string, effective_date: string, expand?: string[], expiration_date?: string, us?: array{state: string}} $params
+     * @param null|array{ca?: array{state?: string, tax_type: string}, country: string, effective_date: string, es?: array{state: string}, expand?: string[], expiration_date?: string, us?: array{state: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\CustomerTaxExemption
