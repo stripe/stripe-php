@@ -86,6 +86,7 @@ class ErrorObject extends StripeObject
     const CODE_CUSTOMER_SESSION_EXPIRED = 'customer_session_expired';
     const CODE_CUSTOMER_TAX_LOCATION_INVALID = 'customer_tax_location_invalid';
     const CODE_DEBIT_NOT_AUTHORIZED = 'debit_not_authorized';
+    const CODE_DISPUTE_EVIDENCE_PAGE_LIMIT_EXCEEDED = 'dispute_evidence_page_limit_exceeded';
     const CODE_EMAIL_INVALID = 'email_invalid';
     const CODE_EXPIRED_CARD = 'expired_card';
     const CODE_EXPIRED_PAYMENT_METHOD = 'expired_payment_method';
@@ -96,6 +97,8 @@ class ErrorObject extends StripeObject
     const CODE_FINANCIAL_CONNECTIONS_ACCOUNT_INACTIVE = 'financial_connections_account_inactive';
     const CODE_FINANCIAL_CONNECTIONS_ACCOUNT_PENDING_ACCOUNT_NUMBERS = 'financial_connections_account_pending_account_numbers';
     const CODE_FINANCIAL_CONNECTIONS_ACCOUNT_UNAVAILABLE_ACCOUNT_NUMBERS = 'financial_connections_account_unavailable_account_numbers';
+    const CODE_FINANCIAL_CONNECTIONS_CONSENT_LOCALE_INVALID = 'financial_connections_consent_locale_invalid';
+    const CODE_FINANCIAL_CONNECTIONS_CONSENT_LOCALE_UNSUPPORTED = 'financial_connections_consent_locale_unsupported';
     const CODE_FINANCIAL_CONNECTIONS_NO_SUCCESSFUL_TRANSACTION_REFRESH = 'financial_connections_no_successful_transaction_refresh';
     const CODE_FORWARDING_API_INACTIVE = 'forwarding_api_inactive';
     const CODE_FORWARDING_API_INVALID_PARAMETER = 'forwarding_api_invalid_parameter';
@@ -149,6 +152,7 @@ class ErrorObject extends StripeObject
     const CODE_PARAMETER_MISSING = 'parameter_missing';
     const CODE_PARAMETER_UNKNOWN = 'parameter_unknown';
     const CODE_PARAMETERS_EXCLUSIVE = 'parameters_exclusive';
+    const CODE_PAYMENT_EVALUATION_ON_API_VERSION_NOT_SUPPORTED = 'payment_evaluation_on_api_version_not_supported';
     const CODE_PAYMENT_INTENT_ACTION_REQUIRED = 'payment_intent_action_required';
     const CODE_PAYMENT_INTENT_AUTHENTICATION_FAILURE = 'payment_intent_authentication_failure';
     const CODE_PAYMENT_INTENT_INCOMPATIBLE_PAYMENT_METHOD = 'payment_intent_incompatible_payment_method';

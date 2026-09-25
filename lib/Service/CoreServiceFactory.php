@@ -53,6 +53,7 @@ namespace Stripe\Service;
  * @property PayoutService $payouts
  * @property PlanService $plans
  * @property PriceService $prices
+ * @property ProductCatalog\ProductCatalogServiceFactory $productCatalog
  * @property ProductService $products
  * @property PromotionCodeService $promotionCodes
  * @property QuoteService $quotes
@@ -74,6 +75,7 @@ namespace Stripe\Service;
  * @property TaxRateService $taxRates
  * @property Terminal\TerminalServiceFactory $terminal
  * @property TestHelpers\TestHelpersServiceFactory $testHelpers
+ * @property ThreeDSecure\ThreeDSecureServiceFactory $threeDSecure
  * @property TokenService $tokens
  * @property TopupService $topups
  * @property TransferService $transfers
@@ -136,6 +138,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'payouts' => PayoutService::class,
         'plans' => PlanService::class,
         'prices' => PriceService::class,
+        'productCatalog' => ProductCatalog\ProductCatalogServiceFactory::class,
         'products' => ProductService::class,
         'promotionCodes' => PromotionCodeService::class,
         'quotes' => QuoteService::class,
@@ -157,6 +160,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'taxRates' => TaxRateService::class,
         'terminal' => Terminal\TerminalServiceFactory::class,
         'testHelpers' => TestHelpers\TestHelpersServiceFactory::class,
+        'threeDSecure' => ThreeDSecure\ThreeDSecureServiceFactory::class,
         'tokens' => TokenService::class,
         'topups' => TopupService::class,
         'transfers' => TransferService::class,
