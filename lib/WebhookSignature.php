@@ -42,6 +42,13 @@ abstract class WebhookSignature
                 $header
             );
         }
+        if (empty($secret)) {
+            throw Exception\SignatureVerificationException::factory(
+                'No webhook secret value was provided. It should start with `whsec_`',
+                $payload,
+                $header
+            );
+        }
 
         // Check if expected signature is found in list of signatures from
         // header

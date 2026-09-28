@@ -15,6 +15,12 @@ require 'vendor/autoload.php';
 $api_key = getenv('STRIPE_API_KEY');
 $webhook_secret = getenv('WEBHOOK_SECRET');
 
+if (empty($webhook_secret)) {
+    fwrite(STDERR, "WEBHOOK_SECRET environment variable is not set. It should start with `whsec_`\n");
+
+    exit(1);
+}
+
 $app = new Slim\App();
 $client = new Stripe\StripeClient($api_key);
 

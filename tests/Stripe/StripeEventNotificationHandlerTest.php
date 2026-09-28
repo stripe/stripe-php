@@ -29,6 +29,7 @@ final class StripeEventNotificationHandlerTest extends TestCase
     {
         $this->client = new StripeClient([
             'api_key' => 'sk_test_123',
+            'stripe_account' => 'acct_123',
             'stripe_context' => 'original_context_123',
         ]);
 
@@ -212,8 +213,10 @@ final class StripeEventNotificationHandlerTest extends TestCase
     public function testHandlerUsesEventStripeContext()
     {
         $receivedContext = null;
+        $receivedAccount = null;
 
-        $callback = static function ($event, $client) use (&$receivedContext) {
+        $callback = static function ($event, $client) use (&$receivedAccount, &$receivedContext) {
+            $receivedAccount = $client->getStripeAccount();
             $receivedContext = $client->getStripeContextHeader();
         };
 
@@ -226,6 +229,7 @@ final class StripeEventNotificationHandlerTest extends TestCase
         $this->handler->handle($payload, $sigHeader);
 
         self::assertSame('event_context_456', $receivedContext);
+        self::assertNull($receivedAccount);
     }
 
     public function testStripeContextRestoredAfterHandlerSuccess()
