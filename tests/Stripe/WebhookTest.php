@@ -86,6 +86,24 @@ final class WebhookTest extends TestCase
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
     }
 
+    public function testEmptySecretRejected()
+    {
+        $this->expectException(Exception\SignatureVerificationException::class);
+        $this->expectExceptionMessage('No webhook secret value was provided. It should start with `whsec_`');
+
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET);
+        WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, '');
+    }
+
+    public function testNullSecretRejected()
+    {
+        $this->expectException(Exception\SignatureVerificationException::class);
+        $this->expectExceptionMessage('No webhook secret value was provided. It should start with `whsec_`');
+
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET);
+        WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, null);
+    }
+
     public function testTimestampTooOld()
     {
         $this->expectException(Exception\SignatureVerificationException::class);

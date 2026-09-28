@@ -99,7 +99,7 @@ final class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . $account->id . '/reject'
         );
-        $resource = $account->reject(['reason' => 'fraud']);
+        $resource = $account->reject(['reason' => 'fraud_other']);
         self::assertInstanceOf(Account::class, $resource);
         self::assertSame($resource, $account);
     }
