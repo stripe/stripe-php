@@ -201,7 +201,7 @@ class Invoice extends ApiResource
      * invoices are returned sorted by creation date, with the most recently created
      * invoices appearing first.
      *
-     * @param null|array{collection_method?: string, created?: array|int, customer?: string, customer_account?: string, due_date?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, subscription?: string} $params
+     * @param null|array{collection_method?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, customer?: string, customer_account?: string, due_date?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, subscription?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Invoice> of ApiResources

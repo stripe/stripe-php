@@ -114,7 +114,7 @@ class CreditNote extends ApiResource
     /**
      * Returns a list of credit notes.
      *
-     * @param null|array{created?: array|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, customer?: string, customer_account?: string, ending_before?: string, expand?: string[], invoice?: string, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<CreditNote> of ApiResources

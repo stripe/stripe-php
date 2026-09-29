@@ -95,7 +95,7 @@ class BalanceTransaction extends ApiResource
      * The previous name of this endpoint was “Balance history,” and it used the path
      * <code>/v1/balance/history</code>.
      *
-     * @param null|array{created?: array|int, currency?: string, ending_before?: string, expand?: string[], limit?: int, payout?: string, source?: string, starting_after?: string, type?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, currency?: string, ending_before?: string, expand?: string[], limit?: int, payout?: string, source?: string, starting_after?: string, type?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<BalanceTransaction> of ApiResources

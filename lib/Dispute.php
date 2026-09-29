@@ -63,7 +63,7 @@ class Dispute extends ApiResource
     /**
      * Returns a list of your disputes.
      *
-     * @param null|array{charge?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
+     * @param null|array{charge?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Dispute> of ApiResources
