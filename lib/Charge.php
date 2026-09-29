@@ -98,7 +98,7 @@ class Charge extends ApiResource
      * Returns a list of charges you’ve previously created. The charges are returned in
      * sorted order, with the most recent charges appearing first.
      *
-     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string, transfer_group?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, customer?: string, ending_before?: string, expand?: string[], limit?: int, payment_intent?: string, starting_after?: string, transfer_group?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Charge> of ApiResources
