@@ -51,6 +51,7 @@ class OutboundPaymentService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\MoneyManagement\OutboundPayment
      *
+     * @throws \Stripe\Exception\BlockedByStripeException
      * @throws \Stripe\Exception\InsufficientFundsException
      * @throws \Stripe\Exception\FeatureNotEnabledException
      * @throws \Stripe\Exception\QuotaExceededException

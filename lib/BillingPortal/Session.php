@@ -22,6 +22,7 @@ namespace Stripe\BillingPortal;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
+ * @property null|(object{customer_login: null|(object{expires_at: null|int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $after_expiration Behavior after the portal session expires.
  * @property Configuration|string $configuration The configuration used by this session, describing the features available.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $customer The ID of the customer for this session.
@@ -40,7 +41,7 @@ class Session extends \Stripe\ApiResource
     /**
      * Creates a session of the customer portal.
      *
-     * @param null|array{configuration?: string, customer?: string, customer_account?: string, expand?: string[], flow_data?: array{after_completion?: array{hosted_confirmation?: array{custom_message?: string}, redirect?: array{return_url: string}, type: string}, subscription_cancel?: array{retention?: array{coupon_offer: array{coupon: string}, type: string}, subscription: string}, subscription_pause?: array{subscription: string}, subscription_update?: array{subscription: string}, subscription_update_confirm?: array{discounts?: array{coupon?: string, promotion_code?: string}[], items: array{id: string, price?: string, quantity?: int}[], subscription: string}, type: string}, locale?: string, on_behalf_of?: string, return_url?: string} $params
+     * @param null|array{after_expiration?: array{customer_login?: array{expires_at?: int}, type: string}, configuration?: string, customer?: string, customer_account?: string, expand?: string[], flow_data?: array{after_completion?: array{hosted_confirmation?: array{custom_message?: string}, redirect?: array{return_url: string}, type: string}, subscription_cancel?: array{retention?: array{coupon_offer: array{coupon: string}, type: string}, subscription: string}, subscription_pause?: array{subscription: string}, subscription_update?: array{subscription: string}, subscription_update_confirm?: array{discounts?: array{coupon?: string, promotion_code?: string}[], items: array{id: string, price?: string, quantity?: int}[], subscription: string}, type: string}, locale?: string, on_behalf_of?: string, return_url?: string} $params
      * @param null|array|string $options
      *
      * @return Session the created resource

@@ -74,6 +74,26 @@ class ResourceService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Reveals the current provider-issued access configuration for a completed
+     * Resource. This is a read-only disclosure: it does not create, refresh, mint, or
+     * rotate credentials. Repeated calls are safe and do not require an idempotency
+     * key, but can return a newer configuration after a separate Rotate operation
+     * completes.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Provisioning\ResourceAccessConfiguration
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function revealAccessConfiguration($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/provisioning/resources/%s/reveal_access_configuration', $id), $params, $opts);
+    }
+
+    /**
      * Rotates a resource's credentials.
      *
      * @param string $id

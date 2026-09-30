@@ -15,11 +15,15 @@ namespace Stripe\V2\Core\Vault;
  * @property null|string $exp_year The year the network token expires.
  * @property bool $livemode Whether the object exists in live mode or in test mode.
  * @property null|string $number The network token number.
+ * @property string $origin The origin of the resource used to provision this network token.
  * @property string $status Closed Enum. The status of the network token.
  */
 class NetworkToken extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.core.vault.network_token';
+
+    const ORIGIN_CARD_ON_FILE = 'card_on_file';
+    const ORIGIN_WALLET = 'wallet';
 
     const STATUS_ACTIVE = 'active';
     const STATUS_DEACTIVATED = 'deactivated';

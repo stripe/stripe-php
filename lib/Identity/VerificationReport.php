@@ -45,7 +45,7 @@ class VerificationReport extends \Stripe\ApiResource
     /**
      * List all verification reports.
      *
-     * @param null|array{blocked_by_entry?: string, client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, verification_session?: string} $params
+     * @param null|array{blocked_by_entry?: string, client_reference_id?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, verification_session?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<VerificationReport> of ApiResources

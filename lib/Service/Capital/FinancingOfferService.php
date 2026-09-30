@@ -15,7 +15,7 @@ class FinancingOfferService extends \Stripe\Service\AbstractService
      * Retrieves the financing offers available for Connected accounts that belong to
      * your platform.
      *
-     * @param null|array{connected_account?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{connected_account?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Capital\FinancingOffer>

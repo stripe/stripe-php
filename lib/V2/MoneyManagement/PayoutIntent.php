@@ -13,7 +13,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $confirmation_method Controls whether the intent requires explicit confirmation before transitioning to pending.
  * @property string $created Time at which the PayoutIntent was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property null|string $description An arbitrary string attached to the PayoutIntent. Often useful for displaying to users.
- * @property null|(object{amount: \Stripe\StripeObject, tax_amount?: (object{currency: string, value_decimal: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[] $estimated_fees Estimated fees and taxes.
+ * @property null|(object{amount: \Stripe\StripeObject, network_fee_details?: (object{network: string, network_options: (object{ach?: (object{submission?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject), tax_amount?: (object{currency: string, value_decimal: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[] $estimated_fees Estimated fees and taxes.
  * @property (object{currency: string, debited?: \Stripe\StripeObject, financial_account: string}&\Stripe\StripeObject) $from The FinancialAccount that funds are pulled from.
  * @property null|(object{lock_duration: string, lock_expires_at?: string, lock_status: string, rates: \Stripe\StripeObject, to_currency: string}&\Stripe\StripeObject) $fx_quote FX rate information for fee transparency.
  * @property (object{outbound_payment?: string, outbound_transfer?: string, type: string}&\Stripe\StripeObject) $latest_payout Details about the latest payout associated with this PayoutIntent.

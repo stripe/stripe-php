@@ -14,7 +14,7 @@ class VerificationSessionService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of VerificationSessions.
      *
-     * @param null|array{client_reference_id?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, related_customer_account?: string, starting_after?: string, status?: string} $params
+     * @param null|array{client_reference_id?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, related_customer?: string, related_customer_account?: string, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Identity\VerificationSession>
