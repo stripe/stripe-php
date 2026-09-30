@@ -44,7 +44,7 @@ class ScheduledQueryRun extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieves the details of an scheduled query run.
+     * Retrieves the details of a scheduled query run.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

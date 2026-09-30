@@ -616,6 +616,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                     'type' => 'request',
                 ],
+                'snapshot_event' => 'snapshot_event',
                 'type' => 'type',
             ],
             200,
@@ -1281,7 +1282,7 @@ final class GeneratedExamplesTest extends TestCase
                 'customer' => 'cus_xxxxxxxxxxxxx',
             ],
             'permissions' => ['payment_method', 'balances'],
-            'filters' => ['countries' => ['US']],
+            'filters' => ['country' => 'US'],
         ]);
         self::assertInstanceOf(FinancialConnections\Session::class, $result);
     }
@@ -5366,7 +5367,6 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['merchant'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -5375,7 +5375,6 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['merchant'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -5404,7 +5403,6 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['merchant'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -5413,7 +5411,6 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['merchant'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],

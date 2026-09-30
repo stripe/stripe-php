@@ -15,7 +15,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|string $api_version The API version events are rendered as for this webhook endpoint.
+ * @property null|string $api_version The API version that events are rendered as for this webhook endpoint. You can't change this value after you create the endpoint.
  * @property null|string $application The ID of the associated Connect application.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $description An optional description of what the webhook is used for.
