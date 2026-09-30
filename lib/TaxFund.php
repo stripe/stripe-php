@@ -26,7 +26,7 @@ class TaxFund extends ApiResource
     /**
      * Returns a list of tax funds in reverse chronological order.
      *
-     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<TaxFund> of ApiResources

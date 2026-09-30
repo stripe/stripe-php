@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\V2;
+namespace Stripe\V2\MoneyManagement;
 
 /**
  * Credit Simulations represent simulated credit transactions applied to financial addresses for testing purposes.
@@ -13,5 +13,5 @@ namespace Stripe\V2;
  */
 class FinancialAddressCreditSimulation extends \Stripe\ApiResource
 {
-    const OBJECT_NAME = 'financial_address_credit_simulation';
+    const OBJECT_NAME = 'v2.money_management.financial_address_credit_simulation';
 }

@@ -11,7 +11,7 @@ namespace Stripe\FinancialConnections;
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $account The ID of the Financial Connections Account this transaction belongs to.
  * @property int $amount The amount of this transaction, in cents (or local equivalent).
- * @property null|((object{financial_activity?: (object{confidence_level: null|string, detailed_label: null|string, primary_label: null|string}&\Stripe\StripeObject), money_movement?: (object{confidence_level: null|string, detailed_label: null|string, primary_label: null|string}&\Stripe\StripeObject), personal_finance?: (object{confidence_level: null|string, detailed_label: null|string, primary_label: null|string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject))[] $classifications Classification labels for this transaction, one entry per subscribed use case.
+ * @property null|((object{money_movement?: (object{confidence_level: null|string, detailed_label: null|string, primary_label: null|string}&\Stripe\StripeObject), personal_finance?: (object{confidence_level: null|string, detailed_label: null|string, primary_label: null|string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject))[] $classifications Classification labels for this transaction, one entry per subscribed use case.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
  * @property string $description The description of this transaction.
  * @property null|(object{merchant: (object{confidence_level: null|string, name: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $enrichments Enriched merchant information for this transaction.
@@ -33,7 +33,7 @@ class Transaction extends \Stripe\ApiResource
     /**
      * Returns a list of Financial Connections <code>Transaction</code> objects.
      *
-     * @param null|array{account: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transacted_at?: array|int, transaction_refresh?: array{after: string}} $params
+     * @param null|array{account: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transacted_at?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, transaction_refresh?: array{after: string}} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Transaction> of ApiResources

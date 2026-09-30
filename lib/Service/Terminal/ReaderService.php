@@ -31,7 +31,7 @@ class ReaderService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of <code>Reader</code> objects.
      *
-     * @param null|array{device_type?: string, ending_before?: string, expand?: string[], limit?: int, location?: string, serial_number?: string, starting_after?: string, status?: string, tamper_state?: string} $params
+     * @param null|array{device_type?: string, ending_before?: string, expand?: string[], limit?: int, location?: string, serial_number?: string, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Terminal\Reader>

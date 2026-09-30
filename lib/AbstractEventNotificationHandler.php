@@ -4830,6 +4830,110 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.data.query_run.created" event.
+     *
+     * @param callable(Events\V2DataQueryRunCreatedEventNotification, StripeClient): void $handler Handles v2.data.query_run.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataQueryRunCreated($handler)
+    {
+        $this->register('v2.data.query_run.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.query_run.failed" event.
+     *
+     * @param callable(Events\V2DataQueryRunFailedEventNotification, StripeClient): void $handler Handles v2.data.query_run.failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataQueryRunFailed($handler)
+    {
+        $this->register('v2.data.query_run.failed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.query_run.succeeded" event.
+     *
+     * @param callable(Events\V2DataQueryRunSucceededEventNotification, StripeClient): void $handler Handles v2.data.query_run.succeeded events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataQueryRunSucceeded($handler)
+    {
+        $this->register('v2.data.query_run.succeeded', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.query_run.updated" event.
+     *
+     * @param callable(Events\V2DataQueryRunUpdatedEventNotification, StripeClient): void $handler Handles v2.data.query_run.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataQueryRunUpdated($handler)
+    {
+        $this->register('v2.data.query_run.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.report_run.created" event.
+     *
+     * @param callable(Events\V2DataReportRunCreatedEventNotification, StripeClient): void $handler Handles v2.data.report_run.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataReportRunCreated($handler)
+    {
+        $this->register('v2.data.report_run.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.report_run.failed" event.
+     *
+     * @param callable(Events\V2DataReportRunFailedEventNotification, StripeClient): void $handler Handles v2.data.report_run.failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataReportRunFailed($handler)
+    {
+        $this->register('v2.data.report_run.failed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.report_run.succeeded" event.
+     *
+     * @param callable(Events\V2DataReportRunSucceededEventNotification, StripeClient): void $handler Handles v2.data.report_run.succeeded events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataReportRunSucceeded($handler)
+    {
+        $this->register('v2.data.report_run.succeeded', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.data.report_run.updated" event.
+     *
+     * @param callable(Events\V2DataReportRunUpdatedEventNotification, StripeClient): void $handler Handles v2.data.report_run.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2DataReportRunUpdated($handler)
+    {
+        $this->register('v2.data.report_run.updated', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.data.reporting.query_run.created" event.
      *
      * @param callable(Events\V2DataReportingQueryRunCreatedEventNotification, StripeClient): void $handler Handles v2.data.reporting.query_run.created events
@@ -5139,6 +5243,19 @@ abstract class AbstractEventNotificationHandler
     public function onV2MoneyManagementDebitDisputeSucceeded($handler)
     {
         $this->register('v2.money_management.debit_dispute.succeeded', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.earned_credit.succeeded" event.
+     *
+     * @param callable(Events\V2MoneyManagementEarnedCreditSucceededEventNotification, StripeClient): void $handler Handles v2.money_management.earned_credit.succeeded events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementEarnedCreditSucceeded($handler)
+    {
+        $this->register('v2.money_management.earned_credit.succeeded', $handler);
     }
 
     /**

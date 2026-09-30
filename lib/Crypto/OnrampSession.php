@@ -59,7 +59,7 @@ class OnrampSession extends \Stripe\ApiResource
      * sessions are returned in sorted order, with the most recent onramp sessions
      * appearing first.
      *
-     * @param null|array{created?: array|int, destination_currency?: string, destination_network?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, destination_currency?: string, destination_network?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<OnrampSession> of ApiResources

@@ -16,6 +16,7 @@ namespace Stripe\Capital;
  * @property int $created Time at which the offer was created. Given in seconds since unix epoch.
  * @property null|string $disclaimer_variant The type of disclaimer to use for a financing offer in user-facing surfaces. The corresponding disclaimer text to use for each disclaimer_variant value can be found in the <a href="https://docs.stripe.com/capital/marketing">marketing docs</a>.
  * @property float $expires_after Time at which the offer expires. Given in seconds since unix epoch.
+ * @property null|(object{financing_agreement: null|string|\Stripe\File, state_sales_based_financing_agreement: null|string|\Stripe\File, transfer_agreements: null|(string|\Stripe\File)[]}&\Stripe\StripeObject) $financing_documents Documents associated with a financing offer.
  * @property null|string $financing_type The type of financing being offered.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
@@ -32,6 +33,7 @@ class FinancingOffer extends \Stripe\ApiResource
 
     const DISCLAIMER_VARIANT_CELTIC_US_LOAN = 'celtic_us_loan';
     const DISCLAIMER_VARIANT_FUNDBOX_AU_FINANCING = 'fundbox_au_financing';
+    const DISCLAIMER_VARIANT_FUNDBOX_CA_FINANCING = 'fundbox_ca_financing';
     const DISCLAIMER_VARIANT_YOULEND_DE_FINANCING = 'youlend_de_financing';
     const DISCLAIMER_VARIANT_YOULEND_FR_FINANCING = 'youlend_fr_financing';
     const DISCLAIMER_VARIANT_YOULEND_UK_MCA = 'youlend_uk_mca';
@@ -62,7 +64,7 @@ class FinancingOffer extends \Stripe\ApiResource
      * Retrieves the financing offers available for Connected accounts that belong to
      * your platform.
      *
-     * @param null|array{connected_account?: string, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{connected_account?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<FinancingOffer> of ApiResources

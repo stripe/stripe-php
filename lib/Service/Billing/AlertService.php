@@ -47,7 +47,7 @@ class AlertService extends \Stripe\Service\AbstractService
      * alert.
      *
      * @param string $parentId
-     * @param null|array{action?: string, cadence?: string, customer: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, notified_at?: array|int, starting_after?: string, subscription?: string} $params
+     * @param null|array{action?: string, cadence?: string, customer: string, ending_before?: string, expand?: string[], limit?: int, meter?: string, notified_at?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, starting_after?: string, subscription?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Billing\AlertNotification>

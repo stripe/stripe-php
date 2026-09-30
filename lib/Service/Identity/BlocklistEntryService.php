@@ -20,7 +20,7 @@ class BlocklistEntryService extends \Stripe\Service\AbstractService
      * Related guide: <a href="/docs/identity/review-tools#block-list">Identity
      * Verification Blocklist</a>
      *
-     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, type?: string, verification_report?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string, type?: string, verification_report?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Collection<\Stripe\Identity\BlocklistEntry>

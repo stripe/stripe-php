@@ -14,7 +14,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of Transactions that match the provided filters.
      *
-     * @param null|array{created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, financial_account?: string, flow?: string, limit?: int} $params
+     * @param null|array{created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, financial_account?: string, flow?: string, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\Transaction>
@@ -24,6 +24,22 @@ class TransactionService extends \Stripe\Service\AbstractService
     public function all($params = null, $opts = null)
     {
         return $this->requestCollection('get', '/v2/money_management/transactions', $params, $opts);
+    }
+
+    /**
+     * Creates a fresh hosted URL for a Transaction's regulatory receipt.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\MoneyManagement\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function refreshRegulatoryReceipt($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/money_management/transactions/%s/refresh_regulatory_receipt', $id), $params, $opts);
     }
 
     /**
