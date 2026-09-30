@@ -10,7 +10,7 @@ namespace Stripe;
  *
  * Before April 6, 2017, transfers also represented movement of funds from a
  * Stripe account to a card or bank account. This behavior has since been split
- * out into a <a href="https://api.stripe.com#payout_object">Payout</a> object, with corresponding payout endpoints. For more
+ * out into a <a href="https://docs.stripe.com/api#payout_object">Payout</a> object, with corresponding payout endpoints. For more
  * information, read about the
  * <a href="https://docs.stripe.com/transfer-payout-split">transfer/payout split</a>.
  *
@@ -75,7 +75,7 @@ class Transfer extends ApiResource
      * are returned in sorted order, with the most recently created transfers appearing
      * first.
      *
-     * @param null|array{created?: array|int, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transfer_group?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transfer_group?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Transfer> of ApiResources

@@ -14,7 +14,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     /**
      * Returns a list of Transactions that match the provided filters.
      *
-     * @param null|array{created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, financial_account?: string, flow?: string, limit?: int} $params
+     * @param null|array{created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, financial_account?: string, flow?: string, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\Transaction>

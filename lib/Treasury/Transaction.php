@@ -5,7 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * Transactions represent changes to a <a href="https://api.stripe.com#financial_accounts">FinancialAccount's</a> balance.
+ * Transactions represent changes to a <a href="https://docs.stripe.com/api#financial_accounts">FinancialAccount's</a> balance.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -44,7 +44,7 @@ class Transaction extends \Stripe\ApiResource
     /**
      * Retrieves a list of Transaction objects.
      *
-     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], financial_account: string, limit?: int, order_by?: string, starting_after?: string, status?: string, status_transitions?: array{posted_at?: array|int}} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], financial_account: string, limit?: int, order_by?: string, starting_after?: string, status?: string, status_transitions?: array{posted_at?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int}} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Transaction> of ApiResources

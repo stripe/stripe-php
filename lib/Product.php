@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * Products describe the specific goods or services you offer to your customers.
  * For example, you might offer a Standard and Premium version of your goods or service; each version would be a separate Product.
- * They can be used in conjunction with <a href="https://api.stripe.com#prices">Prices</a> to configure pricing in Payment Links, Checkout, and Subscriptions.
+ * They can be used in conjunction with <a href="https://docs.stripe.com/api#prices">Prices</a> to configure pricing in Payment Links, Checkout, and Subscriptions.
  *
  * Related guides: <a href="https://docs.stripe.com/billing/subscriptions/set-up-subscription">Set up a subscription</a>,
  * <a href="https://docs.stripe.com/payment-links">share a Payment Link</a>,
@@ -48,7 +48,7 @@ class Product extends ApiResource
     /**
      * Creates a new product object.
      *
-     * @param null|array{active?: bool, default_price_data?: array{currency: string, currency_options?: array<string, array{custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], unit_amount?: int, unit_amount_decimal?: string}>, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, metadata?: array<string, string>, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, description?: string, expand?: string[], id?: string, images?: string[], marketing_features?: array{name: string}[], metadata?: array<string, string>, name: string, package_dimensions?: array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: string, tax_details?: array{performance_location?: string, tax_code?: null|string}, type?: string, unit_label?: string, url?: string} $params
+     * @param null|array{active?: bool, default_price_data?: array{currency: string, currency_options?: array<string, array{custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, tax_behavior?: string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: int|string})[], unit_amount?: int, unit_amount_decimal?: string}>, custom_unit_amount?: array{enabled: bool, maximum?: int, minimum?: int, preset?: int}, metadata?: array<string, string>, recurring?: array{interval: string, interval_count?: int}, tax_behavior?: string, unit_amount?: int, unit_amount_decimal?: string}, description?: string, expand?: string[], id?: string, images?: string[], marketing_features?: array{name: string}[], metadata?: array<string, string>, name: string, package_dimensions?: array{height: float, length: float, weight: float, width: float}, shippable?: bool, statement_descriptor?: string, tax_code?: string, tax_details?: array{performance_location?: string, tax_code?: null|string}, type?: string, unit_label?: string, url?: string} $params
      * @param null|array|string $options
      *
      * @return Product the created resource
@@ -94,7 +94,7 @@ class Product extends ApiResource
      * Returns a list of your products. The products are returned sorted by creation
      * date, with the most recently created products appearing first.
      *
-     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], ids?: string[], limit?: int, shippable?: bool, starting_after?: string, type?: string, url?: string} $params
+     * @param null|array{active?: bool, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], ids?: string[], limit?: int, shippable?: bool, starting_after?: string, type?: string, url?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Product> of ApiResources

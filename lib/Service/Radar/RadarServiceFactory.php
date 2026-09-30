@@ -7,6 +7,7 @@ namespace Stripe\Service\Radar;
 /**
  * Service factory class for API resources in the Radar namespace.
  *
+ * @property BillingEvaluationService $billingEvaluations
  * @property EarlyFraudWarningService $earlyFraudWarnings
  * @property PaymentEvaluationService $paymentEvaluations
  * @property ValueListItemService $valueListItems
@@ -18,6 +19,7 @@ class RadarServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
+        'billingEvaluations' => BillingEvaluationService::class,
         'earlyFraudWarnings' => EarlyFraudWarningService::class,
         'paymentEvaluations' => PaymentEvaluationService::class,
         'valueListItems' => ValueListItemService::class,

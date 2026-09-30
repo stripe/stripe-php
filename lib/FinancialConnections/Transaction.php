@@ -31,7 +31,7 @@ class Transaction extends \Stripe\ApiResource
     /**
      * Returns a list of Financial Connections <code>Transaction</code> objects.
      *
-     * @param null|array{account: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transacted_at?: array|int, transaction_refresh?: array{after: string}} $params
+     * @param null|array{account: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, transacted_at?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, transaction_refresh?: array{after: string}} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<Transaction> of ApiResources

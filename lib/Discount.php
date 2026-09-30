@@ -5,7 +5,7 @@
 namespace Stripe;
 
 /**
- * A discount represents the actual application of a <a href="https://api.stripe.com#coupons">coupon</a> or <a href="https://api.stripe.com#promotion_codes">promotion code</a>.
+ * A discount represents the actual application of a <a href="https://docs.stripe.com/api#coupons">coupon</a> or <a href="https://docs.stripe.com/api#promotion_codes">promotion code</a>.
  * It contains information about when the discount began, when it will end, and what it is applied to.
  *
  * Related guide: <a href="https://docs.stripe.com/billing/subscriptions/discounts">Applying discounts to subscriptions</a>

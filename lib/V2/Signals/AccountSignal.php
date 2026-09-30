@@ -15,6 +15,8 @@ namespace Stripe\V2\Signals;
  * @property null|(object{account?: string, customer?: string}&\Stripe\StripeObject) $account_details The account or customer this signal is associated with.
  * @property null|string $account_evaluation The account evaluation that produced this signal, if applicable.
  * @property string $created Timestamp at which the signal was created.
+ * @property null|(object{additional_details?: (object{indicators: (object{explanation: string, impact: string, indicator: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), probability?: string, risk_level: string}&\Stripe\StripeObject) $fraudulent_merchant Data for the fraudulent merchant signal. Present only when type is fraudulent_merchant.
+ * @property null|(object{details?: string, risk_level: string}&\Stripe\StripeObject) $fraudulent_website Data for the fraudulent website signal. Present only when type is fraudulent_website.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $type The type of signal.
  * @property null|(object{risk_level: string, score?: string}&\Stripe\StripeObject) $user_account_sharing Data for the user account-sharing signal. Present only when type is user_account_sharing.
@@ -27,6 +29,10 @@ class AccountSignal extends \Stripe\ApiResource
     public static function fieldEncodings()
     {
         return [
+            'fraudulent_merchant' => [
+                'kind' => 'object',
+                'fields' => ['probability' => ['kind' => 'decimal_string']],
+            ],
             'user_account_sharing' => [
                 'kind' => 'object',
                 'fields' => ['score' => ['kind' => 'decimal_string']],
@@ -38,6 +44,8 @@ class AccountSignal extends \Stripe\ApiResource
         ];
     }
 
+    const TYPE_FRAUDULENT_MERCHANT = 'fraudulent_merchant';
+    const TYPE_FRAUDULENT_WEBSITE = 'fraudulent_website';
     const TYPE_USER_ACCOUNT_SHARING = 'user_account_sharing';
     const TYPE_USER_MULTI_ACCOUNTING = 'user_multi_accounting';
 }

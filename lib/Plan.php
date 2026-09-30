@@ -5,10 +5,10 @@
 namespace Stripe;
 
 /**
- * You can now model subscriptions more flexibly using the <a href="https://api.stripe.com#prices">Prices API</a>. It replaces the Plans API and is backwards compatible to simplify your migration.
+ * You can now model subscriptions more flexibly using the <a href="https://docs.stripe.com/api#prices">Prices API</a>. It replaces the Plans API and is backwards compatible to simplify your migration.
  *
  * Plans define the base price, currency, and billing cycle for recurring purchases of products.
- * <a href="https://api.stripe.com#products">Products</a> help you track inventory or provisioning, and plans help you track pricing. Different physical goods or levels of service should be represented by products, and pricing options should be represented by plans. This approach lets you change prices without having to change your provisioning scheme.
+ * <a href="https://docs.stripe.com/api#products">Products</a> help you track inventory or provisioning, and plans help you track pricing. Different physical goods or levels of service should be represented by products, and pricing options should be represented by plans. This approach lets you change prices without having to change your provisioning scheme.
  *
  * For example, you might have a single &quot;gold&quot; product that has plans for $10/month, $100/year, €9/month, and €90/year.
  *
@@ -60,7 +60,7 @@ class Plan extends ApiResource
      * API</a>. It replaces the Plans API and is backwards compatible to simplify your
      * migration.
      *
-     * @param null|array{active?: bool, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|array<string, string>, meter?: string, nickname?: string, product?: array|string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: array|int|string})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
+     * @param null|array{active?: bool, amount?: int, amount_decimal?: string, billing_scheme?: string, currency: string, expand?: string[], id?: string, interval: string, interval_count?: int, metadata?: null|array<string, string>, meter?: string, nickname?: string, product?: array{active?: bool, id?: string, metadata?: array<string, string>, name: string, statement_descriptor?: string, tax_code?: string, tax_details?: array{performance_location?: string, tax_code?: null|string}, unit_label?: string}|string, tiers?: (array{flat_amount?: int, flat_amount_decimal?: string, unit_amount?: int, unit_amount_decimal?: string, up_to: int|string})[], tiers_mode?: string, transform_usage?: array{divide_by: int, round: string}, trial_period_days?: int, usage_type?: string} $params
      * @param null|array|string $options
      *
      * @return Plan the created resource
@@ -104,7 +104,7 @@ class Plan extends ApiResource
     /**
      * Returns a list of your plans.
      *
-     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
+     * @param null|array{active?: bool, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, product?: string, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Plan> of ApiResources

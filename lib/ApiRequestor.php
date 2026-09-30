@@ -325,16 +325,6 @@ class ApiRequestor
                     $code
                 );
 
-            case 'controlled_by_dashboard':
-                return Exception\ControlledByDashboardException::factory(
-                    $msg,
-                    $rcode,
-                    $rbody,
-                    $resp,
-                    $rheaders,
-                    $code
-                );
-
             case 'feature_not_enabled':
                 return Exception\FeatureNotEnabledException::factory(
                     $msg,
@@ -386,6 +376,19 @@ class ApiRequestor
                     $resp,
                     $rheaders,
                     $code
+                );
+
+            case 'invalid_vaulted_credential':
+                $invalidParam = isset($errorData['invalid_param']) ? $errorData['invalid_param'] : null;
+
+                return Exception\InvalidVaultedCredentialException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $invalidParam
                 );
 
             case 'non_zero_balance':
@@ -446,6 +449,45 @@ class ApiRequestor
                     $resp,
                     $rheaders,
                     $code
+                );
+
+            case 'verification_attempt_failed':
+                $verificationStatus = isset($errorData['verification_status']) ? $errorData['verification_status'] : null;
+
+                return Exception\VerificationAttemptFailedException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $verificationStatus
+                );
+
+            case 'verification_expired':
+                $verificationStatus = isset($errorData['verification_status']) ? $errorData['verification_status'] : null;
+
+                return Exception\VerificationExpiredException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $verificationStatus
+                );
+
+            case 'verification_not_initiated':
+                $verificationStatus = isset($errorData['verification_status']) ? $errorData['verification_status'] : null;
+
+                return Exception\VerificationNotInitiatedException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $verificationStatus
                 );
 
                 // switchCases: The end of the section generated from our OpenAPI spec
@@ -553,6 +595,7 @@ class ApiRequestor
         ['CODEX_CI', 'codex_cli'],
         ['CURSOR_AGENT', 'cursor'],
         ['GEMINI_CLI', 'gemini_cli'],
+        ['HERMES_AGENT', 'hermes'],
         ['OPENCLAW_SHELL', 'openclaw'],
         ['OPENCODE', 'open_code'],
         // aiAgents: The end of the section generated from our OpenAPI spec

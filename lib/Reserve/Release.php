@@ -13,6 +13,7 @@ namespace Stripe\Reserve;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property string $created_by Indicates which party created this ReserveRelease.
  * @property string $currency Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property string $destination The balance destination to which the released funds are sent.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $reason The reason for the ReserveRelease, indicating why the funds were released.
@@ -28,7 +29,10 @@ class Release extends \Stripe\ApiResource
     const CREATED_BY_APPLICATION = 'application';
     const CREATED_BY_STRIPE = 'stripe';
 
-    const REASON_BULK_HOLD_EXPIRY = 'bulk_hold_expiry';
+    const DESTINATION_OTHER = 'other';
+    const DESTINATION_PAYMENTS = 'payments';
+
+    const REASON_HOLD_EXPIRED = 'hold_expired';
     const REASON_HOLD_RELEASED_EARLY = 'hold_released_early';
     const REASON_HOLD_REVERSED = 'hold_reversed';
     const REASON_PLAN_DISABLED = 'plan_disabled';

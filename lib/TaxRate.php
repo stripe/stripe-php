@@ -46,6 +46,7 @@ class TaxRate extends ApiResource
 
     const TAX_TYPE_AMUSEMENT_TAX = 'amusement_tax';
     const TAX_TYPE_COMMUNICATIONS_TAX = 'communications_tax';
+    const TAX_TYPE_DIGITAL_EXCISE_TAX = 'digital_excise_tax';
     const TAX_TYPE_GST = 'gst';
     const TAX_TYPE_HST = 'hst';
     const TAX_TYPE_IGST = 'igst';
@@ -59,6 +60,7 @@ class TaxRate extends ApiResource
     const TAX_TYPE_RST = 'rst';
     const TAX_TYPE_SALES_TAX = 'sales_tax';
     const TAX_TYPE_SERVICE_TAX = 'service_tax';
+    const TAX_TYPE_UTILITY_USERS_TAX = 'utility_users_tax';
     const TAX_TYPE_VAT = 'vat';
 
     /**
@@ -87,7 +89,7 @@ class TaxRate extends ApiResource
      * Returns a list of your tax rates. Tax rates are returned sorted by creation
      * date, with the most recently created tax rates appearing first.
      *
-     * @param null|array{active?: bool, created?: array|int, ending_before?: string, expand?: string[], inclusive?: bool, limit?: int, starting_after?: string} $params
+     * @param null|array{active?: bool, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], inclusive?: bool, limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<TaxRate> of ApiResources

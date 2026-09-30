@@ -616,6 +616,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                     'type' => 'request',
                 ],
+                'snapshot_event' => 'snapshot_event',
                 'type' => 'type',
             ],
             200,
@@ -1281,7 +1282,7 @@ final class GeneratedExamplesTest extends TestCase
                 'customer' => 'cus_xxxxxxxxxxxxx',
             ],
             'permissions' => ['payment_method', 'balances'],
-            'filters' => ['countries' => ['US']],
+            'filters' => ['country' => 'US'],
         ]);
         self::assertInstanceOf(FinancialConnections\Session::class, $result);
     }
@@ -6057,7 +6058,6 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['merchant'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -6066,7 +6066,6 @@ final class GeneratedExamplesTest extends TestCase
                             'fields' => 'eventually_due',
                             'future_requirements' => 'include',
                         ],
-                        'configurations' => ['merchant'],
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
@@ -6095,7 +6094,6 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['merchant'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -6104,7 +6102,6 @@ final class GeneratedExamplesTest extends TestCase
                         'fields' => 'eventually_due',
                         'future_requirements' => 'include',
                     ],
-                    'configurations' => ['merchant'],
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
@@ -7382,10 +7379,10 @@ final class GeneratedExamplesTest extends TestCase
                         'actor' => ['type' => 'api_key'],
                         'context' => 'context',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'details' => ['type' => 'api_key'],
+                        'details' => ['type' => 'account_security'],
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'type' => 'api_key_created',
+                        'type' => 'user_auth_challenge_failed',
                     ],
                 ],
                 'next_page_url' => null,
@@ -7412,10 +7409,10 @@ final class GeneratedExamplesTest extends TestCase
                 'actor' => ['type' => 'api_key'],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'details' => ['type' => 'api_key'],
+                'details' => ['type' => 'account_security'],
                 'id' => 'obj_123',
                 'livemode' => [],
-                'type' => 'api_key_created',
+                'type' => 'user_auth_challenge_failed',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -7740,11 +7737,11 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.money_management.financial_address',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'currency' => 'usd',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
                         'livemode' => [],
                         'status' => 'failed',
+                        'type' => 'bank_account',
                     ],
                 ],
                 'next_page_url' => null,
@@ -7765,25 +7762,25 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/financial_addresses',
             [
                 'financial_account' => 'financial_account',
-                'type' => 'gb_bank_account',
+                'type' => 'bank_account',
             ],
             [],
             false,
             [
                 'object' => 'v2.money_management.financial_address',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'currency' => 'usd',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'failed',
+                'type' => 'bank_account',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->moneyManagement->financialAddresses->create([
             'financial_account' => 'financial_account',
-            'type' => 'gb_bank_account',
+            'type' => 'bank_account',
         ]);
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
@@ -7799,11 +7796,11 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.money_management.financial_address',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'currency' => 'usd',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
                 'livemode' => [],
                 'status' => 'failed',
+                'type' => 'bank_account',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -7854,7 +7851,6 @@ final class GeneratedExamplesTest extends TestCase
                                 'created' => '1970-01-12T21:42:34.472Z',
                                 'effective_at' => '1970-01-03T20:38:28.043Z',
                                 'id' => 'obj_123',
-                                'level' => 'canonical',
                                 'type' => 'bank_debit_failed',
                             ],
                         ],
@@ -7921,7 +7917,6 @@ final class GeneratedExamplesTest extends TestCase
                         'created' => '1970-01-12T21:42:34.472Z',
                         'effective_at' => '1970-01-03T20:38:28.043Z',
                         'id' => 'obj_123',
-                        'level' => 'canonical',
                         'type' => 'bank_debit_failed',
                     ],
                 ],
@@ -7983,7 +7978,6 @@ final class GeneratedExamplesTest extends TestCase
                         'created' => '1970-01-12T21:42:34.472Z',
                         'effective_at' => '1970-01-03T20:38:28.043Z',
                         'id' => 'obj_123',
-                        'level' => 'canonical',
                         'type' => 'bank_debit_failed',
                     ],
                 ],
@@ -8377,6 +8371,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'payout_method' => [
                             'object' => 'v2.money_management.payout_method',
+                            'archived' => [],
                             'available_payout_speeds' => ['0' => 'standard'],
                             'created' => '1970-01-12T21:42:34.472Z',
                             'id' => 'obj_123',
@@ -8384,8 +8379,8 @@ final class GeneratedExamplesTest extends TestCase
                             'restricted' => [],
                             'type' => 'bank_account',
                             'usage_status' => [
-                                'payments' => 'eligible',
-                                'transfers' => 'disabled',
+                                'payments' => 'invalid',
+                                'transfers' => 'invalid',
                             ],
                         ],
                         'status' => 'requires_payout_method',
@@ -8418,6 +8413,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'payout_method' => [
                     'object' => 'v2.money_management.payout_method',
+                    'archived' => [],
                     'available_payout_speeds' => ['0' => 'standard'],
                     'created' => '1970-01-12T21:42:34.472Z',
                     'id' => 'obj_123',
@@ -8425,8 +8421,8 @@ final class GeneratedExamplesTest extends TestCase
                     'restricted' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
-                        'payments' => 'eligible',
-                        'transfers' => 'disabled',
+                        'payments' => 'invalid',
+                        'transfers' => 'invalid',
                     ],
                 ],
                 'status' => 'requires_payout_method',
@@ -8454,6 +8450,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'payout_method' => [
                     'object' => 'v2.money_management.payout_method',
+                    'archived' => [],
                     'available_payout_speeds' => ['0' => 'standard'],
                     'created' => '1970-01-12T21:42:34.472Z',
                     'id' => 'obj_123',
@@ -8461,8 +8458,8 @@ final class GeneratedExamplesTest extends TestCase
                     'restricted' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
-                        'payments' => 'eligible',
-                        'transfers' => 'disabled',
+                        'payments' => 'invalid',
+                        'transfers' => 'invalid',
                     ],
                 ],
                 'status' => 'requires_payout_method',
@@ -8493,6 +8490,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'payout_method' => [
                     'object' => 'v2.money_management.payout_method',
+                    'archived' => [],
                     'available_payout_speeds' => ['0' => 'standard'],
                     'created' => '1970-01-12T21:42:34.472Z',
                     'id' => 'obj_123',
@@ -8500,8 +8498,8 @@ final class GeneratedExamplesTest extends TestCase
                     'restricted' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
-                        'payments' => 'eligible',
-                        'transfers' => 'disabled',
+                        'payments' => 'invalid',
+                        'transfers' => 'invalid',
                     ],
                 ],
                 'status' => 'requires_payout_method',
@@ -8532,6 +8530,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'payout_method' => [
                     'object' => 'v2.money_management.payout_method',
+                    'archived' => [],
                     'available_payout_speeds' => ['0' => 'standard'],
                     'created' => '1970-01-12T21:42:34.472Z',
                     'id' => 'obj_123',
@@ -8539,8 +8538,8 @@ final class GeneratedExamplesTest extends TestCase
                     'restricted' => [],
                     'type' => 'bank_account',
                     'usage_status' => [
-                        'payments' => 'eligible',
-                        'transfers' => 'disabled',
+                        'payments' => 'invalid',
+                        'transfers' => 'invalid',
                     ],
                 ],
                 'status' => 'requires_payout_method',
@@ -8779,6 +8778,7 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.money_management.payout_method',
+                        'archived' => [],
                         'available_payout_speeds' => ['0' => 'standard'],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
@@ -8786,8 +8786,8 @@ final class GeneratedExamplesTest extends TestCase
                         'restricted' => [],
                         'type' => 'bank_account',
                         'usage_status' => [
-                            'payments' => 'eligible',
-                            'transfers' => 'disabled',
+                            'payments' => 'invalid',
+                            'transfers' => 'invalid',
                         ],
                     ],
                 ],
@@ -8812,6 +8812,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.money_management.payout_method',
+                'archived' => [],
                 'available_payout_speeds' => ['0' => 'standard'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -8819,8 +8820,8 @@ final class GeneratedExamplesTest extends TestCase
                 'restricted' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
-                    'payments' => 'eligible',
-                    'transfers' => 'disabled',
+                    'payments' => 'invalid',
+                    'transfers' => 'invalid',
                 ],
             ],
             200,
@@ -8843,6 +8844,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.money_management.payout_method',
+                'archived' => [],
                 'available_payout_speeds' => ['0' => 'standard'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -8850,8 +8852,8 @@ final class GeneratedExamplesTest extends TestCase
                 'restricted' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
-                    'payments' => 'eligible',
-                    'transfers' => 'disabled',
+                    'payments' => 'invalid',
+                    'transfers' => 'invalid',
                 ],
             ],
             200,
@@ -8874,6 +8876,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.money_management.payout_method',
+                'archived' => [],
                 'available_payout_speeds' => ['0' => 'standard'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -8881,8 +8884,8 @@ final class GeneratedExamplesTest extends TestCase
                 'restricted' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
-                    'payments' => 'eligible',
-                    'transfers' => 'disabled',
+                    'payments' => 'invalid',
+                    'transfers' => 'invalid',
                 ],
             ],
             200,
@@ -8905,6 +8908,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.money_management.payout_method',
+                'archived' => [],
                 'available_payout_speeds' => ['0' => 'standard'],
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
@@ -8912,8 +8916,8 @@ final class GeneratedExamplesTest extends TestCase
                 'restricted' => [],
                 'type' => 'bank_account',
                 'usage_status' => [
-                    'payments' => 'eligible',
-                    'transfers' => 'disabled',
+                    'payments' => 'invalid',
+                    'transfers' => 'invalid',
                 ],
             ],
             200,
@@ -8979,6 +8983,10 @@ final class GeneratedExamplesTest extends TestCase
                             'currency' => 'USD',
                             'value' => [],
                         ],
+                        'amount_received' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -9009,6 +9017,10 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.money_management.received_credit',
                 'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'amount_received' => [
                     'currency' => 'USD',
                     'value' => [],
                 ],
@@ -9093,6 +9105,70 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\ReceivedDebit::class, $result);
+    }
+
+    public function testV2MoneyManagementTestHelpersFinancialAddressPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/test_helpers/financial_addresses/id_123/credit',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'network' => 'ach',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.financial_address_credit_simulation',
+                'livemode' => [],
+                'status' => 'status',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->testHelpers->financialAddresses->credit(
+            'id_123',
+            [
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => 96,
+                ],
+                'network' => 'ach',
+            ]
+        );
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAddressCreditSimulation::class, $result);
+    }
+
+    public function testV2MoneyManagementTestHelpersFinancialAddressPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/test_helpers/financial_addresses/id_123/generate_microdeposits',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.financial_address_generated_microdeposits',
+                'amounts' => [
+                    '0' => [
+                        'currency' => 'USD',
+                        'value' => [],
+                    ],
+                ],
+                'livemode' => [],
+                'status' => 'accepted',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->testHelpers->financialAddresses->generateMicrodeposits(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\FinancialAddressGeneratedMicrodeposits::class, $result);
     }
 
     public function testV2MoneyManagementTransactionGet()
@@ -9507,7 +9583,7 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/signals/account_activity',
+            '/v2/signals/account_activities',
             ['type' => 'registration_attempt'],
             [],
             false,
@@ -9522,7 +9598,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->signals->accountActivity->create([
+        $result = $this->v2Client->v2->signals->accountActivities->create([
             'type' => 'registration_attempt',
         ]);
         self::assertInstanceOf(V2\Signals\AccountActivity::class, $result);
@@ -9532,7 +9608,7 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'delete',
-            '/v2/signals/account_activity/id_123',
+            '/v2/signals/account_activities/id_123',
             [],
             [],
             false,
@@ -9543,7 +9619,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->signals->accountActivity->delete(
+        $result = $this->v2Client->v2->signals->accountActivities->delete(
             'id_123',
             []
         );
@@ -9554,7 +9630,7 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'get',
-            '/v2/signals/account_activity/id_123',
+            '/v2/signals/account_activities/id_123',
             [],
             [],
             false,
@@ -9569,7 +9645,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->signals->accountActivity->retrieve(
+        $result = $this->v2Client->v2->signals->accountActivities->retrieve(
             'id_123',
             []
         );
@@ -9593,9 +9669,14 @@ final class GeneratedExamplesTest extends TestCase
                                 'product_description' => 'product_description',
                             ],
                         ],
+                        'identity' => [
+                            'business_details' => [
+                                'registered_name' => 'registered_name',
+                            ],
+                        ],
                     ],
                 ],
-                'requested_signals' => ['user_account_sharing'],
+                'requested_signals' => ['user_multi_accounting'],
             ],
             [],
             false,
@@ -9605,8 +9686,8 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'pending_signals' => ['0' => 'user_multi_accounting'],
-                'requested_signals' => ['0' => 'user_account_sharing'],
+                'pending_signals' => ['0' => 'fraudulent_website'],
+                'requested_signals' => ['0' => 'user_multi_accounting'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -9623,9 +9704,14 @@ final class GeneratedExamplesTest extends TestCase
                             'product_description' => 'product_description',
                         ],
                     ],
+                    'identity' => [
+                        'business_details' => [
+                            'registered_name' => 'registered_name',
+                        ],
+                    ],
                 ],
             ],
-            'requested_signals' => ['user_account_sharing'],
+            'requested_signals' => ['user_multi_accounting'],
         ]);
         self::assertInstanceOf(V2\Signals\AccountEvaluation::class, $result);
     }
@@ -9644,8 +9730,8 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'pending_signals' => ['0' => 'user_multi_accounting'],
-                'requested_signals' => ['0' => 'user_account_sharing'],
+                'pending_signals' => ['0' => 'fraudulent_website'],
+                'requested_signals' => ['0' => 'user_multi_accounting'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -9713,70 +9799,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Signals\AccountSignal::class, $result);
     }
 
-    public function testV2TestHelpersFinancialAddressPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/test_helpers/financial_addresses/id_123/credit',
-            [
-                'amount' => [
-                    'currency' => 'USD',
-                    'value' => 96,
-                ],
-                'network' => 'ach',
-            ],
-            [],
-            false,
-            [
-                'object' => 'financial_address_credit_simulation',
-                'livemode' => [],
-                'status' => 'status',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->testHelpers->financialAddresses->credit(
-            'id_123',
-            [
-                'amount' => [
-                    'currency' => 'USD',
-                    'value' => 96,
-                ],
-                'network' => 'ach',
-            ]
-        );
-        self::assertInstanceOf(V2\FinancialAddressCreditSimulation::class, $result);
-    }
-
-    public function testV2TestHelpersFinancialAddressPost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/test_helpers/financial_addresses/id_123/generate_microdeposits',
-            [],
-            [],
-            false,
-            [
-                'object' => 'financial_address_generated_microdeposits',
-                'amounts' => [
-                    '0' => [
-                        'currency' => 'USD',
-                        'value' => [],
-                    ],
-                ],
-                'livemode' => [],
-                'status' => 'accepted',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->testHelpers->financialAddresses->generateMicrodeposits(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\FinancialAddressGeneratedMicrodeposits::class, $result);
-    }
-
     public function testAlreadyCanceledError()
     {
         $this->stubRequest(
@@ -9834,14 +9856,14 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number', 'currency' => 'usd'],
+            '/v2/core/vault/gb_bank_accounts',
+            ['currency' => 'usd'],
             [],
             false,
             [
                 'error' => [
                     'type' => 'blocked_by_stripe',
-                    'code' => 'blocked_payout_method',
+                    'code' => 'blocked_gb_bank_account',
                 ],
             ],
             400,
@@ -9849,8 +9871,7 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->core->vault->usBankAccounts->create([
-                'account_number' => 'account_number',
+            $this->v2Client->v2->core->vault->gbBankAccounts->create([
                 'currency' => 'usd',
             ]);
         } catch (Exception\BlockedByStripeException $e) {
@@ -9861,14 +9882,14 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/core/vault/us_bank_accounts/id_123/archive',
-            [],
+            '/v2/core/vault/gb_bank_accounts',
+            ['currency' => 'usd'],
             [],
             false,
             [
                 'error' => [
                     'type' => 'cannot_proceed',
-                    'code' => 'default_payout_method_cannot_be_archived',
+                    'code' => 'default_gb_bank_account_cannot_be_archived',
                 ],
             ],
             400,
@@ -9876,7 +9897,9 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
+            $this->v2Client->v2->core->vault->gbBankAccounts->create([
+                'currency' => 'usd',
+            ]);
         } catch (Exception\CannotProceedException $e) {
         }
     }
@@ -9885,14 +9908,14 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits',
+            '/v2/core/vault/gb_bank_accounts/id_123/archive',
             [],
             [],
             false,
             [
                 'error' => [
                     'type' => 'controlled_by_alternate_resource',
-                    'code' => 'payout_method_cannot_be_archived',
+                    'code' => 'gb_bank_account_cannot_be_archived',
                 ],
             ],
             400,
@@ -9900,35 +9923,8 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->core->vault->usBankAccounts->confirmMicrodeposits(
-                'id_123',
-                []
-            );
+            $this->v2Client->v2->core->vault->gbBankAccounts->archive('id_123', []);
         } catch (Exception\ControlledByAlternateResourceException $e) {
-        }
-    }
-
-    public function testControlledByDashboardError()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/us_bank_accounts/id_123/archive',
-            [],
-            [],
-            false,
-            [
-                'error' => [
-                    'type' => 'controlled_by_dashboard',
-                    'code' => 'bank_account_cannot_be_archived',
-                ],
-            ],
-            400,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-
-        try {
-            $this->v2Client->v2->core->vault->usBankAccounts->archive('id_123', []);
-        } catch (Exception\ControlledByDashboardException $e) {
         }
     }
 
@@ -9965,7 +9961,7 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/money_management/financial_addresses',
             [
                 'financial_account' => 'financial_account',
-                'type' => 'gb_bank_account',
+                'type' => 'bank_account',
             ],
             [],
             false,
@@ -9982,7 +9978,7 @@ final class GeneratedExamplesTest extends TestCase
         try {
             $this->v2Client->v2->moneyManagement->financialAddresses->create([
                 'financial_account' => 'financial_account',
-                'type' => 'gb_bank_account',
+                'type' => 'bank_account',
             ]);
         } catch (Exception\FinancialAccountNotOpenException $e) {
         }
@@ -10083,6 +10079,32 @@ final class GeneratedExamplesTest extends TestCase
         }
     }
 
+    public function testInvalidVaultedCredentialError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/gb_bank_accounts',
+            ['currency' => 'usd'],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'invalid_vaulted_credential',
+                    'code' => 'invalid_gb_bank_account',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->gbBankAccounts->create([
+                'currency' => 'usd',
+            ]);
+        } catch (Exception\InvalidVaultedCredentialException $e) {
+        }
+    }
+
     public function testNonZeroBalanceError()
     {
         $this->stubRequest(
@@ -10141,8 +10163,8 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/core/vault/us_bank_accounts',
-            ['account_number' => 'account_number', 'currency' => 'usd'],
+            '/v2/core/vault/gb_bank_accounts',
+            ['currency' => 'usd'],
             [],
             false,
             [
@@ -10156,8 +10178,7 @@ final class GeneratedExamplesTest extends TestCase
         );
 
         try {
-            $this->v2Client->v2->core->vault->usBankAccounts->create([
-                'account_number' => 'account_number',
+            $this->v2Client->v2->core->vault->gbBankAccounts->create([
                 'currency' => 'usd',
             ]);
         } catch (Exception\QuotaExceededException $e) {
@@ -10267,6 +10288,87 @@ final class GeneratedExamplesTest extends TestCase
                 ],
             ]);
         } catch (Exception\TemporarySessionExpiredException $e) {
+        }
+    }
+
+    public function testVerificationAttemptFailedError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'verification_attempt_failed',
+                    'code' => 'us_bank_account_confirm_microdeposits_failure',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->confirmMicrodeposits(
+                'id_123',
+                []
+            );
+        } catch (Exception\VerificationAttemptFailedException $e) {
+        }
+    }
+
+    public function testVerificationExpiredError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'verification_expired',
+                    'code' => 'us_bank_account_microdeposits_timed_out',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->confirmMicrodeposits(
+                'id_123',
+                []
+            );
+        } catch (Exception\VerificationExpiredException $e) {
+        }
+    }
+
+    public function testVerificationNotInitiatedError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'verification_not_initiated',
+                    'code' => 'us_bank_account_microdeposits_not_sent_before_confirming',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->vault->usBankAccounts->confirmMicrodeposits(
+                'id_123',
+                []
+            );
+        } catch (Exception\VerificationNotInitiatedException $e) {
         }
     }
 }

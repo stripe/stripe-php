@@ -15,6 +15,7 @@ namespace Stripe;
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the quote was created, measured in seconds since the Unix epoch.
+ * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property string $lock_duration The duration that the quote is locked for, from creation time. The quote will be usable for the duration specified.
  * @property null|int $lock_expires_at <p>Time at which the quote will expire, measured in seconds since the Unix epoch.</p><p>If lock_duration is set to ‘none’ this field will be set to null.</p>
  * @property string $lock_status <p>Lock status of the quote. Transitions from active to expired once past the lock_expires_at timestamp.</p><p>Can return value none, active, or expired.</p>

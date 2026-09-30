@@ -6,8 +6,8 @@ namespace Stripe;
 
 /**
  * A coupon contains information about a percent-off or amount-off discount you
- * might want to apply to a customer. Coupons may be applied to <a href="https://api.stripe.com#subscriptions">subscriptions</a>, <a href="https://api.stripe.com#invoices">invoices</a>,
- * <a href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a href="https://api.stripe.com#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="/api/charges/create">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
+ * might want to apply to a customer. Coupons may be applied to <a href="https://docs.stripe.com/api#subscriptions">subscriptions</a>, <a href="https://docs.stripe.com/api#invoices">invoices</a>,
+ * <a href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a href="https://docs.stripe.com/api#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="/api/charges/create">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -106,7 +106,7 @@ class Coupon extends ApiResource
     /**
      * Returns a list of your coupons.
      *
-     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Coupon> of ApiResources

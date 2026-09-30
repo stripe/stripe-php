@@ -34,6 +34,14 @@ class AccountSignalService extends \Stripe\Service\AbstractService
                         'element' => [
                             'kind' => 'object',
                             'fields' => [
+                                'fraudulent_merchant' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'probability' => [
+                                            'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
                                 'user_account_sharing' => [
                                     'kind' => 'object',
                                     'fields' => [
@@ -71,6 +79,12 @@ class AccountSignalService extends \Stripe\Service\AbstractService
             'response_schema' => [
                 'kind' => 'object',
                 'fields' => [
+                    'fraudulent_merchant' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'probability' => ['kind' => 'decimal_string'],
+                        ],
+                    ],
                     'user_account_sharing' => [
                         'kind' => 'object',
                         'fields' => ['score' => ['kind' => 'decimal_string']],
