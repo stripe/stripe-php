@@ -9,7 +9,7 @@ namespace Stripe\V2\Signals;
  *
  * @property string $id Unique identifier for the account activity.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|(object{account?: string, customer?: string, data?: (object{defaults?: (object{profile: (object{business_url: string, doing_business_as?: string, product_description?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $account_details The account, customer, or inline account data associated with the activity.
+ * @property null|(object{account?: string, customer?: string, data?: (object{defaults?: (object{profile: (object{business_url: string, doing_business_as?: string, product_description?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), identity?: (object{business_details: (object{registered_name?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $account_details The account, customer, or inline account data associated with the activity.
  * @property null|string $account_evaluation The account evaluation this activity is associated with, when applicable.
  * @property string $created Timestamp at which the account activity was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.

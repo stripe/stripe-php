@@ -5,7 +5,11 @@
 namespace Stripe\Billing;
 
 /**
- * A resource for the feedback options model (for custom cancellation reasons).
+ * A feedback option is a reason you can present to customers when they cancel a
+ * subscription through the customer portal. Configure the set of options a customer
+ * can choose from on a <a href="/api/customer_portal/configuration">portal configuration</a>.
+ *
+ * Related guide: <a href="/customer-management">Customer management</a>
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -46,7 +50,7 @@ class FeedbackOption extends \Stripe\ApiResource
     }
 
     /**
-     * An API method for listing the feedback options model.
+     * Returns a list of your feedback options.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
@@ -63,7 +67,7 @@ class FeedbackOption extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieves a feedback options object given an ID.
+     * Retrieves a feedback option object given an ID.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

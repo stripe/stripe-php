@@ -5,7 +5,7 @@
 namespace Stripe\Treasury;
 
 /**
- * Use <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a> to send funds to another party's external bank account or <a href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. To send money to an account belonging to the same user, use an <a href="https://api.stripe.com#outbound_transfers">OutboundTransfer</a>.
+ * Use <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a> to send funds to another party's external bank account or <a href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a>. To send money to an account belonging to the same user, use an <a href="https://docs.stripe.com/api#outbound_transfers">OutboundTransfer</a>.
  *
  * Simulate OutboundPayment state changes with the <code>/v1/test_helpers/treasury/outbound_payments</code> endpoints. These methods can only be called on test mode objects.
  *
@@ -39,6 +39,8 @@ class OutboundPayment extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'treasury.outbound_payment';
 
+    const PURPOSE_PAYROLL = 'payroll';
+
     const STATUS_CANCELED = 'canceled';
     const STATUS_FAILED = 'failed';
     const STATUS_POSTED = 'posted';
@@ -70,7 +72,7 @@ class OutboundPayment extends \Stripe\ApiResource
     /**
      * Returns a list of OutboundPayments sent from the specified FinancialAccount.
      *
-     * @param null|array{created?: array|int, customer?: string, ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, customer?: string, ending_before?: string, expand?: string[], financial_account: string, limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return \Stripe\Collection<OutboundPayment> of ApiResources

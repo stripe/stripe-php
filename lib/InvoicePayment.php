@@ -7,7 +7,7 @@ namespace Stripe;
 /**
  * Invoice Payments represent payments made against invoices. Invoice Payments can
  * be accessed in two ways:
- * 1. By expanding the <code>payments</code> field on the <a href="https://api.stripe.com#invoice">Invoice</a> resource.
+ * 1. By expanding the <code>payments</code> field on the <a href="https://docs.stripe.com/api#invoice">Invoice</a> resource.
  * 2. By using the Invoice Payment retrieve and list endpoints.
  *
  * Invoice Payments include the mapping between payment objects, such as Payment Intent, and Invoices.
@@ -36,7 +36,7 @@ class InvoicePayment extends ApiResource
      * the first handful of those items. There is also a URL where you can retrieve the
      * full (paginated) list of payments.
      *
-     * @param null|array{created?: array|int, ending_before?: string, expand?: string[], invoice?: string, limit?: int, payment?: array{payment_intent?: string, payment_record?: string, type: string}, starting_after?: string, status?: string} $params
+     * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], invoice?: string, limit?: int, payment?: array{payment_intent?: string, payment_record?: string, type: string}, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<InvoicePayment> of ApiResources

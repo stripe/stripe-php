@@ -71,7 +71,7 @@ class Topup extends ApiResource
     /**
      * Returns a list of top-ups.
      *
-     * @param null|array{amount?: array|int, created?: array|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|array{amount?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
      *
      * @return Collection<Topup> of ApiResources

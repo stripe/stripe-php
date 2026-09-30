@@ -12,6 +12,22 @@ namespace Stripe\Service\Reserve;
 class PlanService extends \Stripe\Service\AbstractService
 {
     /**
+     * Returns a list of ReservePlans previously created. The ReservePlans are returned
+     * in sorted order, with the most recent ReservePlans appearing first.
+     *
+     * @param null|array{destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\Collection<\Stripe\Reserve\Plan>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v1/reserve/plans', $params, $opts);
+    }
+
+    /**
      * Retrieve a ReservePlan.
      *
      * @param string $id

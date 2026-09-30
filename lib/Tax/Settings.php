@@ -13,7 +13,7 @@ namespace Stripe\Tax;
  * @property (object{provider: string, tax_behavior: null|string, tax_code: null|string}&\Stripe\StripeObject) $defaults
  * @property null|(object{address: (object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $head_office The place where your business is located.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property string $status The status of the Tax <code>Settings</code>.
+ * @property string $status Whether these settings have the information Stripe Tax needs to calculate tax. It doesn't reflect whether your integration is ready to collect tax.
  * @property (object{active?: (object{}&\Stripe\StripeObject), pending?: (object{missing_fields: null|string[]}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details
  */
 class Settings extends \Stripe\SingletonApiResource

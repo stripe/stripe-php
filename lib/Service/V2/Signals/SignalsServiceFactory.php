@@ -7,7 +7,7 @@ namespace Stripe\Service\V2\Signals;
 /**
  * Service factory class for API resources in the Signals namespace.
  *
- * @property AccountActivityService $accountActivity
+ * @property AccountActivityService $accountActivities
  * @property AccountEvaluationService $accountEvaluations
  * @property AccountSignalService $accountSignals
  */
@@ -17,7 +17,7 @@ class SignalsServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-        'accountActivity' => AccountActivityService::class,
+        'accountActivities' => AccountActivityService::class,
         'accountEvaluations' => AccountEvaluationService::class,
         'accountSignals' => AccountSignalService::class,
     ];

@@ -38,7 +38,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
      * @return \Stripe\V2\Core\Vault\UsBankAccount
      *
      * @throws \Stripe\Exception\CannotProceedException
-     * @throws \Stripe\Exception\ControlledByDashboardException
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
      */
     public function archive($id, $params = null, $opts = null)
     {
@@ -56,7 +56,10 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\Core\Vault\UsBankAccount
      *
+     * @throws \Stripe\Exception\VerificationAttemptFailedException
      * @throws \Stripe\Exception\ControlledByAlternateResourceException
+     * @throws \Stripe\Exception\VerificationNotInitiatedException
+     * @throws \Stripe\Exception\VerificationExpiredException
      */
     public function confirmMicrodeposits($id, $params = null, $opts = null)
     {
@@ -74,6 +77,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
      * @throws \Stripe\Exception\BlockedByStripeException
      * @throws \Stripe\Exception\InvalidPaymentMethodException
      * @throws \Stripe\Exception\QuotaExceededException
+     * @throws \Stripe\Exception\CannotProceedException
      */
     public function create($params = null, $opts = null)
     {
@@ -127,6 +131,7 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
      * @throws \Stripe\Exception\BlockedByStripeException
      * @throws \Stripe\Exception\InvalidPaymentMethodException
      * @throws \Stripe\Exception\QuotaExceededException
+     * @throws \Stripe\Exception\CannotProceedException
      */
     public function update($id, $params = null, $opts = null)
     {
