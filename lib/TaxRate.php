@@ -46,6 +46,7 @@ class TaxRate extends ApiResource
 
     const TAX_TYPE_AMUSEMENT_TAX = 'amusement_tax';
     const TAX_TYPE_COMMUNICATIONS_TAX = 'communications_tax';
+    const TAX_TYPE_DIGITAL_EXCISE_TAX = 'digital_excise_tax';
     const TAX_TYPE_GST = 'gst';
     const TAX_TYPE_HST = 'hst';
     const TAX_TYPE_IGST = 'igst';
@@ -59,6 +60,7 @@ class TaxRate extends ApiResource
     const TAX_TYPE_RST = 'rst';
     const TAX_TYPE_SALES_TAX = 'sales_tax';
     const TAX_TYPE_SERVICE_TAX = 'service_tax';
+    const TAX_TYPE_UTILITY_USERS_TAX = 'utility_users_tax';
     const TAX_TYPE_VAT = 'vat';
 
     /**

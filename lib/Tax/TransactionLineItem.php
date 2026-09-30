@@ -5,6 +5,8 @@
 namespace Stripe\Tax;
 
 /**
+ * A Tax Transaction Line Item represents an individual item in a Tax Transaction.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $amount The line item amount in the <a href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>. If <code>tax_behavior=inclusive</code>, then this amount includes taxes. Otherwise, taxes were calculated on top of this amount.
