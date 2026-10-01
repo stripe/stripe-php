@@ -5,6 +5,12 @@
   },
   "releases": [
     {
+      "version": "22.0.0",
+      "released_on": "2026-09-30",
+      "pinned_api_version": "2026-09-30.endive",
+      "minimum_runtime_version": "7.4.0"
+    },
+    {
       "version": "21.3.2",
       "released_on": "2026-09-09",
       "pinned_api_version": "2026-08-26.dahlia",

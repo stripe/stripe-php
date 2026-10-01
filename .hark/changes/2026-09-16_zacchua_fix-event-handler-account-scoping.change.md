@@ -2,6 +2,7 @@
 title: Fix account scoping for event notification handler callback clients
 pr_url: https://github.com/stripe/stripe-php/pull/2151
 semver_level: patch
+released_in_version: 22.0.0
 ---
 
 - Fix callback clients to use the event's Stripe context and preserve the original client's non-account configuration.
