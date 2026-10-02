@@ -13,6 +13,7 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property EarnedCreditService $earnedCredits
  * @property FinancialAccountService $financialAccounts
  * @property FinancialAddressService $financialAddresses
+ * @property FundingSessionService $fundingSessions
  * @property InboundTransferService $inboundTransfers
  * @property OutboundPaymentQuoteService $outboundPaymentQuotes
  * @property OutboundPaymentService $outboundPayments
@@ -41,6 +42,7 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'earnedCredits' => EarnedCreditService::class,
         'financialAccounts' => FinancialAccountService::class,
         'financialAddresses' => FinancialAddressService::class,
+        'fundingSessions' => FundingSessionService::class,
         'inboundTransfers' => InboundTransferService::class,
         'outboundPaymentQuotes' => OutboundPaymentQuoteService::class,
         'outboundPayments' => OutboundPaymentService::class,

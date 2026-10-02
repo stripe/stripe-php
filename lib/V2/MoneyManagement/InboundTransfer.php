@@ -15,6 +15,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $description A freeform text field provided by user, containing metadata.
  * @property (object{debited: \Stripe\StripeObject, payment_method: (object{type: string, us_bank_account?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $from A nested object containing information about the origin of the InboundTransfer.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property null|(object{ach: (object{addenda?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $network_details Network-specific details for the InboundTransfer. Present only when supplied at creation.
  * @property null|string $receipt_url A hosted transaction receipt URL that is provided when money movement is considered regulated under Stripe's money transmission licenses.
  * @property null|string $statement_descriptor The statement descriptor surfaced on the payer's bank statement. Echoes the submitted value.
  * @property (object{credited: \Stripe\StripeObject, financial_account: string}&\Stripe\StripeObject) $to A nested object containing information about the destination of the InboundTransfer.
