@@ -86,13 +86,49 @@ final class WebhookTest extends TestCase
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
     }
 
-    public function testEmptySecretRejected()
+    /**
+     * @dataProvider provideBlankSecretRejectedCases
+     *
+     * @param string $secret
+     */
+    public function testBlankSecretRejected($secret)
     {
         $this->expectException(Exception\SignatureVerificationException::class);
         $this->expectExceptionMessage('No webhook secret value was provided. It should start with `whsec_`');
 
-        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET);
-        WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, '');
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, $secret);
+        WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, $secret);
+    }
+
+    public static function provideBlankSecretRejectedCases(): iterable
+    {
+        return [
+            'empty' => [''],
+            'space' => [' '],
+            'tab' => ["\t"],
+            'carriage return' => ["\r"],
+            'line feed' => ["\n"],
+            'form feed' => ["\f"],
+            'vertical tab' => ["\v"],
+            'mixed' => [" \t\r\n\f\v"],
+        ];
+    }
+
+    public function testSecretWithSurroundingWhitespaceIsNotNormalized()
+    {
+        $secret = " \t" . self::SECRET . "\r\n\f\v";
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, $secret);
+
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, $secret));
+    }
+
+    public function testNonAsciiWhitespaceSecretIsNotNormalized()
+    {
+        // Non-ASCII whitespace is outside the portable blank-secret contract.
+        $secret = "\xC2\xA0";
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, $secret);
+
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, $secret));
     }
 
     public function testNullSecretRejected()
