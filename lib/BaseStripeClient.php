@@ -385,6 +385,23 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Sends a v2 search request to Stripe's API.
+     */
+    public function requestV2SearchResult($method, $path, $params, $opts)
+    {
+        $obj = $this->request($method, $path, $params, $opts);
+        if (!$obj instanceof V2\SearchResult) {
+            $received_class = \get_class($obj);
+            $msg = "Expected to receive `Stripe\\V2\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
+
+            throw new Exception\UnexpectedValueException($msg);
+        }
+        $obj->setFilters($params);
+
+        return $obj;
+    }
+
+    /**
      * @param \Stripe\Util\RequestOptions $opts
      *
      * @return string
