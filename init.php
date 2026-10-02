@@ -84,6 +84,7 @@ require __DIR__ . '/lib/RelatedObject.php';
 require __DIR__ . '/lib/RelatedSingletonObject.php';
 require __DIR__ . '/lib/Collection.php';
 require __DIR__ . '/lib/V2/Collection.php';
+require __DIR__ . '/lib/V2/SearchResult.php';
 require __DIR__ . '/lib/SearchResult.php';
 require __DIR__ . '/lib/ErrorObject.php';
 require __DIR__ . '/lib/Issuing/CardDetails.php';
