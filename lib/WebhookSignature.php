@@ -42,7 +42,7 @@ abstract class WebhookSignature
                 $header
             );
         }
-        if (empty($secret)) {
+        if (empty($secret) || '' === \trim($secret, " \t\r\n\f\v")) {
             throw Exception\SignatureVerificationException::factory(
                 'No webhook secret value was provided. It should start with `whsec_`',
                 $payload,
