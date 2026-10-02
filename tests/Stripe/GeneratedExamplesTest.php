@@ -12300,6 +12300,49 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
 
+    public function testV2MoneyManagementFundingSessionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/funding_sessions',
+            [
+                'account' => 'account',
+                'financial_account' => 'financial_account',
+                'financial_address_options' => [
+                    'crypto_wallet' => ['settlement_currency' => 'usd'],
+                ],
+                'financial_address_types' => ['bank_account'],
+                'return_url' => 'return_url',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.funding_session',
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'financial_account' => 'financial_account',
+                'financial_address_options' => [],
+                'financial_address_types' => ['0' => 'bank_account'],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'return_url' => 'return_url',
+                'url' => 'url',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->fundingSessions->create([
+            'account' => 'account',
+            'financial_account' => 'financial_account',
+            'financial_address_options' => [
+                'crypto_wallet' => ['settlement_currency' => 'usd'],
+            ],
+            'financial_address_types' => ['bank_account'],
+            'return_url' => 'return_url',
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\FundingSession::class, $result);
+    }
+
     public function testV2MoneyManagementInboundTransferGet()
     {
         $this->stubRequest(
