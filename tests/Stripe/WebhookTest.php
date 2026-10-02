@@ -68,6 +68,22 @@ final class WebhookTest extends TestCase
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
     }
 
+    public function testMalformedTimestampItem()
+    {
+        $this->expectException(Exception\SignatureVerificationException::class);
+        $this->expectExceptionMessage('Unable to extract timestamp and signatures from header');
+
+        WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, 't,v1=signature', self::SECRET);
+    }
+
+    public function testMalformedSignatureItem()
+    {
+        $this->expectException(Exception\SignatureVerificationException::class);
+        $this->expectExceptionMessage('No signatures found with expected scheme');
+
+        WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, 't=123,v1', self::SECRET);
+    }
+
     public function testNoSignaturesWithExpectedScheme()
     {
         $this->expectException(Exception\SignatureVerificationException::class);
@@ -131,6 +147,18 @@ final class WebhookTest extends TestCase
     public function testHeaderContainsValidSignature()
     {
         $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET) . ',v1=bad_signature';
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
+    }
+
+    public function testValidHeaderIgnoresMalformedSignatureItem()
+    {
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET) . ',v1';
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
+    }
+
+    public function testValidHeaderIgnoresMalformedTimestampItem()
+    {
+        $sigHeader = WebhookSignature::generateSignatureHeader(self::EVENT_PAYLOAD, self::SECRET) . ',t';
         self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET, 10));
     }
 
