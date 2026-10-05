@@ -384,7 +384,7 @@ final class CurlClientTest extends \Stripe\TestCase
     {
         \Stripe\Stripe::setMaxNetworkRetries(0);
         $curlClient = new CurlClient();
-        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v2');
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v2', 0);
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
         self::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
     }
@@ -393,7 +393,7 @@ final class CurlClientTest extends \Stripe\TestCase
     {
         \Stripe\Stripe::setMaxNetworkRetries(0);
         $curlClient = new CurlClient();
-        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v2');
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v2', 0);
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
         self::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
     }
@@ -402,46 +402,77 @@ final class CurlClientTest extends \Stripe\TestCase
     {
         \Stripe\Stripe::setMaxNetworkRetries(3);
         $curlClient = new CurlClient();
-        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v2');
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v2', 3);
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
         self::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
     // we don't want this behavior - write requests should basically always have an IK. But until we fix it, let's test it
-    public function testNoIdempotencyKeyV1PostRequestsNoRetry()
+    public function testNoIdempotencyKeyV1PostRequestsWithNoLocalOrGlobalRetries()
     {
         \Stripe\Stripe::setMaxNetworkRetries(0);
         $curlClient = new CurlClient();
-        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1');
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1', null);
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
         self::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
-    public function testNoIdempotencyKeyV1DeleteRequestsNoRetry()
+    public function testNoIdempotencyKeyV1DeleteRequestsWithLocalRetries()
     {
         \Stripe\Stripe::setMaxNetworkRetries(0);
         $curlClient = new CurlClient();
-        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v1');
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v1', 3);
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
         self::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
-    public function testIdempotencyKeyV1PostRequestsWithRetry()
+    public function testIdempotencyKeyV1PostRequestsWithLocalRetries()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(0);
+        $randomGenerator = $this->createMock('\Stripe\Util\RandomGenerator');
+        $randomGenerator->expects(self::once())->method('uuid')->willReturn('fixed-idempotency-key');
+        $curlClient = new CurlClient(null, $randomGenerator);
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1', 3);
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        self::assertContains('Idempotency-Key: fixed-idempotency-key', $headers);
+    }
+
+    public function testNoIdempotencyKeyV1PostRequestsWhenLocalRetriesOverrideGlobalRetries()
     {
         \Stripe\Stripe::setMaxNetworkRetries(3);
         $curlClient = new CurlClient();
-        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1');
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1', 0);
+        $headers = $curlOpts[\CURLOPT_HTTPHEADER];
+        self::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
+    }
+
+    public function testIdempotencyKeyV1PostRequestsWithGlobalRetries()
+    {
+        \Stripe\Stripe::setMaxNetworkRetries(3);
+        $curlClient = new CurlClient();
+        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'post', '', [], '', [], 'v1', null);
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
         self::assertTrue($this->hasHeader($headers, 'Idempotency-Key'));
     }
 
-    public function testNoIdempotencyKeyV1DeleteRequestsWithRetry()
+    public function testExistingIdempotencyKeyIsPreserved()
     {
-        \Stripe\Stripe::setMaxNetworkRetries(3);
-        $curlClient = new CurlClient();
-        $curlOpts = $this->constructCurlOptionsMethod->invoke($curlClient, 'delete', '', [], '', [], 'v1');
+        \Stripe\Stripe::setMaxNetworkRetries(0);
+        $randomGenerator = $this->createMock('\Stripe\Util\RandomGenerator');
+        $randomGenerator->expects(self::never())->method('uuid');
+        $curlClient = new CurlClient(null, $randomGenerator);
+        $curlOpts = $this->constructCurlOptionsMethod->invoke(
+            $curlClient,
+            'post',
+            '',
+            ['Idempotency-Key: caller-provided-key'],
+            '',
+            [],
+            'v1',
+            3
+        );
         $headers = $curlOpts[\CURLOPT_HTTPHEADER];
-        self::assertFalse($this->hasHeader($headers, 'Idempotency-Key'));
+        self::assertContains('Idempotency-Key: caller-provided-key', $headers);
     }
 
     public function testResponseHeadersCaseInsensitive()
