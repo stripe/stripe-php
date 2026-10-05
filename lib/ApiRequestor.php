@@ -720,7 +720,7 @@ class ApiRequestor
      * @param string[] $usage
      * @param callable $readBodyChunkCallable
      * @param 'v1'|'v2' $apiMode
-     * @param int $maxNetworkRetries
+     * @param null|int $maxNetworkRetries
      *
      * @return array
      *
@@ -740,6 +740,7 @@ class ApiRequestor
             $params,
             $hasFile,
             $readBodyChunkCallable,
+            $apiMode,
             $maxNetworkRetries
         );
 
