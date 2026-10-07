@@ -45,12 +45,12 @@ class SearchResultTest extends TestCase
         $result = TestSearchResult::constructFrom([
             'object' => 'v2.search_result',
             'data' => [['id' => 'one']],
-            'next_page_url' => '/v2/widgets/search?page=2',
+            'next_page_url' => '/v2/widgets/search?page=2&limit=2',
             'total_count' => 2,
         ], null, 'v2');
         $result->setFilters($params);
         $result->pages = [
-            ['object' => 'v2.search_result', 'data' => [], 'next_page_url' => '/v2/widgets/search?page=3', 'total_count' => 2],
+            ['object' => 'v2.search_result', 'data' => [], 'next_page_url' => '/v2/widgets/search?page=3&limit=2', 'total_count' => 2],
             ['object' => 'v2.search_result', 'data' => [['id' => 'two']], 'next_page_url' => null, 'total_count' => 2],
         ];
 

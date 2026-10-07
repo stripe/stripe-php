@@ -47,18 +47,11 @@ class SearchResult extends \Stripe\StripeObject implements \Countable, \Iterator
             if (null === $page->next_page_url) {
                 break;
             }
-            $path = $page->next_page_url;
             $params = $this->filters;
-            if (\array_key_exists('limit', $params)) {
-                if (false === \strpos($path, 'limit=')) {
-                    $separator = false === \strpos($path, '?') ? '?' : '&';
-                    $path .= $separator . 'limit=' . \rawurlencode((string) $params['limit']);
-                }
-                unset($params['limit']);
-            }
+            unset($params['limit']);
             list($response, $opts) = $this->_request(
                 'post',
-                $path,
+                $page->next_page_url,
                 $params,
                 null,
                 [],
