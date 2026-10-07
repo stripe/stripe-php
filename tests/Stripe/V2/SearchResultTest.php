@@ -60,9 +60,14 @@ class SearchResultTest extends TestCase
         }
 
         self::assertSame(['one', 'two'], $ids);
+        $requestBody = [
+            'query' => 'widgets',
+            'sort' => ['name', '-created'],
+            'future' => ['enabled' => true],
+        ];
         self::assertSame([
-            ['post', '/v2/widgets/search?page=2', $params, null, 'v2'],
-            ['post', '/v2/widgets/search?page=3', $params, null, 'v2'],
+            ['post', '/v2/widgets/search?page=2&limit=2', $requestBody, null, 'v2'],
+            ['post', '/v2/widgets/search?page=3&limit=2', $requestBody, null, 'v2'],
         ], $result->requests);
     }
 }

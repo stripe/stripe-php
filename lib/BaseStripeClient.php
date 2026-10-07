@@ -389,6 +389,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      */
     public function requestV2SearchResult($method, $path, $params, $opts)
     {
+        $filters = $params;
+        if (\array_key_exists('limit', $params)) {
+            $separator = false === \strpos($path, '?') ? '?' : '&';
+            $path .= $separator . 'limit=' . \rawurlencode((string) $params['limit']);
+            unset($params['limit']);
+        }
         $obj = $this->request($method, $path, $params, $opts);
         if (!$obj instanceof V2\SearchResult) {
             $received_class = \get_class($obj);
@@ -396,7 +402,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
 
             throw new Exception\UnexpectedValueException($msg);
         }
-        $obj->setFilters($params);
+        $obj->setFilters($filters);
 
         return $obj;
     }
