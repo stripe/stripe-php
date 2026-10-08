@@ -18,7 +18,12 @@ class TestSearchResult extends SearchResult
     }
 }
 
-class SearchResultTest extends TestCase
+/**
+ * @internal
+ *
+ * @coversNothing
+ */
+final class SearchResultTest extends TestCase
 {
     public function testConvertsTaggedSearchResult()
     {

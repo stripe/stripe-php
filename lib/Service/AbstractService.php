@@ -117,16 +117,6 @@ abstract class AbstractService
         return $this->getClient()->requestSearchResult($method, $path, $params, $opts);
     }
 
-    protected function requestV2SearchResult($method, $path, $params, $opts, $schemas = null)
-    {
-        $params = self::formatParams($params, 'v2');
-        if (null !== $schemas && isset($schemas['request_schema'])) {
-            $params = \Stripe\Util\Int64::coerceRequestParams($params, $schemas['request_schema']);
-        }
-
-        return $this->getClient()->requestV2SearchResult($method, $path, $params, $opts);
-    }
-
     protected function buildPath($basePath, ...$ids)
     {
         foreach ($ids as $id) {

@@ -373,36 +373,32 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     public function requestSearchResult($method, $path, $params, $opts)
     {
         $obj = $this->request($method, $path, $params, $opts);
-        if (!$obj instanceof SearchResult) {
-            $received_class = \get_class($obj);
-            $msg = "Expected to receive `Stripe\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
+        $apiMode = Util::getApiMode($path);
+        if ('v1' === $apiMode) {
+            if (!$obj instanceof SearchResult) {
+                $received_class = \get_class($obj);
+                $msg = "Expected to receive `Stripe\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
 
-            throw new Exception\UnexpectedValueException($msg);
+                throw new Exception\UnexpectedValueException($msg);
+            }
+            $obj->setFilters($params);
+        } else {
+            $params = null === $params ? [] : $params;
+            $filters = $params;
+            if (\array_key_exists('limit', $params)) {
+                $separator = false === \strpos($path, '?') ? '?' : '&';
+                $path .= $separator . 'limit=' . \rawurlencode((string) $params['limit']);
+                unset($params['limit']);
+            }
+            $obj = $this->request($method, $path, $params, $opts);
+            if (!$obj instanceof V2\SearchResult) {
+                $received_class = \get_class($obj);
+                $msg = "Expected to receive `Stripe\\V2\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
+
+                throw new Exception\UnexpectedValueException($msg);
+            }
+            $obj->setFilters($filters);
         }
-        $obj->setFilters($params);
-
-        return $obj;
-    }
-
-    /**
-     * Sends a v2 search request to Stripe's API.
-     */
-    public function requestV2SearchResult($method, $path, $params, $opts)
-    {
-        $filters = $params;
-        if (\array_key_exists('limit', $params)) {
-            $separator = false === \strpos($path, '?') ? '?' : '&';
-            $path .= $separator . 'limit=' . \rawurlencode((string) $params['limit']);
-            unset($params['limit']);
-        }
-        $obj = $this->request($method, $path, $params, $opts);
-        if (!$obj instanceof V2\SearchResult) {
-            $received_class = \get_class($obj);
-            $msg = "Expected to receive `Stripe\\V2\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
-
-            throw new Exception\UnexpectedValueException($msg);
-        }
-        $obj->setFilters($filters);
 
         return $obj;
     }

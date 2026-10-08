@@ -6,7 +6,9 @@ namespace Stripe\V2;
  * A page of API v2 search results.
  *
  * @template TStripeObject of \Stripe\StripeObject
+ *
  * @template-implements \IteratorAggregate<TStripeObject>
+ *
  * @property TStripeObject[] $data
  * @property null|string $next_page_url
  * @property null|string $previous_page_url
@@ -47,25 +49,32 @@ class SearchResult extends \Stripe\StripeObject implements \Countable, \Iterator
 
     public function autoPagingIterator()
     {
-        $page = $this;
+        $page = $this->data;
+        $next_page_url = $this->next_page_url;
+
         while (true) {
-            foreach ($page->data as $item) {
+            foreach ($page as $item) {
                 yield $item;
             }
-            if (null === $page->next_page_url) {
+            if (null === $next_page_url) {
                 break;
             }
+
             $params = $this->filters;
             unset($params['limit']);
             list($response, $opts) = $this->_request(
                 'post',
-                $page->next_page_url,
+                $next_page_url,
                 $params,
                 null,
                 [],
                 'v2'
             );
-            $page = \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
+            $obj= \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
+            /** @phpstan-ignore-next-line */
+            $page = $obj->data;
+            /** @phpstan-ignore-next-line */
+            $next_page_url = $obj->next_page_url;
         }
     }
 }

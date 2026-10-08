@@ -32,11 +32,6 @@ interface StripeClientInterface extends BaseStripeClientInterface
     public function requestSearchResult($method, $path, $params, $opts);
 
     /**
-     * Sends a request to Stripe's API and expects a V2 SearchResult.
-     */
-    public function requestV2SearchResult($method, $path, $params, $opts);
-
-    /**
      * Sends a request to Stripe's API and expects to return a Collection|V2\Collection.
      *
      * @param 'get' $method the HTTP method
