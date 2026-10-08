@@ -10,6 +10,7 @@ namespace Stripe\V2\Tax;
  *
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property (object{automatic_tax_default_value: string}&\Stripe\StripeObject) $checkout_sessions Configuration for Checkout Sessions automatic tax behavior.
+ * @property (object{automatic_tax_default_value: string}&\Stripe\StripeObject) $invoices Configuration for standalone Invoices automatic tax behavior.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  */
 class IntegrationConfiguration extends \Stripe\SingletonApiResource

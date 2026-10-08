@@ -5493,6 +5493,86 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.inbound_transfer_mandate.activated" event.
+     *
+     * @param callable(Events\V2MoneyManagementInboundTransferMandateActivatedEventNotification, StripeClient): void $handler Handles v2.money_management.inbound_transfer_mandate.activated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementInboundTransferMandateActivated($handler)
+    {
+        $this->register(
+            'v2.money_management.inbound_transfer_mandate.activated',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.inbound_transfer_mandate.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementInboundTransferMandateCreatedEventNotification, StripeClient): void $handler Handles v2.money_management.inbound_transfer_mandate.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementInboundTransferMandateCreated($handler)
+    {
+        $this->register(
+            'v2.money_management.inbound_transfer_mandate.created',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.inbound_transfer_mandate.expired" event.
+     *
+     * @param callable(Events\V2MoneyManagementInboundTransferMandateExpiredEventNotification, StripeClient): void $handler Handles v2.money_management.inbound_transfer_mandate.expired events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementInboundTransferMandateExpired($handler)
+    {
+        $this->register(
+            'v2.money_management.inbound_transfer_mandate.expired',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.inbound_transfer_mandate.refused" event.
+     *
+     * @param callable(Events\V2MoneyManagementInboundTransferMandateRefusedEventNotification, StripeClient): void $handler Handles v2.money_management.inbound_transfer_mandate.refused events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementInboundTransferMandateRefused($handler)
+    {
+        $this->register(
+            'v2.money_management.inbound_transfer_mandate.refused',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.inbound_transfer_mandate.revoked" event.
+     *
+     * @param callable(Events\V2MoneyManagementInboundTransferMandateRevokedEventNotification, StripeClient): void $handler Handles v2.money_management.inbound_transfer_mandate.revoked events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementInboundTransferMandateRevoked($handler)
+    {
+        $this->register(
+            'v2.money_management.inbound_transfer_mandate.revoked',
+            $handler
+        );
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.outbound_payment.canceled" event.
      *
      * @param callable(Events\V2MoneyManagementOutboundPaymentCanceledEventNotification, StripeClient): void $handler Handles v2.money_management.outbound_payment.canceled events

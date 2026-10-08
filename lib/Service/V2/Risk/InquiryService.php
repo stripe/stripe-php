@@ -14,7 +14,7 @@ class InquiryService extends \Stripe\Service\AbstractService
     /**
      * Lists risk inquiries for a connected account.
      *
-     * @param null|array{account: string, limit?: int} $params
+     * @param null|array{limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Risk\Inquiry>

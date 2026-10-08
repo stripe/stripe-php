@@ -13,7 +13,7 @@ namespace Stripe\V2\Tax;
  * @property string $precision The precision level of the resolved address.
  * @property (object{issues: (object{code: string, field: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $precision_details Details about the precision, including any issues.
  */
-class OperationsResolveAddressResult extends \Stripe\ApiResource
+class OperationsResolveAddressResult extends \Stripe\SingletonApiResource
 {
     const OBJECT_NAME = 'v2.tax.operations_resolve_address_result';
 
