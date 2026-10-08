@@ -12,7 +12,7 @@ namespace Stripe\V2\Provisioning;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $status Status of the payment method request.
  */
-class PaymentMethodRequest extends \Stripe\ApiResource
+class PaymentMethodRequest extends \Stripe\SingletonApiResource
 {
     const OBJECT_NAME = 'v2.provisioning.payment_method_request';
 

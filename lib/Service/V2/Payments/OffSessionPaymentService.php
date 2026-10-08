@@ -43,7 +43,7 @@ class OffSessionPaymentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Captures an OffSessionPayment that has previously been created.
+     * Deprecated. Captures an OffSessionPayment that has previously been created.
      *
      * @param string $id
      * @param null|array{amount_details?: array{discount_amount?: int, enforce_arithmetic_validation?: bool, line_items?: array{discount_amount?: int, product_code?: string, product_name: string, quantity: int, tax?: array{total_tax_amount: int}, unit_cost: int, unit_of_measure?: string}[], shipping?: array{amount?: int, from_postal_code?: string, to_postal_code?: string}, tax?: array{total_tax_amount: int}}, amount_to_capture?: int, application_fee_amount?: \Stripe\StripeObject, metadata?: array<string, string>, payment_details?: array{customer_reference?: string, order_reference?: string}, statement_descriptor?: string, statement_descriptor_suffix?: string, transfer_data?: array{amount?: int}} $params

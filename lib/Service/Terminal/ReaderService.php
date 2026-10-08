@@ -16,7 +16,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * balance.
      *
      * @param string $id
-     * @param null|array{balance?: array{amount: int, currency: string}, brand: string, expand?: string[], on_behalf_of?: string} $params
+     * @param null|array{balance?: array{amount: int, currency: string}, brand: string, enable_customer_cancellation?: bool, expand?: string[], on_behalf_of?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -66,7 +66,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * balance to 0.
      *
      * @param string $id
-     * @param null|array{brand: string, expand?: string[], on_behalf_of?: string} $params
+     * @param null|array{brand: string, enable_customer_cancellation?: bool, expand?: string[], on_behalf_of?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -82,7 +82,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * Initiates a gift card balance check flow on a Reader.
      *
      * @param string $id
-     * @param null|array{brand: string, expand?: string[], on_behalf_of?: string} $params
+     * @param null|array{brand: string, enable_customer_cancellation?: bool, expand?: string[], on_behalf_of?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader
@@ -239,7 +239,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * its balance.
      *
      * @param string $id
-     * @param null|array{amount: int, brand: string, currency: string, expand?: string[], on_behalf_of?: string} $params
+     * @param null|array{amount: int, brand: string, currency: string, enable_customer_cancellation?: bool, expand?: string[], on_behalf_of?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader

@@ -29,7 +29,7 @@ class IntegrationConfigurationService extends \Stripe\Service\AbstractService
     /**
      * Update the tax integration configuration for this account.
      *
-     * @param null|array{checkout_sessions?: array{automatic_tax_default_value: string}} $params
+     * @param null|array{checkout_sessions?: array{automatic_tax_default_value: string}, invoices?: array{automatic_tax_default_value: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Tax\IntegrationConfiguration

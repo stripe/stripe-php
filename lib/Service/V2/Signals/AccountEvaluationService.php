@@ -51,8 +51,8 @@ class AccountEvaluationService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves an AccountEvaluation by its ID for up to 90 days after creation.
-     * Evaluations more than 90 days old are inaccessible.
+     * Retrieves an AccountEvaluation by its ID when its created timestamp is no more
+     * than 90 days old.
      *
      * @param string $id
      * @param null|array $params

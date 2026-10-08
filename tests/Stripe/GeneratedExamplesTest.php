@@ -12300,6 +12300,49 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddress::class, $result);
     }
 
+    public function testV2MoneyManagementFundingSessionPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/funding_sessions',
+            [
+                'account' => 'account',
+                'financial_account' => 'financial_account',
+                'financial_address_options' => [
+                    'crypto_wallet' => ['settlement_currency' => 'usd'],
+                ],
+                'financial_address_types' => ['bank_account'],
+                'return_url' => 'return_url',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.funding_session',
+                'account' => 'account',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'financial_account' => 'financial_account',
+                'financial_address_options' => [],
+                'financial_address_types' => ['0' => 'bank_account'],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'return_url' => 'return_url',
+                'url' => 'url',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->fundingSessions->create([
+            'account' => 'account',
+            'financial_account' => 'financial_account',
+            'financial_address_options' => [
+                'crypto_wallet' => ['settlement_currency' => 'usd'],
+            ],
+            'financial_address_types' => ['bank_account'],
+            'return_url' => 'return_url',
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\FundingSession::class, $result);
+    }
+
     public function testV2MoneyManagementInboundTransferGet()
     {
         $this->stubRequest(
@@ -12478,6 +12521,130 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\InboundTransfer::class, $result);
+    }
+
+    public function testV2MoneyManagementInboundTransferMandateGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/inbound_transfer_mandates',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.money_management.inbound_transfer_mandate',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'credential' => 'credential',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'status' => 'expired',
+                        'status_details' => [],
+                        'status_transitions' => [],
+                        'type' => 'nz_becs',
+                        'user_accepted_details' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->inboundTransferMandates->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\InboundTransferMandate::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementInboundTransferMandatePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/inbound_transfer_mandates',
+            ['credential' => 'credential', 'type' => 'nz_becs'],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.inbound_transfer_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'credential' => 'credential',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'status_details' => [],
+                'status_transitions' => [],
+                'type' => 'nz_becs',
+                'user_accepted_details' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->inboundTransferMandates->create([
+            'credential' => 'credential',
+            'type' => 'nz_becs',
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\InboundTransferMandate::class, $result);
+    }
+
+    public function testV2MoneyManagementInboundTransferMandateGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/inbound_transfer_mandates/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.inbound_transfer_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'credential' => 'credential',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'status_details' => [],
+                'status_transitions' => [],
+                'type' => 'nz_becs',
+                'user_accepted_details' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->inboundTransferMandates->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\InboundTransferMandate::class, $result);
+    }
+
+    public function testV2MoneyManagementInboundTransferMandatePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/inbound_transfer_mandates/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.inbound_transfer_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'credential' => 'credential',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'status_details' => [],
+                'status_transitions' => [],
+                'type' => 'nz_becs',
+                'user_accepted_details' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->inboundTransferMandates->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\InboundTransferMandate::class, $result);
     }
 
     public function testV2MoneyManagementOutboundPaymentGet()
@@ -16315,7 +16482,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'get',
             '/v2/risk/inquiries',
-            ['account' => 'account'],
+            [],
             [],
             false,
             [
@@ -16337,9 +16504,7 @@ final class GeneratedExamplesTest extends TestCase
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
-        $result = $this->v2Client->v2->risk->inquiries->all([
-            'account' => 'account',
-        ]);
+        $result = $this->v2Client->v2->risk->inquiries->all([]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Risk\Inquiry::class, $result->data[0]);
     }
@@ -16797,6 +16962,9 @@ final class GeneratedExamplesTest extends TestCase
                 'checkout_sessions' => [
                     'automatic_tax_default_value' => 'enabled_when_possible',
                 ],
+                'invoices' => [
+                    'automatic_tax_default_value' => 'enabled_when_possible',
+                ],
                 'livemode' => [],
             ],
             200,
@@ -16817,6 +16985,9 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.tax.integration_configuration',
                 'checkout_sessions' => [
+                    'automatic_tax_default_value' => 'enabled_when_possible',
+                ],
+                'invoices' => [
                     'automatic_tax_default_value' => 'enabled_when_possible',
                 ],
                 'livemode' => [],
