@@ -6,4 +6,4 @@ jira_tickets_closed:
 - DEVSDK-3316
 ---
 
-Adds `Stripe\V2\SearchResult<T>` and auto pagination support.
+Adds `Stripe\V2\SearchResult<T>` and support for auto pagination of search results.
