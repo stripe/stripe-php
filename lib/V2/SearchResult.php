@@ -18,6 +18,14 @@ class SearchResult extends \Stripe\StripeObject implements \Countable, \Iterator
 
     use \Stripe\ApiOperations\Request;
 
+    /**
+     * @return string the base URL for the given class
+     */
+    public static function baseUrl()
+    {
+        return \Stripe\Stripe::$apiBase;
+    }
+
     private $filters = [];
 
     public function setFilters($filters)
