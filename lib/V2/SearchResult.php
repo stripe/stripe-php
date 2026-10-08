@@ -70,7 +70,7 @@ class SearchResult extends \Stripe\StripeObject implements \Countable, \Iterator
                 [],
                 'v2'
             );
-            $obj= \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
+            $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
             /** @phpstan-ignore-next-line */
             $page = $obj->data;
             /** @phpstan-ignore-next-line */
