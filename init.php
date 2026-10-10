@@ -1158,8 +1158,6 @@ require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentFailedEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentFailedEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentPausedEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentPausedEventNotification.php';
-require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentRequiresCaptureEvent.php';
-require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentRequiresCaptureEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentResumedEvent.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentResumedEventNotification.php';
 require __DIR__ . '/lib/Events/V2PaymentsOffSessionPaymentSucceededEvent.php';

@@ -457,7 +457,6 @@ class EventTypes
         \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentCreatedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentFailedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentPausedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentPausedEvent::class,
-        \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentRequiresCaptureEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentResumedEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentResumedEvent::class,
         \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsOffSessionPaymentSucceededEvent::class,
         \Stripe\Events\V2PaymentsSettlementAllocationIntentCanceledEvent::LOOKUP_TYPE => \Stripe\Events\V2PaymentsSettlementAllocationIntentCanceledEvent::class,
