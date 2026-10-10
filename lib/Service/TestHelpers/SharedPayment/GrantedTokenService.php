@@ -12,9 +12,8 @@ namespace Stripe\Service\TestHelpers\SharedPayment;
 class GrantedTokenService extends \Stripe\Service\AbstractService
 {
     /**
-     * Creates a new test SharedPaymentGrantedToken object. This endpoint is only
-     * available in test mode and allows sellers to create SharedPaymentGrantedTokens
-     * for testing their integration.
+     * Creates a new test SharedPaymentGrantedToken object. This test helper allows
+     * sellers to create SharedPaymentGrantedTokens for testing their integration.
      *
      * @param null|array{customer?: string, expand?: string[], payment_method: string, shared_metadata?: null|array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring?: array{interval: string, interval_count?: int}, recurring_interval?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -29,9 +28,8 @@ class GrantedTokenService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Revokes a test SharedPaymentGrantedToken object. This endpoint is only available
-     * in test mode and allows sellers to revoke SharedPaymentGrantedTokens for testing
-     * their integration.
+     * Revokes a test SharedPaymentGrantedToken object. This test helper allows sellers
+     * to revoke SharedPaymentGrantedTokens for testing their integration.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
