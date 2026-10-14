@@ -13,7 +13,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|Account|string $account
+ * @property null|Account|string $account The account this card belongs to. Only applicable on Accounts (not customers or recipients) This property is only available when returned as an <a href="/api/external_account_cards/object">External Account</a> where <a href="/api/accounts/object#account_object-controller-is_controller">controller.is_controller</a> is <code>true</code>.
  * @property null|string $address_city City/District/Suburb/Town/Village.
  * @property null|string $address_country Billing address country, if provided when creating card.
  * @property null|string $address_line1 Address line 1 (Street address/PO Box/Company name).
