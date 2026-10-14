@@ -22,6 +22,7 @@ namespace Stripe\V2\Signals;
  * @property null|(object{additional_details: (object{gross_exposure_amount?: (object{currency: string, value: int}&\Stripe\StripeObject), loss_given_default_in_percentages?: int, predicted_dispute_window_in_days?: int}&\Stripe\StripeObject), exposure_amount: (object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $payment_delinquency_exposure Data for the payment delinquency exposure signal. Present only when type is payment_delinquency_exposure.
  * @property string $type The type of signal.
  * @property null|(object{risk_level: string, score?: string}&\Stripe\StripeObject) $user_account_sharing Data for the user account-sharing signal. Present only when type is user_account_sharing.
+ * @property null|(object{fit_level: string, score?: string}&\Stripe\StripeObject) $user_merchant_fit Data for the user-merchant fit signal. Present only when type is user_merchant_fit.
  * @property null|(object{risk_level: string, score?: string}&\Stripe\StripeObject) $user_multi_accounting Data for the user multi-accounting signal. Present only when type is user_multi_accounting.
  */
 class AccountSignal extends \Stripe\ApiResource
@@ -63,6 +64,10 @@ class AccountSignal extends \Stripe\ApiResource
                 'kind' => 'object',
                 'fields' => ['score' => ['kind' => 'decimal_string']],
             ],
+            'user_merchant_fit' => [
+                'kind' => 'object',
+                'fields' => ['score' => ['kind' => 'decimal_string']],
+            ],
             'user_multi_accounting' => [
                 'kind' => 'object',
                 'fields' => ['score' => ['kind' => 'decimal_string']],
@@ -75,5 +80,6 @@ class AccountSignal extends \Stripe\ApiResource
     const TYPE_MERCHANT_DELINQUENCY = 'merchant_delinquency';
     const TYPE_PAYMENT_DELINQUENCY_EXPOSURE = 'payment_delinquency_exposure';
     const TYPE_USER_ACCOUNT_SHARING = 'user_account_sharing';
+    const TYPE_USER_MERCHANT_FIT = 'user_merchant_fit';
     const TYPE_USER_MULTI_ACCOUNTING = 'user_multi_accounting';
 }

@@ -51,12 +51,14 @@ class SubscriptionService extends AbstractService
      * immutable. You can still update its <a href="/metadata">metadata</a> and
      * <code>cancellation_details</code>.
      *
-     * Any pending invoice items that you’ve created are still charged at the end of
-     * the period, unless manually <a href="/api/invoiceitems/delete">deleted</a>. If
-     * you’ve set the subscription to cancel at the end of the period, any pending
-     * prorations are also left in place and collected at the end of the period. But if
-     * the subscription is set to cancel immediately, pending prorations are removed if
-     * <code>invoice_now</code> and <code>prorate</code> are both set to false.
+     * Pending invoice items are included on a final invoice if you generate one.
+     * Otherwise, they remain pending and can be billed on another invoice for the
+     * customer. To prevent billing, manually <a
+     * href="/api/invoiceitems/delete">delete</a> them. If you’ve set the subscription
+     * to cancel at the end of the period, any pending prorations are also left in
+     * place and collected at the end of the period. But if the subscription is set to
+     * cancel immediately, pending prorations are removed if <code>invoice_now</code>
+     * and <code>prorate</code> are both set to false.
      *
      * By default, upon subscription cancellation, Stripe stops automatic collection of
      * all finalized invoices for the customer. This is intended to prevent unexpected

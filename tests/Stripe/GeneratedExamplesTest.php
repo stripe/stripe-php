@@ -8931,7 +8931,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/core/account_evaluations',
-            ['signals' => ['fraudulent_website']],
+            ['signals' => ['user_multi_accounting']],
             [],
             false,
             [
@@ -8945,7 +8945,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->accountEvaluations->create([
-            'signals' => ['fraudulent_website'],
+            'signals' => ['user_multi_accounting'],
         ]);
         self::assertInstanceOf(V2\Core\AccountEvaluation::class, $result);
     }
@@ -10168,49 +10168,6 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/core/vault/gb_bank_accounts/id_123/acknowledge_confirmation_of_payee',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.core.vault.gb_bank_account',
-                'archived' => [],
-                'bank_account_type' => 'toza',
-                'bank_name' => 'bank_name',
-                'confirmation_of_payee' => [
-                    'result' => [
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'match_result' => 'unavailable',
-                        'matched' => [],
-                        'message' => 'message',
-                        'provided' => [
-                            'business_type' => 'personal',
-                            'name' => 'name',
-                        ],
-                    ],
-                    'status' => 'awaiting_acknowledgement',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'last4' => 'last4',
-                'livemode' => [],
-                'restricted' => [],
-                'supported_currencies' => ['0' => 'supported_currencies'],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->vault->gbBankAccounts->acknowledgeConfirmationOfPayee(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
-    }
-
-    public function testV2CoreVaultGbBankAccountPost3()
-    {
-        $this->stubRequest(
-            'post',
             '/v2/core/vault/gb_bank_accounts/id_123/archive',
             [],
             [],
@@ -10244,49 +10201,6 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->vault->gbBankAccounts->archive(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Core\Vault\GbBankAccount::class, $result);
-    }
-
-    public function testV2CoreVaultGbBankAccountPost4()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/core/vault/gb_bank_accounts/id_123/initiate_confirmation_of_payee',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.core.vault.gb_bank_account',
-                'archived' => [],
-                'bank_account_type' => 'toza',
-                'bank_name' => 'bank_name',
-                'confirmation_of_payee' => [
-                    'result' => [
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'match_result' => 'unavailable',
-                        'matched' => [],
-                        'message' => 'message',
-                        'provided' => [
-                            'business_type' => 'personal',
-                            'name' => 'name',
-                        ],
-                    ],
-                    'status' => 'awaiting_acknowledgement',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'last4' => 'last4',
-                'livemode' => [],
-                'restricted' => [],
-                'supported_currencies' => ['0' => 'supported_currencies'],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->core->vault->gbBankAccounts->initiateConfirmationOfPayee(
             'id_123',
             []
         );
@@ -14355,7 +14269,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => 96,
                 ],
-                'network' => 'swift',
+                'network' => 'ach',
             ],
             [],
             false,
@@ -14374,7 +14288,7 @@ final class GeneratedExamplesTest extends TestCase
                     'currency' => 'USD',
                     'value' => 96,
                 ],
-                'network' => 'swift',
+                'network' => 'ach',
             ]
         );
         self::assertInstanceOf(V2\MoneyManagement\FinancialAddressCreditSimulation::class, $result);
@@ -15119,44 +15033,6 @@ final class GeneratedExamplesTest extends TestCase
     {
         $this->stubRequest(
             'post',
-            '/v2/payments/off_session_payments/id_123/capture',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.payments.off_session_payment',
-                'amount_requested' => [
-                    'currency' => 'USD',
-                    'value' => [],
-                ],
-                'cadence' => 'unscheduled',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'customer' => 'customer',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'metadata' => ['key' => 'metadata'],
-                'payment_method' => 'payment_method',
-                'payments_orchestration' => ['enabled' => []],
-                'retry_details' => [
-                    'attempts' => [],
-                    'retry_strategy' => 'scheduled',
-                ],
-                'status' => 'requires_capture',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->payments->offSessionPayments->capture(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
-    }
-
-    public function testV2PaymentsOffSessionPaymentPost4()
-    {
-        $this->stubRequest(
-            'post',
             '/v2/payments/off_session_payments/id_123/pause',
             [],
             [],
@@ -15191,7 +15067,7 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
-    public function testV2PaymentsOffSessionPaymentPost5()
+    public function testV2PaymentsOffSessionPaymentPost4()
     {
         $this->stubRequest(
             'post',
@@ -16642,6 +16518,7 @@ final class GeneratedExamplesTest extends TestCase
                     'account' => 'account',
                     'customer' => 'customer',
                     'data' => [
+                        'contact_email' => 'contact_email',
                         'defaults' => [
                             'profile' => [
                                 'business_url' => 'business_url',
@@ -16656,7 +16533,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                 ],
-                'requested_signals' => ['user_multi_accounting'],
+                'requested_signals' => ['user_merchant_fit'],
             ],
             [],
             false,
@@ -16666,8 +16543,8 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'pending_signals' => ['0' => 'fraudulent_website'],
-                'requested_signals' => ['0' => 'user_multi_accounting'],
+                'pending_signals' => ['0' => 'user_account_sharing'],
+                'requested_signals' => ['0' => 'user_merchant_fit'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -16677,6 +16554,7 @@ final class GeneratedExamplesTest extends TestCase
                 'account' => 'account',
                 'customer' => 'customer',
                 'data' => [
+                    'contact_email' => 'contact_email',
                     'defaults' => [
                         'profile' => [
                             'business_url' => 'business_url',
@@ -16691,7 +16569,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                 ],
             ],
-            'requested_signals' => ['user_multi_accounting'],
+            'requested_signals' => ['user_merchant_fit'],
         ]);
         self::assertInstanceOf(V2\Signals\AccountEvaluation::class, $result);
     }
@@ -16710,8 +16588,8 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'pending_signals' => ['0' => 'fraudulent_website'],
-                'requested_signals' => ['0' => 'user_multi_accounting'],
+                'pending_signals' => ['0' => 'user_account_sharing'],
+                'requested_signals' => ['0' => 'user_merchant_fit'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -16728,7 +16606,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'get',
             '/v2/signals/account_signals',
-            ['type' => ['fraudulent_merchant']],
+            ['type' => ['payment_delinquency_exposure']],
             [],
             false,
             [
@@ -16738,7 +16616,7 @@ final class GeneratedExamplesTest extends TestCase
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'type' => 'fraudulent_merchant',
+                        'type' => 'payment_delinquency_exposure',
                     ],
                 ],
                 'next_page_url' => null,
@@ -16748,7 +16626,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->signals->accountSignals->all([
-            'type' => ['fraudulent_merchant'],
+            'type' => ['payment_delinquency_exposure'],
         ]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Signals\AccountSignal::class, $result->data[0]);
@@ -16767,7 +16645,7 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'type' => 'fraudulent_merchant',
+                'type' => 'payment_delinquency_exposure',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE

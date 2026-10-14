@@ -6307,22 +6307,6 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
-     * Registers a handler for the "v2.payments.off_session_payment.requires_capture" event.
-     *
-     * @param callable(Events\V2PaymentsOffSessionPaymentRequiresCaptureEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.requires_capture events
-     *
-     * @throws Exception\InvalidArgumentException if this event type is already registered
-     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
-     */
-    public function onV2PaymentsOffSessionPaymentRequiresCapture($handler)
-    {
-        $this->register(
-            'v2.payments.off_session_payment.requires_capture',
-            $handler
-        );
-    }
-
-    /**
      * Registers a handler for the "v2.payments.off_session_payment.resumed" event.
      *
      * @param callable(Events\V2PaymentsOffSessionPaymentResumedEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.resumed events

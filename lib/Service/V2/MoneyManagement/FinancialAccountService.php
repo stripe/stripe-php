@@ -22,7 +22,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     ];
 
     /**
-     * Lists FinancialAccounts in this compartment.
+     * Lists FinancialAccounts in this account.
      *
      * @param null|array{include?: string[], limit?: int, statuses?: string[], types?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

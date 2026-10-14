@@ -15,7 +15,7 @@ class AccountEvaluationService extends \Stripe\Service\AbstractService
      * Creates a new account evaluation to request signal evaluations on an account,
      * customer, or inline account data.
      *
-     * @param null|array{account_activity_details?: array{account_activity?: string, data?: array{login_attempt?: array{client_details: array{data?: array{ip: string, referrer?: string, user_agent?: string}, radar_session?: string}}, occurred_at?: string, registration_attempt?: array{client_details: array{data?: array{ip: string, referrer?: string, user_agent?: string}, radar_session?: string}}, type: string}}, account_details: array{account?: string, customer?: string, data?: array{defaults?: array{profile: array{business_url: string, doing_business_as?: string, product_description?: string}}, identity?: array{business_details: array{registered_name?: string}}}}, requested_signals: string[]} $params
+     * @param null|array{account_activity_details?: array{account_activity?: string, data?: array{login_attempt?: array{client_details: array{data?: array{ip: string, referrer?: string, user_agent?: string}, radar_session?: string}}, occurred_at?: string, registration_attempt?: array{client_details: array{data?: array{ip: string, referrer?: string, user_agent?: string}, radar_session?: string}}, type: string}}, account_details: array{account?: string, customer?: string, data?: array{contact_email?: string, defaults?: array{profile: array{business_url: string, doing_business_as?: string, product_description?: string}}, identity?: array{business_details: array{registered_name?: string}}}}, requested_signals: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Signals\AccountEvaluation
@@ -32,6 +32,12 @@ class AccountEvaluationService extends \Stripe\Service\AbstractService
                         'kind' => 'object',
                         'fields' => [
                             'user_account_sharing' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'score' => ['kind' => 'decimal_string'],
+                                ],
+                            ],
+                            'user_merchant_fit' => [
                                 'kind' => 'object',
                                 'fields' => [
                                     'score' => ['kind' => 'decimal_string'],
@@ -72,6 +78,12 @@ class AccountEvaluationService extends \Stripe\Service\AbstractService
                         'kind' => 'object',
                         'fields' => [
                             'user_account_sharing' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'score' => ['kind' => 'decimal_string'],
+                                ],
+                            ],
+                            'user_merchant_fit' => [
                                 'kind' => 'object',
                                 'fields' => [
                                     'score' => ['kind' => 'decimal_string'],

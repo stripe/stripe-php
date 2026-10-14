@@ -14,13 +14,11 @@ namespace Stripe\V2\Payments;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|\Stripe\StripeObject $amount_capturable The amount available to be captured.
  * @property null|(object{discount_amount?: int, error?: (object{code?: string, message?: string}&\Stripe\StripeObject), line_items: (object{discount_amount?: int, product_code?: string, product_name: string, quantity: int, tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject), unit_cost: int, unit_of_measure?: string}&\Stripe\StripeObject)[], shipping?: (object{amount?: int, from_postal_code?: string, to_postal_code?: string}&\Stripe\StripeObject), tax?: (object{total_tax_amount?: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $amount_details Provides industry-specific information about the amount.
  * @property \Stripe\StripeObject $amount_requested Amount intended to be collected by this payment.
  * @property null|string $application The application associated with this OffSessionPayment.
  * @property null|\Stripe\StripeObject $application_fee_amount_requested The amount of the application fee requested to be applied to the payment.
  * @property string $cadence The frequency of the underlying payment.
- * @property null|(object{capture_before?: string, capture_method: string}&\Stripe\StripeObject) $capture Details about the capture configuration for the OffSessionPayment.
  * @property string $created Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property string $customer ID of the Customer to which this OffSessionPayment belongs.
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.

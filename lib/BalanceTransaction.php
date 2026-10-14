@@ -36,6 +36,7 @@ class BalanceTransaction extends ApiResource
     const BALANCE_TYPE_PAYMENTS = 'payments';
     const BALANCE_TYPE_REFUND_AND_DISPUTE_PREFUNDING = 'refund_and_dispute_prefunding';
     const BALANCE_TYPE_RISK_RESERVED = 'risk_reserved';
+    const BALANCE_TYPE_SETTLEMENT_RESERVED = 'settlement_reserved';
     const BALANCE_TYPE_TRANSIT = 'transit';
 
     const TYPE_ADJUSTMENT = 'adjustment';

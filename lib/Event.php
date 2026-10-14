@@ -319,6 +319,13 @@ class Event extends ApiResource
     const TEST_HELPERS_TEST_CLOCK_DELETED = 'test_helpers.test_clock.deleted';
     const TEST_HELPERS_TEST_CLOCK_INTERNAL_FAILURE = 'test_helpers.test_clock.internal_failure';
     const TEST_HELPERS_TEST_CLOCK_READY = 'test_helpers.test_clock.ready';
+    const THREE_D_SECURE_AUTHENTICATION_CANCELED = 'three_d_secure.authentication.canceled';
+    const THREE_D_SECURE_AUTHENTICATION_CHALLENGE_STARTED = 'three_d_secure.authentication.challenge_started';
+    const THREE_D_SECURE_AUTHENTICATION_ERRORED = 'three_d_secure.authentication.errored';
+    const THREE_D_SECURE_AUTHENTICATION_FAILED = 'three_d_secure.authentication.failed';
+    const THREE_D_SECURE_AUTHENTICATION_REQUIRES_CHALLENGE = 'three_d_secure.authentication.requires_challenge';
+    const THREE_D_SECURE_AUTHENTICATION_REQUIRES_SUBMISSION = 'three_d_secure.authentication.requires_submission';
+    const THREE_D_SECURE_AUTHENTICATION_SUCCEEDED = 'three_d_secure.authentication.succeeded';
     const TOPUP_CANCELED = 'topup.canceled';
     const TOPUP_CREATED = 'topup.created';
     const TOPUP_FAILED = 'topup.failed';
@@ -635,6 +642,13 @@ class Event extends ApiResource
     const TYPE_TEST_HELPERS_TEST_CLOCK_DELETED = 'test_helpers.test_clock.deleted';
     const TYPE_TEST_HELPERS_TEST_CLOCK_INTERNAL_FAILURE = 'test_helpers.test_clock.internal_failure';
     const TYPE_TEST_HELPERS_TEST_CLOCK_READY = 'test_helpers.test_clock.ready';
+    const TYPE_THREE_D_SECURE_AUTHENTICATION_CANCELED = 'three_d_secure.authentication.canceled';
+    const TYPE_THREE_D_SECURE_AUTHENTICATION_CHALLENGE_STARTED = 'three_d_secure.authentication.challenge_started';
+    const TYPE_THREE_D_SECURE_AUTHENTICATION_ERRORED = 'three_d_secure.authentication.errored';
+    const TYPE_THREE_D_SECURE_AUTHENTICATION_FAILED = 'three_d_secure.authentication.failed';
+    const TYPE_THREE_D_SECURE_AUTHENTICATION_REQUIRES_CHALLENGE = 'three_d_secure.authentication.requires_challenge';
+    const TYPE_THREE_D_SECURE_AUTHENTICATION_REQUIRES_SUBMISSION = 'three_d_secure.authentication.requires_submission';
+    const TYPE_THREE_D_SECURE_AUTHENTICATION_SUCCEEDED = 'three_d_secure.authentication.succeeded';
     const TYPE_TOPUP_CANCELED = 'topup.canceled';
     const TYPE_TOPUP_CREATED = 'topup.created';
     const TYPE_TOPUP_FAILED = 'topup.failed';
