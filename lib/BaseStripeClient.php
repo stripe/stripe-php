@@ -323,7 +323,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl, $this->getAppInfo());
         $apiMode = Util::getApiMode($path);
-        list($response, $opts->apiKey) = $requestor->requestStream($method, $path, $readBodyChunkCallable, $params, $opts->headers, $apiMode, ['stripe_client']);
+        list($response, $opts->apiKey) = $requestor->requestStream($method, $path, $readBodyChunkCallable, $params, $opts->headers, $apiMode, ['stripe_client'], $opts->maxNetworkRetries);
     }
 
     /**
