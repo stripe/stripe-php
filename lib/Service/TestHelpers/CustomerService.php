@@ -12,7 +12,7 @@ namespace Stripe\Service\TestHelpers;
 class CustomerService extends \Stripe\Service\AbstractService
 {
     /**
-     * Create an incoming testmode bank transfer.
+     * Create a test incoming bank transfer.
      *
      * @param string $id
      * @param null|array{amount: int, currency: string, expand?: string[], reference?: string} $params

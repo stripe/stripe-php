@@ -14,11 +14,16 @@ namespace Stripe\V2\Signals;
  * @property null|(object{reason: string}&\Stripe\StripeObject) $account_restricted Details for the account restriction. Present only when type is account_restricted. The activity requires an existing account_details.account or account_details.customer; inline data is unsupported.
  * @property null|(object{outcome: string}&\Stripe\StripeObject) $account_reviewed Details for the account review. Present only when type is account_reviewed. The activity requires an existing account_details.account or account_details.customer; inline data is unsupported.
  * @property null|(object{reason: string}&\Stripe\StripeObject) $account_suspended Details for the account suspension. Present only when type is account_suspended. The activity requires an existing account_details.customer; account_details.account and inline data are unsupported.
+ * @property null|(object{credential_type: string}&\Stripe\StripeObject) $account_takeover_confirmation Details for the merchant's takeover confirmation. Present only when type is account_takeover_confirmation.
+ * @property null|(object{credential_type: string}&\Stripe\StripeObject) $account_takeover_report Details for the account holder's takeover report. Present only when type is account_takeover_report.
  * @property string $created Timestamp at which the account activity was created.
+ * @property null|(object{credential_type: string}&\Stripe\StripeObject) $credential_change Details for the credential change. Present only when type is credential_change.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{client_details: (object{data?: (object{ip: string, referrer?: string, user_agent?: string}&\Stripe\StripeObject), radar_session?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $login_attempt Details for the login attempt. Present only when type is login_attempt.
  * @property null|(object{status: string}&\Stripe\StripeObject) $login_decision Details for the login decision. Present only when type is login_decision.
  * @property null|\Stripe\StripeObject $metadata Additional information about the activity.
+ * @property null|(object{mfa_type: string}&\Stripe\StripeObject) $mfa_addition Details for the MFA addition. Present only when type is mfa_addition.
+ * @property null|(object{mfa_type: string}&\Stripe\StripeObject) $mfa_removal Details for the MFA removal. Present only when type is mfa_removal.
  * @property string $occurred_at Timestamp at which the activity occurred. Defaults to the created time if not provided.
  * @property null|(object{client_details: (object{data?: (object{ip: string, referrer?: string, user_agent?: string}&\Stripe\StripeObject), radar_session?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $registration_attempt Details for the registration attempt. Present only when type is registration_attempt.
  * @property null|(object{status: string}&\Stripe\StripeObject) $registration_decision Details for the registration decision. Present only when type is registration_decision.
@@ -31,8 +36,14 @@ class AccountActivity extends \Stripe\ApiResource
     const TYPE_ACCOUNT_RESTRICTED = 'account_restricted';
     const TYPE_ACCOUNT_REVIEWED = 'account_reviewed';
     const TYPE_ACCOUNT_SUSPENDED = 'account_suspended';
+    const TYPE_ACCOUNT_TAKEOVER_CONFIRMATION = 'account_takeover_confirmation';
+    const TYPE_ACCOUNT_TAKEOVER_MITIGATION = 'account_takeover_mitigation';
+    const TYPE_ACCOUNT_TAKEOVER_REPORT = 'account_takeover_report';
+    const TYPE_CREDENTIAL_CHANGE = 'credential_change';
     const TYPE_LOGIN_ATTEMPT = 'login_attempt';
     const TYPE_LOGIN_DECISION = 'login_decision';
+    const TYPE_MFA_ADDITION = 'mfa_addition';
+    const TYPE_MFA_REMOVAL = 'mfa_removal';
     const TYPE_REGISTRATION_ATTEMPT = 'registration_attempt';
     const TYPE_REGISTRATION_DECISION = 'registration_decision';
 }
