@@ -477,6 +477,7 @@ class EventNotificationTypes
         \Stripe\Events\V2ReportingReportRunSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunSucceededEventNotification::class,
         \Stripe\Events\V2ReportingReportRunUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ReportingReportRunUpdatedEventNotification::class,
         \Stripe\Events\V2SignalsAccountEvaluationCompleteEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountEvaluationCompleteEventNotification::class,
+        \Stripe\Events\V2SignalsAccountSignalCustomerRiskReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalCustomerRiskReadyEventNotification::class,
         \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification::class,
         \Stripe\Events\V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalFraudulentWebsiteReadyEventNotification::class,
         \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification::LOOKUP_TYPE => \Stripe\Events\V2SignalsAccountSignalMerchantDelinquencyReadyEventNotification::class,

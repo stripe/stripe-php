@@ -24,7 +24,7 @@ namespace Stripe\FinancialConnections;
  * @property string $institution_name The name of the institution that holds this account.
  * @property null|string $last4 The last 4 digits of the account number. If present, this will be 4 numeric characters.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property null|AccountOwnership|string $ownership The most recent information about the account's owners.
+ * @property null|AccountOwnership|string $ownership The ID of the <a href="https://docs.stripe.com/api/financial_connections/ownership">Financial Connections Account Ownership</a> object associated with this account.
  * @property null|(object{last_attempted_at: int, next_refresh_available_at: null|int, status: string}&\Stripe\StripeObject) $ownership_refresh The state of the most recent attempt to refresh the account owners.
  * @property null|string[] $permissions The list of permissions granted by this account.
  * @property string $status The status of the link to the account.

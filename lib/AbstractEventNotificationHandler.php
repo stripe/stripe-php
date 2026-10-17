@@ -6575,6 +6575,19 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.signals.account_signal.customer_risk_ready" event.
+     *
+     * @param callable(Events\V2SignalsAccountSignalCustomerRiskReadyEventNotification, StripeClient): void $handler Handles v2.signals.account_signal.customer_risk_ready events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsAccountSignalCustomerRiskReady($handler)
+    {
+        $this->register('v2.signals.account_signal.customer_risk_ready', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.signals.account_signal.fraudulent_merchant_ready" event.
      *
      * @param callable(Events\V2SignalsAccountSignalFraudulentMerchantReadyEventNotification, StripeClient): void $handler Handles v2.signals.account_signal.fraudulent_merchant_ready events
