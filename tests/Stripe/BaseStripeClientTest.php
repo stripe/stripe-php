@@ -133,6 +133,56 @@ final class BaseStripeClientTest extends TestCase
         self::assertSame('sk_test_opts', $this->optsReflector->getValue($charge)->apiKey);
     }
 
+    public function testClientMaxNetworkRetriesReachCurlClient()
+    {
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->with(self::callback(function ($opts) {
+                self::assertNotEmpty(\array_filter($opts[\CURLOPT_HTTPHEADER], function ($header) {
+                    return $this->headerStartsWith($header, 'Idempotency-Key: ');
+                }));
+
+                return true;
+            }), MOCK_URL . '/v1/charges', 3)
+            ->willReturn(['{"object": "charge"}', 200, []])
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'test_key',
+            'api_base' => MOCK_URL,
+            'max_network_retries' => 3,
+        ]);
+
+        $client->request('post', '/v1/charges', [], []);
+    }
+
+    public function testClientMaxNetworkRetriesReachStreamingCurlClient()
+    {
+        $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
+            ->setMethods(['executeStreamingRequestWithRetries'])
+            ->getMock()
+        ;
+        $curlClientStub->expects(self::once())
+            ->method('executeStreamingRequestWithRetries')
+            ->with(self::callback(function ($opts) {
+                self::assertNotEmpty(\array_filter($opts[\CURLOPT_HTTPHEADER], function ($header) {
+                    return $this->headerStartsWith($header, 'Idempotency-Key: ');
+                }));
+
+                return true;
+            }), MOCK_URL . '/v1/charges', self::anything(), 3)
+            ->willReturn(['', 200, []])
+        ;
+        ApiRequestor::setStreamingHttpClient($curlClientStub);
+        $client = new BaseStripeClient([
+            'api_key' => 'test_key',
+            'api_base' => MOCK_URL,
+            'max_network_retries' => 3,
+        ]);
+
+        $client->requestStream('post', '/v1/charges', static function () {}, [], []);
+    }
+
     public function testRequestThrowsIfNoApiKeyInClientAndOpts()
     {
         $this->expectException(Exception\AuthenticationException::class);
