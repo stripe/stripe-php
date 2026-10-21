@@ -172,6 +172,7 @@ class ObjectTypes
             \Stripe\Reserve\Release::OBJECT_NAME => \Stripe\Reserve\Release::class,
             \Stripe\ReserveTransaction::OBJECT_NAME => \Stripe\ReserveTransaction::class,
             \Stripe\Review::OBJECT_NAME => \Stripe\Review::class,
+            \Stripe\Risk\Form::OBJECT_NAME => \Stripe\Risk\Form::class,
             \Stripe\RiskSignals::OBJECT_NAME => \Stripe\RiskSignals::class,
             \Stripe\SetupAttempt::OBJECT_NAME => \Stripe\SetupAttempt::class,
             \Stripe\SetupIntent::OBJECT_NAME => \Stripe\SetupIntent::class,
@@ -231,6 +232,7 @@ class ObjectTypes
      * @var array Mapping from v2 object types to resource classes
      */
     const v2Mapping = [
+        \Stripe\V2\SearchResult::OBJECT_NAME => \Stripe\V2\SearchResult::class,
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
         \Stripe\V2\Billing\BillSetting::OBJECT_NAME => \Stripe\V2\Billing\BillSetting::class,
         \Stripe\V2\Billing\BillSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\BillSettingVersion::class,
@@ -288,6 +290,7 @@ class ObjectTypes
         \Stripe\V2\Data\Reporting\QueryRun::OBJECT_NAME => \Stripe\V2\Data\Reporting\QueryRun::class,
         \Stripe\V2\Data\ReportRun::OBJECT_NAME => \Stripe\V2\Data\ReportRun::class,
         \Stripe\V2\Data\Schema::OBJECT_NAME => \Stripe\V2\Data\Schema::class,
+        \Stripe\V2\Data\SearchResultList::OBJECT_NAME => \Stripe\V2\Data\SearchResultList::class,
         \Stripe\V2\Extend\Workflow::OBJECT_NAME => \Stripe\V2\Extend\Workflow::class,
         \Stripe\V2\Extend\WorkflowRun::OBJECT_NAME => \Stripe\V2\Extend\WorkflowRun::class,
         \Stripe\V2\Iam\ActivityLog::OBJECT_NAME => \Stripe\V2\Iam\ActivityLog::class,

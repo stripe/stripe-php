@@ -78,6 +78,7 @@ namespace Stripe\Service;
  * @property Reporting\ReportingServiceFactory $reporting
  * @property Reserve\ReserveServiceFactory $reserve
  * @property ReviewService $reviews
+ * @property Risk\RiskServiceFactory $risk
  * @property SetupAttemptService $setupAttempts
  * @property SetupIntentService $setupIntents
  * @property SharedPayment\SharedPaymentServiceFactory $sharedPayment
@@ -182,6 +183,7 @@ class CoreServiceFactory extends AbstractServiceFactory
         'reporting' => Reporting\ReportingServiceFactory::class,
         'reserve' => Reserve\ReserveServiceFactory::class,
         'reviews' => ReviewService::class,
+        'risk' => Risk\RiskServiceFactory::class,
         'setupAttempts' => SetupAttemptService::class,
         'setupIntents' => SetupIntentService::class,
         'sharedPayment' => SharedPayment\SharedPaymentServiceFactory::class,

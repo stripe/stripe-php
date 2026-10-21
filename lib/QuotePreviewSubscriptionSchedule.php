@@ -5,6 +5,10 @@
 namespace Stripe;
 
 /**
+ * A subscription schedule allows you to create and manage the lifecycle of a subscription by
+ * predefining expected changes. A quote preview subscription schedule shows the subscription schedule
+ * that would be created by accepting the quote.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property null|Application|string $application ID of the Connect Application that created the schedule.

@@ -5,6 +5,8 @@
 namespace Stripe\Billing;
 
 /**
+ * A Billing Alert Notification records a notification sent when a billing alert is triggered or recovered. It identifies the alert, customer, and notification event, along with the observed value and the time the notification was sent.
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property string $action Whether the alert was triggered or recovered.
