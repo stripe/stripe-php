@@ -8937,7 +8937,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.core.account_evaluation',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'evaluations_triggered' => ['0' => 'user_multi_accounting'],
+                'evaluations_triggered' => ['0' => 'user_account_sharing'],
                 'id' => 'obj_123',
                 'livemode' => [],
             ],
@@ -10586,6 +10586,43 @@ final class GeneratedExamplesTest extends TestCase
             'starts_at' => '1970-01-25T15:13:01.215Z',
         ]);
         self::assertInstanceOf(V2\Data\Analytics\MetricQueryResult::class, $result);
+    }
+
+    public function testV2DataOperationPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/data/operations/search',
+            ['query' => 'query'],
+            [],
+            false,
+            [
+                'object' => 'v2.data.search_result_list',
+                'data' => [
+                    '0' => [
+                        'description' => 'description',
+                        'execution_spec' => [
+                            'execution_url' => 'execution_url',
+                            'http_method' => 'GET',
+                            'id' => 'obj_123',
+                        ],
+                        'id' => 'obj_123',
+                        'name' => 'name',
+                        'object_type' => 'object_type',
+                        'reference_url' => 'reference_url',
+                        'refreshed_at' => '1970-01-01T11:25:45.896Z',
+                        'relevance_score' => '1104594632',
+                    ],
+                ],
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->data->operations->search([
+            'query' => 'query',
+        ]);
+        self::assertInstanceOf(V2\Data\SearchResultList::class, $result);
     }
 
     public function testV2DataQueryRunPost()
@@ -16440,7 +16477,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/signals/account_activities',
-            ['type' => 'login_attempt'],
+            ['type' => 'registration_decision'],
             [],
             false,
             [
@@ -16449,13 +16486,13 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'occurred_at' => '1970-01-10T01:49:44.717Z',
-                'type' => 'login_attempt',
+                'type' => 'registration_decision',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->signals->accountActivities->create([
-            'type' => 'login_attempt',
+            'type' => 'registration_decision',
         ]);
         self::assertInstanceOf(V2\Signals\AccountActivity::class, $result);
     }
@@ -16496,7 +16533,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'occurred_at' => '1970-01-10T01:49:44.717Z',
-                'type' => 'login_attempt',
+                'type' => 'registration_decision',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -16533,7 +16570,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                 ],
-                'requested_signals' => ['user_merchant_fit'],
+                'requested_signals' => ['fraudulent_website'],
             ],
             [],
             false,
@@ -16544,7 +16581,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'pending_signals' => ['0' => 'user_account_sharing'],
-                'requested_signals' => ['0' => 'user_merchant_fit'],
+                'requested_signals' => ['0' => 'fraudulent_website'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -16569,7 +16606,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                 ],
             ],
-            'requested_signals' => ['user_merchant_fit'],
+            'requested_signals' => ['fraudulent_website'],
         ]);
         self::assertInstanceOf(V2\Signals\AccountEvaluation::class, $result);
     }
@@ -16589,7 +16626,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'pending_signals' => ['0' => 'user_account_sharing'],
-                'requested_signals' => ['0' => 'user_merchant_fit'],
+                'requested_signals' => ['0' => 'fraudulent_website'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -16606,7 +16643,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'get',
             '/v2/signals/account_signals',
-            ['type' => ['payment_delinquency_exposure']],
+            ['type' => ['account_takeover']],
             [],
             false,
             [
@@ -16616,7 +16653,7 @@ final class GeneratedExamplesTest extends TestCase
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'type' => 'payment_delinquency_exposure',
+                        'type' => 'account_takeover',
                     ],
                 ],
                 'next_page_url' => null,
@@ -16626,7 +16663,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->signals->accountSignals->all([
-            'type' => ['payment_delinquency_exposure'],
+            'type' => ['account_takeover'],
         ]);
         self::assertInstanceOf(V2\Collection::class, $result);
         self::assertInstanceOf(V2\Signals\AccountSignal::class, $result->data[0]);
@@ -16645,7 +16682,7 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'type' => 'payment_delinquency_exposure',
+                'type' => 'account_takeover',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE

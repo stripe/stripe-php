@@ -8,6 +8,7 @@ namespace Stripe\Service\V2\Data;
  * Service factory class for API resources in the Data namespace.
  *
  * @property Analytics\AnalyticsServiceFactory $analytics
+ * @property OperationService $operations
  * @property QueryRunService $queryRuns
  * @property Reporting\ReportingServiceFactory $reporting
  * @property ReportRunService $reportRuns
@@ -21,6 +22,7 @@ class DataServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'analytics' => Analytics\AnalyticsServiceFactory::class,
+        'operations' => OperationService::class,
         'queryRuns' => QueryRunService::class,
         'reporting' => Reporting\ReportingServiceFactory::class,
         'reportRuns' => ReportRunService::class,

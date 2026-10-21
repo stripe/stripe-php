@@ -9,6 +9,8 @@ namespace Stripe;
  * later. You can also store multiple debit cards on a recipient in order to
  * transfer to those cards later.
  *
+ * This API is deprecated. Use the <a href="https://docs.stripe.com/api/payment_methods">PaymentMethods API</a> instead.
+ *
  * Related guide: <a href="https://docs.stripe.com/sources/cards">Card payments with Sources</a>
  *
  * @property string $id Unique identifier for the object.
