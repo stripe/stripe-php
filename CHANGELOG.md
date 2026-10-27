@@ -1,5 +1,8 @@
 # Changelog
 
+## 17.6.1 - 2026-10-27
+* Replace the bundled CA certificates with Stripe's updated trusted root certificates (see https://docs.stripe.com/tls-certificates for more info). The previous bundle contained several certificates not used by Stripe, including emSign ECC Root CA - G3, whose intermediate CAs were compromised.
+
 ## 17.6.0 - 2025-08-27
 * [#1895](https://github.com/stripe/stripe-php/pull/1895) Add section on private preview SDKs in readme
 * [#1890](https://github.com/stripe/stripe-php/pull/1890) Update generated code. This release changes the pinned API version to `2025-08-27.basil`.
