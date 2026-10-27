@@ -152,8 +152,8 @@ final class CurlClientTest extends \Stripe\TestCase
             return [];
         });
 
-        $withClosure->request('get', 'https://httpbin.org/status/200', [], [], false);
-        self::assertSame($ref, ['get', 'https://httpbin.org/status/200', [], [], false]);
+        $withClosure->request('get', 'https://api.stripe.com/healthcheck', [], [], false);
+        self::assertSame($ref, ['get', 'https://api.stripe.com/healthcheck', [], [], false]);
 
         // this is the last test case that will run, since it'll throw an exception at the end
         $withBadClosure = new CurlClient(static function () {
@@ -161,7 +161,7 @@ final class CurlClientTest extends \Stripe\TestCase
         });
         $this->expectException('Stripe\Exception\UnexpectedValueException');
         $this->expectExceptionMessage('Non-array value returned by defaultOptions CurlClient callback');
-        $withBadClosure->request('get', 'https://httpbin.org/status/200', [], [], false);
+        $withBadClosure->request('get', 'https://api.stripe.com/healthcheck', [], [], false);
     }
 
     public function testSslOption()
