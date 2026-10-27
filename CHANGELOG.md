@@ -1,5 +1,8 @@
 # Changelog
 
+## 16.6.1 - 2026-10-27
+* Replace the bundled CA certificates with Stripe's updated trusted root certificates (see https://docs.stripe.com/tls-certificates for more info). The previous bundle contained several certificates not used by Stripe, including emSign ECC Root CA - G3, whose intermediate CAs were compromised.
+
 ## 16.6.0 - 2025-02-24
 * [#1809](https://github.com/stripe/stripe-php/pull/1809) Update generated code
   * Add support for `priority` on `Billing.CreditGrant`
