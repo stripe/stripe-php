@@ -1,5 +1,8 @@
 # Changelog
 
+## 11.0.1 - 2026-10-27
+* Replace the bundled CA certificates with Stripe's updated trusted root certificates (see https://docs.stripe.com/tls-certificates for more info). The previous bundle contained several certificates not used by Stripe, including emSign ECC Root CA - G3, whose intermediate CAs were compromised.
+
 ## 11.0.0 - 2023-08-16
 **⚠️ ACTION REQUIRED: the breaking change in this release likely affects you ⚠️**
 
