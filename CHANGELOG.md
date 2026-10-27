@@ -1,5 +1,8 @@
 # Changelog
 
+## 7.128.1 - 2026-10-27
+* Replace the bundled CA certificates with Stripe's updated trusted root certificates (see https://docs.stripe.com/tls-certificates for more info). The previous bundle contained several certificates not used by Stripe, including emSign ECC Root CA - G3, whose intermediate CAs were compromised.
+
 ## 7.128.0 - 2022-05-05
 * [#1282](https://github.com/stripe/stripe-php/pull/1282) API Updates
   * Add support for `default_price` on `Product`
