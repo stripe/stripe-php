@@ -4,6 +4,7 @@ namespace Stripe;
 
 use Stripe\Events\UnknownEventNotification;
 use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
+use Stripe\Events\V1ProductUpdatedEventNotification;
 use Stripe\Util\ApiVersion;
 
 /**
@@ -960,6 +961,7 @@ final class BaseStripeClientTest extends TestCase
         $signature = WebhookSignature::generateSignatureHeader($payload, WebhookTest::SECRET);
 
         $notification = $client->parseEventNotification($payload, $signature, WebhookTest::SECRET);
+        self::assertInstanceOf(V1ProductUpdatedEventNotification::class, $notification);
         $product = $notification->fetchRelatedObject();
         $product->delete();
 
