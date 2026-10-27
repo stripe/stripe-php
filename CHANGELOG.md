@@ -1,5 +1,8 @@
 # Changelog
 
+## 21.3.3 - 2026-10-27
+* Replace the bundled CA certificates with Stripe's updated trusted root certificates (see https://docs.stripe.com/tls-certificates for more info). The previous bundle contained several certificates not used by Stripe, including emSign ECC Root CA - G3, whose intermediate CAs were compromised.
+
 ## 21.3.2 - 2026-09-09
 * [#2142](https://github.com/stripe/stripe-php/pull/2142) Validate that webhook secrets are non-empty
 
