@@ -1,4 +1,7 @@
 # Changelog
+## 19.4.2 - 2026-10-27
+* Replace the bundled CA certificates with Stripe's updated trusted root certificates (see https://docs.stripe.com/tls-certificates for more info). The previous bundle contained several certificates not used by Stripe, including emSign ECC Root CA - G3, whose intermediate CAs were compromised.
+
 ## 19.4.1 - 2026-03-06
 * [#2024](https://github.com/stripe/stripe-php/pull/2024) Add Stripe-Request-Trigger header
 * [#2022](https://github.com/stripe/stripe-php/pull/2022) Add agent information to UserAgent
