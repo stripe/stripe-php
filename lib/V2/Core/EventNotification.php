@@ -45,8 +45,6 @@ abstract class EventNotification
      */
     public function __construct($json, $client)
     {
-        $this->client = $client;
-
         if (\array_key_exists('id', $json)) {
             $this->id = $json['id'];
         }
@@ -73,6 +71,8 @@ abstract class EventNotification
         if (\array_key_exists('reason', $json)) {
             $this->reason = new Reason($json['reason']);
         }
+
+        $this->client = $client->withStripeContext($this->context);
     }
 
     /**

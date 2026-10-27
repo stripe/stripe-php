@@ -160,6 +160,22 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Returns a new client with the same configuration, scoped to the given Stripe Context.
+     *
+     * @param null|string|StripeContext $context
+     *
+     * @return static
+     */
+    public function withStripeContext($context)
+    {
+        $config = $this->config;
+        $config['stripe_account'] = null;
+        $config['stripe_context'] = $context;
+
+        return new static($config);
+    }
+
+    /**
      * Gets the Stripe Version used by the client to send requests.
      *
      * @return null|string the Stripe Context ID used by the client to send requests
@@ -521,7 +537,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * */
     public function deserialize($json, $apiMode = 'v1')
     {
-        return Util::convertToStripeObject(\json_decode($json, true), [], $apiMode);
+        $opts = clone $this->defaultOpts;
+        $opts->apiKey = $this->getApiKey();
+        $opts->apiBase = $this->getApiBase();
+        $opts->discardNonPersistentHeaders();
+
+        return Util::convertToStripeObject(\json_decode($json, true), $opts, $apiMode);
     }
 
     /**
