@@ -1,5 +1,8 @@
 # Changelog
 
+## 15.10.1 - 2026-10-27
+* Replace the bundled CA certificates with Stripe's updated trusted root certificates (see https://docs.stripe.com/tls-certificates for more info). The previous bundle contained several certificates not used by Stripe, including emSign ECC Root CA - G3, whose intermediate CAs were compromised.
+
 ## 15.10.0 - 2024-09-18
 * [#1747](https://github.com/stripe/stripe-php/pull/1747) Update generated code
   * Add support for new value `international_transaction` on enum `Treasury.ReceivedDebit.failure_code`
