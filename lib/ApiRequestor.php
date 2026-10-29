@@ -272,8 +272,167 @@ class ApiRequestor
                 return Exception\IdempotencyException::factory($msg, $rcode, $rbody, $resp, $rheaders, $code);
 
                 // switchCases: The beginning of the section generated from our OpenAPI spec
+            case 'already_canceled':
+                return Exception\AlreadyCanceledException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'blocked_by_stripe':
+                return Exception\BlockedByStripeException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'cannot_proceed':
+                $reason = isset($errorData['reason']) ? $errorData['reason'] : null;
+
+                return Exception\CannotProceedException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $reason
+                );
+
+            case 'capability_not_enabled':
+                return Exception\CapabilityNotEnabledException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'controlled_by_alternate_resource':
+                return Exception\ControlledByAlternateResourceException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'feature_not_enabled':
+                return Exception\FeatureNotEnabledException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'financial_account_not_open':
+                return Exception\FinancialAccountNotOpenException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'fx_quote_needs_refresh':
+                return Exception\FxQuoteNeedsRefreshException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'insufficient_funds':
+                return Exception\InsufficientFundsException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'invalid_payment_method':
+                $invalidParam = isset($errorData['invalid_param']) ? $errorData['invalid_param'] : null;
+
+                return Exception\InvalidPaymentMethodException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $invalidParam
+                );
+
+            case 'invalid_payout_method':
+                return Exception\InvalidPayoutMethodException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'invalid_vaulted_credential':
+                $invalidParam = isset($errorData['invalid_param']) ? $errorData['invalid_param'] : null;
+
+                return Exception\InvalidVaultedCredentialException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $invalidParam
+                );
+
+            case 'not_cancelable':
+                return Exception\NotCancelableException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'quota_exceeded':
+                return Exception\QuotaExceededException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'rate_limit':
                 return Exception\RateLimitException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'recipient_not_notifiable':
+                return Exception\RecipientNotNotifiableException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -290,6 +449,45 @@ class ApiRequestor
                     $resp,
                     $rheaders,
                     $code
+                );
+
+            case 'verification_attempt_failed':
+                $verificationStatus = isset($errorData['verification_status']) ? $errorData['verification_status'] : null;
+
+                return Exception\VerificationAttemptFailedException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $verificationStatus
+                );
+
+            case 'verification_expired':
+                $verificationStatus = isset($errorData['verification_status']) ? $errorData['verification_status'] : null;
+
+                return Exception\VerificationExpiredException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $verificationStatus
+                );
+
+            case 'verification_not_initiated':
+                $verificationStatus = isset($errorData['verification_status']) ? $errorData['verification_status'] : null;
+
+                return Exception\VerificationNotInitiatedException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code,
+                    $verificationStatus
                 );
 
                 // switchCases: The end of the section generated from our OpenAPI spec
