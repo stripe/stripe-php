@@ -31,7 +31,14 @@ final class WebhookTest extends TestCase
             $signature = \hash_hmac('sha256', $signedPayload, $secret);
         }
 
-        return "t={$timestamp},{$scheme}={$signature}";
+        $header = "t={$timestamp},{$scheme}={$signature}";
+        foreach ($opts['debug_metadata'] ?? [] as $key => $value) {
+            if (null !== $value) {
+                $header .= ",{$key}={$value}";
+            }
+        }
+
+        return $header;
     }
 
     public function testValidJsonAndHeader()
@@ -84,6 +91,133 @@ final class WebhookTest extends TestCase
 
         $sigHeader = $this->generateHeader(['signature' => 'bad_signature']);
         WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $sigHeader, self::SECRET);
+    }
+
+    public function testDiagnoseSecretMismatch()
+    {
+        $secret = 'whsec_abcdefghijklmnopqrstuvwxyz';
+        $maskedSecret = 'whsec_****************************1q84';
+        $cases = [
+            // A mismatched secret links to the supplied destination.
+            [$secret, $maskedSecret, 'we_example', 'wxyz', '/we_example'],
+            // A missing destination uses the bare Dashboard URL.
+            [$secret, $maskedSecret, null, 'wxyz', ''],
+            // A matching suffix is not enough if the lengths differ.
+            ['short1q84', $maskedSecret, null, '1q84', ''],
+            // A mostly unmasked value still reveals only the last four secret characters.
+            [$secret, 'whsec_*bcdefghijklmnopqrstuvwxyZ', null, 'wxyz', ''],
+            // A secret shorter than four characters is shown in full.
+            ['abc', '*', null, 'abc', ''],
+        ];
+        foreach ($cases as [$secret, $maskedSecret, $destination, $suffix, $dashboardPath]) {
+            $length = \strlen($secret);
+            $maskedLength = \strlen($maskedSecret);
+            $url = 'https://dashboard.stripe.com/webhooks' . $dashboardPath;
+            $header = self::generateHeader(['signature' => 'bad_signature', 'debug_metadata' => [
+                'secret' => $maskedSecret,
+                'destination' => $destination,
+                'payload' => '00000000',
+            ]]);
+            $expected = "Webhook signature verification failed. This request may not have originated from Stripe.\n\n"
+                . "The signing secret you provided is {$length} characters long and ends in `{$suffix}`. "
+                . "However, the signing secret for this destination is {$maskedLength} characters long and looks like `{$maskedSecret}`. "
+                . "Ensure you're using the signing secret for this destination, as shown on the Dashboard: {$url}\n\n"
+                . 'Learn more: https://docs.stripe.com/webhooks/signature';
+
+            try {
+                WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $header, $secret);
+                self::fail('Expected SignatureVerificationException was not thrown');
+            } catch (Exception\SignatureVerificationException $e) {
+                self::assertSame($expected, $e->getMessage());
+            }
+        }
+    }
+
+    public function testDiagnosePayloadMismatch()
+    {
+        // User supplies the original body with an extra trailing space.
+        $payload = self::EVENT_PAYLOAD . ' ';
+        $expectedHash = \substr(\hash('sha256', self::EVENT_PAYLOAD), -8);
+        $actualHash = \substr(\hash('sha256', $payload), -8);
+        $expected = "Webhook signature verification failed.\n\n"
+            . "The request body you passed to this function differs from the request body sent by Stripe to this webhook destination.\n"
+            . "The SHA-256 hash of the body should end in `{$expectedHash}`. "
+            . "However, the SHA-256 hash of the body you provided ends in `{$actualHash}`.\n\n"
+            . "Make sure your code does not reformat or otherwise alter the raw HTTP request body before passing it to this function.\n\n"
+            . 'Learn more: https://docs.stripe.com/webhooks/signature';
+        $header = self::generateHeader(['debug_metadata' => [
+            'secret' => 'whsec_*******cret',
+            'payload' => \strtoupper($expectedHash),
+        ]]);
+
+        try {
+            WebhookSignature::verifyHeader($payload, $header, self::SECRET);
+            self::fail('Expected SignatureVerificationException was not thrown');
+        } catch (Exception\SignatureVerificationException $e) {
+            self::assertSame($expected, $e->getMessage());
+        }
+    }
+
+    public function testDebugMetadataFallsBackToExistingMessage()
+    {
+        $payloadHash = \substr(\hash('sha256', self::EVENT_PAYLOAD), -8);
+        $cases = [
+            [['secret' => 'whsec_*******cret', 'payload' => $payloadHash], self::SECRET],
+            [['secret' => 'other_*******cret', 'payload' => $payloadHash], self::SECRET],
+            [['secret' => 'whsec_*bcdefghijklmnopqrstuvwxyz'], 'whsec_abcdefghijklmnopqrstuvwxyz'],
+            [['secret' => '*'], '*'],
+        ];
+        foreach ($cases as [$metadata, $secret]) {
+            $header = self::generateHeader(['signature' => 'bad_signature', 'debug_metadata' => $metadata]);
+
+            try {
+                WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $header, $secret);
+                self::fail('Expected SignatureVerificationException was not thrown');
+            } catch (Exception\SignatureVerificationException $e) {
+                self::assertSame('No signatures found matching the expected signature for payload', $e->getMessage());
+            }
+        }
+    }
+
+    public function testInvalidSecretMetadataFallsBackToExistingMessage()
+    {
+        $payloadHash = \substr(\hash('sha256', self::EVENT_PAYLOAD), -8);
+        foreach (['unmasked', \str_repeat('*', 101), ',secret=whsec_*******abcd'] as $maskedSecret) {
+            $header = self::generateHeader(['signature' => 'bad_signature', 'debug_metadata' => [
+                'secret' => $maskedSecret, 'payload' => $payloadHash,
+            ]]);
+
+            try {
+                WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $header, self::SECRET);
+                self::fail('Expected SignatureVerificationException was not thrown');
+            } catch (Exception\SignatureVerificationException $e) {
+                self::assertSame('No signatures found matching the expected signature for payload', $e->getMessage());
+            }
+        }
+    }
+
+    public function testInvalidPayloadMetadataFallsBackToExistingMessage()
+    {
+        foreach (['1234567', '123456789', 'not-hex!', \str_repeat('a', 101), "1234567\xFF", ',payload=00000000'] as $payloadHash) {
+            $header = self::generateHeader(['signature' => 'bad_signature', 'debug_metadata' => [
+                'secret' => 'whsec_*******cret', 'payload' => $payloadHash,
+            ]]);
+
+            try {
+                WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $header, self::SECRET);
+                self::fail('Expected SignatureVerificationException was not thrown');
+            } catch (Exception\SignatureVerificationException $e) {
+                self::assertSame('No signatures found matching the expected signature for payload', $e->getMessage());
+            }
+        }
+    }
+
+    public function testValidSignatureIgnoresConflictingDebugMetadata()
+    {
+        $header = self::generateHeader(['debug_metadata' => [
+            'secret' => '*abcd', 'destination' => 'clidev_example', 'payload' => '00000000',
+        ]]);
+        self::assertTrue(WebhookSignature::verifyHeader(self::EVENT_PAYLOAD, $header, self::SECRET));
     }
 
     /**
