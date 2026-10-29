@@ -3,6 +3,7 @@ title: Update generated code
 pr_url: https://github.com/stripe/stripe-php/pull/2167
 semver_level: major
 is_stripe_api_change: true
+released_in_version: 22.2.0-beta.1
 ---
 
 * Add support for new resources `PaymentPlan`, `V2.Data.QueryRun`, `V2.Data.ReportRun`, `V2.Data.Report`, and `V2.Data.Schema`
