@@ -14,7 +14,7 @@ namespace Stripe\V2\Core;
  * @property \Stripe\StripeObject $metadata The metadata of the <code>batch_job</code>.
  * @property bool $skip_validation Whether validation runs before executing the <code>batch_job</code>.
  * @property string $status The current status of the <code>batch_job</code>.
- * @property null|(object{batch_failed?: (object{error: string}&\Stripe\StripeObject), canceled?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), complete?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), in_progress?: (object{failure_count: int, success_count: int}&\Stripe\StripeObject), ready_for_upload?: (object{upload_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), timeout?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), validating?: (object{validated_count: int}&\Stripe\StripeObject), validation_failed?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Additional details about the current state of the <code>batch_job</code>.
+ * @property null|(object{batch_failed?: (object{error: string, partial_output_file?: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject)}&\Stripe\StripeObject), canceled?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), complete?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), in_progress?: (object{failure_count: int, success_count: int}&\Stripe\StripeObject), ready_for_upload?: (object{upload_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), timeout?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject), validating?: (object{validated_count: int}&\Stripe\StripeObject), validation_failed?: (object{failure_count: int, output_file: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), success_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Additional details about the current state of the <code>batch_job</code>.
  */
 class BatchJob extends \Stripe\ApiResource
 {
@@ -26,6 +26,17 @@ class BatchJob extends \Stripe\ApiResource
             'status_details' => [
                 'kind' => 'object',
                 'fields' => [
+                    'batch_failed' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'partial_output_file' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'size' => ['kind' => 'int64_string'],
+                                ],
+                            ],
+                        ],
+                    ],
                     'canceled' => [
                         'kind' => 'object',
                         'fields' => [

@@ -12,8 +12,8 @@ namespace Stripe\Service\V2\Signals;
 class AccountSignalService extends \Stripe\Service\AbstractService
 {
     /**
-     * Lists the latest AccountSignals for a given account or customer, filtered by
-     * signal type. Note that this endpoint returns only the latest signal for each
+     * Lists AccountSignals whose created timestamps are no more than 90 days old for a
+     * given account or customer. Returns only the latest AccountSignal for each
      * requested signal type.
      *
      * @param null|array{account_details?: array{account?: string, customer?: string}, limit?: int, type: string[]} $params
@@ -63,7 +63,8 @@ class AccountSignalService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves an AccountSignal by its ID.
+     * Retrieves an AccountSignal by its ID when its created timestamp is no more than
+     * 90 days old.
      *
      * @param string $id
      * @param null|array $params

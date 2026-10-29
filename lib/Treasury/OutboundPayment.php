@@ -5,6 +5,8 @@
 namespace Stripe\Treasury;
 
 /**
+ * Legacy OutboundPayments are part of the v1 version of Treasury for platforms and do not support many of the features introduced in <a href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a href="https://docs.stripe.com/api/v2/money-management/outbound-payments">Outbound Payments</a> instead of building a new v1 integration.
+ *
  * Use <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a> to send funds to another party's external bank account or <a href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a>. To send money to an account belonging to the same user, use an <a href="https://docs.stripe.com/api#outbound_transfers">OutboundTransfer</a>.
  *
  * Simulate OutboundPayment state changes with the <code>/v1/test_helpers/treasury/outbound_payments</code> endpoints. These methods can only be called on test mode objects.
@@ -50,7 +52,7 @@ class OutboundPayment extends \Stripe\ApiResource
     /**
      * Creates an OutboundPayment.
      *
-     * @param null|array{amount: int, currency: string, customer?: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string}, financial_account?: string, metadata?: array<string, string>, type: string, us_bank_account?: array{account_holder_type?: string, account_number?: string, account_type?: string, financial_connections_account?: string, routing_number?: string}}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, end_user_details?: array{ip_address?: string, present: bool}, expand?: string[], financial_account: string, metadata?: array<string, string>, purpose?: string, statement_descriptor?: string} $params
+     * @param null|array{amount: int, currency: string, customer?: string, description?: string, destination_payment_method?: string, destination_payment_method_data?: array{billing_details?: array{address?: null|array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, email?: null|string, name?: null|string, phone?: null|string}, financial_account?: string, metadata?: array<string, string>, type: string, us_bank_account?: array{account_holder_type?: string, account_number?: string, account_type?: string, external_token?: array{plaid_processor_token?: string, type: string}, financial_connections_account?: string, routing_number?: string}}, destination_payment_method_options?: array{us_bank_account?: null|array{network?: string}}, end_user_details?: array{ip_address?: string, present: bool}, expand?: string[], financial_account: string, metadata?: array<string, string>, purpose?: string, statement_descriptor?: string} $params
      * @param null|array|string $options
      *
      * @return OutboundPayment the created resource

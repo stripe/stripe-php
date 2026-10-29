@@ -27,7 +27,9 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * InboundTransfers APIs are used to create, retrieve or list InboundTransfers.
+     * Creates an InboundTransfer to pull funds from a bank account into a financial
+     * account. Per-transfer and rolling weekly limits vary by account and payment
+     * rail. See [transfer limits](/treasury/add-funds#transfer-limits).
      *
      * @param null|array{amount: \Stripe\StripeObject, description?: string, from: array{currency?: string, payment_method: string}, to: array{currency: string, financial_account: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
