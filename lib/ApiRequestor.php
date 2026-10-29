@@ -315,6 +315,16 @@ class ApiRequestor
                     $reason
                 );
 
+            case 'capability_not_enabled':
+                return Exception\CapabilityNotEnabledException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'controlled_by_alternate_resource':
                 return Exception\ControlledByAlternateResourceException::factory(
                     $msg,
@@ -337,6 +347,16 @@ class ApiRequestor
 
             case 'financial_account_not_open':
                 return Exception\FinancialAccountNotOpenException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
+            case 'fx_quote_needs_refresh':
+                return Exception\FxQuoteNeedsRefreshException::factory(
                     $msg,
                     $rcode,
                     $rbody,
@@ -918,7 +938,7 @@ class ApiRequestor
      * @param string[] $usage
      * @param callable $readBodyChunkCallable
      * @param 'v1'|'v2' $apiMode
-     * @param int $maxNetworkRetries
+     * @param null|int $maxNetworkRetries
      *
      * @return array
      *
@@ -938,6 +958,7 @@ class ApiRequestor
             $params,
             $hasFile,
             $readBodyChunkCallable,
+            $apiMode,
             $maxNetworkRetries
         );
 

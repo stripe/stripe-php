@@ -5,6 +5,12 @@
 namespace Stripe;
 
 /**
+ * When you collect a transaction fee on top of a charge made for your user
+ * (using <a href="https://docs.stripe.com/connect">Connect</a>), an <code>Application Fee</code> object is created in
+ * your account. You can list, retrieve, and refund application fees.
+ *
+ * Related guide: <a href="https://docs.stripe.com/connect/direct-charges#collect-fees">Collecting application fees</a>
+ *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property Account|string $account ID of the Stripe account this fee was taken from.

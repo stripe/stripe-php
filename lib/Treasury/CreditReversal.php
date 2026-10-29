@@ -5,6 +5,8 @@
 namespace Stripe\Treasury;
 
 /**
+ * Legacy CreditReversals are part of the v1 version of Treasury for platforms and do not support many of the features introduced in <a href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a href="https://docs.stripe.com/api/v2/money-management/received-credits?api-version=preview">Received Credits</a> instead of building a new v1 integration.
+ *
  * You can reverse some <a href="https://docs.stripe.com/api#received_credits">ReceivedCredits</a> depending on their network and source flow. Reversing a ReceivedCredit leads to the creation of a new object known as a CreditReversal.
  *
  * @property string $id Unique identifier for the object.

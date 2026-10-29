@@ -46,12 +46,13 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
     /**
      * Creates an OutboundTransfer.
      *
-     * @param null|array{amount: \Stripe\StripeObject, delivery_options?: array{bank_account?: string}, description?: string, from: array{currency: string, financial_account: string}, metadata?: array<string, string>, to: array{currency?: string, payout_method: string}} $params
+     * @param null|array{amount: \Stripe\StripeObject, delivery_options?: array{bank_account?: string}, description?: string, from: array{currency: string, financial_account: string}, metadata?: array<string, string>, statement_descriptor?: string, to: array{currency?: string, payout_method: string, payout_method_options?: array{bank_account?: array{preferred_network_options?: array{ach?: array{}}, preferred_networks: string[]}}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\OutboundTransfer
      *
      * @throws \Stripe\Exception\InsufficientFundsException
+     * @throws \Stripe\Exception\CapabilityNotEnabledException
      * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function create($params = null, $opts = null)

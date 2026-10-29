@@ -9,7 +9,7 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id Unique identifier for the OutboundPayment.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property \Stripe\StripeObject $amount The &quot;presentment amount&quot; for the OutboundPayment.
+ * @property \Stripe\StripeObject $amount The amount and currency requested for this OutboundPayment.
  * @property bool $cancelable Returns true if the OutboundPayment can be canceled, and false otherwise.
  * @property string $created Time at which the OutboundPayment was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
  * @property null|(object{bank_account?: string}&\Stripe\StripeObject) $delivery_options Delivery options to be used to send the OutboundPayment.
@@ -19,15 +19,18 @@ namespace Stripe\V2\MoneyManagement;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $outbound_payment_quote The quote for this OutboundPayment. Only required for countries with regulatory mandates to display fee estimates before OutboundPayment creation.
+ * @property null|string $payout_intent The PayoutIntent ID that triggered this OutboundPayment.
  * @property null|string $purpose The purpose of the OutboundPayment.
  * @property null|string $receipt_url A link to the Stripe-hosted receipt for this OutboundPayment. The receipt link remains active for 60 days from the OutboundPayment creation date. After this period, the link will expire and the receipt url value will be null.
  * @property (object{setting: string}&\Stripe\StripeObject) $recipient_notification Details about the OutboundPayment notification settings for recipient.
- * @property string $statement_descriptor The description that appears on the receiving end for an OutboundPayment (for example, bank statement for external bank transfer). It will default to <code>STRIPE</code> if not set on the account settings.
- * @property string $status Closed Enum. Current status of the OutboundPayment: <code>processing</code>, <code>failed</code>, <code>posted</code>, <code>returned</code>, <code>canceled</code>. An OutboundPayment is <code>processing</code> if it has been created and is processing. The status changes to <code>posted</code> once the OutboundPayment has been &quot;confirmed&quot; and funds have left the account, or to <code>failed</code> or <code>canceled</code>. If an OutboundPayment fails to arrive at its payout method, its status will change to <code>returned</code>.
+ * @property null|string $recipient_verification The ID of the RecipientVerification for this OutboundPayment. Required where recipient-name verification is mandated before creating an OutboundPayment.
+ * @property string $statement_descriptor The description that appears on the receiving end of an OutboundPayment (for example, on a bank statement). Defaults to <code>STRIPE</code> if not configured in the account settings.
+ * @property string $status Current status of the OutboundPayment. An OutboundPayment is <code>processing</code> after creation. It becomes <code>posted</code> when funds leave the account, <code>failed</code> if it cannot be sent, <code>canceled</code> if canceled before posting, or <code>returned</code> if the funds are returned.
  * @property null|(object{failed?: (object{reason: string}&\Stripe\StripeObject), processing?: (object{reason: string}&\Stripe\StripeObject), returned?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Status details for an OutboundPayment in a <code>processing</code>, <code>failed</code>, or <code>returned</code> state.
  * @property null|(object{canceled_at?: string, failed_at?: string, posted_at?: string, returned_at?: string}&\Stripe\StripeObject) $status_transitions Hash containing timestamps of when the object transitioned to a particular status.
- * @property (object{credited: \Stripe\StripeObject, payout_method: string, recipient: string}&\Stripe\StripeObject) $to To which payout method the OutboundPayment was sent.
+ * @property (object{credited: \Stripe\StripeObject, payout_method?: string, payout_method_options?: (object{bank_account?: (object{preferred_network_options?: (object{ach?: (object{submission?: string, transaction_purpose?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), preferred_networks?: string[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), recipient: string}&\Stripe\StripeObject) $to To which payout method the OutboundPayment was sent.
  * @property (object{status: string, value?: string}&\Stripe\StripeObject) $trace_id A unique identifier that can be used to track this OutboundPayment with recipient bank. Banks might call this a &quot;reference number&quot; or something similar.
+ * @property null|(object{bank_account?: (object{trace_id?: string}&\Stripe\StripeObject), card?: (object{retrieval_reference?: string}&\Stripe\StripeObject), crypto_wallet?: (object{blockchain_transaction?: string}&\Stripe\StripeObject), status: string, type: string}&\Stripe\StripeObject) $tracking_details Information to track this OutboundPayment with the recipient bank.
  */
 class OutboundPayment extends \Stripe\ApiResource
 {

@@ -160,6 +160,22 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Returns a new client with the same configuration, scoped to the given Stripe Context.
+     *
+     * @param null|string|StripeContext $context
+     *
+     * @return static
+     */
+    public function withStripeContext($context)
+    {
+        $config = $this->config;
+        $config['stripe_account'] = null;
+        $config['stripe_context'] = $context;
+
+        return new static($config);
+    }
+
+    /**
      * Gets the Stripe Version used by the client to send requests.
      *
      * @return null|string the Stripe Context ID used by the client to send requests
@@ -323,7 +339,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl, $this->getAppInfo());
         $apiMode = Util::getApiMode($path);
-        list($response, $opts->apiKey) = $requestor->requestStream($method, $path, $readBodyChunkCallable, $params, $opts->headers, $apiMode, ['stripe_client']);
+        list($response, $opts->apiKey) = $requestor->requestStream($method, $path, $readBodyChunkCallable, $params, $opts->headers, $apiMode, ['stripe_client'], $opts->maxNetworkRetries);
     }
 
     /**
@@ -373,13 +389,32 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     public function requestSearchResult($method, $path, $params, $opts)
     {
         $obj = $this->request($method, $path, $params, $opts);
-        if (!$obj instanceof SearchResult) {
-            $received_class = \get_class($obj);
-            $msg = "Expected to receive `Stripe\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
+        $apiMode = Util::getApiMode($path);
+        if ('v1' === $apiMode) {
+            if (!$obj instanceof SearchResult) {
+                $received_class = \get_class($obj);
+                $msg = "Expected to receive `Stripe\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
 
-            throw new Exception\UnexpectedValueException($msg);
+                throw new Exception\UnexpectedValueException($msg);
+            }
+            $obj->setFilters($params);
+        } else {
+            $params = null === $params ? [] : $params;
+            $filters = $params;
+            if (\array_key_exists('limit', $params)) {
+                $separator = false === \strpos($path, '?') ? '?' : '&';
+                $path .= $separator . 'limit=' . \rawurlencode((string) $params['limit']);
+                unset($params['limit']);
+            }
+            $obj = $this->request($method, $path, $params, $opts);
+            if (!$obj instanceof V2\SearchResult) {
+                $received_class = \get_class($obj);
+                $msg = "Expected to receive `Stripe\\V2\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
+
+                throw new Exception\UnexpectedValueException($msg);
+            }
+            $obj->setFilters($filters);
         }
-        $obj->setFilters($params);
 
         return $obj;
     }
@@ -502,7 +537,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * */
     public function deserialize($json, $apiMode = 'v1')
     {
-        return Util::convertToStripeObject(\json_decode($json, true), [], $apiMode);
+        $opts = clone $this->defaultOpts;
+        $opts->apiKey = $this->getApiKey();
+        $opts->apiBase = $this->getApiBase();
+        $opts->discardNonPersistentHeaders();
+
+        return Util::convertToStripeObject(\json_decode($json, true), $opts, $apiMode);
     }
 
     /**

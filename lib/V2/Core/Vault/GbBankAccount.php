@@ -15,6 +15,7 @@ namespace Stripe\V2\Core\Vault;
  * @property string $bank_name The name of the bank.
  * @property (object{result: (object{created: string, match_result: string, matched: (object{business_type?: string, name?: string}&\Stripe\StripeObject), message: string, provided: (object{business_type: string, name: string}&\Stripe\StripeObject)}&\Stripe\StripeObject), status: string}&\Stripe\StripeObject) $confirmation_of_payee Information around the status of Confirmation of Payee matching done on this bank account. Confirmation of Payee is a name matching service that must be done before making OutboundPayments in the UK.
  * @property string $created Creation time.
+ * @property null|string $fingerprint Uniquely identifies this particular bank account. You can use this attribute to check whether two recipients who've signed up with you are using the same bank account, for example.
  * @property string $last4 The last 4 digits of the account number or IBAN.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property bool $restricted Whether the GB Bank Account is currently unusable for money movement, despite potentially being correctly set up. Please reach out to Stripe Support for more information.
@@ -26,7 +27,5 @@ class GbBankAccount extends \Stripe\ApiResource
     const OBJECT_NAME = 'v2.core.vault.gb_bank_account';
 
     const BANK_ACCOUNT_TYPE_CHECKING = 'checking';
-    const BANK_ACCOUNT_TYPE_FUTSU = 'futsu';
     const BANK_ACCOUNT_TYPE_SAVINGS = 'savings';
-    const BANK_ACCOUNT_TYPE_TOZA = 'toza';
 }

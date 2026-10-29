@@ -218,11 +218,13 @@ class ErrorObject extends StripeObject
     const CODE_SHIPPING_CALCULATION_FAILED = 'shipping_calculation_failed';
     const CODE_SIRET_INVALID = 'siret_invalid';
     const CODE_SKU_INACTIVE = 'sku_inactive';
+    const CODE_SMART_DISPUTES_NOT_AVAILABLE = 'smart_disputes_not_available';
     const CODE_STATE_UNSUPPORTED = 'state_unsupported';
     const CODE_STATUS_TRANSITION_INVALID = 'status_transition_invalid';
     const CODE_STORER_CAPABILITY_MISSING = 'storer_capability_missing';
     const CODE_STORER_CAPABILITY_NOT_ACTIVE = 'storer_capability_not_active';
     const CODE_STRIPE_TAX_INACTIVE = 'stripe_tax_inactive';
+    const CODE_SUBSCRIPTION_UPDATE_TRIAL_AFTER_BILLING_CYCLE_ANCHOR = 'subscription_update_trial_after_billing_cycle_anchor';
     const CODE_TAX_ID_INVALID = 'tax_id_invalid';
     const CODE_TAX_ID_PROHIBITED = 'tax_id_prohibited';
     const CODE_TAXES_CALCULATION_FAILED = 'taxes_calculation_failed';
@@ -235,6 +237,8 @@ class ErrorObject extends StripeObject
     const CODE_TERMINAL_READER_OFFLINE = 'terminal_reader_offline';
     const CODE_TERMINAL_READER_TIMEOUT = 'terminal_reader_timeout';
     const CODE_TESTMODE_CHARGES_ONLY = 'testmode_charges_only';
+    const CODE_THREE_D_SECURE_AUTHENTICATION_NOT_SUPPORTED = 'three_d_secure_authentication_not_supported';
+    const CODE_THREE_D_SECURE_AUTHENTICATION_UPSTREAM_ERROR = 'three_d_secure_authentication_upstream_error';
     const CODE_TLS_VERSION_UNSUPPORTED = 'tls_version_unsupported';
     const CODE_TOKEN_ALREADY_USED = 'token_already_used';
     const CODE_TOKEN_CARD_NETWORK_INVALID = 'token_card_network_invalid';

@@ -27,6 +27,22 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
+     * Creates a fresh hosted URL for a Transaction's regulatory receipt.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\MoneyManagement\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function refreshRegulatoryReceipt($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/money_management/transactions/%s/refresh_regulatory_receipt', $id), $params, $opts);
+    }
+
+    /**
      * Retrieves the details of a Transaction by ID.
      *
      * @param string $id
@@ -40,5 +56,21 @@ class TransactionService extends \Stripe\Service\AbstractService
     public function retrieve($id, $params = null, $opts = null)
     {
         return $this->request('get', $this->buildPath('/v2/money_management/transactions/%s', $id), $params, $opts);
+    }
+
+    /**
+     * Updates an existing Transaction. You can update its description and metadata.
+     *
+     * @param string $id
+     * @param null|array{description?: string, metadata?: array<string, null|string>} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\MoneyManagement\Transaction
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/money_management/transactions/%s', $id), $params, $opts);
     }
 }

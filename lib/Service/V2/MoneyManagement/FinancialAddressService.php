@@ -29,7 +29,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
     /**
      * Create a new FinancialAddress for a FinancialAccount (V2 shape).
      *
-     * @param null|array{bank_account?: array{country?: string, currency: string}, financial_account: string, settlement_currency?: string, type: string} $params
+     * @param null|array{bank_account?: array{country?: string, currency: string}, financial_account: string, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAddress

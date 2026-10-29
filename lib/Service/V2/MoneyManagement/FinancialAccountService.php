@@ -12,7 +12,8 @@ namespace Stripe\Service\V2\MoneyManagement;
 class FinancialAccountService extends \Stripe\Service\AbstractService
 {
     /**
-     * Lists FinancialAccounts in this compartment.
+     * Returns a list of FinancialAccounts in your account that match the provided
+     * filters.
      *
      * @param null|array{include?: string[], limit?: int, statuses?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +28,8 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Closes a FinancialAccount with or without forwarding settings.
+     * Closes a FinancialAccount. You must provide forwarding settings if it has a
+     * non-zero balance.
      *
      * @param string $id
      * @param null|array{forwarding_settings?: array{payment_method?: string, payout_method?: string}} $params
@@ -45,7 +47,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     /**
      * Creates a new FinancialAccount.
      *
-     * @param null|array{display_name?: string, metadata?: array<string, string>, storage?: array{deposit_insurance_eligibility?: array{bank_name: string, currencies: string[], type: string}[], holds_currencies: string[]}, type: string} $params
+     * @param null|array{display_name?: string, metadata?: array<string, string>, storage?: array{holds_currencies: string[]}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount
@@ -75,7 +77,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates an existing FinancialAccount.
+     * Updates an existing FinancialAccount using the provided parameters.
      *
      * @param string $id
      * @param null|array{display_name?: string, metadata?: array<string, null|string>} $params

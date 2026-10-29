@@ -14,11 +14,12 @@ class OutboundPaymentQuoteService extends \Stripe\Service\AbstractService
     /**
      * Creates an OutboundPaymentQuote usable in an OutboundPayment.
      *
-     * @param null|array{amount: \Stripe\StripeObject, delivery_options?: array{bank_account?: string}, from: array{currency: string, financial_account: string}, to: array{currency?: string, payout_method?: string, recipient: string}} $params
+     * @param null|array{amount: \Stripe\StripeObject, delivery_options?: array{bank_account?: string}, from: array{currency: string, financial_account: string}, to: array{currency?: string, payout_method?: string, payout_method_options?: array{bank_account?: array{preferred_network_options?: array{ach?: array{submission?: string, transaction_purpose?: string}}, preferred_networks?: string[]}}, recipient: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\OutboundPaymentQuote
      *
+     * @throws \Stripe\Exception\CapabilityNotEnabledException
      * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function create($params = null, $opts = null)

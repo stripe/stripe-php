@@ -9,11 +9,11 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id The ID of the FinancialAddress.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|(object{aba?: (object{account_holder_address?: (object{city: string, country: string, line1: string, line2: string, postal_code: string, state: string, town: string}&\Stripe\StripeObject), account_holder_name?: string, account_number?: string, bank_name?: string, last4: string, routing_number: string}&\Stripe\StripeObject), country?: string, currency: string, iban?: (object{account_holder_name: string, bank_name: string, country: string, iban?: string, last4: string}&\Stripe\StripeObject), sort_code?: (object{account_holder_name: string, account_number?: string, last4: string, sort_code: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $bank_account Bank account details for this FinancialAddress.
+ * @property null|(object{aba?: (object{account_holder_name?: string, account_number: string, address?: (object{city: string, country: string, line1: string, line2: string, postal_code: string, state: string, town: string}&\Stripe\StripeObject), bank_name?: string, routing_number: string}&\Stripe\StripeObject), country?: string, currency: string, iban?: (object{account_holder_name: string, bank_name: string, iban: string}&\Stripe\StripeObject), sort_code?: (object{account_holder_name: string, account_number: string, sort_code: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $bank_account Bank account details for this FinancialAddress.
  * @property string $created The creation timestamp of the FinancialAddress.
  * @property string $financial_account The ID of the FinancialAccount this FinancialAddress corresponds to.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string $settlement_currency Open Enum. The currency the FinancialAddress settles into the FinancialAccount.
+ * @property string $settlement_currency
  * @property string $status Closed Enum. The status of the FinancialAddress.
  * @property string $type Open Enum. The type of FinancialAddress.
  */
