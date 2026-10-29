@@ -5,6 +5,8 @@
 namespace Stripe\Treasury;
 
 /**
+ * Legacy OutboundPayments are part of the v1 version of Treasury for platforms and do not support many of the features introduced in <a href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a href="https://docs.stripe.com/api/v2/money-management/outbound-payments">Outbound Payments</a> instead of building a new v1 integration.
+ *
  * Use <a href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a> to send funds to another party's external bank account or <a href="https://docs.stripe.com/api#financial_accounts">FinancialAccount</a>. To send money to an account belonging to the same user, use an <a href="https://docs.stripe.com/api#outbound_transfers">OutboundTransfer</a>.
  *
  * Simulate OutboundPayment state changes with the <code>/v1/test_helpers/treasury/outbound_payments</code> endpoints. These methods can only be called on test mode objects.
