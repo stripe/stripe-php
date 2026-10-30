@@ -157,6 +157,67 @@ final class RequestOptionsTest extends \Stripe\TestCase
         self::assertSame(['Stripe-Account' => 'foo', 'Stripe-Context' => 'foo'], $opts->headers);
     }
 
+    public function testSerializationOmitsApiKeyWithoutChangingLiveOptions()
+    {
+        $opts = new RequestOptions(
+            'serialization_test_secret',
+            ['Stripe-Account' => 'test_account', 'Stripe-Version' => '2020-08-27'],
+            'https://example.com',
+            2
+        );
+
+        $serialized = \serialize($opts);
+        self::assertStringNotContainsString('serialization_test_secret', $serialized);
+        self::assertStringNotContainsString('apiKey', $serialized);
+        $restored = \unserialize($serialized);
+
+        self::assertInstanceOf(RequestOptions::class, $restored);
+        self::assertNull($restored->apiKey);
+        self::assertSame($opts->headers, $restored->headers);
+        self::assertSame($opts->apiBase, $restored->apiBase);
+        self::assertSame($opts->maxNetworkRetries, $restored->maxNetworkRetries);
+        self::assertSame('serialization_test_secret', $opts->apiKey);
+        self::assertSame('serialization_test_secret', (clone $opts)->apiKey);
+        self::assertSame('serialization_test_secret', RequestOptions::parse($opts)->apiKey);
+        self::assertSame('serialization_test_secret', $opts->merge([])->apiKey);
+    }
+
+    public function testUnserializeLegacyOptionsDiscardsApiKey()
+    {
+        $legacy = (object) [
+            'apiKey' => 'legacy_test_secret',
+            'headers' => ['Stripe-Account' => 'test_account'],
+            'apiBase' => 'https://example.com',
+            'maxNetworkRetries' => 0,
+        ];
+        $payload = \str_replace(
+            'O:8:"stdClass"',
+            'O:' . \strlen(RequestOptions::class) . ':"' . RequestOptions::class . '"',
+            \serialize($legacy)
+        );
+        $restored = \unserialize($payload);
+
+        self::assertInstanceOf(RequestOptions::class, $restored);
+        self::assertNull($restored->apiKey);
+        self::assertSame($legacy->headers, $restored->headers);
+        self::assertSame($legacy->apiBase, $restored->apiBase);
+        self::assertSame(0, $restored->maxNetworkRetries);
+    }
+
+    public function testUnserializeMissingOptionsUsesDefaults()
+    {
+        $opts = new RequestOptions('test_secret');
+        $opts->__unserialize([]);
+
+        self::assertNull($opts->apiKey);
+        self::assertSame([], $opts->headers);
+        self::assertNull($opts->apiBase);
+        self::assertNull($opts->maxNetworkRetries);
+
+        $restored = \unserialize(\serialize($opts));
+        self::assertSame(\get_object_vars($opts), \get_object_vars($restored));
+    }
+
     public function testDebugInfo()
     {
         $opts = RequestOptions::parse(['api_key' => 'sk_test_1234567890abcdefghijklmn']);

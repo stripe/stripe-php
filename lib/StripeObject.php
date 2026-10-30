@@ -602,6 +602,23 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
+     * Sets the API key for requests made by this object only.
+     * Nested objects and resources in a collection are not affected.
+     *
+     * @param string $apiKey the API key from secure runtime configuration
+     *
+     * @throws Exception\InvalidArgumentException if the API key is not a string
+     */
+    public function setApiKey($apiKey)
+    {
+        if (!\is_string($apiKey)) {
+            throw new Exception\InvalidArgumentException('The API key must be a string.');
+        }
+
+        $this->_opts = $this->_opts->merge(['api_key' => $apiKey]);
+    }
+
+    /**
      * Sets the last response from the Stripe API.
      *
      * @param ApiResponse $resp

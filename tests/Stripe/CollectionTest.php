@@ -293,6 +293,52 @@ final class CollectionTest extends TestCase
         self::assertSame(['2', '3'], $ids);
     }
 
+    public function testRestoredCollectionPaginationUsesItsOwnApiKey()
+    {
+        Stripe::setApiKey(null);
+        $values = $this->fixture->toArray();
+        $values['data'][0]['object'] = 'customer';
+        $this->fixture->refreshFrom($values, [
+            'api_key' => 'serialization_test_secret',
+            'stripe_account' => 'test_account',
+        ]);
+        $this->fixture->setFilters(['limit' => 2]);
+        $serialized = \serialize($this->fixture);
+        self::assertStringNotContainsString('serialization_test_secret', $serialized);
+        $collection = \unserialize($serialized);
+        self::assertInstanceOf(Collection::class, $collection);
+        self::assertInstanceOf(Customer::class, $collection->data[0]);
+        self::assertSame($this->fixture->toArray(), $collection->toArray());
+        self::assertSame(['limit' => 2], $collection->getFilters());
+        $collection->setApiKey('pagination_test_secret');
+        $opts = new \ReflectionProperty(StripeObject::class, '_opts');
+        $opts->setAccessible(true);
+        self::assertSame('serialization_test_secret', $opts->getValue($this->fixture->data[0])->apiKey);
+        self::assertNull($opts->getValue($collection->data[0])->apiKey);
+        self::assertSame('serialization_test_secret', $opts->getValue($this->fixture)->apiKey);
+
+        $this->stubRequest('GET', '/things', [
+            'limit' => 2,
+            'starting_after' => '1',
+        ], ['Authorization: Bearer pagination_test_secret'], false, [
+            'object' => 'list',
+            'data' => [['id' => '2'], ['id' => '3']],
+            'has_more' => false,
+            'url' => '/things',
+        ]);
+
+        $seen = [];
+        foreach ($collection->autoPagingIterator() as $item) {
+            $seen[] = $item->id;
+        }
+        self::assertSame(['1', '2', '3'], $seen);
+        self::assertNull($opts->getValue($collection->data[0])->apiKey);
+        $collection->data[0]->setApiKey('contained_resource_test_secret');
+        self::assertSame('pagination_test_secret', $opts->getValue($collection)->apiKey);
+        self::assertStringNotContainsString('pagination_test_secret', \serialize($collection));
+        self::assertStringNotContainsString('contained_resource_test_secret', \serialize($collection));
+    }
+
     public function testPreviousPage()
     {
         $this->stubRequest(
