@@ -45,6 +45,29 @@ class RequestOptions
     }
 
     /**
+     * Serializes request options without the API key.
+     */
+    public function __serialize(): array
+    {
+        return [
+            'headers' => $this->headers,
+            'apiBase' => $this->apiBase,
+            'maxNetworkRetries' => $this->maxNetworkRetries,
+        ];
+    }
+
+    /**
+     * Restores request options, discarding API keys from older payloads too.
+     */
+    public function __unserialize(array $data): void
+    {
+        $this->apiKey = null;
+        $this->headers = $data['headers'] ?? [];
+        $this->apiBase = $data['apiBase'] ?? null;
+        $this->maxNetworkRetries = $data['maxNetworkRetries'] ?? null;
+    }
+
+    /**
      * @return array<string, string>
      */
     public function __debugInfo()

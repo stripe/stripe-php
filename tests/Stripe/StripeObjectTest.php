@@ -41,6 +41,183 @@ final class StripeObjectTest extends TestCase
         $this->retrieveOptionsReflector->setAccessible(true);
     }
 
+    public function testNativeSerializationPreservesResourceStateWithoutApiKeys()
+    {
+        $customer = Customer::constructFrom([
+            'id' => 'test_customer',
+            'object' => 'customer',
+            'description' => 'original',
+            'metadata' => ['old' => 'value'],
+        ], [
+            'api_key' => 'serialization_test_secret',
+            'stripe_account' => 'test_account',
+            'api_base' => 'https://example.com',
+            'max_network_retries' => 2,
+        ]);
+        $customer->description = 'changed';
+        $customer->metadata = ['new' => 'value'];
+        $customer['temporary'] = 'removed';
+        unset($customer['temporary']);
+        $customer->saveWithParent = true;
+        $response = new ApiResponse('{}', 200, ['Request-Id' => 'test_request'], []);
+        $customer->setLastResponse($response);
+        $parameters = $customer->serializeParameters();
+        self::assertSame([
+            'description' => 'changed',
+            'metadata' => ['old' => '', 'new' => 'value'],
+        ], $parameters);
+
+        foreach ([$customer->metadata, $customer] as $object) {
+            $serialized = \serialize($object);
+            self::assertStringNotContainsString('serialization_test_secret', $serialized);
+            $restored = \unserialize($serialized);
+            self::assertSame(\get_class($object), \get_class($restored));
+            self::assertSame($object->toArray(), $restored->toArray());
+            self::assertSame($object->serializeParameters(), $restored->serializeParameters());
+            $opts = $this->optsReflector->getValue($restored);
+            self::assertNull($opts->apiKey);
+            self::assertSame('serialization_test_secret', $this->optsReflector->getValue($object)->apiKey);
+        }
+
+        self::assertInstanceOf(StripeObject::class, $restored->metadata);
+        self::assertTrue($restored->saveWithParent);
+        self::assertSame(\get_object_vars($response), \get_object_vars($restored->getLastResponse()));
+        self::assertNull($this->optsReflector->getValue($restored->metadata)->apiKey);
+        foreach (['_originalValues', '_unsavedValues', '_transientValues', '_retrieveOptions'] as $name) {
+            $property = new \ReflectionProperty(StripeObject::class, $name);
+            $property->setAccessible(true);
+            $originalValue = $property->getValue($customer);
+            $restoredValue = $property->getValue($restored);
+            if ($originalValue instanceof Util\Set) {
+                self::assertInstanceOf(Util\Set::class, $restoredValue);
+                self::assertSame($originalValue->toArray(), $restoredValue->toArray());
+            } else {
+                self::assertSame($originalValue, $restoredValue);
+            }
+        }
+        $opts = $this->optsReflector->getValue($restored);
+        self::assertSame(['Stripe-Account' => 'test_account'], $opts->headers);
+        self::assertSame('https://example.com', $opts->apiBase);
+        self::assertSame(2, $opts->maxNetworkRetries);
+    }
+
+    public function testSetApiKeyPreservesOptionsAndDirtyState()
+    {
+        $object = StripeObject::constructFrom(['metadata' => ['old' => 'value']], [
+            'api_key' => 'original_test_secret',
+            'stripe_account' => 'test_account',
+            'stripe_version' => '2020-08-27',
+            'api_base' => 'https://example.com',
+            'max_network_retries' => 2,
+        ]);
+        $object['description'] = 'changed';
+        $object['metadata'] = ['new' => 'value'];
+        $nestedOpts = Util\RequestOptions::parse([
+            'api_key' => 'nested_test_secret',
+            'stripe_account' => 'nested_test_account',
+            'stripe_context' => 'nested_test_context',
+            'stripe_version' => '2020-08-27',
+            'api_base' => 'https://example.com/nested',
+            'max_network_retries' => 0,
+            'headers' => ['X-Test-Header' => 'preserved'],
+        ]);
+        $this->optsReflector->setValue($object['metadata'], $nestedOpts);
+        $originalOpts = $this->optsReflector->getValue($object);
+        $other = new StripeObject();
+        $this->optsReflector->setValue($other, $originalOpts);
+        $parameters = $object->serializeParameters();
+        $values = $object->toArray();
+        $globalKey = Stripe::getApiKey();
+
+        $nestedParameters = $object['metadata']->serializeParameters();
+        $object->setApiKey('rebound_test_secret');
+
+        foreach ([[$object, $originalOpts], [$object['metadata'], $nestedOpts]] as list($resource, $previousOpts)) {
+            $opts = $this->optsReflector->getValue($resource);
+            self::assertNotSame($previousOpts, $opts);
+            self::assertSame(\array_merge(\get_object_vars($previousOpts), [
+                'apiKey' => 'rebound_test_secret',
+            ]), \get_object_vars($opts));
+        }
+        self::assertSame('original_test_secret', $this->optsReflector->getValue($other)->apiKey);
+        self::assertSame('nested_test_secret', $nestedOpts->apiKey);
+        self::assertSame($nestedParameters, $object['metadata']->serializeParameters());
+        self::assertSame($globalKey, Stripe::getApiKey());
+        self::assertSame($parameters, $object->serializeParameters());
+        self::assertSame($values, $object->toArray());
+        self::assertFalse(isset($object['api_key']));
+        self::assertStringNotContainsString('rebound_test_secret', $object->toJSON());
+        $serialized = \serialize($object);
+        self::assertStringNotContainsString('rebound_test_secret', $serialized);
+        self::assertStringNotContainsString('original_test_secret', $serialized);
+        self::assertStringNotContainsString('nested_test_secret', $serialized);
+        $restored = \unserialize($serialized);
+        self::assertNull($this->optsReflector->getValue($restored)->apiKey);
+        self::assertNull($this->optsReflector->getValue($restored['metadata'])->apiKey);
+        self::assertSame($parameters, $restored->serializeParameters());
+    }
+
+    public function testSetApiKeyTraversesArraysAndSharedCyclicResources()
+    {
+        $root = new StripeObject(null, 'root_test_secret');
+        $child = new StripeObject(null, 'nested_test_secret');
+        $equalChild = new StripeObject(null, 'nested_test_secret');
+        $values = new \ReflectionProperty(StripeObject::class, '_values');
+        $values->setAccessible(true);
+        $values->setValue($root, [
+            'children' => [['first' => $child, 'again' => $child, 'equal' => $equalChild]],
+            'self' => $root,
+            'scalar' => 'unchanged',
+        ]);
+        $values->setValue($child, ['parent' => $root]);
+        $values->setValue($equalChild, ['parent' => $root]);
+        $root = \unserialize(\serialize($root));
+        $child = $root['children'][0]['first'];
+        $equalChild = $root['children'][0]['equal'];
+        $before = \serialize($root);
+
+        $root->setApiKey('graph_test_secret');
+
+        foreach ([$root, $child, $equalChild] as $object) {
+            self::assertSame('graph_test_secret', $this->optsReflector->getValue($object)->apiKey);
+        }
+        self::assertSame($root, $root['self']);
+        self::assertSame($root, $child['parent']);
+        self::assertSame($child, $root['children'][0]['again']);
+        self::assertNotSame($child, $equalChild);
+        $serialized = \serialize($root);
+        self::assertSame($before, $serialized);
+        self::assertStringNotContainsString('graph_test_secret', $serialized);
+    }
+
+    /**
+     * @dataProvider provideSetApiKeyRejectsInvalidKeysCases
+     *
+     * @param mixed $apiKey
+     */
+    public function testSetApiKeyRejectsInvalidKeys($apiKey)
+    {
+        $object = StripeObject::constructFrom(['metadata' => []], 'original_test_secret');
+        $opts = $this->optsReflector->getValue($object);
+        $nestedOpts = $this->optsReflector->getValue($object['metadata']);
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The API key must be a non-empty string.');
+
+        try {
+            $object->setApiKey($apiKey);
+        } finally {
+            self::assertSame($opts, $this->optsReflector->getValue($object));
+            self::assertSame($nestedOpts, $this->optsReflector->getValue($object['metadata']));
+            self::assertSame('original_test_secret', $opts->apiKey);
+            self::assertSame('original_test_secret', $nestedOpts->apiKey);
+        }
+    }
+
+    public static function provideSetApiKeyRejectsInvalidKeysCases(): iterable
+    {
+        return [[''], [null], [false], [123], [[]], [new \stdClass()]];
+    }
+
     public function testArrayAccessorsSemantics()
     {
         /** @var mixed $s */

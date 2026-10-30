@@ -602,6 +602,42 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
     }
 
     /**
+     * Sets the API key on this object and all nested StripeObjects, including
+     * those in arrays. Overwrites nested credentials while preserving each
+     * object's other request options. Does not change global configuration.
+     * The key must be authorized for every retained account context.
+     *
+     * @param string $apiKey the API key from secure runtime configuration
+     *
+     * @throws Exception\InvalidArgumentException if the API key is not a non-empty string
+     */
+    public function setApiKey($apiKey): void
+    {
+        if (!\is_string($apiKey) || '' === $apiKey) {
+            throw new Exception\InvalidArgumentException('The API key must be a non-empty string.');
+        }
+
+        $visited = new \SplObjectStorage();
+        $pending = [$this];
+        while (!empty($pending)) {
+            $value = \array_pop($pending);
+            if ($value instanceof StripeObject) {
+                if ($visited->contains($value)) {
+                    continue;
+                }
+                $visited->attach($value);
+                $value->_opts = $value->_opts->merge(['api_key' => $apiKey]);
+                $value = $value->_values;
+            }
+            if (\is_array($value)) {
+                foreach ($value as $child) {
+                    $pending[] = $child;
+                }
+            }
+        }
+    }
+
+    /**
      * Sets the last response from the Stripe API.
      *
      * @param ApiResponse $resp
