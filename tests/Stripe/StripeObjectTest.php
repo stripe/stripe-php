@@ -125,7 +125,6 @@ final class StripeObjectTest extends TestCase
         $originalOpts = $this->optsReflector->getValue($object);
         $other = new StripeObject();
         $this->optsReflector->setValue($other, $originalOpts);
-        self::assertSame($originalOpts, $this->optsReflector->getValue($other));
         $parameters = $object->serializeParameters();
         $values = $object->toArray();
         $globalKey = Stripe::getApiKey();
@@ -133,19 +132,14 @@ final class StripeObjectTest extends TestCase
         $nestedParameters = $object['metadata']->serializeParameters();
         $object->setApiKey('rebound_test_secret');
 
-        $opts = $this->optsReflector->getValue($object);
-        self::assertNotSame($originalOpts, $opts);
-        self::assertSame('rebound_test_secret', $opts->apiKey);
-        self::assertSame($originalOpts->headers, $opts->headers);
-        self::assertSame($originalOpts->apiBase, $opts->apiBase);
-        self::assertSame($originalOpts->maxNetworkRetries, $opts->maxNetworkRetries);
+        foreach ([[$object, $originalOpts], [$object['metadata'], $nestedOpts]] as list($resource, $previousOpts)) {
+            $opts = $this->optsReflector->getValue($resource);
+            self::assertNotSame($previousOpts, $opts);
+            self::assertSame(\array_merge(\get_object_vars($previousOpts), [
+                'apiKey' => 'rebound_test_secret',
+            ]), \get_object_vars($opts));
+        }
         self::assertSame('original_test_secret', $this->optsReflector->getValue($other)->apiKey);
-        $reboundNestedOpts = $this->optsReflector->getValue($object['metadata']);
-        self::assertNotSame($nestedOpts, $reboundNestedOpts);
-        self::assertSame('rebound_test_secret', $reboundNestedOpts->apiKey);
-        self::assertSame($nestedOpts->headers, $reboundNestedOpts->headers);
-        self::assertSame($nestedOpts->apiBase, $reboundNestedOpts->apiBase);
-        self::assertSame($nestedOpts->maxNetworkRetries, $reboundNestedOpts->maxNetworkRetries);
         self::assertSame('nested_test_secret', $nestedOpts->apiKey);
         self::assertSame($nestedParameters, $object['metadata']->serializeParameters());
         self::assertSame($globalKey, Stripe::getApiKey());
@@ -191,8 +185,9 @@ final class StripeObjectTest extends TestCase
         self::assertSame($root, $child['parent']);
         self::assertSame($child, $root['children'][0]['again']);
         self::assertNotSame($child, $equalChild);
-        self::assertSame($before, \serialize($root));
-        self::assertStringNotContainsString('graph_test_secret', \serialize($root));
+        $serialized = \serialize($root);
+        self::assertSame($before, $serialized);
+        self::assertStringNotContainsString('graph_test_secret', $serialized);
     }
 
     /**

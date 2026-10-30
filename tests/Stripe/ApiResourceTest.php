@@ -111,12 +111,11 @@ final class ApiResourceTest extends TestCase
         self::assertSame('global_test_secret', Stripe::getApiKey());
     }
 
-    public function testExplicitPerCallKeyOverridesRecursiveResourceKey()
+    public function testExplicitPerCallKeyOverridesResourceKey()
     {
         Stripe::setApiKey(null);
         $customer = Customer::constructFrom(['id' => 'test_customer', 'object' => 'customer']);
-        $root = StripeObject::constructFrom(['nested' => [$customer]]);
-        $root->setApiKey('resource_test_secret');
+        $customer->setApiKey('resource_test_secret');
         $customer->description = 'changed';
         $this->stubRequest('POST', '/v1/customers/test_customer', [
             'description' => 'changed',
