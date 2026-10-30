@@ -13,7 +13,9 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property EarnedCreditService $earnedCredits
  * @property FinancialAccountService $financialAccounts
  * @property FinancialAddressService $financialAddresses
+ * @property FundingIntentService $fundingIntents
  * @property FundingSessionService $fundingSessions
+ * @property InboundFundingService $inboundFundings
  * @property InboundTransferMandateService $inboundTransferMandates
  * @property InboundTransferService $inboundTransfers
  * @property OutboundPaymentQuoteService $outboundPaymentQuotes
@@ -27,6 +29,8 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property ReceivedDebitMandateService $receivedDebitMandates
  * @property ReceivedDebitService $receivedDebits
  * @property RecipientVerificationService $recipientVerifications
+ * @property RewardProgramEnrollmentService $rewardProgramEnrollments
+ * @property RewardProgramService $rewardPrograms
  * @property TestHelperService $testHelpers
  * @property TransactionEntryService $transactionEntries
  * @property TransactionService $transactions
@@ -43,7 +47,9 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'earnedCredits' => EarnedCreditService::class,
         'financialAccounts' => FinancialAccountService::class,
         'financialAddresses' => FinancialAddressService::class,
+        'fundingIntents' => FundingIntentService::class,
         'fundingSessions' => FundingSessionService::class,
+        'inboundFundings' => InboundFundingService::class,
         'inboundTransferMandates' => InboundTransferMandateService::class,
         'inboundTransfers' => InboundTransferService::class,
         'outboundPaymentQuotes' => OutboundPaymentQuoteService::class,
@@ -57,6 +63,8 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'receivedDebitMandates' => ReceivedDebitMandateService::class,
         'receivedDebits' => ReceivedDebitService::class,
         'recipientVerifications' => RecipientVerificationService::class,
+        'rewardProgramEnrollments' => RewardProgramEnrollmentService::class,
+        'rewardPrograms' => RewardProgramService::class,
         'testHelpers' => TestHelperService::class,
         'transactionEntries' => TransactionEntryService::class,
         'transactions' => TransactionService::class,

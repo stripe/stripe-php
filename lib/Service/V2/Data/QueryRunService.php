@@ -15,7 +15,7 @@ class QueryRunService extends \Stripe\Service\AbstractService
      * Submits a SQL query for execution against a dataset and returns a `QueryRun`
      * object to track progress and retrieve results.
      *
-     * @param null|array{dataset: string, format: string, query: array{sql?: string}, result_options?: array{compress_file?: bool}} $params
+     * @param null|array{dataset: string, format: string, parameters?: array, query: array{sql?: string}, result_options?: array{compression?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Data\QueryRun
@@ -47,7 +47,8 @@ class QueryRunService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the status and results of a previously created `QueryRun`.
+     * Retrieves the status and results of a previously created `QueryRun`. Returns a
+     * `404` error if the `QueryRun` doesn't exist or its retention period has ended.
      *
      * @param string $id
      * @param null|array{include?: string[], limit?: int, page?: string} $params

@@ -44,22 +44,32 @@ class TaxRate extends ApiResource
     const RATE_TYPE_FLAT_AMOUNT = 'flat_amount';
     const RATE_TYPE_PERCENTAGE = 'percentage';
 
+    const TAX_TYPE_ADMISSIONS_TAX = 'admissions_tax';
     const TAX_TYPE_AMUSEMENT_TAX = 'amusement_tax';
+    const TAX_TYPE_ATTENDANCE_TAX = 'attendance_tax';
     const TAX_TYPE_COMMUNICATIONS_TAX = 'communications_tax';
     const TAX_TYPE_DIGITAL_EXCISE_TAX = 'digital_excise_tax';
+    const TAX_TYPE_ENTERTAINMENT_TAX = 'entertainment_tax';
+    const TAX_TYPE_GET_FUND = 'get_fund';
+    const TAX_TYPE_GROSS_RECEIPTS_TAX = 'gross_receipts_tax';
     const TAX_TYPE_GST = 'gst';
+    const TAX_TYPE_HOSPITALITY_TAX = 'hospitality_tax';
     const TAX_TYPE_HST = 'hst';
     const TAX_TYPE_IGST = 'igst';
     const TAX_TYPE_JCT = 'jct';
     const TAX_TYPE_LEASE_TAX = 'lease_tax';
+    const TAX_TYPE_LUXURY_TAX = 'luxury_tax';
     const TAX_TYPE_MASS_TRANSIT_PARKING_TAX = 'mass_transit_parking_tax';
+    const TAX_TYPE_NHIL = 'nhil';
     const TAX_TYPE_PARKING_TAX = 'parking_tax';
     const TAX_TYPE_PST = 'pst';
     const TAX_TYPE_QST = 'qst';
+    const TAX_TYPE_RESORT_TAX = 'resort_tax';
     const TAX_TYPE_RETAIL_DELIVERY_FEE = 'retail_delivery_fee';
     const TAX_TYPE_RST = 'rst';
     const TAX_TYPE_SALES_TAX = 'sales_tax';
     const TAX_TYPE_SERVICE_TAX = 'service_tax';
+    const TAX_TYPE_TOURISM_TAX = 'tourism_tax';
     const TAX_TYPE_UTILITY_USERS_TAX = 'utility_users_tax';
     const TAX_TYPE_VAT = 'vat';
 

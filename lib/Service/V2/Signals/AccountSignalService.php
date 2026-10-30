@@ -82,7 +82,7 @@ class AccountSignalService extends \Stripe\Service\AbstractService
                                         'score' => ['kind' => 'decimal_string'],
                                     ],
                                 ],
-                                'user_merchant_fit' => [
+                                'user_affinity' => [
                                     'kind' => 'object',
                                     'fields' => [
                                         'score' => ['kind' => 'decimal_string'],
@@ -160,7 +160,7 @@ class AccountSignalService extends \Stripe\Service\AbstractService
                         'kind' => 'object',
                         'fields' => ['score' => ['kind' => 'decimal_string']],
                     ],
-                    'user_merchant_fit' => [
+                    'user_affinity' => [
                         'kind' => 'object',
                         'fields' => ['score' => ['kind' => 'decimal_string']],
                     ],

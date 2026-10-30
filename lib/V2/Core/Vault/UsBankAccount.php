@@ -14,8 +14,10 @@ namespace Stripe\V2\Core\Vault;
  * @property string $bank_account_type Closed Enum. The type of bank account (checking or savings).
  * @property string $bank_name The name of the bank this bank account belongs to. This field is populated automatically by Stripe based on the routing number.
  * @property string $created Creation time of the object.
+ * @property null|string $fedwire_fingerprint Same as <code>fingerprint</code>, but uniquely identifies the bank account using its <code>fedwire_routing_number</code> instead of its <code>routing_number</code>.
  * @property null|string $fedwire_routing_number The fedwire routing number of the bank account.
  * @property null|string $financial_connections_account The ID of the Financial Connections Account used to create the bank account.
+ * @property null|string $fingerprint Uniquely identifies this particular bank account. You can use this attribute to check whether two recipients who've signed up with you are using the same bank account, for example.
  * @property string $last4 The last 4 digits of the account number.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property bool $restricted Whether the US Bank Account is currently unusable for money movement, despite potentially being correctly set up. Please reach out to Stripe Support for more information.

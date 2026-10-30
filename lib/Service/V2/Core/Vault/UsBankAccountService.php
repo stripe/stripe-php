@@ -112,10 +112,27 @@ class UsBankAccountService extends \Stripe\Service\AbstractService
      * @return \Stripe\V2\Core\Vault\UsBankAccount
      *
      * @throws \Stripe\Exception\ControlledByAlternateResourceException
+     * @throws \Stripe\Exception\CannotProceedException
      */
     public function sendMicrodeposits($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v2/core/vault/us_bank_accounts/%s/send_microdeposits', $id), $params, $opts);
+    }
+
+    /**
+     * Unarchive a USBankAccount object.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Core\Vault\UsBankAccount
+     *
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
+     */
+    public function unarchive($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/core/vault/us_bank_accounts/%s/unarchive', $id), $params, $opts);
     }
 
     /**

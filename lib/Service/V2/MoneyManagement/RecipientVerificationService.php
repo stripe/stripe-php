@@ -12,8 +12,8 @@ namespace Stripe\Service\V2\MoneyManagement;
 class RecipientVerificationService extends \Stripe\Service\AbstractService
 {
     /**
-     * Acknowledges an existing RecipientVerification. Only RecipientVerification
-     * awaiting acknowledgement can be acknowledged.
+     * Acknowledges an existing RecipientVerification in the `awaiting_acknowledgement`
+     * state.
      *
      * @param string $id
      * @param null|array $params

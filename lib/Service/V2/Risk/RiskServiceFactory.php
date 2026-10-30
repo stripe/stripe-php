@@ -7,7 +7,7 @@ namespace Stripe\Service\V2\Risk;
 /**
  * Service factory class for API resources in the Risk namespace.
  *
- * @property InquiryService $inquiries
+ * @property FormService $forms
  */
 class RiskServiceFactory extends \Stripe\Service\AbstractServiceFactory
 {
@@ -15,7 +15,7 @@ class RiskServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
-        'inquiries' => InquiryService::class,
+        'forms' => FormService::class,
     ];
 
     protected function getServiceClass($name)

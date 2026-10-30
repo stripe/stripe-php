@@ -12,7 +12,7 @@ namespace Stripe\Service\V2\Core\Vault;
 class NetworkTokenService extends \Stripe\Service\AbstractService
 {
     /**
-     * Create or Return a Network Token Using Raw Card Data.
+     * Creates a Network Token from raw card data.
      *
      * @param null|array{card?: array{exp_month: string, exp_year: string, number: string, origin?: string, owner_details?: array{email?: string, phone?: string}}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -29,7 +29,7 @@ class NetworkTokenService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates or returns a Network Token from an existing card reference.
+     * Creates a Network Token from an existing card reference.
      *
      * @param null|array{card?: array{origin?: string, reference: string}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -57,6 +57,7 @@ class NetworkTokenService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\RateLimitException
      * @throws \Stripe\Exception\CannotProceedException
+     * @throws \Stripe\Exception\MerchantNotGatedException
      */
     public function generateCryptogram($id, $params = null, $opts = null)
     {

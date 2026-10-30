@@ -10,7 +10,7 @@ namespace Stripe\V2\Data;
  *
  * @property string $id The unique identifier of the <code>Schema</code>.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property (object{description: string, foreign_keys_from: (object{column: string, schema: string}&\Stripe\StripeObject)[], foreign_keys_to: (object{column: string, schema: string}&\Stripe\StripeObject)[], is_primary_key: bool, name: string, type: string}&\Stripe\StripeObject)[] $columns The columns of the table.
+ * @property (object{description: string, foreign_keys_from: (object{column: string, schema: string, schema_name: string}&\Stripe\StripeObject)[], foreign_keys_to: (object{column: string, schema: string, schema_name: string}&\Stripe\StripeObject)[], is_primary_key: bool, name: string, type: string}&\Stripe\StripeObject)[] $columns The columns of the table.
  * @property string $dataset The dataset the table belongs to.
  * @property string $description A description of the table.
  * @property null|string $extended_description An extended, LLM-friendly description of the table, useful for query generation.

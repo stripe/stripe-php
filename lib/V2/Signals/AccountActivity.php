@@ -18,15 +18,17 @@ namespace Stripe\V2\Signals;
  * @property null|(object{credential_type: string}&\Stripe\StripeObject) $account_takeover_report Details for the account holder's takeover report. Present only when type is account_takeover_report.
  * @property string $created Timestamp at which the account activity was created.
  * @property null|(object{credential_type: string}&\Stripe\StripeObject) $credential_change Details for the credential change. Present only when type is credential_change.
+ * @property null|(object{description: string, outcome: string, properties: \Stripe\StripeObject}&\Stripe\StripeObject) $custom_marketing_action Details for the custom marketing action. Present only when type is custom_marketing_action.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|(object{client_details: (object{data?: (object{ip: string, referrer?: string, user_agent?: string}&\Stripe\StripeObject), radar_session?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $login_attempt Details for the login attempt. Present only when type is login_attempt.
- * @property null|(object{status: string}&\Stripe\StripeObject) $login_decision Details for the login decision. Present only when type is login_decision.
+ * @property null|(object{mfa_challenges?: (object{mfa_type: string, status: string}&\Stripe\StripeObject)[], status: string}&\Stripe\StripeObject) $login_decision Details for the login decision. Present only when type is login_decision.
  * @property null|\Stripe\StripeObject $metadata Additional information about the activity.
  * @property null|(object{mfa_type: string}&\Stripe\StripeObject) $mfa_addition Details for the MFA addition. Present only when type is mfa_addition.
  * @property null|(object{mfa_type: string}&\Stripe\StripeObject) $mfa_removal Details for the MFA removal. Present only when type is mfa_removal.
  * @property string $occurred_at Timestamp at which the activity occurred. Defaults to the created time if not provided.
  * @property null|(object{client_details: (object{data?: (object{ip: string, referrer?: string, user_agent?: string}&\Stripe\StripeObject), radar_session?: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $registration_attempt Details for the registration attempt. Present only when type is registration_attempt.
  * @property null|(object{status: string}&\Stripe\StripeObject) $registration_decision Details for the registration decision. Present only when type is registration_decision.
+ * @property null|string $triggering_signal The AccountSignal that prompted this activity, when applicable. This historical reference may coexist with account_evaluation and remains present after the signal expires.
  * @property string $type The type of activity.
  */
 class AccountActivity extends \Stripe\ApiResource
@@ -40,6 +42,7 @@ class AccountActivity extends \Stripe\ApiResource
     const TYPE_ACCOUNT_TAKEOVER_MITIGATION = 'account_takeover_mitigation';
     const TYPE_ACCOUNT_TAKEOVER_REPORT = 'account_takeover_report';
     const TYPE_CREDENTIAL_CHANGE = 'credential_change';
+    const TYPE_CUSTOM_MARKETING_ACTION = 'custom_marketing_action';
     const TYPE_LOGIN_ATTEMPT = 'login_attempt';
     const TYPE_LOGIN_DECISION = 'login_decision';
     const TYPE_MFA_ADDITION = 'mfa_addition';

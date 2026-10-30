@@ -59,7 +59,7 @@ class TransactionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates the description of an existing Transaction.
+     * Updates an existing Transaction. You can update its description and metadata.
      *
      * @param string $id
      * @param null|array{description?: string, metadata?: array<string, null|string>} $params

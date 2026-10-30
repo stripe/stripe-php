@@ -86,7 +86,6 @@ class OutboundSetupIntentService extends \Stripe\Service\AbstractService
      *
      * @return \Stripe\V2\MoneyManagement\OutboundSetupIntent
      *
-     * @throws \Stripe\Exception\QuotaExceededException
      * @throws \Stripe\Exception\BlockedByStripeException
      * @throws \Stripe\Exception\InvalidPayoutMethodException
      * @throws \Stripe\Exception\ControlledByAlternateResourceException

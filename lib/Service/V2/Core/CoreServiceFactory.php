@@ -9,6 +9,7 @@ namespace Stripe\Service\V2\Core;
  * @property AccountEvaluationService $accountEvaluations
  * @property AccountLinkService $accountLinks
  * @property AccountService $accounts
+ * @property AccountSessionService $accountSessions
  * @property AccountTokenService $accountTokens
  * @property ApprovalRequestService $approvalRequests
  * @property BatchJobService $batchJobs
@@ -32,6 +33,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'accountEvaluations' => AccountEvaluationService::class,
         'accountLinks' => AccountLinkService::class,
         'accounts' => AccountService::class,
+        'accountSessions' => AccountSessionService::class,
         'accountTokens' => AccountTokenService::class,
         'approvalRequests' => ApprovalRequestService::class,
         'batchJobs' => BatchJobService::class,

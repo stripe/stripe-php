@@ -27,9 +27,8 @@ class PayoutIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancels a PayoutIntent. Only pending PayoutIntents, processing PayoutIntents
-     * with cancelable OutboundPayment/Transfer, or requires_action PayoutIntents can
-     * be canceled.
+     * Cancels a PayoutIntent in the `pending` or `requires_action` state, or a
+     * `processing` PayoutIntent with a cancelable OutboundPayment.
      *
      * @param string $id
      * @param null|array $params
@@ -45,8 +44,8 @@ class PayoutIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Confirms a PayoutIntent that is in the requires_action state, transitioning it
-     * to pending.
+     * Confirms a PayoutIntent in the `requires_action` state, transitioning it to
+     * `pending`.
      *
      * @param string $id
      * @param null|array $params
@@ -64,13 +63,14 @@ class PayoutIntentService extends \Stripe\Service\AbstractService
     /**
      * Creates a PayoutIntent.
      *
-     * @param null|array{amount: \Stripe\StripeObject, confirmation_method?: string, description?: string, from: array{currency: string, financial_account: string}, metadata?: array<string, string>, recipient_notification?: array{setting: string}, schedule_options?: array{execute_on?: string}, statement_descriptor?: string, to: array{currency?: string, payout_method?: string, payout_method_options?: array{bank_account?: array{preferred_network_options?: array{ach?: array{addenda?: string, submission?: string, transaction_purpose?: string}}, preferred_networks: string[]}}, recipient?: string}} $params
+     * @param null|array{amount: \Stripe\StripeObject, confirmation_method?: string, description?: string, from: array{currency: string, financial_account: string}, metadata?: array<string, string>, recipient_notification?: array{setting: string}, schedule_options?: array{execute_on?: string}, statement_descriptor?: string, to: array{currency?: string, payout_method?: string, payout_method_options?: array{bank_account?: array{preferred_network_options?: array{ach?: array{addenda?: string, submission?: string, transaction_purpose?: string}}, preferred_networks?: string[]}}, recipient?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\PayoutIntent
      *
-     * @throws \Stripe\Exception\FeatureNotEnabledException
+     * @throws \Stripe\Exception\CapabilityNotEnabledException
      * @throws \Stripe\Exception\RecipientNotNotifiableException
+     * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function create($params = null, $opts = null)
     {
@@ -78,7 +78,7 @@ class PayoutIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Refreshes FX quote for a PayoutIntent.
+     * Refreshes the FX quote for a PayoutIntent.
      *
      * @param string $id
      * @param null|array $params
@@ -88,9 +88,25 @@ class PayoutIntentService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
-    public function fxQuote($id, $params = null, $opts = null)
+    public function refreshFxQuote($id, $params = null, $opts = null)
     {
-        return $this->request('post', $this->buildPath('/v2/money_management/payout_intents/%s/fx_quote', $id), $params, $opts);
+        return $this->request('post', $this->buildPath('/v2/money_management/payout_intents/%s/refresh_fx_quote', $id), $params, $opts);
+    }
+
+    /**
+     * Refreshes the recipient verification for a PayoutIntent.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\MoneyManagement\PayoutIntent
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function refreshRecipientVerification($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/money_management/payout_intents/%s/refresh_recipient_verification', $id), $params, $opts);
     }
 
     /**
@@ -111,17 +127,17 @@ class PayoutIntentService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a PayoutIntent. Only pending or requires_action PayoutIntents that are
-     * editable can be updated.
+     * Updates an editable PayoutIntent in the `pending` or `requires_action` state.
      *
      * @param string $id
-     * @param null|array{amount?: \Stripe\StripeObject, description?: string, from?: array{currency: string, financial_account: string}, metadata?: array<string, string>, recipient_notification?: array{setting: string}, schedule_options?: array{execute_on?: string}, statement_descriptor?: string, to?: array{currency?: string, payout_method?: string, payout_method_options?: array{bank_account?: array{preferred_network_options?: array{ach?: array{addenda?: string, submission?: string, transaction_purpose?: string}}, preferred_networks: string[]}}, recipient?: string}} $params
+     * @param null|array{description?: string, metadata?: array<string, string>, recipient_notification?: array{setting: string}, schedule_options?: array{execute_on?: string}, statement_descriptor?: string, to?: array{currency?: string, payout_method?: string, payout_method_options?: array{bank_account?: array{preferred_network_options?: array{ach?: array{addenda?: string, submission?: string, transaction_purpose?: string}}, preferred_networks?: string[]}}, recipient?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\PayoutIntent
      *
-     * @throws \Stripe\Exception\FeatureNotEnabledException
+     * @throws \Stripe\Exception\CapabilityNotEnabledException
      * @throws \Stripe\Exception\RecipientNotNotifiableException
+     * @throws \Stripe\Exception\FeatureNotEnabledException
      */
     public function update($id, $params = null, $opts = null)
     {
