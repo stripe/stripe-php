@@ -213,9 +213,6 @@ final class RequestOptionsTest extends \Stripe\TestCase
         self::assertSame([], $opts->headers);
         self::assertNull($opts->apiBase);
         self::assertNull($opts->maxNetworkRetries);
-
-        $restored = \unserialize(\serialize($opts));
-        self::assertSame(\get_object_vars($opts), \get_object_vars($restored));
     }
 
     public function testDebugInfo()

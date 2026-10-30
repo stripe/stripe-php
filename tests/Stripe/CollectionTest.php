@@ -335,8 +335,9 @@ final class CollectionTest extends TestCase
         self::assertNull($opts->getValue($collection->data[0])->apiKey);
         $collection->data[0]->setApiKey('contained_resource_test_secret');
         self::assertSame('pagination_test_secret', $opts->getValue($collection)->apiKey);
-        self::assertStringNotContainsString('pagination_test_secret', \serialize($collection));
-        self::assertStringNotContainsString('contained_resource_test_secret', \serialize($collection));
+        $serialized = \serialize($collection);
+        self::assertStringNotContainsString('pagination_test_secret', $serialized);
+        self::assertStringNotContainsString('contained_resource_test_secret', $serialized);
     }
 
     public function testPreviousPage()
