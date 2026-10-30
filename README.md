@@ -146,10 +146,6 @@ $customer = $stripe->customers->create([
 echo $customer->getLastResponse()->headers['Request-Id'];
 ```
 
-### Persisting SDK objects
-
-Prefer storing resource IDs or selected data rather than SDK objects. Native PHP `serialize()` omits request-option API keys; before instance API operations on a restored object, call `setApiKey()` with a key from secure runtime configuration. See the [v23 migration guide](.hark/migration-guides/v23.md#api-keys-no-longer-survive-native-php-serialization) for examples and nested-object scope. Never deserialize untrusted input. These hooks do not sanitize response data, custom headers, serialized clients, or `var_export()` output.
-
 ### SSL / TLS compatibility issues
 
 Stripe's API now requires that [all connections use TLS 1.2](https://stripe.com/blog/upgrading-tls). Some systems (most notably some older CentOS and RHEL versions) are capable of using TLS 1.2 but will use TLS 1.0 or 1.1 by default. In this case, you'd get an `invalid_request_error` with the following error message: "Stripe no longer supports API requests made with TLS 1.0. Please initiate HTTPS connections with TLS 1.2 or later. You can learn more about this at [https://stripe.com/blog/upgrading-tls](https://stripe.com/blog/upgrading-tls).".

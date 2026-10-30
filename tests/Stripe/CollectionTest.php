@@ -293,7 +293,7 @@ final class CollectionTest extends TestCase
         self::assertSame(['2', '3'], $ids);
     }
 
-    public function testRestoredCollectionPaginationUsesItsOwnApiKey()
+    public function testRestoredCollectionPropagatesApiKeyThroughPagination()
     {
         Stripe::setApiKey(null);
         $values = $this->fixture->toArray();
@@ -314,30 +314,48 @@ final class CollectionTest extends TestCase
         $opts = new \ReflectionProperty(StripeObject::class, '_opts');
         $opts->setAccessible(true);
         self::assertSame('serialization_test_secret', $opts->getValue($this->fixture->data[0])->apiKey);
-        self::assertNull($opts->getValue($collection->data[0])->apiKey);
+        self::assertSame('pagination_test_secret', $opts->getValue($collection->data[0])->apiKey);
         self::assertSame('serialization_test_secret', $opts->getValue($this->fixture)->apiKey);
 
-        $this->stubRequest('GET', '/things', [
-            'limit' => 2,
-            'starting_after' => '1',
-        ], ['Authorization: Bearer pagination_test_secret'], false, [
-            'object' => 'list',
-            'data' => [['id' => '2'], ['id' => '3']],
-            'has_more' => false,
-            'url' => '/things',
-        ]);
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::exactly(3))->method('request')
+            ->with('get', self::anything(), self::callback(static function ($headers) {
+                return \in_array('Authorization: Bearer pagination_test_secret', $headers, true)
+                    && \in_array('Stripe-Account: test_account', $headers, true);
+            }), self::anything(), false)
+            ->willReturnCallback(static function ($method, $url, $headers, $params) {
+                if (Stripe::$apiBase . '/v1/customers/3' === $url) {
+                    self::assertSame([], $params);
 
-        $seen = [];
-        foreach ($collection->autoPagingIterator() as $item) {
-            $seen[] = $item->id;
+                    return [\json_encode(['id' => '3', 'object' => 'customer']), 200, []];
+                }
+                self::assertSame(Stripe::$apiBase . '/things', $url);
+                self::assertSame(2, $params['limit']);
+                self::assertContains($params['starting_after'], ['1', '2']);
+                $id = '1' === $params['starting_after'] ? '2' : '3';
+
+                return [\json_encode([
+                    'object' => 'list',
+                    'data' => [['id' => $id, 'object' => 'customer']],
+                    'has_more' => '2' === $id,
+                    'url' => '/things',
+                ]), 200, []];
+            })
+        ;
+
+        $nextPage = $collection->nextPage();
+        self::assertSame('2', $nextPage->data[0]->id);
+        $lastPage = $nextPage->nextPage();
+        self::assertSame('3', $lastPage->data[0]->id);
+        self::assertFalse($lastPage->has_more);
+        $customer = $lastPage->data[0];
+        self::assertInstanceOf(Customer::class, $customer);
+        $customer->refresh();
+        foreach ([$collection, $nextPage, $lastPage] as $page) {
+            self::assertSame('pagination_test_secret', $opts->getValue($page)->apiKey);
+            self::assertSame('pagination_test_secret', $opts->getValue($page->data[0])->apiKey);
+            self::assertStringNotContainsString('pagination_test_secret', \serialize($page));
         }
-        self::assertSame(['1', '2', '3'], $seen);
-        self::assertNull($opts->getValue($collection->data[0])->apiKey);
-        $collection->data[0]->setApiKey('contained_resource_test_secret');
-        self::assertSame('pagination_test_secret', $opts->getValue($collection)->apiKey);
-        $serialized = \serialize($collection);
-        self::assertStringNotContainsString('pagination_test_secret', $serialized);
-        self::assertStringNotContainsString('contained_resource_test_secret', $serialized);
     }
 
     public function testPreviousPage()
