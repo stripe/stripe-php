@@ -15,6 +15,7 @@ namespace Stripe\V2\Data;
  * @property bool $livemode Whether this <code>Report</code> is available in live mode.
  * @property string $name The human-readable name of the <code>Report</code>.
  * @property null|\Stripe\StripeObject $parameters Specification of the parameters that the <code>Report</code> accepts, keyed by parameter name.
+ * @property null|string $refreshed_at The most recent time through which data is available for this report, not the time the report definition was updated. Unset if the report has no data-availability policy, or if no freshness watermark is available yet.
  */
 class Report extends \Stripe\ApiResource
 {

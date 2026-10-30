@@ -37,7 +37,7 @@ class AccountEvaluationService extends \Stripe\Service\AbstractService
                                     'score' => ['kind' => 'decimal_string'],
                                 ],
                             ],
-                            'user_merchant_fit' => [
+                            'user_affinity' => [
                                 'kind' => 'object',
                                 'fields' => [
                                     'score' => ['kind' => 'decimal_string'],
@@ -83,7 +83,7 @@ class AccountEvaluationService extends \Stripe\Service\AbstractService
                                     'score' => ['kind' => 'decimal_string'],
                                 ],
                             ],
-                            'user_merchant_fit' => [
+                            'user_affinity' => [
                                 'kind' => 'object',
                                 'fields' => [
                                     'score' => ['kind' => 'decimal_string'],

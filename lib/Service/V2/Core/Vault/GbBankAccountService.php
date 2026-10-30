@@ -78,4 +78,20 @@ class GbBankAccountService extends \Stripe\Service\AbstractService
     {
         return $this->request('get', $this->buildPath('/v2/core/vault/gb_bank_accounts/%s', $id), $params, $opts);
     }
+
+    /**
+     * Unarchive a GBBankAccount object.
+     *
+     * @param string $id
+     * @param null|array $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Core\Vault\GbBankAccount
+     *
+     * @throws \Stripe\Exception\ControlledByAlternateResourceException
+     */
+    public function unarchive($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v2/core/vault/gb_bank_accounts/%s/unarchive', $id), $params, $opts);
+    }
 }

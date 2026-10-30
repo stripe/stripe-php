@@ -31,7 +31,7 @@ namespace Stripe;
  * @property null|(object{amazon_pay?: (object{dispute_type: null|string}&StripeObject), card?: (object{brand: string, case_type: string, network: string, network_reason_code: null|string}&StripeObject), klarna?: (object{chargeback_loss_reason_code?: string, reason_code: null|string}&StripeObject), paypal?: (object{case_id: null|string, reason_code: null|string}&StripeObject), type: string}&StripeObject) $payment_method_details
  * @property string $reason Reason given by cardholder for dispute. Possible values are <code>bank_cannot_process</code>, <code>check_returned</code>, <code>credit_not_processed</code>, <code>customer_initiated</code>, <code>debit_not_authorized</code>, <code>duplicate</code>, <code>fraudulent</code>, <code>general</code>, <code>incorrect_account_details</code>, <code>insufficient_funds</code>, <code>noncompliant</code>, <code>product_not_received</code>, <code>product_unacceptable</code>, <code>subscription_canceled</code>, or <code>unrecognized</code>. Learn more about <a href="https://docs.stripe.com/disputes/categories">dispute reasons</a>.
  * @property null|(object{recommended_evidence: null|string[][], status: string}&StripeObject) $smart_disputes
- * @property string $status The current status of a dispute. Possible values include:<code>warning_needs_response</code>, <code>warning_under_review</code>, <code>warning_closed</code>, <code>needs_response</code>, <code>under_review</code>, <code>won</code>, <code>lost</code>, or <code>prevented</code>.
+ * @property string $status The current status of a dispute. Possible values include:<code>warning_needs_response</code>, <code>warning_under_review</code>, <code>warning_closed</code>, <code>needs_response</code>, <code>under_review</code>, <code>appeal_needs_response</code>, <code>appeal_under_review</code>, <code>won</code>, <code>lost</code>, or <code>prevented</code>.
  */
 class Dispute extends ApiResource
 {
@@ -59,6 +59,8 @@ class Dispute extends ApiResource
     const REASON_SUBSCRIPTION_CANCELED = 'subscription_canceled';
     const REASON_UNRECOGNIZED = 'unrecognized';
 
+    const STATUS_APPEAL_NEEDS_RESPONSE = 'appeal_needs_response';
+    const STATUS_APPEAL_UNDER_REVIEW = 'appeal_under_review';
     const STATUS_LOST = 'lost';
     const STATUS_NEEDS_RESPONSE = 'needs_response';
     const STATUS_PREVENTED = 'prevented';

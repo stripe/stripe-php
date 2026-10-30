@@ -13,7 +13,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|(object{dynamic_last4: string, exp_month: string, exp_year: string, fingerprint: string, last4: string, supported_currencies: string[]}&\Stripe\StripeObject) $apple_pay The PayoutMethodApplePay object details.
  * @property bool $archived Whether the payout method was archived. Payout methods can be archived through the /archive API, and they will not be automatically archived by Stripe. Archived payout methods cannot be used for outbound money movement.
  * @property string[] $available_payout_speeds A set of available payout speeds for this payout method.
- * @property null|(object{bank_account_type: string, bank_name: string, branch_number?: string, country: string, enabled_delivery_schemes: string[], financial_connections_account?: string, last4: string, routing_number?: string, supported_currencies: string[], swift_code?: string}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
+ * @property null|(object{bank_account_type: string, bank_name: string, branch_number?: string, country: string, enabled_delivery_schemes: string[], financial_connections_account?: string, fingerprint?: string, last4: string, routing_number?: string, supported_currencies: string[], swift_code?: string}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
  * @property null|(object{exp_month: string, exp_year: string, fingerprint: string, last4: string, supported_currencies: string[]}&\Stripe\StripeObject) $card The PayoutMethodCard object details.
  * @property string $created Created timestamp.
  * @property null|(object{address: string, memo?: string, network: string}&\Stripe\StripeObject) $crypto_wallet The PayoutMethodCryptoWallet object details.

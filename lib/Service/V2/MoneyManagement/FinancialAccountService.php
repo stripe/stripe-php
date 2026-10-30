@@ -22,7 +22,8 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     ];
 
     /**
-     * Lists FinancialAccounts in this account.
+     * Returns a list of FinancialAccounts in your account that match the provided
+     * filters.
      *
      * @param null|array{include?: string[], limit?: int, statuses?: string[], types?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -69,7 +70,8 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Closes a FinancialAccount with or without forwarding settings.
+     * Closes a FinancialAccount. You must provide forwarding settings if it has a
+     * non-zero balance.
      *
      * @param string $id
      * @param null|array{forwarding_settings?: array{payment_method?: string, payout_method?: string, skip_exportable_balances?: bool}} $params
@@ -111,7 +113,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     /**
      * Creates a new FinancialAccount.
      *
-     * @param null|array{display_name?: string, metadata?: array<string, string>, savings?: array{holds_currencies: string[]}, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, deposit_insurance_eligibility?: array{bank_name: string, currencies: string[], type: string}[], funds_usage_type?: string, holds_currencies: string[]}, type: string} $params
+     * @param null|array{display_name?: string, metadata?: array<string, string>, savings?: array{holds_currencies: string[]}, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, funds_usage_type?: string, holds_currencies: string[]}, type: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount
@@ -189,7 +191,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates an existing FinancialAccount.
+     * Updates an existing FinancialAccount using the provided parameters.
      *
      * @param string $id
      * @param null|array{display_name?: string, forwarding_settings?: array{payment_method?: string, payout_method?: string, skip_exportable_balances?: bool}, metadata?: array<string, null|string>, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, holds_currencies?: string[]}} $params

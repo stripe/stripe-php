@@ -16,7 +16,7 @@ class ReportRunService extends \Stripe\Service\AbstractService
      * caller-provided parameters. Returns a `ReportRun` object which can be used to
      * track the progress and retrieve the results of the report.
      *
-     * @param null|array{format: string, parameters: array, report: array{id?: string, name?: string}, result_options?: array{compress_file?: bool}} $params
+     * @param null|array{format: string, parameters: array, report: array{id?: string, name?: string}, result_options?: array{compression?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Data\ReportRun
@@ -50,7 +50,8 @@ class ReportRunService extends \Stripe\Service\AbstractService
     /**
      * Fetches the current state and details of a previously created `ReportRun`. If
      * the `ReportRun` has succeeded, the endpoint provides details for how to retrieve
-     * the results.
+     * the results. Returns a `404` error if the `ReportRun` doesn't exist or its
+     * retention period has ended.
      *
      * @param string $id
      * @param null|array{include?: string[], limit?: int, page?: string} $params

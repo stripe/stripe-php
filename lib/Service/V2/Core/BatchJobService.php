@@ -31,6 +31,19 @@ class BatchJobService extends \Stripe\Service\AbstractService
                     'status_details' => [
                         'kind' => 'object',
                         'fields' => [
+                            'batch_failed' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'partial_output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
                             'canceled' => [
                                 'kind' => 'object',
                                 'fields' => [
@@ -152,6 +165,19 @@ class BatchJobService extends \Stripe\Service\AbstractService
                     'status_details' => [
                         'kind' => 'object',
                         'fields' => [
+                            'batch_failed' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'partial_output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
                             'canceled' => [
                                 'kind' => 'object',
                                 'fields' => [
@@ -274,6 +300,19 @@ class BatchJobService extends \Stripe\Service\AbstractService
                     'status_details' => [
                         'kind' => 'object',
                         'fields' => [
+                            'batch_failed' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'partial_output_file' => [
+                                        'kind' => 'object',
+                                        'fields' => [
+                                            'size' => [
+                                                'kind' => 'int64_string',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
                             'canceled' => [
                                 'kind' => 'object',
                                 'fields' => [

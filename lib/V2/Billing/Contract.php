@@ -24,6 +24,7 @@ namespace Stripe\V2\Billing;
  * @property null|(object{data: (object{ends_at?: (object{timestamp: string}&\Stripe\StripeObject), id: string, lookup_key?: string, metadata?: \Stripe\StripeObject, multiply_pricing?: (object{criteria: (object{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}&\Stripe\StripeObject)[], factor: string}&\Stripe\StripeObject), priority: int, starts_at: (object{timestamp: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $pricing_overrides The pricing overrides. Only populated when <code>pricing_overrides</code> is passed in the <code>include</code> parameter.
  * @property string $status The current status of the contract.
  * @property null|(object{activated_at?: string, canceled_at?: string, ended_at?: string}&\Stripe\StripeObject) $status_transitions Historical timestamps of when the contract transitioned into each status.
+ * @property null|(object{data: ContractTerm[]}&\Stripe\StripeObject) $terms All terms in display order. Only populated when <code>terms</code> is included.
  */
 class Contract extends \Stripe\ApiResource
 {
@@ -50,6 +51,48 @@ class Contract extends \Stripe\ApiResource
                                                     'kind' => 'decimal_string',
                                                 ],
                                             ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+            'terms' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'pricing_override' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'multiply' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'factor' => [
+                                                    'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'overwrite' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'unit_amount_decimal' => [
+                                                    'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                                'recurring_price' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'quantity' => [
+                                            'kind' => 'decimal_string',
                                         ],
                                     ],
                                 ],

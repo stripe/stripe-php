@@ -12,8 +12,7 @@ namespace Stripe\Service\V2\MoneyManagement;
 class CurrencyConversionService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all CurrencyConversion on an account with the option to filter by
-     * FinancialAccount.
+     * Lists all Currency Conversions that match the provided filters.
      *
      * @param null|array{financial_account?: string, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -28,7 +27,7 @@ class CurrencyConversionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a CurrencyConversion.
+     * Create a new Currency Conversion in a Financial Account or the payments balance.
      *
      * @param null|array{financial_account?: string, from: array{amount?: \Stripe\StripeObject, currency?: string}, fx_quote?: string, to: array{amount?: \Stripe\StripeObject, currency?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -44,7 +43,7 @@ class CurrencyConversionService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve details of a CurrencyConversion by id.
+     * Retrieves the details of a Currency Conversion by its ID.
      *
      * @param string $id
      * @param null|array $params

@@ -11,6 +11,7 @@ namespace Stripe\V2\Provisioning;
  * @property string $id Unique identifier for the resource.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property null|string $catalog Catalog partition containing the resource's provider service.
+ * @property null|(object{key_names: string[]}&\Stripe\StripeObject) $configuration Names of the provider-issued configuration entries available for this resource. This is null unless explicitly included on RetrieveResource and the resource is complete with an available, unexpired configuration. Values are never exposed through this field.
  * @property string $created Time at which the resource was created.
  * @property string $environment Provider environment in which the resource runs.
  * @property null|string $error_message Error reported when provisioning the resource fails.

@@ -14,11 +14,12 @@ namespace Stripe\Billing;
  * @property null|int $aggregation_period_start Start of the aggregation period for which this notification was sent. Only present for usage threshold alerts.
  * @property string $alert ID of the billing alert that generated this notification.
  * @property string $alert_type The type of billing alert that generated this notification.
- * @property null|string $cadence The billing cadence associated with this notification. Only present for spend threshold alerts grouped by billing cadence.
+ * @property null|string $billing_group The billing group associated with this notification. Only present for spend threshold alerts grouped by billing group.
+ * @property null|string $cadence The cadence associated with this notification. Only present for spend threshold alerts grouped by cadence.
  * @property null|string $currency Three-letter ISO currency code for the value, in lowercase. Only present for spend and credit balance threshold alerts.
  * @property null|string $custom_pricing_unit Custom pricing unit for the threshold value
  * @property string $customer ID of the customer for which the alert notification was sent.
- * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
+ * @property bool $livemode The value is <code>true</code> for objects in live mode and <code>false</code> for objects in a sandbox. For accounts that still have access to legacy test mode, the value is also <code>false</code> for objects in that mode.
  * @property null|string $meter ID of the billing meter associated with this notification. Only present for usage threshold alerts.
  * @property string $notification_event ID of the event delivered for this notification. Retrievable via the Events API for a limited time; for long-term audit scenarios, capture the full event payload at webhook delivery time.
  * @property int $notified_at Time at which the notification was sent. Measured in seconds since the Unix epoch.

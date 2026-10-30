@@ -16,7 +16,7 @@ namespace Stripe\V2\Signals;
  * @property null|string $account_evaluation The account evaluation that produced this signal, if applicable.
  * @property null|(object{risk_level: string}&\Stripe\StripeObject) $account_takeover Data for the account takeover signal. Present only when type is account_takeover.
  * @property string $created Timestamp at which the signal was created.
- * @property null|(object{risk_level: string}&\Stripe\StripeObject) $customer_risk Data for the customer risk signal. Present only when type is customer_risk.
+ * @property null|(object{additional_details?: (object{indicators: (object{indicator: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), risk_level: string}&\Stripe\StripeObject) $customer_risk Data for the customer risk signal. Present only when type is customer_risk.
  * @property null|(object{additional_details?: (object{indicators: (object{explanation: string, impact: string, indicator: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject), probability?: string, risk_level: string}&\Stripe\StripeObject) $fraudulent_merchant Data for the fraudulent merchant signal. Present only when type is fraudulent_merchant.
  * @property null|(object{details?: string, risk_level: string}&\Stripe\StripeObject) $fraudulent_website Data for the fraudulent website signal. Present only when type is fraudulent_website.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
@@ -24,7 +24,7 @@ namespace Stripe\V2\Signals;
  * @property null|(object{additional_details: (object{gross_exposure_amount?: (object{currency: string, value: int}&\Stripe\StripeObject), loss_given_default_in_percentages?: int, predicted_dispute_window_in_days?: int}&\Stripe\StripeObject), exposure_amount: (object{currency: string, value: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $payment_delinquency_exposure Data for the payment delinquency exposure signal. Present only when type is payment_delinquency_exposure.
  * @property string $type The type of signal.
  * @property null|(object{risk_level: string, score?: string}&\Stripe\StripeObject) $user_account_sharing Data for the user account-sharing signal. Present only when type is user_account_sharing.
- * @property null|(object{fit_level: string, score?: string}&\Stripe\StripeObject) $user_merchant_fit Data for the user-merchant fit signal. Present only when type is user_merchant_fit.
+ * @property null|(object{level: string, score?: string}&\Stripe\StripeObject) $user_affinity Data for the user affinity signal. Present only when type is user_affinity.
  * @property null|(object{risk_level: string, score?: string}&\Stripe\StripeObject) $user_multi_accounting Data for the user multi-accounting signal. Present only when type is user_multi_accounting.
  */
 class AccountSignal extends \Stripe\ApiResource
@@ -66,7 +66,7 @@ class AccountSignal extends \Stripe\ApiResource
                 'kind' => 'object',
                 'fields' => ['score' => ['kind' => 'decimal_string']],
             ],
-            'user_merchant_fit' => [
+            'user_affinity' => [
                 'kind' => 'object',
                 'fields' => ['score' => ['kind' => 'decimal_string']],
             ],
@@ -84,6 +84,6 @@ class AccountSignal extends \Stripe\ApiResource
     const TYPE_MERCHANT_DELINQUENCY = 'merchant_delinquency';
     const TYPE_PAYMENT_DELINQUENCY_EXPOSURE = 'payment_delinquency_exposure';
     const TYPE_USER_ACCOUNT_SHARING = 'user_account_sharing';
-    const TYPE_USER_MERCHANT_FIT = 'user_merchant_fit';
+    const TYPE_USER_AFFINITY = 'user_affinity';
     const TYPE_USER_MULTI_ACCOUNTING = 'user_multi_accounting';
 }

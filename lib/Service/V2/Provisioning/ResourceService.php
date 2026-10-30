@@ -61,7 +61,7 @@ class ResourceService extends \Stripe\Service\AbstractService
      * Retrieves a provider resource.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{include?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Provisioning\Resource
