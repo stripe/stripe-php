@@ -51,6 +51,59 @@ final class BaseStripeClientTest extends TestCase
         ;
     }
 
+    /**
+     * @dataProvider provideSearchDispatchesOnceCases
+     *
+     * @param mixed $method
+     * @param mixed $path
+     * @param mixed $params
+     * @param mixed $expectedPath
+     * @param mixed $body
+     * @param mixed $v2
+     */
+    public function testSearchDispatchesOnce($method, $path, $params, $expectedPath, $body, $v2)
+    {
+        $client = $this->getMockBuilder(BaseStripeClient::class)->setMethods(['request'])->getMock();
+        $result = $v2 ? new V2\SearchResult() : new SearchResult();
+        $opts = ['stripe_account' => 'acct_123'];
+        $original = $params;
+        $client->expects(self::once())->method('request')
+            ->with($method, $expectedPath, $body, $opts)->willReturn($result)
+        ;
+        self::assertSame($result, $client->requestSearchResult($method, $path, $params, $opts));
+        self::assertSame($original, $params);
+        if ($v2) {
+            $filters = new \ReflectionProperty(V2\SearchResult::class, 'filters');
+            $filters->setAccessible(true);
+            self::assertSame(null === $params ? [] : $params, $filters->getValue($result));
+        } else {
+            self::assertSame($params, $result->getFilters());
+        }
+    }
+
+    public static function provideSearchDispatchesOnceCases(): iterable
+    {
+        return [
+            ['get', '/v1/widgets/search', ['limit' => 2], '/v1/widgets/search', ['limit' => 2], false],
+            ['post', '/v2/widgets/search', ['query' => 'widgets', 'limit' => 2], '/v2/widgets/search?limit=2', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search', ['query' => 'widgets'], '/v2/widgets/search', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search', null, '/v2/widgets/search', [], true],
+            ['post', '/v2/widgets/search?page=2&limit=2', ['query' => 'widgets', 'limit' => 9], '/v2/widgets/search?page=2&limit=2', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search?page=2', ['query' => 'widgets', 'limit' => 9], '/v2/widgets/search?page=2', ['query' => 'widgets'], true],
+        ];
+    }
+
+    public function testSearchPropagatesErrorWithoutAnotherDispatch()
+    {
+        $client = $this->getMockBuilder(BaseStripeClient::class)->setMethods(['request'])->getMock();
+        $client->expects(self::once())->method('request')
+            ->with('post', '/v2/widgets/search?limit=2', ['query' => 'widgets'], [])
+            ->willThrowException(new Exception\InvalidRequestException('search failed'))
+        ;
+        $this->expectException(Exception\InvalidRequestException::class);
+        $client->requestSearchResult('post', '/v2/widgets/search', ['limit' => 2, 'query' => 'widgets'], []);
+    }
+
     public function testCtorDoesNotThrowWhenNoParams()
     {
         $client = new BaseStripeClient();
