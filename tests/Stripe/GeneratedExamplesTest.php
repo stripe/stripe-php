@@ -9203,6 +9203,7 @@ final class GeneratedExamplesTest extends TestCase
                     'balance_report' => ['enabled' => true],
                     'balances' => ['enabled' => true],
                     'bills' => ['enabled' => true],
+                    'business_profile_management' => ['enabled' => true],
                     'capital_financing' => ['enabled' => true],
                     'capital_financing_application' => ['enabled' => true],
                     'capital_financing_promotion' => ['enabled' => true],
@@ -9297,6 +9298,10 @@ final class GeneratedExamplesTest extends TestCase
                             'disable_stripe_user_authentication' => 'enabled',
                             'manage_bills' => 'disabled',
                         ],
+                    ],
+                    'business_profile_management' => [
+                        'enabled' => [],
+                        'scopes' => [],
                     ],
                     'capital_financing' => [
                         'enabled' => [],
@@ -9505,6 +9510,7 @@ final class GeneratedExamplesTest extends TestCase
                 'balance_report' => ['enabled' => true],
                 'balances' => ['enabled' => true],
                 'bills' => ['enabled' => true],
+                'business_profile_management' => ['enabled' => true],
                 'capital_financing' => ['enabled' => true],
                 'capital_financing_application' => ['enabled' => true],
                 'capital_financing_promotion' => ['enabled' => true],
