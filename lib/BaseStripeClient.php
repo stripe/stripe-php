@@ -388,9 +388,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      */
     public function requestSearchResult($method, $path, $params, $opts)
     {
-        $obj = $this->request($method, $path, $params, $opts);
         $apiMode = Util::getApiMode($path);
         if ('v1' === $apiMode) {
+            $obj = $this->request($method, $path, $params, $opts);
             if (!$obj instanceof SearchResult) {
                 $received_class = \get_class($obj);
                 $msg = "Expected to receive `Stripe\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
@@ -401,9 +401,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         } else {
             $params = null === $params ? [] : $params;
             $filters = $params;
+            $path = \explode('?', $path, 2)[0];
             if (\array_key_exists('limit', $params)) {
-                $separator = false === \strpos($path, '?') ? '?' : '&';
-                $path .= $separator . 'limit=' . \rawurlencode((string) $params['limit']);
+                $path .= '?limit=' . \rawurlencode((string) $params['limit']);
                 unset($params['limit']);
             }
             $obj = $this->request($method, $path, $params, $opts);
