@@ -401,11 +401,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         } else {
             $params = null === $params ? [] : $params;
             $filters = $params;
+            $path = \explode('?', $path, 2)[0];
             if (\array_key_exists('limit', $params)) {
-                // Page URLs already contain their pagination parameters.
-                if (false === \strpos($path, '?')) {
-                    $path .= '?limit=' . \rawurlencode((string) $params['limit']);
-                }
+                $path .= '?limit=' . \rawurlencode((string) $params['limit']);
                 unset($params['limit']);
             }
             $obj = $this->request($method, $path, $params, $opts);

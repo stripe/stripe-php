@@ -88,8 +88,10 @@ final class BaseStripeClientTest extends TestCase
             ['post', '/v2/widgets/search', ['query' => 'widgets', 'limit' => 2], '/v2/widgets/search?limit=2', ['query' => 'widgets'], true],
             ['post', '/v2/widgets/search', ['query' => 'widgets'], '/v2/widgets/search', ['query' => 'widgets'], true],
             ['post', '/v2/widgets/search', null, '/v2/widgets/search', [], true],
-            ['post', '/v2/widgets/search?page=2&limit=2', ['query' => 'widgets', 'limit' => 9], '/v2/widgets/search?page=2&limit=2', ['query' => 'widgets'], true],
-            ['post', '/v2/widgets/search?page=2', ['query' => 'widgets', 'limit' => 9], '/v2/widgets/search?page=2', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search?page=2&limit=2', ['query' => 'widgets', 'limit' => 9], '/v2/widgets/search?limit=9', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search?page=2', ['query' => 'widgets', 'limit' => 9], '/v2/widgets/search?limit=9', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search?limit=2&unused=value', ['query' => 'widgets'], '/v2/widgets/search', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search?limit=2', null, '/v2/widgets/search', [], true],
         ];
     }
 
