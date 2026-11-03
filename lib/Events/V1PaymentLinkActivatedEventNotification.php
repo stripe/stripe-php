@@ -7,15 +7,15 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1IssuingAuthorizationRequestEventNotification extends \Stripe\V2\Core\EventNotification
+class V1PaymentLinkActivatedEventNotification extends \Stripe\V2\Core\EventNotification
 {
-    const LOOKUP_TYPE = 'v1.issuing_authorization.request';
+    const LOOKUP_TYPE = 'v1.payment_link.activated';
     public $related_object;
 
     /**
      * Retrieves the full event object from the API. Make an API request on every call.
      *
-     * @return V1IssuingAuthorizationRequestEvent
+     * @return V1PaymentLinkActivatedEvent
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -27,7 +27,7 @@ class V1IssuingAuthorizationRequestEventNotification extends \Stripe\V2\Core\Eve
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\Issuing\Authorization
+     * @return \Stripe\PaymentLink
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

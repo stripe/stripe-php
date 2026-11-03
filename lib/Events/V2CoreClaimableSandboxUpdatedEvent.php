@@ -7,14 +7,14 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V1IssuingAuthorizationRequestEvent extends \Stripe\V2\Core\Event
+class V2CoreClaimableSandboxUpdatedEvent extends \Stripe\V2\Core\Event
 {
-    const LOOKUP_TYPE = 'v1.issuing_authorization.request';
+    const LOOKUP_TYPE = 'v2.core.claimable_sandbox.updated';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\Issuing\Authorization
+     * @return \Stripe\V2\Core\ClaimableSandbox
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
