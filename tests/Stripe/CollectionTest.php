@@ -293,69 +293,69 @@ final class CollectionTest extends TestCase
         self::assertSame(['2', '3'], $ids);
     }
 
-    public function testRestoredCollectionPropagatesApiKeyThroughPagination()
+    public function testRestoredCollectionAutoPagingUsesPerCallApiKey()
     {
-        Stripe::setApiKey(null);
-        $values = $this->fixture->toArray();
-        $values['data'][0]['object'] = 'customer';
-        $this->fixture->refreshFrom($values, [
-            'api_key' => 'serialization_test_secret',
-            'stripe_account' => 'test_account',
-        ]);
-        $this->fixture->setFilters(['limit' => 2]);
-        $serialized = \serialize($this->fixture);
-        self::assertStringNotContainsString('serialization_test_secret', $serialized);
-        $collection = \unserialize($serialized);
-        self::assertInstanceOf(Collection::class, $collection);
-        self::assertInstanceOf(Customer::class, $collection->data[0]);
-        self::assertSame($this->fixture->toArray(), $collection->toArray());
-        self::assertSame(['limit' => 2], $collection->getFilters());
-        $collection->setApiKey('pagination_test_secret');
-        $opts = new \ReflectionProperty(StripeObject::class, '_opts');
-        $opts->setAccessible(true);
-        self::assertSame('serialization_test_secret', $opts->getValue($this->fixture->data[0])->apiKey);
-        self::assertSame('pagination_test_secret', $opts->getValue($collection->data[0])->apiKey);
-        self::assertSame('serialization_test_secret', $opts->getValue($this->fixture)->apiKey);
-
+        $collection = self::restoredCollection(['limit' => 1]);
         ApiRequestor::setHttpClient($this->clientMock);
-        $this->clientMock->expects(self::exactly(3))->method('request')
-            ->with('get', self::anything(), self::callback(static function ($headers) {
+        $this->clientMock->expects(self::exactly(2))->method('request')
+            ->with('get', Stripe::$apiBase . '/things', self::callback(static function ($headers) {
                 return \in_array('Authorization: Bearer pagination_test_secret', $headers, true)
                     && \in_array('Stripe-Account: test_account', $headers, true);
             }), self::anything(), false)
             ->willReturnCallback(static function ($method, $url, $headers, $params) {
-                if (Stripe::$apiBase . '/v1/customers/3' === $url) {
-                    self::assertSame([], $params);
-
-                    return [\json_encode(['id' => '3', 'object' => 'customer']), 200, []];
-                }
-                self::assertSame(Stripe::$apiBase . '/things', $url);
-                self::assertSame(2, $params['limit']);
-                self::assertContains($params['starting_after'], ['1', '2']);
                 $id = '1' === $params['starting_after'] ? '2' : '3';
 
                 return [\json_encode([
                     'object' => 'list',
-                    'data' => [['id' => $id, 'object' => 'customer']],
+                    'data' => [['id' => $id]],
                     'has_more' => '2' === $id,
                     'url' => '/things',
                 ]), 200, []];
             })
         ;
 
-        $nextPage = $collection->nextPage();
-        self::assertSame('2', $nextPage->data[0]->id);
-        $lastPage = $nextPage->nextPage();
-        self::assertSame('3', $lastPage->data[0]->id);
-        self::assertFalse($lastPage->has_more);
-        $customer = $lastPage->data[0];
-        self::assertInstanceOf(Customer::class, $customer);
-        $customer->refresh();
-        foreach ([$collection, $nextPage, $lastPage] as $page) {
-            self::assertSame('pagination_test_secret', $opts->getValue($page)->apiKey);
-            self::assertSame('pagination_test_secret', $opts->getValue($page->data[0])->apiKey);
-            self::assertStringNotContainsString('pagination_test_secret', \serialize($page));
+        $seen = [];
+        foreach ($collection->autoPagingIterator(['api_key' => 'pagination_test_secret']) as $item) {
+            $seen[] = $item['id'];
         }
+
+        self::assertSame(['1', '2', '3'], $seen);
+        self::assertNull(Stripe::getApiKey());
+    }
+
+    public function testRestoredCollectionBackwardsAutoPagingUsesPerCallApiKey()
+    {
+        $collection = self::restoredCollection(['ending_before' => '2']);
+        $this->stubRequest('GET', '/things', ['ending_before' => '1'], [
+            'Authorization: Bearer pagination_test_secret',
+            'Stripe-Account: test_account',
+        ], false, ['object' => 'list', 'data' => [['id' => '0']], 'has_more' => false, 'url' => '/things']);
+
+        $seen = [];
+        foreach ($collection->autoPagingIterator(['api_key' => 'pagination_test_secret']) as $item) {
+            $seen[] = $item['id'];
+        }
+
+        self::assertSame(['1', '0'], $seen);
+    }
+
+    /**
+     * @param array $filters
+     *
+     * @return Collection
+     */
+    private static function restoredCollection($filters)
+    {
+        $collection = Collection::constructFrom([
+            'data' => [['id' => '1']],
+            'has_more' => true,
+            'url' => '/things',
+        ], ['api_key' => 'serialization_test_secret', 'stripe_account' => 'test_account']);
+        $collection->setFilters($filters);
+        $restored = \unserialize(\serialize($collection));
+        Stripe::setApiKey(null);
+
+        return $restored;
     }
 
     public function testPreviousPage()

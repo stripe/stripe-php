@@ -39,6 +39,33 @@ final class SearchResultTest extends TestCase
         self::assertSame(3, $result->total_count);
     }
 
+    public function testAutoPagingPassesPerCallOptionsToEveryPage()
+    {
+        $result = TestSearchResult::constructFrom([
+            'object' => 'v2.search_result',
+            'data' => [['id' => 'one']],
+            'next_page_url' => '/v2/widgets/search?page=2',
+            'total_count' => 3,
+        ], null, 'v2');
+        $result->setFilters(['query' => 'widgets']);
+        $result->pages = [
+            ['object' => 'v2.search_result', 'data' => [['id' => 'two']], 'next_page_url' => '/v2/widgets/search?page=3', 'total_count' => 3],
+            ['object' => 'v2.search_result', 'data' => [['id' => 'three']], 'next_page_url' => null, 'total_count' => 3],
+        ];
+        $opts = ['api_key' => 'pagination_test_secret'];
+
+        $ids = [];
+        foreach ($result->autoPagingIterator($opts) as $item) {
+            $ids[] = $item->id;
+        }
+
+        self::assertSame(['one', 'two', 'three'], $ids);
+        self::assertSame([
+            ['post', '/v2/widgets/search?page=2', ['query' => 'widgets'], $opts, 'v2'],
+            ['post', '/v2/widgets/search?page=3', ['query' => 'widgets'], $opts, 'v2'],
+        ], $result->requests);
+    }
+
     public function testAutoPagingReplaysOriginalPostBodyAcrossEmptyPages()
     {
         $params = [

@@ -57,7 +57,10 @@ class RequestOptions
     }
 
     /**
-     * Restores request options, discarding API keys from older payloads too.
+     * Restores request options without an API key, discarding keys embedded by
+     * older SDK versions too. Instance requests on a restored object fall back
+     * to the global Stripe::$apiKey; otherwise, the caller must pass an API key
+     * through the method's options, e.g. `$customer->refresh(['api_key' => $key])`.
      */
     public function __unserialize(array $data): void
     {

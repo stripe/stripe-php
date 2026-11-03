@@ -120,6 +120,28 @@ final class SearchResultTest extends TestCase
         self::assertSame(['1', '2', '3'], $seen);
     }
 
+    public function testRestoredSearchResultAutoPagingUsesPerCallApiKey()
+    {
+        $searchResult = \unserialize(\serialize(SearchResult::constructFrom([
+            'data' => [['id' => '1']],
+            'has_more' => true,
+            'url' => '/things',
+            'next_page' => 'WzEuMl0=',
+        ], ['api_key' => 'serialization_test_secret', 'stripe_account' => 'test_account'])));
+        Stripe::setApiKey(null);
+        $this->stubRequest('GET', '/things', ['page' => 'WzEuMl0='], [
+            'Authorization: Bearer pagination_test_secret',
+            'Stripe-Account: test_account',
+        ], false, ['object' => 'search_result', 'data' => [['id' => '2']], 'has_more' => false]);
+
+        $seen = [];
+        foreach ($searchResult->autoPagingIterator(['api_key' => 'pagination_test_secret']) as $item) {
+            $seen[] = $item['id'];
+        }
+
+        self::assertSame(['1', '2'], $seen);
+    }
+
     public function testAutoPagingIteratorReusesFilters()
     {
         $this->stubRequest(

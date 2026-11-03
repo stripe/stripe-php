@@ -166,6 +166,8 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
     }
 
     /**
+     * @param null|array|string $opts options used to fetch subsequent pages
+     *
      * @return \Generator|TStripeObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
@@ -173,7 +175,7 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
      *
      * @throws Exception\ApiErrorException
      */
-    public function autoPagingIterator()
+    public function autoPagingIterator($opts = null)
     {
         $page = $this;
 
@@ -184,12 +186,12 @@ class Collection extends StripeObject implements \Countable, \IteratorAggregate
                 foreach ($page->getReverseIterator() as $item) {
                     yield $item;
                 }
-                $page = $page->previousPage();
+                $page = $page->previousPage(null, $opts);
             } else {
                 foreach ($page as $item) {
                     yield $item;
                 }
-                $page = $page->nextPage();
+                $page = $page->nextPage(null, $opts);
             }
 
             if ($page->isEmpty()) {
