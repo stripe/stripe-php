@@ -293,7 +293,7 @@ final class CollectionTest extends TestCase
         self::assertSame(['2', '3'], $ids);
     }
 
-    public function testRestoredCollectionAutoPagingUsesPerCallApiKey()
+    public function testRestoredCollectionAutoPagingUsesReattachedApiKey()
     {
         $collection = self::restoredCollection(['limit' => 1]);
         ApiRequestor::setHttpClient($this->clientMock);
@@ -315,7 +315,7 @@ final class CollectionTest extends TestCase
         ;
 
         $seen = [];
-        foreach ($collection->autoPagingIterator(['api_key' => 'pagination_test_secret']) as $item) {
+        foreach ($collection->autoPagingIterator() as $item) {
             $seen[] = $item['id'];
         }
 
@@ -323,7 +323,7 @@ final class CollectionTest extends TestCase
         self::assertNull(Stripe::getApiKey());
     }
 
-    public function testRestoredCollectionBackwardsAutoPagingUsesPerCallApiKey()
+    public function testRestoredCollectionBackwardsAutoPagingUsesReattachedApiKey()
     {
         $collection = self::restoredCollection(['ending_before' => '2']);
         $this->stubRequest('GET', '/things', ['ending_before' => '1'], [
@@ -332,7 +332,7 @@ final class CollectionTest extends TestCase
         ], false, ['object' => 'list', 'data' => [['id' => '0']], 'has_more' => false, 'url' => '/things']);
 
         $seen = [];
-        foreach ($collection->autoPagingIterator(['api_key' => 'pagination_test_secret']) as $item) {
+        foreach ($collection->autoPagingIterator() as $item) {
             $seen[] = $item['id'];
         }
 
@@ -353,6 +353,7 @@ final class CollectionTest extends TestCase
         ], ['api_key' => 'serialization_test_secret', 'stripe_account' => 'test_account']);
         $collection->setFilters($filters);
         $restored = \unserialize(\serialize($collection));
+        $restored->reattachApiKey('pagination_test_secret');
         Stripe::setApiKey(null);
 
         return $restored;

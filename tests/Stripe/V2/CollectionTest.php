@@ -208,9 +208,10 @@ final class CollectionTest extends \Stripe\TestCase
         self::assertSame(['pm_123', 'pm_456', 'pm_777', 'pm_888'], $seen);
     }
 
-    public function testRestoredCollectionAutoPagingUsesPerCallApiKey()
+    public function testRestoredCollectionAutoPagingUsesReattachedApiKey()
     {
         $collection = \unserialize(\serialize($this->fixture));
+        $collection->reattachApiKey('pagination_test_secret');
         \Stripe\Stripe::setApiKey(null);
         $this->stubRequest('GET', '/v2/pageablemodel?page=page_2', null, [
             'Authorization: Bearer pagination_test_secret',
@@ -218,7 +219,7 @@ final class CollectionTest extends \Stripe\TestCase
         ], false, ['data' => [['id' => 'pm_789']], 'next_page_url' => null, 'previous_page_url' => null]);
 
         $seen = [];
-        foreach ($collection->autoPagingIterator(['api_key' => 'pagination_test_secret']) as $item) {
+        foreach ($collection->autoPagingIterator() as $item) {
             $seen[] = $item['id'];
         }
 

@@ -75,14 +75,14 @@ final class StripeObjectTest extends TestCase
             self::assertSame($object->toArray(), $restored->toArray());
             self::assertSame($object->serializeParameters(), $restored->serializeParameters());
             $opts = $this->optsReflector->getValue($restored);
-            self::assertNull($opts->apiKey);
+            self::assertSame(Util\RequestOptions::API_KEY_SERIALIZATION_CONSTANT, $opts->apiKey);
             self::assertSame('serialization_test_secret', $this->optsReflector->getValue($object)->apiKey);
         }
 
         self::assertInstanceOf(StripeObject::class, $restored->metadata);
         self::assertTrue($restored->saveWithParent);
         self::assertSame(\get_object_vars($response), \get_object_vars($restored->getLastResponse()));
-        self::assertNull($this->optsReflector->getValue($restored->metadata)->apiKey);
+        self::assertSame(Util\RequestOptions::API_KEY_SERIALIZATION_CONSTANT, $this->optsReflector->getValue($restored->metadata)->apiKey);
         foreach (['_originalValues', '_unsavedValues', '_transientValues', '_retrieveOptions'] as $name) {
             $property = new \ReflectionProperty(StripeObject::class, $name);
             $property->setAccessible(true);
@@ -99,6 +99,71 @@ final class StripeObjectTest extends TestCase
         self::assertSame(['Stripe-Account' => 'test_account'], $opts->headers);
         self::assertSame('https://example.com', $opts->apiBase);
         self::assertSame(2, $opts->maxNetworkRetries);
+    }
+
+    public function testReattachApiKeyPreservesNestedOptions()
+    {
+        $customer = Customer::constructFrom([
+            'id' => 'test_customer', 'object' => 'customer', 'metadata' => ['key' => 'value'],
+        ], ['api_key' => 'producer_test_secret', 'stripe_account' => 'parent_account']);
+        $customer['nested'] = Customer::constructFrom([
+            'id' => 'nested_customer', 'object' => 'customer',
+        ], ['api_key' => 'nested_test_secret', 'stripe_account' => 'nested_account', 'stripe_version' => '2020-08-27']);
+        $restored = \unserialize(\serialize($customer));
+        $restored->reattachApiKey('worker_test_secret');
+        foreach ([$restored, $restored->metadata, $restored->nested] as $object) {
+            self::assertSame('worker_test_secret', $this->optsReflector->getValue($object)->apiKey);
+        }
+        self::assertSame('parent_account', $this->optsReflector->getValue($restored)->headers['Stripe-Account']);
+        self::assertSame('nested_account', $this->optsReflector->getValue($restored->nested)->headers['Stripe-Account']);
+        self::assertSame('2020-08-27', $this->optsReflector->getValue($restored->nested)->headers['Stripe-Version']);
+        self::assertSame('producer_test_secret', $this->optsReflector->getValue($customer)->apiKey);
+        self::assertStringNotContainsString('worker_test_secret', \serialize($restored));
+        $again = \unserialize(\serialize($restored));
+        self::assertSame(Util\RequestOptions::API_KEY_SERIALIZATION_CONSTANT, $this->optsReflector->getValue($again)->apiKey);
+    }
+
+    /**
+     * @dataProvider provideReattachApiKeyRejectsInvalidKeysCases
+     *
+     * @param mixed $key
+     */
+    public function testReattachApiKeyRejectsInvalidKeys($key)
+    {
+        $restored = \unserialize(\serialize(new StripeObject()));
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $restored->reattachApiKey($key);
+    }
+
+    public static function provideReattachApiKeyRejectsInvalidKeysCases(): iterable
+    {
+        return [[null], [''], [' '], ['0'], [123], [Util\RequestOptions::API_KEY_SERIALIZATION_CONSTANT]];
+    }
+
+    public function testReattachApiKeyRejectsNormalObjects()
+    {
+        $this->expectException(Exception\InvalidArgumentException::class);
+        (new StripeObject())->reattachApiKey('test_secret');
+    }
+
+    public function testReattachApiKeyRejectsRepeatedReattachment()
+    {
+        $restored = \unserialize(\serialize(new StripeObject()));
+        $restored->reattachApiKey('test_secret');
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $restored->reattachApiKey('other_test_secret');
+    }
+
+    public function testReattachApiKeyHandlesCyclesAndAttachedChildren()
+    {
+        $restored = \unserialize(\serialize(new StripeObject()));
+        $attached = new StripeObject(null, 'child_test_secret');
+        $values = new \ReflectionProperty(StripeObject::class, '_values');
+        $values->setAccessible(true);
+        $values->setValue($restored, ['self' => $restored, 'nested' => [$restored, $attached]]);
+        $restored->reattachApiKey('test_secret');
+        self::assertSame('test_secret', $this->optsReflector->getValue($restored)->apiKey);
+        self::assertSame('child_test_secret', $this->optsReflector->getValue($attached)->apiKey);
     }
 
     public function testArrayAccessorsSemantics()

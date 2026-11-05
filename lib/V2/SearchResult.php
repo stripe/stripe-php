@@ -47,10 +47,7 @@ class SearchResult extends \Stripe\StripeObject implements \Countable, \Iterator
         return new \ArrayIterator($this->data);
     }
 
-    /**
-     * @param null|array|string $opts options used to fetch subsequent pages
-     */
-    public function autoPagingIterator($opts = null)
+    public function autoPagingIterator()
     {
         $page = $this->data;
         $next_page_url = $this->next_page_url;
@@ -65,15 +62,15 @@ class SearchResult extends \Stripe\StripeObject implements \Countable, \Iterator
 
             $params = $this->filters;
             unset($params['limit']);
-            list($response, $pageOpts) = $this->_request(
+            list($response, $opts) = $this->_request(
                 'post',
                 $next_page_url,
                 $params,
-                $opts,
+                null,
                 [],
                 'v2'
             );
-            $obj = \Stripe\Util\Util::convertToStripeObject($response, $pageOpts, 'v2');
+            $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
             /** @phpstan-ignore-next-line */
             $page = $obj->data;
             /** @phpstan-ignore-next-line */

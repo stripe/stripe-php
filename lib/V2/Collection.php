@@ -73,8 +73,6 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
     }
 
     /**
-     * @param null|array|string $opts options used to fetch subsequent pages
-     *
      * @return \Generator|TStripeObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
@@ -82,7 +80,7 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
      *
      * @throws \Stripe\Exception\ApiErrorException
      */
-    public function autoPagingIterator($opts = null)
+    public function autoPagingIterator()
     {
         $page = $this->data;
         $next_page_url = $this->next_page_url;
@@ -95,15 +93,15 @@ class Collection extends \Stripe\StripeObject implements \Countable, \IteratorAg
                 break;
             }
 
-            list($response, $pageOpts) = $this->_request(
+            list($response, $opts) = $this->_request(
                 'get',
                 $next_page_url,
                 null,
-                $opts,
+                null,
                 [],
                 'v2'
             );
-            $obj = \Stripe\Util\Util::convertToStripeObject($response, $pageOpts, 'v2');
+            $obj = \Stripe\Util\Util::convertToStripeObject($response, $opts, 'v2');
             /** @phpstan-ignore-next-line */
             $page = $obj->data;
             /** @phpstan-ignore-next-line */

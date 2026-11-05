@@ -47,26 +47,23 @@ abstract class ApiResource extends StripeObject
     }
 
     /**
-     * @param null|array|string $opts
-     *
      * @return ApiResource the refreshed resource
      *
      * @throws Exception\ApiErrorException
      */
-    public function refresh($opts = null)
+    public function refresh()
     {
-        $opts = $this->_opts->merge($opts);
-        $requestor = new ApiRequestor($opts->apiKey, static::baseUrl());
+        $requestor = new ApiRequestor($this->_opts->apiKey, static::baseUrl());
         $url = $this->instanceUrl();
 
-        list($response, $opts->apiKey) = $requestor->request(
+        list($response, $this->_opts->apiKey) = $requestor->request(
             'get',
             $url,
             $this->_retrieveOptions,
-            $opts->headers
+            $this->_opts->headers
         );
         $this->setLastResponse($response);
-        $this->refreshFrom($response->json, $opts);
+        $this->refreshFrom($response->json, $this->_opts);
 
         return $this;
     }

@@ -168,11 +168,11 @@ final class RequestOptionsTest extends \Stripe\TestCase
 
         $serialized = \serialize($opts);
         self::assertStringNotContainsString('serialization_test_secret', $serialized);
-        self::assertStringNotContainsString('apiKey', $serialized);
+        self::assertStringContainsString(RequestOptions::API_KEY_SERIALIZATION_CONSTANT, $serialized);
         $restored = \unserialize($serialized);
 
         self::assertInstanceOf(RequestOptions::class, $restored);
-        self::assertNull($restored->apiKey);
+        self::assertSame(RequestOptions::API_KEY_SERIALIZATION_CONSTANT, $restored->apiKey);
         self::assertSame($opts->headers, $restored->headers);
         self::assertSame($opts->apiBase, $restored->apiBase);
         self::assertSame($opts->maxNetworkRetries, $restored->maxNetworkRetries);
@@ -198,7 +198,7 @@ final class RequestOptionsTest extends \Stripe\TestCase
         $restored = \unserialize($payload);
 
         self::assertInstanceOf(RequestOptions::class, $restored);
-        self::assertNull($restored->apiKey);
+        self::assertSame(RequestOptions::API_KEY_SERIALIZATION_CONSTANT, $restored->apiKey);
         self::assertSame($legacy->headers, $restored->headers);
         self::assertSame($legacy->apiBase, $restored->apiBase);
         self::assertSame(0, $restored->maxNetworkRetries);
@@ -209,7 +209,7 @@ final class RequestOptionsTest extends \Stripe\TestCase
         $opts = new RequestOptions('test_secret');
         $opts->__unserialize([]);
 
-        self::assertNull($opts->apiKey);
+        self::assertSame(RequestOptions::API_KEY_SERIALIZATION_CONSTANT, $opts->apiKey);
         self::assertSame([], $opts->headers);
         self::assertNull($opts->apiBase);
         self::assertNull($opts->maxNetworkRetries);

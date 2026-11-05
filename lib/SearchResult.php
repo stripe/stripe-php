@@ -125,8 +125,6 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
     }
 
     /**
-     * @param null|array|string $opts options used to fetch subsequent pages
-     *
      * @return \Generator|TStripeObject[] A generator that can be used to
      *    iterate across all objects across all pages. As page boundaries are
      *    encountered, the next page will be fetched automatically for
@@ -134,7 +132,7 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
      *
      * @throws Exception\ApiErrorException
      */
-    public function autoPagingIterator($opts = null)
+    public function autoPagingIterator()
     {
         $page = $this;
 
@@ -142,7 +140,7 @@ class SearchResult extends StripeObject implements \Countable, \IteratorAggregat
             foreach ($page as $item) {
                 yield $item;
             }
-            $page = $page->nextPage(null, $opts);
+            $page = $page->nextPage();
 
             if ($page->isEmpty()) {
                 break;
