@@ -18,9 +18,15 @@ namespace Stripe;
  * @property null|(object{state?: string}&StripeObject) $es
  * @property null|string $expiration_date ISO 8601 date (YYYY-MM-DD) when the exemption expires.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property null|(object{state: string}&StripeObject) $us
+ * @property null|string $reason The reason the customer is exempt.
+ * @property null|(object{other?: (object{reason_text?: string}&StripeObject)}&StripeObject) $reason_details Additional details about the exemption reason.
+ * @property null|(object{state: string, tax_code_group?: string}&StripeObject) $us
  */
 class CustomerTaxExemption extends ApiResource
 {
     const OBJECT_NAME = 'customer_tax_exemption';
+
+    const REASON_DIRECT_PAY_PERMIT = 'direct_pay_permit';
+    const REASON_LEGACY_CONTRACT = 'legacy_contract';
+    const REASON_OTHER = 'other';
 }

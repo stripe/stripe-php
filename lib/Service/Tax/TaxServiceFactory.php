@@ -9,6 +9,7 @@ namespace Stripe\Service\Tax;
  *
  * @property AssociationService $associations
  * @property CalculationService $calculations
+ * @property CertificateService $certificates
  * @property FormService $forms
  * @property LocationService $locations
  * @property RegistrationService $registrations
@@ -23,6 +24,7 @@ class TaxServiceFactory extends \Stripe\Service\AbstractServiceFactory
     private static $classMap = [
         'associations' => AssociationService::class,
         'calculations' => CalculationService::class,
+        'certificates' => CertificateService::class,
         'forms' => FormService::class,
         'locations' => LocationService::class,
         'registrations' => RegistrationService::class,

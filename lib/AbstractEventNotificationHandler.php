@@ -5763,6 +5763,32 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.extend.object_definition.created" event.
+     *
+     * @param callable(Events\V2ExtendObjectDefinitionCreatedEventNotification, StripeClient): void $handler Handles v2.extend.object_definition.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2ExtendObjectDefinitionCreated($handler)
+    {
+        $this->register('v2.extend.object_definition.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.extend.object_definition_version.created" event.
+     *
+     * @param callable(Events\V2ExtendObjectDefinitionVersionCreatedEventNotification, StripeClient): void $handler Handles v2.extend.object_definition_version.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2ExtendObjectDefinitionVersionCreated($handler)
+    {
+        $this->register('v2.extend.object_definition_version.created', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.extend.workflow_run.failed" event.
      *
      * @param callable(Events\V2ExtendWorkflowRunFailedEventNotification, StripeClient): void $handler Handles v2.extend.workflow_run.failed events

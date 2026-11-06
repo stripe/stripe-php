@@ -420,6 +420,8 @@ class EventNotificationTypes
         \Stripe\Events\V2DataReportingQueryRunSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2DataReportingQueryRunSucceededEventNotification::class,
         \Stripe\Events\V2DataReportingQueryRunUpdatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2DataReportingQueryRunUpdatedEventNotification::class,
         \Stripe\Events\V2ExtendExtensionRunFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendExtensionRunFailedEventNotification::class,
+        \Stripe\Events\V2ExtendObjectDefinitionCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendObjectDefinitionCreatedEventNotification::class,
+        \Stripe\Events\V2ExtendObjectDefinitionVersionCreatedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendObjectDefinitionVersionCreatedEventNotification::class,
         \Stripe\Events\V2ExtendWorkflowRunFailedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunFailedEventNotification::class,
         \Stripe\Events\V2ExtendWorkflowRunStartedEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunStartedEventNotification::class,
         \Stripe\Events\V2ExtendWorkflowRunSucceededEventNotification::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunSucceededEventNotification::class,

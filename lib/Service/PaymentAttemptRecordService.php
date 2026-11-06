@@ -30,7 +30,7 @@ class PaymentAttemptRecordService extends AbstractService
      * Report that the specified Payment Attempt Record was authenticated.
      *
      * @param string $id
-     * @param null|array{authenticated_at?: int, expand?: string[], metadata?: null|array<string, string>} $params
+     * @param null|array{authenticated_at?: int, expand?: string[], metadata?: null|array<string, string>, payment_method_details?: array{card?: array{three_d_secure?: array{authentication_flow?: string, electronic_commerce_indicator?: string, exemption_indicator?: string, result: string, version: string}}, type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\PaymentAttemptRecord

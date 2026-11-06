@@ -9203,6 +9203,7 @@ final class GeneratedExamplesTest extends TestCase
                     'balance_report' => ['enabled' => true],
                     'balances' => ['enabled' => true],
                     'bills' => ['enabled' => true],
+                    'business_profile_management' => ['enabled' => true],
                     'capital_financing' => ['enabled' => true],
                     'capital_financing_application' => ['enabled' => true],
                     'capital_financing_promotion' => ['enabled' => true],
@@ -9297,6 +9298,10 @@ final class GeneratedExamplesTest extends TestCase
                             'disable_stripe_user_authentication' => 'enabled',
                             'manage_bills' => 'disabled',
                         ],
+                    ],
+                    'business_profile_management' => [
+                        'enabled' => [],
+                        'scopes' => [],
                     ],
                     'capital_financing' => [
                         'enabled' => [],
@@ -9505,6 +9510,7 @@ final class GeneratedExamplesTest extends TestCase
                 'balance_report' => ['enabled' => true],
                 'balances' => ['enabled' => true],
                 'bills' => ['enabled' => true],
+                'business_profile_management' => ['enabled' => true],
                 'capital_financing' => ['enabled' => true],
                 'capital_financing_application' => ['enabled' => true],
                 'capital_financing_promotion' => ['enabled' => true],
@@ -11155,7 +11161,7 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Data\Analytics\MetricQueryResult::class, $result);
     }
 
-    public function testV2DataOperationPost()
+    public function testV2DataOperationSearchPostRequired()
     {
         $this->stubRequest(
             'post',
@@ -11165,6 +11171,16 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.data.search_result_list',
+                'context' => [
+                    'business_concepts' => [
+                        '0' => [
+                            'definition' => 'definition',
+                            'term' => 'term',
+                        ],
+                    ],
+                    'domain' => 'domain',
+                    'guidance' => 'guidance',
+                ],
                 'data' => [
                     '0' => [
                         'description' => 'description',
@@ -11173,6 +11189,7 @@ final class GeneratedExamplesTest extends TestCase
                             'http_method' => 'GET',
                             'id' => 'obj_123',
                         ],
+                        'extended_description' => 'extended_description',
                         'id' => 'obj_123',
                         'name' => 'name',
                         'object_type' => 'object_type',
@@ -11182,11 +11199,71 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                 ],
                 'livemode' => [],
+                'next_page_url' => 'next_page_url',
+                'previous_page_url' => 'previous_page_url',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->data->operations->search([
+            'query' => 'query',
+        ]);
+        self::assertInstanceOf(V2\Data\SearchResultList::class, $result);
+    }
+
+    public function testV2DataOperationSearchPostAll()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/data/operations/search',
+            [
+                'catalogs' => ['schemas'],
+                'limit' => 102976443,
+                'page' => 'page',
+                'query' => 'query',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.data.search_result_list',
+                'context' => [
+                    'business_concepts' => [
+                        '0' => [
+                            'definition' => 'definition',
+                            'term' => 'term',
+                        ],
+                    ],
+                    'domain' => 'domain',
+                    'guidance' => 'guidance',
+                ],
+                'data' => [
+                    '0' => [
+                        'description' => 'description',
+                        'execution_spec' => [
+                            'execution_url' => 'execution_url',
+                            'http_method' => 'GET',
+                            'id' => 'obj_123',
+                        ],
+                        'extended_description' => 'extended_description',
+                        'id' => 'obj_123',
+                        'name' => 'name',
+                        'object_type' => 'object_type',
+                        'reference_url' => 'reference_url',
+                        'refreshed_at' => '1970-01-01T11:25:45.896Z',
+                        'relevance_score' => '1104594632',
+                    ],
+                ],
+                'livemode' => [],
+                'next_page_url' => 'next_page_url',
+                'previous_page_url' => 'previous_page_url',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->data->operations->search([
+            'catalogs' => ['schemas'],
+            'limit' => 102976443,
+            'page' => 'page',
             'query' => 'query',
         ]);
         self::assertInstanceOf(V2\Data\SearchResultList::class, $result);
@@ -11579,6 +11656,140 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->data->schemas->retrieve('id_123', []);
         self::assertInstanceOf(V2\Data\Schema::class, $result);
+    }
+
+    public function testV2ExtendObjectDefinitionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/extend/object_definitions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.extend.object_definition',
+                        'api_name_plural' => 'api_name_plural',
+                        'api_name_singular' => 'api_name_singular',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'latest_version' => 'latest_version',
+                        'livemode' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->objectDefinitions->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Extend\ObjectDefinition::class, $result->data[0]);
+    }
+
+    public function testV2ExtendObjectDefinitionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/extend/object_definitions/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.extend.object_definition',
+                'api_name_plural' => 'api_name_plural',
+                'api_name_singular' => 'api_name_singular',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'latest_version' => 'latest_version',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->objectDefinitions->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Extend\ObjectDefinition::class, $result);
+    }
+
+    public function testV2ExtendObjectDefinitionsVersionGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/extend/object_definitions/object_definition_id_123/versions',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.extend.object_definition_version',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'display_name_plural' => 'display_name_plural',
+                        'display_name_singular' => 'display_name_singular',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'object_definition' => 'object_definition',
+                        'parent_details' => [
+                            'api_name_plural' => 'api_name_plural',
+                            'api_name_singular' => 'api_name_singular',
+                            'id' => 'obj_123',
+                        ],
+                        'properties' => ['key' => ['type' => 'array']],
+                        'version' => 'version',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->objectDefinitions->versions->all(
+            'object_definition_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Extend\ObjectDefinitionVersion::class, $result->data[0]);
+    }
+
+    public function testV2ExtendObjectDefinitionsVersionGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/extend/object_definitions/object_definition_id_123/versions/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.extend.object_definition_version',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'display_name_plural' => 'display_name_plural',
+                'display_name_singular' => 'display_name_singular',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'object_definition' => 'object_definition',
+                'parent_details' => [
+                    'api_name_plural' => 'api_name_plural',
+                    'api_name_singular' => 'api_name_singular',
+                    'id' => 'obj_123',
+                ],
+                'properties' => ['key' => ['type' => 'array']],
+                'version' => 'version',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->extend->objectDefinitions->versions->retrieve(
+            'object_definition_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Extend\ObjectDefinitionVersion::class, $result);
     }
 
     public function testV2ExtendWorkflowGet()
@@ -18520,7 +18731,44 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Tax\ManualRule::class, $result);
     }
 
-    public function testV2TaxOperationPost()
+    public function testV2TaxOperationResolveAddressPostRequired()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/tax/operations/resolve_address',
+            ['address' => ['country' => 'country']],
+            [],
+            false,
+            [
+                'object' => 'v2.tax.operations_resolve_address_result',
+                'address' => [
+                    'city' => 'city',
+                    'country' => 'country',
+                    'line1' => 'line1',
+                    'postal_code' => 'postal_code',
+                    'state' => 'state',
+                ],
+                'livemode' => [],
+                'precision' => 'none',
+                'precision_details' => [
+                    'issues' => [
+                        '0' => [
+                            'code' => 'required_for_improved_precision',
+                            'field' => 'country',
+                        ],
+                    ],
+                ],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->tax->operations->resolveAddress([
+            'address' => ['country' => 'country'],
+        ]);
+        self::assertInstanceOf(V2\Tax\OperationsResolveAddressResult::class, $result);
+    }
+
+    public function testV2TaxOperationResolveAddressPostAll()
     {
         $this->stubRequest(
             'post',
@@ -18538,7 +18786,13 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.tax.operations_resolve_address_result',
-                'address' => [],
+                'address' => [
+                    'city' => 'city',
+                    'country' => 'country',
+                    'line1' => 'line1',
+                    'postal_code' => 'postal_code',
+                    'state' => 'state',
+                ],
                 'livemode' => [],
                 'precision' => 'none',
                 'precision_details' => [

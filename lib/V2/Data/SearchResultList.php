@@ -14,7 +14,7 @@ namespace Stripe\V2\Data;
  * @property null|string $next_page_url Token for the next page.
  * @property null|string $previous_page_url Token for the previous page.
  */
-class SearchResultList extends \Stripe\ApiResource
+class SearchResultList extends \Stripe\StripeObject
 {
     const OBJECT_NAME = 'v2.data.search_result_list';
 
