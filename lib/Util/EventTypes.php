@@ -418,6 +418,8 @@ class EventTypes
         \Stripe\Events\V2DataReportingQueryRunSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2DataReportingQueryRunSucceededEvent::class,
         \Stripe\Events\V2DataReportingQueryRunUpdatedEvent::LOOKUP_TYPE => \Stripe\Events\V2DataReportingQueryRunUpdatedEvent::class,
         \Stripe\Events\V2ExtendExtensionRunFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2ExtendExtensionRunFailedEvent::class,
+        \Stripe\Events\V2ExtendObjectDefinitionCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2ExtendObjectDefinitionCreatedEvent::class,
+        \Stripe\Events\V2ExtendObjectDefinitionVersionCreatedEvent::LOOKUP_TYPE => \Stripe\Events\V2ExtendObjectDefinitionVersionCreatedEvent::class,
         \Stripe\Events\V2ExtendWorkflowRunFailedEvent::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunFailedEvent::class,
         \Stripe\Events\V2ExtendWorkflowRunStartedEvent::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunStartedEvent::class,
         \Stripe\Events\V2ExtendWorkflowRunSucceededEvent::LOOKUP_TYPE => \Stripe\Events\V2ExtendWorkflowRunSucceededEvent::class,
