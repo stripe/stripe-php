@@ -9,6 +9,8 @@ namespace Stripe\Util;
  */
 class RequestOptions
 {
+    const API_KEY_SERIALIZATION_CONSTANT = 'API_KEY_SERIALIZATION_CONSTANT';
+
     /**
      * @var array<string> a list of headers that should be persisted across requests
      */
@@ -45,6 +47,32 @@ class RequestOptions
     }
 
     /**
+     * Serializes request options without the API key.
+     */
+    public function __serialize(): array
+    {
+        return [
+            'apiKey' => self::API_KEY_SERIALIZATION_CONSTANT,
+            'headers' => $this->headers,
+            'apiBase' => $this->apiBase,
+            'maxNetworkRetries' => $this->maxNetworkRetries,
+        ];
+    }
+
+    /**
+     * Restores request options with a placeholder, discarding API keys embedded
+     * by older SDK versions too. Restored resources require reattachApiKey()
+     * before making requests.
+     */
+    public function __unserialize(array $data): void
+    {
+        $this->apiKey = self::API_KEY_SERIALIZATION_CONSTANT;
+        $this->headers = $data['headers'] ?? [];
+        $this->apiBase = $data['apiBase'] ?? null;
+        $this->maxNetworkRetries = $data['maxNetworkRetries'] ?? null;
+    }
+
+    /**
      * @return array<string, string>
      */
     public function __debugInfo()
@@ -68,6 +96,7 @@ class RequestOptions
      */
     public function merge($options, $strict = false)
     {
+        self::assertApiKeyAttached($this->apiKey);
         $other_options = self::parse($options, $strict);
         if (null === $other_options->apiKey) {
             $other_options->apiKey = $this->apiKey;
@@ -87,6 +116,25 @@ class RequestOptions
         }
 
         return $other_options;
+    }
+
+    /**
+     * @internal
+     *
+     * @param null|string $apiKey
+     *
+     * @throws \Stripe\Exception\AuthenticationException
+     */
+    public static function assertApiKeyAttached($apiKey)
+    {
+        if (self::API_KEY_SERIALIZATION_CONSTANT === $apiKey) {
+            throw new \Stripe\Exception\AuthenticationException(
+                'This object was unserialized without API credentials. Call '
+                . 'reattachApiKey($apiKey) on the object before making requests. '
+                . 'Global and per-call API keys do not reattach credentials '
+                . 'to an unserialized object.'
+            );
+        }
     }
 
     /**
