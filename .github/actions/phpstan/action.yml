@@ -1,0 +1,24 @@
+name: PHPStan
+description: Statically analyze the code with PHPStan. Shared by CI and Canary CI; expects the repository to be checked out.
+
+runs:
+  using: composite
+  steps:
+    - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+      with:
+        php-version: "8.2"
+
+    - name: Validate composer.json
+      shell: bash
+      run: composer validate
+
+    - name: Install dependencies
+      shell: bash
+      run: composer install --prefer-dist --no-progress
+
+    - name: Run phpstan
+      shell: bash
+      run: just lint-test lint
