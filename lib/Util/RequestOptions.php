@@ -147,9 +147,11 @@ class RequestOptions
                 unset($options['idempotency_key']);
             }
             if (\array_key_exists('stripe_account', $options)) {
-                if (null !== $options['stripe_account']) {
-                    $headers['Stripe-Account'] = $options['stripe_account'];
-                }
+                // An explicit `null` must stay distinguishable from "stripe_account wasn't
+                // mentioned at all" so ApiRequestor can tell an intentional override from an
+                // unopinionated caller. We use the same empty-string-means-cleared sentinel
+                // already used for stripe_context below.
+                $headers['Stripe-Account'] = null !== $options['stripe_account'] ? $options['stripe_account'] : '';
                 unset($options['stripe_account']);
             }
             if (\array_key_exists('stripe_context', $options)) {

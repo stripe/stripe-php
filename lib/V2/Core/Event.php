@@ -37,7 +37,10 @@ class Event extends \Stripe\ApiResource
     {
         parent::refreshFrom($values, $opts, $partial, $apiMode);
 
-        unset($this->_opts->headers['Stripe-Account']);
+        // Use the empty-string "explicitly cleared" sentinel (see RequestOptions::parse())
+        // rather than unset(), so ApiRequestor's process-global Stripe::$accountId fallback
+        // doesn't silently refill the header we just cleared.
+        $this->_opts->headers['Stripe-Account'] = '';
         if (isset($this->context)) {
             $this->_opts->headers['Stripe-Context'] = (string) $this->context;
         } else {
