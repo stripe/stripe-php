@@ -15,7 +15,7 @@ if (isset($_GET['code'])) {
             'code' => $code,
         ]);
     } catch (Stripe\Exception\OAuth\OAuthErrorException $e) {
-        exit('Error: ' . $e->getMessage());
+        exit('Error: ' . \htmlspecialchars($e->getMessage(), \ENT_QUOTES));
     }
 
     $accountId = $resp->stripe_user_id;
@@ -38,7 +38,7 @@ if (isset($_GET['code'])) {
             'stripe_user_id' => $accountId,
         ]);
     } catch (Stripe\Exception\OAuth\OAuthErrorException $e) {
-        exit('Error: ' . $e->getMessage());
+        exit('Error: ' . \htmlspecialchars($e->getMessage(), \ENT_QUOTES));
     }
 
     echo '<p>Success! Account <code>' . \htmlspecialchars($accountId, \ENT_QUOTES) . "</code> is disconnected.</p>\n";
