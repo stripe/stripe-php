@@ -4,6 +4,7 @@ namespace Stripe;
 
 use Stripe\Events\UnknownEventNotification;
 use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
+use Stripe\Events\V1ProductUpdatedEvent;
 use Stripe\Events\V1ProductUpdatedEventNotification;
 use Stripe\Util\ApiVersion;
 
@@ -1022,6 +1023,65 @@ final class BaseStripeClientTest extends TestCase
 
         self::assertCount(2, $requests);
         foreach ($requests as [$opts, $url]) {
+            self::assertSame(MOCK_URL . '/v1/products/prod_shared', $url);
+            self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+            self::assertContains('Stripe-Context: acct_child', $opts[\CURLOPT_HTTPHEADER]);
+            self::assertNotContains('Stripe-Account: acct_platform', $opts[\CURLOPT_HTTPHEADER]);
+        }
+    }
+
+    public function testEventRetrievedDirectlyFetchedRelatedObjectRetainsContext()
+    {
+        $requests = [];
+        $this->curlClientStub->expects(self::exactly(3))
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) use (&$requests) {
+                $requests[] = [$opts, $url];
+                if (false !== strpos($url, '/v2/core/events/')) {
+                    return [json_encode([
+                        'id' => 'evt_123',
+                        'object' => 'v2.core.event',
+                        'type' => 'v1.product.updated',
+                        'created' => '2022-02-15T00:27:45.330Z',
+                        'context' => 'acct_child',
+                        'related_object' => [
+                            'id' => 'prod_shared',
+                            'type' => 'product',
+                            'url' => '/v1/products/prod_shared',
+                        ],
+                    ]), 200, []];
+                }
+
+                $deleted = isset($opts[\CURLOPT_CUSTOMREQUEST]) && 'DELETE' === $opts[\CURLOPT_CUSTOMREQUEST];
+
+                return [json_encode([
+                    'id' => 'prod_shared',
+                    'object' => 'product',
+                    'deleted' => $deleted,
+                ]), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+            'stripe_account' => 'acct_platform',
+            'stripe_context' => 'ctx_platform',
+        ]);
+
+        // Unlike testEventFetchedRelatedObjectRetainsContext above, this event is
+        // fetched directly by ID rather than parsed from a webhook payload.
+        $event = $client->request('get', '/v2/core/events/evt_123', [], null);
+        self::assertInstanceOf(V1ProductUpdatedEvent::class, $event);
+
+        $product = $event->fetchRelatedObject();
+        $product->delete();
+
+        self::assertCount(3, $requests);
+        // Skip $requests[0], the initial retrieval of the event itself, which
+        // legitimately uses the client's own default account and context.
+        foreach (\array_slice($requests, 1) as [$opts, $url]) {
             self::assertSame(MOCK_URL . '/v1/products/prod_shared', $url);
             self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
             self::assertContains('Stripe-Context: acct_child', $opts[\CURLOPT_HTTPHEADER]);
