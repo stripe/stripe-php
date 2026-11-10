@@ -309,7 +309,6 @@ just test tests/Stripe/UtilTest.php
 # or: ./vendor/bin/phpunit tests/Stripe/UtilTest.php
 ```
 
-The bundled CA certificates are Stripe’s curated set of trusted roots. For information about Stripe’s TLS certificates and trusted roots, see [Stripe’s TLS certificate documentation](https://docs.stripe.com/tls-certificates). Do not replace this bundle with a general-purpose CA bundle.
 
 The library uses [PHP CS Fixer][php-cs-fixer] for code formatting. Code must be formatted before PRs are submitted, otherwise CI will fail. Run the formatter with:
 
