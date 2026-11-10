@@ -754,6 +754,8 @@ class ApiRequestor
             $myApiKey = Stripe::$apiKey;
         }
 
+        Util\RequestOptions::assertApiKeyAttached($myApiKey);
+
         if (!$myApiKey) {
             $msg = 'No API key provided.  (HINT: set your API key using '
                 . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
