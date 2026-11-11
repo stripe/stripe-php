@@ -12,8 +12,9 @@ namespace Stripe\Service\Reserve;
 class ReleaseService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of ReserveReleases previously created. The ReserveReleases are
-     * returned in sorted order, with the most recent ReserveReleases appearing first.
+     * Returns a list of ReserveReleases on your account or on one of your connected
+     * accounts. The ReserveReleases are returned in sorted order, with the most recent
+     * ReserveReleases appearing first.
      *
      * @param null|array{currency?: string, ending_before?: string, expand?: string[], limit?: int, reserve_hold?: string, reserve_plan?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -28,7 +29,7 @@ class ReleaseService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a ReserveRelease.
+     * Retrieve a ReserveRelease on your account or on one of your connected accounts.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

@@ -31,6 +31,7 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property RecipientVerificationService $recipientVerifications
  * @property RewardProgramEnrollmentService $rewardProgramEnrollments
  * @property RewardProgramService $rewardPrograms
+ * @property SpendingMandateService $spendingMandates
  * @property TestHelperService $testHelpers
  * @property TransactionEntryService $transactionEntries
  * @property TransactionService $transactions
@@ -65,6 +66,7 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'recipientVerifications' => RecipientVerificationService::class,
         'rewardProgramEnrollments' => RewardProgramEnrollmentService::class,
         'rewardPrograms' => RewardProgramService::class,
+        'spendingMandates' => SpendingMandateService::class,
         'testHelpers' => TestHelperService::class,
         'transactionEntries' => TransactionEntryService::class,
         'transactions' => TransactionService::class,

@@ -12,7 +12,8 @@ namespace Stripe\Service\V2\MoneyManagement;
 class ReceivedDebitMandateService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of ReceivedDebitMandates.
+     * Deprecated: Use ListSpendingMandates instead. Returns a list of
+     * ReceivedDebitMandates.
      *
      * @param null|array{financial_account?: string, limit?: int, statuses?: string[], type?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +28,8 @@ class ReceivedDebitMandateService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Cancels an active ReceivedDebitMandate.
+     * Deprecated: Use CancelSpendingMandate instead. Cancels an active
+     * ReceivedDebitMandate.
      *
      * @param string $id
      * @param null|array $params
@@ -43,7 +45,8 @@ class ReceivedDebitMandateService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves the details of an existing ReceivedDebitMandate.
+     * Deprecated: Use RetrieveSpendingMandate instead. Retrieves the details of an
+     * existing ReceivedDebitMandate.
      *
      * @param string $id
      * @param null|array $params
