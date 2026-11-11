@@ -15,6 +15,7 @@ namespace Stripe\SharedPayment;
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{redirect_to_url: null|(object{return_url: string, url: string}&\Stripe\StripeObject), type: string, use_stripe_sdk: null|(object{value: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $next_action If present, describes the action required to make this <code>SharedPaymentIssuedToken</code> usable for payments. Present when the token is in <code>requires_action</code> state.
  * @property string $payment_method ID of an existing PaymentMethod.
+ * @property null|(object{customer: string, customer_account: null|string, referral_fee_percent: float}&\Stripe\StripeObject) $referral_fee_details Referral fee details of the SharedPaymentIssuedToken.
  * @property null|string $return_url If the customer does not exit their browser while authenticating, they will be redirected to this specified URL after completion.
  * @property null|(object{insights: (object{bot?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_issuer_decline?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), card_testing?: null|(object{recommended_action: string, score: float}&\Stripe\StripeObject), fraudulent_dispute: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject), stolen_card?: null|(object{recommended_action: string, score: int}&\Stripe\StripeObject)}&\Stripe\StripeObject)}&\Stripe\StripeObject) $risk_details Risk details of the SharedPaymentIssuedToken.
  * @property null|(object{external_id: string, network_business_profile: string}&\Stripe\StripeObject) $seller_details Seller details of the SharedPaymentIssuedToken, including network_id and external_id.
@@ -41,7 +42,7 @@ class IssuedToken extends \Stripe\ApiResource
     /**
      * Creates a new SharedPaymentIssuedToken object.
      *
-     * @param null|array{expand?: string[], payment_method: string, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring?: array{interval: string, interval_count?: int}, recurring_interval?: string}, use_stripe_sdk?: bool} $params
+     * @param null|array{expand?: string[], payment_method: string, referral_fee_details?: array{customer?: string, customer_account?: string, referral_fee_percent: float}, return_url?: string, seller_details: array{external_id?: string, network_business_profile?: string}, setup_future_usage?: string, shared_metadata?: array<string, string>, usage_limits: array{currency: string, expires_at?: int, max_amount: int, recurring?: array{interval: string, interval_count?: int}, recurring_interval?: string}, use_stripe_sdk?: bool} $params
      * @param null|array|string $options
      *
      * @return IssuedToken the created resource

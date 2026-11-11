@@ -13813,6 +13813,12 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                             'preferred_networks' => ['fedwire'],
                         ],
+                        'check_send' => [
+                            'attachment_file' => 'attachment_file',
+                            'memo' => 'memo',
+                            'shipping_speed' => 'priority',
+                            'signature' => 'signature',
+                        ],
                     ],
                     'recipient' => 'recipient',
                 ],
@@ -13873,6 +13879,12 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                         ],
                         'preferred_networks' => ['fedwire'],
+                    ],
+                    'check_send' => [
+                        'attachment_file' => 'attachment_file',
+                        'memo' => 'memo',
+                        'shipping_speed' => 'priority',
+                        'signature' => 'signature',
                     ],
                 ],
                 'recipient' => 'recipient',
@@ -14565,6 +14577,12 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                             'preferred_networks' => ['fedwire'],
                         ],
+                        'check_send' => [
+                            'attachment_file' => 'attachment_file',
+                            'memo' => 'memo',
+                            'shipping_speed' => 'priority',
+                            'signature' => 'signature',
+                        ],
                     ],
                     'recipient' => 'recipient',
                 ],
@@ -14613,6 +14631,12 @@ final class GeneratedExamplesTest extends TestCase
                             ],
                         ],
                         'preferred_networks' => ['fedwire'],
+                    ],
+                    'check_send' => [
+                        'attachment_file' => 'attachment_file',
+                        'memo' => 'memo',
+                        'shipping_speed' => 'priority',
+                        'signature' => 'signature',
                     ],
                 ],
                 'recipient' => 'recipient',
@@ -14849,7 +14873,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'restricted' => [],
-                        'type' => 'apple_pay',
+                        'type' => 'check_send',
                         'usage_status' => [
                             'payments' => 'invalid',
                             'transfers' => 'invalid',
@@ -14883,7 +14907,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'apple_pay',
+                'type' => 'check_send',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -14915,7 +14939,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'apple_pay',
+                'type' => 'check_send',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -14947,7 +14971,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'apple_pay',
+                'type' => 'check_send',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -14979,7 +15003,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'apple_pay',
+                'type' => 'check_send',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -15861,6 +15885,94 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\RewardProgramEnrollment::class, $result);
+    }
+
+    public function testV2MoneyManagementSpendingMandateGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/spending_mandates',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.money_management.spending_mandate',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'currency' => 'usd',
+                        'financial_account' => 'financial_account',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'status' => 'expired',
+                        'type' => 'bank_transfer',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->spendingMandates->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\SpendingMandate::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementSpendingMandateGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/spending_mandates/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.spending_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'type' => 'bank_transfer',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->spendingMandates->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\SpendingMandate::class, $result);
+    }
+
+    public function testV2MoneyManagementSpendingMandatePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/spending_mandates/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.spending_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'type' => 'bank_transfer',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->spendingMandates->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\SpendingMandate::class, $result);
     }
 
     public function testV2MoneyManagementTestHelperPost()

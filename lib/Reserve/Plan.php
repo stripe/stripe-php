@@ -45,8 +45,9 @@ class Plan extends \Stripe\ApiResource
     const TYPE_ROLLING_RELEASE = 'rolling_release';
 
     /**
-     * Returns a list of ReservePlans previously created. The ReservePlans are returned
-     * in sorted order, with the most recent ReservePlans appearing first.
+     * Returns a list of ReservePlans on your account or on one of your connected
+     * accounts. The ReservePlans are returned in sorted order, with the most recent
+     * ReservePlans appearing first.
      *
      * @param null|array{destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts
@@ -63,7 +64,7 @@ class Plan extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieve a ReservePlan.
+     * Retrieve a ReservePlan on your account or on one of your connected accounts.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

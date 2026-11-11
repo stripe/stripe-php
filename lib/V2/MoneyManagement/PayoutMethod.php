@@ -15,6 +15,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string[] $available_payout_speeds A set of available payout speeds for this payout method.
  * @property null|(object{bank_account_type: string, bank_name: string, branch_number?: string, country: string, enabled_delivery_schemes: string[], financial_connections_account?: string, fingerprint?: string, last4: string, routing_number?: string, supported_currencies: string[], swift_code?: string}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
  * @property null|(object{exp_month: string, exp_year: string, fingerprint: string, last4: string, supported_currencies: string[]}&\Stripe\StripeObject) $card The PayoutMethodCard object details.
+ * @property null|(object{mailing_address: (object{city: string, country: string, line1: string, line2?: string, postal_code: string, state: string}&\Stripe\StripeObject), payee_name: string}&\Stripe\StripeObject) $check_send The PayoutMethodCheckSend object details.
  * @property string $created Created timestamp.
  * @property null|(object{address: string, memo?: string, network: string}&\Stripe\StripeObject) $crypto_wallet The PayoutMethodCryptoWallet object details.
  * @property null|string $latest_outbound_setup_intent ID of the underlying active OutboundSetupIntent object, if any.
@@ -32,6 +33,7 @@ class PayoutMethod extends \Stripe\ApiResource
     const TYPE_APPLE_PAY = 'apple_pay';
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD = 'card';
+    const TYPE_CHECK_SEND = 'check_send';
     const TYPE_CRYPTO_WALLET = 'crypto_wallet';
     const TYPE_NETWORK_BUSINESS_PROFILE_WALLET = 'network_business_profile_wallet';
     const TYPE_PIX = 'pix';

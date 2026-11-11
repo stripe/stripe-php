@@ -334,6 +334,7 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\RewardProgram::OBJECT_NAME => \Stripe\V2\MoneyManagement\RewardProgram::class,
         \Stripe\V2\MoneyManagement\RewardProgramEnrollment::OBJECT_NAME => \Stripe\V2\MoneyManagement\RewardProgramEnrollment::class,
         \Stripe\V2\MoneyManagement\RewardProgramRule::OBJECT_NAME => \Stripe\V2\MoneyManagement\RewardProgramRule::class,
+        \Stripe\V2\MoneyManagement\SpendingMandate::OBJECT_NAME => \Stripe\V2\MoneyManagement\SpendingMandate::class,
         \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         \Stripe\V2\Network\BusinessProfile::OBJECT_NAME => \Stripe\V2\Network\BusinessProfile::class,

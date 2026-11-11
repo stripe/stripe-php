@@ -38,6 +38,7 @@ class NetworkTokenService extends \Stripe\Service\AbstractService
      *
      * @throws \Stripe\Exception\CannotProceedException
      * @throws \Stripe\Exception\BlockedByStripeException
+     * @throws \Stripe\Exception\MerchantNotGatedException
      */
     public function createFromCredential($params = null, $opts = null)
     {

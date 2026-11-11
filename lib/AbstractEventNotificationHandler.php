@@ -7189,6 +7189,75 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.spending_mandate.canceled" event.
+     *
+     * @param callable(Events\V2MoneyManagementSpendingMandateCanceledEventNotification, StripeClient): void $handler Handles v2.money_management.spending_mandate.canceled events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementSpendingMandateCanceled($handler)
+    {
+        $this->register('v2.money_management.spending_mandate.canceled', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.spending_mandate.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementSpendingMandateCreatedEventNotification, StripeClient): void $handler Handles v2.money_management.spending_mandate.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementSpendingMandateCreated($handler)
+    {
+        $this->register('v2.money_management.spending_mandate.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.spending_mandate.expired" event.
+     *
+     * @param callable(Events\V2MoneyManagementSpendingMandateExpiredEventNotification, StripeClient): void $handler Handles v2.money_management.spending_mandate.expired events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementSpendingMandateExpired($handler)
+    {
+        $this->register('v2.money_management.spending_mandate.expired', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.spending_mandate.pending_cancellation" event.
+     *
+     * @param callable(Events\V2MoneyManagementSpendingMandatePendingCancellationEventNotification, StripeClient): void $handler Handles v2.money_management.spending_mandate.pending_cancellation events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementSpendingMandatePendingCancellation(
+        $handler
+    ) {
+        $this->register(
+            'v2.money_management.spending_mandate.pending_cancellation',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.spending_mandate.updated" event.
+     *
+     * @param callable(Events\V2MoneyManagementSpendingMandateUpdatedEventNotification, StripeClient): void $handler Handles v2.money_management.spending_mandate.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementSpendingMandateUpdated($handler)
+    {
+        $this->register('v2.money_management.spending_mandate.updated', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.transaction.created" event.
      *
      * @param callable(Events\V2MoneyManagementTransactionCreatedEventNotification, StripeClient): void $handler Handles v2.money_management.transaction.created events
