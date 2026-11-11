@@ -12,6 +12,12 @@ class RequestOptions
     const API_KEY_SERIALIZATION_CONSTANT = 'API_KEY_SERIALIZATION_CONSTANT';
 
     /**
+     * @internal Explicitly clears Stripe-Account, including the process-global fallback.
+     * An empty string cannot identify an account and is removed before sending headers.
+     */
+    const STRIPE_ACCOUNT_UNSET = '';
+
+    /**
      * @var array<string> a list of headers that should be persisted across requests
      */
     public static $HEADERS_TO_PERSIST = [
@@ -195,9 +201,8 @@ class RequestOptions
                 unset($options['idempotency_key']);
             }
             if (\array_key_exists('stripe_account', $options)) {
-                if (null !== $options['stripe_account']) {
-                    $headers['Stripe-Account'] = $options['stripe_account'];
-                }
+                // Preserve explicit null so ApiRequestor can suppress the global fallback.
+                $headers['Stripe-Account'] = null !== $options['stripe_account'] ? $options['stripe_account'] : self::STRIPE_ACCOUNT_UNSET;
                 unset($options['stripe_account']);
             }
             if (\array_key_exists('stripe_context', $options)) {

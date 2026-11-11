@@ -144,6 +144,31 @@ final class RequestOptionsTest extends \Stripe\TestCase
         self::assertNull($opts->apiBase);
     }
 
+    public function testParseArrayWithNullStripeAccountPreservesExplicitOverride()
+    {
+        $opts = RequestOptions::parse(
+            [
+                'stripe_account' => null,
+            ]
+        );
+        self::assertSame(['Stripe-Account' => RequestOptions::STRIPE_ACCOUNT_UNSET], $opts->headers);
+    }
+
+    public function testMergeNullStripeAccountOverridesPreviousAccount()
+    {
+        $baseOpts = RequestOptions::parse(
+            [
+                'stripe_account' => 'acct_A',
+            ]
+        );
+        $opts = $baseOpts->merge(
+            [
+                'stripe_account' => null,
+            ]
+        );
+        self::assertSame(['Stripe-Account' => RequestOptions::STRIPE_ACCOUNT_UNSET], $opts->headers);
+    }
+
     public function testDiscardNonPersistentHeaders()
     {
         $opts = RequestOptions::parse(
