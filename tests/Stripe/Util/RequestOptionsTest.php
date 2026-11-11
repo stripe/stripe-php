@@ -151,7 +151,7 @@ final class RequestOptionsTest extends \Stripe\TestCase
                 'stripe_account' => null,
             ]
         );
-        self::assertSame(['Stripe-Account' => ''], $opts->headers);
+        self::assertSame(['Stripe-Account' => RequestOptions::STRIPE_ACCOUNT_UNSET], $opts->headers);
     }
 
     public function testMergeNullStripeAccountOverridesPreviousAccount()
@@ -166,7 +166,7 @@ final class RequestOptionsTest extends \Stripe\TestCase
                 'stripe_account' => null,
             ]
         );
-        self::assertSame(['Stripe-Account' => ''], $opts->headers);
+        self::assertSame(['Stripe-Account' => RequestOptions::STRIPE_ACCOUNT_UNSET], $opts->headers);
     }
 
     public function testDiscardNonPersistentHeaders()

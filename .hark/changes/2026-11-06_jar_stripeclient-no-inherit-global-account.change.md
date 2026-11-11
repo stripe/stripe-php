@@ -5,8 +5,8 @@ jira_tickets_closed:
 - RUN_DEVSDK-3690
 ---
 
-⚠️ An instance-scoped `StripeClient` that doesn't explicitly configure `stripe_account` no longer inherits the legacy, process-global `Stripe::setAccountId()` value.
+⚠️ `StripeClient` no longer inherits the global account set by `Stripe::setAccountId()`. Previously, a client without a configured `stripe_account` could send requests under an unrelated account set elsewhere in the process.
 
-Previously, `ApiRequestor` unconditionally layered the process-global account into every request's `Stripe-Account` header whenever it was set, and an explicit `stripe_account => null` override (at client construction or per-request) was silently dropped instead of suppressing it. In a long-lived or multi-tenant PHP process that mixes the legacy global setter with instance-scoped clients, this let an unrelated `StripeClient` silently send requests under whichever account the global was last set to.
+If you relied on this behavior, pass `['stripe_account' => $accountId]` when constructing the client or making a request.
 
-If your integration relies on an unscoped `StripeClient` picking up `Stripe::setAccountId()`, pass the account explicitly instead, either on the client (`new StripeClient(['stripe_account' => $accountId])`) or per request (`['stripe_account' => $accountId]`).
+An explicit `['stripe_account' => null]` now clears the account for a request, overriding both the client's configured account and the global account. Legacy static API calls still inherit the global account when `stripe_account` is omitted.

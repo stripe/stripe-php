@@ -825,10 +825,8 @@ class ApiRequestor
 
         $combinedHeaders = \array_merge($defaultHeaders, $headers);
 
-        // An explicit `stripe_account => null` override is preserved through RequestOptions
-        // as an empty-string sentinel so its presence can suppress the process-global
-        // Stripe::$accountId injected above. Drop it here so we don't send a blank header.
-        if (isset($combinedHeaders['Stripe-Account']) && '' === $combinedHeaders['Stripe-Account']) {
+        // Remove the explicit-clear sentinel after it overrides the process-global account.
+        if (isset($combinedHeaders['Stripe-Account']) && Util\RequestOptions::STRIPE_ACCOUNT_UNSET === $combinedHeaders['Stripe-Account']) {
             unset($combinedHeaders['Stripe-Account']);
         }
 
