@@ -12,7 +12,7 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
 
   Native PHP serialization of SDK resources no longer preserves API keys. Deserialization also discards keys embedded by earlier SDK versions. Before making requests through a restored resource, call `reattachApiKey($apiKey)`. This also reattaches API keys to nested objects.
 
-  See the [v23 migration guide](https://github.com/stripe/stripe-php/blob/sdk-release/next-major/.hark/migration-guides/v23.md#api-keys-no-longer-survive-native-php-serialization) for details.
+  See the [v23 migration guide](https://github.com/stripe/stripe-php/wiki/Migration-guide-for-v23#api-keys-no-longer-survive-native-php-serialization) for details.
 * [#2187](https://github.com/stripe/stripe-php/pull/2187) Fix issue where v2 search requests can send multiple API requests
 * Preserve event context when fetching related objects from a directly retrieved Event
 * ⚠️ StripeClient no longer inherits the legacy global Stripe::$accountId
