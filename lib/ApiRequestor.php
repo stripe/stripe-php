@@ -754,6 +754,8 @@ class ApiRequestor
             $myApiKey = Stripe::$apiKey;
         }
 
+        Util\RequestOptions::assertApiKeyAttached($myApiKey);
+
         if (!$myApiKey) {
             $msg = 'No API key provided.  (HINT: set your API key using '
                 . '"Stripe::setApiKey(<API-KEY>)".  You can generate API keys from '
@@ -822,6 +824,12 @@ class ApiRequestor
         }
 
         $combinedHeaders = \array_merge($defaultHeaders, $headers);
+
+        // Remove the explicit-clear sentinel after it overrides the process-global account.
+        if (isset($combinedHeaders['Stripe-Account']) && Util\RequestOptions::STRIPE_ACCOUNT_UNSET === $combinedHeaders['Stripe-Account']) {
+            unset($combinedHeaders['Stripe-Account']);
+        }
+
         $rawHeaders = [];
 
         foreach ($combinedHeaders as $header => $value) {
