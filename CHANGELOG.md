@@ -5,6 +5,24 @@ Instead, edit a corresponding `.change.md` file and run `hark build`.
 
 # Changelog
 
+## <a id="23-0-0"></a>23.0.0 - 2026-11-11
+* Improve webhook signature verification error messages
+  - When diagnostic metadata is present in the `Stripe-Signature` header, error messages help identify an incorrect signing secret or altered request body.
+* ⚠️ Omit API keys from native PHP serialization
+
+  Native PHP serialization of SDK resources no longer preserves API keys. Deserialization also discards keys embedded by earlier SDK versions. Before making requests through a restored resource, call `reattachApiKey($apiKey)`. This also reattaches API keys to nested objects.
+
+  See the [v23 migration guide](https://github.com/stripe/stripe-php/blob/sdk-release/next-major/.hark/migration-guides/v23.md#api-keys-no-longer-survive-native-php-serialization) for details.
+* [#2187](https://github.com/stripe/stripe-php/pull/2187) Fix issue where v2 search requests can send multiple API requests
+* Preserve event context when fetching related objects from a directly retrieved Event
+* ⚠️ StripeClient no longer inherits the legacy global Stripe::$accountId
+
+  ⚠️ `StripeClient` no longer inherits the global account set by `Stripe::setAccountId()`. Previously, a client without a configured `stripe_account` could send requests under an unrelated account set elsewhere in the process.
+
+  If you relied on this behavior, pass `['stripe_account' => $accountId]` when constructing the client or making a request.
+
+  An explicit `['stripe_account' => null]` now clears the account for a request, overriding both the client's configured account and the global account. Legacy static API calls still inherit the global account when `stripe_account` is omitted.
+
 ## <a id="22-1-0"></a>22.1.0 - 2026-10-29
 This release changes the pinned API version to `2026-10-28.endive`.
 

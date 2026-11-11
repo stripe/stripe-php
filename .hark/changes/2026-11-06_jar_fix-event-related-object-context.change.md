@@ -3,4 +3,5 @@ title: Preserve event context when fetching related objects from a directly retr
 semver_level: patch
 jira_tickets_closed:
 - RUN_DEVSDK-3694
+released_in_version: 23.0.0
 ---
