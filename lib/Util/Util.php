@@ -356,4 +356,30 @@ abstract class Util
     {
         return 'delete' === $method && 'v2' === $apiMode;
     }
+
+    /**
+     * Strips the prefixes PHP adds to protected ("\0*\0name") and private
+     * ("\0Class\0name") property names in its default serialization format.
+     * Data serialized before a class defined __serialize() reaches
+     * __unserialize() in that format.
+     *
+     * @internal
+     *
+     * @param array<string, mixed> $data
+     *
+     * @return array<string, mixed>
+     */
+    public static function unmangleSerializedProperties($data)
+    {
+        $result = [];
+        foreach ($data as $name => $value) {
+            $name = (string) $name;
+            if ('' !== $name && "\0" === $name[0]) {
+                $name = \substr($name, \strrpos($name, "\0") + 1);
+            }
+            $result[$name] = $value;
+        }
+
+        return $result;
+    }
 }
