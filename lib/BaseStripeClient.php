@@ -263,6 +263,7 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         $opts = $defaultRequestOpts->merge($opts, true);
 
         $baseUrl = $opts->apiBase ?: $this->getApiBase();
+        $opts->apiBase = $baseUrl;
         $requestor = new ApiRequestor($this->apiKeyForRequest($opts), $baseUrl, $this->getAppInfo());
         list($response, $opts->apiKey) = $requestor->request($method, $path, $params, $opts->headers, $apiMode, ['stripe_client'], $opts->maxNetworkRetries);
         $opts->discardNonPersistentHeaders();
