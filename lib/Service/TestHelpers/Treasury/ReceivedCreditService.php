@@ -12,8 +12,8 @@ namespace Stripe\Service\TestHelpers\Treasury;
 class ReceivedCreditService extends \Stripe\Service\AbstractService
 {
     /**
-     * Use this endpoint to simulate a test mode ReceivedCredit initiated by a third
-     * party. In live mode, you can’t directly create ReceivedCredits initiated by
+     * Simulates a test <code>ReceivedCredit</code> initiated by a third party. In live
+     * mode, you can’t directly create <code>ReceivedCredit</code> objects initiated by
      * third parties.
      *
      * @param null|array{amount: int, currency: string, description?: string, expand?: string[], financial_account: string, initiating_payment_method_details?: array{type: string, us_bank_account?: array{account_holder_name?: string, account_number?: string, routing_number?: string}}, network: string, network_details?: array{ach?: array{addenda?: string}, type: string}} $params

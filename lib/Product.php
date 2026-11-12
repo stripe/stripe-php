@@ -24,7 +24,7 @@ namespace Stripe;
  * @property string[] $images A list of up to 8 URLs of images for this product, meant to be displayable to the customer.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|(object{eligibility?: string, ineligibility_reasons?: (object{code?: string, message?: string}&StripeObject)[]}&StripeObject) $managed_payments
- * @property (object{name?: string}&StripeObject)[] $marketing_features A list of up to 15 marketing features for this product. These are displayed in <a href="https://docs.stripe.com/payments/checkout/pricing-table">pricing tables</a>.
+ * @property (object{loss_message?: string, name?: string}&StripeObject)[] $marketing_features A list of up to 15 marketing features for this product. These are displayed in <a href="https://docs.stripe.com/payments/checkout/pricing-table">pricing tables</a>.
  * @property StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property string $name The product's name, meant to be displayable to the customer.
  * @property null|(object{height: float, length: float, weight: float, width: float}&StripeObject) $package_dimensions The dimensions of this product for shipping purposes.

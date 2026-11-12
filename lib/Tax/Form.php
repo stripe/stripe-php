@@ -45,8 +45,11 @@ class Form extends \Stripe\ApiResource
 
     /**
      * Creates a correction for a filed tax form. Supply either payee details or
-     * numerical values for the tax form type. Created correction forms are not filed
-     * automatically.
+     * numerical values for the tax form type.
+     *
+     * <strong>Private preview.</strong> API access is invite-only. Contact Stripe to
+     * request access. Creating a correction doesn’t file it; review, attestation, and
+     * filing remain in the Dashboard.
      *
      * @param null|array{expand?: string[], payee_details?: array{address?: array{city?: string, country?: string, line1?: string, line2?: string, postal_code?: string, state?: string}, merchant_category_code?: string, name_line_1?: string, name_line_2?: string, tax_id_number?: string, treasury_tipped_occupation_code?: string}, second_tin_notice?: bool, us_1099_k?: array{card_not_present_transactions?: array{volume_decimal: string}, cash_tips?: array{volume_decimal: string}, federal_income_tax_withheld?: array{volume_decimal: string}, monthly_volumes?: array{volume_decimal: string}[], payment_transactions_count?: array{count: int}, state_income_tax_withheld?: array{volume_decimal: string}}, us_1099_misc?: array{cash_tips?: array{volume_decimal: string}, crop_insurance_proceeds?: array{volume_decimal: string}, direct_sales_for_resale?: bool, excess_golden_parachute_payments?: array{volume_decimal: string}, fatca_filing_required?: bool, federal_income_tax_withheld?: array{volume_decimal: string}, fish_purchased_for_resale?: array{volume_decimal: string}, fishing_boat_proceeds?: array{volume_decimal: string}, gross_proceeds_paid_to_an_attorney?: array{volume_decimal: string}, medical_and_health_care_payments?: array{volume_decimal: string}, nonqualified_deferred_compensation?: array{volume_decimal: string}, other_income?: array{volume_decimal: string}, overtime_compensation?: array{volume_decimal: string}, rents?: array{volume_decimal: string}, royalties?: array{volume_decimal: string}, section_409a_deferrals?: array{volume_decimal: string}, state_income?: array{volume_decimal: string}, state_tax_withheld?: array{volume_decimal: string}, substitute_payments?: array{volume_decimal: string}}, us_1099_nec?: array{cash_tips?: array{volume_decimal: string}, direct_sales_indicator?: bool, federal_income_tax_withheld?: array{volume_decimal: string}, nonemployee_compensation?: array{volume_decimal: string}, overtime_compensation?: array{volume_decimal: string}, state_income?: array{volume_decimal: string}, state_tax_withheld?: array{volume_decimal: string}}} $params
      * @param null|array|string $options

@@ -20,7 +20,7 @@ namespace Stripe\Issuing;
  * @property int $exp_year The expiration year of the card.
  * @property null|string $financial_account The financial account this card is attached to.
  * @property string $last4 The last 4 digits of the card number.
- * @property null|(object{started_at: null|int, type: null|string}&\Stripe\StripeObject) $latest_fraud_warning Stripe’s assessment of whether this card’s details have been compromised. If this property isn't null, cancel and reissue the card to prevent fraudulent activity risk.
+ * @property null|(object{started_at: null|int, type: null|string}&\Stripe\StripeObject) $latest_fraud_warning Stripe’s assessment of whether this card’s details have been compromised. If this property isn’t null, cancel and reissue the card to reduce the risk of fraudulent activity. Stripe may remove a fraud warning if the cardholder confirms that the activity on the card is legitimate.
  * @property null|(object{cancel_after: (object{payment_count: int}&\Stripe\StripeObject)}&\Stripe\StripeObject) $lifecycle_controls Rules that control the lifecycle of this card, such as automatic cancellation. Refer to our <a href="/issuing/controls/lifecycle-controls">documentation</a> for more details.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.

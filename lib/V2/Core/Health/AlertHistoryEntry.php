@@ -13,6 +13,7 @@ namespace Stripe\V2\Core\Health;
  * @property null|(object{canonical_path: string, http_method: string, http_status: string, impacted_requests: int, impacted_requests_percentage?: string, top_impacted_accounts?: (object{account: string, impacted_requests: int, impacted_requests_percentage?: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $api_latency Populated when type is api_latency.
  * @property string $at The time at which this transition occurred.
  * @property null|(object{charge_type: string, current_percentage: string, dimensions?: (object{acquirer?: string, issuer?: string, type: string}&\Stripe\StripeObject)[], payment_method_type: string, previous_percentage: string}&\Stripe\StripeObject) $authorization_rate_drop Populated when type is authorization_rate_drop.
+ * @property null|(object{custom_payment_method_disabled_from_checkout: bool, custom_payment_method_type_details: (object{auto_disabled_at?: string, display_name: string, reverse_api_url: string, type: string}&\Stripe\StripeObject), degraded_health_reason: string}&\Stripe\StripeObject) $custom_payment_method_adapter_degraded Populated when type is custom_payment_method_adapter_degraded.
  * @property null|(object{element_type?: string, impacted_sessions: int}&\Stripe\StripeObject) $elements_error Populated when type is elements_error.
  * @property null|(object{context?: string, event_type: string, related_object: (object{id: string, type: string, url: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $event_generation_failure Populated when type is event_generation_failure.
  * @property null|(object{attack_type: string, impacted_requests: int, realized_fraud_amount: \Stripe\StripeObject}&\Stripe\StripeObject) $fraud_rate Populated when type is fraud_rate.
@@ -125,6 +126,7 @@ class AlertHistoryEntry extends \Stripe\ApiResource
     const TYPE_API_ERROR = 'api_error';
     const TYPE_API_LATENCY = 'api_latency';
     const TYPE_AUTHORIZATION_RATE_DROP = 'authorization_rate_drop';
+    const TYPE_CUSTOM_PAYMENT_METHOD_ADAPTER_DEGRADED = 'custom_payment_method_adapter_degraded';
     const TYPE_ELEMENTS_ERROR = 'elements_error';
     const TYPE_EVENT_GENERATION_FAILURE = 'event_generation_failure';
     const TYPE_FRAUD_RATE = 'fraud_rate';

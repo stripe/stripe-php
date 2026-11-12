@@ -12,9 +12,9 @@ namespace Stripe\Service\TestHelpers\Treasury;
 class InboundTransferService extends \Stripe\Service\AbstractService
 {
     /**
-     * Transitions a test mode created InboundTransfer to the <code>failed</code>
-     * status. The InboundTransfer must already be in the <code>processing</code>
-     * state.
+     * Transitions a test <code>InboundTransfer</code> to the <code>failed</code>
+     * status. The <code>InboundTransfer</code> must already be in the
+     * <code>processing</code> state.
      *
      * @param string $id
      * @param null|array{expand?: string[], failure_details?: array{code?: string}} $params
@@ -30,9 +30,10 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Marks the test mode InboundTransfer object as returned and links the
-     * InboundTransfer to a ReceivedDebit. The InboundTransfer must already be in the
-     * <code>succeeded</code> state.
+     * Marks the test <code>InboundTransfer</code> object as returned and links the
+     * <code>InboundTransfer</code> to a <code>ReceivedDebit</code>. The
+     * <code>InboundTransfer</code> must already be in the <code>succeeded</code>
+     * state.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
@@ -48,9 +49,9 @@ class InboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Transitions a test mode created InboundTransfer to the <code>succeeded</code>
-     * status. The InboundTransfer must already be in the <code>processing</code>
-     * state.
+     * Transitions a test <code>InboundTransfer</code> to the <code>succeeded</code>
+     * status. The <code>InboundTransfer</code> must already be in the
+     * <code>processing</code> state.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

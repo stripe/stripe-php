@@ -66,7 +66,7 @@ class VerificationSession extends \Stripe\ApiResource
      * Related guide: <a href="/docs/identity/verify-identity-documents">Verify your
      * users’ identity documents</a>
      *
-     * @param null|array{client_reference_id?: string, confirm?: bool, expand?: string[], metadata?: array<string, string>, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, related_customer_account?: string, related_person?: array{account: string, person: string}, return_url?: string, type?: string, user_consent?: array{date: int, ip: string, user_agent?: string}, verification_flow?: string} $params
+     * @param null|array{client_reference_id?: string, confirm?: bool, expand?: string[], link_shared_data?: array{granted_token: string, identity_document: string}, metadata?: array<string, string>, options?: array{document?: null|array{allowed_types?: string[], require_id_number?: bool, require_live_capture?: bool, require_matching_selfie?: bool}}, provided_details?: array{email?: string, phone?: string}, related_customer?: string, related_customer_account?: string, related_person?: array{account: string, person: string}, return_url?: string, type?: string, user_consent?: array{date: int, ip: string, user_agent?: string}, verification_flow?: string} $params
      * @param null|array|string $options
      *
      * @return VerificationSession the created resource

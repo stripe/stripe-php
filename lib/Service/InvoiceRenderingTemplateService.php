@@ -47,6 +47,21 @@ class InvoiceRenderingTemplateService extends AbstractService
     }
 
     /**
+     * Creates an invoice rendering template.
+     *
+     * @param null|array{expand?: string[], line_item_policy?: array{display?: string}, metadata?: array<string, string>, nickname?: string, summary_item_policies?: array{display_items?: string, filter?: string, group_by?: string}[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\InvoiceRenderingTemplate
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function create($params = null, $opts = null)
+    {
+        return $this->request('post', '/v1/invoice_rendering_templates', $params, $opts);
+    }
+
+    /**
      * Retrieves an invoice rendering template with the given ID. It by default returns
      * the latest version of the template. Optionally, specify a version to see
      * previous versions.
@@ -79,6 +94,22 @@ class InvoiceRenderingTemplateService extends AbstractService
     public function unarchive($id, $params = null, $opts = null)
     {
         return $this->request('post', $this->buildPath('/v1/invoice_rendering_templates/%s/unarchive', $id), $params, $opts);
+    }
+
+    /**
+     * Updates an existing invoice rendering template.
+     *
+     * @param string $id
+     * @param null|array{expand?: string[], line_item_policy?: null|array{display?: string}, metadata?: null|array<string, string>, nickname?: string, summary_item_policies?: null|array{display_items?: string, filter?: string, group_by?: string}[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\InvoiceRenderingTemplate
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function update($id, $params = null, $opts = null)
+    {
+        return $this->request('post', $this->buildPath('/v1/invoice_rendering_templates/%s', $id), $params, $opts);
     }
 
     /**
