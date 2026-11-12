@@ -4992,11 +4992,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/commerce/product_catalog/imports',
-            [
-                'feed_type' => 'pricing',
-                'metadata' => ['key' => 'metadata'],
-                'mode' => 'upsert',
-            ],
+            ['feed_type' => 'pricing', 'mode' => 'upsert'],
             [],
             false,
             [
@@ -5014,7 +5010,6 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->commerce->productCatalog->imports->create([
             'feed_type' => 'pricing',
-            'metadata' => ['key' => 'metadata'],
             'mode' => 'upsert',
         ]);
         self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
@@ -5362,6 +5357,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'account' => 'account',
                 'use_case' => [
+                    'account_dashboard' => ['refresh_url' => 'refresh_url'],
                     'account_onboarding' => [
                         'collection_options' => [
                             'fields' => 'eventually_due',
@@ -5378,7 +5374,7 @@ final class GeneratedExamplesTest extends TestCase
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
-                    'type' => 'account_onboarding',
+                    'type' => 'account_dashboard',
                 ],
             ],
             [],
@@ -5390,7 +5386,7 @@ final class GeneratedExamplesTest extends TestCase
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'livemode' => [],
                 'url' => 'url',
-                'use_case' => ['type' => 'account_onboarding'],
+                'use_case' => ['type' => 'account_dashboard'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5398,6 +5394,7 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->core->accountLinks->create([
             'account' => 'account',
             'use_case' => [
+                'account_dashboard' => ['refresh_url' => 'refresh_url'],
                 'account_onboarding' => [
                     'collection_options' => [
                         'fields' => 'eventually_due',
@@ -5414,7 +5411,7 @@ final class GeneratedExamplesTest extends TestCase
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
-                'type' => 'account_onboarding',
+                'type' => 'account_dashboard',
             ],
         ]);
         self::assertInstanceOf(V2\Core\AccountLink::class, $result);
@@ -5467,6 +5464,121 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Core\AccountToken::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/claimable_sandboxes',
+            [
+                'enable_mcp_access' => true,
+                'onboarding_link_details' => [
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->create([
+            'enable_mcp_access' => true,
+            'onboarding_link_details' => [
+                'refresh_url' => 'refresh_url',
+                'return_url' => 'return_url',
+            ],
+            'prefill' => [
+                'country' => 'country',
+                'email' => 'email',
+                'name' => 'name',
+            ],
+        ]);
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/claimable_sandboxes/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/claimable_sandboxes/id_123/renew_onboarding_link',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->renewOnboardingLink(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
     }
 
     public function testV2CoreEventGet()
@@ -7747,7 +7859,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'stripe_fee',
+                        'category' => 'received_debit_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -7796,7 +7908,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -7843,7 +7955,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -7890,7 +8002,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -7941,7 +8053,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'stripe_fee',
+                            'category' => 'received_debit_reversal',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -7987,7 +8099,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'stripe_fee',
+                    'category' => 'received_debit_reversal',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -8267,6 +8379,30 @@ final class GeneratedExamplesTest extends TestCase
                 []
             );
         } catch (Exception\FxQuoteNeedsRefreshException $e) {
+        }
+    }
+
+    public function testInactiveApiOperationConfirmationRequiredError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'inactive_api_operation_confirmation_required',
+                    'code' => 'inactive_api_operation_confirmation_required',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->create([]);
+        } catch (Exception\InactiveApiOperationConfirmationRequiredException $e) {
         }
     }
 

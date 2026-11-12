@@ -97,7 +97,7 @@ class ImportService extends \Stripe\Service\AbstractService
     /**
      * Creates a ProductCatalogImport.
      *
-     * @param null|array{feed_type: string, metadata: array<string, string>, mode: string} $params
+     * @param null|array{feed_type: string, metadata?: array<string, string>, mode: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Commerce\ProductCatalogImport

@@ -13,7 +13,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $created The creation timestamp of the FinancialAddress.
  * @property string $financial_account The ID of the FinancialAccount this FinancialAddress corresponds to.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property string $settlement_currency
+ * @property string $settlement_currency Open Enum. The currency the FinancialAddress settles into the FinancialAccount.
  * @property string $status Closed Enum. The status of the FinancialAddress.
  * @property string $type Open Enum. The type of FinancialAddress.
  */

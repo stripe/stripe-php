@@ -5,9 +5,12 @@
 namespace Stripe;
 
 /**
- * A coupon contains information about a percent-off or amount-off discount you
- * might want to apply to a customer. Coupons may be applied to <a href="https://docs.stripe.com/api#subscriptions">subscriptions</a>, <a href="https://docs.stripe.com/api#invoices">invoices</a>,
- * <a href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a href="https://docs.stripe.com/api#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="/api/charges/create">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
+ * A coupon defines a fixed or custom discount. Fixed discounts take a percentage or amount off, while
+ * <a href="https://docs.stripe.com/billing/subscriptions/script-coupons">custom coupons</a> use scripts to calculate discounts dynamically for subscriptions and invoices.
+ * You can apply coupons to customers' <a href="https://docs.stripe.com/api#subscriptions">subscriptions</a>, <a href="https://docs.stripe.com/api#invoices">invoices</a>,
+ * <a href="https://docs.stripe.com/api/checkout/sessions">Checkout Sessions</a>, <a href="https://docs.stripe.com/api#quotes">quotes</a>, and other supported billing objects.
+ * The optional <a href="/api/coupons/object#coupon_object-applies_to-products">applies_to.products</a> property limits which product line items are eligible for the discount, independently of where you apply the coupon.
+ * Coupons don't work with conventional one-off <a href="/api/charges/create">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
