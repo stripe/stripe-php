@@ -14,7 +14,7 @@ class ReceivedDebitService extends \Stripe\Service\AbstractService
     /**
      * Retrieves a list of ReceivedDebits, given the selected filters.
      *
-     * @param null|array{limit?: int} $params
+     * @param null|array{created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\MoneyManagement\ReceivedDebit>

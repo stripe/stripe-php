@@ -5042,6 +5042,7 @@ final class GeneratedExamplesTest extends TestCase
                     '0' => [
                         'object' => 'v2.billing.cadence',
                         'billing_cycle' => [
+                            'effective_at' => 'on_activation',
                             'interval_count' => [],
                             'type' => 'week',
                         ],
@@ -5080,6 +5081,7 @@ final class GeneratedExamplesTest extends TestCase
                             'second' => 906279820,
                         ],
                     ],
+                    'effective_at' => 'on_activation',
                     'interval_count' => 797691627,
                     'month' => [
                         'day_of_month' => 1361669285,
@@ -5116,6 +5118,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.cadence',
                 'billing_cycle' => [
+                    'effective_at' => 'on_activation',
                     'interval_count' => [],
                     'type' => 'week',
                 ],
@@ -5140,6 +5143,7 @@ final class GeneratedExamplesTest extends TestCase
                         'second' => 906279820,
                     ],
                 ],
+                'effective_at' => 'on_activation',
                 'interval_count' => 797691627,
                 'month' => [
                     'day_of_month' => 1361669285,
@@ -5185,6 +5189,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.cadence',
                 'billing_cycle' => [
+                    'effective_at' => 'on_activation',
                     'interval_count' => [],
                     'type' => 'week',
                 ],
@@ -5218,6 +5223,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.cadence',
                 'billing_cycle' => [
+                    'effective_at' => 'on_activation',
                     'interval_count' => [],
                     'type' => 'week',
                 ],
@@ -5248,6 +5254,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'object' => 'v2.billing.cadence',
                 'billing_cycle' => [
+                    'effective_at' => 'on_activation',
                     'interval_count' => [],
                     'type' => 'week',
                 ],
@@ -5683,11 +5690,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/commerce/product_catalog/imports',
-            [
-                'feed_type' => 'pricing',
-                'metadata' => ['key' => 'metadata'],
-                'mode' => 'upsert',
-            ],
+            ['feed_type' => 'pricing', 'mode' => 'upsert'],
             [],
             false,
             [
@@ -5705,7 +5708,6 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->commerce->productCatalog->imports->create([
             'feed_type' => 'pricing',
-            'metadata' => ['key' => 'metadata'],
             'mode' => 'upsert',
         ]);
         self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
@@ -6053,6 +6055,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'account' => 'account',
                 'use_case' => [
+                    'account_dashboard' => ['refresh_url' => 'refresh_url'],
                     'account_onboarding' => [
                         'collection_options' => [
                             'fields' => 'eventually_due',
@@ -6069,7 +6072,7 @@ final class GeneratedExamplesTest extends TestCase
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
-                    'type' => 'account_onboarding',
+                    'type' => 'account_dashboard',
                 ],
             ],
             [],
@@ -6081,7 +6084,7 @@ final class GeneratedExamplesTest extends TestCase
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'livemode' => [],
                 'url' => 'url',
-                'use_case' => ['type' => 'account_onboarding'],
+                'use_case' => ['type' => 'account_dashboard'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6089,6 +6092,7 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->core->accountLinks->create([
             'account' => 'account',
             'use_case' => [
+                'account_dashboard' => ['refresh_url' => 'refresh_url'],
                 'account_onboarding' => [
                     'collection_options' => [
                         'fields' => 'eventually_due',
@@ -6105,7 +6109,7 @@ final class GeneratedExamplesTest extends TestCase
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
-                'type' => 'account_onboarding',
+                'type' => 'account_dashboard',
             ],
         ]);
         self::assertInstanceOf(V2\Core\AccountLink::class, $result);
@@ -6172,7 +6176,7 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.core.approval_request',
-                        'action' => 'refund.create',
+                        'action' => 'tax.registration_application.submit',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'expires_at' => '1970-01-10T15:36:51.170Z',
                         'id' => 'obj_123',
@@ -6202,7 +6206,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.approval_request',
-                'action' => 'refund.create',
+                'action' => 'tax.registration_application.submit',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'id' => 'obj_123',
@@ -6230,7 +6234,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.approval_request',
-                'action' => 'refund.create',
+                'action' => 'tax.registration_application.submit',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'id' => 'obj_123',
@@ -6258,7 +6262,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.approval_request',
-                'action' => 'refund.create',
+                'action' => 'tax.registration_application.submit',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'id' => 'obj_123',
@@ -6358,6 +6362,121 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->core->batchJobs->cancel('id_123', []);
         self::assertInstanceOf(V2\Core\BatchJob::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/claimable_sandboxes',
+            [
+                'enable_mcp_access' => true,
+                'onboarding_link_details' => [
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->create([
+            'enable_mcp_access' => true,
+            'onboarding_link_details' => [
+                'refresh_url' => 'refresh_url',
+                'return_url' => 'return_url',
+            ],
+            'prefill' => [
+                'country' => 'country',
+                'email' => 'email',
+                'name' => 'name',
+            ],
+        ]);
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/claimable_sandboxes/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/claimable_sandboxes/id_123/renew_onboarding_link',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->renewOnboardingLink(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
     }
 
     public function testV2CoreEventGet()
@@ -7706,7 +7825,7 @@ final class GeneratedExamplesTest extends TestCase
                         'details' => ['type' => 'account_security'],
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'type' => 'user_auth_challenge_failed',
+                        'type' => 'user_password_initialized',
                     ],
                 ],
                 'next_page_url' => null,
@@ -7736,7 +7855,7 @@ final class GeneratedExamplesTest extends TestCase
                 'details' => ['type' => 'account_security'],
                 'id' => 'obj_123',
                 'livemode' => [],
-                'type' => 'user_auth_challenge_failed',
+                'type' => 'user_password_initialized',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -8774,6 +8893,29 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result);
     }
 
+    public function testV2MoneyManagementOutboundSetupIntentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/outbound_setup_intents/from_financial_connections',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.outbound_setup_intent',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'requires_payout_method',
+                'usage_intent' => 'payment',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->outboundSetupIntents->fromFinancialConnections([]);
+        self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result);
+    }
+
     public function testV2MoneyManagementOutboundSetupIntentGet2()
     {
         $this->stubRequest(
@@ -8800,7 +8942,7 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result);
     }
 
-    public function testV2MoneyManagementOutboundSetupIntentPost2()
+    public function testV2MoneyManagementOutboundSetupIntentPost3()
     {
         $this->stubRequest(
             'post',
@@ -8826,7 +8968,7 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\OutboundSetupIntent::class, $result);
     }
 
-    public function testV2MoneyManagementOutboundSetupIntentPost3()
+    public function testV2MoneyManagementOutboundSetupIntentPost4()
     {
         $this->stubRequest(
             'post',
@@ -9424,7 +9566,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'restricted' => [],
-                        'type' => 'bank_account',
+                        'type' => 'card',
                         'usage_status' => [
                             'payments' => 'invalid',
                             'transfers' => 'invalid',
@@ -9458,7 +9600,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'card',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -9490,7 +9632,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'card',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -9522,7 +9664,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'card',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -9554,7 +9696,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'card',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -9936,7 +10078,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'stripe_fee',
+                        'category' => 'received_debit_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -9985,7 +10127,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -10032,7 +10174,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -10079,7 +10221,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -10130,7 +10272,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'stripe_fee',
+                            'category' => 'received_debit_reversal',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -10176,7 +10318,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'stripe_fee',
+                    'category' => 'received_debit_reversal',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -10408,6 +10550,296 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\OrchestratedCommerce\Agreement::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/off_session_payments',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.payments.off_session_payment',
+                        'amount_requested' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'amount_total' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'currency' => 'usd',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'metadata' => ['key' => 'metadata'],
+                        'payment_method' => 'payment_method',
+                        'payments_orchestration' => ['enabled' => []],
+                        'retries' => [
+                            'attempts' => [],
+                            'enabled' => [],
+                        ],
+                        'status' => 'paused',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result->data[0]);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments',
+            ['retries' => ['enabled' => true]],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->create([
+            'retries' => ['enabled' => true],
+        ]);
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/off_session_payments/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/pause',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->pause(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost5()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/resume',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_requested' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'payments_orchestration' => ['enabled' => []],
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->resume(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
     public function testV2SignalsAccountActivityPost()
@@ -10920,6 +11352,30 @@ final class GeneratedExamplesTest extends TestCase
                 []
             );
         } catch (Exception\FxQuoteNeedsRefreshException $e) {
+        }
+    }
+
+    public function testInactiveApiOperationConfirmationRequiredError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'inactive_api_operation_confirmation_required',
+                    'code' => 'inactive_api_operation_confirmation_required',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->create([]);
+        } catch (Exception\InactiveApiOperationConfirmationRequiredException $e) {
         }
     }
 

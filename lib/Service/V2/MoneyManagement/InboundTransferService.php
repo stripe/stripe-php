@@ -31,7 +31,7 @@ class InboundTransferService extends \Stripe\Service\AbstractService
      * account. Per-transfer and rolling weekly limits vary by account and payment
      * rail. See [transfer limits](/treasury/add-funds#transfer-limits).
      *
-     * @param null|array{amount: \Stripe\StripeObject, description?: string, from: array{currency?: string, payment_method: string}, to: array{currency: string, financial_account: string}} $params
+     * @param null|array{amount: \Stripe\StripeObject, description?: string, from: array{currency?: string, payment_method: string}, metadata?: array<string, string>, to: array{currency: string, financial_account: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\InboundTransfer

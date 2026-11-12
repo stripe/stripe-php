@@ -365,6 +365,16 @@ class ApiRequestor
                     $code
                 );
 
+            case 'inactive_api_operation_confirmation_required':
+                return Exception\InactiveApiOperationConfirmationRequiredException::factory(
+                    $msg,
+                    $rcode,
+                    $rbody,
+                    $resp,
+                    $rheaders,
+                    $code
+                );
+
             case 'insufficient_funds':
                 return Exception\InsufficientFundsException::factory(
                     $msg,

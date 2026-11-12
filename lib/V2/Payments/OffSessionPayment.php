@@ -1,0 +1,63 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\V2\Payments;
+
+/**
+ * An OffSessionPayment allows you to create your own payment flow for recurring and unscheduled payments. In a single API request, you can
+ * initiate a payment and leverage Stripe's AI-powered <a href="https://docs.stripe.com/payments/off-session-payments/smart-retries">Smart Retries</a>
+ * to choose the best times to retry failures to increase the chance of a successful payment.
+ * To properly interface with OffSessionPayments, we recommend setting up an event destination to listen to webhook notifications, as the
+ * OffSessionPayment will transition through its lifecycle asynchronously.
+ * Related guide: <a href="https://docs.stripe.com/payments/off-session-payments">Off-Session Payments API</a>.
+ *
+ * @property string $id Unique identifier for the object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
+ * @property \Stripe\StripeObject $amount_requested Amount intended to be collected by this payment.
+ * @property \Stripe\StripeObject $amount_total The total amount to collect, including tax when applicable.
+ * @property null|string $application The application associated with this OffSessionPayment.
+ * @property null|\Stripe\StripeObject $application_fee_amount_requested The amount of the application fee requested to be applied to the payment.
+ * @property null|(object{enabled: bool, liability?: (object{type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $automatic_tax Details about automatic tax calculation.
+ * @property string $created Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
+ * @property string $currency Three-letter ISO currency code, in lowercase.
+ * @property null|string $customer ID of the Customer to which this OffSessionPayment belongs, if one exists.
+ * @property null|string $customer_account ID of the Account representing the customer to which this OffSessionPayment belongs, if one exists.
+ * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
+ * @property null|string $failure_reason The reason why the OffSessionPayment failed.
+ * @property null|(object{one_time_price: (object{description?: string, items: (object{price: string, quantity: int}&\Stripe\StripeObject)[], metadata?: \Stripe\StripeObject}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[] $items The persisted item groups for this OffSessionPayment, in their original order. Null for raw-amount payments.
+ * @property null|string $last_authorization_attempt_error The payment error encountered in the previous attempt to authorize the payment.
+ * @property null|string $latest_payment_attempt_record Payment attempt record for the latest attempt, if one exists.
+ * @property bool $livemode Has the value true if the object exists in live mode or the value false if the object exists in test mode.
+ * @property \Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format. Learn more about <a href="https://docs.stripe.com/payments/payment-intents#storing-information-in-metadata">storing information in metadata</a>.
+ * @property null|string $on_behalf_of The account (if any) for which the funds of the OffSessionPayment are intended.
+ * @property string $payment_method ID of the payment method used in this OffSessionPayment.
+ * @property null|string $payment_record Payment record associated with the OffSessionPayment.
+ * @property (object{enabled: bool}&\Stripe\StripeObject) $payments_orchestration Details about the payments orchestration configuration.
+ * @property (object{attempts: int, enabled: bool}&\Stripe\StripeObject) $retries Retry configuration and attempts for this OffSessionPayment.
+ * @property null|string $statement_descriptor Text that appears on the customer's statement as the statement descriptor for a non-card charge. This value overrides the account's default statement descriptor. For information about requirements, including the 22-character limit, see the <a href="https://docs.stripe.com/get-started/account/statement-descriptors">Statement Descriptor docs</a>.
+ * @property null|string $statement_descriptor_suffix Provides information about a card charge. Concatenated to the account's <a href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement descriptor prefix</a> to form the complete statement descriptor that appears on the customer's statement.
+ * @property string $status Status of this OffSessionPayment, one of <code>pending</code>, <code>pending_retry</code>, <code>processing</code>, <code>failed</code>, <code>canceled</code>, or <code>succeeded</code>.
+ * @property null|string $target_date Provides a way to schedule deferred payments for cards and debits, in YYYY-MM-DD format.
+ * @property null|string $test_clock Test clock that can be used to advance the retry attempts in a sandbox.
+ * @property null|(object{amount_subtotal: \Stripe\StripeObject, amount_tax?: \Stripe\StripeObject}&\Stripe\StripeObject) $total_details Subtotal and tax for an itemized OffSessionPayment. Null for raw-amount payments.
+ * @property null|(object{amount?: int, destination: string}&\Stripe\StripeObject) $transfer_data The data that automatically creates a Transfer after the payment finalizes. Learn more about the use case for <a href="https://docs.stripe.com/payments/connected-accounts">connected accounts</a>.
+ */
+class OffSessionPayment extends \Stripe\ApiResource
+{
+    const OBJECT_NAME = 'v2.payments.off_session_payment';
+
+    const FAILURE_REASON_AUTHORIZATION_EXPIRED = 'authorization_expired';
+    const FAILURE_REASON_EXCEEDED_RETRY_WINDOW = 'exceeded_retry_window';
+    const FAILURE_REASON_NO_VALID_PAYMENT_METHOD = 'no_valid_payment_method';
+    const FAILURE_REASON_REJECTED_BY_PARTNER = 'rejected_by_partner';
+    const FAILURE_REASON_RETRIES_EXHAUSTED = 'retries_exhausted';
+
+    const STATUS_CANCELED = 'canceled';
+    const STATUS_FAILED = 'failed';
+    const STATUS_PAUSED = 'paused';
+    const STATUS_PENDING = 'pending';
+    const STATUS_PENDING_RETRY = 'pending_retry';
+    const STATUS_PROCESSING = 'processing';
+    const STATUS_SUCCEEDED = 'succeeded';
+}

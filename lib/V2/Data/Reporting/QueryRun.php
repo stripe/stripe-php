@@ -5,6 +5,7 @@
 namespace Stripe\V2\Data\Reporting;
 
 /**
+ * The <a href="/data/api/query-runs">Queries and Reports API</a> replaces this API. For new integrations, use <code>/v2/data/query_runs</code> instead.
  * The <code>QueryRun</code> object represents an ad-hoc SQL execution. Once created, Stripe processes the query. When
  * the query has finished running, the object provides a reference to the results.
  *
@@ -12,7 +13,7 @@ namespace Stripe\V2\Data\Reporting;
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property string $created Time at which the object was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|(object{file?: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $result Details how to retrieve the results of a successfully completed <code>QueryRun</code>.
+ * @property null|(object{col_count?: int, file?: (object{content_type: string, download_url: (object{expires_at?: string, url: string}&\Stripe\StripeObject), size: int}&\Stripe\StripeObject), row_count?: int, type: string}&\Stripe\StripeObject) $result Details how to retrieve the results of a successfully completed <code>QueryRun</code>.
  * @property null|(object{compress_file?: bool}&\Stripe\StripeObject) $result_options The options specified for customizing the output of the <code>QueryRun</code>.
  * @property string $sql The SQL that was executed.
  * @property string $status The current status of the <code>QueryRun</code>.
@@ -28,10 +29,12 @@ class QueryRun extends \Stripe\ApiResource
             'result' => [
                 'kind' => 'object',
                 'fields' => [
+                    'col_count' => ['kind' => 'int64_string'],
                     'file' => [
                         'kind' => 'object',
                         'fields' => ['size' => ['kind' => 'int64_string']],
                     ],
+                    'row_count' => ['kind' => 'int64_string'],
                 ],
             ],
         ];

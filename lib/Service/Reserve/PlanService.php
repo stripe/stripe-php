@@ -12,8 +12,9 @@ namespace Stripe\Service\Reserve;
 class PlanService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of ReservePlans previously created. The ReservePlans are returned
-     * in sorted order, with the most recent ReservePlans appearing first.
+     * Returns a list of ReservePlans on your account or on one of your connected
+     * accounts. The ReservePlans are returned in sorted order, with the most recent
+     * ReservePlans appearing first.
      *
      * @param null|array{destination?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -28,7 +29,7 @@ class PlanService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a ReservePlan.
+     * Retrieve a ReservePlan on your account or on one of your connected accounts.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

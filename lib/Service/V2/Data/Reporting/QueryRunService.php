@@ -31,12 +31,14 @@ class QueryRunService extends \Stripe\Service\AbstractService
                     'result' => [
                         'kind' => 'object',
                         'fields' => [
+                            'col_count' => ['kind' => 'int64_string'],
                             'file' => [
                                 'kind' => 'object',
                                 'fields' => [
                                     'size' => ['kind' => 'int64_string'],
                                 ],
                             ],
+                            'row_count' => ['kind' => 'int64_string'],
                         ],
                     ],
                 ],
@@ -66,12 +68,14 @@ class QueryRunService extends \Stripe\Service\AbstractService
                     'result' => [
                         'kind' => 'object',
                         'fields' => [
+                            'col_count' => ['kind' => 'int64_string'],
                             'file' => [
                                 'kind' => 'object',
                                 'fields' => [
                                     'size' => ['kind' => 'int64_string'],
                                 ],
                             ],
+                            'row_count' => ['kind' => 'int64_string'],
                         ],
                     ],
                 ],
