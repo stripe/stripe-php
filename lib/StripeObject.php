@@ -128,6 +128,52 @@ class StripeObject implements \ArrayAccess, \Countable, \JsonSerializable
         }
     }
 
+    /**
+     * Reattaches credentials to an unserialized object and its nested objects.
+     * Each object retains its saved request options.
+     *
+     * @param string $apiKey
+     *
+     * @throws Exception\InvalidArgumentException
+     */
+    public function reattachApiKey($apiKey)
+    {
+        if (Util\RequestOptions::API_KEY_SERIALIZATION_CONSTANT !== $this->_opts->apiKey) {
+            throw new Exception\InvalidArgumentException(
+                'API credentials can only be reattached to an unserialized '
+                . 'object that has not already been reattached.'
+            );
+        }
+        if (!\is_string($apiKey) || '' === \trim($apiKey) || '0' === $apiKey || Util\RequestOptions::API_KEY_SERIALIZATION_CONSTANT === $apiKey) {
+            throw new Exception\InvalidArgumentException('apiKey must be a non-empty, valid API key.');
+        }
+
+        $seen = new \SplObjectStorage();
+        $reattach = static function ($value) use ($apiKey, $seen, &$reattach) {
+            if ($value instanceof StripeObject) {
+                if ($seen->contains($value)) {
+                    return;
+                }
+                $seen->attach($value);
+                if (Util\RequestOptions::API_KEY_SERIALIZATION_CONSTANT === $value->_opts->apiKey) {
+                    $value->_opts = clone $value->_opts;
+                    $value->_opts->apiKey = $apiKey;
+                }
+                foreach ($value->_values as $nested) {
+                    $reattach($nested);
+                }
+                foreach ($value->_originalValues as $nested) {
+                    $reattach($nested);
+                }
+            } elseif (\is_array($value)) {
+                foreach ($value as $nested) {
+                    $reattach($nested);
+                }
+            }
+        };
+        $reattach($this);
+    }
+
     // Standard accessor magic methods
     public function __set($k, $v)
     {
