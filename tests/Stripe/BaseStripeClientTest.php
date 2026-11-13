@@ -321,6 +321,73 @@ final class BaseStripeClientTest extends TestCase
         self::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
     }
 
+    public function testRequestWithBareClientDoesNotInheritGlobalStripeAccount()
+    {
+        Stripe::setAccountId('acct_global');
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) {
+                self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    self::assertStringStartsNotWith('Stripe-Account', $header);
+                }
+
+                return [json_encode(['id' => 'ch_123', 'object' => 'charge']), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+        $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testRequestWithClientStripeAccountNullDoesNotInheritGlobalStripeAccount()
+    {
+        Stripe::setAccountId('acct_global');
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) {
+                self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    self::assertStringStartsNotWith('Stripe-Account', $header);
+                }
+
+                return [json_encode(['id' => 'ch_123', 'object' => 'charge']), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => null,
+            'api_base' => MOCK_URL,
+        ]);
+        $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testRequestWithOptsStripeAccountNullDoesNotInheritGlobalStripeAccount()
+    {
+        Stripe::setAccountId('acct_global');
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) {
+                self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    self::assertStringStartsNotWith('Stripe-Account', $header);
+                }
+
+                return [json_encode(['id' => 'ch_123', 'object' => 'charge']), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+        $client->request('get', '/v1/charges/ch_123', [], ['stripe_account' => null]);
+    }
+
     public function testRequestCollectionWithClientApiKey()
     {
         $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
@@ -1086,6 +1153,59 @@ final class BaseStripeClientTest extends TestCase
             self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
             self::assertContains('Stripe-Context: acct_child', $opts[\CURLOPT_HTTPHEADER]);
             self::assertNotContains('Stripe-Account: acct_platform', $opts[\CURLOPT_HTTPHEADER]);
+        }
+    }
+
+    public function testEventRetrievedDirectlyFetchedRelatedObjectDoesNotInheritGlobalStripeAccount()
+    {
+        // Unlike testEventRetrievedDirectlyFetchedRelatedObjectRetainsContext above, this
+        // covers the process-global Stripe::$accountId, not the client's own stripe_account.
+        // Event::refreshFrom() clears the carried-over Stripe-Account header so it doesn't
+        // leak the client's own account onto the event's scoped context; this test confirms
+        // that clearing isn't itself silently refilled by the global fallback.
+        Stripe::setAccountId('acct_global');
+
+        $requests = [];
+        $this->curlClientStub->expects(self::exactly(2))
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) use (&$requests) {
+                $requests[] = [$opts, $url];
+                if (false !== strpos($url, '/v2/core/events/')) {
+                    return [json_encode([
+                        'id' => 'evt_123',
+                        'object' => 'v2.core.event',
+                        'type' => 'v1.product.updated',
+                        'created' => '2022-02-15T00:27:45.330Z',
+                        'context' => 'acct_child',
+                        'related_object' => [
+                            'id' => 'prod_shared',
+                            'type' => 'product',
+                            'url' => '/v1/products/prod_shared',
+                        ],
+                    ]), 200, []];
+                }
+
+                return [json_encode([
+                    'id' => 'prod_shared',
+                    'object' => 'product',
+                ]), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+
+        $event = $client->request('get', '/v2/core/events/evt_123', [], null);
+        self::assertInstanceOf(V1ProductUpdatedEvent::class, $event);
+
+        $event->fetchRelatedObject();
+
+        self::assertCount(2, $requests);
+        [$opts, $url] = $requests[1];
+        self::assertSame(MOCK_URL . '/v1/products/prod_shared', $url);
+        self::assertContains('Stripe-Context: acct_child', $opts[\CURLOPT_HTTPHEADER]);
+        foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+            self::assertStringStartsNotWith('Stripe-Account', $header);
         }
     }
 
