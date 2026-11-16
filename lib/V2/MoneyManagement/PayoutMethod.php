@@ -1,0 +1,28 @@
+<?php
+
+// File generated from our OpenAPI spec
+
+namespace Stripe\V2\MoneyManagement;
+
+/**
+ * Use the PayoutMethods API to list and interact with PayoutMethod objects.
+ *
+ * @property string $id ID of the PayoutMethod object.
+ * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
+ * @property bool $archived Whether the payout method was archived. Payout methods can be archived through the /archive API, and they will not be automatically archived by Stripe. Archived payout methods cannot be used for outbound money movement.
+ * @property null|(object{bank_account_type: string, bank_name: string, branch_number?: string, country: string, financial_connections_account?: string, last4: string, routing_number?: string, supported_currencies: string[], swift_code?: string}&\Stripe\StripeObject) $bank_account The PayoutMethodBankAccount object details.
+ * @property null|(object{exp_month: string, exp_year: string, fingerprint: string, last4: string, supported_currencies: string[]}&\Stripe\StripeObject) $card The PayoutMethodCard object details.
+ * @property string $created Created timestamp.
+ * @property null|string $latest_outbound_setup_intent ID of the underlying active OutboundSetupIntent object, if any.
+ * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
+ * @property bool $restricted Whether the Payout Method is currently unusable for money movement, despite potentially being correctly set up. Please reach out to Stripe Support for more information.
+ * @property string $type Open Enum. The type of payout method.
+ * @property (object{payments: string, transfers: string}&\Stripe\StripeObject) $usage_status Indicates whether the payout method has met the necessary requirements for outbound money movement.
+ */
+class PayoutMethod extends \Stripe\ApiResource
+{
+    const OBJECT_NAME = 'v2.money_management.payout_method';
+
+    const TYPE_BANK_ACCOUNT = 'bank_account';
+    const TYPE_CARD = 'card';
+}

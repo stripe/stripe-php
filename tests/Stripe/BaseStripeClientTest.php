@@ -4,6 +4,8 @@ namespace Stripe;
 
 use Stripe\Events\UnknownEventNotification;
 use Stripe\Events\V1BillingMeterErrorReportTriggeredEventNotification;
+use Stripe\Events\V1ProductUpdatedEvent;
+use Stripe\Events\V1ProductUpdatedEventNotification;
 use Stripe\Util\ApiVersion;
 
 /**
@@ -48,6 +50,61 @@ final class BaseStripeClientTest extends TestCase
             ->setMethods(['executeRequestWithRetries'])
             ->getMock()
         ;
+    }
+
+    /**
+     * @dataProvider provideSearchDispatchesOnceCases
+     *
+     * @param mixed $method
+     * @param mixed $path
+     * @param mixed $params
+     * @param mixed $expectedPath
+     * @param mixed $body
+     * @param mixed $v2
+     */
+    public function testSearchDispatchesOnce($method, $path, $params, $expectedPath, $body, $v2)
+    {
+        $client = $this->getMockBuilder(BaseStripeClient::class)->setMethods(['request'])->getMock();
+        $result = $v2 ? new V2\SearchResult() : new SearchResult();
+        $opts = ['stripe_account' => 'acct_123'];
+        $original = $params;
+        $client->expects(self::once())->method('request')
+            ->with($method, $expectedPath, $body, $opts)->willReturn($result)
+        ;
+        self::assertSame($result, $client->requestSearchResult($method, $path, $params, $opts));
+        self::assertSame($original, $params);
+        if ($v2) {
+            $filters = new \ReflectionProperty(V2\SearchResult::class, 'filters');
+            $filters->setAccessible(true);
+            self::assertSame(null === $params ? [] : $params, $filters->getValue($result));
+        } else {
+            self::assertSame($params, $result->getFilters());
+        }
+    }
+
+    public static function provideSearchDispatchesOnceCases(): iterable
+    {
+        return [
+            ['get', '/v1/widgets/search', ['limit' => 2], '/v1/widgets/search', ['limit' => 2], false],
+            ['post', '/v2/widgets/search', ['query' => 'widgets', 'limit' => 2], '/v2/widgets/search?limit=2', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search', ['query' => 'widgets'], '/v2/widgets/search', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search', null, '/v2/widgets/search', [], true],
+            ['post', '/v2/widgets/search?page=2&limit=2', ['query' => 'widgets', 'limit' => 9], '/v2/widgets/search?limit=9', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search?page=2', ['query' => 'widgets', 'limit' => 9], '/v2/widgets/search?limit=9', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search?limit=2&unused=value', ['query' => 'widgets'], '/v2/widgets/search', ['query' => 'widgets'], true],
+            ['post', '/v2/widgets/search?limit=2', null, '/v2/widgets/search', [], true],
+        ];
+    }
+
+    public function testSearchPropagatesErrorWithoutAnotherDispatch()
+    {
+        $client = $this->getMockBuilder(BaseStripeClient::class)->setMethods(['request'])->getMock();
+        $client->expects(self::once())->method('request')
+            ->with('post', '/v2/widgets/search?limit=2', ['query' => 'widgets'], [])
+            ->willThrowException(new Exception\InvalidRequestException('search failed'))
+        ;
+        $this->expectException(Exception\InvalidRequestException::class);
+        $client->requestSearchResult('post', '/v2/widgets/search', ['limit' => 2, 'query' => 'widgets'], []);
     }
 
     public function testCtorDoesNotThrowWhenNoParams()
@@ -262,6 +319,73 @@ final class BaseStripeClientTest extends TestCase
         $charge = $client->request('get', '/v1/charges/ch_123', [], ['stripe_account' => 'acct_456']);
         self::assertNotNull($charge);
         self::assertSame('acct_456', $this->optsReflector->getValue($charge)->headers['Stripe-Account']);
+    }
+
+    public function testRequestWithBareClientDoesNotInheritGlobalStripeAccount()
+    {
+        Stripe::setAccountId('acct_global');
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) {
+                self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    self::assertStringStartsNotWith('Stripe-Account', $header);
+                }
+
+                return [json_encode(['id' => 'ch_123', 'object' => 'charge']), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+        $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testRequestWithClientStripeAccountNullDoesNotInheritGlobalStripeAccount()
+    {
+        Stripe::setAccountId('acct_global');
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) {
+                self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    self::assertStringStartsNotWith('Stripe-Account', $header);
+                }
+
+                return [json_encode(['id' => 'ch_123', 'object' => 'charge']), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'stripe_account' => null,
+            'api_base' => MOCK_URL,
+        ]);
+        $client->request('get', '/v1/charges/ch_123', [], []);
+    }
+
+    public function testRequestWithOptsStripeAccountNullDoesNotInheritGlobalStripeAccount()
+    {
+        Stripe::setAccountId('acct_global');
+
+        $this->curlClientStub->expects(self::once())
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) {
+                self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+                foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+                    self::assertStringStartsNotWith('Stripe-Account', $header);
+                }
+
+                return [json_encode(['id' => 'ch_123', 'object' => 'charge']), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+        $client->request('get', '/v1/charges/ch_123', [], ['stripe_account' => null]);
     }
 
     public function testRequestCollectionWithClientApiKey()
@@ -919,6 +1043,172 @@ final class BaseStripeClientTest extends TestCase
         self::assertSame('meter_123', $event->related_object->id);
     }
 
+    public function testEventFetchedRelatedObjectRetainsContext()
+    {
+        $requests = [];
+        $this->curlClientStub->expects(self::exactly(2))
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) use (&$requests) {
+                $requests[] = [$opts, $url];
+                $deleted = false !== strpos($url, '/v1/products/prod_shared')
+                    && isset($opts[\CURLOPT_CUSTOMREQUEST])
+                    && 'DELETE' === $opts[\CURLOPT_CUSTOMREQUEST];
+
+                return [json_encode([
+                    'id' => 'prod_shared',
+                    'object' => 'product',
+                    'deleted' => $deleted,
+                ]), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $payload = json_encode([
+            'id' => 'evt_123',
+            'object' => 'v2.core.event',
+            'type' => 'v1.product.updated',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'context' => 'acct_child',
+            'related_object' => [
+                'id' => 'prod_shared',
+                'type' => 'product',
+                'url' => '/v1/products/prod_shared',
+            ],
+        ]);
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+            'stripe_account' => 'acct_platform',
+            'stripe_context' => 'ctx_platform',
+        ]);
+        $signature = WebhookSignature::generateSignatureHeader($payload, WebhookTest::SECRET);
+
+        $notification = $client->parseEventNotification($payload, $signature, WebhookTest::SECRET);
+        self::assertInstanceOf(V1ProductUpdatedEventNotification::class, $notification);
+        $product = $notification->fetchRelatedObject();
+        $product->delete();
+
+        self::assertCount(2, $requests);
+        foreach ($requests as [$opts, $url]) {
+            self::assertSame(MOCK_URL . '/v1/products/prod_shared', $url);
+            self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+            self::assertContains('Stripe-Context: acct_child', $opts[\CURLOPT_HTTPHEADER]);
+            self::assertNotContains('Stripe-Account: acct_platform', $opts[\CURLOPT_HTTPHEADER]);
+        }
+    }
+
+    public function testEventRetrievedDirectlyFetchedRelatedObjectRetainsContext()
+    {
+        $requests = [];
+        $this->curlClientStub->expects(self::exactly(3))
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) use (&$requests) {
+                $requests[] = [$opts, $url];
+                if (false !== strpos($url, '/v2/core/events/')) {
+                    return [json_encode([
+                        'id' => 'evt_123',
+                        'object' => 'v2.core.event',
+                        'type' => 'v1.product.updated',
+                        'created' => '2022-02-15T00:27:45.330Z',
+                        'context' => 'acct_child',
+                        'related_object' => [
+                            'id' => 'prod_shared',
+                            'type' => 'product',
+                            'url' => '/v1/products/prod_shared',
+                        ],
+                    ]), 200, []];
+                }
+
+                $deleted = isset($opts[\CURLOPT_CUSTOMREQUEST]) && 'DELETE' === $opts[\CURLOPT_CUSTOMREQUEST];
+
+                return [json_encode([
+                    'id' => 'prod_shared',
+                    'object' => 'product',
+                    'deleted' => $deleted,
+                ]), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+            'stripe_account' => 'acct_platform',
+            'stripe_context' => 'ctx_platform',
+        ]);
+
+        // Unlike testEventFetchedRelatedObjectRetainsContext above, this event is
+        // fetched directly by ID rather than parsed from a webhook payload.
+        $event = $client->request('get', '/v2/core/events/evt_123', [], null);
+        self::assertInstanceOf(V1ProductUpdatedEvent::class, $event);
+
+        $product = $event->fetchRelatedObject();
+        $product->delete();
+
+        self::assertCount(3, $requests);
+        // Skip $requests[0], the initial retrieval of the event itself, which
+        // legitimately uses the client's own default account and context.
+        foreach (\array_slice($requests, 1) as [$opts, $url]) {
+            self::assertSame(MOCK_URL . '/v1/products/prod_shared', $url);
+            self::assertContains('Authorization: Bearer sk_test_client', $opts[\CURLOPT_HTTPHEADER]);
+            self::assertContains('Stripe-Context: acct_child', $opts[\CURLOPT_HTTPHEADER]);
+            self::assertNotContains('Stripe-Account: acct_platform', $opts[\CURLOPT_HTTPHEADER]);
+        }
+    }
+
+    public function testEventRetrievedDirectlyFetchedRelatedObjectDoesNotInheritGlobalStripeAccount()
+    {
+        // Unlike testEventRetrievedDirectlyFetchedRelatedObjectRetainsContext above, this
+        // covers the process-global Stripe::$accountId, not the client's own stripe_account.
+        // Event::refreshFrom() clears the carried-over Stripe-Account header so it doesn't
+        // leak the client's own account onto the event's scoped context; this test confirms
+        // that clearing isn't itself silently refilled by the global fallback.
+        Stripe::setAccountId('acct_global');
+
+        $requests = [];
+        $this->curlClientStub->expects(self::exactly(2))
+            ->method('executeRequestWithRetries')
+            ->willReturnCallback(static function ($opts, $url) use (&$requests) {
+                $requests[] = [$opts, $url];
+                if (false !== strpos($url, '/v2/core/events/')) {
+                    return [json_encode([
+                        'id' => 'evt_123',
+                        'object' => 'v2.core.event',
+                        'type' => 'v1.product.updated',
+                        'created' => '2022-02-15T00:27:45.330Z',
+                        'context' => 'acct_child',
+                        'related_object' => [
+                            'id' => 'prod_shared',
+                            'type' => 'product',
+                            'url' => '/v1/products/prod_shared',
+                        ],
+                    ]), 200, []];
+                }
+
+                return [json_encode([
+                    'id' => 'prod_shared',
+                    'object' => 'product',
+                ]), 200, []];
+            })
+        ;
+        ApiRequestor::setHttpClient($this->curlClientStub);
+
+        $client = new BaseStripeClient(['api_key' => 'sk_test_client', 'api_base' => MOCK_URL]);
+
+        $event = $client->request('get', '/v2/core/events/evt_123', [], null);
+        self::assertInstanceOf(V1ProductUpdatedEvent::class, $event);
+
+        $event->fetchRelatedObject();
+
+        self::assertCount(2, $requests);
+        [$opts, $url] = $requests[1];
+        self::assertSame(MOCK_URL . '/v1/products/prod_shared', $url);
+        self::assertContains('Stripe-Context: acct_child', $opts[\CURLOPT_HTTPHEADER]);
+        foreach ($opts[\CURLOPT_HTTPHEADER] as $header) {
+            self::assertStringStartsNotWith('Stripe-Account', $header);
+        }
+    }
+
     /**
      * Codegen emits `const RELATED_OBJECT_CLASS = \Stripe\RelatedSingletonObject::class`
      * on singleton event notifications. No such event exists in the spec yet, so stand in
@@ -993,6 +1283,65 @@ final class BaseStripeClientTest extends TestCase
         // @var UnknownEventNotification $event
         self::assertNull($event->related_object);
         self::assertNull($event->fetchRelatedObject());
+    }
+
+    public function testEventNotificationSerializationAndDebugOutputOmitApiKey()
+    {
+        $notification = $this->parseMeterEventNotification('sk_test_notification_secret');
+
+        foreach ($this->serializedAndDebugOutputs($notification) as $label => $output) {
+            self::assertFalse(false !== \strpos($output, 'sk_test_notification_secret'), "{$label} contains the API key");
+        }
+        self::compatAssertStringContainsString('evt_234', \print_r($notification, true));
+    }
+
+    public function testUnserializedEventNotificationKeepsFieldsButCannotMakeRequests()
+    {
+        $restored = \unserialize(\serialize($this->parseMeterEventNotification('sk_test_notification_secret')));
+
+        self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $restored);
+        self::assertSame('evt_234', $restored->id);
+        self::assertSame('v1.billing.meter.error_report_triggered', $restored->type);
+        self::assertSame('acct_123', (string) $restored->context);
+        self::assertSame('/v1/billing/meters/meter_123', $restored->related_object->url);
+
+        foreach (['fetchEvent', 'fetchRelatedObject'] as $method) {
+            try {
+                $restored->{$method}();
+                self::fail("{$method} should throw on a restored notification");
+            } catch (Exception\AuthenticationException $e) {
+                self::compatAssertStringContainsString('parseEventNotification()', $e->getMessage());
+            }
+        }
+    }
+
+    public function testClientSerializationAndDebugOutputOmitApiKey()
+    {
+        $client = new StripeClient(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
+
+        foreach ($this->serializedAndDebugOutputs($client) as $label => $output) {
+            self::assertFalse(false !== \strpos($output, 'sk_test_1234567890abcdefghijklmn'), "{$label} contains the API key");
+        }
+        self::compatAssertStringContainsString('sk_test_********************klmn', \print_r($client, true));
+        self::assertNull(\unserialize(\serialize($client))->getApiKey());
+    }
+
+    public function testUnserializingLegacyClientDataDiscardsApiKey()
+    {
+        // Mirrors the default format older versions produced, before
+        // BaseStripeClient defined __serialize().
+        $config = \array_merge(BaseStripeClient::DEFAULT_CONFIG, ['api_key' => 'sk_test_legacy_secret']);
+        $properties = [
+            "\0Stripe\\BaseStripeClient\0config" => $config,
+            "\0Stripe\\BaseStripeClient\0defaultOpts" => Util\RequestOptions::parse([]),
+        ];
+        $legacy = 'O:' . \strlen(StripeClient::class) . ':"' . StripeClient::class . '"' . \substr(\serialize($properties), 1);
+
+        $restored = \unserialize($legacy);
+
+        self::assertInstanceOf(StripeClient::class, $restored);
+        self::assertNull($restored->getApiKey());
+        self::assertSame(BaseStripeClient::DEFAULT_API_BASE, $restored->getApiBase());
     }
 
     public function testParseEventNotificationRejectsV1Payload()
@@ -1157,5 +1506,44 @@ final class BaseStripeClientTest extends TestCase
         $this->compatExpectExceptionMessageMatches('/max_network_retries.*int/');
 
         new BaseStripeClient(['max_network_retries' => null, 'stripe_api_key' => 'sk_test_123']);
+    }
+
+    private function parseMeterEventNotification($apiKey)
+    {
+        $payload = \json_encode([
+            'id' => 'evt_234',
+            'object' => 'v2.core.event',
+            'type' => 'v1.billing.meter.error_report_triggered',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'context' => 'acct_123',
+            'livemode' => false,
+            'related_object' => [
+                'id' => 'meter_123',
+                'type' => 'billing.meter',
+                'url' => '/v1/billing/meters/meter_123',
+            ],
+        ]);
+        $client = new StripeClient(['api_key' => $apiKey, 'api_base' => MOCK_URL]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($payload, WebhookTest::SECRET);
+
+        return $client->parseEventNotification($payload, $sigHeader, WebhookTest::SECRET);
+    }
+
+    /**
+     * @param object $value
+     *
+     * @return array<string, string>
+     */
+    private function serializedAndDebugOutputs($value)
+    {
+        \ob_start();
+        \var_dump($value);
+        $varDump = \ob_get_clean();
+
+        return [
+            'serialize' => \serialize($value),
+            'print_r' => \print_r($value, true),
+            'var_dump' => $varDump,
+        ];
     }
 }

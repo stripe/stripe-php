@@ -105,6 +105,49 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Serializes the client without its API key. Clients end up in sessions,
+     * caches, and queued jobs (often inside an EventNotification), which
+     * aren't protected like secrets.
+     */
+    public function __serialize(): array
+    {
+        $config = $this->config;
+        $config['api_key'] = null;
+
+        return [
+            'config' => $config,
+            'defaultOpts' => $this->defaultOpts,
+        ];
+    }
+
+    /**
+     * Restores a client without an API key, discarding keys embedded by older
+     * SDK versions too.
+     */
+    public function __unserialize(array $data): void
+    {
+        $data = Util::unmangleSerializedProperties($data);
+        $config = $data['config'] ?? self::DEFAULT_CONFIG;
+        $config['api_key'] = null;
+        $this->config = $config;
+        $this->defaultOpts = $data['defaultOpts'] ?? \Stripe\Util\RequestOptions::parse([]);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function __debugInfo()
+    {
+        $config = $this->config;
+        $config['api_key'] = \Stripe\Util\RequestOptions::redactApiKey($config['api_key']);
+
+        return [
+            'config' => $config,
+            'defaultOpts' => $this->defaultOpts,
+        ];
+    }
+
+    /**
      * Gets the API key used by the client to send requests.
      *
      * @return null|string the API key used by the client to send requests
@@ -157,6 +200,22 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         }
 
         return $this->defaultOpts->headers['Stripe-Context'];
+    }
+
+    /**
+     * Returns a new client with the same configuration, scoped to the given Stripe Context.
+     *
+     * @param null|string|StripeContext $context
+     *
+     * @return static
+     */
+    public function withStripeContext($context)
+    {
+        $config = $this->config;
+        $config['stripe_account'] = null;
+        $config['stripe_context'] = $context;
+
+        return new static($config);
     }
 
     /**
@@ -373,9 +432,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      */
     public function requestSearchResult($method, $path, $params, $opts)
     {
-        $obj = $this->request($method, $path, $params, $opts);
         $apiMode = Util::getApiMode($path);
         if ('v1' === $apiMode) {
+            $obj = $this->request($method, $path, $params, $opts);
             if (!$obj instanceof SearchResult) {
                 $received_class = \get_class($obj);
                 $msg = "Expected to receive `Stripe\\SearchResult` object from Stripe API. Instead received `{$received_class}`.";
@@ -386,9 +445,9 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
         } else {
             $params = null === $params ? [] : $params;
             $filters = $params;
+            $path = \explode('?', $path, 2)[0];
             if (\array_key_exists('limit', $params)) {
-                $separator = false === \strpos($path, '?') ? '?' : '&';
-                $path .= $separator . 'limit=' . \rawurlencode((string) $params['limit']);
+                $path .= '?limit=' . \rawurlencode((string) $params['limit']);
                 unset($params['limit']);
             }
             $obj = $this->request($method, $path, $params, $opts);
@@ -522,7 +581,12 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
      * */
     public function deserialize($json, $apiMode = 'v1')
     {
-        return Util::convertToStripeObject(\json_decode($json, true), [], $apiMode);
+        $opts = clone $this->defaultOpts;
+        $opts->apiKey = $this->getApiKey();
+        $opts->apiBase = $this->getApiBase();
+        $opts->discardNonPersistentHeaders();
+
+        return Util::convertToStripeObject(\json_decode($json, true), $opts, $apiMode);
     }
 
     /**

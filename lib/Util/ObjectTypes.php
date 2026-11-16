@@ -187,6 +187,22 @@ class ObjectTypes
         \Stripe\V2\Core\AccountToken::OBJECT_NAME => \Stripe\V2\Core\AccountToken::class,
         \Stripe\V2\Core\Event::OBJECT_NAME => \Stripe\V2\Core\Event::class,
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
+        \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,
+        \Stripe\V2\Core\Vault\UsBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\UsBankAccount::class,
+        \Stripe\V2\MoneyManagement\Adjustment::OBJECT_NAME => \Stripe\V2\MoneyManagement\Adjustment::class,
+        \Stripe\V2\MoneyManagement\FinancialAccount::OBJECT_NAME => \Stripe\V2\MoneyManagement\FinancialAccount::class,
+        \Stripe\V2\MoneyManagement\FinancialAddress::OBJECT_NAME => \Stripe\V2\MoneyManagement\FinancialAddress::class,
+        \Stripe\V2\MoneyManagement\FinancialAddressCreditSimulation::OBJECT_NAME => \Stripe\V2\MoneyManagement\FinancialAddressCreditSimulation::class,
+        \Stripe\V2\MoneyManagement\InboundTransfer::OBJECT_NAME => \Stripe\V2\MoneyManagement\InboundTransfer::class,
+        \Stripe\V2\MoneyManagement\OutboundPayment::OBJECT_NAME => \Stripe\V2\MoneyManagement\OutboundPayment::class,
+        \Stripe\V2\MoneyManagement\OutboundSetupIntent::OBJECT_NAME => \Stripe\V2\MoneyManagement\OutboundSetupIntent::class,
+        \Stripe\V2\MoneyManagement\PayoutIntent::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutIntent::class,
+        \Stripe\V2\MoneyManagement\PayoutMethod::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutMethod::class,
+        \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::OBJECT_NAME => \Stripe\V2\MoneyManagement\PayoutMethodsBankAccountSpec::class,
+        \Stripe\V2\MoneyManagement\ReceivedCredit::OBJECT_NAME => \Stripe\V2\MoneyManagement\ReceivedCredit::class,
+        \Stripe\V2\MoneyManagement\RecipientVerification::OBJECT_NAME => \Stripe\V2\MoneyManagement\RecipientVerification::class,
+        \Stripe\V2\MoneyManagement\Transaction::OBJECT_NAME => \Stripe\V2\MoneyManagement\Transaction::class,
+        \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         // v2 object classes: The end of the section generated from our OpenAPI spec
     ];
 }

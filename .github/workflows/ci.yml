@@ -32,24 +32,10 @@ jobs:
       contents: read
 
     steps:
-      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
-        with:
-          php-version: "8.2"
-
-      - name: Validate composer.json
-        run: composer validate
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
-
-      - name: Run PHP-CS-Fixer
-        run: just format-check
+      - uses: ./.github/actions/php-cs-fixer
 
   phpstan:
     name: PHPStan
@@ -60,24 +46,10 @@ jobs:
       contents: read
 
     steps:
-      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
-        with:
-          php-version: "8.2"
-
-      - name: Validate composer.json
-        run: composer validate
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
-
-      - name: Run phpstan
-        run: just lint-test lint
+      - uses: ./.github/actions/phpstan
 
   tests:
     name: Tests (php@${{ matrix.php-version }}, AUTOLOAD=${{ matrix.autoload }}, ${{ matrix.os }})
@@ -89,6 +61,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # Keep in sync with the tests matrix in canary.yml.
         os:
           - "ubuntu-24.04"
         autoload:
@@ -115,40 +88,13 @@ jobs:
             autoload: "0"
 
     steps:
-      - uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: Read OpenAPI version
-        id: openapi
-        shell: bash
-        run: echo "version=$(< OPENAPI_VERSION)" >> "$GITHUB_OUTPUT"
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+      - uses: ./.github/actions/test
         with:
           php-version: ${{ matrix.php-version }}
-
-      # We run php-cs-fixer and PHPStan in separate jobs, but the versions we use are not compatible
-      # with all the versions of PHP that we want to execute PHPUnit upon
-      - name: Trim dependency
-        run: composer remove --dev --no-update friendsofphp/php-cs-fixer phpstan/phpstan
-
-      - name: Validate composer.json
-        run: composer validate
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
-
-      - uses: stripe/openapi/actions/stripe-mock@master
-        with:
-          openapi_version: ${{ steps.openapi.outputs.version }}
-
-      - name: Run test suite
-        # --yes skips the confirmation dialogue for the CI test, which modifies files
-        run: |
-          php --version
-          just --yes ci-test ${{ matrix.autoload }}
+          autoload: ${{ matrix.autoload }}
 
   publish:
     # Doesn't actually publish. The publish happens via a packagist webhook configured in the Github UI. But we still display a message here

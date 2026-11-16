@@ -19,7 +19,7 @@ namespace Stripe\V2\Core;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata User-defined key/value data for the destination; it has no effect on event matching or delivery.
  * @property string $name A user-defined label for identifying the destination in Stripe.
- * @property null|string $snapshot_api_version For snapshot events only, the Stripe API version used to render event objects. Thin events are not pinned to an API version.
+ * @property null|string $snapshot_api_version For snapshot events only, the Stripe API version used to render event objects. You can't change this value after you create the event destination. Thin events are not pinned to an API version.
  * @property string $status Whether Stripe currently attempts delivery. Stripe attempts delivery to enabled destinations when their provider configuration is active; disabled destinations do not receive delivery attempts.
  * @property null|(object{disabled?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Additional lifecycle context for the destination status, when available.
  * @property string $type The delivery transport. Chosen when the destination is created and cannot be changed by update.

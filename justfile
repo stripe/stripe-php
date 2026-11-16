@@ -34,7 +34,7 @@ format-check: (format "--dry-run")
 
 # ⭐ statically analyze code
 lint *args:
-    php -d memory_limit=512M vendor/bin/phpstan analyse lib tests {{args}}
+    php -d memory_limit=1G vendor/bin/phpstan analyse lib tests {{args}}
 
 # statically analyze code (strict)
 lint-test:

@@ -1,0 +1,104 @@
+name: Canary CI
+
+# Runs the same checks as CI against code generated from the canary specs.
+# sdk-codegen force-pushes these branches; they are never released, so there is
+# no publish job.
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - canary-ga
+      - canary-beta
+      - canary-private-preview
+
+permissions: {}
+
+concurrency:
+  # Each push replaces the branch, so an older run's result is stale.
+  group: canary-ci-${{ github.ref_name }}
+  cancel-in-progress: true
+
+env:
+  # Map each canary branch to the channel stripe-mock serves.
+  CANARY_CHANNEL: >-
+    ${{
+      github.ref_name == 'canary-ga' && 'ga' ||
+      github.ref_name == 'canary-beta' && 'beta' ||
+      github.ref_name == 'canary-private-preview' && 'private-preview' ||
+      'unsupported'
+    }}
+
+jobs:
+  php-cs-fixer:
+    name: PHP-CS-Fixer
+
+    runs-on: "ubuntu-24.04"
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/php-cs-fixer
+
+  phpstan:
+    name: PHPStan
+
+    runs-on: "ubuntu-24.04"
+
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/phpstan
+
+  tests:
+    name: Tests (php@${{ matrix.php-version }}, AUTOLOAD=${{ matrix.autoload }}, ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+
+    permissions:
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # Keep in sync with the tests matrix in ci.yml.
+        os:
+          - "ubuntu-24.04"
+        autoload:
+          - "0"
+          - "1"
+        php-version:
+          # https://docs.stripe.com/sdks/versioning?lang=php
+          # https://endoflife.date/php
+          - "7.4"
+          - "8.0"
+          - "8.1"
+          - "8.2"
+          - "8.3"
+          - "8.4"
+          - "8.5"
+        include:
+          - os: windows-latest
+            # use any modern-ish version
+            php-version: "8.5"
+            autoload: "1"
+          - os: windows-latest
+            # use any modern-ish version
+            php-version: "8.5"
+            autoload: "0"
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/test
+        with:
+          php-version: ${{ matrix.php-version }}
+          autoload: ${{ matrix.autoload }}
+          canary_channel: ${{ env.CANARY_CHANNEL }}

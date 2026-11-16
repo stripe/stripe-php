@@ -5,6 +5,8 @@
 namespace Stripe\Treasury;
 
 /**
+ * Legacy TransactionEntries are part of the v1 version of Treasury for platforms and do not support many of the features introduced in <a href="https://docs.stripe.com/treasury/connect">Treasury for platforms v2</a>. Use <a href="https://docs.stripe.com/api/v2/money-management/transaction-entries">Transaction Entries</a> instead of building a new v1 integration.
+ *
  * TransactionEntries represent individual units of money movements within a single <a href="https://docs.stripe.com/api#transactions">Transaction</a>.
  *
  * @property string $id Unique identifier for the object.

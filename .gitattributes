@@ -18,4 +18,3 @@
 /phpunit.no_autoload.xml export-ignore
 /phpunit.xml export-ignore
 /tests export-ignore
-/update_certs.php export-ignore

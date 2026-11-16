@@ -27,7 +27,7 @@ namespace Stripe;
  * @property null|string $description An arbitrary string attached to the object. Often useful for displaying to users.
  * @property null|BankAccount|Card|string $destination ID of the bank account or card the payout is sent to.
  * @property null|BalanceTransaction|string $failure_balance_transaction If the payout fails or cancels, this is the ID of the balance transaction that reverses the initial balance transaction and returns the funds from the failed payout back in your balance.
- * @property null|string $failure_code Error code that provides a reason for a payout failure, if available. View our <a href="https://docs.stripe.com/api#payout_failures">list of failure codes</a>.
+ * @property null|string $failure_code Error code that provides a reason for a payout failure, if available.
  * @property null|string $failure_message Message that provides the reason for a payout failure, if available.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.

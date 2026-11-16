@@ -10,9 +10,7 @@ namespace Stripe;
  * just like a <code>Card</code> object: once chargeable, they can be charged, or can be
  * attached to customers.
  *
- * Stripe doesn't recommend using the deprecated <a href="https://docs.stripe.com/api/sources">Sources API</a>.
- * We recommend that you adopt the <a href="https://docs.stripe.com/api/payment_methods">PaymentMethods API</a>.
- * This newer API provides access to our latest features and payment method types.
+ * This API is deprecated. Use the <a href="https://docs.stripe.com/api/payment_methods">PaymentMethods API</a> instead.
  *
  * Related guides: <a href="https://docs.stripe.com/sources">Sources API</a> and <a href="https://docs.stripe.com/sources/customers">Sources &amp; Customers</a>.
  *

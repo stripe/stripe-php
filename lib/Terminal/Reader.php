@@ -35,6 +35,7 @@ class Reader extends \Stripe\ApiResource
     const DEVICE_TYPE_MOBILE_PHONE_READER = 'mobile_phone_reader';
     const DEVICE_TYPE_SIMULATED_STRIPE_S700 = 'simulated_stripe_s700';
     const DEVICE_TYPE_SIMULATED_STRIPE_S710 = 'simulated_stripe_s710';
+    const DEVICE_TYPE_SIMULATED_STRIPE_T600 = 'simulated_stripe_t600';
     const DEVICE_TYPE_SIMULATED_VERIFONE_M425 = 'simulated_verifone_m425';
     const DEVICE_TYPE_SIMULATED_VERIFONE_P630 = 'simulated_verifone_p630';
     const DEVICE_TYPE_SIMULATED_VERIFONE_UX700 = 'simulated_verifone_ux700';
@@ -43,6 +44,7 @@ class Reader extends \Stripe\ApiResource
     const DEVICE_TYPE_STRIPE_M2 = 'stripe_m2';
     const DEVICE_TYPE_STRIPE_S700 = 'stripe_s700';
     const DEVICE_TYPE_STRIPE_S710 = 'stripe_s710';
+    const DEVICE_TYPE_STRIPE_T600 = 'stripe_t600';
     const DEVICE_TYPE_VERIFONE_M425 = 'verifone_m425';
     const DEVICE_TYPE_VERIFONE_P400 = 'verifone_P400';
     const DEVICE_TYPE_VERIFONE_P630 = 'verifone_p630';
