@@ -121,6 +121,8 @@ abstract class EventNotification
      */
     public function fetchEvent()
     {
+        $this->assertHasClient();
+
         $response = $this->client->rawRequest(
             'get',
             // `id` comes from the notification body, so encode it the way
@@ -144,6 +146,7 @@ abstract class EventNotification
         if (null === $this->related_object) {
             return null;
         }
+        $this->assertHasClient();
 
         $options = [
             'headers' => ['Stripe-Request-Trigger' => 'event=' . $this->id],
@@ -162,5 +165,57 @@ abstract class EventNotification
         );
 
         return $this->client->deserialize($response->body, \Stripe\Util\Util::getApiMode($this->related_object->url));
+    }
+
+    /**
+     * Serializes the notification without its client, which holds the API key.
+     * Notifications are commonly handed to queued jobs, and job payloads aren't
+     * protected like secrets.
+     */
+    public function __serialize(): array
+    {
+        $data = \get_object_vars($this);
+        unset($data['client']);
+
+        return $data;
+    }
+
+    /**
+     * Restores the notification's fields without a client, discarding clients
+     * embedded by older SDK versions too. A restored notification can't make
+     * requests.
+     */
+    public function __unserialize(array $data): void
+    {
+        foreach (\Stripe\Util\Util::unmangleSerializedProperties($data) as $name => $value) {
+            if ('client' !== $name) {
+                $this->{$name} = $value;
+            }
+        }
+        $this->client = null;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function __debugInfo()
+    {
+        $data = \get_object_vars($this);
+        unset($data['client']);
+
+        return $data;
+    }
+
+    /**
+     * @throws \Stripe\Exception\AuthenticationException
+     */
+    private function assertHasClient()
+    {
+        if (null === $this->client) {
+            throw new \Stripe\Exception\AuthenticationException(
+                'This EventNotification was restored from a serialized copy and has no client. '
+                . 'Parse the original payload with StripeClient::parseEventNotification() to make requests.'
+            );
+        }
     }
 }

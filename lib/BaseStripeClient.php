@@ -105,6 +105,49 @@ class BaseStripeClient implements StripeClientInterface, StripeStreamingClientIn
     }
 
     /**
+     * Serializes the client without its API key. Clients end up in sessions,
+     * caches, and queued jobs (often inside an EventNotification), which
+     * aren't protected like secrets.
+     */
+    public function __serialize(): array
+    {
+        $config = $this->config;
+        $config['api_key'] = null;
+
+        return [
+            'config' => $config,
+            'defaultOpts' => $this->defaultOpts,
+        ];
+    }
+
+    /**
+     * Restores a client without an API key, discarding keys embedded by older
+     * SDK versions too.
+     */
+    public function __unserialize(array $data): void
+    {
+        $data = Util::unmangleSerializedProperties($data);
+        $config = $data['config'] ?? self::DEFAULT_CONFIG;
+        $config['api_key'] = null;
+        $this->config = $config;
+        $this->defaultOpts = $data['defaultOpts'] ?? \Stripe\Util\RequestOptions::parse([]);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public function __debugInfo()
+    {
+        $config = $this->config;
+        $config['api_key'] = \Stripe\Util\RequestOptions::redactApiKey($config['api_key']);
+
+        return [
+            'config' => $config,
+            'defaultOpts' => $this->defaultOpts,
+        ];
+    }
+
+    /**
      * Gets the API key used by the client to send requests.
      *
      * @return null|string the API key used by the client to send requests

@@ -84,7 +84,7 @@ class RequestOptions
     public function __debugInfo()
     {
         return [
-            'apiKey' => $this->redactedApiKey(),
+            'apiKey' => self::redactApiKey($this->apiKey),
             'headers' => $this->headers,
             'apiBase' => $this->apiBase,
             'maxNetworkRetries' => $this->maxNetworkRetries,
@@ -249,14 +249,23 @@ class RequestOptions
         throw new \Stripe\Exception\InvalidArgumentException($message);
     }
 
-    /** @return string */
-    private function redactedApiKey()
+    /**
+     * Masks all but the key's prefix and last four characters, so debug
+     * output can identify a key without revealing it.
+     *
+     * @internal
+     *
+     * @param null|string $apiKey
+     *
+     * @return string
+     */
+    public static function redactApiKey($apiKey)
     {
-        if (null === $this->apiKey) {
+        if (null === $apiKey) {
             return '';
         }
 
-        $pieces = \explode('_', $this->apiKey, 3);
+        $pieces = \explode('_', $apiKey, 3);
         $last = \array_pop($pieces);
         $redactedLast = \strlen($last) > 4
             ? (\str_repeat('*', \strlen($last) - 4) . \substr($last, -4))
