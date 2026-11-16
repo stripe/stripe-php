@@ -84,7 +84,7 @@ class RequestOptions
     public function __debugInfo()
     {
         return [
-            'apiKey' => $this->redactedApiKey(),
+            'apiKey' => self::redactApiKey($this->apiKey),
             'headers' => $this->headers,
             'apiBase' => $this->apiBase,
             'maxNetworkRetries' => $this->maxNetworkRetries,
@@ -247,12 +247,6 @@ class RequestOptions
             . 'a global apiKey by "Stripe::setApiKey(<apiKey>)")';
 
         throw new \Stripe\Exception\InvalidArgumentException($message);
-    }
-
-    /** @return string */
-    private function redactedApiKey()
-    {
-        return self::redactApiKey($this->apiKey);
     }
 
     /**
