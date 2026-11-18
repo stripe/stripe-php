@@ -45,6 +45,6 @@ final class OAuthErrorExceptionTest extends \Stripe\TestCase
     public function testToString()
     {
         $e = $this->createFixture();
-        self::compatAssertStringContainsString('(Request req_test)', (string) $e);
+        self::compatAssertStringContainsString('[req_test]', (string) $e);
     }
 }

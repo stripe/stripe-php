@@ -44,7 +44,7 @@ final class ApiErrorExceptionTest extends \Stripe\TestCase
     public function testToString()
     {
         $e = $this->createFixture();
-        self::compatAssertStringContainsString('(Request req_test)', (string) $e);
+        self::compatAssertStringContainsString('[req_test]', (string) $e);
         self::compatAssertStringContainsString('Error sending request to Stripe', (string) $e);
         self::compatAssertStringContainsString('Stack trace:', (string) $e);
     }
