@@ -11,7 +11,7 @@ final class OAuthErrorExceptionTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
-    public function createFixture()
+    public function createFixture($headers = ['Some-Header' => 'Some Value', 'Request-Id' => 'req_test'])
     {
         $mock = $this->getMockForAbstractClass(OAuthErrorException::class);
 
@@ -20,10 +20,7 @@ final class OAuthErrorExceptionTest extends \Stripe\TestCase
             200,
             '{"error": "code", "error_description": "description"}',
             ['error' => 'code', 'error_description' => 'description'],
-            [
-                'Some-Header' => 'Some Value',
-                'Request-Id' => 'req_test',
-            ],
+            $headers,
             'code'
         );
     }
@@ -40,6 +37,19 @@ final class OAuthErrorExceptionTest extends \Stripe\TestCase
         self::assertNotNull($e->getError());
         self::assertSame('code', $e->getError()->error);
         self::assertSame('description', $e->getError()->error_description);
+    }
+
+    public function testGetMessageIncludesRequestId()
+    {
+        $e = $this->createFixture();
+        self::assertSame('[req_test] description', $e->getMessage());
+    }
+
+    public function testGetMessageWithoutRequestIdIsUnchanged()
+    {
+        $e = $this->createFixture(['Some-Header' => 'Some Value']);
+        self::assertSame('description', $e->getMessage());
+        self::assertNull($e->getRequestId());
     }
 
     public function testToString()

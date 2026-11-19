@@ -11,7 +11,7 @@ final class ApiErrorExceptionTest extends \Stripe\TestCase
 {
     use \Stripe\TestHelper;
 
-    public function createFixture()
+    public function createFixture($headers = ['Some-Header' => 'Some Value', 'Request-Id' => 'req_test'])
     {
         $mock = $this->getMockForAbstractClass(ApiErrorException::class);
 
@@ -20,10 +20,7 @@ final class ApiErrorExceptionTest extends \Stripe\TestCase
             200,
             '{"error": {"code": "some_code"}}',
             ['error' => ['code' => 'some_code']],
-            [
-                'Some-Header' => 'Some Value',
-                'Request-Id' => 'req_test',
-            ],
+            $headers,
             'some_code'
         );
     }
@@ -39,6 +36,19 @@ final class ApiErrorExceptionTest extends \Stripe\TestCase
         self::assertSame('some_code', $e->getStripeCode());
         self::assertNotNull($e->getError());
         self::assertSame('some_code', $e->getError()->code);
+    }
+
+    public function testGetMessageIncludesRequestId()
+    {
+        $e = $this->createFixture();
+        self::assertSame('[req_test] message', $e->getMessage());
+    }
+
+    public function testGetMessageWithoutRequestIdIsUnchanged()
+    {
+        $e = $this->createFixture(['Some-Header' => 'Some Value']);
+        self::assertSame('message', $e->getMessage());
+        self::assertNull($e->getRequestId());
     }
 
     public function testToString()
