@@ -14,9 +14,9 @@ class AccountLinkService extends \Stripe\Service\AbstractService
     /**
      * Creates an AccountLink object that includes a single-use URL that an account can
      * use to access a Stripe-hosted flow for collecting or updating required
-     * information.
+     * information, or to access its Stripe-hosted Dashboard.
      *
-     * @param null|array{account: string, use_case: array{account_onboarding?: array{collection_options?: array{fields?: string, future_requirements?: string}, refresh_url: string, return_url?: string}, account_update?: array{collection_options?: array{fields?: string, future_requirements?: string}, refresh_url: string, return_url?: string}, type: string}} $params
+     * @param null|array{account: string, use_case: array{account_dashboard?: array{refresh_url: string}, account_onboarding?: array{collection_options?: array{fields?: string, future_requirements?: string}, refresh_url: string, return_url?: string}, account_update?: array{collection_options?: array{fields?: string, future_requirements?: string}, refresh_url: string, return_url?: string}, type: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\AccountLink

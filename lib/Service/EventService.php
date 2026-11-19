@@ -16,7 +16,11 @@ class EventService extends AbstractService
      * Stripe API version at its creation time, specified in <a
      * href="https://docs.stripe.com/api/events/object">event object</a>
      * <code>api_version</code> attribute (not according to your current Stripe API
-     * version or <code>Stripe-Version</code> header).
+     * version or <code>Stripe-Version</code> header). The list includes only events
+     * for the account that makes the request. A platform’s list doesn’t include events
+     * from its connected accounts. To list a connected account’s events, make the
+     * request <a href="https://docs.stripe.com/connect/authentication">as the
+     * connected account</a> using the <code>Stripe-Account</code> header.
      *
      * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, delivery_success?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, types?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
