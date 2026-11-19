@@ -1285,6 +1285,65 @@ final class BaseStripeClientTest extends TestCase
         self::assertNull($event->fetchRelatedObject());
     }
 
+    public function testEventNotificationSerializationAndDebugOutputOmitApiKey()
+    {
+        $notification = $this->parseMeterEventNotification('sk_test_notification_secret');
+
+        foreach ($this->serializedAndDebugOutputs($notification) as $label => $output) {
+            self::assertFalse(false !== \strpos($output, 'sk_test_notification_secret'), "{$label} contains the API key");
+        }
+        self::compatAssertStringContainsString('evt_234', \print_r($notification, true));
+    }
+
+    public function testUnserializedEventNotificationKeepsFieldsButCannotMakeRequests()
+    {
+        $restored = \unserialize(\serialize($this->parseMeterEventNotification('sk_test_notification_secret')));
+
+        self::assertInstanceOf(V1BillingMeterErrorReportTriggeredEventNotification::class, $restored);
+        self::assertSame('evt_234', $restored->id);
+        self::assertSame('v1.billing.meter.error_report_triggered', $restored->type);
+        self::assertSame('acct_123', (string) $restored->context);
+        self::assertSame('/v1/billing/meters/meter_123', $restored->related_object->url);
+
+        foreach (['fetchEvent', 'fetchRelatedObject'] as $method) {
+            try {
+                $restored->{$method}();
+                self::fail("{$method} should throw on a restored notification");
+            } catch (Exception\AuthenticationException $e) {
+                self::compatAssertStringContainsString('parseEventNotification()', $e->getMessage());
+            }
+        }
+    }
+
+    public function testClientSerializationAndDebugOutputOmitApiKey()
+    {
+        $client = new StripeClient(['api_key' => 'sk_test_1234567890abcdefghijklmn']);
+
+        foreach ($this->serializedAndDebugOutputs($client) as $label => $output) {
+            self::assertFalse(false !== \strpos($output, 'sk_test_1234567890abcdefghijklmn'), "{$label} contains the API key");
+        }
+        self::compatAssertStringContainsString('sk_test_********************klmn', \print_r($client, true));
+        self::assertNull(\unserialize(\serialize($client))->getApiKey());
+    }
+
+    public function testUnserializingLegacyClientDataDiscardsApiKey()
+    {
+        // Mirrors the default format older versions produced, before
+        // BaseStripeClient defined __serialize().
+        $config = \array_merge(BaseStripeClient::DEFAULT_CONFIG, ['api_key' => 'sk_test_legacy_secret']);
+        $properties = [
+            "\0Stripe\\BaseStripeClient\0config" => $config,
+            "\0Stripe\\BaseStripeClient\0defaultOpts" => Util\RequestOptions::parse([]),
+        ];
+        $legacy = 'O:' . \strlen(StripeClient::class) . ':"' . StripeClient::class . '"' . \substr(\serialize($properties), 1);
+
+        $restored = \unserialize($legacy);
+
+        self::assertInstanceOf(StripeClient::class, $restored);
+        self::assertNull($restored->getApiKey());
+        self::assertSame(BaseStripeClient::DEFAULT_API_BASE, $restored->getApiBase());
+    }
+
     public function testParseEventNotificationRejectsV1Payload()
     {
         $jsonEvent = [
@@ -1447,5 +1506,44 @@ final class BaseStripeClientTest extends TestCase
         $this->compatExpectExceptionMessageMatches('/max_network_retries.*int/');
 
         new BaseStripeClient(['max_network_retries' => null, 'stripe_api_key' => 'sk_test_123']);
+    }
+
+    private function parseMeterEventNotification($apiKey)
+    {
+        $payload = \json_encode([
+            'id' => 'evt_234',
+            'object' => 'v2.core.event',
+            'type' => 'v1.billing.meter.error_report_triggered',
+            'created' => '2022-02-15T00:27:45.330Z',
+            'context' => 'acct_123',
+            'livemode' => false,
+            'related_object' => [
+                'id' => 'meter_123',
+                'type' => 'billing.meter',
+                'url' => '/v1/billing/meters/meter_123',
+            ],
+        ]);
+        $client = new StripeClient(['api_key' => $apiKey, 'api_base' => MOCK_URL]);
+        $sigHeader = WebhookSignature::generateSignatureHeader($payload, WebhookTest::SECRET);
+
+        return $client->parseEventNotification($payload, $sigHeader, WebhookTest::SECRET);
+    }
+
+    /**
+     * @param object $value
+     *
+     * @return array<string, string>
+     */
+    private function serializedAndDebugOutputs($value)
+    {
+        \ob_start();
+        \var_dump($value);
+        $varDump = \ob_get_clean();
+
+        return [
+            'serialize' => \serialize($value),
+            'print_r' => \print_r($value, true),
+            'var_dump' => $varDump,
+        ];
     }
 }

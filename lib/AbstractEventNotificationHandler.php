@@ -4320,6 +4320,71 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.core.claimable_sandbox.claimed" event.
+     *
+     * @param callable(Events\V2CoreClaimableSandboxClaimedEventNotification, StripeClient): void $handler Handles v2.core.claimable_sandbox.claimed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreClaimableSandboxClaimed($handler)
+    {
+        $this->register('v2.core.claimable_sandbox.claimed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.claimable_sandbox.created" event.
+     *
+     * @param callable(Events\V2CoreClaimableSandboxCreatedEventNotification, StripeClient): void $handler Handles v2.core.claimable_sandbox.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreClaimableSandboxCreated($handler)
+    {
+        $this->register('v2.core.claimable_sandbox.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.claimable_sandbox.expired" event.
+     *
+     * @param callable(Events\V2CoreClaimableSandboxExpiredEventNotification, StripeClient): void $handler Handles v2.core.claimable_sandbox.expired events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreClaimableSandboxExpired($handler)
+    {
+        $this->register('v2.core.claimable_sandbox.expired', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.claimable_sandbox.expiring" event.
+     *
+     * @param callable(Events\V2CoreClaimableSandboxExpiringEventNotification, StripeClient): void $handler Handles v2.core.claimable_sandbox.expiring events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreClaimableSandboxExpiring($handler)
+    {
+        $this->register('v2.core.claimable_sandbox.expiring', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.claimable_sandbox.updated" event.
+     *
+     * @param callable(Events\V2CoreClaimableSandboxUpdatedEventNotification, StripeClient): void $handler Handles v2.core.claimable_sandbox.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreClaimableSandboxUpdated($handler)
+    {
+        $this->register('v2.core.claimable_sandbox.updated', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.core.event_destination.ping" event.
      *
      * @param callable(Events\V2CoreEventDestinationPingEventNotification, StripeClient): void $handler Handles v2.core.event_destination.ping events

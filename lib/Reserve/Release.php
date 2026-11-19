@@ -38,8 +38,9 @@ class Release extends \Stripe\ApiResource
     const REASON_PLAN_DISABLED = 'plan_disabled';
 
     /**
-     * Returns a list of ReserveReleases previously created. The ReserveReleases are
-     * returned in sorted order, with the most recent ReserveReleases appearing first.
+     * Returns a list of ReserveReleases on your account or on one of your connected
+     * accounts. The ReserveReleases are returned in sorted order, with the most recent
+     * ReserveReleases appearing first.
      *
      * @param null|array{currency?: string, ending_before?: string, expand?: string[], limit?: int, reserve_hold?: string, reserve_plan?: string, starting_after?: string} $params
      * @param null|array|string $opts
@@ -56,7 +57,7 @@ class Release extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieve a ReserveRelease.
+     * Retrieve a ReserveRelease on your account or on one of your connected accounts.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

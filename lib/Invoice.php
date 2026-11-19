@@ -65,6 +65,7 @@ namespace Stripe;
  * @property null|Customer|string $customer The ID of the customer to bill.
  * @property null|string $customer_account The ID of the account representing the customer to bill.
  * @property null|(object{city: null|string, country: null|string, line1: null|string, line2: null|string, postal_code: null|string, state: null|string}&StripeObject) $customer_address The customer's address. Until the invoice is finalized, this field will equal <code>customer.address</code>. Once the invoice is finalized, this field will no longer be updated.
+ * @property null|(object{applied_balance: int, automatically_applied_balance: int, manually_applied_balance: int}&StripeObject) $customer_balance The customer balance amounts applied to this invoice.
  * @property null|string $customer_email The customer's email. Until the invoice is finalized, this field will equal <code>customer.email</code>. Once the invoice is finalized, this field will no longer be updated.
  * @property null|string $customer_name The customer's name. Until the invoice is finalized, this field will equal <code>customer.name</code>. Once the invoice is finalized, this field will no longer be updated.
  * @property null|string $customer_phone The customer's phone number. Until the invoice is finalized, this field will equal <code>customer.phone</code>. Once the invoice is finalized, this field will no longer be updated.

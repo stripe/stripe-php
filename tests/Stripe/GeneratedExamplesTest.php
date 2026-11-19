@@ -5029,244 +5029,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\BillSettingVersion::class, $result);
     }
 
-    public function testV2BillingCadenceGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/cadences',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.cadence',
-                        'billing_cycle' => [
-                            'interval_count' => [],
-                            'type' => 'week',
-                        ],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'livemode' => [],
-                        'payer' => [
-                            'billing_profile' => 'billing_profile',
-                            'type' => 'customer',
-                        ],
-                        'status' => 'active',
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result->data[0]);
-    }
-
-    public function testV2BillingCadencePost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/cadences',
-            [
-                'billing_cycle' => [
-                    'day' => [
-                        'time' => [
-                            'hour' => 3208676,
-                            'minute' => 1074026988,
-                            'second' => 906279820,
-                        ],
-                    ],
-                    'interval_count' => 797691627,
-                    'month' => [
-                        'day_of_month' => 1361669285,
-                        'month_of_year' => 82933018,
-                        'time' => [
-                            'hour' => 3208676,
-                            'minute' => 1074026988,
-                            'second' => 906279820,
-                        ],
-                    ],
-                    'type' => 'week',
-                    'week' => [
-                        'day_of_week' => 43636807,
-                        'time' => [
-                            'hour' => 3208676,
-                            'minute' => 1074026988,
-                            'second' => 906279820,
-                        ],
-                    ],
-                    'year' => [
-                        'day_of_month' => 1361669285,
-                        'month_of_year' => 82933018,
-                        'time' => [
-                            'hour' => 3208676,
-                            'minute' => 1074026988,
-                            'second' => 906279820,
-                        ],
-                    ],
-                ],
-                'payer' => ['billing_profile' => 'billing_profile'],
-            ],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence',
-                'billing_cycle' => [
-                    'interval_count' => [],
-                    'type' => 'week',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'type' => 'customer',
-                ],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->create([
-            'billing_cycle' => [
-                'day' => [
-                    'time' => [
-                        'hour' => 3208676,
-                        'minute' => 1074026988,
-                        'second' => 906279820,
-                    ],
-                ],
-                'interval_count' => 797691627,
-                'month' => [
-                    'day_of_month' => 1361669285,
-                    'month_of_year' => 82933018,
-                    'time' => [
-                        'hour' => 3208676,
-                        'minute' => 1074026988,
-                        'second' => 906279820,
-                    ],
-                ],
-                'type' => 'week',
-                'week' => [
-                    'day_of_week' => 43636807,
-                    'time' => [
-                        'hour' => 3208676,
-                        'minute' => 1074026988,
-                        'second' => 906279820,
-                    ],
-                ],
-                'year' => [
-                    'day_of_month' => 1361669285,
-                    'month_of_year' => 82933018,
-                    'time' => [
-                        'hour' => 3208676,
-                        'minute' => 1074026988,
-                        'second' => 906279820,
-                    ],
-                ],
-            ],
-            'payer' => ['billing_profile' => 'billing_profile'],
-        ]);
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
-    }
-
-    public function testV2BillingCadenceGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/cadences/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence',
-                'billing_cycle' => [
-                    'interval_count' => [],
-                    'type' => 'week',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'type' => 'customer',
-                ],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
-    }
-
-    public function testV2BillingCadencePost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/cadences/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence',
-                'billing_cycle' => [
-                    'interval_count' => [],
-                    'type' => 'week',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'type' => 'customer',
-                ],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->update('id_123', []);
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
-    }
-
-    public function testV2BillingCadencePost3()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/cadences/id_123/cancel',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence',
-                'billing_cycle' => [
-                    'interval_count' => [],
-                    'type' => 'week',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'type' => 'customer',
-                ],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->cancel('id_123', []);
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
-    }
-
     public function testV2BillingCollectionSettingGet()
     {
         $this->stubRequest(
@@ -6053,6 +5815,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'account' => 'account',
                 'use_case' => [
+                    'account_dashboard' => ['refresh_url' => 'refresh_url'],
                     'account_onboarding' => [
                         'collection_options' => [
                             'fields' => 'eventually_due',
@@ -6069,7 +5832,7 @@ final class GeneratedExamplesTest extends TestCase
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
-                    'type' => 'account_onboarding',
+                    'type' => 'account_dashboard',
                 ],
             ],
             [],
@@ -6081,7 +5844,7 @@ final class GeneratedExamplesTest extends TestCase
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'livemode' => [],
                 'url' => 'url',
-                'use_case' => ['type' => 'account_onboarding'],
+                'use_case' => ['type' => 'account_dashboard'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -6089,6 +5852,7 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->core->accountLinks->create([
             'account' => 'account',
             'use_case' => [
+                'account_dashboard' => ['refresh_url' => 'refresh_url'],
                 'account_onboarding' => [
                     'collection_options' => [
                         'fields' => 'eventually_due',
@@ -6105,7 +5869,7 @@ final class GeneratedExamplesTest extends TestCase
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
-                'type' => 'account_onboarding',
+                'type' => 'account_dashboard',
             ],
         ]);
         self::assertInstanceOf(V2\Core\AccountLink::class, $result);
@@ -6358,6 +6122,121 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->core->batchJobs->cancel('id_123', []);
         self::assertInstanceOf(V2\Core\BatchJob::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/claimable_sandboxes',
+            [
+                'enable_mcp_access' => true,
+                'onboarding_link_details' => [
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->create([
+            'enable_mcp_access' => true,
+            'onboarding_link_details' => [
+                'refresh_url' => 'refresh_url',
+                'return_url' => 'return_url',
+            ],
+            'prefill' => [
+                'country' => 'country',
+                'email' => 'email',
+                'name' => 'name',
+            ],
+        ]);
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/core/claimable_sandboxes/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
+    }
+
+    public function testV2CoreClaimableSandboxPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/claimable_sandboxes/id_123/renew_onboarding_link',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.claimable_sandbox',
+                'channel' => 'testing',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'prefill' => [
+                    'country' => 'country',
+                    'email' => 'email',
+                    'name' => 'name',
+                ],
+                'sandbox_details' => ['account' => 'account'],
+                'status' => 'live',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->claimableSandboxes->renewOnboardingLink(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Core\ClaimableSandbox::class, $result);
     }
 
     public function testV2CoreEventGet()
@@ -7703,10 +7582,10 @@ final class GeneratedExamplesTest extends TestCase
                         'actor' => ['type' => 'api_key'],
                         'context' => 'context',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'details' => ['type' => 'account_security'],
+                        'details' => ['type' => 'scim'],
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'type' => 'user_auth_challenge_failed',
+                        'type' => 'anomaly_detection_settings_updated',
                     ],
                 ],
                 'next_page_url' => null,
@@ -7733,10 +7612,10 @@ final class GeneratedExamplesTest extends TestCase
                 'actor' => ['type' => 'api_key'],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'details' => ['type' => 'account_security'],
+                'details' => ['type' => 'scim'],
                 'id' => 'obj_123',
                 'livemode' => [],
-                'type' => 'user_auth_challenge_failed',
+                'type' => 'anomaly_detection_settings_updated',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -9424,7 +9303,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'restricted' => [],
-                        'type' => 'bank_account',
+                        'type' => 'card',
                         'usage_status' => [
                             'payments' => 'invalid',
                             'transfers' => 'invalid',
@@ -9458,7 +9337,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'card',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -9490,7 +9369,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'card',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -9522,7 +9401,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'card',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',
@@ -9554,7 +9433,7 @@ final class GeneratedExamplesTest extends TestCase
                 'id' => 'obj_123',
                 'livemode' => [],
                 'restricted' => [],
-                'type' => 'bank_account',
+                'type' => 'card',
                 'usage_status' => [
                     'payments' => 'invalid',
                     'transfers' => 'invalid',

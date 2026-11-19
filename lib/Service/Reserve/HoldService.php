@@ -12,8 +12,9 @@ namespace Stripe\Service\Reserve;
 class HoldService extends \Stripe\Service\AbstractService
 {
     /**
-     * Returns a list of ReserveHolds previously created. The ReserveHolds are returned
-     * in sorted order, with the most recent ReserveHolds appearing first.
+     * Returns a list of ReserveHolds on your account or on one of your connected
+     * accounts. The ReserveHolds are returned in sorted order, with the most recent
+     * ReserveHolds appearing first.
      *
      * @param null|array{currency?: string, ending_before?: string, expand?: string[], is_releasable?: bool, limit?: int, reason?: string, reserve_plan?: string, reserve_release?: string, source_charge?: string, starting_after?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -28,7 +29,7 @@ class HoldService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a ReserveHold.
+     * Retrieve a ReserveHold on your account or on one of your connected accounts.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

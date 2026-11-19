@@ -11,6 +11,7 @@ namespace Stripe\Service\V2\Core;
  * @property AccountTokenService $accountTokens
  * @property ApprovalRequestService $approvalRequests
  * @property BatchJobService $batchJobs
+ * @property ClaimableSandboxService $claimableSandboxes
  * @property EventDestinationService $eventDestinations
  * @property EventService $events
  * @property Vault\VaultServiceFactory $vault
@@ -28,6 +29,7 @@ class CoreServiceFactory extends \Stripe\Service\AbstractServiceFactory
         'accountTokens' => AccountTokenService::class,
         'approvalRequests' => ApprovalRequestService::class,
         'batchJobs' => BatchJobService::class,
+        'claimableSandboxes' => ClaimableSandboxService::class,
         'eventDestinations' => EventDestinationService::class,
         'events' => EventService::class,
         'vault' => Vault\VaultServiceFactory::class,
