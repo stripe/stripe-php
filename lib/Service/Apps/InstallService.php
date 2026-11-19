@@ -20,7 +20,8 @@ class InstallService extends \Stripe\Service\AbstractService
      * created there. Other callers see the installs on their own account. A live key
      * lists live installs and a test key lists test installs; the key of an app’s
      * managed sandbox filtering by <code>app</code> lists that app’s installs across
-     * every sandbox.
+     * every sandbox, and also that app’s legacy test mode installs when the developer
+     * has no legacy test mode.
      *
      * @param null|array{account?: string, app?: string, approval_required?: bool, channel?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, created_by?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -39,9 +40,11 @@ class InstallService extends \Stripe\Service\AbstractService
      * key; public and testing installs are made from the Dashboard. An app developer
      * acting on a connected account through <code>Stripe-Account</code> installs or
      * reinstalls its app there, and an embedding platform can do the same once the
-     * app’s developer approves its request to embed the app. For a private app,
-     * creating an install installs the newest completed upload; when that version is
-     * already installed with nothing pending, the existing install is returned.
+     * app’s developer approves its request to embed the app and the platform has
+     * accepted the Embedding Platform Terms and Conditions in the Dashboard. For a
+     * private app, creating an install installs the newest completed upload; when that
+     * version is already installed with nothing pending, the existing install is
+     * returned.
      *
      * @param null|array{app: string, channel?: string, code_challenge?: string, code_challenge_method?: string, expand?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

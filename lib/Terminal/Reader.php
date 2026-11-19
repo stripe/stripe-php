@@ -43,13 +43,18 @@ class Reader extends \Stripe\ApiResource
     const DEVICE_TYPE_SIMULATED_WISEPOS_E = 'simulated_wisepos_e';
     const DEVICE_TYPE_STRIPE_M2 = 'stripe_m2';
     const DEVICE_TYPE_STRIPE_S700 = 'stripe_s700';
+    const DEVICE_TYPE_STRIPE_S700_DEVKIT = 'stripe_s700_devkit';
     const DEVICE_TYPE_STRIPE_S710 = 'stripe_s710';
+    const DEVICE_TYPE_STRIPE_S710_DEVKIT = 'stripe_s710_devkit';
     const DEVICE_TYPE_STRIPE_T600 = 'stripe_t600';
+    const DEVICE_TYPE_STRIPE_T600_DEVKIT = 'stripe_t600_devkit';
     const DEVICE_TYPE_VERIFONE_M425 = 'verifone_m425';
     const DEVICE_TYPE_VERIFONE_P400 = 'verifone_P400';
     const DEVICE_TYPE_VERIFONE_P630 = 'verifone_p630';
     const DEVICE_TYPE_VERIFONE_UX700 = 'verifone_ux700';
+    const DEVICE_TYPE_VERIFONE_UX700_DEVKIT = 'verifone_ux700_devkit';
     const DEVICE_TYPE_VERIFONE_V660P = 'verifone_v660p';
+    const DEVICE_TYPE_VERIFONE_V660P_DEVKIT = 'verifone_v660p_devkit';
 
     const STATUS_OFFLINE = 'offline';
     const STATUS_ONLINE = 'online';
