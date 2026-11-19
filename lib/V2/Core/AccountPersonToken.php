@@ -6,6 +6,8 @@ namespace Stripe\V2\Core;
 
 /**
  * Person Tokens are single-use tokens which tokenize person information, and are used for creating or updating a Person.
+ * In live mode, you must create person tokens using a live publishable key.
+ * In a sandbox, you can create person tokens with secret or publishable keys.
  *
  * @property string $id Unique identifier for the token.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.

@@ -35,7 +35,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property (object{object: StripeObject, previous_attributes?: StripeObject}&StripeObject) $data
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response) to the URLs you specify.
+ * @property int $pending_webhooks Number of webhooks that haven't been successfully delivered (for example, to return a 20x response). This count can include deliveries to endpoints that belong to Connect platforms or apps with access to your account. These endpoints don't appear when you list your account's webhook endpoints or event destinations. To see the delivery status for each endpoint, view the event in <a href="https://docs.stripe.com/workbench/overview#events">Workbench</a>.
  * @property null|(object{id: null|string, idempotency_key: null|string}&StripeObject) $request Information on the API request that triggers the event.
  * @property string $type Description of the event (for example, <code>invoice.created</code> or <code>charge.refunded</code>).
  */
@@ -600,7 +600,11 @@ class Event extends ApiResource
      * Stripe API version at its creation time, specified in <a
      * href="https://docs.stripe.com/api/events/object">event object</a>
      * <code>api_version</code> attribute (not according to your current Stripe API
-     * version or <code>Stripe-Version</code> header).
+     * version or <code>Stripe-Version</code> header). The list includes only events
+     * for the account that makes the request. A platform’s list doesn’t include events
+     * from its connected accounts. To list a connected account’s events, make the
+     * request <a href="https://docs.stripe.com/connect/authentication">as the
+     * connected account</a> using the <code>Stripe-Account</code> header.
      *
      * @param null|array{created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, delivery_success?: bool, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, type?: string, types?: string[]} $params
      * @param null|array|string $opts

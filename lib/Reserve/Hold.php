@@ -5,7 +5,7 @@
 namespace Stripe\Reserve;
 
 /**
- * ReserveHolds are used to place a temporary ReserveHold on a merchant's funds.
+ * A ReserveHold holds a portion of an account's funds until it's released. Stripe or the account's platform can create a ReserveHold directly, and a ReservePlan creates ReserveHolds automatically from incoming Charges.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
