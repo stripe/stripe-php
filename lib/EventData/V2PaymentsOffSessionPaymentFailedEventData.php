@@ -5,6 +5,8 @@
 namespace Stripe\EventData;
 
 /**
+ * @property null|string $charge The ID of the Charge associated with this attempt.
+ * @property string $last_attempt_error The payment error from the failed attempt.
  * @property string $payment_attempt_record The ID of the payment attempt record associated with this terminal failure. Equal to the <code>latest_payment_attempt_record</code> on the Off-Session Payment object.
  */
 class V2PaymentsOffSessionPaymentFailedEventData extends \Stripe\StripeObject {}

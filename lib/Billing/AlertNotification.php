@@ -15,7 +15,6 @@ namespace Stripe\Billing;
  * @property string $alert ID of the billing alert that generated this notification.
  * @property string $alert_type The type of billing alert that generated this notification.
  * @property null|string $billing_group The billing group associated with this notification. Only present for spend threshold alerts grouped by billing group.
- * @property null|string $cadence The cadence associated with this notification. Only present for spend threshold alerts grouped by cadence.
  * @property null|string $currency Three-letter ISO currency code for the value, in lowercase. Only present for spend and credit balance threshold alerts.
  * @property null|string $custom_pricing_unit Custom pricing unit for the threshold value
  * @property string $customer ID of the customer for which the alert notification was sent.

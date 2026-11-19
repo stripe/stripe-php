@@ -293,6 +293,72 @@ final class CollectionTest extends TestCase
         self::assertSame(['2', '3'], $ids);
     }
 
+    public function testRestoredCollectionAutoPagingUsesReattachedApiKey()
+    {
+        $collection = self::restoredCollection(['limit' => 1]);
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::exactly(2))->method('request')
+            ->with('get', Stripe::$apiBase . '/things', self::callback(static function ($headers) {
+                return \in_array('Authorization: Bearer pagination_test_secret', $headers, true)
+                    && \in_array('Stripe-Account: test_account', $headers, true);
+            }), self::anything(), false)
+            ->willReturnCallback(static function ($method, $url, $headers, $params) {
+                $id = '1' === $params['starting_after'] ? '2' : '3';
+
+                return [\json_encode([
+                    'object' => 'list',
+                    'data' => [['id' => $id]],
+                    'has_more' => '2' === $id,
+                    'url' => '/things',
+                ]), 200, []];
+            })
+        ;
+
+        $seen = [];
+        foreach ($collection->autoPagingIterator() as $item) {
+            $seen[] = $item['id'];
+        }
+
+        self::assertSame(['1', '2', '3'], $seen);
+        self::assertNull(Stripe::getApiKey());
+    }
+
+    public function testRestoredCollectionBackwardsAutoPagingUsesReattachedApiKey()
+    {
+        $collection = self::restoredCollection(['ending_before' => '2']);
+        $this->stubRequest('GET', '/things', ['ending_before' => '1'], [
+            'Authorization: Bearer pagination_test_secret',
+            'Stripe-Account: test_account',
+        ], false, ['object' => 'list', 'data' => [['id' => '0']], 'has_more' => false, 'url' => '/things']);
+
+        $seen = [];
+        foreach ($collection->autoPagingIterator() as $item) {
+            $seen[] = $item['id'];
+        }
+
+        self::assertSame(['1', '0'], $seen);
+    }
+
+    /**
+     * @param array $filters
+     *
+     * @return Collection
+     */
+    private static function restoredCollection($filters)
+    {
+        $collection = Collection::constructFrom([
+            'data' => [['id' => '1']],
+            'has_more' => true,
+            'url' => '/things',
+        ], ['api_key' => 'serialization_test_secret', 'stripe_account' => 'test_account']);
+        $collection->setFilters($filters);
+        $restored = \unserialize(\serialize($collection));
+        $restored->reattachApiKey('pagination_test_secret');
+        Stripe::setApiKey(null);
+
+        return $restored;
+    }
+
     public function testPreviousPage()
     {
         $this->stubRequest(

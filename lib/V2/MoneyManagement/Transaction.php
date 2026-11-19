@@ -46,6 +46,8 @@ class Transaction extends \Stripe\ApiResource
     const CATEGORY_EARNED_CREDIT = 'earned_credit';
     const CATEGORY_FINANCING_PAYDOWN = 'financing_paydown';
     const CATEGORY_FINANCING_PAYDOWN_REVERSAL = 'financing_paydown_reversal';
+    const CATEGORY_INBOUND_FUNDING = 'inbound_funding';
+    const CATEGORY_INBOUND_FUNDING_REVERSAL = 'inbound_funding_reversal';
     const CATEGORY_INBOUND_PAYMENT = 'inbound_payment';
     const CATEGORY_INBOUND_PAYMENT_FAILURE = 'inbound_payment_failure';
     const CATEGORY_INBOUND_TRANSFER = 'inbound_transfer';

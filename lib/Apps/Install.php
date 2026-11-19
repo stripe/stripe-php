@@ -85,7 +85,8 @@ class Install extends \Stripe\ApiResource
      * created there. Other callers see the installs on their own account. A live key
      * lists live installs and a test key lists test installs; the key of an app’s
      * managed sandbox filtering by <code>app</code> lists that app’s installs across
-     * every sandbox.
+     * every sandbox, and also that app’s legacy test mode installs when the developer
+     * has no legacy test mode.
      *
      * @param null|array{account?: string, app?: string, approval_required?: bool, channel?: string, created?: array{gt?: int, gte?: int, lt?: int, lte?: int}|int, created_by?: string, ending_before?: string, expand?: string[], limit?: int, starting_after?: string, status?: string} $params
      * @param null|array|string $opts

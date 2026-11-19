@@ -5,6 +5,7 @@
 namespace Stripe\V2\Reporting;
 
 /**
+ * The <a href="/data/api/reports">Queries and Reports API</a> replaces this API. For new integrations, use <code>/v2/data/report_runs</code> instead.
  * The <code>ReportRun</code> object represents an instance of a <code>Report</code> generated with specific
  * run parameters. Once the object is created, Stripe begins processing the report. When
  * the report has finished running, it will give you a reference to the results.

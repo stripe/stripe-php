@@ -19,6 +19,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency If <code>amount_off</code> has been set, the three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> of the amount to take off.
  * @property null|StripeObject $currency_options Coupons defined in each available currency option. Each key must be a three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property null|(object{configuration: StripeObject, extension: (object{id: string, version: string}&StripeObject)}&StripeObject) $custom
  * @property string $duration One of <code>forever</code>, <code>once</code>, or <code>repeating</code>. Describes how long a customer who applies this coupon will get the discount.
  * @property null|int $duration_in_months If <code>duration</code> is <code>repeating</code>, the number of months the coupon applies. Null if coupon <code>duration</code> is <code>forever</code> or <code>once</code>.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
@@ -45,6 +46,7 @@ class Coupon extends ApiResource
     const DURATION_SERVICE_PERIOD = 'service_period';
 
     const TYPE_AMOUNT_OFF = 'amount_off';
+    const TYPE_CUSTOM = 'custom';
     const TYPE_PERCENT_OFF = 'percent_off';
     const TYPE_SCRIPT = 'script';
 
@@ -64,7 +66,7 @@ class Coupon extends ApiResource
      * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
      * it.
      *
-     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: array<string, array{amount_off: int}>, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|array<string, string>, name?: string, percent_off?: float, redeem_by?: int, script?: array{configuration: array, id: string}, service_period?: array{interval: string, interval_count: int, iterations?: array{count?: int, type: string}}} $params
+     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: array<string, array{amount_off: int}>, custom?: array{configuration?: array, extension: array{id: string, version?: string}}, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|array<string, string>, name?: string, percent_off?: float, redeem_by?: int, script?: array{configuration: array, id: string}, service_period?: array{interval: string, interval_count: int, iterations?: array{count?: int, type: string}}, type?: string} $params
      * @param null|array|string $options
      *
      * @return Coupon the created resource

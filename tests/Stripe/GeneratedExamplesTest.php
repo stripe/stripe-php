@@ -5010,304 +5010,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\BillSettingVersion::class, $result);
     }
 
-    public function testV2BillingCadenceGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/cadences',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.cadence',
-                        'billing_cycle' => [
-                            'interval_count' => [],
-                            'type' => 'week',
-                        ],
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'livemode' => [],
-                        'payer' => [
-                            'billing_profile' => 'billing_profile',
-                            'type' => 'customer',
-                        ],
-                        'status' => 'active',
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result->data[0]);
-    }
-
-    public function testV2BillingCadencePost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/cadences',
-            [
-                'billing_cycle' => [
-                    'day' => [
-                        'time' => [
-                            'hour' => 3208676,
-                            'minute' => 1074026988,
-                            'second' => 906279820,
-                        ],
-                    ],
-                    'interval_count' => 797691627,
-                    'month' => [
-                        'day_of_month' => 1361669285,
-                        'month_of_year' => 82933018,
-                        'time' => [
-                            'hour' => 3208676,
-                            'minute' => 1074026988,
-                            'second' => 906279820,
-                        ],
-                    ],
-                    'type' => 'week',
-                    'week' => [
-                        'day_of_week' => 43636807,
-                        'time' => [
-                            'hour' => 3208676,
-                            'minute' => 1074026988,
-                            'second' => 906279820,
-                        ],
-                    ],
-                    'year' => [
-                        'day_of_month' => 1361669285,
-                        'month_of_year' => 82933018,
-                        'time' => [
-                            'hour' => 3208676,
-                            'minute' => 1074026988,
-                            'second' => 906279820,
-                        ],
-                    ],
-                ],
-                'payer' => ['billing_profile' => 'billing_profile'],
-            ],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence',
-                'billing_cycle' => [
-                    'interval_count' => [],
-                    'type' => 'week',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'type' => 'customer',
-                ],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->create([
-            'billing_cycle' => [
-                'day' => [
-                    'time' => [
-                        'hour' => 3208676,
-                        'minute' => 1074026988,
-                        'second' => 906279820,
-                    ],
-                ],
-                'interval_count' => 797691627,
-                'month' => [
-                    'day_of_month' => 1361669285,
-                    'month_of_year' => 82933018,
-                    'time' => [
-                        'hour' => 3208676,
-                        'minute' => 1074026988,
-                        'second' => 906279820,
-                    ],
-                ],
-                'type' => 'week',
-                'week' => [
-                    'day_of_week' => 43636807,
-                    'time' => [
-                        'hour' => 3208676,
-                        'minute' => 1074026988,
-                        'second' => 906279820,
-                    ],
-                ],
-                'year' => [
-                    'day_of_month' => 1361669285,
-                    'month_of_year' => 82933018,
-                    'time' => [
-                        'hour' => 3208676,
-                        'minute' => 1074026988,
-                        'second' => 906279820,
-                    ],
-                ],
-            ],
-            'payer' => ['billing_profile' => 'billing_profile'],
-        ]);
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
-    }
-
-    public function testV2BillingCadenceGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/cadences/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence',
-                'billing_cycle' => [
-                    'interval_count' => [],
-                    'type' => 'week',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'type' => 'customer',
-                ],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
-    }
-
-    public function testV2BillingCadencePost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/cadences/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence',
-                'billing_cycle' => [
-                    'interval_count' => [],
-                    'type' => 'week',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'type' => 'customer',
-                ],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->update('id_123', []);
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
-    }
-
-    public function testV2BillingCadencePost3()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/cadences/id_123/cancel',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence',
-                'billing_cycle' => [
-                    'interval_count' => [],
-                    'type' => 'week',
-                ],
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'payer' => [
-                    'billing_profile' => 'billing_profile',
-                    'type' => 'customer',
-                ],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->cancel('id_123', []);
-        self::assertInstanceOf(V2\Billing\Cadence::class, $result);
-    }
-
-    public function testV2BillingCadencesSpendModifierRuleGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/cadences/cadence_id_123/spend_modifier_rules',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.cadence_spend_modifier',
-                        'billing_cadence' => 'billing_cadence',
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'livemode' => [],
-                        'type' => 'max_billing_period_spend',
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->spendModifierRules->all(
-            'cadence_id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\CadenceSpendModifier::class, $result->data[0]);
-    }
-
-    public function testV2BillingCadencesSpendModifierRuleGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/cadences/cadence_id_123/spend_modifier_rules/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.cadence_spend_modifier',
-                'billing_cadence' => 'billing_cadence',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'type' => 'max_billing_period_spend',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->cadences->spendModifierRules->retrieve(
-            'cadence_id_123',
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\CadenceSpendModifier::class, $result);
-    }
-
     public function testV2BillingCollectionSettingGet()
     {
         $this->stubRequest(
@@ -5666,42 +5368,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Billing\Contract::class, $result);
     }
 
-    public function testV2BillingContractsPricingLinesQuantityChangeGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/contracts/contract_id_123/pricing_lines/pricing_line_id_123/quantity_changes',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.contract_pricing_line_quantity_change',
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'effective_at' => '1970-01-03T20:38:28.043Z',
-                        'id' => 'obj_123',
-                        'livemode' => [],
-                        'pricing' => ['type' => 'price'],
-                        'pricing_line' => 'pricing_line',
-                        'quantity' => '856669432.6666666',
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->contracts->pricingLines->quantityChanges->allContractPricingLineQuantityChanges(
-            'contract_id_123',
-            'pricing_line_id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\ContractPricingLineQuantityChange::class, $result->data[0]);
-    }
-
     public function testV2BillingContractsTermGet()
     {
         $this->stubRequest(
@@ -5716,7 +5382,7 @@ final class GeneratedExamplesTest extends TestCase
                         'object' => 'v2.billing.contract_term',
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'type' => 'ad_hoc_product',
+                        'type' => 'pricing_override',
                     ],
                 ],
                 'next_page_url' => null,
@@ -5745,7 +5411,7 @@ final class GeneratedExamplesTest extends TestCase
                 'object' => 'v2.billing.contract_term',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'type' => 'ad_hoc_product',
+                'type' => 'pricing_override',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -5899,6 +5565,230 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\Billing\CustomPricingUnit::class, $result);
+    }
+
+    public function testV2BillingGroupGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/groups',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.billing.group',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'customer' => 'customer',
+                        'grouping_behavior' => ['type' => 'by_cadence'],
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'next_billing_date' => '1970-01-15T21:07:23.454Z',
+                        'status' => 'active',
+                        'status_transitions' => [],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->groups->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\Group::class, $result->data[0]);
+    }
+
+    public function testV2BillingGroupPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/groups',
+            ['customer' => 'customer'],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.group',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'grouping_behavior' => ['type' => 'by_cadence'],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'next_billing_date' => '1970-01-15T21:07:23.454Z',
+                'status' => 'active',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->groups->create([
+            'customer' => 'customer',
+        ]);
+        self::assertInstanceOf(V2\Billing\Group::class, $result);
+    }
+
+    public function testV2BillingGroupGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/groups/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.group',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'grouping_behavior' => ['type' => 'by_cadence'],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'next_billing_date' => '1970-01-15T21:07:23.454Z',
+                'status' => 'active',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->groups->retrieve('id_123', []);
+        self::assertInstanceOf(V2\Billing\Group::class, $result);
+    }
+
+    public function testV2BillingGroupPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/groups/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.group',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'grouping_behavior' => ['type' => 'by_cadence'],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'next_billing_date' => '1970-01-15T21:07:23.454Z',
+                'status' => 'active',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->groups->update('id_123', []);
+        self::assertInstanceOf(V2\Billing\Group::class, $result);
+    }
+
+    public function testV2BillingGroupPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/groups/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.group',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'customer' => 'customer',
+                'grouping_behavior' => ['type' => 'by_cadence'],
+                'id' => 'obj_123',
+                'livemode' => [],
+                'next_billing_date' => '1970-01-15T21:07:23.454Z',
+                'status' => 'active',
+                'status_transitions' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->groups->cancel('id_123', []);
+        self::assertInstanceOf(V2\Billing\Group::class, $result);
+    }
+
+    public function testV2BillingGroupsInvoicePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/billing/groups/id_123/invoices',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.group_invoice',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'invoice_id' => 'invoice_id',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->groups->invoices->create(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\GroupInvoice::class, $result);
+    }
+
+    public function testV2BillingGroupsSpendModifierRuleGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/groups/group_id_123/spend_modifier_rules',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.billing.group_spend_modifier',
+                        'billing_group' => 'billing_group',
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'type' => 'max_billing_period_spend',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->groups->spendModifierRules->all(
+            'group_id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Billing\GroupSpendModifier::class, $result->data[0]);
+    }
+
+    public function testV2BillingGroupsSpendModifierRuleGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/billing/groups/group_id_123/spend_modifier_rules/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.billing.group_spend_modifier',
+                'billing_group' => 'billing_group',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'type' => 'max_billing_period_spend',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->billing->groups->spendModifierRules->retrieve(
+            'group_id_123',
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Billing\GroupSpendModifier::class, $result);
     }
 
     public function testV2BillingIntentGet()
@@ -7573,7 +7463,7 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.billing.pricing_plan_subscription',
-                        'billing_cadence' => 'billing_cadence',
+                        'billing_group' => 'billing_group',
                         'collection_status' => 'past_due',
                         'collection_status_transitions' => [],
                         'created' => '1970-01-12T21:42:34.472Z',
@@ -7606,7 +7496,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.pricing_plan_subscription',
-                'billing_cadence' => 'billing_cadence',
+                'billing_group' => 'billing_group',
                 'collection_status' => 'past_due',
                 'collection_status_transitions' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -7637,7 +7527,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.pricing_plan_subscription',
-                'billing_cadence' => 'billing_cadence',
+                'billing_group' => 'billing_group',
                 'collection_status' => 'past_due',
                 'collection_status_transitions' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -7668,7 +7558,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.pricing_plan_subscription',
-                'billing_cadence' => 'billing_cadence',
+                'billing_group' => 'billing_group',
                 'collection_status' => 'past_due',
                 'collection_status_transitions' => [],
                 'created' => '1970-01-12T21:42:34.472Z',
@@ -8403,7 +8293,7 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.billing.rate_card_subscription',
-                        'billing_cadence' => 'billing_cadence',
+                        'billing_group' => 'billing_group',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'id' => 'obj_123',
                         'livemode' => [],
@@ -8427,15 +8317,12 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/billing/rate_card_subscriptions',
-            [
-                'billing_cadence' => 'billing_cadence',
-                'rate_card' => 'rate_card',
-            ],
+            ['billing_group' => 'billing_group', 'rate_card' => 'rate_card'],
             [],
             false,
             [
                 'object' => 'v2.billing.rate_card_subscription',
-                'billing_cadence' => 'billing_cadence',
+                'billing_group' => 'billing_group',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -8446,7 +8333,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->billing->rateCardSubscriptions->create([
-            'billing_cadence' => 'billing_cadence',
+            'billing_group' => 'billing_group',
             'rate_card' => 'rate_card',
         ]);
         self::assertInstanceOf(V2\Billing\RateCardSubscription::class, $result);
@@ -8462,7 +8349,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.rate_card_subscription',
-                'billing_cadence' => 'billing_cadence',
+                'billing_group' => 'billing_group',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -8489,7 +8376,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.rate_card_subscription',
-                'billing_cadence' => 'billing_cadence',
+                'billing_group' => 'billing_group',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -8516,7 +8403,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.billing.rate_card_subscription',
-                'billing_cadence' => 'billing_cadence',
+                'billing_group' => 'billing_group',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -9097,6 +8984,7 @@ final class GeneratedExamplesTest extends TestCase
             [
                 'account' => 'account',
                 'use_case' => [
+                    'account_dashboard' => ['refresh_url' => 'refresh_url'],
                     'account_onboarding' => [
                         'collection_options' => [
                             'fields' => 'eventually_due',
@@ -9129,7 +9017,7 @@ final class GeneratedExamplesTest extends TestCase
                         'refresh_url' => 'refresh_url',
                         'return_url' => 'return_url',
                     ],
-                    'type' => 'recipient_onboarding',
+                    'type' => 'account_dashboard',
                 ],
             ],
             [],
@@ -9141,7 +9029,7 @@ final class GeneratedExamplesTest extends TestCase
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'livemode' => [],
                 'url' => 'url',
-                'use_case' => ['type' => 'recipient_onboarding'],
+                'use_case' => ['type' => 'account_dashboard'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -9149,6 +9037,7 @@ final class GeneratedExamplesTest extends TestCase
         $result = $this->v2Client->v2->core->accountLinks->create([
             'account' => 'account',
             'use_case' => [
+                'account_dashboard' => ['refresh_url' => 'refresh_url'],
                 'account_onboarding' => [
                     'collection_options' => [
                         'fields' => 'eventually_due',
@@ -9181,7 +9070,7 @@ final class GeneratedExamplesTest extends TestCase
                     'refresh_url' => 'refresh_url',
                     'return_url' => 'return_url',
                 ],
-                'type' => 'recipient_onboarding',
+                'type' => 'account_dashboard',
             ],
         ]);
         self::assertInstanceOf(V2\Core\AccountLink::class, $result);
@@ -9803,7 +9692,10 @@ final class GeneratedExamplesTest extends TestCase
             '/v2/core/claimable_sandboxes',
             [
                 'enable_mcp_access' => true,
-                'onboarding_link_details' => ['refresh_url' => 'refresh_url'],
+                'onboarding_link_details' => [
+                    'refresh_url' => 'refresh_url',
+                    'return_url' => 'return_url',
+                ],
                 'prefill' => [
                     'country' => 'country',
                     'email' => 'email',
@@ -9814,15 +9706,10 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.claimable_sandbox',
-                'app_channel' => 'testing',
+                'channel' => 'testing',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'onboarding_link_details' => [
-                    'expires_at' => '1970-01-10T15:36:51.170Z',
-                    'refresh_url' => 'refresh_url',
-                    'url' => 'url',
-                ],
                 'prefill' => [
                     'country' => 'country',
                     'email' => 'email',
@@ -9836,7 +9723,10 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->core->claimableSandboxes->create([
             'enable_mcp_access' => true,
-            'onboarding_link_details' => ['refresh_url' => 'refresh_url'],
+            'onboarding_link_details' => [
+                'refresh_url' => 'refresh_url',
+                'return_url' => 'return_url',
+            ],
             'prefill' => [
                 'country' => 'country',
                 'email' => 'email',
@@ -9856,15 +9746,10 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.claimable_sandbox',
-                'app_channel' => 'testing',
+                'channel' => 'testing',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'onboarding_link_details' => [
-                    'expires_at' => '1970-01-10T15:36:51.170Z',
-                    'refresh_url' => 'refresh_url',
-                    'url' => 'url',
-                ],
                 'prefill' => [
                     'country' => 'country',
                     'email' => 'email',
@@ -9893,15 +9778,10 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.claimable_sandbox',
-                'app_channel' => 'testing',
+                'channel' => 'testing',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'onboarding_link_details' => [
-                    'expires_at' => '1970-01-10T15:36:51.170Z',
-                    'refresh_url' => 'refresh_url',
-                    'url' => 'url',
-                ],
                 'prefill' => [
                     'country' => 'country',
                     'email' => 'email',
@@ -10445,7 +10325,7 @@ final class GeneratedExamplesTest extends TestCase
                         'started_at' => '1970-01-19T03:34:50.959Z',
                         'status' => 'open',
                         'summary' => 'summary',
-                        'type' => 'api_error',
+                        'type' => 'meter_event_summaries_delayed',
                     ],
                 ],
                 'next_page_url' => null,
@@ -10484,7 +10364,7 @@ final class GeneratedExamplesTest extends TestCase
                 'started_at' => '1970-01-19T03:34:50.959Z',
                 'status' => 'open',
                 'summary' => 'summary',
-                'type' => 'api_error',
+                'type' => 'meter_event_summaries_delayed',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -10512,7 +10392,7 @@ final class GeneratedExamplesTest extends TestCase
                         'id' => 'obj_123',
                         'livemode' => [],
                         'transition' => 'impact_updated',
-                        'type' => 'api_error',
+                        'type' => 'meter_event_summaries_delayed',
                     ],
                 ],
                 'next_page_url' => null,
@@ -11980,7 +11860,7 @@ final class GeneratedExamplesTest extends TestCase
                         'details' => ['type' => 'scim'],
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'type' => 'sso_settings_updated',
+                        'type' => 'anomaly_detection_settings_updated',
                     ],
                 ],
                 'next_page_url' => null,
@@ -12010,7 +11890,7 @@ final class GeneratedExamplesTest extends TestCase
                 'details' => ['type' => 'scim'],
                 'id' => 'obj_123',
                 'livemode' => [],
-                'type' => 'sso_settings_updated',
+                'type' => 'anomaly_detection_settings_updated',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -13811,7 +13691,7 @@ final class GeneratedExamplesTest extends TestCase
                                     'transaction_purpose' => 'payroll',
                                 ],
                             ],
-                            'preferred_networks' => ['fedwire'],
+                            'preferred_networks' => ['sepa_instant'],
                         ],
                         'check_send' => [
                             'attachment_file' => 'attachment_file',
@@ -13878,7 +13758,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'transaction_purpose' => 'payroll',
                             ],
                         ],
-                        'preferred_networks' => ['fedwire'],
+                        'preferred_networks' => ['sepa_instant'],
                     ],
                     'check_send' => [
                         'attachment_file' => 'attachment_file',
@@ -14013,7 +13893,7 @@ final class GeneratedExamplesTest extends TestCase
                                     'transaction_purpose' => 'payroll',
                                 ],
                             ],
-                            'preferred_networks' => ['fedwire'],
+                            'preferred_networks' => ['sepa_instant'],
                         ],
                     ],
                     'recipient' => 'recipient',
@@ -14085,7 +13965,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'transaction_purpose' => 'payroll',
                             ],
                         ],
-                        'preferred_networks' => ['fedwire'],
+                        'preferred_networks' => ['sepa_instant'],
                     ],
                 ],
                 'recipient' => 'recipient',
@@ -14355,7 +14235,7 @@ final class GeneratedExamplesTest extends TestCase
                             'preferred_network_options' => [
                                 'ach' => ['addenda' => 'addenda'],
                             ],
-                            'preferred_networks' => ['fedwire'],
+                            'preferred_networks' => ['sepa_instant'],
                         ],
                     ],
                 ],
@@ -14410,7 +14290,7 @@ final class GeneratedExamplesTest extends TestCase
                         'preferred_network_options' => [
                             'ach' => ['addenda' => 'addenda'],
                         ],
-                        'preferred_networks' => ['fedwire'],
+                        'preferred_networks' => ['sepa_instant'],
                     ],
                 ],
             ],
@@ -14575,7 +14455,7 @@ final class GeneratedExamplesTest extends TestCase
                                     'transaction_purpose' => 'payroll',
                                 ],
                             ],
-                            'preferred_networks' => ['fedwire'],
+                            'preferred_networks' => ['sepa_instant'],
                         ],
                         'check_send' => [
                             'attachment_file' => 'attachment_file',
@@ -14630,7 +14510,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'transaction_purpose' => 'payroll',
                             ],
                         ],
-                        'preferred_networks' => ['fedwire'],
+                        'preferred_networks' => ['sepa_instant'],
                     ],
                     'check_send' => [
                         'attachment_file' => 'attachment_file',
@@ -16138,7 +16018,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'platform_earning_refund',
+                        'category' => 'inbound_transfer_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -16187,7 +16067,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'platform_earning_refund',
+                'category' => 'inbound_transfer_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -16234,7 +16114,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'platform_earning_refund',
+                'category' => 'inbound_transfer_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -16281,7 +16161,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'platform_earning_refund',
+                'category' => 'inbound_transfer_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -16332,7 +16212,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'platform_earning_refund',
+                            'category' => 'inbound_transfer_reversal',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -16378,7 +16258,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'platform_earning_refund',
+                    'category' => 'inbound_transfer_reversal',
                     'financial_account' => 'financial_account',
                 ],
             ],

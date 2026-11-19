@@ -12,9 +12,9 @@ namespace Stripe\Service\TestHelpers\Treasury;
 class OutboundTransferService extends \Stripe\Service\AbstractService
 {
     /**
-     * Transitions a test mode created OutboundTransfer to the <code>failed</code>
-     * status. The OutboundTransfer must already be in the <code>processing</code>
-     * state.
+     * Transitions a test <code>OutboundTransfer</code> to the <code>failed</code>
+     * status. The <code>OutboundTransfer</code> must already be in the
+     * <code>processing</code> state.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
@@ -30,9 +30,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Transitions a test mode created OutboundTransfer to the <code>posted</code>
-     * status. The OutboundTransfer must already be in the <code>processing</code>
-     * state.
+     * Transitions a test <code>OutboundTransfer</code> to the <code>posted</code>
+     * status. The <code>OutboundTransfer</code> must already be in the
+     * <code>processing</code> state.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params
@@ -48,9 +48,9 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Transitions a test mode created OutboundTransfer to the <code>returned</code>
-     * status. The OutboundTransfer must already be in the <code>processing</code>
-     * state.
+     * Transitions a test <code>OutboundTransfer</code> to the <code>returned</code>
+     * status. The <code>OutboundTransfer</code> must already be in the
+     * <code>posted</code> state.
      *
      * @param string $id
      * @param null|array{expand?: string[], returned_details?: array{code?: string}} $params
@@ -66,8 +66,8 @@ class OutboundTransferService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Updates a test mode created OutboundTransfer with tracking details. The
-     * OutboundTransfer must not be cancelable, and cannot be in the
+     * Updates a test <code>OutboundTransfer</code> with tracking details. The
+     * <code>OutboundTransfer</code> must not be cancelable, and can’t be in the
      * <code>canceled</code> or <code>failed</code> states.
      *
      * @param string $id

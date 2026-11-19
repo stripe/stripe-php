@@ -5,6 +5,7 @@
 namespace Stripe\V2\Reporting;
 
 /**
+ * The <a href="/data/api/reports">Queries and Reports API</a> replaces this API. For new integrations, use <code>/v2/data/reports</code> instead.
  * The Report resource represents a customizable report template that provides insights into various aspects of your Stripe integration.
  *
  * @property string $id The unique identifier of the <code>Report</code> object.

@@ -5,22 +5,24 @@
 namespace Stripe\Tax;
 
 /**
- * Tax exemption and resale certificates associated with tax exemptions.
+ * A Tax Certificate associates an uploaded exemption or resale certificate file with a customer's tax exemption. A tax exemption can have multiple certificates. Deleting a tax exemption also deletes its certificates, but retains their uploaded files.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
- * @property bool $deleted Whether the certificate has been deleted.
- * @property string|\Stripe\File $file The uploaded certificate file.
+ * @property bool $deleted If <code>true</code>, the certificate has been deleted. If <code>false</code>, it hasn't been deleted.
+ * @property string|\Stripe\File $file The ID of the uploaded certificate <a href="/api/files/object">file</a>.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
- * @property null|string|\Stripe\CustomerTaxExemption $tax_exemption The tax exemption associated with this certificate.
+ * @property null|string|\Stripe\CustomerTaxExemption $tax_exemption The ID of the <a href="/api/tax/exemptions/object">customer tax exemption</a> associated with this certificate.
  */
 class Certificate extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'tax.certificate';
 
     /**
-     * Create a tax certificate associated with a tax exemption.
+     * Creates a Tax Certificate associated with a tax exemption. Before creating the
+     * certificate, <a href="/api/files/create">upload a file</a> with purpose
+     * <code>tax_certificate</code>.
      *
      * @param null|array{expand?: string[], file: string, tax_exemption: string} $params
      * @param null|array|string $options
@@ -42,7 +44,9 @@ class Certificate extends \Stripe\ApiResource
     }
 
     /**
-     * Delete a tax certificate associated with a tax exemption.
+     * Deletes a Tax Certificate without deleting its uploaded file. You can reuse the
+     * file to create another certificate, and you can still retrieve the deleted
+     * certificate.
      *
      * @param null|array $params
      * @param null|array|string $opts
@@ -63,7 +67,8 @@ class Certificate extends \Stripe\ApiResource
     }
 
     /**
-     * List certificates for an existing tax exemption.
+     * Lists a tax exemption’s certificates, ordered from newest to oldest. The list
+     * excludes deleted certificates.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, tax_exemption: string} $params
      * @param null|array|string $opts
@@ -80,7 +85,8 @@ class Certificate extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieve a tax certificate associated with a tax exemption.
+     * Retrieves a Tax Certificate. Deleted certificates remain retrievable with all
+     * their fields and <code>deleted</code> set to <code>true</code>.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

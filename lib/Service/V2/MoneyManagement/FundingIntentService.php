@@ -95,7 +95,7 @@ class FundingIntentService extends \Stripe\Service\AbstractService
      * Updates the mutable details of a FundingIntent.
      *
      * @param string $id
-     * @param null|array{amount?: \Stripe\StripeObject, check?: array{back_image?: string, front_image?: string}, confirmation_method?: string, description?: string, metadata?: array<string, null|string>} $params
+     * @param null|array{amount?: \Stripe\StripeObject, check?: array{back_image?: string, front_image?: string}, confirmation_method?: string, description?: string, metadata?: array<string, null|string>, settlement_timing?: array{delay_days_override?: int}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FundingIntent
