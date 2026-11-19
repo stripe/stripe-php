@@ -803,6 +803,31 @@ final class ApiRequestorTest extends TestCase
         Charge::create([], ['stripe_account' => null]);
     }
 
+    public function testHeaderNullStripeAccountRequestOptionsOverridesGlobal()
+    {
+        Stripe::setAccountId('acct_123');
+        $this->stubRequest(
+            'POST',
+            '/v1/charges',
+            [],
+            static function ($array) {
+                foreach ($array as $header) {
+                    if (0 === strpos(\strtolower($header), 'stripe-account')) {
+                        return false;
+                    }
+                }
+
+                return true;
+            },
+            false,
+            [
+                'id' => 'ch_123',
+                'object' => 'charge',
+            ]
+        );
+        Charge::create([], ['stripe_account' => null]);
+    }
+
     public function testHeaderStripeContextRequestOptions()
     {
         $this->stubRequest(

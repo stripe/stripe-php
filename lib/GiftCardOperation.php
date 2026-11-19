@@ -10,7 +10,7 @@ namespace Stripe;
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
- * @property null|(object{balance: (object{amount: int, currency: string}&StripeObject)}&StripeObject) $activation Details about a gift card activation operation.
+ * @property null|(object{balance?: (object{amount: int, currency: string}&StripeObject)}&StripeObject) $activation Details about a gift card activation operation.
  * @property null|(object{voided_operation: string}&StripeObject) $activation_void Details about a gift card activation void operation.
  * @property null|(object{balance: (object{amount: int, currency: string}&StripeObject)}&StripeObject) $balance_check Details about a gift card balance check operation.
  * @property null|(object{balance: (object{amount: int, currency: string}&StripeObject), previous_balance: null|(object{amount: int, currency: string}&StripeObject)}&StripeObject) $cashout Details about a gift card cashout operation.
@@ -23,7 +23,7 @@ namespace Stripe;
  * @property null|string $location ID of the location that this transaction's reader is assigned to.
  * @property null|string $on_behalf_of The connected account whose credentials were used to perform this operation.
  * @property null|string $reader ID of the reader this transaction was made on.
- * @property null|(object{balance: (object{amount: int, currency: string}&StripeObject), previous_balance: null|(object{amount: int, currency: string}&StripeObject)}&StripeObject) $reload Details about a gift card reload operation.
+ * @property null|(object{balance?: (object{amount: int, currency: string}&StripeObject), previous_balance: null|(object{amount: int, currency: string}&StripeObject)}&StripeObject) $reload Details about a gift card reload operation.
  * @property null|(object{balance: (object{amount: int, currency: string}&StripeObject), voided_operation: string}&StripeObject) $reload_void Details about a gift card reload void operation.
  * @property string $status The status of the operation.
  * @property string $type The type of operation performed.

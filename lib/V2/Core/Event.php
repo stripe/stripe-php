@@ -37,7 +37,8 @@ class Event extends \Stripe\ApiResource
     {
         parent::refreshFrom($values, $opts, $partial, $apiMode);
 
-        unset($this->_opts->headers['Stripe-Account']);
+        // Explicitly clear the account so the process-global fallback cannot refill it.
+        $this->_opts->headers['Stripe-Account'] = \Stripe\Util\RequestOptions::STRIPE_ACCOUNT_UNSET;
         if (isset($this->context)) {
             $this->_opts->headers['Stripe-Context'] = (string) $this->context;
         } else {

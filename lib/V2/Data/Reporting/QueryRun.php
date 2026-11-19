@@ -5,6 +5,7 @@
 namespace Stripe\V2\Data\Reporting;
 
 /**
+ * The <a href="/data/api/query-runs">Queries and Reports API</a> replaces this API. For new integrations, use <code>/v2/data/query_runs</code> instead.
  * The <code>QueryRun</code> object represents an ad-hoc SQL execution. Once created, Stripe processes the query. When
  * the query has finished running, the object provides a reference to the results.
  *

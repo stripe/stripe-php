@@ -8,10 +8,10 @@ namespace Stripe\Service\V2\Billing;
  * Service factory class for API resources in the Billing namespace.
  *
  * @property BillSettingService $billSettings
- * @property CadenceService $cadences
  * @property CollectionSettingService $collectionSettings
  * @property ContractService $contracts
  * @property CustomPricingUnitService $customPricingUnits
+ * @property GroupService $groups
  * @property IntentService $intents
  * @property LicensedItemService $licensedItems
  * @property LicenseFeeService $licenseFees
@@ -35,10 +35,10 @@ class BillingServiceFactory extends \Stripe\Service\AbstractServiceFactory
      */
     private static $classMap = [
         'billSettings' => BillSettingService::class,
-        'cadences' => CadenceService::class,
         'collectionSettings' => CollectionSettingService::class,
         'contracts' => ContractService::class,
         'customPricingUnits' => CustomPricingUnitService::class,
+        'groups' => GroupService::class,
         'intents' => IntentService::class,
         'licensedItems' => LicensedItemService::class,
         'licenseFees' => LicenseFeeService::class,

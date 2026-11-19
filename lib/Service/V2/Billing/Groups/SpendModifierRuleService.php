@@ -2,7 +2,7 @@
 
 // File generated from our OpenAPI spec
 
-namespace Stripe\Service\V2\Billing\Cadences;
+namespace Stripe\Service\V2\Billing\Groups;
 
 /**
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
@@ -12,35 +12,35 @@ namespace Stripe\Service\V2\Billing\Cadences;
 class SpendModifierRuleService extends \Stripe\Service\AbstractService
 {
     /**
-     * List all Spend Modifiers associated with a Billing Cadence.
+     * List spend modifiers associated with a billing group.
      *
      * @param string $id
      * @param null|array{effective_at?: string, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Collection<\Stripe\V2\Billing\CadenceSpendModifier>
+     * @return \Stripe\V2\Collection<\Stripe\V2\Billing\GroupSpendModifier>
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function all($id, $params = null, $opts = null)
     {
-        return $this->requestCollection('get', $this->buildPath('/v2/billing/cadences/%s/spend_modifier_rules', $id), $params, $opts);
+        return $this->requestCollection('get', $this->buildPath('/v2/billing/groups/%s/spend_modifier_rules', $id), $params, $opts);
     }
 
     /**
-     * Retrieve a Spend Modifier associated with a Billing Cadence.
+     * Retrieve a spend modifier associated with a billing group.
      *
      * @param string $parentId
      * @param string $id
      * @param null|array $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
-     * @return \Stripe\V2\Billing\CadenceSpendModifier
+     * @return \Stripe\V2\Billing\GroupSpendModifier
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
     public function retrieve($parentId, $id, $params = null, $opts = null)
     {
-        return $this->request('get', $this->buildPath('/v2/billing/cadences/%s/spend_modifier_rules/%s', $parentId, $id), $params, $opts);
+        return $this->request('get', $this->buildPath('/v2/billing/groups/%s/spend_modifier_rules/%s', $parentId, $id), $params, $opts);
     }
 }

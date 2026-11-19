@@ -14,7 +14,7 @@ class RateCardSubscriptionService extends \Stripe\Service\AbstractService
     /**
      * List all Rate Card Subscription objects.
      *
-     * @param null|array{billing_cadence?: string, limit?: int, payer?: array{customer?: string, type: string}, rate_card?: string, rate_card_version?: string, servicing_status?: string} $params
+     * @param null|array{billing_group?: string, limit?: int, payer?: array{customer?: string, type: string}, rate_card?: string, rate_card_version?: string, servicing_status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Billing\RateCardSubscription>
@@ -44,9 +44,9 @@ class RateCardSubscriptionService extends \Stripe\Service\AbstractService
 
     /**
      * Create a Rate Card Subscription to bill a Rate Card on a specified Billing
-     * Cadence.
+     * Group.
      *
-     * @param null|array{billing_cadence: string, metadata?: array<string, string>, rate_card: string, rate_card_version?: string} $params
+     * @param null|array{billing_group: string, metadata?: array<string, string>, rate_card: string, rate_card_version?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\RateCardSubscription

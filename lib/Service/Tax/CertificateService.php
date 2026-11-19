@@ -12,7 +12,8 @@ namespace Stripe\Service\Tax;
 class CertificateService extends \Stripe\Service\AbstractService
 {
     /**
-     * List certificates for an existing tax exemption.
+     * Lists a tax exemption’s certificates, ordered from newest to oldest. The list
+     * excludes deleted certificates.
      *
      * @param null|array{ending_before?: string, expand?: string[], limit?: int, starting_after?: string, tax_exemption: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -27,7 +28,9 @@ class CertificateService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Create a tax certificate associated with a tax exemption.
+     * Creates a Tax Certificate associated with a tax exemption. Before creating the
+     * certificate, <a href="/api/files/create">upload a file</a> with purpose
+     * <code>tax_certificate</code>.
      *
      * @param null|array{expand?: string[], file: string, tax_exemption: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
@@ -42,7 +45,9 @@ class CertificateService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Delete a tax certificate associated with a tax exemption.
+     * Deletes a Tax Certificate without deleting its uploaded file. You can reuse the
+     * file to create another certificate, and you can still retrieve the deleted
+     * certificate.
      *
      * @param string $id
      * @param null|array $params
@@ -58,7 +63,8 @@ class CertificateService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieve a tax certificate associated with a tax exemption.
+     * Retrieves a Tax Certificate. Deleted certificates remain retrievable with all
+     * their fields and <code>deleted</code> set to <code>true</code>.
      *
      * @param string $id
      * @param null|array{expand?: string[]} $params

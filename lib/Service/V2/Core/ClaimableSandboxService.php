@@ -12,15 +12,16 @@ namespace Stripe\Service\V2\Core;
 class ClaimableSandboxService extends \Stripe\Service\AbstractService
 {
     /**
-     * Create an anonymous, claimable sandbox. This sandbox can be prefilled with data.
-     * The response will include a claim URL that allow a user to claim the account.
+     * Create a claimable sandbox with prefilled data. The response includes an
+     * onboarding link that lets a user claim the sandbox into a new or existing Stripe
+     * account.
      *
-     * @param null|array{app_channel?: string, enable_mcp_access: bool, onboarding_link_details: array{refresh_url: string}, prefill: array{country: string, email: string, name?: string}} $params
+     * @param null|array{channel?: string, enable_mcp_access: bool, onboarding_link_details: array{refresh_url: string, return_url?: string}, prefill: array{country: string, email: string, name?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\ClaimableSandbox
      *
-     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     * @throws \Stripe\Exception\RateLimitException
      */
     public function create($params = null, $opts = null)
     {
@@ -28,12 +29,12 @@ class ClaimableSandboxService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Renew the claimable sandbox onboarding link. This will invalidate any existing
-     * onboarding links. The endpoint only works on a claimable sandbox with status
+     * Renew the claimable sandbox onboarding link. This invalidates the existing
+     * onboarding link. The endpoint only works on a claimable sandbox with status
      * `unclaimed` or `claimed`.
      *
      * @param string $id
-     * @param null|array{onboarding_link_details?: array{refresh_url: string}} $params
+     * @param null|array{onboarding_link_details?: array{refresh_url?: string, return_url?: string}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\ClaimableSandbox
@@ -51,7 +52,7 @@ class ClaimableSandboxService extends \Stripe\Service\AbstractService
      * request, and Stripe will return the corresponding sandbox information.
      *
      * @param string $id
-     * @param null|array $params
+     * @param null|array{include?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Core\ClaimableSandbox

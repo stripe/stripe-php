@@ -207,4 +207,22 @@ final class CollectionTest extends \Stripe\TestCase
 
         self::assertSame(['pm_123', 'pm_456', 'pm_777', 'pm_888'], $seen);
     }
+
+    public function testRestoredCollectionAutoPagingUsesReattachedApiKey()
+    {
+        $collection = \unserialize(\serialize($this->fixture));
+        $collection->reattachApiKey('pagination_test_secret');
+        \Stripe\Stripe::setApiKey(null);
+        $this->stubRequest('GET', '/v2/pageablemodel?page=page_2', null, [
+            'Authorization: Bearer pagination_test_secret',
+            'Stripe-Context: wksp_123',
+        ], false, ['data' => [['id' => 'pm_789']], 'next_page_url' => null, 'previous_page_url' => null]);
+
+        $seen = [];
+        foreach ($collection->autoPagingIterator() as $item) {
+            $seen[] = $item['id'];
+        }
+
+        self::assertSame(['pm_123', 'pm_456', 'pm_789'], $seen);
+    }
 }

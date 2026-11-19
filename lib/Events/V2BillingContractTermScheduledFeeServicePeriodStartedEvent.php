@@ -6,16 +6,16 @@ namespace Stripe\Events;
 
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
- * @property \Stripe\EventData\V2BillingCadenceBilledEventData $data data associated with the event
+ * @property \Stripe\EventData\V2BillingContractTermScheduledFeeServicePeriodStartedEventData $data data associated with the event
  */
-class V2BillingCadenceBilledEvent extends \Stripe\V2\Core\Event
+class V2BillingContractTermScheduledFeeServicePeriodStartedEvent extends \Stripe\V2\Core\Event
 {
-    const LOOKUP_TYPE = 'v2.billing.cadence.billed';
+    const LOOKUP_TYPE = 'v2.billing.contract_term.scheduled_fee_service_period_started';
 
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Billing\Cadence
+     * @return \Stripe\V2\Billing\ContractTerm
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -34,7 +34,7 @@ class V2BillingCadenceBilledEvent extends \Stripe\V2\Core\Event
     {
         $evt = parent::constructFrom($values, $opts, $apiMode);
         if (null !== $evt->data) {
-            $evt->data = \Stripe\EventData\V2BillingCadenceBilledEventData::constructFrom($evt->data, $opts, $apiMode);
+            $evt->data = \Stripe\EventData\V2BillingContractTermScheduledFeeServicePeriodStartedEventData::constructFrom($evt->data, $opts, $apiMode);
         }
 
         return $evt;

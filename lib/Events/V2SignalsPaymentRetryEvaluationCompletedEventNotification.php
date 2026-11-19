@@ -7,15 +7,15 @@ namespace Stripe\Events;
 /**
  * @property \Stripe\RelatedObject $related_object Object containing the reference to API resource relevant to the event
  */
-class V2BillingCadenceBilledEventNotification extends \Stripe\V2\Core\EventNotification
+class V2SignalsPaymentRetryEvaluationCompletedEventNotification extends \Stripe\V2\Core\EventNotification
 {
-    const LOOKUP_TYPE = 'v2.billing.cadence.billed';
+    const LOOKUP_TYPE = 'v2.signals.payment_retry_evaluation.completed';
     public $related_object;
 
     /**
      * Retrieves the full event object from the API. Make an API request on every call.
      *
-     * @return V2BillingCadenceBilledEvent
+     * @return V2SignalsPaymentRetryEvaluationCompletedEvent
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */
@@ -27,7 +27,7 @@ class V2BillingCadenceBilledEventNotification extends \Stripe\V2\Core\EventNotif
     /**
      * Retrieves the related object from the API. Make an API request on every call.
      *
-     * @return \Stripe\V2\Billing\Cadence
+     * @return \Stripe\V2\Signals\PaymentRetryEvaluation
      *
      * @throws \Stripe\Exception\ApiErrorException if the request fails
      */

@@ -81,4 +81,48 @@ final class StripeClientTest extends TestCase
 
         self::assertSame(['evnt_123', 'evnt_456', 'evnt_789'], $seen);
     }
+
+    public function testListMethodUsesClientApiBaseForPagination()
+    {
+        $curlClientStub = $this->getMockBuilder(HttpClient\CurlClient::class)
+            ->setMethods(['executeRequestWithRetries'])
+            ->getMock()
+        ;
+
+        $curlClientStub->method('executeRequestWithRetries')
+            ->willReturnOnConsecutiveCalls([
+                '{"object": "list", "data": [{"id": "pi_123", "object": "payment_intent"}], "has_more": true, "url": "/v1/payment_intents"}',
+                200,
+                [],
+            ], [
+                '{"object": "list", "data": [{"id": "pi_456", "object": "payment_intent"}], "has_more": false, "url": "/v1/payment_intents"}',
+                200,
+                [],
+            ])
+        ;
+
+        $curlClientStub->expects(self::exactly(2))
+            ->method('executeRequestWithRetries')
+            ->withConsecutive(
+                [self::anything(), MOCK_URL . '/v1/payment_intents?limit=1'],
+                [self::anything(), MOCK_URL . '/v1/payment_intents?limit=1&starting_after=pi_123']
+            )
+        ;
+
+        ApiRequestor::setHttpClient($curlClientStub);
+        Stripe::$apiBase = 'https://global-api-base.example';
+
+        $client = new StripeClient([
+            'api_key' => 'sk_test_client',
+            'api_base' => MOCK_URL,
+        ]);
+
+        $paymentIntents = $client->paymentIntents->all(['limit' => 1]);
+        $seen = [];
+        foreach ($paymentIntents->autoPagingIterator() as $paymentIntent) {
+            $seen[] = $paymentIntent->id;
+        }
+
+        self::assertSame(['pi_123', 'pi_456'], $seen);
+    }
 }

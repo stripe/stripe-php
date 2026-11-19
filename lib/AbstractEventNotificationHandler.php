@@ -3738,45 +3738,6 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
-     * Registers a handler for the "v2.billing.cadence.billed" event.
-     *
-     * @param callable(Events\V2BillingCadenceBilledEventNotification, StripeClient): void $handler Handles v2.billing.cadence.billed events
-     *
-     * @throws Exception\InvalidArgumentException if this event type is already registered
-     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
-     */
-    public function onV2BillingCadenceBilled($handler)
-    {
-        $this->register('v2.billing.cadence.billed', $handler);
-    }
-
-    /**
-     * Registers a handler for the "v2.billing.cadence.canceled" event.
-     *
-     * @param callable(Events\V2BillingCadenceCanceledEventNotification, StripeClient): void $handler Handles v2.billing.cadence.canceled events
-     *
-     * @throws Exception\InvalidArgumentException if this event type is already registered
-     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
-     */
-    public function onV2BillingCadenceCanceled($handler)
-    {
-        $this->register('v2.billing.cadence.canceled', $handler);
-    }
-
-    /**
-     * Registers a handler for the "v2.billing.cadence.created" event.
-     *
-     * @param callable(Events\V2BillingCadenceCreatedEventNotification, StripeClient): void $handler Handles v2.billing.cadence.created events
-     *
-     * @throws Exception\InvalidArgumentException if this event type is already registered
-     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
-     */
-    public function onV2BillingCadenceCreated($handler)
-    {
-        $this->register('v2.billing.cadence.created', $handler);
-    }
-
-    /**
      * Registers a handler for the "v2.billing.contract.activated" event.
      *
      * @param callable(Events\V2BillingContractActivatedEventNotification, StripeClient): void $handler Handles v2.billing.contract.activated events
@@ -3917,6 +3878,101 @@ abstract class AbstractEventNotificationHandler
     public function onV2BillingContractTermDeleted($handler)
     {
         $this->register('v2.billing.contract_term.deleted', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract_term.pricing_override_ended" event.
+     *
+     * @param callable(Events\V2BillingContractTermPricingOverrideEndedEventNotification, StripeClient): void $handler Handles v2.billing.contract_term.pricing_override_ended events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractTermPricingOverrideEnded($handler)
+    {
+        $this->register(
+            'v2.billing.contract_term.pricing_override_ended',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract_term.pricing_override_started" event.
+     *
+     * @param callable(Events\V2BillingContractTermPricingOverrideStartedEventNotification, StripeClient): void $handler Handles v2.billing.contract_term.pricing_override_started events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractTermPricingOverrideStarted($handler)
+    {
+        $this->register(
+            'v2.billing.contract_term.pricing_override_started',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract_term.recurring_price_ended" event.
+     *
+     * @param callable(Events\V2BillingContractTermRecurringPriceEndedEventNotification, StripeClient): void $handler Handles v2.billing.contract_term.recurring_price_ended events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractTermRecurringPriceEnded($handler)
+    {
+        $this->register('v2.billing.contract_term.recurring_price_ended', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract_term.recurring_price_started" event.
+     *
+     * @param callable(Events\V2BillingContractTermRecurringPriceStartedEventNotification, StripeClient): void $handler Handles v2.billing.contract_term.recurring_price_started events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractTermRecurringPriceStarted($handler)
+    {
+        $this->register(
+            'v2.billing.contract_term.recurring_price_started',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract_term.scheduled_fee_service_period_ended" event.
+     *
+     * @param callable(Events\V2BillingContractTermScheduledFeeServicePeriodEndedEventNotification, StripeClient): void $handler Handles v2.billing.contract_term.scheduled_fee_service_period_ended events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractTermScheduledFeeServicePeriodEnded(
+        $handler
+    ) {
+        $this->register(
+            'v2.billing.contract_term.scheduled_fee_service_period_ended',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.billing.contract_term.scheduled_fee_service_period_started" event.
+     *
+     * @param callable(Events\V2BillingContractTermScheduledFeeServicePeriodStartedEventNotification, StripeClient): void $handler Handles v2.billing.contract_term.scheduled_fee_service_period_started events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2BillingContractTermScheduledFeeServicePeriodStarted(
+        $handler
+    ) {
+        $this->register(
+            'v2.billing.contract_term.scheduled_fee_service_period_started',
+            $handler
+        );
     }
 
     /**
@@ -5203,6 +5259,40 @@ abstract class AbstractEventNotificationHandler
     {
         $this->register(
             'v2.core.health.authorization_rate_drop.resolved',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.core.health.custom_payment_method_adapter_degraded.firing" event.
+     *
+     * @param callable(Events\V2CoreHealthCustomPaymentMethodAdapterDegradedFiringEventNotification, StripeClient): void $handler Handles v2.core.health.custom_payment_method_adapter_degraded.firing events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreHealthCustomPaymentMethodAdapterDegradedFiring(
+        $handler
+    ) {
+        $this->register(
+            'v2.core.health.custom_payment_method_adapter_degraded.firing',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.core.health.custom_payment_method_adapter_degraded.resolved" event.
+     *
+     * @param callable(Events\V2CoreHealthCustomPaymentMethodAdapterDegradedResolvedEventNotification, StripeClient): void $handler Handles v2.core.health.custom_payment_method_adapter_degraded.resolved events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreHealthCustomPaymentMethodAdapterDegradedResolved(
+        $handler
+    ) {
+        $this->register(
+            'v2.core.health.custom_payment_method_adapter_degraded.resolved',
             $handler
         );
     }
@@ -7763,6 +7853,71 @@ abstract class AbstractEventNotificationHandler
             'v2.signals.account_signal.payment_delinquency_exposure_ready',
             $handler
         );
+    }
+
+    /**
+     * Registers a handler for the "v2.signals.payment_retry_evaluation.canceled" event.
+     *
+     * @param callable(Events\V2SignalsPaymentRetryEvaluationCanceledEventNotification, StripeClient): void $handler Handles v2.signals.payment_retry_evaluation.canceled events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsPaymentRetryEvaluationCanceled($handler)
+    {
+        $this->register('v2.signals.payment_retry_evaluation.canceled', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.signals.payment_retry_evaluation.completed" event.
+     *
+     * @param callable(Events\V2SignalsPaymentRetryEvaluationCompletedEventNotification, StripeClient): void $handler Handles v2.signals.payment_retry_evaluation.completed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsPaymentRetryEvaluationCompleted($handler)
+    {
+        $this->register('v2.signals.payment_retry_evaluation.completed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.signals.payment_retry_evaluation.created" event.
+     *
+     * @param callable(Events\V2SignalsPaymentRetryEvaluationCreatedEventNotification, StripeClient): void $handler Handles v2.signals.payment_retry_evaluation.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsPaymentRetryEvaluationCreated($handler)
+    {
+        $this->register('v2.signals.payment_retry_evaluation.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.signals.payment_retry_evaluation.expired" event.
+     *
+     * @param callable(Events\V2SignalsPaymentRetryEvaluationExpiredEventNotification, StripeClient): void $handler Handles v2.signals.payment_retry_evaluation.expired events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsPaymentRetryEvaluationExpired($handler)
+    {
+        $this->register('v2.signals.payment_retry_evaluation.expired', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.signals.payment_retry_evaluation.updated" event.
+     *
+     * @param callable(Events\V2SignalsPaymentRetryEvaluationUpdatedEventNotification, StripeClient): void $handler Handles v2.signals.payment_retry_evaluation.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2SignalsPaymentRetryEvaluationUpdated($handler)
+    {
+        $this->register('v2.signals.payment_retry_evaluation.updated', $handler);
     }
 
     /**

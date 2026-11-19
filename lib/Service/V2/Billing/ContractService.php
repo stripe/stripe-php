@@ -5,7 +5,6 @@
 namespace Stripe\Service\V2\Billing;
 
 /**
- * @property Contracts\PricingLines\PricingLinesServiceFactory $pricingLines
  * @property Contracts\TermService $terms
  *
  * @phpstan-import-type RequestOptionsArray from \Stripe\Util\RequestOptions
@@ -16,10 +15,7 @@ class ContractService extends \Stripe\Service\AbstractService
 {
     use \Stripe\Service\ServiceNavigatorTrait;
 
-    protected static $classMap = [
-        'pricingLines' => Contracts\PricingLines\PricingLinesServiceFactory::class,
-        'terms' => Contracts\TermService::class,
-    ];
+    protected static $classMap = ['terms' => Contracts\TermService::class];
 
     /**
      * Activate a draft contract.
@@ -212,7 +208,7 @@ class ContractService extends \Stripe\Service\AbstractService
      * Cancel an active contract.
      *
      * @param string $id
-     * @param null|array{cancel_pricing_lines?: array{id?: string, lookup_key?: string, proration_behavior?: string}[], include?: string[], proration_behavior?: string, terms?: array{proration_behavior?: string, term: array{id?: string, lookup_key?: string, type: string}}[]} $params
+     * @param null|array{include?: string[], proration_behavior?: string, terms?: array{proration_behavior?: string, term: array{id?: string, lookup_key?: string, type: string}}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -301,7 +297,7 @@ class ContractService extends \Stripe\Service\AbstractService
     /**
      * Create a draft contract.
      *
-     * @param null|array{billing_cycle_anchor?: array{config?: array{day_of_month: int, hour?: int, minute?: int, month_of_year?: int, second?: int}, timestamp?: string, type: string}, billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details: array{customer: string, default_payment_method?: string}, collection_settings_details: array{collection_method: string, payment_method_configuration?: string}}, contract_number: string, currency: string, include?: string[], metadata?: array<string, string>, one_time_fees?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, product: string}[], pricing_lines?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}[], pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, multiply_pricing?: array{criteria?: array{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}[], factor: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}[], terms?: array{ad_hoc_product?: array{bill_schedule: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, product: string, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, lookup_key?: string, metadata?: array<string, string>, pricing_override?: array{criteria?: array{terms?: array{id?: string, lookup_key?: string, type: string}[], type: string}[], ends_at?: array{timestamp?: string, type: string}, multiply?: array{factor: string}, overwrite?: array{unit_amount_decimal?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, price: string, quantity?: string, starts_at: array{timestamp?: string, type: string}}, type: string}[]} $params
+     * @param null|array{billing_cycle_anchor?: array{config?: array{day_of_month: int, hour?: int, minute?: int, month_of_year?: int, second?: int}, timestamp?: string, type: string}, billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details: array{customer: string, default_payment_method?: string}, collection_settings_details: array{collection_method: string, payment_method_configuration?: string}}, contract_number: string, currency: string, include?: string[], metadata?: array<string, string>, terms?: array{lookup_key?: string, metadata?: array<string, string>, pricing_override?: array{criteria?: array{terms?: array{id?: string, lookup_key?: string, type: string}[], type: string}[], ends_at?: array{timestamp?: string, type: string}, multiply?: array{factor: string}, overwrite?: array{unit_amount_decimal?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, price: string, quantity?: string, starts_at: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, product: string, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, type: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -314,67 +310,6 @@ class ContractService extends \Stripe\Service\AbstractService
             'request_schema' => [
                 'kind' => 'object',
                 'fields' => [
-                    'pricing_lines' => [
-                        'kind' => 'array',
-                        'element' => [
-                            'kind' => 'object',
-                            'fields' => [
-                                'pricing' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'price_details' => [
-                                            'kind' => 'object',
-                                            'fields' => [
-                                                'pricing_overrides' => [
-                                                    'kind' => 'array',
-                                                    'element' => [
-                                                        'kind' => 'object',
-                                                        'fields' => [
-                                                            'overwrite_price' => [
-                                                                'kind' => 'object',
-                                                                'fields' => [
-                                                                    'unit_amount' => [
-                                                                        'kind' => 'decimal_string',
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
-                                                    ],
-                                                ],
-                                                'quantity_changes' => [
-                                                    'kind' => 'array',
-                                                    'element' => [
-                                                        'kind' => 'object',
-                                                        'fields' => [
-                                                            'set' => [
-                                                                'kind' => 'decimal_string',
-                                                            ],
-                                                        ],
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-                    'pricing_overrides' => [
-                        'kind' => 'array',
-                        'element' => [
-                            'kind' => 'object',
-                            'fields' => [
-                                'multiply_pricing' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'factor' => [
-                                            'kind' => 'decimal_string',
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
                     'terms' => [
                         'kind' => 'array',
                         'element' => [
@@ -600,7 +535,7 @@ class ContractService extends \Stripe\Service\AbstractService
      * Update a draft or active contract.
      *
      * @param string $id
-     * @param null|array{actions?: (array{add_term?: array{ad_hoc_product?: array{bill_schedule: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, product: string, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, lookup_key?: string, metadata?: array<string, string>, pricing_override?: array{criteria?: array{terms?: array{id?: string, lookup_key?: string, type: string}[], type: string}[], ends_at?: array{timestamp?: string, type: string}, multiply?: array{factor: string}, overwrite?: array{unit_amount_decimal?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, price: string, quantity?: string, starts_at: array{timestamp?: string, type: string}}, type: string}, remove_term?: array{term: array{id?: string, lookup_key?: string, type: string}}, type: string, update_term?: array{ad_hoc_product?: array{bill_schedule?: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, metadata?: array<string, null|string>, pricing_override?: array{ends_at?: array{timestamp?: string, type: string}, starts_at?: array{timestamp?: string, type: string}}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, quantity?: string, starts_at?: array{timestamp?: string, type: string}}, term: array{id?: string, lookup_key?: string, type: string}}})[], billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details?: array{default_payment_method?: string}, collection_settings_details?: array{collection_method?: string, payment_method_configuration?: string}}, include?: string[], metadata?: array<string, null|string>, one_time_fee_actions?: (array{add?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, product: string}, remove?: array{id?: string, lookup_key?: string}, type: string, update?: array{amount?: \Stripe\StripeObject, bill_at?: array{timestamp?: string, type: string}, id?: string, lookup_key?: string, metadata?: array<string, null|string>}})[], pricing_line_actions?: (array{add?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, pricing: array{price_details?: array{price: string, pricing_overrides?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{unit_amount?: string}, priority?: int, starts_at?: array{timestamp?: string, type: string}, type: string}[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}, type: string}, starts_at: array{timestamp?: string, type: string}}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, metadata?: array<string, null|string>, pricing?: array{price_details?: array{pricing_override_actions?: (array{add?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, overwrite_price?: array{unit_amount?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id?: string, lookup_key?: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id?: string, lookup_key?: string, metadata?: array<string, null|string>, starts_at?: array{timestamp?: string, type: string}}})[], quantity_changes?: array{effective_at: array{timestamp?: string, type: string}, set: string}[]}}, starts_at?: array{timestamp?: string, type: string}}})[], pricing_override_actions?: (array{add?: array{ends_at?: array{timestamp?: string, type: string}, lookup_key?: string, metadata?: array<string, string>, multiply_pricing?: array{criteria: array{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}[], factor: string}, overwrite_price?: array{unit_amount?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, remove?: array{id: string}, type: string, update?: array{ends_at?: array{timestamp?: string, type: string}, id: string, metadata?: array<string, null|string>, starts_at?: array{timestamp?: string, type: string}}})[]} $params
+     * @param null|array{actions?: (array{add_term?: array{lookup_key?: string, metadata?: array<string, string>, pricing_override?: array{criteria?: array{terms?: array{id?: string, lookup_key?: string, type: string}[], type: string}[], ends_at?: array{timestamp?: string, type: string}, multiply?: array{factor: string}, overwrite?: array{unit_amount_decimal?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, price: string, quantity?: string, starts_at: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, product: string, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, type: string}, remove_term?: array{term: array{id?: string, lookup_key?: string, type: string}}, type: string, update_term?: array{metadata?: array<string, null|string>, pricing_override?: array{ends_at?: array{timestamp?: string, type: string}, starts_at?: array{timestamp?: string, type: string}}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, quantity?: string, starts_at?: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule?: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, term: array{id?: string, lookup_key?: string, type: string}}})[], billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details?: array{default_payment_method?: string}, collection_settings_details?: array{collection_method?: string, payment_method_configuration?: string}}, contract_number?: string, include?: string[], metadata?: array<string, null|string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -662,103 +597,6 @@ class ContractService extends \Stripe\Service\AbstractService
                                             'fields' => [
                                                 'quantity' => [
                                                     'kind' => 'decimal_string',
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
-                    'pricing_line_actions' => [
-                        'kind' => 'array',
-                        'element' => [
-                            'kind' => 'object',
-                            'fields' => [
-                                'add' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'pricing' => [
-                                            'kind' => 'object',
-                                            'fields' => [
-                                                'price_details' => [
-                                                    'kind' => 'object',
-                                                    'fields' => [
-                                                        'pricing_overrides' => [
-                                                            'kind' => 'array',
-                                                            'element' => [
-                                                                'kind' => 'object',
-                                                                'fields' => [
-                                                                    'overwrite_price' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'unit_amount' => [
-                                                                                'kind' => 'decimal_string',
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
-                                                        'quantity_changes' => [
-                                                            'kind' => 'array',
-                                                            'element' => [
-                                                                'kind' => 'object',
-                                                                'fields' => [
-                                                                    'set' => [
-                                                                        'kind' => 'decimal_string',
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
-                                                    ],
-                                                ],
-                                            ],
-                                        ],
-                                    ],
-                                ],
-                                'update' => [
-                                    'kind' => 'object',
-                                    'fields' => [
-                                        'pricing' => [
-                                            'kind' => 'object',
-                                            'fields' => [
-                                                'price_details' => [
-                                                    'kind' => 'object',
-                                                    'fields' => [
-                                                        'pricing_override_actions' => [
-                                                            'kind' => 'array',
-                                                            'element' => [
-                                                                'kind' => 'object',
-                                                                'fields' => [
-                                                                    'add' => [
-                                                                        'kind' => 'object',
-                                                                        'fields' => [
-                                                                            'overwrite_price' => [
-                                                                                'kind' => 'object',
-                                                                                'fields' => [
-                                                                                    'unit_amount' => [
-                                                                                        'kind' => 'decimal_string',
-                                                                                    ],
-                                                                                ],
-                                                                            ],
-                                                                        ],
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
-                                                        'quantity_changes' => [
-                                                            'kind' => 'array',
-                                                            'element' => [
-                                                                'kind' => 'object',
-                                                                'fields' => [
-                                                                    'set' => [
-                                                                        'kind' => 'decimal_string',
-                                                                    ],
-                                                                ],
-                                                            ],
-                                                        ],
-                                                    ],
                                                 ],
                                             ],
                                         ],

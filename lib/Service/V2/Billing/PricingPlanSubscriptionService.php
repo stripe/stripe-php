@@ -14,7 +14,7 @@ class PricingPlanSubscriptionService extends \Stripe\Service\AbstractService
     /**
      * List all Pricing Plan Subscription objects.
      *
-     * @param null|array{billing_cadence?: string, include?: string[], limit?: int, payer?: array{customer?: string, type: string}, pricing_plan?: string, pricing_plan_version?: string, servicing_status?: string} $params
+     * @param null|array{billing_group?: string, include?: string[], limit?: int, payer?: array{customer?: string, type: string}, pricing_plan?: string, pricing_plan_version?: string, servicing_status?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Billing\PricingPlanSubscription>

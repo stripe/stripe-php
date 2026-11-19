@@ -19,7 +19,7 @@ namespace Stripe\Reserve;
  * @property null|(object{}&\Stripe\StripeObject) $manual_release
  * @property null|\Stripe\StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property int $percent The percent of each Charge to reserve.
- * @property null|(object{days_after_charge: int, expires_on: null|int}&\Stripe\StripeObject) $rolling_release
+ * @property null|(object{days_after_charge: int, days_after_fulfillment?: null|int, expires_on: null|int}&\Stripe\StripeObject) $rolling_release
  * @property string $status The current status of the ReservePlan. The ReservePlan only affects charges if it is <code>active</code>.
  * @property string $type The type of the ReservePlan.
  */

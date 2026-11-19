@@ -7,11 +7,11 @@ namespace Stripe\V2\Billing;
 /**
  * A Pricing Plan Subscription represents a customer's active subscription to a Pricing Plan. It tracks both the servicing
  * status (whether the customer is receiving service) and collection status (whether payments are current). Subscriptions
- * are created through Billing Intents and bill according to the associated Billing Cadence.
+ * are created through Billing Intents and bill according to the associated Billing Group.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property string $billing_cadence The ID of the Billing Cadence this subscription is billed on.
+ * @property string $billing_group The ID of the Billing Group this subscription is billed on.
  * @property null|(object{comment?: string, feedback?: string, reason?: string}&\Stripe\StripeObject) $cancellation_details Details about why the subscription was canceled, if applicable. Includes system-generated reason.
  * @property string $collection_status Current collection status of this subscription.
  * @property (object{awaiting_customer_action_at?: string, current_at?: string, past_due_at?: string, paused_at?: string, unpaid_at?: string}&\Stripe\StripeObject) $collection_status_transitions Timestamps for collection status transitions.
@@ -24,7 +24,7 @@ namespace Stripe\V2\Billing;
  * @property string $pricing_plan_version The ID of the Pricing Plan Version for this subscription.
  * @property string $servicing_status Current servicing status of this subscription.
  * @property (object{activated_at?: string, canceled_at?: string, paused_at?: string, will_activate_at?: string, will_cancel_at?: string}&\Stripe\StripeObject) $servicing_status_transitions Timestamps for servicing status transitions.
- * @property null|string $test_clock The ID of the Test Clock of the associated Billing Cadence, if any.
+ * @property null|string $test_clock The ID of the Test Clock of the associated Billing Group, if any.
  */
 class PricingPlanSubscription extends \Stripe\ApiResource
 {
