@@ -5,7 +5,7 @@
 namespace Stripe\Reserve;
 
 /**
- * ReserveHolds are used to place a temporary ReserveHold on a merchant's funds.
+ * A ReserveHold holds a portion of an account's funds until it's released. Stripe or the account's platform can create a ReserveHold directly, and a ReservePlan creates ReserveHolds automatically from incoming Charges.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -44,8 +44,9 @@ class Hold extends \Stripe\ApiResource
     const SOURCE_TYPE_FPX = 'fpx';
 
     /**
-     * Returns a list of ReserveHolds previously created. The ReserveHolds are returned
-     * in sorted order, with the most recent ReserveHolds appearing first.
+     * Returns a list of ReserveHolds on your account or on one of your connected
+     * accounts. The ReserveHolds are returned in sorted order, with the most recent
+     * ReserveHolds appearing first.
      *
      * @param null|array{currency?: string, ending_before?: string, expand?: string[], is_releasable?: bool, limit?: int, reason?: string, reserve_plan?: string, reserve_release?: string, source_charge?: string, starting_after?: string} $params
      * @param null|array|string $opts
@@ -62,7 +63,7 @@ class Hold extends \Stripe\ApiResource
     }
 
     /**
-     * Retrieve a ReserveHold.
+     * Retrieve a ReserveHold on your account or on one of your connected accounts.
      *
      * @param array|string $id the ID of the API resource to retrieve, or an options array containing an `id` key
      * @param null|array|string $opts

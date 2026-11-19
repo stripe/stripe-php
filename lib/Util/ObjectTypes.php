@@ -204,7 +204,6 @@ class ObjectTypes
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
         \Stripe\V2\Billing\BillSetting::OBJECT_NAME => \Stripe\V2\Billing\BillSetting::class,
         \Stripe\V2\Billing\BillSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\BillSettingVersion::class,
-        \Stripe\V2\Billing\Cadence::OBJECT_NAME => \Stripe\V2\Billing\Cadence::class,
         \Stripe\V2\Billing\CollectionSetting::OBJECT_NAME => \Stripe\V2\Billing\CollectionSetting::class,
         \Stripe\V2\Billing\CollectionSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\CollectionSettingVersion::class,
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
@@ -219,6 +218,7 @@ class ObjectTypes
         \Stripe\V2\Core\AccountToken::OBJECT_NAME => \Stripe\V2\Core\AccountToken::class,
         \Stripe\V2\Core\ApprovalRequest::OBJECT_NAME => \Stripe\V2\Core\ApprovalRequest::class,
         \Stripe\V2\Core\BatchJob::OBJECT_NAME => \Stripe\V2\Core\BatchJob::class,
+        \Stripe\V2\Core\ClaimableSandbox::OBJECT_NAME => \Stripe\V2\Core\ClaimableSandbox::class,
         \Stripe\V2\Core\Event::OBJECT_NAME => \Stripe\V2\Core\Event::class,
         \Stripe\V2\Core\EventDestination::OBJECT_NAME => \Stripe\V2\Core\EventDestination::class,
         \Stripe\V2\Core\Vault\GbBankAccount::OBJECT_NAME => \Stripe\V2\Core\Vault\GbBankAccount::class,

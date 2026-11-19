@@ -5,9 +5,12 @@
 namespace Stripe;
 
 /**
- * A coupon contains information about a percent-off or amount-off discount you
- * might want to apply to a customer. Coupons may be applied to <a href="https://docs.stripe.com/api#subscriptions">subscriptions</a>, <a href="https://docs.stripe.com/api#invoices">invoices</a>,
- * <a href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a>, <a href="https://docs.stripe.com/api#quotes">quotes</a>, and more. Coupons do not work with conventional one-off <a href="/api/charges/create">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
+ * A coupon defines a fixed or custom discount. Fixed discounts take a percentage or amount off, while
+ * <a href="https://docs.stripe.com/billing/subscriptions/script-coupons">custom coupons</a> use scripts to calculate discounts dynamically for subscriptions and invoices.
+ * You can apply coupons to customers' <a href="https://docs.stripe.com/api#subscriptions">subscriptions</a>, <a href="https://docs.stripe.com/api#invoices">invoices</a>,
+ * <a href="https://docs.stripe.com/api/checkout/sessions">Checkout Sessions</a>, <a href="https://docs.stripe.com/api#quotes">quotes</a>, and other supported billing objects.
+ * The optional <a href="/api/coupons/object#coupon_object-applies_to-products">applies_to.products</a> property limits which product line items are eligible for the discount, independently of where you apply the coupon.
+ * Coupons don't work with conventional one-off <a href="/api/charges/create">charges</a> or <a href="https://docs.stripe.com/api/payment_intents">payment intents</a>.
  *
  * @property string $id Unique identifier for the object.
  * @property string $object String representing the object's type. Objects of the same type share the same value.
@@ -16,6 +19,7 @@ namespace Stripe;
  * @property int $created Time at which the object was created. Measured in seconds since the Unix epoch.
  * @property null|string $currency If <code>amount_off</code> has been set, the three-letter <a href="https://stripe.com/docs/currencies">ISO code for the currency</a> of the amount to take off.
  * @property null|StripeObject $currency_options Coupons defined in each available currency option. Each key must be a three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
+ * @property null|(object{configuration: StripeObject, extension: (object{id: string, version: string}&StripeObject)}&StripeObject) $custom
  * @property string $duration One of <code>forever</code>, <code>once</code>, or <code>repeating</code>. Describes how long a customer who applies this coupon will get the discount.
  * @property null|int $duration_in_months If <code>duration</code> is <code>repeating</code>, the number of months the coupon applies. Null if coupon <code>duration</code> is <code>forever</code> or <code>once</code>.
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
@@ -40,6 +44,7 @@ class Coupon extends ApiResource
     const DURATION_REPEATING = 'repeating';
 
     const TYPE_AMOUNT_OFF = 'amount_off';
+    const TYPE_CUSTOM = 'custom';
     const TYPE_PERCENT_OFF = 'percent_off';
     const TYPE_SCRIPT = 'script';
 
@@ -59,7 +64,7 @@ class Coupon extends ApiResource
      * a coupon with an <code>amount_off</code> of <amount>200</amount> is applied to
      * it.
      *
-     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: array<string, array{amount_off: int}>, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|array<string, string>, name?: string, percent_off?: float, redeem_by?: int, script?: array{configuration: array, id: string}} $params
+     * @param null|array{amount_off?: int, applies_to?: array{products?: string[]}, currency?: string, currency_options?: array<string, array{amount_off: int}>, custom?: array{configuration?: array, extension: array{id: string, version?: string}}, duration?: string, duration_in_months?: int, expand?: string[], id?: string, max_redemptions?: int, metadata?: null|array<string, string>, name?: string, percent_off?: float, redeem_by?: int, script?: array{configuration: array, id: string}, type?: string} $params
      * @param null|array|string $options
      *
      * @return Coupon the created resource
