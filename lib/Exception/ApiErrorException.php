@@ -35,17 +35,15 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
         $httpHeaders = null,
         $stripeCode = null
     ) {
-        $instance = new static($message);
+        $requestId = ($httpHeaders && isset($httpHeaders['Request-Id'])) ? $httpHeaders['Request-Id'] : null;
+        $instance = new static(null === $requestId ? $message : "[{$requestId}] {$message}");
         $instance->setHttpStatus($httpStatus);
         $instance->setHttpBody($httpBody);
         $instance->setJsonBody($jsonBody);
         $instance->setHttpHeaders($httpHeaders);
         $instance->setStripeCode($stripeCode);
 
-        $instance->setRequestId(null);
-        if ($httpHeaders && isset($httpHeaders['Request-Id'])) {
-            $instance->setRequestId($httpHeaders['Request-Id']);
-        }
+        $instance->setRequestId($requestId);
 
         $instance->setError($instance->constructErrorObject());
 
@@ -204,9 +202,8 @@ abstract class ApiErrorException extends \Exception implements ExceptionInterfac
     {
         $parentStr = parent::__toString();
         $statusStr = (null === $this->getHttpStatus()) ? '' : "(Status {$this->getHttpStatus()}) ";
-        $idStr = (null === $this->getRequestId()) ? '' : "(Request {$this->getRequestId()}) ";
 
-        return "Error sending request to Stripe: {$statusStr}{$idStr}{$this->getMessage()}\n{$parentStr}";
+        return "Error sending request to Stripe: {$statusStr}{$this->getMessage()}\n{$parentStr}";
     }
 
     protected function constructErrorObject()
