@@ -17,7 +17,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $created Time at which the object was created. Represented as an RFC 3339 timestamp in UTC with millisecond precision, for example <code>2022-09-18T13:22:18.123Z</code>.
  * @property null|string $description A description of the Transaction. When applicable, the description is copied from the flow object when the Transaction is created. You can update it using the Update Transaction endpoint.
  * @property string $financial_account The ID of the FinancialAccount affected by this Transaction.
- * @property null|(object{adjustment?: string, currency_conversion?: string, fee_batch?: string, inbound_transfer?: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string, received_debit?: string, type: string}&\Stripe\StripeObject) $flow Details about the flow object that created the Transaction, such as an InboundTransfer or OutboundPayment. <code>flow.type</code> identifies the kind of object. The corresponding field contains its ID, when available: for an InboundTransfer, <code>flow.inbound_transfer</code> contains the InboundTransfer's ID. Pass that ID to the <code>flow</code> parameter on List Transactions.
+ * @property null|(object{adjustment?: string, currency_conversion?: string, fee_batch?: string, hold?: string, inbound_transfer?: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string, received_debit?: string, type: string}&\Stripe\StripeObject) $flow Details about the flow object that created the Transaction, such as an InboundTransfer or OutboundPayment. <code>flow.type</code> identifies the kind of object. The corresponding field contains its ID, when available: for an InboundTransfer, <code>flow.inbound_transfer</code> contains the InboundTransfer's ID. Pass that ID to the <code>flow</code> parameter on List Transactions.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property (object{status: string, url?: string, url_expires_at?: string}&\Stripe\StripeObject) $regulatory_receipt Hosted transaction receipt that is provided when money movement is considered regulated under Stripe's money transmission licenses. If not applicable, <code>regulatory_receipt.status</code> will be <code>not_applicable</code> and no URL will be provided unless you opt in by calling <code>/refresh_regulatory_receipt</code>.
@@ -30,6 +30,7 @@ class Transaction extends \Stripe\ApiResource
 
     const CATEGORY_ADJUSTMENT = 'adjustment';
     const CATEGORY_CURRENCY_CONVERSION = 'currency_conversion';
+    const CATEGORY_HOLD = 'hold';
     const CATEGORY_INBOUND_TRANSFER = 'inbound_transfer';
     const CATEGORY_INBOUND_TRANSFER_REVERSAL = 'inbound_transfer_reversal';
     const CATEGORY_OUTBOUND_PAYMENT = 'outbound_payment';

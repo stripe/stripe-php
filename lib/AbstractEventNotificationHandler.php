@@ -278,6 +278,45 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v1.apps.install.created" event.
+     *
+     * @param callable(Events\V1AppsInstallCreatedEventNotification, StripeClient): void $handler Handles v1.apps.install.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1AppsInstallCreated($handler)
+    {
+        $this->register('v1.apps.install.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.apps.install.deleted" event.
+     *
+     * @param callable(Events\V1AppsInstallDeletedEventNotification, StripeClient): void $handler Handles v1.apps.install.deleted events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1AppsInstallDeleted($handler)
+    {
+        $this->register('v1.apps.install.deleted', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.apps.install.updated" event.
+     *
+     * @param callable(Events\V1AppsInstallUpdatedEventNotification, StripeClient): void $handler Handles v1.apps.install.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1AppsInstallUpdated($handler)
+    {
+        $this->register('v1.apps.install.updated', $handler);
+    }
+
+    /**
      * Registers a handler for the "v1.balance.available" event.
      *
      * @param callable(Events\V1BalanceAvailableEventNotification, StripeClient): void $handler Handles v1.balance.available events
@@ -2228,19 +2267,6 @@ abstract class AbstractEventNotificationHandler
     public function onV1IssuingAuthorizationCreated($handler)
     {
         $this->register('v1.issuing_authorization.created', $handler);
-    }
-
-    /**
-     * Registers a handler for the "v1.issuing_authorization.request" event.
-     *
-     * @param callable(Events\V1IssuingAuthorizationRequestEventNotification, StripeClient): void $handler Handles v1.issuing_authorization.request events
-     *
-     * @throws Exception\InvalidArgumentException if this event type is already registered
-     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
-     */
-    public function onV1IssuingAuthorizationRequest($handler)
-    {
-        $this->register('v1.issuing_authorization.request', $handler);
     }
 
     /**

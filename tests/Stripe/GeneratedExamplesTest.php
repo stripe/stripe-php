@@ -4992,11 +4992,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/commerce/product_catalog/imports',
-            [
-                'feed_type' => 'pricing',
-                'metadata' => ['key' => 'metadata'],
-                'mode' => 'upsert',
-            ],
+            ['feed_type' => 'pricing', 'mode' => 'upsert'],
             [],
             false,
             [
@@ -5014,7 +5010,6 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->commerce->productCatalog->imports->create([
             'feed_type' => 'pricing',
-            'metadata' => ['key' => 'metadata'],
             'mode' => 'upsert',
         ]);
         self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
@@ -7864,7 +7859,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'stripe_fee',
+                        'category' => 'received_debit_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -7913,7 +7908,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -7960,7 +7955,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -8007,7 +8002,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -8058,7 +8053,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'stripe_fee',
+                            'category' => 'received_debit_reversal',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -8104,7 +8099,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'stripe_fee',
+                    'category' => 'received_debit_reversal',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -8384,6 +8379,30 @@ final class GeneratedExamplesTest extends TestCase
                 []
             );
         } catch (Exception\FxQuoteNeedsRefreshException $e) {
+        }
+    }
+
+    public function testInactiveApiOperationConfirmationRequiredError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'inactive_api_operation_confirmation_required',
+                    'code' => 'inactive_api_operation_confirmation_required',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->create([]);
+        } catch (Exception\InactiveApiOperationConfirmationRequiredException $e) {
         }
     }
 
