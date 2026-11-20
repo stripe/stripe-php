@@ -688,9 +688,18 @@ class ApiRequestor
      * So, we require that a path starts with a leading slash and that
      * parse_url() finds no scheme or authority in it.
      *
+     * We also reject "." and ".." path segments. IDs are escaped with
+     * urlencode(), which leaves dots alone, and libcurl (used by CurlClient)
+     * removes these segments before sending, so an ID of "." or ".." changes
+     * which endpoint is called: retrieving payment method "pm_123" of customer
+     * ".." sends GET /v1/payment_methods/pm_123. libcurl sends "%2E" as is, but
+     * custom HTTP clients, proxies or servers may decode it before removing dot
+     * segments, so we check the decoded segment.
+     *
      * @param string $url
      *
      * @throws Exception\InvalidArgumentException
+     * @throws Exception\InvalidRequestException
      */
     private static function validatePath($url)
     {
@@ -705,6 +714,17 @@ class ApiRequestor
             throw new Exception\InvalidArgumentException(
                 'Request path may not contain a scheme or authority.'
             );
+        }
+
+        $path = \substr($url, 0, \strcspn($url, '?#'));
+        foreach (\explode('/', $path) as $segment) {
+            if (\in_array(\str_replace('%2e', '.', \strtolower($segment)), ['.', '..'], true)) {
+                // An InvalidRequestException is an ApiErrorException, so code
+                // that already handles API errors from these calls handles it too.
+                throw Exception\InvalidRequestException::factory(
+                    'Request path may not contain a "." or ".." segment, got: "' . $url . '"'
+                );
+            }
         }
     }
 
