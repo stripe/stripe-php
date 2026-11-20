@@ -111,6 +111,35 @@ final class CustomerTest extends TestCase
         $resource = Customer::retrieveSource(self::TEST_RESOURCE_ID, self::TEST_SOURCE_ID);
     }
 
+    /**
+     * @dataProvider provideRetrieveSourceEncodesNestedIdCases
+     *
+     * @param string $sourceId
+     * @param string $expectedSegment
+     */
+    public function testRetrieveSourceEncodesNestedId($sourceId, $expectedSegment)
+    {
+        $this->stubRequest(
+            'get',
+            '/v1/customers/' . self::TEST_RESOURCE_ID . '/sources/' . $expectedSegment,
+            null,
+            null,
+            false,
+            ['id' => 'card_123', 'object' => 'card']
+        );
+        Customer::retrieveSource(self::TEST_RESOURCE_ID, $sourceId);
+    }
+
+    public static function provideRetrieveSourceEncodesNestedIdCases(): iterable
+    {
+        return [
+            ['card_123', 'card_123'],
+            // Unencoded, these would add a path segment or start a query string.
+            ['card/x', 'card%2Fx'],
+            ['card?x=1', 'card%3Fx%3D1'],
+        ];
+    }
+
     public function testCanUpdateSource()
     {
         $this->expectsRequest(

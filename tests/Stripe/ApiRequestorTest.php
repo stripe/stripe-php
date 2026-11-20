@@ -1097,6 +1097,14 @@ final class ApiRequestorTest extends TestCase
             '/v1/invoices/in_123@456',
             // A backslash does not open an authority: the '/' already closed it.
             '/v1/\evil.example',
+            // Dots are fine anywhere other than a whole '.' or '..' segment.
+            '/v1/reporting/report_types/balance.summary.1',
+            '/v1/customers/...',
+            '/v1/customers/.cus_123',
+            '/v1/customers/cus_123..',
+            '/v1/customers?email=a..b%40example.com',
+            // A double-encoded dot reaches the API as the literal '%2E'.
+            '/v1/customers/%252E',
         ];
 
         foreach ($valid as $url) {
@@ -1192,6 +1200,105 @@ final class ApiRequestorTest extends TestCase
             // The single element of `data` is yielded before any page is
             // fetched; the exception must arrive when turning the page.
         }
+    }
+
+    /**
+     * @dataProvider provideDotSegmentPathCases
+     *
+     * @param string $url
+     */
+    public function testAssertOriginRelativePathRejectsDotSegments($url)
+    {
+        $this->expectException(Exception\InvalidRequestException::class);
+        $this->expectExceptionMessage('Request path may not contain a "." or ".." segment, got: "' . $url . '"');
+        $this->assertOriginRelativePath($url);
+    }
+
+    /**
+     * @dataProvider provideDotSegmentPathCases
+     *
+     * @param string $url
+     */
+    public function testRequestRejectsDotSegmentPathWithoutIssuingRequest($url)
+    {
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::never())->method('request');
+
+        $this->expectException(Exception\InvalidRequestException::class);
+        (new ApiRequestor('sk_test_123'))->request('get', $url);
+    }
+
+    public static function provideDotSegmentPathCases(): iterable
+    {
+        return [
+            // HTTP clients remove these segments, so each request would reach a
+            // different endpoint than the one the path was built for.
+            ['/v1/checkout/sessions/.'],
+            ['/v1/checkout/sessions/..'],
+            ['/v1/customers/../payment_methods/pm_123'],
+            ['/v1/customers/./payment_methods/pm_123'],
+            ['/v1/customers/cus_123/sources/..?expand[]=customer'],
+            ['/v2/core/accounts/.'],
+            // Some clients decode '%2E' to '.' before removing dot segments.
+            ['/v1/checkout/sessions/%2E'],
+            ['/v1/checkout/sessions/%2e%2E'],
+            ['/v1/checkout/sessions/.%2E'],
+        ];
+    }
+
+    public function testRequestStreamRejectsDotSegmentPathWithoutIssuingRequest()
+    {
+        ApiRequestor::setStreamingHttpClient($this->streamingClientMock);
+        $this->streamingClientMock->expects(self::never())->method('requestStream');
+
+        $this->expectException(Exception\InvalidRequestException::class);
+        (new ApiRequestor('sk_test_123'))->requestStream('get', '/v1/quotes/../pdf', static function ($chunk) {});
+    }
+
+    /**
+     * @dataProvider provideDotIdCases
+     *
+     * @param string $id
+     */
+    public function testServiceRetrieveRejectsDotIdWithoutIssuingRequest($id)
+    {
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::never())->method('request');
+
+        $client = new StripeClient(['api_key' => 'sk_test_123']);
+
+        $this->expectException(Exception\InvalidRequestException::class);
+        $client->checkout->sessions->retrieve($id);
+    }
+
+    public function testServiceNestedRetrieveRejectsDotParentIdWithoutIssuingRequest()
+    {
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::never())->method('request');
+
+        $client = new StripeClient(['api_key' => 'sk_test_123']);
+
+        $this->expectException(Exception\InvalidRequestException::class);
+        $client->customers->retrievePaymentMethod('..', 'pm_123');
+    }
+
+    /**
+     * @dataProvider provideDotIdCases
+     *
+     * @param string $id
+     */
+    public function testLegacyRetrieveRejectsDotIdWithoutIssuingRequest($id)
+    {
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::never())->method('request');
+
+        $this->expectException(Exception\InvalidRequestException::class);
+        Checkout\Session::retrieve($id);
+    }
+
+    public static function provideDotIdCases(): iterable
+    {
+        return [['.'], ['..']];
     }
 
     private function assertNoHeaderInjection($header, $value)
