@@ -202,14 +202,9 @@ class ObjectTypes
     const v2Mapping = [
         \Stripe\V2\SearchResult::OBJECT_NAME => \Stripe\V2\SearchResult::class,
         // v2 object classes: The beginning of the section generated from our OpenAPI spec
-        \Stripe\V2\Billing\BillSetting::OBJECT_NAME => \Stripe\V2\Billing\BillSetting::class,
-        \Stripe\V2\Billing\BillSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\BillSettingVersion::class,
-        \Stripe\V2\Billing\CollectionSetting::OBJECT_NAME => \Stripe\V2\Billing\CollectionSetting::class,
-        \Stripe\V2\Billing\CollectionSettingVersion::OBJECT_NAME => \Stripe\V2\Billing\CollectionSettingVersion::class,
         \Stripe\V2\Billing\MeterEvent::OBJECT_NAME => \Stripe\V2\Billing\MeterEvent::class,
         \Stripe\V2\Billing\MeterEventAdjustment::OBJECT_NAME => \Stripe\V2\Billing\MeterEventAdjustment::class,
         \Stripe\V2\Billing\MeterEventSession::OBJECT_NAME => \Stripe\V2\Billing\MeterEventSession::class,
-        \Stripe\V2\Billing\Profile::OBJECT_NAME => \Stripe\V2\Billing\Profile::class,
         \Stripe\V2\Commerce\ProductCatalogImport::OBJECT_NAME => \Stripe\V2\Commerce\ProductCatalogImport::class,
         \Stripe\V2\Core\Account::OBJECT_NAME => \Stripe\V2\Core\Account::class,
         \Stripe\V2\Core\AccountLink::OBJECT_NAME => \Stripe\V2\Core\AccountLink::class,
@@ -251,6 +246,7 @@ class ObjectTypes
         \Stripe\V2\MoneyManagement\TransactionEntry::OBJECT_NAME => \Stripe\V2\MoneyManagement\TransactionEntry::class,
         \Stripe\V2\Network\BusinessProfile::OBJECT_NAME => \Stripe\V2\Network\BusinessProfile::class,
         \Stripe\V2\OrchestratedCommerce\Agreement::OBJECT_NAME => \Stripe\V2\OrchestratedCommerce\Agreement::class,
+        \Stripe\V2\Payments\OffSessionPayment::OBJECT_NAME => \Stripe\V2\Payments\OffSessionPayment::class,
         \Stripe\V2\Signals\AccountActivity::OBJECT_NAME => \Stripe\V2\Signals\AccountActivity::class,
         \Stripe\V2\Signals\AccountEvaluation::OBJECT_NAME => \Stripe\V2\Signals\AccountEvaluation::class,
         \Stripe\V2\Signals\AccountSignal::OBJECT_NAME => \Stripe\V2\Signals\AccountSignal::class,

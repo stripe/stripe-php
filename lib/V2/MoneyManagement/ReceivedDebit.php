@@ -15,7 +15,6 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|string $description Freeform string sent by the originator of the ReceivedDebit.
  * @property string $financial_account Financial Account on which funds for ReceivedDebit were debited.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string $receipt_url A link to the Stripe-hosted receipt for this ReceivedDebit.
  * @property string $status Open Enum. The status of the ReceivedDebit.
  * @property null|(object{failed: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details Detailed information about the status of the ReceivedDebit.
  * @property null|(object{canceled_at?: string, failed_at?: string, succeeded_at?: string}&\Stripe\StripeObject) $status_transitions The time at which the ReceivedDebit transitioned to a particular status.

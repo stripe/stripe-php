@@ -14,7 +14,7 @@ namespace Stripe\V2\MoneyManagement;
  * @property string $effective_at Time at which the TransactionEntry affects the FinancialAccount balance. This can be in the past or future.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property string $transaction The ID of the Transaction that this TransactionEntry belongs to.
- * @property (object{category: string, financial_account: string, flow?: (object{adjustment?: string, currency_conversion?: string, fee_batch?: string, inbound_transfer?: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string, received_debit?: string, type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $transaction_details Details copied from the Transaction that this TransactionEntry belongs to.
+ * @property (object{category: string, financial_account: string, flow?: (object{adjustment?: string, currency_conversion?: string, fee_batch?: string, hold?: string, inbound_transfer?: string, outbound_payment?: string, outbound_transfer?: string, received_credit?: string, received_debit?: string, type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $transaction_details Details copied from the Transaction that this TransactionEntry belongs to.
  */
 class TransactionEntry extends \Stripe\ApiResource
 {

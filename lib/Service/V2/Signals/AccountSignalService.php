@@ -12,11 +12,13 @@ namespace Stripe\Service\V2\Signals;
 class AccountSignalService extends \Stripe\Service\AbstractService
 {
     /**
-     * Lists AccountSignals whose created timestamps are no more than 90 days old for a
-     * given account or customer. Returns only the latest AccountSignal for each
-     * requested signal type.
+     * Lists AccountSignals for a given account or customer, newest first. Signals more
+     * than 180 days old are omitted. By default, returns only the latest matching
+     * AccountSignal for each requested signal type. Set latest_per_type to false to
+     * include matching historical signals. Filtering and latest-per-type selection
+     * occur before pagination.
      *
-     * @param null|array{account_details?: array{account?: string, customer?: string}, limit?: int, type: string[]} $params
+     * @param null|array{account_details?: array{account?: string, customer?: string}, created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, latest_per_type?: bool, limit?: int, type: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Signals\AccountSignal>
@@ -63,8 +65,8 @@ class AccountSignalService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Retrieves an AccountSignal by its ID when its created timestamp is no more than
-     * 90 days old.
+     * Retrieves an AccountSignal by its ID for up to 180 days after creation. Signals
+     * more than 180 days old are inaccessible.
      *
      * @param string $id
      * @param null|array $params

@@ -4868,328 +4868,6 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(WebhookEndpoint::class, $result);
     }
 
-    public function testV2BillingBillSettingGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/bill_settings',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.bill_setting',
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'latest_version' => 'latest_version',
-                        'live_version' => 'live_version',
-                        'livemode' => [],
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->billSettings->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\BillSetting::class, $result->data[0]);
-    }
-
-    public function testV2BillingBillSettingPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/bill_settings',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.bill_setting',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'latest_version' => 'latest_version',
-                'live_version' => 'live_version',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->billSettings->create([]);
-        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
-    }
-
-    public function testV2BillingBillSettingGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/bill_settings/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.bill_setting',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'latest_version' => 'latest_version',
-                'live_version' => 'live_version',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->billSettings->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
-    }
-
-    public function testV2BillingBillSettingPost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/bill_settings/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.bill_setting',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'latest_version' => 'latest_version',
-                'live_version' => 'live_version',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->billSettings->update(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\BillSetting::class, $result);
-    }
-
-    public function testV2BillingBillSettingsVersionGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/bill_settings/bill_setting_id_123/versions',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.bill_setting_version',
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'livemode' => [],
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->billSettings->versions->all(
-            'bill_setting_id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\BillSettingVersion::class, $result->data[0]);
-    }
-
-    public function testV2BillingBillSettingsVersionGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/bill_settings/bill_setting_id_123/versions/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.bill_setting_version',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->billSettings->versions->retrieve(
-            'bill_setting_id_123',
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\BillSettingVersion::class, $result);
-    }
-
-    public function testV2BillingCollectionSettingGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/collection_settings',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.collection_setting',
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'latest_version' => 'latest_version',
-                        'live_version' => 'live_version',
-                        'livemode' => [],
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->collectionSettings->all([]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result->data[0]);
-    }
-
-    public function testV2BillingCollectionSettingPost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/collection_settings',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.collection_setting',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'latest_version' => 'latest_version',
-                'live_version' => 'live_version',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->collectionSettings->create([]);
-        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
-    }
-
-    public function testV2BillingCollectionSettingGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/collection_settings/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.collection_setting',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'latest_version' => 'latest_version',
-                'live_version' => 'live_version',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->collectionSettings->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
-    }
-
-    public function testV2BillingCollectionSettingPost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/collection_settings/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.collection_setting',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'latest_version' => 'latest_version',
-                'live_version' => 'live_version',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->collectionSettings->update(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\CollectionSetting::class, $result);
-    }
-
-    public function testV2BillingCollectionSettingsVersionGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/collection_settings/collection_setting_id_123/versions',
-            [],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.collection_setting_version',
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'livemode' => [],
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->collectionSettings->versions->all(
-            'collection_setting_id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\CollectionSettingVersion::class, $result->data[0]);
-    }
-
-    public function testV2BillingCollectionSettingsVersionGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/collection_settings/collection_setting_id_123/versions/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.collection_setting_version',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->collectionSettings->versions->retrieve(
-            'collection_setting_id_123',
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\CollectionSettingVersion::class, $result);
-    }
-
     public function testV2BillingMeterEventPost()
     {
         $this->stubRequest(
@@ -5306,108 +4984,6 @@ final class GeneratedExamplesTest extends TestCase
         ]);
     }
 
-    public function testV2BillingProfileGet()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/profiles',
-            ['lookup_keys' => ['lookup_keys']],
-            [],
-            false,
-            [
-                'data' => [
-                    '0' => [
-                        'object' => 'v2.billing.profile',
-                        'created' => '1970-01-12T21:42:34.472Z',
-                        'id' => 'obj_123',
-                        'livemode' => [],
-                        'status' => 'active',
-                    ],
-                ],
-                'next_page_url' => null,
-                'previous_page_url' => null,
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->profiles->all([
-            'lookup_keys' => ['lookup_keys'],
-        ]);
-        self::assertInstanceOf(V2\Collection::class, $result);
-        self::assertInstanceOf(V2\Billing\Profile::class, $result->data[0]);
-    }
-
-    public function testV2BillingProfilePost()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/profiles',
-            ['customer' => 'customer'],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.profile',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->profiles->create([
-            'customer' => 'customer',
-        ]);
-        self::assertInstanceOf(V2\Billing\Profile::class, $result);
-    }
-
-    public function testV2BillingProfileGet2()
-    {
-        $this->stubRequest(
-            'get',
-            '/v2/billing/profiles/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.profile',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->profiles->retrieve(
-            'id_123',
-            []
-        );
-        self::assertInstanceOf(V2\Billing\Profile::class, $result);
-    }
-
-    public function testV2BillingProfilePost2()
-    {
-        $this->stubRequest(
-            'post',
-            '/v2/billing/profiles/id_123',
-            [],
-            [],
-            false,
-            [
-                'object' => 'v2.billing.profile',
-                'created' => '1970-01-12T21:42:34.472Z',
-                'id' => 'obj_123',
-                'livemode' => [],
-                'status' => 'active',
-            ],
-            200,
-            BaseStripeClient::DEFAULT_API_BASE
-        );
-        $result = $this->v2Client->v2->billing->profiles->update('id_123', []);
-        self::assertInstanceOf(V2\Billing\Profile::class, $result);
-    }
-
     public function testV2CommerceProductCatalogImportGet()
     {
         $this->stubRequest(
@@ -5445,11 +5021,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/commerce/product_catalog/imports',
-            [
-                'feed_type' => 'pricing',
-                'metadata' => ['key' => 'metadata'],
-                'mode' => 'upsert',
-            ],
+            ['feed_type' => 'pricing', 'mode' => 'upsert'],
             [],
             false,
             [
@@ -5467,7 +5039,6 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->commerce->productCatalog->imports->create([
             'feed_type' => 'pricing',
-            'metadata' => ['key' => 'metadata'],
             'mode' => 'upsert',
         ]);
         self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
@@ -5936,7 +5507,7 @@ final class GeneratedExamplesTest extends TestCase
                 'data' => [
                     '0' => [
                         'object' => 'v2.core.approval_request',
-                        'action' => 'refund.create',
+                        'action' => 'tax.registration_application.submit',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'expires_at' => '1970-01-10T15:36:51.170Z',
                         'id' => 'obj_123',
@@ -5966,7 +5537,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.approval_request',
-                'action' => 'refund.create',
+                'action' => 'tax.registration_application.submit',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'id' => 'obj_123',
@@ -5994,7 +5565,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.approval_request',
-                'action' => 'refund.create',
+                'action' => 'tax.registration_application.submit',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'id' => 'obj_123',
@@ -6022,7 +5593,7 @@ final class GeneratedExamplesTest extends TestCase
             false,
             [
                 'object' => 'v2.core.approval_request',
-                'action' => 'refund.create',
+                'action' => 'tax.registration_application.submit',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'expires_at' => '1970-01-10T15:36:51.170Z',
                 'id' => 'obj_123',
@@ -7582,10 +7153,10 @@ final class GeneratedExamplesTest extends TestCase
                         'actor' => ['type' => 'api_key'],
                         'context' => 'context',
                         'created' => '1970-01-12T21:42:34.472Z',
-                        'details' => ['type' => 'scim'],
+                        'details' => ['type' => 'account_security'],
                         'id' => 'obj_123',
                         'livemode' => [],
-                        'type' => 'anomaly_detection_settings_updated',
+                        'type' => 'user_password_initialized',
                     ],
                 ],
                 'next_page_url' => null,
@@ -7612,10 +7183,10 @@ final class GeneratedExamplesTest extends TestCase
                 'actor' => ['type' => 'api_key'],
                 'context' => 'context',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'details' => ['type' => 'scim'],
+                'details' => ['type' => 'account_security'],
                 'id' => 'obj_123',
                 'livemode' => [],
-                'type' => 'anomaly_detection_settings_updated',
+                'type' => 'user_password_initialized',
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -9815,7 +9386,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'stripe_fee',
+                        'category' => 'received_debit_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -9864,7 +9435,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -9911,7 +9482,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -9958,7 +9529,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -10009,7 +9580,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'stripe_fee',
+                            'category' => 'received_debit_reversal',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -10055,7 +9626,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'stripe_fee',
+                    'category' => 'received_debit_reversal',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -10287,6 +9858,261 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\OrchestratedCommerce\Agreement::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/off_session_payments',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.payments.off_session_payment',
+                        'amount_total' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'currency' => 'usd',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'metadata' => ['key' => 'metadata'],
+                        'payment_method' => 'payment_method',
+                        'retries' => [
+                            'attempts' => [],
+                            'enabled' => [],
+                        ],
+                        'status' => 'paused',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result->data[0]);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments',
+            ['retries' => ['enabled' => true]],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->create([
+            'retries' => ['enabled' => true],
+        ]);
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/payments/off_session_payments/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost3()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/cancel',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->cancel(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/pause',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->pause(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
+    }
+
+    public function testV2PaymentsOffSessionPaymentPost5()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/payments/off_session_payments/id_123/resume',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.payments.off_session_payment',
+                'amount_total' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'metadata' => ['key' => 'metadata'],
+                'payment_method' => 'payment_method',
+                'retries' => [
+                    'attempts' => [],
+                    'enabled' => [],
+                ],
+                'status' => 'paused',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->payments->offSessionPayments->resume(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Payments\OffSessionPayment::class, $result);
     }
 
     public function testV2SignalsAccountActivityPost()
@@ -10799,6 +10625,30 @@ final class GeneratedExamplesTest extends TestCase
                 []
             );
         } catch (Exception\FxQuoteNeedsRefreshException $e) {
+        }
+    }
+
+    public function testInactiveApiOperationConfirmationRequiredError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'inactive_api_operation_confirmation_required',
+                    'code' => 'inactive_api_operation_confirmation_required',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->create([]);
+        } catch (Exception\InactiveApiOperationConfirmationRequiredException $e) {
         }
     }
 
