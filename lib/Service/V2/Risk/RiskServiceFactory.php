@@ -7,6 +7,7 @@ namespace Stripe\Service\V2\Risk;
 /**
  * Service factory class for API resources in the Risk namespace.
  *
+ * @property EvaluationOutcomeService $evaluationOutcomes
  * @property FormService $forms
  */
 class RiskServiceFactory extends \Stripe\Service\AbstractServiceFactory
@@ -15,6 +16,7 @@ class RiskServiceFactory extends \Stripe\Service\AbstractServiceFactory
      * @var array<string, string>
      */
     private static $classMap = [
+        'evaluationOutcomes' => EvaluationOutcomeService::class,
         'forms' => FormService::class,
     ];
 

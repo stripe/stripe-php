@@ -61,7 +61,7 @@ namespace Stripe;
  * @property null|(object{enabled: bool}&StripeObject) $payments_orchestration When you enable this parameter, this PaymentIntent will route your payment to processors that you configure in the dashboard.
  * @property null|(object{presentment_amount: int, presentment_currency: string}&StripeObject) $presentment_details
  * @property null|(object{card?: (object{customer_notification?: (object{approval_requested: null|bool, completes_at: null|int}&StripeObject)}&StripeObject), type: string}&StripeObject) $processing If present, this property tells you about the processing state of the payment.
- * @property null|(object{is_free_trial_transaction?: null|bool}&StripeObject) $radar_options Options to configure Radar.
+ * @property null|(object{is_free_trial_transaction?: bool}&StripeObject) $radar_options Options to configure Radar.
  * @property null|string $receipt_email Email address that the receipt for the resulting payment will be sent to. If <code>receipt_email</code> is specified for a payment in live mode, a receipt will be sent regardless of your <a href="https://dashboard.stripe.com/account/emails">email settings</a>.
  * @property null|(object{status: string}&StripeObject) $redaction Redaction status of this PaymentIntent. If the PaymentIntent isn't redacted, this field is null.
  * @property null|Review|string $review ID of the review associated with this PaymentIntent, if any.

@@ -49,7 +49,7 @@ class InvoiceRenderingTemplateService extends AbstractService
     /**
      * Creates an invoice rendering template.
      *
-     * @param null|array{expand?: string[], line_item_policy?: array{display?: string}, metadata?: array<string, string>, nickname?: string, rendering_settings?: array{invoice_pdf?: array{blocks?: null|array{custom_plain_text_cel?: array{cel_expression: string}, key?: string, type: string}[]}}, summary_item_policies?: array{display_items?: string, filter?: string, group_by?: string}[]} $params
+     * @param null|array{expand?: string[], line_item_policy?: array{display?: string}, metadata?: array<string, string>, nickname?: string, rendering_settings?: array{invoice_pdf?: array{blocks?: null|array{custom_plain_text?: array{plain_text: string}, custom_plain_text_cel?: array{cel_expression: string}, key?: string, type: string}[]}}, summary_item_policies?: array{display_items?: string, filter?: string, group_by?: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\InvoiceRenderingTemplate
@@ -100,7 +100,7 @@ class InvoiceRenderingTemplateService extends AbstractService
      * Updates an existing invoice rendering template.
      *
      * @param string $id
-     * @param null|array{expand?: string[], line_item_policy?: null|array{display?: string}, metadata?: null|array<string, string>, nickname?: string, rendering_settings?: array{invoice_pdf?: array{blocks?: null|array{custom_plain_text_cel?: array{cel_expression: string}, key?: string, type?: string}[]}}, summary_item_policies?: null|array{display_items?: string, filter?: string, group_by?: string}[]} $params
+     * @param null|array{expand?: string[], line_item_policy?: null|array{display?: string}, metadata?: null|array<string, string>, nickname?: string, rendering_settings?: array{invoice_pdf?: array{blocks?: null|array{custom_plain_text?: array{plain_text: string}, custom_plain_text_cel?: array{cel_expression: string}, key?: string, type?: string}[]}}, summary_item_policies?: null|array{display_items?: string, filter?: string, group_by?: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\InvoiceRenderingTemplate

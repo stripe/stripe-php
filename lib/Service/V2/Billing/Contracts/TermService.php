@@ -55,6 +55,23 @@ class TermService extends \Stripe\Service\AbstractService
                                         'overwrite' => [
                                             'kind' => 'object',
                                             'fields' => [
+                                                'tiers' => [
+                                                    'kind' => 'array',
+                                                    'element' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'flat_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'unit_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'up_to' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
                                                 'unit_amount_decimal' => [
                                                     'kind' => 'decimal_string',
                                                 ],
@@ -67,6 +84,30 @@ class TermService extends \Stripe\Service\AbstractService
                                     'fields' => [
                                         'quantity' => [
                                             'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
+                                'scheduled_fee' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'bill_schedule' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'custom' => [
+                                                    'kind' => 'array',
+                                                    'element' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'quantity' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'unit_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
                                         ],
                                     ],
                                 ],
@@ -108,6 +149,23 @@ class TermService extends \Stripe\Service\AbstractService
                             'overwrite' => [
                                 'kind' => 'object',
                                 'fields' => [
+                                    'tiers' => [
+                                        'kind' => 'array',
+                                        'element' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'flat_amount_decimal' => [
+                                                    'kind' => 'decimal_string',
+                                                ],
+                                                'unit_amount_decimal' => [
+                                                    'kind' => 'decimal_string',
+                                                ],
+                                                'up_to' => [
+                                                    'kind' => 'int64_string',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
                                     'unit_amount_decimal' => [
                                         'kind' => 'decimal_string',
                                     ],
@@ -119,6 +177,30 @@ class TermService extends \Stripe\Service\AbstractService
                         'kind' => 'object',
                         'fields' => [
                             'quantity' => ['kind' => 'decimal_string'],
+                        ],
+                    ],
+                    'scheduled_fee' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'bill_schedule' => [
+                                'kind' => 'object',
+                                'fields' => [
+                                    'custom' => [
+                                        'kind' => 'array',
+                                        'element' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'quantity' => [
+                                                    'kind' => 'decimal_string',
+                                                ],
+                                                'unit_amount_decimal' => [
+                                                    'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],

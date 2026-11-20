@@ -5,17 +5,20 @@
 namespace Stripe\V2\Core;
 
 /**
- * A FeeEntry is the atomic, append-only record of an assessed fee.
+ * A FeeEntry is an atomic record of an assessed fee. Its assessment attributes are
+ * immutable, while its FeeBatch association and derived status can change as the fee
+ * progresses through billing.
  *
  * @property string $id Unique identifier for the FeeEntry.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
  * @property (object{currency: string, value: string}&\Stripe\StripeObject) $amount The fee amount.
  * @property (object{application?: (object{feature_name?: string}&\Stripe\StripeObject), network?: (object{feature_name?: string}&\Stripe\StripeObject), stripe?: (object{feature_name?: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject) $charged_by The entity that assessed this fee.
  * @property string $created Timestamp of when this fee entry was created.
- * @property null|string $fee_batch The ID of the FeeBatch that collected this fee, if any.
+ * @property null|string $fee_batch The ID of the FeeBatch currently assigned to collect this fee, if any. If Stripe cancels the assigned FeeBatch before billing, Stripe reassigns the FeeEntry to a replacement FeeBatch. During reassociation, this field can temporarily continue to reference the canceled FeeBatch.
  * @property (object{account?: string, id: string, occurred_at?: string, type: string}&\Stripe\StripeObject) $incurred_by The usage event that caused this fee to be assessed.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode, or <code>false</code> if in test mode.
  * @property string $reason The reason this fee entry was created.
+ * @property string $status The current billing status of the fee. Every FeeEntry eventually transitions from <code>assessed</code> to <code>billed</code> when its associated FeeBatch is billed. While <code>assessed</code>, its FeeBatch association can change if the assigned batch is canceled. Once <code>billed</code>, the status and FeeBatch association are terminal.
  * @property null|(object{amount: (object{currency: string, value: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $tax The tax portion of the fee, if applicable.
  * @property string $type The category of this fee.
  */
@@ -29,6 +32,9 @@ class FeeEntry extends \Stripe\ApiResource
     const REASON_REFUND_FAILURE = 'refund_failure';
     const REASON_REPRICE = 'reprice';
     const REASON_TIER_TRUE_UP = 'tier_true_up';
+
+    const STATUS_ASSESSED = 'assessed';
+    const STATUS_BILLED = 'billed';
 
     const TYPE_APPLICATION_FEE = 'application_fee';
     const TYPE_PASSTHROUGH_FEE = 'passthrough_fee';

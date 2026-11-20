@@ -12,9 +12,12 @@ namespace Stripe\Service\V2\Core;
 class FeeBatchService extends \Stripe\Service\AbstractService
 {
     /**
-     * List FeeBatches optionally filtered by collection_record.
+     * Lists FeeBatches, optionally filtered by `collection_record`, `statuses`, or
+     * creation time. If `statuses` is omitted or empty, only pending and billed
+     * FeeBatches are returned. Canceled FeeBatches are returned only when explicitly
+     * requested.
      *
-     * @param null|array{collection_record?: string, created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int} $params
+     * @param null|array{collection_record?: string, created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, limit?: int, statuses?: string[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Collection<\Stripe\V2\Core\FeeBatch>

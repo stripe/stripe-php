@@ -8957,13 +8957,13 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/core/account_evaluations',
-            ['signals' => ['user_multi_accounting']],
+            ['signals' => ['user_affinity']],
             [],
             false,
             [
                 'object' => 'v2.core.account_evaluation',
                 'created' => '1970-01-12T21:42:34.472Z',
-                'evaluations_triggered' => ['0' => 'user_account_sharing'],
+                'evaluations_triggered' => ['0' => 'user_multi_accounting'],
                 'id' => 'obj_123',
                 'livemode' => [],
             ],
@@ -8971,7 +8971,7 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->accountEvaluations->create([
-            'signals' => ['user_multi_accounting'],
+            'signals' => ['user_affinity'],
         ]);
         self::assertInstanceOf(V2\Core\AccountEvaluation::class, $result);
     }
@@ -10252,6 +10252,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                         'livemode' => [],
                         'reason' => 'reprice',
+                        'status' => 'assessed',
                         'type' => 'application_fee',
                     ],
                 ],
@@ -10289,6 +10290,7 @@ final class GeneratedExamplesTest extends TestCase
                 ],
                 'livemode' => [],
                 'reason' => 'reprice',
+                'status' => 'assessed',
                 'type' => 'application_fee',
             ],
             200,
@@ -12356,6 +12358,179 @@ final class GeneratedExamplesTest extends TestCase
             []
         );
         self::assertInstanceOf(V2\MoneyManagement\DebitDispute::class, $result);
+    }
+
+    public function testV2MoneyManagementDisputeGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/disputes',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.money_management.dispute',
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'financial_account' => 'financial_account',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'reason' => 'other',
+                        'status' => 'lost',
+                        'target' => ['type' => 'received_debit'],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->disputes->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\Dispute::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementDisputePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/disputes',
+            [
+                'reason' => 'other',
+                'target' => [
+                    'received_debit' => 'received_debit',
+                    'type' => 'received_debit',
+                ],
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.dispute',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'reason' => 'other',
+                'status' => 'lost',
+                'target' => ['type' => 'received_debit'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->disputes->create([
+            'reason' => 'other',
+            'target' => [
+                'received_debit' => 'received_debit',
+                'type' => 'received_debit',
+            ],
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\Dispute::class, $result);
+    }
+
+    public function testV2MoneyManagementDisputeGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/disputes/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.dispute',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'reason' => 'other',
+                'status' => 'lost',
+                'target' => ['type' => 'received_debit'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->disputes->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\Dispute::class, $result);
+    }
+
+    public function testV2MoneyManagementDisputeAdjustmentGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/dispute_adjustments',
+            [],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.money_management.dispute_adjustment',
+                        'amount' => [
+                            'currency' => 'USD',
+                            'value' => [],
+                        ],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'financial_account' => 'financial_account',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'related_dispute' => ['type' => 'dispute'],
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->disputeAdjustments->all([]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\MoneyManagement\DisputeAdjustment::class, $result->data[0]);
+    }
+
+    public function testV2MoneyManagementDisputeAdjustmentGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/money_management/dispute_adjustments/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.dispute_adjustment',
+                'amount' => [
+                    'currency' => 'USD',
+                    'value' => [],
+                ],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'related_dispute' => ['type' => 'dispute'],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->disputeAdjustments->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\DisputeAdjustment::class, $result);
     }
 
     public function testV2MoneyManagementEarnedCreditGet()
@@ -15027,6 +15202,7 @@ final class GeneratedExamplesTest extends TestCase
                             'value' => [],
                         ],
                         'created' => '1970-01-12T21:42:34.472Z',
+                        'disputed' => [],
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
                         'livemode' => [],
@@ -15060,6 +15236,7 @@ final class GeneratedExamplesTest extends TestCase
                     'value' => [],
                 ],
                 'created' => '1970-01-12T21:42:34.472Z',
+                'disputed' => [],
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
                 'livemode' => [],
@@ -15799,6 +15976,37 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\SpendingMandate::class, $result->data[0]);
     }
 
+    public function testV2MoneyManagementSpendingMandatePost()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/spending_mandates',
+            [
+                'financial_account' => 'financial_account',
+                'type' => 'bank_transfer',
+            ],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.spending_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'type' => 'bank_transfer',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->spendingMandates->create([
+            'financial_account' => 'financial_account',
+            'type' => 'bank_transfer',
+        ]);
+        self::assertInstanceOf(V2\MoneyManagement\SpendingMandate::class, $result);
+    }
+
     public function testV2MoneyManagementSpendingMandateGet2()
     {
         $this->stubRequest(
@@ -15827,7 +16035,35 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\MoneyManagement\SpendingMandate::class, $result);
     }
 
-    public function testV2MoneyManagementSpendingMandatePost()
+    public function testV2MoneyManagementSpendingMandatePost2()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/money_management/spending_mandates/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.money_management.spending_mandate',
+                'created' => '1970-01-12T21:42:34.472Z',
+                'currency' => 'usd',
+                'financial_account' => 'financial_account',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'status' => 'expired',
+                'type' => 'bank_transfer',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->moneyManagement->spendingMandates->update(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\MoneyManagement\SpendingMandate::class, $result);
+    }
+
+    public function testV2MoneyManagementSpendingMandatePost3()
     {
         $this->stubRequest(
             'post',
@@ -16018,7 +16254,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'inbound_transfer_reversal',
+                        'category' => 'platform_earning_refund',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -16067,7 +16303,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'inbound_transfer_reversal',
+                'category' => 'platform_earning_refund',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -16114,7 +16350,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'inbound_transfer_reversal',
+                'category' => 'platform_earning_refund',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -16161,7 +16397,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'inbound_transfer_reversal',
+                'category' => 'platform_earning_refund',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -16212,7 +16448,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'inbound_transfer_reversal',
+                            'category' => 'platform_earning_refund',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -16258,7 +16494,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'inbound_transfer_reversal',
+                    'category' => 'platform_earning_refund',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -17983,6 +18219,66 @@ final class GeneratedExamplesTest extends TestCase
         self::assertInstanceOf(V2\Reporting\ReportRun::class, $result);
     }
 
+    public function testV2RiskEvaluationOutcomeGet()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/risk/evaluation_outcomes',
+            ['account_details' => ['account' => 'account']],
+            [],
+            false,
+            [
+                'data' => [
+                    '0' => [
+                        'object' => 'v2.risk.evaluation_outcome',
+                        'account_details' => [],
+                        'created' => '1970-01-12T21:42:34.472Z',
+                        'id' => 'obj_123',
+                        'livemode' => [],
+                        'origin' => 'rule_outcome',
+                        'type' => 'delinquency',
+                    ],
+                ],
+                'next_page_url' => null,
+                'previous_page_url' => null,
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->risk->evaluationOutcomes->all([
+            'account_details' => ['account' => 'account'],
+        ]);
+        self::assertInstanceOf(V2\Collection::class, $result);
+        self::assertInstanceOf(V2\Risk\EvaluationOutcome::class, $result->data[0]);
+    }
+
+    public function testV2RiskEvaluationOutcomeGet2()
+    {
+        $this->stubRequest(
+            'get',
+            '/v2/risk/evaluation_outcomes/id_123',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.risk.evaluation_outcome',
+                'account_details' => [],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+                'origin' => 'rule_outcome',
+                'type' => 'delinquency',
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->risk->evaluationOutcomes->retrieve(
+            'id_123',
+            []
+        );
+        self::assertInstanceOf(V2\Risk\EvaluationOutcome::class, $result);
+    }
+
     public function testV2RiskFormGet()
     {
         $this->stubRequest(
@@ -18131,7 +18427,7 @@ final class GeneratedExamplesTest extends TestCase
                         ],
                     ],
                 ],
-                'requested_signals' => ['fraudulent_website'],
+                'requested_signals' => ['user_account_sharing'],
             ],
             [],
             false,
@@ -18141,8 +18437,8 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'pending_signals' => ['0' => 'user_account_sharing'],
-                'requested_signals' => ['0' => 'fraudulent_website'],
+                'pending_signals' => ['0' => 'user_affinity'],
+                'requested_signals' => ['0' => 'user_account_sharing'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE
@@ -18167,7 +18463,7 @@ final class GeneratedExamplesTest extends TestCase
                     ],
                 ],
             ],
-            'requested_signals' => ['fraudulent_website'],
+            'requested_signals' => ['user_account_sharing'],
         ]);
         self::assertInstanceOf(V2\Signals\AccountEvaluation::class, $result);
     }
@@ -18186,8 +18482,8 @@ final class GeneratedExamplesTest extends TestCase
                 'created' => '1970-01-12T21:42:34.472Z',
                 'id' => 'obj_123',
                 'livemode' => [],
-                'pending_signals' => ['0' => 'user_account_sharing'],
-                'requested_signals' => ['0' => 'fraudulent_website'],
+                'pending_signals' => ['0' => 'user_affinity'],
+                'requested_signals' => ['0' => 'user_account_sharing'],
             ],
             200,
             BaseStripeClient::DEFAULT_API_BASE

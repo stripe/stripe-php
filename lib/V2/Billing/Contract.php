@@ -20,7 +20,7 @@ namespace Stripe\V2\Billing;
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs.
  * @property null|(object{data: (object{amount: \Stripe\StripeObject, bill_at: (object{timestamp: string}&\Stripe\StripeObject), id: string, lookup_key?: string, metadata?: \Stripe\StripeObject, product: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $one_time_fees The one-time fees. Only populated when <code>one_time_fees</code> is passed in the <code>include</code> parameter.
- * @property null|(object{data: (object{ends_at?: (object{timestamp: string}&\Stripe\StripeObject), id: string, lookup_key?: string, metadata?: \Stripe\StripeObject, pricing: (object{price_details?: (object{current_quantity: string, price: string, pricing_overrides?: (object{data: (object{ends_at?: (object{timestamp: string}&\Stripe\StripeObject), id: string, lookup_key?: string, metadata?: \Stripe\StripeObject, overwrite_price?: (object{unit_amount?: string}&\Stripe\StripeObject), priority: int, starts_at: (object{timestamp: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), starts_at: (object{timestamp: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $pricing_lines The pricing lines. Only populated when <code>pricing_lines</code> is passed in the <code>include</code> parameter.
+ * @property null|(object{data: (object{ends_at?: (object{timestamp: string}&\Stripe\StripeObject), id: string, lookup_key?: string, metadata?: \Stripe\StripeObject, pricing: (object{price_details?: (object{current_quantity: string, price: string, pricing_overrides?: (object{data: (object{ends_at?: (object{timestamp: string}&\Stripe\StripeObject), id: string, lookup_key?: string, metadata?: \Stripe\StripeObject, overwrite_price?: (object{billing_scheme?: string, tiering_mode?: string, tiers?: (object{flat_amount?: string, flat_amount_decimal?: string, unit_amount?: string, unit_amount_decimal?: string, up_to?: int, up_to_decimal?: string, up_to_inf?: string}&\Stripe\StripeObject)[], tiers_mode?: string, unit_amount?: string}&\Stripe\StripeObject), priority: int, starts_at: (object{timestamp: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject)}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), starts_at: (object{timestamp: string}&\Stripe\StripeObject)}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $pricing_lines The pricing lines. Only populated when <code>pricing_lines</code> is passed in the <code>include</code> parameter.
  * @property null|(object{data: (object{ends_at?: (object{timestamp: string}&\Stripe\StripeObject), id: string, lookup_key?: string, metadata?: \Stripe\StripeObject, multiply_pricing?: (object{criteria: (object{pricing_line_ids?: string[], pricing_line_lookup_keys?: string[], type: string}&\Stripe\StripeObject)[], factor: string}&\Stripe\StripeObject), priority: int, starts_at: (object{timestamp: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $pricing_overrides The pricing overrides. Only populated when <code>pricing_overrides</code> is passed in the <code>include</code> parameter.
  * @property string $status The current status of the contract.
  * @property null|(object{activated_at?: string, canceled_at?: string, ended_at?: string}&\Stripe\StripeObject) $status_transitions Historical timestamps of when the contract transitioned into each status.
@@ -49,6 +49,44 @@ class Contract extends \Stripe\ApiResource
                                             'fields' => [
                                                 'current_quantity' => [
                                                     'kind' => 'decimal_string',
+                                                ],
+                                                'pricing_overrides' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'data' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'overwrite_price' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'tiers' => [
+                                                                                'kind' => 'array',
+                                                                                'element' => [
+                                                                                    'kind' => 'object',
+                                                                                    'fields' => [
+                                                                                        'flat_amount_decimal' => [
+                                                                                            'kind' => 'decimal_string',
+                                                                                        ],
+                                                                                        'unit_amount_decimal' => [
+                                                                                            'kind' => 'decimal_string',
+                                                                                        ],
+                                                                                        'up_to' => [
+                                                                                            'kind' => 'int64_string',
+                                                                                        ],
+                                                                                        'up_to_decimal' => [
+                                                                                            'kind' => 'decimal_string',
+                                                                                        ],
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -81,6 +119,23 @@ class Contract extends \Stripe\ApiResource
                                         'overwrite' => [
                                             'kind' => 'object',
                                             'fields' => [
+                                                'tiers' => [
+                                                    'kind' => 'array',
+                                                    'element' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'flat_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'unit_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'up_to' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
                                                 'unit_amount_decimal' => [
                                                     'kind' => 'decimal_string',
                                                 ],
@@ -93,6 +148,30 @@ class Contract extends \Stripe\ApiResource
                                     'fields' => [
                                         'quantity' => [
                                             'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
+                                'scheduled_fee' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'bill_schedule' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'custom' => [
+                                                    'kind' => 'array',
+                                                    'element' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'quantity' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'unit_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
                                         ],
                                     ],
                                 ],

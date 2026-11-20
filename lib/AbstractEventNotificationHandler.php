@@ -6126,6 +6126,71 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.money_management.dispute.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementDisputeCreatedEventNotification, StripeClient): void $handler Handles v2.money_management.dispute.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementDisputeCreated($handler)
+    {
+        $this->register('v2.money_management.dispute.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.dispute.lost" event.
+     *
+     * @param callable(Events\V2MoneyManagementDisputeLostEventNotification, StripeClient): void $handler Handles v2.money_management.dispute.lost events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementDisputeLost($handler)
+    {
+        $this->register('v2.money_management.dispute.lost', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.dispute.updated" event.
+     *
+     * @param callable(Events\V2MoneyManagementDisputeUpdatedEventNotification, StripeClient): void $handler Handles v2.money_management.dispute.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementDisputeUpdated($handler)
+    {
+        $this->register('v2.money_management.dispute.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.dispute.won" event.
+     *
+     * @param callable(Events\V2MoneyManagementDisputeWonEventNotification, StripeClient): void $handler Handles v2.money_management.dispute.won events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementDisputeWon($handler)
+    {
+        $this->register('v2.money_management.dispute.won', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.money_management.dispute_adjustment.created" event.
+     *
+     * @param callable(Events\V2MoneyManagementDisputeAdjustmentCreatedEventNotification, StripeClient): void $handler Handles v2.money_management.dispute_adjustment.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2MoneyManagementDisputeAdjustmentCreated($handler)
+    {
+        $this->register('v2.money_management.dispute_adjustment.created', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.money_management.earned_credit.succeeded" event.
      *
      * @param callable(Events\V2MoneyManagementEarnedCreditSucceededEventNotification, StripeClient): void $handler Handles v2.money_management.earned_credit.succeeded events
@@ -7762,6 +7827,19 @@ abstract class AbstractEventNotificationHandler
     public function onV2ReportingReportRunUpdated($handler)
     {
         $this->register('v2.reporting.report_run.updated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.risk.evaluation_outcome.delinquency_ready" event.
+     *
+     * @param callable(Events\V2RiskEvaluationOutcomeDelinquencyReadyEventNotification, StripeClient): void $handler Handles v2.risk.evaluation_outcome.delinquency_ready events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2RiskEvaluationOutcomeDelinquencyReady($handler)
+    {
+        $this->register('v2.risk.evaluation_outcome.delinquency_ready', $handler);
     }
 
     /**

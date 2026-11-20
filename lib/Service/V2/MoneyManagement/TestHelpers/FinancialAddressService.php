@@ -33,7 +33,7 @@ class FinancialAddressService extends \Stripe\Service\AbstractService
      * to remove virtual funds and decrease your balance for testing.
      *
      * @param string $id
-     * @param null|array{amount: \Stripe\StripeObject, network: string, statement_descriptor?: string} $params
+     * @param null|array{amount: \Stripe\StripeObject, network: string, network_details?: array{ach?: array{originator_company_id: string}}, statement_descriptor?: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAddressDebitSimulation
