@@ -72,7 +72,7 @@ You can continue to use the legacy integration patterns used prior to version [7
 
 ## Documentation
 
-See the [PHP API docs](https://stripe.com/docs/api/?lang=php#intro).
+See the [PHP API docs](https://docs.stripe.com/api?lang=php).
 
 ## Legacy Version Support
 
