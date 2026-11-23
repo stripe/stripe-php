@@ -39,7 +39,7 @@ trait NestedResource
     {
         $url = static::resourceUrl($id) . $nestedPath;
         if (null !== $nestedId) {
-            $url .= '/' . \urlencode(\Stripe\Util\Util::utf8($nestedId));
+            $url .= "/{$nestedId}";
         }
 
         return $url;
