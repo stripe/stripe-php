@@ -699,7 +699,6 @@ class ApiRequestor
      * @param string $url
      *
      * @throws Exception\InvalidArgumentException
-     * @throws Exception\InvalidRequestException
      */
     private static function validatePath($url)
     {
@@ -719,11 +718,9 @@ class ApiRequestor
         $path = \substr($url, 0, \strcspn($url, '?#'));
         foreach (\explode('/', $path) as $segment) {
             if (\in_array(\str_replace('%2e', '.', \strtolower($segment)), ['.', '..'], true)) {
-                // An InvalidRequestException is an ApiErrorException, so code
-                // that already handles API errors from these calls handles it too.
                 // The message leaves out the query string, which can carry
                 // secrets such as a client_secret.
-                throw Exception\InvalidRequestException::factory(
+                throw new Exception\InvalidArgumentException(
                     'Request path may not contain a "." or ".." segment, got: "' . $path . '"'
                 );
             }

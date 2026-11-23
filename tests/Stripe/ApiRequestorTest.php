@@ -1209,7 +1209,7 @@ final class ApiRequestorTest extends TestCase
      */
     public function testAssertOriginRelativePathRejectsDotSegments($url)
     {
-        $this->expectException(Exception\InvalidRequestException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $this->expectExceptionMessage('Request path may not contain a "." or ".." segment, got: "' . \substr($url, 0, \strcspn($url, '?#')) . '"');
         $this->assertOriginRelativePath($url);
     }
@@ -1219,7 +1219,7 @@ final class ApiRequestorTest extends TestCase
         try {
             $this->assertOriginRelativePath('/v1/payment_intents/..?client_secret=pi_123_secret_456');
             self::fail('Did not raise error');
-        } catch (Exception\InvalidRequestException $e) {
+        } catch (Exception\InvalidArgumentException $e) {
             self::assertStringContainsString('"/v1/payment_intents/.."', $e->getMessage());
             self::assertStringNotContainsString('pi_123_secret_456', $e->getMessage());
         }
@@ -1235,7 +1235,7 @@ final class ApiRequestorTest extends TestCase
         ApiRequestor::setHttpClient($this->clientMock);
         $this->clientMock->expects(self::never())->method('request');
 
-        $this->expectException(Exception\InvalidRequestException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         (new ApiRequestor('sk_test_123'))->request('get', $url);
     }
 
@@ -1262,7 +1262,7 @@ final class ApiRequestorTest extends TestCase
         ApiRequestor::setStreamingHttpClient($this->streamingClientMock);
         $this->streamingClientMock->expects(self::never())->method('requestStream');
 
-        $this->expectException(Exception\InvalidRequestException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         (new ApiRequestor('sk_test_123'))->requestStream('get', '/v1/quotes/../pdf', static function ($chunk) {});
     }
 
@@ -1278,7 +1278,7 @@ final class ApiRequestorTest extends TestCase
 
         $client = new StripeClient(['api_key' => 'sk_test_123']);
 
-        $this->expectException(Exception\InvalidRequestException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $client->checkout->sessions->retrieve($id);
     }
 
@@ -1289,7 +1289,7 @@ final class ApiRequestorTest extends TestCase
 
         $client = new StripeClient(['api_key' => 'sk_test_123']);
 
-        $this->expectException(Exception\InvalidRequestException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         $client->customers->retrievePaymentMethod('..', 'pm_123');
     }
 
@@ -1303,7 +1303,7 @@ final class ApiRequestorTest extends TestCase
         ApiRequestor::setHttpClient($this->clientMock);
         $this->clientMock->expects(self::never())->method('request');
 
-        $this->expectException(Exception\InvalidRequestException::class);
+        $this->expectException(Exception\InvalidArgumentException::class);
         Checkout\Session::retrieve($id);
     }
 
