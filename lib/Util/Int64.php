@@ -38,7 +38,10 @@ class Int64
         }
 
         if ('decimal_string' === $schema['kind']) {
-            if (\is_float($params) || \is_int($params)) {
+            if (\is_float($params)) {
+                return self::floatToDecimalString($params);
+            }
+            if (\is_int($params)) {
                 return (string) $params;
             }
 
@@ -178,5 +181,57 @@ class Int64
         }
 
         return $values;
+    }
+
+    /**
+     * Convert a float to a decimal string without exponent notation, which the
+     * API rejects. Values the string cast already writes in fixed-point
+     * notation are returned unchanged.
+     *
+     * @param float $value
+     *
+     * @return string
+     */
+    private static function floatToDecimalString($value)
+    {
+        $string = (string) $value;
+        if (!\is_finite($value) || false === \stripos($string, 'E')) {
+            return $string;
+        }
+
+        // The string cast rounds to `precision` (14) significant digits, so
+        // expanding its exponent could change the value. var_export() writes
+        // the float's shortest round-trip digits instead.
+        $string = \var_export($value, true);
+        $sign = '';
+        if ('-' === $string[0]) {
+            $sign = '-';
+            $string = \substr($string, 1);
+        }
+
+        $exponent = 0;
+        $exponentPos = \stripos($string, 'E');
+        if (false !== $exponentPos) {
+            $exponent = (int) \substr($string, $exponentPos + 1);
+            $string = \substr($string, 0, $exponentPos);
+        }
+
+        $parts = \explode('.', $string, 2);
+        $digits = $parts[0] . ($parts[1] ?? '');
+        $pointPos = \strlen($parts[0]) + $exponent;
+
+        if ($pointPos <= 0) {
+            $plain = '0.' . \str_repeat('0', -$pointPos) . $digits;
+        } elseif ($pointPos >= \strlen($digits)) {
+            $plain = $digits . \str_repeat('0', $pointPos - \strlen($digits));
+        } else {
+            $plain = \substr($digits, 0, $pointPos) . '.' . \substr($digits, $pointPos);
+        }
+
+        if (false !== \strpos($plain, '.')) {
+            $plain = \rtrim(\rtrim($plain, '0'), '.');
+        }
+
+        return $sign . $plain;
     }
 }
