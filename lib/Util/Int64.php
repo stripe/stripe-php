@@ -194,6 +194,11 @@ class Int64
      */
     private static function floatToDecimalString($value)
     {
+        // PHP 8.5 emits a warning when casting NAN to a string.
+        if (\is_nan($value)) {
+            return 'NAN';
+        }
+
         $string = (string) $value;
         if (!\is_finite($value) || false === \stripos($string, 'E')) {
             return $string;
