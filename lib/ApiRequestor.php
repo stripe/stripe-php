@@ -694,7 +694,10 @@ class ApiRequestor
      * which endpoint is called: retrieving payment method "pm_123" of customer
      * ".." sends GET /v1/payment_methods/pm_123. libcurl sends "%2E" as is, but
      * custom HTTP clients, proxies or servers may decode it before removing dot
-     * segments, so we check the decoded segment.
+     * segments, so we check the decoded segment. An encoded slash ("%2F") also
+     * counts as a separator for this check, because a proxy that decodes the
+     * path before normalizing it (nginx's proxy_pass, for example) turns it into
+     * a real one.
      *
      * @param string $url
      *
@@ -716,7 +719,7 @@ class ApiRequestor
         }
 
         $path = \substr($url, 0, \strcspn($url, '?#'));
-        foreach (\explode('/', $path) as $segment) {
+        foreach (\explode('/', \str_ireplace('%2f', '/', $path)) as $segment) {
             if (\in_array(\str_replace('%2e', '.', \strtolower($segment)), ['.', '..'], true)) {
                 // The message leaves out the query string, which can carry
                 // secrets such as a client_secret.

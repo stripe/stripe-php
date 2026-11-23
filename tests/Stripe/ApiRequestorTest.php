@@ -1105,6 +1105,8 @@ final class ApiRequestorTest extends TestCase
             '/v1/customers?email=a..b%40example.com',
             // A double-encoded dot reaches the API as the literal '%2E'.
             '/v1/customers/%252E',
+            // An encoded slash is fine as long as no piece around it is a dot segment.
+            '/v1/coupons/summer%2F2017',
         ];
 
         foreach ($valid as $url) {
@@ -1254,6 +1256,11 @@ final class ApiRequestorTest extends TestCase
             ['/v1/checkout/sessions/%2E'],
             ['/v1/checkout/sessions/%2e%2E'],
             ['/v1/checkout/sessions/.%2E'],
+            // A proxy that decodes '%2F' before removing dot segments turns these
+            // into real path separators.
+            ['/v1/coupons/x%2F..%2F..%2Fcustomers%2Fcus_B'],
+            ['/v1/customers/cus_123/sources/..%2F..%2Fcus_B'],
+            ['/v1/coupons/..%2fsummer'],
         ];
     }
 
@@ -1280,6 +1287,18 @@ final class ApiRequestorTest extends TestCase
 
         $this->expectException(Exception\InvalidArgumentException::class);
         $client->checkout->sessions->retrieve($id);
+    }
+
+    public function testServiceRetrieveRejectsIdWithEncodedDotSegmentsWithoutIssuingRequest()
+    {
+        ApiRequestor::setHttpClient($this->clientMock);
+        $this->clientMock->expects(self::never())->method('request');
+
+        $client = new StripeClient(['api_key' => 'sk_test_123']);
+
+        $this->expectException(Exception\InvalidArgumentException::class);
+        $this->expectExceptionMessage('may not contain a "." or ".." segment');
+        $client->coupons->retrieve('x/../../customers/cus_B');
     }
 
     public function testServiceNestedRetrieveRejectsDotParentIdWithoutIssuingRequest()
