@@ -721,8 +721,10 @@ class ApiRequestor
             if (\in_array(\str_replace('%2e', '.', \strtolower($segment)), ['.', '..'], true)) {
                 // An InvalidRequestException is an ApiErrorException, so code
                 // that already handles API errors from these calls handles it too.
+                // The message leaves out the query string, which can carry
+                // secrets such as a client_secret.
                 throw Exception\InvalidRequestException::factory(
-                    'Request path may not contain a "." or ".." segment, got: "' . $url . '"'
+                    'Request path may not contain a "." or ".." segment, got: "' . $path . '"'
                 );
             }
         }

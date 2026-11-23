@@ -1210,8 +1210,19 @@ final class ApiRequestorTest extends TestCase
     public function testAssertOriginRelativePathRejectsDotSegments($url)
     {
         $this->expectException(Exception\InvalidRequestException::class);
-        $this->expectExceptionMessage('Request path may not contain a "." or ".." segment, got: "' . $url . '"');
+        $this->expectExceptionMessage('Request path may not contain a "." or ".." segment, got: "' . \substr($url, 0, \strcspn($url, '?#')) . '"');
         $this->assertOriginRelativePath($url);
+    }
+
+    public function testDotSegmentErrorOmitsQueryString()
+    {
+        try {
+            $this->assertOriginRelativePath('/v1/payment_intents/..?client_secret=pi_123_secret_456');
+            self::fail('Did not raise error');
+        } catch (Exception\InvalidRequestException $e) {
+            self::assertStringContainsString('"/v1/payment_intents/.."', $e->getMessage());
+            self::assertStringNotContainsString('pi_123_secret_456', $e->getMessage());
+        }
     }
 
     /**
