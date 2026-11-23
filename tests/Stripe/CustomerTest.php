@@ -137,6 +137,8 @@ final class CustomerTest extends TestCase
             // Unencoded, these would add a path segment or start a query string.
             ['card/x', 'card%2Fx'],
             ['card?x=1', 'card%3Fx%3D1'],
+            // Converted to UTF-8 before encoding, as resourceUrl() does.
+            ["card_\xe9", 'card_%C3%A9'],
         ];
     }
 
