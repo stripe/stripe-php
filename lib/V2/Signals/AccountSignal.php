@@ -25,6 +25,7 @@ namespace Stripe\V2\Signals;
  * @property string $type The type of signal.
  * @property null|(object{risk_level: string, score?: string}&\Stripe\StripeObject) $user_account_sharing Data for the user account-sharing signal. Present only when type is user_account_sharing.
  * @property null|(object{level: string, score?: string}&\Stripe\StripeObject) $user_affinity Data for the user affinity signal. Present only when type is user_affinity.
+ * @property null|(object{buyer_type: string, buyer_type_score?: string}&\Stripe\StripeObject) $user_buyer_classification Data for the user buyer classification signal. Present only when type is user_buyer_classification.
  * @property null|(object{risk_level: string, score?: string}&\Stripe\StripeObject) $user_multi_accounting Data for the user multi-accounting signal. Present only when type is user_multi_accounting.
  */
 class AccountSignal extends \Stripe\ApiResource
@@ -70,6 +71,12 @@ class AccountSignal extends \Stripe\ApiResource
                 'kind' => 'object',
                 'fields' => ['score' => ['kind' => 'decimal_string']],
             ],
+            'user_buyer_classification' => [
+                'kind' => 'object',
+                'fields' => [
+                    'buyer_type_score' => ['kind' => 'decimal_string'],
+                ],
+            ],
             'user_multi_accounting' => [
                 'kind' => 'object',
                 'fields' => ['score' => ['kind' => 'decimal_string']],
@@ -85,5 +92,6 @@ class AccountSignal extends \Stripe\ApiResource
     const TYPE_PAYMENT_DELINQUENCY_EXPOSURE = 'payment_delinquency_exposure';
     const TYPE_USER_ACCOUNT_SHARING = 'user_account_sharing';
     const TYPE_USER_AFFINITY = 'user_affinity';
+    const TYPE_USER_BUYER_CLASSIFICATION = 'user_buyer_classification';
     const TYPE_USER_MULTI_ACCOUNTING = 'user_multi_accounting';
 }

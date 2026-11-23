@@ -56,7 +56,7 @@ class OnrampSessionService extends \Stripe\Service\AbstractService
      * Related guide: <a href="/docs/crypto/integrate-the-onramp">Set up an onramp
      * integration</a>
      *
-     * @param null|array{customer_ip_address?: string, destination_amount?: string, destination_currencies?: string[], destination_currency?: string, destination_network?: string, destination_networks?: string[], expand?: string[], kyc_details?: array{}, lock_wallet_address?: bool, metadata?: array<string, string>, settlement_speed?: string, source_amount?: string, source_currency?: string, wallet_addresses?: array{destination_tags?: array{stellar?: string}}} $params
+     * @param null|array{customer_ip_address?: string, destination_amount?: string, destination_currencies?: string[], destination_currency?: string, destination_network?: string, destination_networks?: string[], expand?: string[], kyc_details?: array{}, lock_wallet_address?: bool, metadata?: array<string, string>, payment_method?: string, settlement_speed?: string, source_amount?: string, source_currency?: string, wallet_addresses?: array{destination_tags?: array{stellar?: string}}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Crypto\OnrampSession

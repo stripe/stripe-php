@@ -12,8 +12,9 @@ namespace Stripe\Service\V2\Core;
 class FeeEntryService extends \Stripe\Service\AbstractService
 {
     /**
-     * List FeeEntries optionally filtered by incurred_by, fee_batch, or
-     * collection_record (at most one filter at a time).
+     * Lists FeeEntries, optionally filtered by `incurred_by`, `fee_batch`, or
+     * `collection_record`. When filtering by `fee_batch`, results reflect current
+     * membership; historical membership is unavailable.
      *
      * @param null|array{collection_record?: string, created?: string, created_gt?: string, created_gte?: string, created_lt?: string, created_lte?: string, fee_batch?: string, incurred_by?: string, limit?: int} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

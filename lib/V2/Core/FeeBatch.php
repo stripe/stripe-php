@@ -17,7 +17,7 @@ namespace Stripe\V2\Core;
  * @property string $created Timestamp of when this batch was created.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode, or <code>false</code> if in test mode.
  * @property string $status The current state of this batch.
- * @property (object{billed_at?: string}&\Stripe\StripeObject) $status_transitions Timestamps for each status transition.
+ * @property (object{billed_at?: string, canceled_at?: string}&\Stripe\StripeObject) $status_transitions Timestamps for each status transition.
  * @property null|(object{amount: (object{currency: string, value: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $tax The tax amount included in this batch.
  */
 class FeeBatch extends \Stripe\ApiResource
@@ -25,5 +25,6 @@ class FeeBatch extends \Stripe\ApiResource
     const OBJECT_NAME = 'v2.core.fee_batch';
 
     const STATUS_BILLED = 'billed';
+    const STATUS_CANCELED = 'canceled';
     const STATUS_PENDING = 'pending';
 }

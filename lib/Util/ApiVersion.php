@@ -6,6 +6,6 @@ namespace Stripe\Util;
 
 class ApiVersion
 {
-    const CURRENT = '2026-11-18.preview';
+    const CURRENT = '2026-12-02.preview';
     const CURRENT_MAJOR = '';
 }

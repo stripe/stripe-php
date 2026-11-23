@@ -88,6 +88,14 @@ class AccountSignalService extends \Stripe\Service\AbstractService
                                         'score' => ['kind' => 'decimal_string'],
                                     ],
                                 ],
+                                'user_buyer_classification' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'buyer_type_score' => [
+                                            'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
                                 'user_multi_accounting' => [
                                     'kind' => 'object',
                                     'fields' => [
@@ -163,6 +171,12 @@ class AccountSignalService extends \Stripe\Service\AbstractService
                     'user_affinity' => [
                         'kind' => 'object',
                         'fields' => ['score' => ['kind' => 'decimal_string']],
+                    ],
+                    'user_buyer_classification' => [
+                        'kind' => 'object',
+                        'fields' => [
+                            'buyer_type_score' => ['kind' => 'decimal_string'],
+                        ],
                     ],
                     'user_multi_accounting' => [
                         'kind' => 'object',

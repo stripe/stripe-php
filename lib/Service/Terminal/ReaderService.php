@@ -222,7 +222,7 @@ class ReaderService extends \Stripe\Service\AbstractService
      * an Interac Payment</a> for more details.
      *
      * @param string $id
-     * @param null|array{amount?: int, charge?: string, expand?: string[], metadata?: array<string, string>, payment_intent?: string, refund_application_fee?: bool, refund_payment_config?: array{enable_customer_cancellation?: bool}, reverse_transfer?: bool} $params
+     * @param null|array{amount?: int, charge?: string, expand?: string[], metadata?: array<string, string>, payment_intent?: string, refund_application_fee?: bool, refund_payment_config?: array{enable_customer_cancellation?: bool, gift_card?: array{brand: string, operation_type: string}}, reverse_transfer?: bool} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\Terminal\Reader

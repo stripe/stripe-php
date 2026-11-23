@@ -10,6 +10,8 @@ namespace Stripe\Service\V2\MoneyManagement;
  * @property AdjustmentService $adjustments
  * @property CurrencyConversionService $currencyConversions
  * @property DebitDisputeService $debitDisputes
+ * @property DisputeAdjustmentService $disputeAdjustments
+ * @property DisputeService $disputes
  * @property EarnedCreditService $earnedCredits
  * @property FinancialAccountService $financialAccounts
  * @property FinancialAddressService $financialAddresses
@@ -45,6 +47,8 @@ class MoneyManagementServiceFactory extends \Stripe\Service\AbstractServiceFacto
         'adjustments' => AdjustmentService::class,
         'currencyConversions' => CurrencyConversionService::class,
         'debitDisputes' => DebitDisputeService::class,
+        'disputeAdjustments' => DisputeAdjustmentService::class,
+        'disputes' => DisputeService::class,
         'earnedCredits' => EarnedCreditService::class,
         'financialAccounts' => FinancialAccountService::class,
         'financialAddresses' => FinancialAddressService::class,

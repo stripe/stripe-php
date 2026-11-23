@@ -27,7 +27,8 @@ class DebitDisputeService extends \Stripe\Service\AbstractService
     }
 
     /**
-     * Creates a new DebitDispute for a ReceivedDebit.
+     * Deprecated: Use CreateDispute to create a Dispute instead. Creates a new
+     * DebitDispute for a ReceivedDebit.
      *
      * @param null|array{bank_transfer?: array{reason?: string}, received_debit: string} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts

@@ -15,7 +15,7 @@ namespace Stripe;
  * @property bool $livemode If the object exists in live mode, the value is <code>true</code>. If the object exists in test mode, the value is <code>false</code>.
  * @property null|StripeObject $metadata Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can attach to an object. This can be useful for storing additional information about the object in a structured format.
  * @property null|string $nickname A brief description of the template, hidden from customers
- * @property null|(object{invoice_pdf: (object{blocks: (object{custom_plain_text_cel?: (object{cel_expression: string}&StripeObject), key: string, type: string}&StripeObject)[]}&StripeObject)}&StripeObject) $rendering_settings
+ * @property null|(object{invoice_pdf: (object{blocks: (object{custom_plain_text?: (object{plain_text: string}&StripeObject), custom_plain_text_cel?: (object{cel_expression: string}&StripeObject), key: string, type: string}&StripeObject)[]}&StripeObject)}&StripeObject) $rendering_settings
  * @property string $status The status of the template, one of <code>active</code> or <code>archived</code>.
  * @property null|((object{display_items: null|string, filter: null|string, group_by: null|string}&StripeObject))[] $summary_item_policies The policies that control how line items are grouped into summary items
  * @property int $version Version of this template; version increases by one when an update on the template changes any field that controls invoice rendering
@@ -32,7 +32,7 @@ class InvoiceRenderingTemplate extends ApiResource
     /**
      * Creates an invoice rendering template.
      *
-     * @param null|array{expand?: string[], line_item_policy?: array{display?: string}, metadata?: array<string, string>, nickname?: string, rendering_settings?: array{invoice_pdf?: array{blocks?: null|array{custom_plain_text_cel?: array{cel_expression: string}, key?: string, type: string}[]}}, summary_item_policies?: array{display_items?: string, filter?: string, group_by?: string}[]} $params
+     * @param null|array{expand?: string[], line_item_policy?: array{display?: string}, metadata?: array<string, string>, nickname?: string, rendering_settings?: array{invoice_pdf?: array{blocks?: null|array{custom_plain_text?: array{plain_text: string}, custom_plain_text_cel?: array{cel_expression: string}, key?: string, type: string}[]}}, summary_item_policies?: array{display_items?: string, filter?: string, group_by?: string}[]} $params
      * @param null|array|string $options
      *
      * @return InvoiceRenderingTemplate the created resource
@@ -94,7 +94,7 @@ class InvoiceRenderingTemplate extends ApiResource
      * Updates an existing invoice rendering template.
      *
      * @param string $id the ID of the resource to update
-     * @param null|array{expand?: string[], line_item_policy?: null|array{display?: string}, metadata?: null|array<string, string>, nickname?: string, rendering_settings?: array{invoice_pdf?: array{blocks?: null|array{custom_plain_text_cel?: array{cel_expression: string}, key?: string, type?: string}[]}}, summary_item_policies?: null|array{display_items?: string, filter?: string, group_by?: string}[]} $params
+     * @param null|array{expand?: string[], line_item_policy?: null|array{display?: string}, metadata?: null|array<string, string>, nickname?: string, rendering_settings?: array{invoice_pdf?: array{blocks?: null|array{custom_plain_text?: array{plain_text: string}, custom_plain_text_cel?: array{cel_expression: string}, key?: string, type?: string}[]}}, summary_item_policies?: null|array{display_items?: string, filter?: string, group_by?: string}[]} $params
      * @param null|array|string $opts
      *
      * @return InvoiceRenderingTemplate the updated resource

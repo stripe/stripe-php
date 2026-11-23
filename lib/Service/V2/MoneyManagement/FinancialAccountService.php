@@ -194,7 +194,7 @@ class FinancialAccountService extends \Stripe\Service\AbstractService
      * Updates an existing FinancialAccount using the provided parameters.
      *
      * @param string $id
-     * @param null|array{display_name?: string, forwarding_settings?: array{payment_method?: string, payout_method?: string, skip_exportable_balances?: bool}, metadata?: array<string, null|string>, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, holds_currencies?: string[]}} $params
+     * @param null|array{display_name?: string, flow_settings?: array{received_debits?: array{ach?: array{enabled?: bool, mandate_behavior?: string, transaction_limit?: \Stripe\StripeObject}}}, forwarding_settings?: array{payment_method?: string, payout_method?: string, skip_exportable_balances?: bool}, metadata?: array<string, null|string>, storage?: array{crypto?: array{currency_networks: array<string, string>, custody_model: string}, holds_currencies?: string[]}} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\MoneyManagement\FinancialAccount

@@ -9,7 +9,7 @@ namespace Stripe\V2\MoneyManagement;
  *
  * @property string $id The unique identifier for the SpendingMandate.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.
- * @property null|(object{account_holder_name?: string, financial_address: string, network: string, reference?: string}&\Stripe\StripeObject) $bank_transfer Bank transfer details. Present if <code>type</code> is <code>bank_transfer</code>.
+ * @property null|(object{account_holder_name?: string, ach?: (object{originator_company_id: string, transaction_limit?: \Stripe\StripeObject}&\Stripe\StripeObject), financial_address: string, network: string, reference?: string}&\Stripe\StripeObject) $bank_transfer Bank transfer details. Present if <code>type</code> is <code>bank_transfer</code>.
  * @property string $created The time at which the SpendingMandate was created. Represented as a RFC 3339 date &amp; time UTC value in millisecond precision.
  * @property string $currency The currency in ISO 4217 format that debits will be collected in.
  * @property string $financial_account Financial account ID associated with this mandate.

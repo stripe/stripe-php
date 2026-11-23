@@ -51,6 +51,44 @@ class ContractService extends \Stripe\Service\AbstractService
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
                                                         ],
+                                                        'pricing_overrides' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'data' => [
+                                                                    'kind' => 'array',
+                                                                    'element' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'overwrite_price' => [
+                                                                                'kind' => 'object',
+                                                                                'fields' => [
+                                                                                    'tiers' => [
+                                                                                        'kind' => 'array',
+                                                                                        'element' => [
+                                                                                            'kind' => 'object',
+                                                                                            'fields' => [
+                                                                                                'flat_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'unit_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'up_to' => [
+                                                                                                    'kind' => 'int64_string',
+                                                                                                ],
+                                                                                                'up_to_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                            ],
+                                                                                        ],
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                     ],
                                                 ],
                                             ],
@@ -82,6 +120,23 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 'overwrite' => [
                                                     'kind' => 'object',
                                                     'fields' => [
+                                                        'tiers' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'flat_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'up_to' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                         'unit_amount_decimal' => [
                                                             'kind' => 'decimal_string',
                                                         ],
@@ -94,6 +149,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                             'fields' => [
                                                 'quantity' => [
                                                     'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'scheduled_fee' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'bill_schedule' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'quantity' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -145,6 +224,44 @@ class ContractService extends \Stripe\Service\AbstractService
                                                                     'current_quantity' => [
                                                                         'kind' => 'decimal_string',
                                                                     ],
+                                                                    'pricing_overrides' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'data' => [
+                                                                                'kind' => 'array',
+                                                                                'element' => [
+                                                                                    'kind' => 'object',
+                                                                                    'fields' => [
+                                                                                        'overwrite_price' => [
+                                                                                            'kind' => 'object',
+                                                                                            'fields' => [
+                                                                                                'tiers' => [
+                                                                                                    'kind' => 'array',
+                                                                                                    'element' => [
+                                                                                                        'kind' => 'object',
+                                                                                                        'fields' => [
+                                                                                                            'flat_amount_decimal' => [
+                                                                                                                'kind' => 'decimal_string',
+                                                                                                            ],
+                                                                                                            'unit_amount_decimal' => [
+                                                                                                                'kind' => 'decimal_string',
+                                                                                                            ],
+                                                                                                            'up_to' => [
+                                                                                                                'kind' => 'int64_string',
+                                                                                                            ],
+                                                                                                            'up_to_decimal' => [
+                                                                                                                'kind' => 'decimal_string',
+                                                                                                            ],
+                                                                                                        ],
+                                                                                                    ],
+                                                                                                ],
+                                                                                            ],
+                                                                                        ],
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
                                                                 ],
                                                             ],
                                                         ],
@@ -176,6 +293,23 @@ class ContractService extends \Stripe\Service\AbstractService
                                                             'overwrite' => [
                                                                 'kind' => 'object',
                                                                 'fields' => [
+                                                                    'tiers' => [
+                                                                        'kind' => 'array',
+                                                                        'element' => [
+                                                                            'kind' => 'object',
+                                                                            'fields' => [
+                                                                                'flat_amount_decimal' => [
+                                                                                    'kind' => 'decimal_string',
+                                                                                ],
+                                                                                'unit_amount_decimal' => [
+                                                                                    'kind' => 'decimal_string',
+                                                                                ],
+                                                                                'up_to' => [
+                                                                                    'kind' => 'int64_string',
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
                                                                     'unit_amount_decimal' => [
                                                                         'kind' => 'decimal_string',
                                                                     ],
@@ -188,6 +322,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                                         'fields' => [
                                                             'quantity' => [
                                                                 'kind' => 'decimal_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                    'scheduled_fee' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'bill_schedule' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'custom' => [
+                                                                        'kind' => 'array',
+                                                                        'element' => [
+                                                                            'kind' => 'object',
+                                                                            'fields' => [
+                                                                                'quantity' => [
+                                                                                    'kind' => 'decimal_string',
+                                                                                ],
+                                                                                'unit_amount_decimal' => [
+                                                                                    'kind' => 'decimal_string',
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
                                                             ],
                                                         ],
                                                     ],
@@ -238,6 +396,44 @@ class ContractService extends \Stripe\Service\AbstractService
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
                                                         ],
+                                                        'pricing_overrides' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'data' => [
+                                                                    'kind' => 'array',
+                                                                    'element' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'overwrite_price' => [
+                                                                                'kind' => 'object',
+                                                                                'fields' => [
+                                                                                    'tiers' => [
+                                                                                        'kind' => 'array',
+                                                                                        'element' => [
+                                                                                            'kind' => 'object',
+                                                                                            'fields' => [
+                                                                                                'flat_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'unit_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'up_to' => [
+                                                                                                    'kind' => 'int64_string',
+                                                                                                ],
+                                                                                                'up_to_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                            ],
+                                                                                        ],
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                     ],
                                                 ],
                                             ],
@@ -269,6 +465,23 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 'overwrite' => [
                                                     'kind' => 'object',
                                                     'fields' => [
+                                                        'tiers' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'flat_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'up_to' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                         'unit_amount_decimal' => [
                                                             'kind' => 'decimal_string',
                                                         ],
@@ -281,6 +494,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                             'fields' => [
                                                 'quantity' => [
                                                     'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'scheduled_fee' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'bill_schedule' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'quantity' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -297,7 +534,7 @@ class ContractService extends \Stripe\Service\AbstractService
     /**
      * Create a draft contract.
      *
-     * @param null|array{billing_cycle_anchor?: array{config?: array{day_of_month: int, hour?: int, minute?: int, month_of_year?: int, second?: int}, timestamp?: string, type: string}, billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details: array{customer: string, default_payment_method?: string}, collection_settings_details: array{collection_method: string, payment_method_configuration?: string}}, contract_number: string, currency: string, include?: string[], metadata?: array<string, string>, terms?: array{lookup_key?: string, metadata?: array<string, string>, pricing_override?: array{criteria?: array{terms?: array{id?: string, lookup_key?: string, type: string}[], type: string}[], ends_at?: array{timestamp?: string, type: string}, multiply?: array{factor: string}, overwrite?: array{unit_amount_decimal?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, price: string, quantity?: string, starts_at: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, product: string, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, type: string}[]} $params
+     * @param null|array{billing_cycle_anchor?: array{config?: array{day_of_month: int, hour?: int, minute?: int, month_of_year?: int, second?: int}, timestamp?: string, type: string}, billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details: array{customer: string, default_payment_method?: string}, collection_settings_details: array{collection_method: string, payment_method_configuration?: string}}, contract_number: string, currency: string, include?: string[], metadata?: array<string, string>, terms?: array{lookup_key?: string, metadata?: array<string, string>, pricing_override?: array{criteria?: array{terms?: array{id?: string, lookup_key?: string, type: string}[], type: string}[], ends_at?: array{timestamp?: string, type: string}, multiply?: array{factor: string}, overwrite?: array{billing_scheme?: string, tiers?: array{flat_amount_decimal?: string, unit_amount_decimal?: string, up_to?: int}[], tiers_mode?: string, unit_amount_decimal?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, price: string, quantity?: string, starts_at: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule: array{custom?: array{bill_at: array{timestamp?: string, type: string}, quantity?: string, unit_amount_decimal: string}[], type: string}, product: string, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, type: string}[]} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -329,6 +566,23 @@ class ContractService extends \Stripe\Service\AbstractService
                                         'overwrite' => [
                                             'kind' => 'object',
                                             'fields' => [
+                                                'tiers' => [
+                                                    'kind' => 'array',
+                                                    'element' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'flat_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'unit_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'up_to' => [
+                                                                'kind' => 'int64_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
                                                 'unit_amount_decimal' => [
                                                     'kind' => 'decimal_string',
                                                 ],
@@ -341,6 +595,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                     'fields' => [
                                         'quantity' => [
                                             'kind' => 'decimal_string',
+                                        ],
+                                    ],
+                                ],
+                                'scheduled_fee' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'bill_schedule' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'custom' => [
+                                                    'kind' => 'array',
+                                                    'element' => [
+                                                        'kind' => 'object',
+                                                        'fields' => [
+                                                            'quantity' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                            'unit_amount_decimal' => [
+                                                                'kind' => 'decimal_string',
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
                                         ],
                                     ],
                                 ],
@@ -368,6 +646,44 @@ class ContractService extends \Stripe\Service\AbstractService
                                                     'fields' => [
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
+                                                        ],
+                                                        'pricing_overrides' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'data' => [
+                                                                    'kind' => 'array',
+                                                                    'element' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'overwrite_price' => [
+                                                                                'kind' => 'object',
+                                                                                'fields' => [
+                                                                                    'tiers' => [
+                                                                                        'kind' => 'array',
+                                                                                        'element' => [
+                                                                                            'kind' => 'object',
+                                                                                            'fields' => [
+                                                                                                'flat_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'unit_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'up_to' => [
+                                                                                                    'kind' => 'int64_string',
+                                                                                                ],
+                                                                                                'up_to_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                            ],
+                                                                                        ],
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
                                                         ],
                                                     ],
                                                 ],
@@ -400,6 +716,23 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 'overwrite' => [
                                                     'kind' => 'object',
                                                     'fields' => [
+                                                        'tiers' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'flat_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'up_to' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                         'unit_amount_decimal' => [
                                                             'kind' => 'decimal_string',
                                                         ],
@@ -412,6 +745,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                             'fields' => [
                                                 'quantity' => [
                                                     'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'scheduled_fee' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'bill_schedule' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'quantity' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -475,6 +832,44 @@ class ContractService extends \Stripe\Service\AbstractService
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
                                                         ],
+                                                        'pricing_overrides' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'data' => [
+                                                                    'kind' => 'array',
+                                                                    'element' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'overwrite_price' => [
+                                                                                'kind' => 'object',
+                                                                                'fields' => [
+                                                                                    'tiers' => [
+                                                                                        'kind' => 'array',
+                                                                                        'element' => [
+                                                                                            'kind' => 'object',
+                                                                                            'fields' => [
+                                                                                                'flat_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'unit_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'up_to' => [
+                                                                                                    'kind' => 'int64_string',
+                                                                                                ],
+                                                                                                'up_to_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                            ],
+                                                                                        ],
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                     ],
                                                 ],
                                             ],
@@ -506,6 +901,23 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 'overwrite' => [
                                                     'kind' => 'object',
                                                     'fields' => [
+                                                        'tiers' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'flat_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'up_to' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                         'unit_amount_decimal' => [
                                                             'kind' => 'decimal_string',
                                                         ],
@@ -518,6 +930,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                             'fields' => [
                                                 'quantity' => [
                                                     'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'scheduled_fee' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'bill_schedule' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'quantity' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -535,7 +971,7 @@ class ContractService extends \Stripe\Service\AbstractService
      * Update a draft or active contract.
      *
      * @param string $id
-     * @param null|array{actions?: (array{add_term?: array{lookup_key?: string, metadata?: array<string, string>, pricing_override?: array{criteria?: array{terms?: array{id?: string, lookup_key?: string, type: string}[], type: string}[], ends_at?: array{timestamp?: string, type: string}, multiply?: array{factor: string}, overwrite?: array{unit_amount_decimal?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, price: string, quantity?: string, starts_at: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, product: string, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, type: string}, remove_term?: array{term: array{id?: string, lookup_key?: string, type: string}}, type: string, update_term?: array{metadata?: array<string, null|string>, pricing_override?: array{ends_at?: array{timestamp?: string, type: string}, starts_at?: array{timestamp?: string, type: string}}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, quantity?: string, starts_at?: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule?: array{custom?: array{amount: \Stripe\StripeObject, bill_at: array{timestamp?: string, type: string}}[], type: string}, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, term: array{id?: string, lookup_key?: string, type: string}}})[], billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details?: array{default_payment_method?: string}, collection_settings_details?: array{collection_method?: string, payment_method_configuration?: string}}, contract_number?: string, include?: string[], metadata?: array<string, null|string>} $params
+     * @param null|array{actions?: (array{add_term?: array{lookup_key?: string, metadata?: array<string, string>, pricing_override?: array{criteria?: array{terms?: array{id?: string, lookup_key?: string, type: string}[], type: string}[], ends_at?: array{timestamp?: string, type: string}, multiply?: array{factor: string}, overwrite?: array{billing_scheme?: string, tiers?: array{flat_amount_decimal?: string, unit_amount_decimal?: string, up_to?: int}[], tiers_mode?: string, unit_amount_decimal?: string}, priority?: int, starts_at: array{timestamp?: string, type: string}, type: string}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, price: string, quantity?: string, starts_at: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule: array{custom?: array{bill_at: array{timestamp?: string, type: string}, quantity?: string, unit_amount_decimal: string}[], type: string}, product: string, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, type: string}, remove_term?: array{term: array{id?: string, lookup_key?: string, type: string}}, type: string, update_term?: array{metadata?: array<string, null|string>, pricing_override?: array{ends_at?: array{timestamp?: string, type: string}, starts_at?: array{timestamp?: string, type: string}}, recurring_price?: array{ends_at?: array{timestamp?: string, type: string}, quantity?: string, starts_at?: array{timestamp?: string, type: string}}, scheduled_fee?: array{bill_schedule?: array{custom?: array{bill_at: array{timestamp?: string, type: string}, quantity?: string, unit_amount_decimal: string}[], type: string}, service_period?: array{ends_at: array{timestamp?: string, type: string}, starts_at: array{timestamp?: string, type: string}}}, term: array{id?: string, lookup_key?: string, type: string}}})[], billing_settings?: array{bill_settings_details?: array{calculation?: array{tax?: array{type: string}}, invoice?: array{time_until_due?: array{interval: string, interval_count: int}}}, billing_profile_details?: array{default_payment_method?: string}, collection_settings_details?: array{collection_method?: string, payment_method_configuration?: string}}, contract_number?: string, include?: string[], metadata?: array<string, null|string>} $params
      * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
      *
      * @return \Stripe\V2\Billing\Contract
@@ -572,6 +1008,23 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 'overwrite' => [
                                                     'kind' => 'object',
                                                     'fields' => [
+                                                        'tiers' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'flat_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'up_to' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                         'unit_amount_decimal' => [
                                                             'kind' => 'decimal_string',
                                                         ],
@@ -587,6 +1040,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 ],
                                             ],
                                         ],
+                                        'scheduled_fee' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'bill_schedule' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'quantity' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
                                     ],
                                 ],
                                 'update_term' => [
@@ -597,6 +1074,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                             'fields' => [
                                                 'quantity' => [
                                                     'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'scheduled_fee' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'bill_schedule' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'quantity' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
@@ -626,6 +1127,44 @@ class ContractService extends \Stripe\Service\AbstractService
                                                     'fields' => [
                                                         'current_quantity' => [
                                                             'kind' => 'decimal_string',
+                                                        ],
+                                                        'pricing_overrides' => [
+                                                            'kind' => 'object',
+                                                            'fields' => [
+                                                                'data' => [
+                                                                    'kind' => 'array',
+                                                                    'element' => [
+                                                                        'kind' => 'object',
+                                                                        'fields' => [
+                                                                            'overwrite_price' => [
+                                                                                'kind' => 'object',
+                                                                                'fields' => [
+                                                                                    'tiers' => [
+                                                                                        'kind' => 'array',
+                                                                                        'element' => [
+                                                                                            'kind' => 'object',
+                                                                                            'fields' => [
+                                                                                                'flat_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'unit_amount_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                                'up_to' => [
+                                                                                                    'kind' => 'int64_string',
+                                                                                                ],
+                                                                                                'up_to_decimal' => [
+                                                                                                    'kind' => 'decimal_string',
+                                                                                                ],
+                                                                                            ],
+                                                                                        ],
+                                                                                    ],
+                                                                                ],
+                                                                            ],
+                                                                        ],
+                                                                    ],
+                                                                ],
+                                                            ],
                                                         ],
                                                     ],
                                                 ],
@@ -658,6 +1197,23 @@ class ContractService extends \Stripe\Service\AbstractService
                                                 'overwrite' => [
                                                     'kind' => 'object',
                                                     'fields' => [
+                                                        'tiers' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'flat_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'up_to' => [
+                                                                        'kind' => 'int64_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
                                                         'unit_amount_decimal' => [
                                                             'kind' => 'decimal_string',
                                                         ],
@@ -670,6 +1226,30 @@ class ContractService extends \Stripe\Service\AbstractService
                                             'fields' => [
                                                 'quantity' => [
                                                     'kind' => 'decimal_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'scheduled_fee' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'bill_schedule' => [
+                                                    'kind' => 'object',
+                                                    'fields' => [
+                                                        'custom' => [
+                                                            'kind' => 'array',
+                                                            'element' => [
+                                                                'kind' => 'object',
+                                                                'fields' => [
+                                                                    'quantity' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                    'unit_amount_decimal' => [
+                                                                        'kind' => 'decimal_string',
+                                                                    ],
+                                                                ],
+                                                            ],
+                                                        ],
+                                                    ],
                                                 ],
                                             ],
                                         ],
