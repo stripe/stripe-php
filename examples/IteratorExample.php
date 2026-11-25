@@ -21,7 +21,7 @@ class IteratorExample
     public function iterateOverCustomers(): void
     {
         $client = new Stripe\StripeClient($this->apiKey);
-        $customers = $client->customers->all();
+        $customers = $client->v1->customers->all();
         foreach ($customers as $customer) {
             echo $customer->email;
         }
