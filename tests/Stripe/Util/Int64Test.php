@@ -336,6 +336,55 @@ final class Int64Test extends \Stripe\TestCase
         self::assertSame('3.14', Int64::coerceRequestParams('3.14', $schema));
     }
 
+    public function testCoerceRequestParamsFormatsSmallFloatWithoutExponentForDecimalField()
+    {
+        $schema = ['kind' => 'decimal_string'];
+        self::assertSame('0.00001', Int64::coerceRequestParams(0.00001, $schema));
+        self::assertSame('0.000015', Int64::coerceRequestParams(1.5e-5, $schema));
+        self::assertSame('-0.00000025', Int64::coerceRequestParams(-2.5e-7, $schema));
+    }
+
+    public function testCoerceRequestParamsFormatsLargeFloatWithoutExponentForDecimalField()
+    {
+        $schema = ['kind' => 'decimal_string'];
+        self::assertSame('100000000000000', Int64::coerceRequestParams(1e14, $schema));
+        self::assertSame('1000000000000000', Int64::coerceRequestParams(1e15, $schema));
+        self::assertSame('15000000000000000000', Int64::coerceRequestParams(1.5e19, $schema));
+    }
+
+    public function testCoerceRequestParamsKeepsAllDigitsOfLargeFloatForDecimalField()
+    {
+        $schema = ['kind' => 'decimal_string'];
+        // The string cast rounds these to 1.2345678901234E+14 and 1.2345678901235E+20.
+        self::assertSame('123456789012345', Int64::coerceRequestParams(123456789012345.0, $schema));
+        self::assertSame('123456789012345670000', Int64::coerceRequestParams(1.2345678901234567e20, $schema));
+    }
+
+    public function testCoerceRequestParamsLeavesFixedPointFloatUnchangedForDecimalField()
+    {
+        $schema = ['kind' => 'decimal_string'];
+        self::assertSame('0.1', Int64::coerceRequestParams(0.1, $schema));
+        self::assertSame('99999999999999', Int64::coerceRequestParams(99999999999999.0, $schema));
+        self::assertSame('3', Int64::coerceRequestParams(3.0, $schema));
+    }
+
+    public function testCoerceRequestParamsLeavesNonFiniteFloatUnchangedForDecimalField()
+    {
+        $schema = ['kind' => 'decimal_string'];
+        self::assertSame('NAN', Int64::coerceRequestParams(\NAN, $schema));
+        self::assertSame('INF', Int64::coerceRequestParams(\INF, $schema));
+        self::assertSame('-INF', Int64::coerceRequestParams(-\INF, $schema));
+    }
+
+    public function testCoerceRequestParamsFormatsArrayOfFloatsWithoutExponentForDecimalField()
+    {
+        $schema = ['kind' => 'array', 'element' => ['kind' => 'decimal_string']];
+        self::assertSame(
+            ['0.00001', '1000000000000000'],
+            Int64::coerceRequestParams([0.00001, 1e15], $schema)
+        );
+    }
+
     public function testCoerceRequestParamsNullableReturnsNullForNullValue()
     {
         $schema = ['kind' => 'nullable', 'inner' => ['kind' => 'int64_string']];
