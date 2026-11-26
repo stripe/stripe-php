@@ -3,4 +3,10 @@ title: Add a v1 namespace for API services
 semver_level: minor
 ---
 
-Add `$stripe->v1` as a typed alias for existing v1 API services, including nested services such as `$stripe->v1->checkout->sessions`. Both access paths share the same service instances and client configuration. Root-level calls remain supported without deprecation; `$stripe->v2`, OAuth, and client utilities are unchanged.
+All top-level, non-[v2 API services](https://docs.stripe.com/api-v2-overview) on `StripeClient` are made available under the new `v1` namespace. The existing top-level services remain supported but will be marked as deprecated in the next major release. For example:
+
+```diff
+ $stripe = new \Stripe\StripeClient($STRIPE_API_KEY);
+- $customers = $stripe->customers->all(); // existing way to access v1 endpoints
++ $customers = $stripe->v1->customers->all(); // recommended way to access v1 endpoints
+```
