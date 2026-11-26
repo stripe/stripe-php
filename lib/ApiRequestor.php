@@ -688,6 +688,17 @@ class ApiRequestor
      * So, we require that a path starts with a leading slash and that
      * parse_url() finds no scheme or authority in it.
      *
+     * We also reject "." and ".." path segments. IDs are escaped with
+     * urlencode(), which leaves dots alone, and libcurl (used by CurlClient)
+     * removes these segments before sending, so an ID of "." or ".." changes
+     * which endpoint is called: retrieving payment method "pm_123" of customer
+     * ".." sends GET /v1/payment_methods/pm_123. libcurl sends "%2E" as is, but
+     * custom HTTP clients, proxies or servers may decode it before removing dot
+     * segments, so we check the decoded segment. An encoded slash ("%2F") also
+     * counts as a separator for this check, because a proxy that decodes the
+     * path before normalizing it (nginx's proxy_pass, for example) turns it into
+     * a real one.
+     *
      * @param string $url
      *
      * @throws Exception\InvalidArgumentException
@@ -705,6 +716,17 @@ class ApiRequestor
             throw new Exception\InvalidArgumentException(
                 'Request path may not contain a scheme or authority.'
             );
+        }
+
+        $path = \substr($url, 0, \strcspn($url, '?#'));
+        foreach (\explode('/', \str_ireplace('%2f', '/', $path)) as $segment) {
+            if (\in_array(\str_replace('%2e', '.', \strtolower($segment)), ['.', '..'], true)) {
+                // The message leaves out the query string, which can carry
+                // secrets such as a client_secret.
+                throw new Exception\InvalidArgumentException(
+                    'Request path may not contain a "." or ".." segment, got: "' . $path . '"'
+                );
+            }
         }
     }
 
