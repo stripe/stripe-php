@@ -80,6 +80,7 @@ namespace Stripe;
  * @property Service\TopupService $topups
  * @property Service\TransferService $transfers
  * @property Service\Treasury\TreasuryServiceFactory $treasury
+ * @property Service\V1\V1ServiceFactory $v1
  * @property Service\V2\V2ServiceFactory $v2
  * @property Service\WebhookEndpointService $webhookEndpoints
  * // The end of the section generated from our OpenAPI spec
