@@ -160,9 +160,9 @@ final class StripeTelemetryTest extends TestCase
         ApiRequestor::setHttpClient($stub);
 
         $client = new StripeClient('sk_test_123');
-        $client->customers->create(['description' => 'test']);
+        $client->v1->customers->create(['description' => 'test']);
         self::assertArrayNotHasKey('X-Stripe-Client-Telemetry', $requestheaders);
-        $client->customers->create(['description' => 'test2']);
+        $client->v1->customers->create(['description' => 'test2']);
         self::assertArrayHasKey('X-Stripe-Client-Telemetry', $requestheaders);
         $data = \json_decode($requestheaders['X-Stripe-Client-Telemetry'], true);
         self::assertSame('req_123', $data['last_request_metrics']['request_id']);

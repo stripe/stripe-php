@@ -24,9 +24,9 @@ final class StripeClientTest extends TestCase
 
     public function testExposesPropertiesForServices()
     {
-        self::assertInstanceOf(Service\CouponService::class, $this->client->coupons);
-        self::assertInstanceOf(Service\Issuing\IssuingServiceFactory::class, $this->client->issuing);
-        self::assertInstanceOf(Service\Issuing\CardService::class, $this->client->issuing->cards);
+        self::assertInstanceOf(Service\CouponService::class, $this->client->v1->coupons);
+        self::assertInstanceOf(Service\Issuing\IssuingServiceFactory::class, $this->client->v1->issuing);
+        self::assertInstanceOf(Service\Issuing\CardService::class, $this->client->v1->issuing->cards);
     }
 
     public function testListMethodReturnsPageableCollection()
@@ -117,7 +117,7 @@ final class StripeClientTest extends TestCase
             'api_base' => MOCK_URL,
         ]);
 
-        $paymentIntents = $client->paymentIntents->all(['limit' => 1]);
+        $paymentIntents = $client->v1->paymentIntents->all(['limit' => 1]);
         $seen = [];
         foreach ($paymentIntents->autoPagingIterator() as $paymentIntent) {
             $seen[] = $paymentIntent->id;

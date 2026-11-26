@@ -58,7 +58,7 @@ Simple usage looks like:
 
 ```php
 $stripe = new \Stripe\StripeClient('sk_test_BQokikJOvBiI2HlWgH4olfQ2');
-$customer = $stripe->customers->create([
+$customer = $stripe->v1->customers->create([
     'description' => 'example customer',
     'email' => 'email@example.com',
     'payment_method' => 'pm_card_visa',
@@ -140,7 +140,7 @@ The SDK may print notices from Stripe that it receives in the `Stripe-Notice` he
 You can access the data from the last API response on any object via `getLastResponse()`.
 
 ```php
-$customer = $stripe->customers->create([
+$customer = $stripe->v1->customers->create([
     'description' => 'example customer',
 ]);
 echo $customer->getLastResponse()->headers['Request-Id'];
@@ -164,12 +164,12 @@ one that uses [Stripe Connect][connect], it's also possible to set a
 per-request key and/or account:
 
 ```php
-$customers = $stripe->customers->all([],[
+$customers = $stripe->v1->customers->all([],[
     'api_key' => 'sk_test_...',
     'stripe_account' => 'acct_...'
 ]);
 
-$stripe->customers->retrieve('cus_123456789', [], [
+$stripe->v1->customers->retrieve('cus_123456789', [], [
     'api_key' => 'sk_test_...',
     'stripe_account' => 'acct_...'
 ]);
