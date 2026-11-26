@@ -1232,6 +1232,7 @@ require __DIR__ . '/lib/Service/Treasury/ReceivedDebitService.php';
 require __DIR__ . '/lib/Service/Treasury/TransactionEntryService.php';
 require __DIR__ . '/lib/Service/Treasury/TransactionService.php';
 require __DIR__ . '/lib/Service/Treasury/TreasuryServiceFactory.php';
+require __DIR__ . '/lib/Service/V1/V1ServiceFactory.php';
 require __DIR__ . '/lib/Service/V2/Billing/BillSettingService.php';
 require __DIR__ . '/lib/Service/V2/Billing/BillSettings/VersionService.php';
 require __DIR__ . '/lib/Service/V2/Billing/BillingServiceFactory.php';
