@@ -278,6 +278,45 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v1.apps.install.created" event.
+     *
+     * @param callable(Events\V1AppsInstallCreatedEventNotification, StripeClient): void $handler Handles v1.apps.install.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1AppsInstallCreated($handler)
+    {
+        $this->register('v1.apps.install.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.apps.install.deleted" event.
+     *
+     * @param callable(Events\V1AppsInstallDeletedEventNotification, StripeClient): void $handler Handles v1.apps.install.deleted events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1AppsInstallDeleted($handler)
+    {
+        $this->register('v1.apps.install.deleted', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v1.apps.install.updated" event.
+     *
+     * @param callable(Events\V1AppsInstallUpdatedEventNotification, StripeClient): void $handler Handles v1.apps.install.updated events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV1AppsInstallUpdated($handler)
+    {
+        $this->register('v1.apps.install.updated', $handler);
+    }
+
+    /**
      * Registers a handler for the "v1.balance.available" event.
      *
      * @param callable(Events\V1BalanceAvailableEventNotification, StripeClient): void $handler Handles v1.balance.available events
@@ -2231,19 +2270,6 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
-     * Registers a handler for the "v1.issuing_authorization.request" event.
-     *
-     * @param callable(Events\V1IssuingAuthorizationRequestEventNotification, StripeClient): void $handler Handles v1.issuing_authorization.request events
-     *
-     * @throws Exception\InvalidArgumentException if this event type is already registered
-     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
-     */
-    public function onV1IssuingAuthorizationRequest($handler)
-    {
-        $this->register('v1.issuing_authorization.request', $handler);
-    }
-
-    /**
      * Registers a handler for the "v1.issuing_authorization.updated" event.
      *
      * @param callable(Events\V1IssuingAuthorizationUpdatedEventNotification, StripeClient): void $handler Handles v1.issuing_authorization.updated events
@@ -3833,6 +3859,19 @@ abstract class AbstractEventNotificationHandler
     }
 
     /**
+     * Registers a handler for the "v2.core.account.connected" event.
+     *
+     * @param callable(Events\V2CoreAccountConnectedEventNotification, StripeClient): void $handler Handles v2.core.account.connected events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreAccountConnected($handler)
+    {
+        $this->register('v2.core.account.connected', $handler);
+    }
+
+    /**
      * Registers a handler for the "v2.core.account.created" event.
      *
      * @param callable(Events\V2CoreAccountCreatedEventNotification, StripeClient): void $handler Handles v2.core.account.created events
@@ -3843,6 +3882,19 @@ abstract class AbstractEventNotificationHandler
     public function onV2CoreAccountCreated($handler)
     {
         $this->register('v2.core.account.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.core.account.disconnected" event.
+     *
+     * @param callable(Events\V2CoreAccountDisconnectedEventNotification, StripeClient): void $handler Handles v2.core.account.disconnected events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2CoreAccountDisconnected($handler)
+    {
+        $this->register('v2.core.account.disconnected', $handler);
     }
 
     /**
@@ -5307,6 +5359,113 @@ abstract class AbstractEventNotificationHandler
     public function onV2OrchestratedCommerceAgreementTerminated($handler)
     {
         $this->register('v2.orchestrated_commerce.agreement.terminated', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.payments.off_session_payment.attempt_failed" event.
+     *
+     * @param callable(Events\V2PaymentsOffSessionPaymentAttemptFailedEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.attempt_failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2PaymentsOffSessionPaymentAttemptFailed($handler)
+    {
+        $this->register('v2.payments.off_session_payment.attempt_failed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.payments.off_session_payment.attempt_started" event.
+     *
+     * @param callable(Events\V2PaymentsOffSessionPaymentAttemptStartedEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.attempt_started events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2PaymentsOffSessionPaymentAttemptStarted($handler)
+    {
+        $this->register(
+            'v2.payments.off_session_payment.attempt_started',
+            $handler
+        );
+    }
+
+    /**
+     * Registers a handler for the "v2.payments.off_session_payment.canceled" event.
+     *
+     * @param callable(Events\V2PaymentsOffSessionPaymentCanceledEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.canceled events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2PaymentsOffSessionPaymentCanceled($handler)
+    {
+        $this->register('v2.payments.off_session_payment.canceled', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.payments.off_session_payment.created" event.
+     *
+     * @param callable(Events\V2PaymentsOffSessionPaymentCreatedEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.created events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2PaymentsOffSessionPaymentCreated($handler)
+    {
+        $this->register('v2.payments.off_session_payment.created', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.payments.off_session_payment.failed" event.
+     *
+     * @param callable(Events\V2PaymentsOffSessionPaymentFailedEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.failed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2PaymentsOffSessionPaymentFailed($handler)
+    {
+        $this->register('v2.payments.off_session_payment.failed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.payments.off_session_payment.paused" event.
+     *
+     * @param callable(Events\V2PaymentsOffSessionPaymentPausedEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.paused events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2PaymentsOffSessionPaymentPaused($handler)
+    {
+        $this->register('v2.payments.off_session_payment.paused', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.payments.off_session_payment.resumed" event.
+     *
+     * @param callable(Events\V2PaymentsOffSessionPaymentResumedEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.resumed events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2PaymentsOffSessionPaymentResumed($handler)
+    {
+        $this->register('v2.payments.off_session_payment.resumed', $handler);
+    }
+
+    /**
+     * Registers a handler for the "v2.payments.off_session_payment.succeeded" event.
+     *
+     * @param callable(Events\V2PaymentsOffSessionPaymentSucceededEventNotification, StripeClient): void $handler Handles v2.payments.off_session_payment.succeeded events
+     *
+     * @throws Exception\InvalidArgumentException if this event type is already registered
+     * @throws Exception\BadMethodCallException if the `.handle()` method has already been called on this handler.
+     */
+    public function onV2PaymentsOffSessionPaymentSucceeded($handler)
+    {
+        $this->register('v2.payments.off_session_payment.succeeded', $handler);
     }
 
     /**

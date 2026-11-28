@@ -12,6 +12,56 @@ namespace Stripe\Service\V2\Data;
 class QueryRunService extends \Stripe\Service\AbstractService
 {
     /**
+     * Returns a list of `QueryRun` objects created through the API, most recent first.
+     * Listed `QueryRun` objects don't include `result`. Retrieve a `QueryRun` to
+     * access its result.
+     *
+     * @param null|array{created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, limit?: int, statuses?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Collection<\Stripe\V2\Data\QueryRun>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v2/data/query_runs', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'result' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'col_count' => [
+                                            'kind' => 'int64_string',
+                                        ],
+                                        'file' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'size' => [
+                                                    'kind' => 'int64_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'row_count' => [
+                                            'kind' => 'int64_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+    }
+
+    /**
      * Submits a SQL query for execution against a dataset and returns a `QueryRun`
      * object to track progress and retrieve results.
      *

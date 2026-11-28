@@ -25,6 +25,7 @@ namespace Stripe\V2\Data;
  * @property null|string $sql The fully-resolved SQL that was executed, or an explanatory message when the SQL cannot be exposed. Only present when requested via <code>include[0]=sql</code>.
  * @property string $status The current status of the <code>ReportRun</code>.
  * @property null|(object{canceled_at?: string, code?: string, message?: string, query_errors: (object{message: string, type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $status_details Additional details about the current state of the <code>ReportRun</code>.
+ * @property (object{canceled_at?: string, failed_at?: string, succeeded_at?: string}&\Stripe\StripeObject) $status_transitions Timestamps of when the <code>ReportRun</code> entered each terminal status.
  */
 class ReportRun extends \Stripe\ApiResource
 {

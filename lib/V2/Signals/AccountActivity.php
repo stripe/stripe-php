@@ -5,7 +5,7 @@
 namespace Stripe\V2\Signals;
 
 /**
- * Account Activity resource for the Signals API.
+ * Account Activity resource for the Signals API. Account activities are available through the API for 180 days after creation.
  *
  * @property string $id Unique identifier for the account activity.
  * @property string $object String representing the object's type. Objects of the same type share the same value of the object field.

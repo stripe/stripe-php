@@ -21,7 +21,6 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|string $outbound_payment_quote The quote for this OutboundPayment. Only required for countries with regulatory mandates to display fee estimates before OutboundPayment creation.
  * @property null|string $payout_intent The PayoutIntent ID that triggered this OutboundPayment.
  * @property null|string $purpose The purpose of the OutboundPayment.
- * @property null|string $receipt_url A link to the Stripe-hosted receipt for this OutboundPayment. The receipt link remains active for 60 days from the OutboundPayment creation date. After this period, the link will expire and the receipt url value will be null.
  * @property (object{setting: string}&\Stripe\StripeObject) $recipient_notification Details about the OutboundPayment notification settings for recipient.
  * @property null|string $recipient_verification The ID of the RecipientVerification for this OutboundPayment. Required where recipient-name verification is mandated before creating an OutboundPayment.
  * @property string $statement_descriptor The description that appears on the receiving end of an OutboundPayment (for example, on a bank statement). Defaults to <code>STRIPE</code> if not configured in the account settings.

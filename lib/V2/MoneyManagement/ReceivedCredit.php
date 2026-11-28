@@ -17,7 +17,6 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|string $description Freeform string set by originator of the ReceivedCredit.
  * @property string $financial_account Financial Account ID on which funds for ReceivedCredit were received.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string $receipt_url A hosted transaction receipt URL that is provided when money movement is considered regulated under Stripe’s money transmission licenses.
  * @property string $status Open Enum. The status of the ReceivedCredit.
  * @property null|(object{failed?: (object{reason: string}&\Stripe\StripeObject), returned?: (object{reason: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $status_details This hash contains detailed information that elaborates on the specific status of the ReceivedCredit. e.g the reason behind a failure if the status is marked as <code>failed</code>.
  * @property null|(object{failed_at?: string, returned_at?: string, succeeded_at?: string}&\Stripe\StripeObject) $status_transitions Hash containing timestamps of when the object transitioned to a particular status.

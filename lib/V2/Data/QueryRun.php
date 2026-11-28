@@ -23,6 +23,7 @@ namespace Stripe\V2\Data;
  * @property null|(object{compression?: string}&\Stripe\StripeObject) $result_options Settings applied to the generated result file.
  * @property string $status The current status of the <code>QueryRun</code>.
  * @property null|(object{canceled_at?: string, code?: string, message?: string, query_errors: (object{message: string, type: string}&\Stripe\StripeObject)[]}&\Stripe\StripeObject) $status_details Additional details about the current state of the <code>QueryRun</code>.
+ * @property (object{canceled_at?: string, failed_at?: string, succeeded_at?: string}&\Stripe\StripeObject) $status_transitions Timestamps of when the <code>QueryRun</code> entered each terminal status.
  */
 class QueryRun extends \Stripe\ApiResource
 {

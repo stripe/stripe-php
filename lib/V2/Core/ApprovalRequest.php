@@ -26,7 +26,18 @@ class ApprovalRequest extends \Stripe\ApiResource
 {
     const OBJECT_NAME = 'v2.core.approval_request';
 
+    const ACTION_API_KEY_CREATE = 'api_key.create';
+    const ACTION_API_KEY_DELETE = 'api_key.delete';
+    const ACTION_API_KEY_ROTATE = 'api_key.rotate';
+    const ACTION_API_KEY_UPDATE = 'api_key.update';
+    const ACTION_APPROVAL_RULE_CREATE = 'approval_rule.create';
+    const ACTION_APPROVAL_RULE_DELETE = 'approval_rule.delete';
+    const ACTION_APPROVAL_RULE_UPDATE = 'approval_rule.update';
     const ACTION_CHARGE_CREATE = 'charge.create';
+    const ACTION_CONNECTED_ACCOUNT_CREATE = 'connected_account.create';
+    const ACTION_CREDIT_NOTE_CREATE = 'credit_note.create';
+    const ACTION_CURRENCY_CONVERSIONS_MONEY_MANAGEMENT_CREATE = 'currency_conversions.money_management.create';
+    const ACTION_CUSTOMER_BALANCE_TRANSACTION_CREATE = 'customer_balance_transaction.create';
     const ACTION_DISPUTE_CLOSE = 'dispute.close';
     const ACTION_INBOUND_TRANSFERS_MONEY_MANAGEMENT_CREATE = 'inbound_transfers.money_management.create';
     const ACTION_INVOICE_CREATE = 'invoice.create';
@@ -40,6 +51,13 @@ class ApprovalRequest extends \Stripe\ApiResource
     const ACTION_SETUP_INTENT_CREATE = 'setup_intent.create';
     const ACTION_SUBSCRIPTION_CREATE = 'subscription.create';
     const ACTION_SUBSCRIPTION_UPDATE = 'subscription.update';
+    const ACTION_TAX_CUSTOMIZATION_CREATE = 'tax.customization.create';
+    const ACTION_TAX_CUSTOMIZATION_DELETE = 'tax.customization.delete';
+    const ACTION_TAX_CUSTOMIZATION_UPDATE = 'tax.customization.update';
+    const ACTION_TAX_REGISTRATION_APPLICATION_SUBMIT = 'tax.registration_application.submit';
+    const ACTION_TAX_REGISTRATION_CREATE = 'tax.registration.create';
+    const ACTION_TAX_REGISTRATION_DELETE = 'tax.registration.delete';
+    const ACTION_TAX_REGISTRATION_UPDATE = 'tax.registration.update';
     const ACTION_TOPUP_CREATE = 'topup.create';
     const ACTION_TRANSFER_CREATE = 'transfer.create';
 

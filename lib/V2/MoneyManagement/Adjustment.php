@@ -16,7 +16,6 @@ namespace Stripe\V2\MoneyManagement;
  * @property null|string $description A description of the Adjustment and its purpose.
  * @property string $financial_account The ID of the FinancialAccount whose balance this Adjustment affects.
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
- * @property null|string $receipt_url A link to the Stripe-hosted receipt provided when money movement is regulated under Stripe's money transmission licenses. You can use this link to view the receipt for 60 days after the Adjustment is created. After that, the link expires and <code>receipt_url</code> is <code>null</code>.
  */
 class Adjustment extends \Stripe\ApiResource
 {

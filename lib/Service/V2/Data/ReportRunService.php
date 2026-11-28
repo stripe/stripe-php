@@ -12,6 +12,56 @@ namespace Stripe\Service\V2\Data;
 class ReportRunService extends \Stripe\Service\AbstractService
 {
     /**
+     * Returns a list of `ReportRun` objects created through the API, most recent
+     * first. Listed `ReportRun` objects don't include `result` or `sql`. Retrieve a
+     * `ReportRun` to access them.
+     *
+     * @param null|array{created?: array{gt?: string, gte?: string, lt?: string, lte?: string}, limit?: int, report?: string, statuses?: string[]} $params
+     * @param null|RequestOptionsArray|\Stripe\Util\RequestOptions $opts
+     *
+     * @return \Stripe\V2\Collection<\Stripe\V2\Data\ReportRun>
+     *
+     * @throws \Stripe\Exception\ApiErrorException if the request fails
+     */
+    public function all($params = null, $opts = null)
+    {
+        return $this->requestCollection('get', '/v2/data/report_runs', $params, $opts, [
+            'response_schema' => [
+                'kind' => 'object',
+                'fields' => [
+                    'data' => [
+                        'kind' => 'array',
+                        'element' => [
+                            'kind' => 'object',
+                            'fields' => [
+                                'result' => [
+                                    'kind' => 'object',
+                                    'fields' => [
+                                        'col_count' => [
+                                            'kind' => 'int64_string',
+                                        ],
+                                        'file' => [
+                                            'kind' => 'object',
+                                            'fields' => [
+                                                'size' => [
+                                                    'kind' => 'int64_string',
+                                                ],
+                                            ],
+                                        ],
+                                        'row_count' => [
+                                            'kind' => 'int64_string',
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+        ]);
+    }
+
+    /**
      * Initiates the generation of a `ReportRun` based on the specified `Report` and
      * caller-provided parameters. Returns a `ReportRun` object which can be used to
      * track the progress and retrieve the results of the report.
