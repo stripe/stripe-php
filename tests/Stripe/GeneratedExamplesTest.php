@@ -27,7 +27,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAccountLinksPost()
     {
         $this->expectsRequest('post', '/v1/account_links');
-        $result = $this->client->accountLinks->create([
+        $result = $this->client->v1->accountLinks->create([
             'account' => 'acct_xxxxxxxxxxxxx',
             'refresh_url' => 'https://example.com/reauth',
             'return_url' => 'https://example.com/return',
@@ -42,7 +42,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/accounts/acct_xxxxxxxxxxxxx/capabilities'
         );
-        $result = $this->client->accounts->allCapabilities(
+        $result = $this->client->v1->accounts->allCapabilities(
             'acct_xxxxxxxxxxxxx',
             []
         );
@@ -56,7 +56,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/accounts/acct_xxxxxxxxxxxxx/capabilities/card_payments'
         );
-        $result = $this->client->accounts->retrieveCapability(
+        $result = $this->client->v1->accounts->retrieveCapability(
             'acct_xxxxxxxxxxxxx',
             'card_payments',
             []
@@ -70,7 +70,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/accounts/acct_xxxxxxxxxxxxx/capabilities/card_payments'
         );
-        $result = $this->client->accounts->updateCapability(
+        $result = $this->client->v1->accounts->updateCapability(
             'acct_xxxxxxxxxxxxx',
             'card_payments',
             ['requested' => true]
@@ -81,14 +81,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testAccountsDelete()
     {
         $this->expectsRequest('delete', '/v1/accounts/acct_xxxxxxxxxxxxx');
-        $result = $this->client->accounts->delete('acct_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->accounts->delete('acct_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Account::class, $result);
     }
 
     public function testAccountsGet()
     {
         $this->expectsRequest('get', '/v1/accounts');
-        $result = $this->client->accounts->all(['limit' => 3]);
+        $result = $this->client->v1->accounts->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Account::class, $result->data[0]);
     }
@@ -96,7 +96,10 @@ final class GeneratedExamplesTest extends TestCase
     public function testAccountsGet2()
     {
         $this->expectsRequest('get', '/v1/accounts/acct_xxxxxxxxxxxxx');
-        $result = $this->client->accounts->retrieve('acct_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->accounts->retrieve(
+            'acct_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Account::class, $result);
     }
 
@@ -106,7 +109,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/accounts/acct_xxxxxxxxxxxxx/login_links'
         );
-        $result = $this->client->accounts->createLoginLink(
+        $result = $this->client->v1->accounts->createLoginLink(
             'acct_xxxxxxxxxxxxx',
             []
         );
@@ -119,7 +122,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/accounts/acct_xxxxxxxxxxxxx/persons/person_xxxxxxxxxxxxx'
         );
-        $result = $this->client->accounts->deletePerson(
+        $result = $this->client->v1->accounts->deletePerson(
             'acct_xxxxxxxxxxxxx',
             'person_xxxxxxxxxxxxx',
             []
@@ -130,7 +133,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAccountsPersonsGet()
     {
         $this->expectsRequest('get', '/v1/accounts/acct_xxxxxxxxxxxxx/persons');
-        $result = $this->client->accounts->allPersons(
+        $result = $this->client->v1->accounts->allPersons(
             'acct_xxxxxxxxxxxxx',
             ['limit' => 3]
         );
@@ -144,7 +147,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/accounts/acct_xxxxxxxxxxxxx/persons/person_xxxxxxxxxxxxx'
         );
-        $result = $this->client->accounts->retrievePerson(
+        $result = $this->client->v1->accounts->retrievePerson(
             'acct_xxxxxxxxxxxxx',
             'person_xxxxxxxxxxxxx',
             []
@@ -158,7 +161,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/accounts/acct_xxxxxxxxxxxxx/persons'
         );
-        $result = $this->client->accounts->createPerson(
+        $result = $this->client->v1->accounts->createPerson(
             'acct_xxxxxxxxxxxxx',
             [
                 'first_name' => 'Jane',
@@ -174,7 +177,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/accounts/acct_xxxxxxxxxxxxx/persons/person_xxxxxxxxxxxxx'
         );
-        $result = $this->client->accounts->updatePerson(
+        $result = $this->client->v1->accounts->updatePerson(
             'acct_xxxxxxxxxxxxx',
             'person_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
@@ -185,7 +188,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAccountsPost()
     {
         $this->expectsRequest('post', '/v1/accounts');
-        $result = $this->client->accounts->create([
+        $result = $this->client->v1->accounts->create([
             'type' => 'custom',
             'country' => 'US',
             'email' => 'jenny.rosen@example.com',
@@ -200,7 +203,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAccountsPost2()
     {
         $this->expectsRequest('post', '/v1/accounts/acct_xxxxxxxxxxxxx');
-        $result = $this->client->accounts->update(
+        $result = $this->client->v1->accounts->update(
             'acct_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -210,7 +213,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAccountsRejectPost()
     {
         $this->expectsRequest('post', '/v1/accounts/acct_xxxxxxxxxxxxx/reject');
-        $result = $this->client->accounts->reject(
+        $result = $this->client->v1->accounts->reject(
             'acct_xxxxxxxxxxxxx',
             ['reason' => 'fraud_other']
         );
@@ -220,7 +223,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testApplicationFeesGet()
     {
         $this->expectsRequest('get', '/v1/application_fees');
-        $result = $this->client->applicationFees->all(['limit' => 3]);
+        $result = $this->client->v1->applicationFees->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(ApplicationFee::class, $result->data[0]);
     }
@@ -228,7 +231,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testApplicationFeesGet2()
     {
         $this->expectsRequest('get', '/v1/application_fees/fee_xxxxxxxxxxxxx');
-        $result = $this->client->applicationFees->retrieve(
+        $result = $this->client->v1->applicationFees->retrieve(
             'fee_xxxxxxxxxxxxx',
             []
         );
@@ -241,7 +244,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/application_fees/fee_xxxxxxxxxxxxx/refunds'
         );
-        $result = $this->client->applicationFees->allRefunds(
+        $result = $this->client->v1->applicationFees->allRefunds(
             'fee_xxxxxxxxxxxxx',
             ['limit' => 3]
         );
@@ -255,7 +258,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/application_fees/fee_xxxxxxxxxxxxx/refunds/fr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->applicationFees->retrieveRefund(
+        $result = $this->client->v1->applicationFees->retrieveRefund(
             'fee_xxxxxxxxxxxxx',
             'fr_xxxxxxxxxxxxx',
             []
@@ -269,7 +272,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/application_fees/fee_xxxxxxxxxxxxx/refunds'
         );
-        $result = $this->client->applicationFees->createRefund(
+        $result = $this->client->v1->applicationFees->createRefund(
             'fee_xxxxxxxxxxxxx',
             []
         );
@@ -282,7 +285,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/application_fees/fee_xxxxxxxxxxxxx/refunds/fr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->applicationFees->updateRefund(
+        $result = $this->client->v1->applicationFees->updateRefund(
             'fee_xxxxxxxxxxxxx',
             'fr_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
@@ -293,7 +296,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAppsSecretsDeletePost()
     {
         $this->expectsRequest('post', '/v1/apps/secrets/delete');
-        $result = $this->client->apps->secrets->deleteWhere([
+        $result = $this->client->v1->apps->secrets->deleteWhere([
             'name' => 'my-api-key',
             'scope' => ['type' => 'account'],
         ]);
@@ -303,7 +306,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAppsSecretsFindGet()
     {
         $this->expectsRequest('get', '/v1/apps/secrets/find');
-        $result = $this->client->apps->secrets->find([
+        $result = $this->client->v1->apps->secrets->find([
             'name' => 'sec_123',
             'scope' => ['type' => 'account'],
         ]);
@@ -313,7 +316,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAppsSecretsGet()
     {
         $this->expectsRequest('get', '/v1/apps/secrets');
-        $result = $this->client->apps->secrets->all([
+        $result = $this->client->v1->apps->secrets->all([
             'scope' => ['type' => 'account'],
             'limit' => 2,
         ]);
@@ -324,7 +327,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAppsSecretsGet2()
     {
         $this->expectsRequest('get', '/v1/apps/secrets');
-        $result = $this->client->apps->secrets->all([
+        $result = $this->client->v1->apps->secrets->all([
             'scope' => ['type' => 'account'],
             'limit' => 2,
         ]);
@@ -335,7 +338,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAppsSecretsPost()
     {
         $this->expectsRequest('post', '/v1/apps/secrets');
-        $result = $this->client->apps->secrets->create([
+        $result = $this->client->v1->apps->secrets->create([
             'name' => 'sec_123',
             'payload' => 'very secret string',
             'scope' => ['type' => 'account'],
@@ -346,7 +349,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testAppsSecretsPost2()
     {
         $this->expectsRequest('post', '/v1/apps/secrets');
-        $result = $this->client->apps->secrets->create([
+        $result = $this->client->v1->apps->secrets->create([
             'name' => 'my-api-key',
             'payload' => 'secret_key_xxxxxx',
             'scope' => ['type' => 'account'],
@@ -357,7 +360,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testBalanceTransactionsGet()
     {
         $this->expectsRequest('get', '/v1/balance_transactions');
-        $result = $this->client->balanceTransactions->all(['limit' => 3]);
+        $result = $this->client->v1->balanceTransactions->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(BalanceTransaction::class, $result->data[0]);
     }
@@ -368,7 +371,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/balance_transactions/txn_xxxxxxxxxxxxx'
         );
-        $result = $this->client->balanceTransactions->retrieve(
+        $result = $this->client->v1->balanceTransactions->retrieve(
             'txn_xxxxxxxxxxxxx',
             []
         );
@@ -378,7 +381,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testBillingPortalConfigurationsGet()
     {
         $this->expectsRequest('get', '/v1/billing_portal/configurations');
-        $result = $this->client->billingPortal->configurations->all([
+        $result = $this->client->v1->billingPortal->configurations->all([
             'limit' => 3,
         ]);
         self::assertInstanceOf(Collection::class, $result);
@@ -391,7 +394,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/billing_portal/configurations/bpc_xxxxxxxxxxxxx'
         );
-        $result = $this->client->billingPortal->configurations->retrieve(
+        $result = $this->client->v1->billingPortal->configurations->retrieve(
             'bpc_xxxxxxxxxxxxx',
             []
         );
@@ -404,7 +407,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/billing_portal/configurations/bpc_xxxxxxxxxxxxx'
         );
-        $result = $this->client->billingPortal->configurations->update(
+        $result = $this->client->v1->billingPortal->configurations->update(
             'bpc_xxxxxxxxxxxxx',
             [
                 'business_profile' => [
@@ -419,7 +422,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testBillingPortalSessionsPost()
     {
         $this->expectsRequest('post', '/v1/billing_portal/sessions');
-        $result = $this->client->billingPortal->sessions->create([
+        $result = $this->client->v1->billingPortal->sessions->create([
             'customer' => 'cus_xxxxxxxxxxxxx',
             'return_url' => 'https://example.com/account',
         ]);
@@ -429,14 +432,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testChargesCapturePost()
     {
         $this->expectsRequest('post', '/v1/charges/ch_xxxxxxxxxxxxx/capture');
-        $result = $this->client->charges->capture('ch_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->charges->capture('ch_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Charge::class, $result);
     }
 
     public function testChargesGet()
     {
         $this->expectsRequest('get', '/v1/charges');
-        $result = $this->client->charges->all(['limit' => 3]);
+        $result = $this->client->v1->charges->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Charge::class, $result->data[0]);
     }
@@ -444,14 +447,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testChargesGet2()
     {
         $this->expectsRequest('get', '/v1/charges/ch_xxxxxxxxxxxxx');
-        $result = $this->client->charges->retrieve('ch_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->charges->retrieve('ch_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Charge::class, $result);
     }
 
     public function testChargesPost()
     {
         $this->expectsRequest('post', '/v1/charges');
-        $result = $this->client->charges->create([
+        $result = $this->client->v1->charges->create([
             'amount' => 2000,
             'currency' => 'usd',
             'source' => 'tok_xxxx',
@@ -463,7 +466,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testChargesPost2()
     {
         $this->expectsRequest('post', '/v1/charges/ch_xxxxxxxxxxxxx');
-        $result = $this->client->charges->update(
+        $result = $this->client->v1->charges->update(
             'ch_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -473,7 +476,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testChargesSearchGet()
     {
         $this->expectsRequest('get', '/v1/charges/search');
-        $result = $this->client->charges->search([
+        $result = $this->client->v1->charges->search([
             'query' => 'amount>999 AND metadata[\'order_id\']:\'6735\'',
         ]);
         self::assertInstanceOf(SearchResult::class, $result);
@@ -483,7 +486,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCheckoutSessionsExpirePost()
     {
         $this->expectsRequest('post', '/v1/checkout/sessions/sess_xyz/expire');
-        $result = $this->client->checkout->sessions->expire('sess_xyz', []);
+        $result = $this->client->v1->checkout->sessions->expire('sess_xyz', []);
         self::assertInstanceOf(Checkout\Session::class, $result);
     }
 
@@ -493,7 +496,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/checkout/sessions/cs_test_xxxxxxxxxxxxx/expire'
         );
-        $result = $this->client->checkout->sessions->expire(
+        $result = $this->client->v1->checkout->sessions->expire(
             'cs_test_xxxxxxxxxxxxx',
             []
         );
@@ -503,7 +506,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCheckoutSessionsGet()
     {
         $this->expectsRequest('get', '/v1/checkout/sessions');
-        $result = $this->client->checkout->sessions->all(['limit' => 3]);
+        $result = $this->client->v1->checkout->sessions->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Checkout\Session::class, $result->data[0]);
     }
@@ -514,7 +517,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/checkout/sessions/cs_test_xxxxxxxxxxxxx'
         );
-        $result = $this->client->checkout->sessions->retrieve(
+        $result = $this->client->v1->checkout->sessions->retrieve(
             'cs_test_xxxxxxxxxxxxx',
             []
         );
@@ -527,7 +530,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/checkout/sessions/sess_xyz/line_items'
         );
-        $result = $this->client->checkout->sessions->allLineItems(
+        $result = $this->client->v1->checkout->sessions->allLineItems(
             'sess_xyz',
             []
         );
@@ -538,7 +541,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCheckoutSessionsPost()
     {
         $this->expectsRequest('post', '/v1/checkout/sessions');
-        $result = $this->client->checkout->sessions->create([
+        $result = $this->client->v1->checkout->sessions->create([
             'success_url' => 'https://example.com/success',
             'cancel_url' => 'https://example.com/cancel',
             'mode' => 'payment',
@@ -567,7 +570,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCheckoutSessionsPost2()
     {
         $this->expectsRequest('post', '/v1/checkout/sessions');
-        $result = $this->client->checkout->sessions->create([
+        $result = $this->client->v1->checkout->sessions->create([
             'success_url' => 'https://example.com/success',
             'line_items' => [
                 [
@@ -629,7 +632,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCountrySpecsGet()
     {
         $this->expectsRequest('get', '/v1/country_specs');
-        $result = $this->client->countrySpecs->all(['limit' => 3]);
+        $result = $this->client->v1->countrySpecs->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(CountrySpec::class, $result->data[0]);
     }
@@ -637,21 +640,21 @@ final class GeneratedExamplesTest extends TestCase
     public function testCountrySpecsGet2()
     {
         $this->expectsRequest('get', '/v1/country_specs/US');
-        $result = $this->client->countrySpecs->retrieve('US', []);
+        $result = $this->client->v1->countrySpecs->retrieve('US', []);
         self::assertInstanceOf(CountrySpec::class, $result);
     }
 
     public function testCouponsDelete()
     {
         $this->expectsRequest('delete', '/v1/coupons/Z4OV52SU');
-        $result = $this->client->coupons->delete('Z4OV52SU', []);
+        $result = $this->client->v1->coupons->delete('Z4OV52SU', []);
         self::assertInstanceOf(Coupon::class, $result);
     }
 
     public function testCouponsGet()
     {
         $this->expectsRequest('get', '/v1/coupons');
-        $result = $this->client->coupons->all(['limit' => 3]);
+        $result = $this->client->v1->coupons->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Coupon::class, $result->data[0]);
     }
@@ -659,14 +662,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testCouponsGet2()
     {
         $this->expectsRequest('get', '/v1/coupons/Z4OV52SU');
-        $result = $this->client->coupons->retrieve('Z4OV52SU', []);
+        $result = $this->client->v1->coupons->retrieve('Z4OV52SU', []);
         self::assertInstanceOf(Coupon::class, $result);
     }
 
     public function testCouponsPost()
     {
         $this->expectsRequest('post', '/v1/coupons');
-        $result = $this->client->coupons->create([
+        $result = $this->client->v1->coupons->create([
             'percent_off' => 25.5,
             'duration' => 'once',
         ]);
@@ -676,7 +679,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCouponsPost2()
     {
         $this->expectsRequest('post', '/v1/coupons/Z4OV52SU');
-        $result = $this->client->coupons->update(
+        $result = $this->client->v1->coupons->update(
             'Z4OV52SU',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -686,7 +689,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCreditNotesGet()
     {
         $this->expectsRequest('get', '/v1/credit_notes');
-        $result = $this->client->creditNotes->all(['limit' => 3]);
+        $result = $this->client->v1->creditNotes->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(CreditNote::class, $result->data[0]);
     }
@@ -694,7 +697,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCreditNotesLinesGet()
     {
         $this->expectsRequest('get', '/v1/credit_notes/cn_xxxxxxxxxxxxx/lines');
-        $result = $this->client->creditNotes->allLines(
+        $result = $this->client->v1->creditNotes->allLines(
             'cn_xxxxxxxxxxxxx',
             ['limit' => 3]
         );
@@ -705,7 +708,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCreditNotesPost()
     {
         $this->expectsRequest('post', '/v1/credit_notes');
-        $result = $this->client->creditNotes->create([
+        $result = $this->client->v1->creditNotes->create([
             'invoice' => 'in_xxxxxxxxxxxxx',
             'lines' => [
                 [
@@ -721,7 +724,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCreditNotesPreviewGet()
     {
         $this->expectsRequest('get', '/v1/credit_notes/preview');
-        $result = $this->client->creditNotes->preview([
+        $result = $this->client->v1->creditNotes->preview([
             'invoice' => 'in_xxxxxxxxxxxxx',
             'lines' => [
                 [
@@ -737,7 +740,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCreditNotesPreviewLinesGet()
     {
         $this->expectsRequest('get', '/v1/credit_notes/preview/lines');
-        $result = $this->client->creditNotes->previewLines([
+        $result = $this->client->v1->creditNotes->previewLines([
             'limit' => 3,
             'invoice' => 'in_xxxxxxxxxxxxx',
         ]);
@@ -748,7 +751,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCreditNotesVoidPost()
     {
         $this->expectsRequest('post', '/v1/credit_notes/cn_xxxxxxxxxxxxx/void');
-        $result = $this->client->creditNotes->voidCreditNote(
+        $result = $this->client->v1->creditNotes->voidCreditNote(
             'cn_xxxxxxxxxxxxx',
             []
         );
@@ -758,7 +761,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomerSessionsPost()
     {
         $this->expectsRequest('post', '/v1/customer_sessions');
-        $result = $this->client->customerSessions->create([
+        $result = $this->client->v1->customerSessions->create([
             'customer' => 'cus_123',
             'components' => ['buy_button' => ['enabled' => true]],
         ]);
@@ -771,7 +774,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/customers/cus_xxxxxxxxxxxxx/balance_transactions'
         );
-        $result = $this->client->customers->allBalanceTransactions(
+        $result = $this->client->v1->customers->allBalanceTransactions(
             'cus_xxxxxxxxxxxxx',
             ['limit' => 3]
         );
@@ -785,7 +788,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/customers/cus_xxxxxxxxxxxxx/balance_transactions/cbtxn_xxxxxxxxxxxxx'
         );
-        $result = $this->client->customers->retrieveBalanceTransaction(
+        $result = $this->client->v1->customers->retrieveBalanceTransaction(
             'cus_xxxxxxxxxxxxx',
             'cbtxn_xxxxxxxxxxxxx',
             []
@@ -799,7 +802,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/customers/cus_xxxxxxxxxxxxx/balance_transactions'
         );
-        $result = $this->client->customers->createBalanceTransaction(
+        $result = $this->client->v1->customers->createBalanceTransaction(
             'cus_xxxxxxxxxxxxx',
             [
                 'amount' => -500,
@@ -815,7 +818,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/customers/cus_xxxxxxxxxxxxx/balance_transactions/cbtxn_xxxxxxxxxxxxx'
         );
-        $result = $this->client->customers->updateBalanceTransaction(
+        $result = $this->client->v1->customers->updateBalanceTransaction(
             'cus_xxxxxxxxxxxxx',
             'cbtxn_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
@@ -826,14 +829,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersCashBalanceGet()
     {
         $this->expectsRequest('get', '/v1/customers/cus_123/cash_balance');
-        $result = $this->client->customers->retrieveCashBalance('cus_123', []);
+        $result = $this->client->v1->customers->retrieveCashBalance(
+            'cus_123',
+            []
+        );
         self::assertInstanceOf(CashBalance::class, $result);
     }
 
     public function testCustomersCashBalancePost()
     {
         $this->expectsRequest('post', '/v1/customers/cus_123/cash_balance');
-        $result = $this->client->customers->updateCashBalance(
+        $result = $this->client->v1->customers->updateCashBalance(
             'cus_123',
             ['settings' => ['reconciliation_mode' => 'manual']]
         );
@@ -846,7 +852,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/customers/cus_123/cash_balance_transactions'
         );
-        $result = $this->client->customers->allCashBalanceTransactions(
+        $result = $this->client->v1->customers->allCashBalanceTransactions(
             'cus_123',
             ['limit' => 3]
         );
@@ -857,7 +863,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersDelete()
     {
         $this->expectsRequest('delete', '/v1/customers/cus_xxxxxxxxxxxxx');
-        $result = $this->client->customers->delete('cus_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->customers->delete('cus_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Customer::class, $result);
     }
 
@@ -867,7 +873,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/customers/cus_123/funding_instructions'
         );
-        $result = $this->client->customers->createFundingInstructions(
+        $result = $this->client->v1->customers->createFundingInstructions(
             'cus_123',
             [
                 'bank_transfer' => [
@@ -884,7 +890,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersGet()
     {
         $this->expectsRequest('get', '/v1/customers');
-        $result = $this->client->customers->all(['limit' => 3]);
+        $result = $this->client->v1->customers->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Customer::class, $result->data[0]);
     }
@@ -892,7 +898,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersGet2()
     {
         $this->expectsRequest('get', '/v1/customers');
-        $result = $this->client->customers->all(['limit' => 3]);
+        $result = $this->client->v1->customers->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Customer::class, $result->data[0]);
     }
@@ -900,14 +906,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersGet3()
     {
         $this->expectsRequest('get', '/v1/customers/cus_xxxxxxxxxxxxx');
-        $result = $this->client->customers->retrieve('cus_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->customers->retrieve(
+            'cus_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Customer::class, $result);
     }
 
     public function testCustomersPost()
     {
         $this->expectsRequest('post', '/v1/customers');
-        $result = $this->client->customers->create([
+        $result = $this->client->v1->customers->create([
             'description' => 'My First Test Customer (created for API docs at https://www.stripe.com/docs/api)',
         ]);
         self::assertInstanceOf(Customer::class, $result);
@@ -916,7 +925,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersPost2()
     {
         $this->expectsRequest('post', '/v1/customers/cus_xxxxxxxxxxxxx');
-        $result = $this->client->customers->update(
+        $result = $this->client->v1->customers->update(
             'cus_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -926,7 +935,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersSearchGet()
     {
         $this->expectsRequest('get', '/v1/customers/search');
-        $result = $this->client->customers->search([
+        $result = $this->client->v1->customers->search([
             'query' => 'name:\'fakename\' AND metadata[\'foo\']:\'bar\'',
         ]);
         self::assertInstanceOf(SearchResult::class, $result);
@@ -936,7 +945,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersSearchGet2()
     {
         $this->expectsRequest('get', '/v1/customers/search');
-        $result = $this->client->customers->search([
+        $result = $this->client->v1->customers->search([
             'query' => 'name:\'fakename\' AND metadata[\'foo\']:\'bar\'',
         ]);
         self::assertInstanceOf(SearchResult::class, $result);
@@ -949,7 +958,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/customers/cus_xxxxxxxxxxxxx/tax_ids/txi_xxxxxxxxxxxxx'
         );
-        $result = $this->client->customers->deleteTaxId(
+        $result = $this->client->v1->customers->deleteTaxId(
             'cus_xxxxxxxxxxxxx',
             'txi_xxxxxxxxxxxxx',
             []
@@ -960,7 +969,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testCustomersTaxIdsGet()
     {
         $this->expectsRequest('get', '/v1/customers/cus_xxxxxxxxxxxxx/tax_ids');
-        $result = $this->client->customers->allTaxIds(
+        $result = $this->client->v1->customers->allTaxIds(
             'cus_xxxxxxxxxxxxx',
             ['limit' => 3]
         );
@@ -974,7 +983,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/customers/cus_xxxxxxxxxxxxx/tax_ids/txi_xxxxxxxxxxxxx'
         );
-        $result = $this->client->customers->retrieveTaxId(
+        $result = $this->client->v1->customers->retrieveTaxId(
             'cus_xxxxxxxxxxxxx',
             'txi_xxxxxxxxxxxxx',
             []
@@ -988,7 +997,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/customers/cus_xxxxxxxxxxxxx/tax_ids'
         );
-        $result = $this->client->customers->createTaxId(
+        $result = $this->client->v1->customers->createTaxId(
             'cus_xxxxxxxxxxxxx',
             [
                 'type' => 'eu_vat',
@@ -1001,14 +1010,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testDisputesClosePost()
     {
         $this->expectsRequest('post', '/v1/disputes/dp_xxxxxxxxxxxxx/close');
-        $result = $this->client->disputes->close('dp_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->disputes->close('dp_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Dispute::class, $result);
     }
 
     public function testDisputesGet()
     {
         $this->expectsRequest('get', '/v1/disputes');
-        $result = $this->client->disputes->all(['limit' => 3]);
+        $result = $this->client->v1->disputes->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Dispute::class, $result->data[0]);
     }
@@ -1016,14 +1025,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testDisputesGet2()
     {
         $this->expectsRequest('get', '/v1/disputes/dp_xxxxxxxxxxxxx');
-        $result = $this->client->disputes->retrieve('dp_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->disputes->retrieve('dp_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Dispute::class, $result);
     }
 
     public function testDisputesPost()
     {
         $this->expectsRequest('post', '/v1/disputes/dp_xxxxxxxxxxxxx');
-        $result = $this->client->disputes->update(
+        $result = $this->client->v1->disputes->update(
             'dp_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1033,7 +1042,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testEventsGet()
     {
         $this->expectsRequest('get', '/v1/events');
-        $result = $this->client->events->all(['limit' => 3]);
+        $result = $this->client->v1->events->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Event::class, $result->data[0]);
     }
@@ -1041,14 +1050,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testEventsGet2()
     {
         $this->expectsRequest('get', '/v1/events/evt_xxxxxxxxxxxxx');
-        $result = $this->client->events->retrieve('evt_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->events->retrieve('evt_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Event::class, $result);
     }
 
     public function testFileLinksGet()
     {
         $this->expectsRequest('get', '/v1/file_links');
-        $result = $this->client->fileLinks->all(['limit' => 3]);
+        $result = $this->client->v1->fileLinks->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(FileLink::class, $result->data[0]);
     }
@@ -1056,14 +1065,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testFileLinksGet2()
     {
         $this->expectsRequest('get', '/v1/file_links/link_xxxxxxxxxxxxx');
-        $result = $this->client->fileLinks->retrieve('link_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->fileLinks->retrieve(
+            'link_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(FileLink::class, $result);
     }
 
     public function testFileLinksPost()
     {
         $this->expectsRequest('post', '/v1/file_links');
-        $result = $this->client->fileLinks->create([
+        $result = $this->client->v1->fileLinks->create([
             'file' => 'file_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(FileLink::class, $result);
@@ -1072,7 +1084,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testFileLinksPost2()
     {
         $this->expectsRequest('post', '/v1/file_links/link_xxxxxxxxxxxxx');
-        $result = $this->client->fileLinks->update(
+        $result = $this->client->v1->fileLinks->update(
             'link_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1082,7 +1094,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testFilesGet()
     {
         $this->expectsRequest('get', '/v1/files');
-        $result = $this->client->files->all(['limit' => 3]);
+        $result = $this->client->v1->files->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(File::class, $result->data[0]);
     }
@@ -1090,7 +1102,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testFilesGet2()
     {
         $this->expectsRequest('get', '/v1/files/file_xxxxxxxxxxxxx');
-        $result = $this->client->files->retrieve('file_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->files->retrieve('file_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(File::class, $result);
     }
 
@@ -1100,7 +1112,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/financial_connections/accounts/fca_xyz/disconnect'
         );
-        $result = $this->client->financialConnections->accounts->disconnect(
+        $result = $this->client->v1->financialConnections->accounts->disconnect(
             'fca_xyz',
             []
         );
@@ -1113,7 +1125,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx/disconnect'
         );
-        $result = $this->client->financialConnections->accounts->disconnect(
+        $result = $this->client->v1->financialConnections->accounts->disconnect(
             'fca_xxxxxxxxxxxxx',
             []
         );
@@ -1123,7 +1135,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testFinancialConnectionsAccountsGet()
     {
         $this->expectsRequest('get', '/v1/financial_connections/accounts');
-        $result = $this->client->financialConnections->accounts->all([]);
+        $result = $this->client->v1->financialConnections->accounts->all([]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(FinancialConnections\Account::class, $result->data[0]);
     }
@@ -1134,7 +1146,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/financial_connections/accounts/fca_xyz'
         );
-        $result = $this->client->financialConnections->accounts->retrieve(
+        $result = $this->client->v1->financialConnections->accounts->retrieve(
             'fca_xyz',
             []
         );
@@ -1144,7 +1156,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testFinancialConnectionsAccountsGet3()
     {
         $this->expectsRequest('get', '/v1/financial_connections/accounts');
-        $result = $this->client->financialConnections->accounts->all([
+        $result = $this->client->v1->financialConnections->accounts->all([
             'account_holder' => ['customer' => 'cus_xxxxxxxxxxxxx'],
         ]);
         self::assertInstanceOf(Collection::class, $result);
@@ -1157,7 +1169,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx'
         );
-        $result = $this->client->financialConnections->accounts->retrieve(
+        $result = $this->client->v1->financialConnections->accounts->retrieve(
             'fca_xxxxxxxxxxxxx',
             []
         );
@@ -1170,7 +1182,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/financial_connections/accounts/fca_xyz/owners'
         );
-        $result = $this->client->financialConnections->accounts->allOwners(
+        $result = $this->client->v1->financialConnections->accounts->allOwners(
             'fca_xyz',
             ['ownership' => 'fcaowns_xyz']
         );
@@ -1184,7 +1196,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx/owners'
         );
-        $result = $this->client->financialConnections->accounts->allOwners(
+        $result = $this->client->v1->financialConnections->accounts->allOwners(
             'fca_xxxxxxxxxxxxx',
             [
                 'limit' => 3,
@@ -1201,7 +1213,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/financial_connections/accounts/fca_xyz/refresh'
         );
-        $result = $this->client->financialConnections->accounts->refresh(
+        $result = $this->client->v1->financialConnections->accounts->refresh(
             'fca_xyz',
             ['features' => ['balance']]
         );
@@ -1214,7 +1226,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/financial_connections/accounts/fa_123/subscribe'
         );
-        $result = $this->client->financialConnections->accounts->subscribe(
+        $result = $this->client->v1->financialConnections->accounts->subscribe(
             'fa_123',
             ['features' => ['transactions']]
         );
@@ -1227,7 +1239,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/financial_connections/accounts/fa_123/unsubscribe'
         );
-        $result = $this->client->financialConnections->accounts->unsubscribe(
+        $result = $this->client->v1->financialConnections->accounts->unsubscribe(
             'fa_123',
             ['features' => ['transactions']]
         );
@@ -1240,7 +1252,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/financial_connections/sessions/fcsess_xyz'
         );
-        $result = $this->client->financialConnections->sessions->retrieve(
+        $result = $this->client->v1->financialConnections->sessions->retrieve(
             'fcsess_xyz',
             []
         );
@@ -1253,7 +1265,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/financial_connections/sessions/fcsess_xxxxxxxxxxxxx'
         );
-        $result = $this->client->financialConnections->sessions->retrieve(
+        $result = $this->client->v1->financialConnections->sessions->retrieve(
             'fcsess_xxxxxxxxxxxxx',
             []
         );
@@ -1263,7 +1275,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testFinancialConnectionsSessionsPost()
     {
         $this->expectsRequest('post', '/v1/financial_connections/sessions');
-        $result = $this->client->financialConnections->sessions->create([
+        $result = $this->client->v1->financialConnections->sessions->create([
             'account_holder' => [
                 'type' => 'customer',
                 'customer' => 'cus_123',
@@ -1276,7 +1288,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testFinancialConnectionsSessionsPost2()
     {
         $this->expectsRequest('post', '/v1/financial_connections/sessions');
-        $result = $this->client->financialConnections->sessions->create([
+        $result = $this->client->v1->financialConnections->sessions->create([
             'account_holder' => [
                 'type' => 'customer',
                 'customer' => 'cus_xxxxxxxxxxxxx',
@@ -1293,7 +1305,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/financial_connections/transactions/tr_123'
         );
-        $result = $this->client->financialConnections->transactions->retrieve(
+        $result = $this->client->v1->financialConnections->transactions->retrieve(
             'tr_123',
             []
         );
@@ -1303,7 +1315,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testFinancialConnectionsTransactionsGet2()
     {
         $this->expectsRequest('get', '/v1/financial_connections/transactions');
-        $result = $this->client->financialConnections->transactions->all([
+        $result = $this->client->v1->financialConnections->transactions->all([
             'account' => 'fca_xyz',
         ]);
         self::assertInstanceOf(Collection::class, $result);
@@ -1313,7 +1325,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIdentityVerificationReportsGet()
     {
         $this->expectsRequest('get', '/v1/identity/verification_reports');
-        $result = $this->client->identity->verificationReports->all([
+        $result = $this->client->v1->identity->verificationReports->all([
             'limit' => 3,
         ]);
         self::assertInstanceOf(Collection::class, $result);
@@ -1326,7 +1338,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/identity/verification_reports/vr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->identity->verificationReports->retrieve(
+        $result = $this->client->v1->identity->verificationReports->retrieve(
             'vr_xxxxxxxxxxxxx',
             []
         );
@@ -1339,7 +1351,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/identity/verification_sessions/vs_xxxxxxxxxxxxx/cancel'
         );
-        $result = $this->client->identity->verificationSessions->cancel(
+        $result = $this->client->v1->identity->verificationSessions->cancel(
             'vs_xxxxxxxxxxxxx',
             []
         );
@@ -1349,7 +1361,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIdentityVerificationSessionsGet()
     {
         $this->expectsRequest('get', '/v1/identity/verification_sessions');
-        $result = $this->client->identity->verificationSessions->all([
+        $result = $this->client->v1->identity->verificationSessions->all([
             'limit' => 3,
         ]);
         self::assertInstanceOf(Collection::class, $result);
@@ -1362,7 +1374,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/identity/verification_sessions/vs_xxxxxxxxxxxxx'
         );
-        $result = $this->client->identity->verificationSessions->retrieve(
+        $result = $this->client->v1->identity->verificationSessions->retrieve(
             'vs_xxxxxxxxxxxxx',
             []
         );
@@ -1372,7 +1384,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIdentityVerificationSessionsPost()
     {
         $this->expectsRequest('post', '/v1/identity/verification_sessions');
-        $result = $this->client->identity->verificationSessions->create([
+        $result = $this->client->v1->identity->verificationSessions->create([
             'type' => 'document',
         ]);
         self::assertInstanceOf(Identity\VerificationSession::class, $result);
@@ -1384,7 +1396,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/identity/verification_sessions/vs_xxxxxxxxxxxxx'
         );
-        $result = $this->client->identity->verificationSessions->update(
+        $result = $this->client->v1->identity->verificationSessions->update(
             'vs_xxxxxxxxxxxxx',
             ['type' => 'id_number']
         );
@@ -1397,7 +1409,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/identity/verification_sessions/vs_xxxxxxxxxxxxx/redact'
         );
-        $result = $this->client->identity->verificationSessions->redact(
+        $result = $this->client->v1->identity->verificationSessions->redact(
             'vs_xxxxxxxxxxxxx',
             []
         );
@@ -1407,14 +1419,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoiceitemsDelete()
     {
         $this->expectsRequest('delete', '/v1/invoiceitems/ii_xxxxxxxxxxxxx');
-        $result = $this->client->invoiceItems->delete('ii_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->invoiceItems->delete(
+            'ii_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(InvoiceItem::class, $result);
     }
 
     public function testInvoiceitemsGet()
     {
         $this->expectsRequest('get', '/v1/invoiceitems');
-        $result = $this->client->invoiceItems->all(['limit' => 3]);
+        $result = $this->client->v1->invoiceItems->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(InvoiceItem::class, $result->data[0]);
     }
@@ -1422,14 +1437,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoiceitemsGet2()
     {
         $this->expectsRequest('get', '/v1/invoiceitems/ii_xxxxxxxxxxxxx');
-        $result = $this->client->invoiceItems->retrieve('ii_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->invoiceItems->retrieve(
+            'ii_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(InvoiceItem::class, $result);
     }
 
     public function testInvoiceitemsPost()
     {
         $this->expectsRequest('post', '/v1/invoiceitems');
-        $result = $this->client->invoiceItems->create([
+        $result = $this->client->v1->invoiceItems->create([
             'customer' => 'cus_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(InvoiceItem::class, $result);
@@ -1438,7 +1456,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoiceitemsPost2()
     {
         $this->expectsRequest('post', '/v1/invoiceitems/ii_xxxxxxxxxxxxx');
-        $result = $this->client->invoiceItems->update(
+        $result = $this->client->v1->invoiceItems->update(
             'ii_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1448,14 +1466,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoicesDelete()
     {
         $this->expectsRequest('delete', '/v1/invoices/in_xxxxxxxxxxxxx');
-        $result = $this->client->invoices->delete('in_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->invoices->delete('in_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Invoice::class, $result);
     }
 
     public function testInvoicesFinalizePost()
     {
         $this->expectsRequest('post', '/v1/invoices/in_xxxxxxxxxxxxx/finalize');
-        $result = $this->client->invoices->finalizeInvoice(
+        $result = $this->client->v1->invoices->finalizeInvoice(
             'in_xxxxxxxxxxxxx',
             []
         );
@@ -1465,7 +1483,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoicesGet()
     {
         $this->expectsRequest('get', '/v1/invoices');
-        $result = $this->client->invoices->all(['limit' => 3]);
+        $result = $this->client->v1->invoices->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Invoice::class, $result->data[0]);
     }
@@ -1473,14 +1491,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoicesGet2()
     {
         $this->expectsRequest('get', '/v1/invoices/in_xxxxxxxxxxxxx');
-        $result = $this->client->invoices->retrieve('in_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->invoices->retrieve('in_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Invoice::class, $result);
     }
 
     public function testInvoicesGet3()
     {
         $this->expectsRequest('get', '/v1/invoices/in_xxxxxxxxxxxxx');
-        $result = $this->client->invoices->retrieve(
+        $result = $this->client->v1->invoices->retrieve(
             'in_xxxxxxxxxxxxx',
             ['expand' => ['customer']]
         );
@@ -1493,7 +1511,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/invoices/in_xxxxxxxxxxxxx/mark_uncollectible'
         );
-        $result = $this->client->invoices->markUncollectible(
+        $result = $this->client->v1->invoices->markUncollectible(
             'in_xxxxxxxxxxxxx',
             []
         );
@@ -1503,14 +1521,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoicesPayPost()
     {
         $this->expectsRequest('post', '/v1/invoices/in_xxxxxxxxxxxxx/pay');
-        $result = $this->client->invoices->pay('in_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->invoices->pay('in_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Invoice::class, $result);
     }
 
     public function testInvoicesPost()
     {
         $this->expectsRequest('post', '/v1/invoices');
-        $result = $this->client->invoices->create([
+        $result = $this->client->v1->invoices->create([
             'customer' => 'cus_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(Invoice::class, $result);
@@ -1519,7 +1537,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoicesPost2()
     {
         $this->expectsRequest('post', '/v1/invoices/in_xxxxxxxxxxxxx');
-        $result = $this->client->invoices->update(
+        $result = $this->client->v1->invoices->update(
             'in_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1529,7 +1547,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoicesSearchGet()
     {
         $this->expectsRequest('get', '/v1/invoices/search');
-        $result = $this->client->invoices->search([
+        $result = $this->client->v1->invoices->search([
             'query' => 'total>999 AND metadata[\'order_id\']:\'6735\'',
         ]);
         self::assertInstanceOf(SearchResult::class, $result);
@@ -1539,14 +1557,20 @@ final class GeneratedExamplesTest extends TestCase
     public function testInvoicesSendPost()
     {
         $this->expectsRequest('post', '/v1/invoices/in_xxxxxxxxxxxxx/send');
-        $result = $this->client->invoices->sendInvoice('in_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->invoices->sendInvoice(
+            'in_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Invoice::class, $result);
     }
 
     public function testInvoicesVoidPost()
     {
         $this->expectsRequest('post', '/v1/invoices/in_xxxxxxxxxxxxx/void');
-        $result = $this->client->invoices->voidInvoice('in_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->invoices->voidInvoice(
+            'in_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Invoice::class, $result);
     }
 
@@ -1556,7 +1580,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/issuing/authorizations/iauth_xxxxxxxxxxxxx/approve'
         );
-        $result = $this->client->issuing->authorizations->approve(
+        $result = $this->client->v1->issuing->authorizations->approve(
             'iauth_xxxxxxxxxxxxx',
             []
         );
@@ -1569,7 +1593,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/issuing/authorizations/iauth_xxxxxxxxxxxxx/decline'
         );
-        $result = $this->client->issuing->authorizations->decline(
+        $result = $this->client->v1->issuing->authorizations->decline(
             'iauth_xxxxxxxxxxxxx',
             []
         );
@@ -1579,7 +1603,9 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingAuthorizationsGet()
     {
         $this->expectsRequest('get', '/v1/issuing/authorizations');
-        $result = $this->client->issuing->authorizations->all(['limit' => 3]);
+        $result = $this->client->v1->issuing->authorizations->all([
+            'limit' => 3,
+        ]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Issuing\Authorization::class, $result->data[0]);
     }
@@ -1590,7 +1616,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/issuing/authorizations/iauth_xxxxxxxxxxxxx'
         );
-        $result = $this->client->issuing->authorizations->retrieve(
+        $result = $this->client->v1->issuing->authorizations->retrieve(
             'iauth_xxxxxxxxxxxxx',
             []
         );
@@ -1603,7 +1629,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/issuing/authorizations/iauth_xxxxxxxxxxxxx'
         );
-        $result = $this->client->issuing->authorizations->update(
+        $result = $this->client->v1->issuing->authorizations->update(
             'iauth_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1613,7 +1639,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingCardholdersGet()
     {
         $this->expectsRequest('get', '/v1/issuing/cardholders');
-        $result = $this->client->issuing->cardholders->all(['limit' => 3]);
+        $result = $this->client->v1->issuing->cardholders->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Issuing\Cardholder::class, $result->data[0]);
     }
@@ -1624,7 +1650,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/issuing/cardholders/ich_xxxxxxxxxxxxx'
         );
-        $result = $this->client->issuing->cardholders->retrieve(
+        $result = $this->client->v1->issuing->cardholders->retrieve(
             'ich_xxxxxxxxxxxxx',
             []
         );
@@ -1634,7 +1660,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingCardholdersPost()
     {
         $this->expectsRequest('post', '/v1/issuing/cardholders');
-        $result = $this->client->issuing->cardholders->create([
+        $result = $this->client->v1->issuing->cardholders->create([
             'type' => 'individual',
             'name' => 'Jenny Rosen',
             'email' => 'jenny.rosen@example.com',
@@ -1658,7 +1684,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/issuing/cardholders/ich_xxxxxxxxxxxxx'
         );
-        $result = $this->client->issuing->cardholders->update(
+        $result = $this->client->v1->issuing->cardholders->update(
             'ich_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1668,7 +1694,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingCardsGet()
     {
         $this->expectsRequest('get', '/v1/issuing/cards');
-        $result = $this->client->issuing->cards->all(['limit' => 3]);
+        $result = $this->client->v1->issuing->cards->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Issuing\Card::class, $result->data[0]);
     }
@@ -1676,7 +1702,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingCardsGet2()
     {
         $this->expectsRequest('get', '/v1/issuing/cards/ic_xxxxxxxxxxxxx');
-        $result = $this->client->issuing->cards->retrieve(
+        $result = $this->client->v1->issuing->cards->retrieve(
             'ic_xxxxxxxxxxxxx',
             []
         );
@@ -1686,7 +1712,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingCardsPost()
     {
         $this->expectsRequest('post', '/v1/issuing/cards');
-        $result = $this->client->issuing->cards->create([
+        $result = $this->client->v1->issuing->cards->create([
             'cardholder' => 'ich_xxxxxxxxxxxxx',
             'currency' => 'usd',
             'type' => 'virtual',
@@ -1697,7 +1723,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingCardsPost2()
     {
         $this->expectsRequest('post', '/v1/issuing/cards/ic_xxxxxxxxxxxxx');
-        $result = $this->client->issuing->cards->update(
+        $result = $this->client->v1->issuing->cards->update(
             'ic_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1707,7 +1733,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingDisputesGet()
     {
         $this->expectsRequest('get', '/v1/issuing/disputes');
-        $result = $this->client->issuing->disputes->all(['limit' => 3]);
+        $result = $this->client->v1->issuing->disputes->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Issuing\Dispute::class, $result->data[0]);
     }
@@ -1715,7 +1741,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingDisputesGet2()
     {
         $this->expectsRequest('get', '/v1/issuing/disputes/idp_xxxxxxxxxxxxx');
-        $result = $this->client->issuing->disputes->retrieve(
+        $result = $this->client->v1->issuing->disputes->retrieve(
             'idp_xxxxxxxxxxxxx',
             []
         );
@@ -1725,7 +1751,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingDisputesPost()
     {
         $this->expectsRequest('post', '/v1/issuing/disputes');
-        $result = $this->client->issuing->disputes->create([
+        $result = $this->client->v1->issuing->disputes->create([
             'transaction' => 'ipi_xxxxxxxxxxxxx',
             'evidence' => [
                 'reason' => 'fraudulent',
@@ -1741,7 +1767,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/issuing/disputes/idp_xxxxxxxxxxxxx/submit'
         );
-        $result = $this->client->issuing->disputes->submit(
+        $result = $this->client->v1->issuing->disputes->submit(
             'idp_xxxxxxxxxxxxx',
             []
         );
@@ -1751,7 +1777,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingPersonalizationDesignsGet()
     {
         $this->expectsRequest('get', '/v1/issuing/personalization_designs');
-        $result = $this->client->issuing->personalizationDesigns->all([]);
+        $result = $this->client->v1->issuing->personalizationDesigns->all([]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Issuing\PersonalizationDesign::class, $result->data[0]);
     }
@@ -1762,7 +1788,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/issuing/personalization_designs/pd_xyz'
         );
-        $result = $this->client->issuing->personalizationDesigns->retrieve(
+        $result = $this->client->v1->issuing->personalizationDesigns->retrieve(
             'pd_xyz',
             []
         );
@@ -1772,7 +1798,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingPersonalizationDesignsPost()
     {
         $this->expectsRequest('post', '/v1/issuing/personalization_designs');
-        $result = $this->client->issuing->personalizationDesigns->create([
+        $result = $this->client->v1->issuing->personalizationDesigns->create([
             'physical_bundle' => 'pb_xyz',
         ]);
         self::assertInstanceOf(Issuing\PersonalizationDesign::class, $result);
@@ -1784,7 +1810,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/issuing/personalization_designs/pd_xyz'
         );
-        $result = $this->client->issuing->personalizationDesigns->update(
+        $result = $this->client->v1->issuing->personalizationDesigns->update(
             'pd_xyz',
             []
         );
@@ -1794,7 +1820,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingPhysicalBundlesGet()
     {
         $this->expectsRequest('get', '/v1/issuing/physical_bundles');
-        $result = $this->client->issuing->physicalBundles->all([]);
+        $result = $this->client->v1->issuing->physicalBundles->all([]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Issuing\PhysicalBundle::class, $result->data[0]);
     }
@@ -1802,7 +1828,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingPhysicalBundlesGet2()
     {
         $this->expectsRequest('get', '/v1/issuing/physical_bundles/pb_xyz');
-        $result = $this->client->issuing->physicalBundles->retrieve(
+        $result = $this->client->v1->issuing->physicalBundles->retrieve(
             'pb_xyz',
             []
         );
@@ -1812,7 +1838,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testIssuingTransactionsGet()
     {
         $this->expectsRequest('get', '/v1/issuing/transactions');
-        $result = $this->client->issuing->transactions->all(['limit' => 3]);
+        $result = $this->client->v1->issuing->transactions->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Issuing\Transaction::class, $result->data[0]);
     }
@@ -1823,7 +1849,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/issuing/transactions/ipi_xxxxxxxxxxxxx'
         );
-        $result = $this->client->issuing->transactions->retrieve(
+        $result = $this->client->v1->issuing->transactions->retrieve(
             'ipi_xxxxxxxxxxxxx',
             []
         );
@@ -1836,7 +1862,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/issuing/transactions/ipi_xxxxxxxxxxxxx'
         );
-        $result = $this->client->issuing->transactions->update(
+        $result = $this->client->v1->issuing->transactions->update(
             'ipi_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1846,7 +1872,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testMandatesGet()
     {
         $this->expectsRequest('get', '/v1/mandates/mandate_xxxxxxxxxxxxx');
-        $result = $this->client->mandates->retrieve(
+        $result = $this->client->v1->mandates->retrieve(
             'mandate_xxxxxxxxxxxxx',
             []
         );
@@ -1859,7 +1885,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_intents/pi_xxxxxxxxxxxxx/apply_customer_balance'
         );
-        $result = $this->client->paymentIntents->applyCustomerBalance(
+        $result = $this->client->v1->paymentIntents->applyCustomerBalance(
             'pi_xxxxxxxxxxxxx',
             []
         );
@@ -1872,7 +1898,10 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_intents/pi_xxxxxxxxxxxxx/cancel'
         );
-        $result = $this->client->paymentIntents->cancel('pi_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->paymentIntents->cancel(
+            'pi_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(PaymentIntent::class, $result);
     }
 
@@ -1882,7 +1911,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_intents/pi_xxxxxxxxxxxxx/capture'
         );
-        $result = $this->client->paymentIntents->capture(
+        $result = $this->client->v1->paymentIntents->capture(
             'pi_xxxxxxxxxxxxx',
             []
         );
@@ -1895,7 +1924,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_intents/pi_xxxxxxxxxxxxx/confirm'
         );
-        $result = $this->client->paymentIntents->confirm(
+        $result = $this->client->v1->paymentIntents->confirm(
             'pi_xxxxxxxxxxxxx',
             ['payment_method' => 'pm_card_visa']
         );
@@ -1905,7 +1934,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentIntentsGet()
     {
         $this->expectsRequest('get', '/v1/payment_intents');
-        $result = $this->client->paymentIntents->all(['limit' => 3]);
+        $result = $this->client->v1->paymentIntents->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(PaymentIntent::class, $result->data[0]);
     }
@@ -1913,7 +1942,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentIntentsGet2()
     {
         $this->expectsRequest('get', '/v1/payment_intents/pi_xxxxxxxxxxxxx');
-        $result = $this->client->paymentIntents->retrieve(
+        $result = $this->client->v1->paymentIntents->retrieve(
             'pi_xxxxxxxxxxxxx',
             []
         );
@@ -1926,7 +1955,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_intents/pi_xxxxxxxxxxxxx/increment_authorization'
         );
-        $result = $this->client->paymentIntents->incrementAuthorization(
+        $result = $this->client->v1->paymentIntents->incrementAuthorization(
             'pi_xxxxxxxxxxxxx',
             ['amount' => 2099]
         );
@@ -1936,7 +1965,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentIntentsPost()
     {
         $this->expectsRequest('post', '/v1/payment_intents');
-        $result = $this->client->paymentIntents->create([
+        $result = $this->client->v1->paymentIntents->create([
             'amount' => 1099,
             'currency' => 'eur',
             'automatic_payment_methods' => ['enabled' => true],
@@ -1947,7 +1976,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentIntentsPost2()
     {
         $this->expectsRequest('post', '/v1/payment_intents');
-        $result = $this->client->paymentIntents->create([
+        $result = $this->client->v1->paymentIntents->create([
             'amount' => 2000,
             'currency' => 'usd',
             'automatic_payment_methods' => ['enabled' => true],
@@ -1958,7 +1987,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentIntentsPost3()
     {
         $this->expectsRequest('post', '/v1/payment_intents/pi_xxxxxxxxxxxxx');
-        $result = $this->client->paymentIntents->update(
+        $result = $this->client->v1->paymentIntents->update(
             'pi_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -1968,7 +1997,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentIntentsPost4()
     {
         $this->expectsRequest('post', '/v1/payment_intents');
-        $result = $this->client->paymentIntents->create([
+        $result = $this->client->v1->paymentIntents->create([
             'amount' => 200,
             'currency' => 'usd',
             'payment_method_data' => [
@@ -1982,7 +2011,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentIntentsSearchGet()
     {
         $this->expectsRequest('get', '/v1/payment_intents/search');
-        $result = $this->client->paymentIntents->search([
+        $result = $this->client->v1->paymentIntents->search([
             'query' => 'status:\'succeeded\' AND metadata[\'order_id\']:\'6735\'',
         ]);
         self::assertInstanceOf(SearchResult::class, $result);
@@ -1995,7 +2024,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_intents/pi_xxxxxxxxxxxxx/verify_microdeposits'
         );
-        $result = $this->client->paymentIntents->verifyMicrodeposits(
+        $result = $this->client->v1->paymentIntents->verifyMicrodeposits(
             'pi_xxxxxxxxxxxxx',
             []
         );
@@ -2008,7 +2037,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_intents/pi_xxxxxxxxxxxxx/verify_microdeposits'
         );
-        $result = $this->client->paymentIntents->verifyMicrodeposits(
+        $result = $this->client->v1->paymentIntents->verifyMicrodeposits(
             'pi_xxxxxxxxxxxxx',
             ['amounts' => [32, 45]]
         );
@@ -2018,14 +2047,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentLinksGet()
     {
         $this->expectsRequest('get', '/v1/payment_links/pl_xyz');
-        $result = $this->client->paymentLinks->retrieve('pl_xyz', []);
+        $result = $this->client->v1->paymentLinks->retrieve('pl_xyz', []);
         self::assertInstanceOf(PaymentLink::class, $result);
     }
 
     public function testPaymentLinksGet2()
     {
         $this->expectsRequest('get', '/v1/payment_links');
-        $result = $this->client->paymentLinks->all(['limit' => 3]);
+        $result = $this->client->v1->paymentLinks->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(PaymentLink::class, $result->data[0]);
     }
@@ -2033,7 +2062,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentLinksGet3()
     {
         $this->expectsRequest('get', '/v1/payment_links/plink_xxxxxxxxxxxxx');
-        $result = $this->client->paymentLinks->retrieve(
+        $result = $this->client->v1->paymentLinks->retrieve(
             'plink_xxxxxxxxxxxxx',
             []
         );
@@ -2043,7 +2072,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentLinksLineItemsGet()
     {
         $this->expectsRequest('get', '/v1/payment_links/pl_xyz/line_items');
-        $result = $this->client->paymentLinks->allLineItems('pl_xyz', []);
+        $result = $this->client->v1->paymentLinks->allLineItems('pl_xyz', []);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(LineItem::class, $result->data[0]);
     }
@@ -2051,7 +2080,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentLinksPost()
     {
         $this->expectsRequest('post', '/v1/payment_links');
-        $result = $this->client->paymentLinks->create([
+        $result = $this->client->v1->paymentLinks->create([
             'line_items' => [
                 [
                     'price' => 'price_xxxxxxxxxxxxx',
@@ -2065,7 +2094,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentLinksPost2()
     {
         $this->expectsRequest('post', '/v1/payment_links');
-        $result = $this->client->paymentLinks->create([
+        $result = $this->client->v1->paymentLinks->create([
             'line_items' => [
                 [
                     'price' => 'price_xxxxxxxxxxxxx',
@@ -2079,7 +2108,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentLinksPost3()
     {
         $this->expectsRequest('post', '/v1/payment_links/plink_xxxxxxxxxxxxx');
-        $result = $this->client->paymentLinks->update(
+        $result = $this->client->v1->paymentLinks->update(
             'plink_xxxxxxxxxxxxx',
             ['active' => false]
         );
@@ -2089,7 +2118,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentMethodConfigurationsGet()
     {
         $this->expectsRequest('get', '/v1/payment_method_configurations');
-        $result = $this->client->paymentMethodConfigurations->all([
+        $result = $this->client->v1->paymentMethodConfigurations->all([
             'application' => 'foo',
         ]);
         self::assertInstanceOf(Collection::class, $result);
@@ -2099,7 +2128,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentMethodConfigurationsGet2()
     {
         $this->expectsRequest('get', '/v1/payment_method_configurations/foo');
-        $result = $this->client->paymentMethodConfigurations->retrieve(
+        $result = $this->client->v1->paymentMethodConfigurations->retrieve(
             'foo',
             []
         );
@@ -2109,7 +2138,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentMethodConfigurationsPost()
     {
         $this->expectsRequest('post', '/v1/payment_method_configurations');
-        $result = $this->client->paymentMethodConfigurations->create([
+        $result = $this->client->v1->paymentMethodConfigurations->create([
             'acss_debit' => ['display_preference' => ['preference' => 'none']],
             'affirm' => ['display_preference' => ['preference' => 'none']],
         ]);
@@ -2119,7 +2148,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentMethodConfigurationsPost2()
     {
         $this->expectsRequest('post', '/v1/payment_method_configurations/foo');
-        $result = $this->client->paymentMethodConfigurations->update(
+        $result = $this->client->v1->paymentMethodConfigurations->update(
             'foo',
             ['acss_debit' => ['display_preference' => ['preference' => 'on']]]
         );
@@ -2132,7 +2161,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_methods/pm_xxxxxxxxxxxxx/attach'
         );
-        $result = $this->client->paymentMethods->attach(
+        $result = $this->client->v1->paymentMethods->attach(
             'pm_xxxxxxxxxxxxx',
             ['customer' => 'cus_xxxxxxxxxxxxx']
         );
@@ -2145,14 +2174,17 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/payment_methods/pm_xxxxxxxxxxxxx/detach'
         );
-        $result = $this->client->paymentMethods->detach('pm_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->paymentMethods->detach(
+            'pm_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(PaymentMethod::class, $result);
     }
 
     public function testPaymentMethodsGet()
     {
         $this->expectsRequest('get', '/v1/payment_methods');
-        $result = $this->client->paymentMethods->all([
+        $result = $this->client->v1->paymentMethods->all([
             'customer' => 'cus_xxxxxxxxxxxxx',
             'type' => 'card',
         ]);
@@ -2163,7 +2195,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentMethodsGet2()
     {
         $this->expectsRequest('get', '/v1/payment_methods/pm_xxxxxxxxxxxxx');
-        $result = $this->client->paymentMethods->retrieve(
+        $result = $this->client->v1->paymentMethods->retrieve(
             'pm_xxxxxxxxxxxxx',
             []
         );
@@ -2173,7 +2205,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentMethodsPost()
     {
         $this->expectsRequest('post', '/v1/payment_methods');
-        $result = $this->client->paymentMethods->create([
+        $result = $this->client->v1->paymentMethods->create([
             'type' => 'card',
             'card' => [
                 'number' => '4242424242424242',
@@ -2188,7 +2220,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPaymentMethodsPost2()
     {
         $this->expectsRequest('post', '/v1/payment_methods/pm_xxxxxxxxxxxxx');
-        $result = $this->client->paymentMethods->update(
+        $result = $this->client->v1->paymentMethods->update(
             'pm_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2198,14 +2230,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testPayoutsCancelPost()
     {
         $this->expectsRequest('post', '/v1/payouts/po_xxxxxxxxxxxxx/cancel');
-        $result = $this->client->payouts->cancel('po_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->payouts->cancel('po_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Payout::class, $result);
     }
 
     public function testPayoutsGet()
     {
         $this->expectsRequest('get', '/v1/payouts');
-        $result = $this->client->payouts->all(['limit' => 3]);
+        $result = $this->client->v1->payouts->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Payout::class, $result->data[0]);
     }
@@ -2213,14 +2245,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testPayoutsGet2()
     {
         $this->expectsRequest('get', '/v1/payouts/po_xxxxxxxxxxxxx');
-        $result = $this->client->payouts->retrieve('po_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->payouts->retrieve('po_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Payout::class, $result);
     }
 
     public function testPayoutsPost()
     {
         $this->expectsRequest('post', '/v1/payouts');
-        $result = $this->client->payouts->create([
+        $result = $this->client->v1->payouts->create([
             'amount' => 1100,
             'currency' => 'usd',
         ]);
@@ -2230,7 +2262,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPayoutsPost2()
     {
         $this->expectsRequest('post', '/v1/payouts/po_xxxxxxxxxxxxx');
-        $result = $this->client->payouts->update(
+        $result = $this->client->v1->payouts->update(
             'po_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2240,21 +2272,21 @@ final class GeneratedExamplesTest extends TestCase
     public function testPayoutsReversePost()
     {
         $this->expectsRequest('post', '/v1/payouts/po_xxxxxxxxxxxxx/reverse');
-        $result = $this->client->payouts->reverse('po_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->payouts->reverse('po_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Payout::class, $result);
     }
 
     public function testPlansDelete()
     {
         $this->expectsRequest('delete', '/v1/plans/price_xxxxxxxxxxxxx');
-        $result = $this->client->plans->delete('price_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->plans->delete('price_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Plan::class, $result);
     }
 
     public function testPlansGet()
     {
         $this->expectsRequest('get', '/v1/plans');
-        $result = $this->client->plans->all(['limit' => 3]);
+        $result = $this->client->v1->plans->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Plan::class, $result->data[0]);
     }
@@ -2262,14 +2294,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testPlansGet2()
     {
         $this->expectsRequest('get', '/v1/plans/price_xxxxxxxxxxxxx');
-        $result = $this->client->plans->retrieve('price_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->plans->retrieve('price_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Plan::class, $result);
     }
 
     public function testPlansPost()
     {
         $this->expectsRequest('post', '/v1/plans');
-        $result = $this->client->plans->create([
+        $result = $this->client->v1->plans->create([
             'amount' => 2000,
             'currency' => 'usd',
             'interval' => 'month',
@@ -2281,7 +2313,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPlansPost2()
     {
         $this->expectsRequest('post', '/v1/plans');
-        $result = $this->client->plans->create([
+        $result = $this->client->v1->plans->create([
             'amount' => 2000,
             'currency' => 'usd',
             'interval' => 'month',
@@ -2293,7 +2325,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPlansPost3()
     {
         $this->expectsRequest('post', '/v1/plans/price_xxxxxxxxxxxxx');
-        $result = $this->client->plans->update(
+        $result = $this->client->v1->plans->update(
             'price_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2303,7 +2335,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPricesGet()
     {
         $this->expectsRequest('get', '/v1/prices');
-        $result = $this->client->prices->all(['limit' => 3]);
+        $result = $this->client->v1->prices->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Price::class, $result->data[0]);
     }
@@ -2311,14 +2343,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testPricesGet2()
     {
         $this->expectsRequest('get', '/v1/prices/price_xxxxxxxxxxxxx');
-        $result = $this->client->prices->retrieve('price_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->prices->retrieve(
+            'price_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Price::class, $result);
     }
 
     public function testPricesPost()
     {
         $this->expectsRequest('post', '/v1/prices');
-        $result = $this->client->prices->create([
+        $result = $this->client->v1->prices->create([
             'unit_amount' => 2000,
             'currency' => 'usd',
             'currency_options' => [
@@ -2334,7 +2369,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPricesPost2()
     {
         $this->expectsRequest('post', '/v1/prices');
-        $result = $this->client->prices->create([
+        $result = $this->client->v1->prices->create([
             'unit_amount' => 2000,
             'currency' => 'usd',
             'recurring' => ['interval' => 'month'],
@@ -2346,7 +2381,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPricesPost3()
     {
         $this->expectsRequest('post', '/v1/prices/price_xxxxxxxxxxxxx');
-        $result = $this->client->prices->update(
+        $result = $this->client->v1->prices->update(
             'price_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2356,7 +2391,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPricesSearchGet()
     {
         $this->expectsRequest('get', '/v1/prices/search');
-        $result = $this->client->prices->search([
+        $result = $this->client->v1->prices->search([
             'query' => 'active:\'true\' AND metadata[\'order_id\']:\'6735\'',
         ]);
         self::assertInstanceOf(SearchResult::class, $result);
@@ -2366,14 +2401,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testProductsDelete()
     {
         $this->expectsRequest('delete', '/v1/products/prod_xxxxxxxxxxxxx');
-        $result = $this->client->products->delete('prod_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->products->delete('prod_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Product::class, $result);
     }
 
     public function testProductsGet()
     {
         $this->expectsRequest('get', '/v1/products');
-        $result = $this->client->products->all(['limit' => 3]);
+        $result = $this->client->v1->products->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Product::class, $result->data[0]);
     }
@@ -2381,21 +2416,26 @@ final class GeneratedExamplesTest extends TestCase
     public function testProductsGet2()
     {
         $this->expectsRequest('get', '/v1/products/prod_xxxxxxxxxxxxx');
-        $result = $this->client->products->retrieve('prod_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->products->retrieve(
+            'prod_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Product::class, $result);
     }
 
     public function testProductsPost()
     {
         $this->expectsRequest('post', '/v1/products');
-        $result = $this->client->products->create(['name' => 'Gold Special']);
+        $result = $this->client->v1->products->create([
+            'name' => 'Gold Special',
+        ]);
         self::assertInstanceOf(Product::class, $result);
     }
 
     public function testProductsPost2()
     {
         $this->expectsRequest('post', '/v1/products/prod_xxxxxxxxxxxxx');
-        $result = $this->client->products->update(
+        $result = $this->client->v1->products->update(
             'prod_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2405,7 +2445,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testProductsSearchGet()
     {
         $this->expectsRequest('get', '/v1/products/search');
-        $result = $this->client->products->search([
+        $result = $this->client->v1->products->search([
             'query' => 'active:\'true\' AND metadata[\'order_id\']:\'6735\'',
         ]);
         self::assertInstanceOf(SearchResult::class, $result);
@@ -2415,7 +2455,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPromotionCodesGet()
     {
         $this->expectsRequest('get', '/v1/promotion_codes');
-        $result = $this->client->promotionCodes->all(['limit' => 3]);
+        $result = $this->client->v1->promotionCodes->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(PromotionCode::class, $result->data[0]);
     }
@@ -2423,7 +2463,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPromotionCodesGet2()
     {
         $this->expectsRequest('get', '/v1/promotion_codes/promo_xxxxxxxxxxxxx');
-        $result = $this->client->promotionCodes->retrieve(
+        $result = $this->client->v1->promotionCodes->retrieve(
             'promo_xxxxxxxxxxxxx',
             []
         );
@@ -2433,7 +2473,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testPromotionCodesPost()
     {
         $this->expectsRequest('post', '/v1/promotion_codes');
-        $result = $this->client->promotionCodes->create([
+        $result = $this->client->v1->promotionCodes->create([
             'promotion' => [
                 'type' => 'coupon',
                 'coupon' => 'Z4OV52SU',
@@ -2448,7 +2488,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/promotion_codes/promo_xxxxxxxxxxxxx'
         );
-        $result = $this->client->promotionCodes->update(
+        $result = $this->client->v1->promotionCodes->update(
             'promo_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2458,28 +2498,31 @@ final class GeneratedExamplesTest extends TestCase
     public function testQuotesAcceptPost()
     {
         $this->expectsRequest('post', '/v1/quotes/qt_xxxxxxxxxxxxx/accept');
-        $result = $this->client->quotes->accept('qt_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->quotes->accept('qt_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Quote::class, $result);
     }
 
     public function testQuotesCancelPost()
     {
         $this->expectsRequest('post', '/v1/quotes/qt_xxxxxxxxxxxxx/cancel');
-        $result = $this->client->quotes->cancel('qt_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->quotes->cancel('qt_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Quote::class, $result);
     }
 
     public function testQuotesFinalizePost()
     {
         $this->expectsRequest('post', '/v1/quotes/qt_xxxxxxxxxxxxx/finalize');
-        $result = $this->client->quotes->finalizeQuote('qt_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->quotes->finalizeQuote(
+            'qt_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Quote::class, $result);
     }
 
     public function testQuotesGet()
     {
         $this->expectsRequest('get', '/v1/quotes');
-        $result = $this->client->quotes->all(['limit' => 3]);
+        $result = $this->client->v1->quotes->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Quote::class, $result->data[0]);
     }
@@ -2487,14 +2530,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testQuotesGet2()
     {
         $this->expectsRequest('get', '/v1/quotes/qt_xxxxxxxxxxxxx');
-        $result = $this->client->quotes->retrieve('qt_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->quotes->retrieve('qt_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Quote::class, $result);
     }
 
     public function testQuotesLineItemsGet()
     {
         $this->expectsRequest('get', '/v1/quotes/qt_xxxxxxxxxxxxx/line_items');
-        $result = $this->client->quotes->allLineItems('qt_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->quotes->allLineItems(
+            'qt_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(LineItem::class, $result->data[0]);
     }
@@ -2502,7 +2548,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testQuotesPdfGet()
     {
         $this->expectsRequestStream('get', '/v1/quotes/qt_xxxxxxxxxxxxx/pdf');
-        $result = $this->client->quotes->pdf(
+        $result = $this->client->v1->quotes->pdf(
             'qt_xxxxxxxxxxxxx',
             static function () {},
             []
@@ -2513,7 +2559,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testQuotesPost()
     {
         $this->expectsRequest('post', '/v1/quotes');
-        $result = $this->client->quotes->create([
+        $result = $this->client->v1->quotes->create([
             'customer' => 'cus_xxxxxxxxxxxxx',
             'line_items' => [
                 [
@@ -2528,7 +2574,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testQuotesPost2()
     {
         $this->expectsRequest('post', '/v1/quotes/qt_xxxxxxxxxxxxx');
-        $result = $this->client->quotes->update(
+        $result = $this->client->v1->quotes->update(
             'qt_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2538,7 +2584,9 @@ final class GeneratedExamplesTest extends TestCase
     public function testRadarEarlyFraudWarningsGet()
     {
         $this->expectsRequest('get', '/v1/radar/early_fraud_warnings');
-        $result = $this->client->radar->earlyFraudWarnings->all(['limit' => 3]);
+        $result = $this->client->v1->radar->earlyFraudWarnings->all([
+            'limit' => 3,
+        ]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Radar\EarlyFraudWarning::class, $result->data[0]);
     }
@@ -2549,7 +2597,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/radar/early_fraud_warnings/issfr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->radar->earlyFraudWarnings->retrieve(
+        $result = $this->client->v1->radar->earlyFraudWarnings->retrieve(
             'issfr_xxxxxxxxxxxxx',
             []
         );
@@ -2562,7 +2610,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/radar/value_list_items/rsli_xxxxxxxxxxxxx'
         );
-        $result = $this->client->radar->valueListItems->delete(
+        $result = $this->client->v1->radar->valueListItems->delete(
             'rsli_xxxxxxxxxxxxx',
             []
         );
@@ -2572,7 +2620,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testRadarValueListItemsGet()
     {
         $this->expectsRequest('get', '/v1/radar/value_list_items');
-        $result = $this->client->radar->valueListItems->all([
+        $result = $this->client->v1->radar->valueListItems->all([
             'limit' => 3,
             'value_list' => 'rsl_xxxxxxxxxxxxx',
         ]);
@@ -2586,7 +2634,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/radar/value_list_items/rsli_xxxxxxxxxxxxx'
         );
-        $result = $this->client->radar->valueListItems->retrieve(
+        $result = $this->client->v1->radar->valueListItems->retrieve(
             'rsli_xxxxxxxxxxxxx',
             []
         );
@@ -2596,7 +2644,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testRadarValueListItemsPost()
     {
         $this->expectsRequest('post', '/v1/radar/value_list_items');
-        $result = $this->client->radar->valueListItems->create([
+        $result = $this->client->v1->radar->valueListItems->create([
             'value_list' => 'rsl_xxxxxxxxxxxxx',
             'value' => '1.2.3.4',
         ]);
@@ -2609,7 +2657,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/radar/value_lists/rsl_xxxxxxxxxxxxx'
         );
-        $result = $this->client->radar->valueLists->delete(
+        $result = $this->client->v1->radar->valueLists->delete(
             'rsl_xxxxxxxxxxxxx',
             []
         );
@@ -2619,7 +2667,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testRadarValueListsGet()
     {
         $this->expectsRequest('get', '/v1/radar/value_lists');
-        $result = $this->client->radar->valueLists->all(['limit' => 3]);
+        $result = $this->client->v1->radar->valueLists->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Radar\ValueList::class, $result->data[0]);
     }
@@ -2627,7 +2675,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testRadarValueListsGet2()
     {
         $this->expectsRequest('get', '/v1/radar/value_lists/rsl_xxxxxxxxxxxxx');
-        $result = $this->client->radar->valueLists->retrieve(
+        $result = $this->client->v1->radar->valueLists->retrieve(
             'rsl_xxxxxxxxxxxxx',
             []
         );
@@ -2637,7 +2685,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testRadarValueListsPost()
     {
         $this->expectsRequest('post', '/v1/radar/value_lists');
-        $result = $this->client->radar->valueLists->create([
+        $result = $this->client->v1->radar->valueLists->create([
             'alias' => 'custom_ip_xxxxxxxxxxxxx',
             'name' => 'Custom IP Blocklist',
             'item_type' => 'ip_address',
@@ -2651,7 +2699,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/radar/value_lists/rsl_xxxxxxxxxxxxx'
         );
-        $result = $this->client->radar->valueLists->update(
+        $result = $this->client->v1->radar->valueLists->update(
             'rsl_xxxxxxxxxxxxx',
             ['name' => 'Updated IP Block List']
         );
@@ -2661,14 +2709,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testRefundsCancelPost()
     {
         $this->expectsRequest('post', '/v1/refunds/re_xxxxxxxxxxxxx/cancel');
-        $result = $this->client->refunds->cancel('re_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->refunds->cancel('re_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Refund::class, $result);
     }
 
     public function testRefundsGet()
     {
         $this->expectsRequest('get', '/v1/refunds');
-        $result = $this->client->refunds->all(['limit' => 3]);
+        $result = $this->client->v1->refunds->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Refund::class, $result->data[0]);
     }
@@ -2676,14 +2724,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testRefundsGet2()
     {
         $this->expectsRequest('get', '/v1/refunds/re_xxxxxxxxxxxxx');
-        $result = $this->client->refunds->retrieve('re_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->refunds->retrieve('re_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Refund::class, $result);
     }
 
     public function testRefundsPost()
     {
         $this->expectsRequest('post', '/v1/refunds');
-        $result = $this->client->refunds->create([
+        $result = $this->client->v1->refunds->create([
             'charge' => 'ch_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(Refund::class, $result);
@@ -2692,7 +2740,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testRefundsPost2()
     {
         $this->expectsRequest('post', '/v1/refunds/re_xxxxxxxxxxxxx');
-        $result = $this->client->refunds->update(
+        $result = $this->client->v1->refunds->update(
             're_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2702,7 +2750,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testReportingReportRunsGet()
     {
         $this->expectsRequest('get', '/v1/reporting/report_runs');
-        $result = $this->client->reporting->reportRuns->all(['limit' => 3]);
+        $result = $this->client->v1->reporting->reportRuns->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Reporting\ReportRun::class, $result->data[0]);
     }
@@ -2713,7 +2761,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/reporting/report_runs/frr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->reporting->reportRuns->retrieve(
+        $result = $this->client->v1->reporting->reportRuns->retrieve(
             'frr_xxxxxxxxxxxxx',
             []
         );
@@ -2723,7 +2771,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testReportingReportRunsPost()
     {
         $this->expectsRequest('post', '/v1/reporting/report_runs');
-        $result = $this->client->reporting->reportRuns->create([
+        $result = $this->client->v1->reporting->reportRuns->create([
             'report_type' => 'balance.summary.1',
             'parameters' => [
                 'interval_start' => 1522540800,
@@ -2736,7 +2784,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testReportingReportTypesGet()
     {
         $this->expectsRequest('get', '/v1/reporting/report_types');
-        $result = $this->client->reporting->reportTypes->all([]);
+        $result = $this->client->v1->reporting->reportTypes->all([]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Reporting\ReportType::class, $result->data[0]);
     }
@@ -2747,7 +2795,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/reporting/report_types/balance.summary.1'
         );
-        $result = $this->client->reporting->reportTypes->retrieve(
+        $result = $this->client->v1->reporting->reportTypes->retrieve(
             'balance.summary.1',
             []
         );
@@ -2757,14 +2805,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testReviewsApprovePost()
     {
         $this->expectsRequest('post', '/v1/reviews/prv_xxxxxxxxxxxxx/approve');
-        $result = $this->client->reviews->approve('prv_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->reviews->approve('prv_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Review::class, $result);
     }
 
     public function testReviewsGet()
     {
         $this->expectsRequest('get', '/v1/reviews');
-        $result = $this->client->reviews->all(['limit' => 3]);
+        $result = $this->client->v1->reviews->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Review::class, $result->data[0]);
     }
@@ -2772,14 +2820,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testReviewsGet2()
     {
         $this->expectsRequest('get', '/v1/reviews/prv_xxxxxxxxxxxxx');
-        $result = $this->client->reviews->retrieve('prv_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->reviews->retrieve('prv_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Review::class, $result);
     }
 
     public function testSetupAttemptsGet()
     {
         $this->expectsRequest('get', '/v1/setup_attempts');
-        $result = $this->client->setupAttempts->all([
+        $result = $this->client->v1->setupAttempts->all([
             'limit' => 3,
             'setup_intent' => 'si_xyz',
         ]);
@@ -2793,7 +2841,10 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/setup_intents/seti_xxxxxxxxxxxxx/cancel'
         );
-        $result = $this->client->setupIntents->cancel('seti_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->setupIntents->cancel(
+            'seti_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(SetupIntent::class, $result);
     }
 
@@ -2803,7 +2854,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/setup_intents/seti_xxxxxxxxxxxxx/confirm'
         );
-        $result = $this->client->setupIntents->confirm(
+        $result = $this->client->v1->setupIntents->confirm(
             'seti_xxxxxxxxxxxxx',
             ['payment_method' => 'pm_card_visa']
         );
@@ -2813,7 +2864,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSetupIntentsGet()
     {
         $this->expectsRequest('get', '/v1/setup_intents');
-        $result = $this->client->setupIntents->all(['limit' => 3]);
+        $result = $this->client->v1->setupIntents->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(SetupIntent::class, $result->data[0]);
     }
@@ -2821,7 +2872,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSetupIntentsGet2()
     {
         $this->expectsRequest('get', '/v1/setup_intents/seti_xxxxxxxxxxxxx');
-        $result = $this->client->setupIntents->retrieve(
+        $result = $this->client->v1->setupIntents->retrieve(
             'seti_xxxxxxxxxxxxx',
             []
         );
@@ -2831,7 +2882,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSetupIntentsPost()
     {
         $this->expectsRequest('post', '/v1/setup_intents');
-        $result = $this->client->setupIntents->create([
+        $result = $this->client->v1->setupIntents->create([
             'allowed_payment_method_types' => ['card'],
         ]);
         self::assertInstanceOf(SetupIntent::class, $result);
@@ -2840,7 +2891,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSetupIntentsPost2()
     {
         $this->expectsRequest('post', '/v1/setup_intents/seti_xxxxxxxxxxxxx');
-        $result = $this->client->setupIntents->update(
+        $result = $this->client->v1->setupIntents->update(
             'seti_xxxxxxxxxxxxx',
             ['metadata' => ['user_id' => '3435453']]
         );
@@ -2853,7 +2904,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/setup_intents/seti_xxxxxxxxxxxxx/verify_microdeposits'
         );
-        $result = $this->client->setupIntents->verifyMicrodeposits(
+        $result = $this->client->v1->setupIntents->verifyMicrodeposits(
             'seti_xxxxxxxxxxxxx',
             []
         );
@@ -2866,7 +2917,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/setup_intents/seti_xxxxxxxxxxxxx/verify_microdeposits'
         );
-        $result = $this->client->setupIntents->verifyMicrodeposits(
+        $result = $this->client->v1->setupIntents->verifyMicrodeposits(
             'seti_xxxxxxxxxxxxx',
             ['amounts' => [32, 45]]
         );
@@ -2876,7 +2927,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testShippingRatesGet()
     {
         $this->expectsRequest('get', '/v1/shipping_rates');
-        $result = $this->client->shippingRates->all([]);
+        $result = $this->client->v1->shippingRates->all([]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(ShippingRate::class, $result->data[0]);
     }
@@ -2884,7 +2935,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testShippingRatesGet2()
     {
         $this->expectsRequest('get', '/v1/shipping_rates');
-        $result = $this->client->shippingRates->all(['limit' => 3]);
+        $result = $this->client->v1->shippingRates->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(ShippingRate::class, $result->data[0]);
     }
@@ -2892,7 +2943,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testShippingRatesGet3()
     {
         $this->expectsRequest('get', '/v1/shipping_rates/shr_xxxxxxxxxxxxx');
-        $result = $this->client->shippingRates->retrieve(
+        $result = $this->client->v1->shippingRates->retrieve(
             'shr_xxxxxxxxxxxxx',
             []
         );
@@ -2902,7 +2953,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testShippingRatesPost()
     {
         $this->expectsRequest('post', '/v1/shipping_rates');
-        $result = $this->client->shippingRates->create([
+        $result = $this->client->v1->shippingRates->create([
             'display_name' => 'Sample Shipper',
             'fixed_amount' => [
                 'currency' => 'usd',
@@ -2916,7 +2967,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testShippingRatesPost2()
     {
         $this->expectsRequest('post', '/v1/shipping_rates');
-        $result = $this->client->shippingRates->create([
+        $result = $this->client->v1->shippingRates->create([
             'display_name' => 'Ground shipping',
             'type' => 'fixed_amount',
             'fixed_amount' => [
@@ -2930,7 +2981,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testShippingRatesPost3()
     {
         $this->expectsRequest('post', '/v1/shipping_rates/shr_xxxxxxxxxxxxx');
-        $result = $this->client->shippingRates->update(
+        $result = $this->client->v1->shippingRates->update(
             'shr_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2940,7 +2991,9 @@ final class GeneratedExamplesTest extends TestCase
     public function testSigmaScheduledQueryRunsGet()
     {
         $this->expectsRequest('get', '/v1/sigma/scheduled_query_runs');
-        $result = $this->client->sigma->scheduledQueryRuns->all(['limit' => 3]);
+        $result = $this->client->v1->sigma->scheduledQueryRuns->all([
+            'limit' => 3,
+        ]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Sigma\ScheduledQueryRun::class, $result->data[0]);
     }
@@ -2951,7 +3004,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/sigma/scheduled_query_runs/sqr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->sigma->scheduledQueryRuns->retrieve(
+        $result = $this->client->v1->sigma->scheduledQueryRuns->retrieve(
             'sqr_xxxxxxxxxxxxx',
             []
         );
@@ -2961,21 +3014,21 @@ final class GeneratedExamplesTest extends TestCase
     public function testSourcesGet()
     {
         $this->expectsRequest('get', '/v1/sources/src_xxxxxxxxxxxxx');
-        $result = $this->client->sources->retrieve('src_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->sources->retrieve('src_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Source::class, $result);
     }
 
     public function testSourcesGet2()
     {
         $this->expectsRequest('get', '/v1/sources/src_xxxxxxxxxxxxx');
-        $result = $this->client->sources->retrieve('src_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->sources->retrieve('src_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Source::class, $result);
     }
 
     public function testSourcesPost()
     {
         $this->expectsRequest('post', '/v1/sources/src_xxxxxxxxxxxxx');
-        $result = $this->client->sources->update(
+        $result = $this->client->v1->sources->update(
             'src_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -2988,7 +3041,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/subscription_items/si_xxxxxxxxxxxxx'
         );
-        $result = $this->client->subscriptionItems->delete(
+        $result = $this->client->v1->subscriptionItems->delete(
             'si_xxxxxxxxxxxxx',
             []
         );
@@ -2998,7 +3051,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionItemsGet()
     {
         $this->expectsRequest('get', '/v1/subscription_items');
-        $result = $this->client->subscriptionItems->all([
+        $result = $this->client->v1->subscriptionItems->all([
             'subscription' => 'sub_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(Collection::class, $result);
@@ -3008,7 +3061,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionItemsGet2()
     {
         $this->expectsRequest('get', '/v1/subscription_items/si_xxxxxxxxxxxxx');
-        $result = $this->client->subscriptionItems->retrieve(
+        $result = $this->client->v1->subscriptionItems->retrieve(
             'si_xxxxxxxxxxxxx',
             []
         );
@@ -3018,7 +3071,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionItemsPost()
     {
         $this->expectsRequest('post', '/v1/subscription_items');
-        $result = $this->client->subscriptionItems->create([
+        $result = $this->client->v1->subscriptionItems->create([
             'subscription' => 'sub_xxxxxxxxxxxxx',
             'price' => 'price_xxxxxxxxxxxxx',
             'quantity' => 2,
@@ -3032,7 +3085,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/subscription_items/si_xxxxxxxxxxxxx'
         );
-        $result = $this->client->subscriptionItems->update(
+        $result = $this->client->v1->subscriptionItems->update(
             'si_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -3045,7 +3098,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/subscription_schedules/sub_sched_xxxxxxxxxxxxx/cancel'
         );
-        $result = $this->client->subscriptionSchedules->cancel(
+        $result = $this->client->v1->subscriptionSchedules->cancel(
             'sub_sched_xxxxxxxxxxxxx',
             []
         );
@@ -3055,7 +3108,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionSchedulesGet()
     {
         $this->expectsRequest('get', '/v1/subscription_schedules');
-        $result = $this->client->subscriptionSchedules->all(['limit' => 3]);
+        $result = $this->client->v1->subscriptionSchedules->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(SubscriptionSchedule::class, $result->data[0]);
     }
@@ -3066,7 +3119,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/subscription_schedules/sub_sched_xxxxxxxxxxxxx'
         );
-        $result = $this->client->subscriptionSchedules->retrieve(
+        $result = $this->client->v1->subscriptionSchedules->retrieve(
             'sub_sched_xxxxxxxxxxxxx',
             []
         );
@@ -3076,7 +3129,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionSchedulesPost()
     {
         $this->expectsRequest('post', '/v1/subscription_schedules');
-        $result = $this->client->subscriptionSchedules->create([
+        $result = $this->client->v1->subscriptionSchedules->create([
             'customer' => 'cus_xxxxxxxxxxxxx',
             'start_date' => 1676070661,
             'end_behavior' => 'release',
@@ -3100,7 +3153,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/subscription_schedules/sub_sched_xxxxxxxxxxxxx'
         );
-        $result = $this->client->subscriptionSchedules->update(
+        $result = $this->client->v1->subscriptionSchedules->update(
             'sub_sched_xxxxxxxxxxxxx',
             ['end_behavior' => 'release']
         );
@@ -3113,7 +3166,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/subscription_schedules/sub_sched_xxxxxxxxxxxxx/release'
         );
-        $result = $this->client->subscriptionSchedules->release(
+        $result = $this->client->v1->subscriptionSchedules->release(
             'sub_sched_xxxxxxxxxxxxx',
             []
         );
@@ -3123,21 +3176,27 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionsDelete()
     {
         $this->expectsRequest('delete', '/v1/subscriptions/sub_xxxxxxxxxxxxx');
-        $result = $this->client->subscriptions->cancel('sub_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->subscriptions->cancel(
+            'sub_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Subscription::class, $result);
     }
 
     public function testSubscriptionsDiscountDelete()
     {
         $this->expectsRequest('delete', '/v1/subscriptions/sub_xyz/discount');
-        $result = $this->client->subscriptions->deleteDiscount('sub_xyz', []);
+        $result = $this->client->v1->subscriptions->deleteDiscount(
+            'sub_xyz',
+            []
+        );
         self::assertInstanceOf(Discount::class, $result);
     }
 
     public function testSubscriptionsGet()
     {
         $this->expectsRequest('get', '/v1/subscriptions');
-        $result = $this->client->subscriptions->all(['limit' => 3]);
+        $result = $this->client->v1->subscriptions->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Subscription::class, $result->data[0]);
     }
@@ -3145,7 +3204,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionsGet2()
     {
         $this->expectsRequest('get', '/v1/subscriptions/sub_xxxxxxxxxxxxx');
-        $result = $this->client->subscriptions->retrieve(
+        $result = $this->client->v1->subscriptions->retrieve(
             'sub_xxxxxxxxxxxxx',
             []
         );
@@ -3155,7 +3214,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionsPost()
     {
         $this->expectsRequest('post', '/v1/subscriptions');
-        $result = $this->client->subscriptions->create([
+        $result = $this->client->v1->subscriptions->create([
             'customer' => 'cus_xxxxxxxxxxxxx',
             'items' => [['price' => 'price_xxxxxxxxxxxxx']],
         ]);
@@ -3165,7 +3224,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionsPost2()
     {
         $this->expectsRequest('post', '/v1/subscriptions/sub_xxxxxxxxxxxxx');
-        $result = $this->client->subscriptions->update(
+        $result = $this->client->v1->subscriptions->update(
             'sub_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -3175,7 +3234,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testSubscriptionsSearchGet()
     {
         $this->expectsRequest('get', '/v1/subscriptions/search');
-        $result = $this->client->subscriptions->search([
+        $result = $this->client->v1->subscriptions->search([
             'query' => 'status:\'active\' AND metadata[\'order_id\']:\'6735\'',
         ]);
         self::assertInstanceOf(SearchResult::class, $result);
@@ -3185,7 +3244,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxCalculationsLineItemsGet()
     {
         $this->expectsRequest('get', '/v1/tax/calculations/xxx/line_items');
-        $result = $this->client->tax->calculations->allLineItems('xxx', []);
+        $result = $this->client->v1->tax->calculations->allLineItems('xxx', []);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Tax\CalculationLineItem::class, $result->data[0]);
     }
@@ -3193,7 +3252,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxCalculationsPost()
     {
         $this->expectsRequest('post', '/v1/tax/calculations');
-        $result = $this->client->tax->calculations->create([
+        $result = $this->client->v1->tax->calculations->create([
             'currency' => 'usd',
             'line_items' => [
                 [
@@ -3218,7 +3277,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxCodesGet()
     {
         $this->expectsRequest('get', '/v1/tax_codes');
-        $result = $this->client->taxCodes->all(['limit' => 3]);
+        $result = $this->client->v1->taxCodes->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(TaxCode::class, $result->data[0]);
     }
@@ -3226,21 +3285,24 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxCodesGet2()
     {
         $this->expectsRequest('get', '/v1/tax_codes/txcd_xxxxxxxxxxxxx');
-        $result = $this->client->taxCodes->retrieve('txcd_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->taxCodes->retrieve(
+            'txcd_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(TaxCode::class, $result);
     }
 
     public function testTaxIdsDelete()
     {
         $this->expectsRequest('delete', '/v1/tax_ids/taxid_123');
-        $result = $this->client->taxIds->delete('taxid_123', []);
+        $result = $this->client->v1->taxIds->delete('taxid_123', []);
         self::assertInstanceOf(TaxId::class, $result);
     }
 
     public function testTaxIdsGet()
     {
         $this->expectsRequest('get', '/v1/tax_ids');
-        $result = $this->client->taxIds->all([]);
+        $result = $this->client->v1->taxIds->all([]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(TaxId::class, $result->data[0]);
     }
@@ -3248,14 +3310,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxIdsGet2()
     {
         $this->expectsRequest('get', '/v1/tax_ids/taxid_123');
-        $result = $this->client->taxIds->retrieve('taxid_123', []);
+        $result = $this->client->v1->taxIds->retrieve('taxid_123', []);
         self::assertInstanceOf(TaxId::class, $result);
     }
 
     public function testTaxIdsPost()
     {
         $this->expectsRequest('post', '/v1/tax_ids');
-        $result = $this->client->taxIds->create([
+        $result = $this->client->v1->taxIds->create([
             'type' => 'eu_vat',
             'value' => '123',
         ]);
@@ -3265,7 +3327,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxRatesGet()
     {
         $this->expectsRequest('get', '/v1/tax_rates');
-        $result = $this->client->taxRates->all(['limit' => 3]);
+        $result = $this->client->v1->taxRates->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(TaxRate::class, $result->data[0]);
     }
@@ -3273,14 +3335,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxRatesGet2()
     {
         $this->expectsRequest('get', '/v1/tax_rates/txr_xxxxxxxxxxxxx');
-        $result = $this->client->taxRates->retrieve('txr_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->taxRates->retrieve(
+            'txr_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(TaxRate::class, $result);
     }
 
     public function testTaxRatesPost()
     {
         $this->expectsRequest('post', '/v1/tax_rates');
-        $result = $this->client->taxRates->create([
+        $result = $this->client->v1->taxRates->create([
             'display_name' => 'VAT',
             'description' => 'VAT Germany',
             'jurisdiction' => 'DE',
@@ -3293,7 +3358,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxRatesPost2()
     {
         $this->expectsRequest('post', '/v1/tax_rates/txr_xxxxxxxxxxxxx');
-        $result = $this->client->taxRates->update(
+        $result = $this->client->v1->taxRates->update(
             'txr_xxxxxxxxxxxxx',
             ['active' => false]
         );
@@ -3303,7 +3368,9 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxRegistrationsGet()
     {
         $this->expectsRequest('get', '/v1/tax/registrations');
-        $result = $this->client->tax->registrations->all(['status' => 'all']);
+        $result = $this->client->v1->tax->registrations->all([
+            'status' => 'all',
+        ]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Tax\Registration::class, $result->data[0]);
     }
@@ -3311,7 +3378,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxRegistrationsPost()
     {
         $this->expectsRequest('post', '/v1/tax/registrations');
-        $result = $this->client->tax->registrations->create([
+        $result = $this->client->v1->tax->registrations->create([
             'country' => 'IE',
             'country_options' => ['ie' => ['type' => 'oss_union']],
             'active_from' => 'now',
@@ -3325,7 +3392,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/tax/registrations/taxreg_xxxxxxxxxxxxx'
         );
-        $result = $this->client->tax->registrations->update(
+        $result = $this->client->v1->tax->registrations->update(
             'taxreg_xxxxxxxxxxxxx',
             ['expires_at' => 'now']
         );
@@ -3335,14 +3402,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testTaxSettingsGet()
     {
         $this->expectsRequest('get', '/v1/tax/settings');
-        $result = $this->client->tax->settings->retrieve([]);
+        $result = $this->client->v1->tax->settings->retrieve([]);
         self::assertInstanceOf(Tax\Settings::class, $result);
     }
 
     public function testTaxSettingsPost()
     {
         $this->expectsRequest('post', '/v1/tax/settings');
-        $result = $this->client->tax->settings->update([
+        $result = $this->client->v1->tax->settings->update([
             'defaults' => ['tax_code' => 'txcd_10000000'],
         ]);
         self::assertInstanceOf(Tax\Settings::class, $result);
@@ -3354,7 +3421,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/tax/transactions/create_from_calculation'
         );
-        $result = $this->client->tax->transactions->createFromCalculation([
+        $result = $this->client->v1->tax->transactions->createFromCalculation([
             'calculation' => 'xxx',
             'reference' => 'yyy',
         ]);
@@ -3364,7 +3431,10 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalConfigurationsDelete()
     {
         $this->expectsRequest('delete', '/v1/terminal/configurations/uc_123');
-        $result = $this->client->terminal->configurations->delete('uc_123', []);
+        $result = $this->client->v1->terminal->configurations->delete(
+            'uc_123',
+            []
+        );
         self::assertInstanceOf(Terminal\Configuration::class, $result);
     }
 
@@ -3374,7 +3444,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/terminal/configurations/tmc_xxxxxxxxxxxxx'
         );
-        $result = $this->client->terminal->configurations->delete(
+        $result = $this->client->v1->terminal->configurations->delete(
             'tmc_xxxxxxxxxxxxx',
             []
         );
@@ -3384,7 +3454,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalConfigurationsGet()
     {
         $this->expectsRequest('get', '/v1/terminal/configurations');
-        $result = $this->client->terminal->configurations->all([]);
+        $result = $this->client->v1->terminal->configurations->all([]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Terminal\Configuration::class, $result->data[0]);
     }
@@ -3392,7 +3462,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalConfigurationsGet2()
     {
         $this->expectsRequest('get', '/v1/terminal/configurations/uc_123');
-        $result = $this->client->terminal->configurations->retrieve(
+        $result = $this->client->v1->terminal->configurations->retrieve(
             'uc_123',
             []
         );
@@ -3402,7 +3472,9 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalConfigurationsGet3()
     {
         $this->expectsRequest('get', '/v1/terminal/configurations');
-        $result = $this->client->terminal->configurations->all(['limit' => 3]);
+        $result = $this->client->v1->terminal->configurations->all([
+            'limit' => 3,
+        ]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Terminal\Configuration::class, $result->data[0]);
     }
@@ -3413,7 +3485,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/terminal/configurations/tmc_xxxxxxxxxxxxx'
         );
-        $result = $this->client->terminal->configurations->retrieve(
+        $result = $this->client->v1->terminal->configurations->retrieve(
             'tmc_xxxxxxxxxxxxx',
             []
         );
@@ -3423,7 +3495,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalConfigurationsPost2()
     {
         $this->expectsRequest('post', '/v1/terminal/configurations/uc_123');
-        $result = $this->client->terminal->configurations->update(
+        $result = $this->client->v1->terminal->configurations->update(
             'uc_123',
             ['tipping' => ['usd' => ['fixed_amounts' => [10]]]]
         );
@@ -3436,7 +3508,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/terminal/configurations/tmc_xxxxxxxxxxxxx'
         );
-        $result = $this->client->terminal->configurations->update(
+        $result = $this->client->v1->terminal->configurations->update(
             'tmc_xxxxxxxxxxxxx',
             ['bbpos_wisepos_e' => ['splashscreen' => 'file_xxxxxxxxxxxxx']]
         );
@@ -3446,7 +3518,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalConnectionTokensPost()
     {
         $this->expectsRequest('post', '/v1/terminal/connection_tokens');
-        $result = $this->client->terminal->connectionTokens->create([]);
+        $result = $this->client->v1->terminal->connectionTokens->create([]);
         self::assertInstanceOf(Terminal\ConnectionToken::class, $result);
     }
 
@@ -3456,7 +3528,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/terminal/locations/tml_xxxxxxxxxxxxx'
         );
-        $result = $this->client->terminal->locations->delete(
+        $result = $this->client->v1->terminal->locations->delete(
             'tml_xxxxxxxxxxxxx',
             []
         );
@@ -3466,7 +3538,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalLocationsGet()
     {
         $this->expectsRequest('get', '/v1/terminal/locations');
-        $result = $this->client->terminal->locations->all(['limit' => 3]);
+        $result = $this->client->v1->terminal->locations->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Terminal\Location::class, $result->data[0]);
     }
@@ -3477,7 +3549,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/terminal/locations/tml_xxxxxxxxxxxxx'
         );
-        $result = $this->client->terminal->locations->retrieve(
+        $result = $this->client->v1->terminal->locations->retrieve(
             'tml_xxxxxxxxxxxxx',
             []
         );
@@ -3487,7 +3559,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalLocationsPost()
     {
         $this->expectsRequest('post', '/v1/terminal/locations');
-        $result = $this->client->terminal->locations->create([
+        $result = $this->client->v1->terminal->locations->create([
             'display_name' => 'My First Store',
             'address' => [
                 'line1' => '1234 Main Street',
@@ -3506,7 +3578,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/terminal/locations/tml_xxxxxxxxxxxxx'
         );
-        $result = $this->client->terminal->locations->update(
+        $result = $this->client->v1->terminal->locations->update(
             'tml_xxxxxxxxxxxxx',
             ['display_name' => 'My First Store']
         );
@@ -3519,7 +3591,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/terminal/readers/tmr_xxxxxxxxxxxxx/cancel_action'
         );
-        $result = $this->client->terminal->readers->cancelAction(
+        $result = $this->client->v1->terminal->readers->cancelAction(
             'tmr_xxxxxxxxxxxxx',
             []
         );
@@ -3532,7 +3604,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/terminal/readers/tmr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->terminal->readers->delete(
+        $result = $this->client->v1->terminal->readers->delete(
             'tmr_xxxxxxxxxxxxx',
             []
         );
@@ -3542,7 +3614,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalReadersGet()
     {
         $this->expectsRequest('get', '/v1/terminal/readers');
-        $result = $this->client->terminal->readers->all(['limit' => 3]);
+        $result = $this->client->v1->terminal->readers->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Terminal\Reader::class, $result->data[0]);
     }
@@ -3550,7 +3622,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalReadersGet2()
     {
         $this->expectsRequest('get', '/v1/terminal/readers/tmr_xxxxxxxxxxxxx');
-        $result = $this->client->terminal->readers->retrieve(
+        $result = $this->client->v1->terminal->readers->retrieve(
             'tmr_xxxxxxxxxxxxx',
             []
         );
@@ -3560,7 +3632,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalReadersPost()
     {
         $this->expectsRequest('post', '/v1/terminal/readers');
-        $result = $this->client->terminal->readers->create([
+        $result = $this->client->v1->terminal->readers->create([
             'registration_code' => 'puppies-plug-could',
             'label' => 'Blue Rabbit',
             'location' => 'tml_1234',
@@ -3571,7 +3643,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTerminalReadersPost2()
     {
         $this->expectsRequest('post', '/v1/terminal/readers/tmr_xxxxxxxxxxxxx');
-        $result = $this->client->terminal->readers->update(
+        $result = $this->client->v1->terminal->readers->update(
             'tmr_xxxxxxxxxxxxx',
             ['label' => 'Blue Rabbit']
         );
@@ -3584,7 +3656,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/terminal/readers/tmr_xxxxxxxxxxxxx/process_payment_intent'
         );
-        $result = $this->client->terminal->readers->processPaymentIntent(
+        $result = $this->client->v1->terminal->readers->processPaymentIntent(
             'tmr_xxxxxxxxxxxxx',
             ['payment_intent' => 'pi_xxxxxxxxxxxxx']
         );
@@ -3597,7 +3669,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/terminal/readers/tmr_xxxxxxxxxxxxx/process_setup_intent'
         );
-        $result = $this->client->terminal->readers->processSetupIntent(
+        $result = $this->client->v1->terminal->readers->processSetupIntent(
             'tmr_xxxxxxxxxxxxx',
             [
                 'setup_intent' => 'seti_xxxxxxxxxxxxx',
@@ -3613,7 +3685,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/customers/cus_123/fund_cash_balance'
         );
-        $result = $this->client->testHelpers->customers->fundCashBalance(
+        $result = $this->client->v1->testHelpers->customers->fundCashBalance(
             'cus_123',
             [
                 'amount' => 30,
@@ -3629,7 +3701,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/authorizations/example_authorization/capture'
         );
-        $result = $this->client->testHelpers->issuing->authorizations->capture(
+        $result = $this->client->v1->testHelpers->issuing->authorizations->capture(
             'example_authorization',
             [
                 'capture_amount' => 100,
@@ -3682,7 +3754,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/authorizations/example_authorization/expire'
         );
-        $result = $this->client->testHelpers->issuing->authorizations->expire(
+        $result = $this->client->v1->testHelpers->issuing->authorizations->expire(
             'example_authorization',
             []
         );
@@ -3695,7 +3767,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/authorizations/example_authorization/increment'
         );
-        $result = $this->client->testHelpers->issuing->authorizations->increment(
+        $result = $this->client->v1->testHelpers->issuing->authorizations->increment(
             'example_authorization',
             [
                 'increment_amount' => 50,
@@ -3711,7 +3783,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/authorizations'
         );
-        $result = $this->client->testHelpers->issuing->authorizations->create([
+        $result = $this->client->v1->testHelpers->issuing->authorizations->create([
             'amount' => 100,
             'amount_details' => [
                 'atm_fee' => 10,
@@ -3749,7 +3821,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/authorizations/example_authorization/reverse'
         );
-        $result = $this->client->testHelpers->issuing->authorizations->reverse(
+        $result = $this->client->v1->testHelpers->issuing->authorizations->reverse(
             'example_authorization',
             ['reverse_amount' => 20]
         );
@@ -3762,7 +3834,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/cards/card_123/shipping/deliver'
         );
-        $result = $this->client->testHelpers->issuing->cards->deliverCard(
+        $result = $this->client->v1->testHelpers->issuing->cards->deliverCard(
             'card_123',
             []
         );
@@ -3775,7 +3847,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/cards/card_123/shipping/fail'
         );
-        $result = $this->client->testHelpers->issuing->cards->failCard(
+        $result = $this->client->v1->testHelpers->issuing->cards->failCard(
             'card_123',
             []
         );
@@ -3788,7 +3860,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/cards/card_123/shipping/return'
         );
-        $result = $this->client->testHelpers->issuing->cards->returnCard(
+        $result = $this->client->v1->testHelpers->issuing->cards->returnCard(
             'card_123',
             []
         );
@@ -3801,7 +3873,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/cards/card_123/shipping/ship'
         );
-        $result = $this->client->testHelpers->issuing->cards->shipCard(
+        $result = $this->client->v1->testHelpers->issuing->cards->shipCard(
             'card_123',
             []
         );
@@ -3814,7 +3886,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/personalization_designs/pd_xyz/activate'
         );
-        $result = $this->client->testHelpers->issuing->personalizationDesigns->activate(
+        $result = $this->client->v1->testHelpers->issuing->personalizationDesigns->activate(
             'pd_xyz',
             []
         );
@@ -3827,7 +3899,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/personalization_designs/pd_xyz/deactivate'
         );
-        $result = $this->client->testHelpers->issuing->personalizationDesigns->deactivate(
+        $result = $this->client->v1->testHelpers->issuing->personalizationDesigns->deactivate(
             'pd_xyz',
             []
         );
@@ -3840,7 +3912,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/personalization_designs/pd_xyz/reject'
         );
-        $result = $this->client->testHelpers->issuing->personalizationDesigns->reject(
+        $result = $this->client->v1->testHelpers->issuing->personalizationDesigns->reject(
             'pd_xyz',
             ['rejection_reasons' => ['card_logo' => ['geographic_location']]]
         );
@@ -3853,7 +3925,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/transactions/create_force_capture'
         );
-        $result = $this->client->testHelpers->issuing->transactions->createForceCapture([
+        $result = $this->client->v1->testHelpers->issuing->transactions->createForceCapture([
             'amount' => 100,
             'card' => 'foo',
             'currency' => 'usd',
@@ -3914,7 +3986,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/transactions/create_unlinked_refund'
         );
-        $result = $this->client->testHelpers->issuing->transactions->createUnlinkedRefund([
+        $result = $this->client->v1->testHelpers->issuing->transactions->createUnlinkedRefund([
             'amount' => 100,
             'card' => 'foo',
             'currency' => 'usd',
@@ -3975,7 +4047,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/issuing/transactions/example_transaction/refund'
         );
-        $result = $this->client->testHelpers->issuing->transactions->refund(
+        $result = $this->client->v1->testHelpers->issuing->transactions->refund(
             'example_transaction',
             ['refund_amount' => 50]
         );
@@ -3985,7 +4057,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTestHelpersRefundsExpirePost()
     {
         $this->expectsRequest('post', '/v1/test_helpers/refunds/re_123/expire');
-        $result = $this->client->testHelpers->refunds->expire('re_123', []);
+        $result = $this->client->v1->testHelpers->refunds->expire('re_123', []);
         self::assertInstanceOf(Refund::class, $result);
     }
 
@@ -3995,7 +4067,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/test_clocks/clock_xyz/advance'
         );
-        $result = $this->client->testHelpers->testClocks->advance(
+        $result = $this->client->v1->testHelpers->testClocks->advance(
             'clock_xyz',
             ['frozen_time' => 142]
         );
@@ -4008,7 +4080,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/test_clocks/clock_xxxxxxxxxxxxx/advance'
         );
-        $result = $this->client->testHelpers->testClocks->advance(
+        $result = $this->client->v1->testHelpers->testClocks->advance(
             'clock_xxxxxxxxxxxxx',
             ['frozen_time' => 1675552261]
         );
@@ -4021,7 +4093,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/test_helpers/test_clocks/clock_xyz'
         );
-        $result = $this->client->testHelpers->testClocks->delete(
+        $result = $this->client->v1->testHelpers->testClocks->delete(
             'clock_xyz',
             []
         );
@@ -4034,7 +4106,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/test_helpers/test_clocks/clock_xxxxxxxxxxxxx'
         );
-        $result = $this->client->testHelpers->testClocks->delete(
+        $result = $this->client->v1->testHelpers->testClocks->delete(
             'clock_xxxxxxxxxxxxx',
             []
         );
@@ -4044,7 +4116,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTestHelpersTestClocksGet()
     {
         $this->expectsRequest('get', '/v1/test_helpers/test_clocks');
-        $result = $this->client->testHelpers->testClocks->all([]);
+        $result = $this->client->v1->testHelpers->testClocks->all([]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(TestHelpers\TestClock::class, $result->data[0]);
     }
@@ -4052,7 +4124,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTestHelpersTestClocksGet2()
     {
         $this->expectsRequest('get', '/v1/test_helpers/test_clocks/clock_xyz');
-        $result = $this->client->testHelpers->testClocks->retrieve(
+        $result = $this->client->v1->testHelpers->testClocks->retrieve(
             'clock_xyz',
             []
         );
@@ -4062,7 +4134,9 @@ final class GeneratedExamplesTest extends TestCase
     public function testTestHelpersTestClocksGet3()
     {
         $this->expectsRequest('get', '/v1/test_helpers/test_clocks');
-        $result = $this->client->testHelpers->testClocks->all(['limit' => 3]);
+        $result = $this->client->v1->testHelpers->testClocks->all([
+            'limit' => 3,
+        ]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(TestHelpers\TestClock::class, $result->data[0]);
     }
@@ -4073,7 +4147,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/test_helpers/test_clocks/clock_xxxxxxxxxxxxx'
         );
-        $result = $this->client->testHelpers->testClocks->retrieve(
+        $result = $this->client->v1->testHelpers->testClocks->retrieve(
             'clock_xxxxxxxxxxxxx',
             []
         );
@@ -4083,7 +4157,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTestHelpersTestClocksPost()
     {
         $this->expectsRequest('post', '/v1/test_helpers/test_clocks');
-        $result = $this->client->testHelpers->testClocks->create([
+        $result = $this->client->v1->testHelpers->testClocks->create([
             'frozen_time' => 123,
             'name' => 'cogsworth',
         ]);
@@ -4093,7 +4167,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTestHelpersTestClocksPost2()
     {
         $this->expectsRequest('post', '/v1/test_helpers/test_clocks');
-        $result = $this->client->testHelpers->testClocks->create([
+        $result = $this->client->v1->testHelpers->testClocks->create([
             'frozen_time' => 1577836800,
         ]);
         self::assertInstanceOf(TestHelpers\TestClock::class, $result);
@@ -4105,7 +4179,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/treasury/inbound_transfers/ibt_123/fail'
         );
-        $result = $this->client->testHelpers->treasury->inboundTransfers->fail(
+        $result = $this->client->v1->testHelpers->treasury->inboundTransfers->fail(
             'ibt_123',
             ['failure_details' => ['code' => 'account_closed']]
         );
@@ -4118,7 +4192,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/treasury/inbound_transfers/ibt_123/return'
         );
-        $result = $this->client->testHelpers->treasury->inboundTransfers->returnInboundTransfer(
+        $result = $this->client->v1->testHelpers->treasury->inboundTransfers->returnInboundTransfer(
             'ibt_123',
             []
         );
@@ -4131,7 +4205,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/treasury/inbound_transfers/ibt_123/succeed'
         );
-        $result = $this->client->testHelpers->treasury->inboundTransfers->succeed(
+        $result = $this->client->v1->testHelpers->treasury->inboundTransfers->succeed(
             'ibt_123',
             []
         );
@@ -4144,7 +4218,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/treasury/outbound_transfers/obt_123/fail'
         );
-        $result = $this->client->testHelpers->treasury->outboundTransfers->fail(
+        $result = $this->client->v1->testHelpers->treasury->outboundTransfers->fail(
             'obt_123',
             []
         );
@@ -4157,7 +4231,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/treasury/outbound_transfers/obt_123/post'
         );
-        $result = $this->client->testHelpers->treasury->outboundTransfers->post(
+        $result = $this->client->v1->testHelpers->treasury->outboundTransfers->post(
             'obt_123',
             []
         );
@@ -4170,7 +4244,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/treasury/outbound_transfers/obt_123/return'
         );
-        $result = $this->client->testHelpers->treasury->outboundTransfers->returnOutboundTransfer(
+        $result = $this->client->v1->testHelpers->treasury->outboundTransfers->returnOutboundTransfer(
             'obt_123',
             ['returned_details' => ['code' => 'account_closed']]
         );
@@ -4183,7 +4257,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/treasury/received_credits'
         );
-        $result = $this->client->testHelpers->treasury->receivedCredits->create([
+        $result = $this->client->v1->testHelpers->treasury->receivedCredits->create([
             'financial_account' => 'fa_123',
             'network' => 'ach',
             'amount' => 1234,
@@ -4198,7 +4272,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/test_helpers/treasury/received_debits'
         );
-        $result = $this->client->testHelpers->treasury->receivedDebits->create([
+        $result = $this->client->v1->testHelpers->treasury->receivedDebits->create([
             'financial_account' => 'fa_123',
             'network' => 'ach',
             'amount' => 1234,
@@ -4210,14 +4284,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testTokensGet()
     {
         $this->expectsRequest('get', '/v1/tokens/tok_xxxx');
-        $result = $this->client->tokens->retrieve('tok_xxxx', []);
+        $result = $this->client->v1->tokens->retrieve('tok_xxxx', []);
         self::assertInstanceOf(Token::class, $result);
     }
 
     public function testTokensPost()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create([
+        $result = $this->client->v1->tokens->create([
             'card' => [
                 'number' => '4242424242424242',
                 'exp_month' => '5',
@@ -4231,7 +4305,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTokensPost2()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create([
+        $result = $this->client->v1->tokens->create([
             'bank_account' => [
                 'country' => 'US',
                 'currency' => 'usd',
@@ -4247,7 +4321,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTokensPost3()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create([
+        $result = $this->client->v1->tokens->create([
             'pii' => ['id_number' => '000000000'],
         ]);
         self::assertInstanceOf(Token::class, $result);
@@ -4256,7 +4330,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTokensPost4()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create([
+        $result = $this->client->v1->tokens->create([
             'account' => [
                 'individual' => [
                     'first_name' => 'Jane',
@@ -4271,7 +4345,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTokensPost5()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create([
+        $result = $this->client->v1->tokens->create([
             'person' => [
                 'first_name' => 'Jane',
                 'last_name' => 'Doe',
@@ -4284,7 +4358,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTokensPost6()
     {
         $this->expectsRequest('post', '/v1/tokens');
-        $result = $this->client->tokens->create([
+        $result = $this->client->v1->tokens->create([
             'cvc_update' => ['cvc' => '123'],
         ]);
         self::assertInstanceOf(Token::class, $result);
@@ -4293,14 +4367,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testTopupsCancelPost()
     {
         $this->expectsRequest('post', '/v1/topups/tu_xxxxxxxxxxxxx/cancel');
-        $result = $this->client->topups->cancel('tu_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->topups->cancel('tu_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Topup::class, $result);
     }
 
     public function testTopupsGet()
     {
         $this->expectsRequest('get', '/v1/topups');
-        $result = $this->client->topups->all(['limit' => 3]);
+        $result = $this->client->v1->topups->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Topup::class, $result->data[0]);
     }
@@ -4308,14 +4382,14 @@ final class GeneratedExamplesTest extends TestCase
     public function testTopupsGet2()
     {
         $this->expectsRequest('get', '/v1/topups/tu_xxxxxxxxxxxxx');
-        $result = $this->client->topups->retrieve('tu_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->topups->retrieve('tu_xxxxxxxxxxxxx', []);
         self::assertInstanceOf(Topup::class, $result);
     }
 
     public function testTopupsPost()
     {
         $this->expectsRequest('post', '/v1/topups');
-        $result = $this->client->topups->create([
+        $result = $this->client->v1->topups->create([
             'amount' => 2000,
             'currency' => 'usd',
             'description' => 'Top-up for Jenny Rosen',
@@ -4327,7 +4401,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTopupsPost2()
     {
         $this->expectsRequest('post', '/v1/topups/tu_xxxxxxxxxxxxx');
-        $result = $this->client->topups->update(
+        $result = $this->client->v1->topups->update(
             'tu_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -4337,7 +4411,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTransfersGet()
     {
         $this->expectsRequest('get', '/v1/transfers');
-        $result = $this->client->transfers->all(['limit' => 3]);
+        $result = $this->client->v1->transfers->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(Transfer::class, $result->data[0]);
     }
@@ -4345,14 +4419,17 @@ final class GeneratedExamplesTest extends TestCase
     public function testTransfersGet2()
     {
         $this->expectsRequest('get', '/v1/transfers/tr_xxxxxxxxxxxxx');
-        $result = $this->client->transfers->retrieve('tr_xxxxxxxxxxxxx', []);
+        $result = $this->client->v1->transfers->retrieve(
+            'tr_xxxxxxxxxxxxx',
+            []
+        );
         self::assertInstanceOf(Transfer::class, $result);
     }
 
     public function testTransfersPost()
     {
         $this->expectsRequest('post', '/v1/transfers');
-        $result = $this->client->transfers->create([
+        $result = $this->client->v1->transfers->create([
             'amount' => 400,
             'currency' => 'usd',
             'destination' => 'acct_xxxxxxxxxxxxx',
@@ -4364,7 +4441,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTransfersPost2()
     {
         $this->expectsRequest('post', '/v1/transfers/tr_xxxxxxxxxxxxx');
-        $result = $this->client->transfers->update(
+        $result = $this->client->v1->transfers->update(
             'tr_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -4377,7 +4454,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/transfers/tr_xxxxxxxxxxxxx/reversals'
         );
-        $result = $this->client->transfers->allReversals(
+        $result = $this->client->v1->transfers->allReversals(
             'tr_xxxxxxxxxxxxx',
             ['limit' => 3]
         );
@@ -4391,7 +4468,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/transfers/tr_xxxxxxxxxxxxx/reversals/trr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->transfers->retrieveReversal(
+        $result = $this->client->v1->transfers->retrieveReversal(
             'tr_xxxxxxxxxxxxx',
             'trr_xxxxxxxxxxxxx',
             []
@@ -4405,7 +4482,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/transfers/tr_xxxxxxxxxxxxx/reversals'
         );
-        $result = $this->client->transfers->createReversal(
+        $result = $this->client->v1->transfers->createReversal(
             'tr_xxxxxxxxxxxxx',
             ['amount' => 100]
         );
@@ -4418,7 +4495,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/transfers/tr_xxxxxxxxxxxxx/reversals/trr_xxxxxxxxxxxxx'
         );
-        $result = $this->client->transfers->updateReversal(
+        $result = $this->client->v1->transfers->updateReversal(
             'tr_xxxxxxxxxxxxx',
             'trr_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
@@ -4429,7 +4506,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryCreditReversalsGet()
     {
         $this->expectsRequest('get', '/v1/treasury/credit_reversals');
-        $result = $this->client->treasury->creditReversals->all([
+        $result = $this->client->v1->treasury->creditReversals->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4443,7 +4520,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/credit_reversals/credrev_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->creditReversals->retrieve(
+        $result = $this->client->v1->treasury->creditReversals->retrieve(
             'credrev_xxxxxxxxxxxxx',
             []
         );
@@ -4453,7 +4530,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryCreditReversalsPost()
     {
         $this->expectsRequest('post', '/v1/treasury/credit_reversals');
-        $result = $this->client->treasury->creditReversals->create([
+        $result = $this->client->v1->treasury->creditReversals->create([
             'received_credit' => 'rc_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(Treasury\CreditReversal::class, $result);
@@ -4462,7 +4539,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryDebitReversalsGet()
     {
         $this->expectsRequest('get', '/v1/treasury/debit_reversals');
-        $result = $this->client->treasury->debitReversals->all([
+        $result = $this->client->v1->treasury->debitReversals->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4476,7 +4553,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/debit_reversals/debrev_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->debitReversals->retrieve(
+        $result = $this->client->v1->treasury->debitReversals->retrieve(
             'debrev_xxxxxxxxxxxxx',
             []
         );
@@ -4486,7 +4563,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryDebitReversalsPost()
     {
         $this->expectsRequest('post', '/v1/treasury/debit_reversals');
-        $result = $this->client->treasury->debitReversals->create([
+        $result = $this->client->v1->treasury->debitReversals->create([
             'received_debit' => 'rd_xxxxxxxxxxxxx',
         ]);
         self::assertInstanceOf(Treasury\DebitReversal::class, $result);
@@ -4498,7 +4575,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/financial_accounts/fa_xxxxxxxxxxxxx/features'
         );
-        $result = $this->client->treasury->financialAccounts->retrieveFeatures(
+        $result = $this->client->v1->treasury->financialAccounts->retrieveFeatures(
             'fa_xxxxxxxxxxxxx',
             []
         );
@@ -4508,7 +4585,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryFinancialAccountsGet()
     {
         $this->expectsRequest('get', '/v1/treasury/financial_accounts');
-        $result = $this->client->treasury->financialAccounts->all([
+        $result = $this->client->v1->treasury->financialAccounts->all([
             'limit' => 3,
         ]);
         self::assertInstanceOf(Collection::class, $result);
@@ -4521,7 +4598,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/financial_accounts/fa_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->financialAccounts->retrieve(
+        $result = $this->client->v1->treasury->financialAccounts->retrieve(
             'fa_xxxxxxxxxxxxx',
             []
         );
@@ -4531,7 +4608,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryFinancialAccountsPost()
     {
         $this->expectsRequest('post', '/v1/treasury/financial_accounts');
-        $result = $this->client->treasury->financialAccounts->create([
+        $result = $this->client->v1->treasury->financialAccounts->create([
             'supported_currencies' => ['usd'],
             'features' => [],
         ]);
@@ -4544,7 +4621,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/treasury/financial_accounts/fa_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->financialAccounts->update(
+        $result = $this->client->v1->treasury->financialAccounts->update(
             'fa_xxxxxxxxxxxxx',
             ['metadata' => ['order_id' => '6735']]
         );
@@ -4557,7 +4634,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/treasury/inbound_transfers/ibt_xxxxxxxxxxxxx/cancel'
         );
-        $result = $this->client->treasury->inboundTransfers->cancel(
+        $result = $this->client->v1->treasury->inboundTransfers->cancel(
             'ibt_xxxxxxxxxxxxx',
             []
         );
@@ -4567,7 +4644,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryInboundTransfersGet()
     {
         $this->expectsRequest('get', '/v1/treasury/inbound_transfers');
-        $result = $this->client->treasury->inboundTransfers->all([
+        $result = $this->client->v1->treasury->inboundTransfers->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4581,7 +4658,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/inbound_transfers/ibt_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->inboundTransfers->retrieve(
+        $result = $this->client->v1->treasury->inboundTransfers->retrieve(
             'ibt_xxxxxxxxxxxxx',
             []
         );
@@ -4591,7 +4668,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryInboundTransfersPost()
     {
         $this->expectsRequest('post', '/v1/treasury/inbound_transfers');
-        $result = $this->client->treasury->inboundTransfers->create([
+        $result = $this->client->v1->treasury->inboundTransfers->create([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'amount' => 10000,
             'currency' => 'usd',
@@ -4607,7 +4684,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/treasury/outbound_payments/bot_xxxxxxxxxxxxx/cancel'
         );
-        $result = $this->client->treasury->outboundPayments->cancel(
+        $result = $this->client->v1->treasury->outboundPayments->cancel(
             'bot_xxxxxxxxxxxxx',
             []
         );
@@ -4617,7 +4694,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryOutboundPaymentsGet()
     {
         $this->expectsRequest('get', '/v1/treasury/outbound_payments');
-        $result = $this->client->treasury->outboundPayments->all([
+        $result = $this->client->v1->treasury->outboundPayments->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4631,7 +4708,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/outbound_payments/bot_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->outboundPayments->retrieve(
+        $result = $this->client->v1->treasury->outboundPayments->retrieve(
             'bot_xxxxxxxxxxxxx',
             []
         );
@@ -4641,7 +4718,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryOutboundPaymentsPost()
     {
         $this->expectsRequest('post', '/v1/treasury/outbound_payments');
-        $result = $this->client->treasury->outboundPayments->create([
+        $result = $this->client->v1->treasury->outboundPayments->create([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'amount' => 10000,
             'currency' => 'usd',
@@ -4658,7 +4735,7 @@ final class GeneratedExamplesTest extends TestCase
             'post',
             '/v1/treasury/outbound_transfers/obt_xxxxxxxxxxxxx/cancel'
         );
-        $result = $this->client->treasury->outboundTransfers->cancel(
+        $result = $this->client->v1->treasury->outboundTransfers->cancel(
             'obt_xxxxxxxxxxxxx',
             []
         );
@@ -4668,7 +4745,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryOutboundTransfersGet()
     {
         $this->expectsRequest('get', '/v1/treasury/outbound_transfers');
-        $result = $this->client->treasury->outboundTransfers->all([
+        $result = $this->client->v1->treasury->outboundTransfers->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4682,7 +4759,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/outbound_transfers/obt_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->outboundTransfers->retrieve(
+        $result = $this->client->v1->treasury->outboundTransfers->retrieve(
             'obt_xxxxxxxxxxxxx',
             []
         );
@@ -4692,7 +4769,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryOutboundTransfersPost()
     {
         $this->expectsRequest('post', '/v1/treasury/outbound_transfers');
-        $result = $this->client->treasury->outboundTransfers->create([
+        $result = $this->client->v1->treasury->outboundTransfers->create([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'destination_payment_method' => 'pm_xxxxxxxxxxxxx',
             'amount' => 500,
@@ -4705,7 +4782,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryReceivedCreditsGet()
     {
         $this->expectsRequest('get', '/v1/treasury/received_credits');
-        $result = $this->client->treasury->receivedCredits->all([
+        $result = $this->client->v1->treasury->receivedCredits->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4719,7 +4796,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/received_credits/rc_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->receivedCredits->retrieve(
+        $result = $this->client->v1->treasury->receivedCredits->retrieve(
             'rc_xxxxxxxxxxxxx',
             []
         );
@@ -4729,7 +4806,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryReceivedDebitsGet()
     {
         $this->expectsRequest('get', '/v1/treasury/received_debits');
-        $result = $this->client->treasury->receivedDebits->all([
+        $result = $this->client->v1->treasury->receivedDebits->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4743,7 +4820,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/received_debits/rd_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->receivedDebits->retrieve(
+        $result = $this->client->v1->treasury->receivedDebits->retrieve(
             'rd_xxxxxxxxxxxxx',
             []
         );
@@ -4753,7 +4830,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryTransactionEntriesGet()
     {
         $this->expectsRequest('get', '/v1/treasury/transaction_entries');
-        $result = $this->client->treasury->transactionEntries->all([
+        $result = $this->client->v1->treasury->transactionEntries->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4767,7 +4844,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/transaction_entries/trxne_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->transactionEntries->retrieve(
+        $result = $this->client->v1->treasury->transactionEntries->retrieve(
             'trxne_xxxxxxxxxxxxx',
             []
         );
@@ -4777,7 +4854,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testTreasuryTransactionsGet()
     {
         $this->expectsRequest('get', '/v1/treasury/transactions');
-        $result = $this->client->treasury->transactions->all([
+        $result = $this->client->v1->treasury->transactions->all([
             'financial_account' => 'fa_xxxxxxxxxxxxx',
             'limit' => 3,
         ]);
@@ -4791,7 +4868,7 @@ final class GeneratedExamplesTest extends TestCase
             'get',
             '/v1/treasury/transactions/trxn_xxxxxxxxxxxxx'
         );
-        $result = $this->client->treasury->transactions->retrieve(
+        $result = $this->client->v1->treasury->transactions->retrieve(
             'trxn_xxxxxxxxxxxxx',
             []
         );
@@ -4804,7 +4881,7 @@ final class GeneratedExamplesTest extends TestCase
             'delete',
             '/v1/webhook_endpoints/we_xxxxxxxxxxxxx'
         );
-        $result = $this->client->webhookEndpoints->delete(
+        $result = $this->client->v1->webhookEndpoints->delete(
             'we_xxxxxxxxxxxxx',
             []
         );
@@ -4814,7 +4891,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testWebhookEndpointsGet()
     {
         $this->expectsRequest('get', '/v1/webhook_endpoints');
-        $result = $this->client->webhookEndpoints->all(['limit' => 3]);
+        $result = $this->client->v1->webhookEndpoints->all(['limit' => 3]);
         self::assertInstanceOf(Collection::class, $result);
         self::assertInstanceOf(WebhookEndpoint::class, $result->data[0]);
     }
@@ -4822,7 +4899,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testWebhookEndpointsGet2()
     {
         $this->expectsRequest('get', '/v1/webhook_endpoints/we_xxxxxxxxxxxxx');
-        $result = $this->client->webhookEndpoints->retrieve(
+        $result = $this->client->v1->webhookEndpoints->retrieve(
             'we_xxxxxxxxxxxxx',
             []
         );
@@ -4832,7 +4909,7 @@ final class GeneratedExamplesTest extends TestCase
     public function testWebhookEndpointsPost2()
     {
         $this->expectsRequest('post', '/v1/webhook_endpoints/we_xxxxxxxxxxxxx');
-        $result = $this->client->webhookEndpoints->update(
+        $result = $this->client->v1->webhookEndpoints->update(
             'we_xxxxxxxxxxxxx',
             ['url' => 'https://example.com/new_endpoint']
         );
@@ -4992,11 +5069,7 @@ final class GeneratedExamplesTest extends TestCase
         $this->stubRequest(
             'post',
             '/v2/commerce/product_catalog/imports',
-            [
-                'feed_type' => 'pricing',
-                'metadata' => ['key' => 'metadata'],
-                'mode' => 'upsert',
-            ],
+            ['feed_type' => 'pricing', 'mode' => 'upsert'],
             [],
             false,
             [
@@ -5014,7 +5087,6 @@ final class GeneratedExamplesTest extends TestCase
         );
         $result = $this->v2Client->v2->commerce->productCatalog->imports->create([
             'feed_type' => 'pricing',
-            'metadata' => ['key' => 'metadata'],
             'mode' => 'upsert',
         ]);
         self::assertInstanceOf(V2\Commerce\ProductCatalogImport::class, $result);
@@ -5162,6 +5234,53 @@ final class GeneratedExamplesTest extends TestCase
             BaseStripeClient::DEFAULT_API_BASE
         );
         $result = $this->v2Client->v2->core->accounts->close('id_123', []);
+        self::assertInstanceOf(V2\Core\Account::class, $result);
+    }
+
+    public function testV2CoreAccountPost4()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/id_123/reject',
+            ['reason' => 'fraud_no_intent_to_fulfill'],
+            [],
+            false,
+            [
+                'object' => 'v2.core.account',
+                'applied_configurations' => ['0' => 'recipient'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->reject(
+            'id_123',
+            ['reason' => 'fraud_no_intent_to_fulfill']
+        );
+        self::assertInstanceOf(V2\Core\Account::class, $result);
+    }
+
+    public function testV2CoreAccountPost5()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts/id_123/unreject',
+            [],
+            [],
+            false,
+            [
+                'object' => 'v2.core.account',
+                'applied_configurations' => ['0' => 'recipient'],
+                'created' => '1970-01-12T21:42:34.472Z',
+                'id' => 'obj_123',
+                'livemode' => [],
+            ],
+            200,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+        $result = $this->v2Client->v2->core->accounts->unreject('id_123', []);
         self::assertInstanceOf(V2\Core\Account::class, $result);
     }
 
@@ -7864,7 +7983,7 @@ final class GeneratedExamplesTest extends TestCase
                                 'value' => [],
                             ],
                         ],
-                        'category' => 'stripe_fee',
+                        'category' => 'received_debit_reversal',
                         'created' => '1970-01-12T21:42:34.472Z',
                         'financial_account' => 'financial_account',
                         'id' => 'obj_123',
@@ -7913,7 +8032,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -7960,7 +8079,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -8007,7 +8126,7 @@ final class GeneratedExamplesTest extends TestCase
                         'value' => [],
                     ],
                 ],
-                'category' => 'stripe_fee',
+                'category' => 'received_debit_reversal',
                 'created' => '1970-01-12T21:42:34.472Z',
                 'financial_account' => 'financial_account',
                 'id' => 'obj_123',
@@ -8058,7 +8177,7 @@ final class GeneratedExamplesTest extends TestCase
                         'livemode' => [],
                         'transaction' => 'transaction',
                         'transaction_details' => [
-                            'category' => 'stripe_fee',
+                            'category' => 'received_debit_reversal',
                             'financial_account' => 'financial_account',
                         ],
                     ],
@@ -8104,7 +8223,7 @@ final class GeneratedExamplesTest extends TestCase
                 'livemode' => [],
                 'transaction' => 'transaction',
                 'transaction_details' => [
-                    'category' => 'stripe_fee',
+                    'category' => 'received_debit_reversal',
                     'financial_account' => 'financial_account',
                 ],
             ],
@@ -8384,6 +8503,30 @@ final class GeneratedExamplesTest extends TestCase
                 []
             );
         } catch (Exception\FxQuoteNeedsRefreshException $e) {
+        }
+    }
+
+    public function testInactiveApiOperationConfirmationRequiredError()
+    {
+        $this->stubRequest(
+            'post',
+            '/v2/core/accounts',
+            [],
+            [],
+            false,
+            [
+                'error' => [
+                    'type' => 'inactive_api_operation_confirmation_required',
+                    'code' => 'inactive_api_operation_confirmation_required',
+                ],
+            ],
+            400,
+            BaseStripeClient::DEFAULT_API_BASE
+        );
+
+        try {
+            $this->v2Client->v2->core->accounts->create([]);
+        } catch (Exception\InactiveApiOperationConfirmationRequiredException $e) {
         }
     }
 

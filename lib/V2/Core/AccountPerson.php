@@ -19,7 +19,7 @@ namespace Stripe\V2\Core;
  * @property null|(object{company_authorization?: (object{files: string[], type: string}&\Stripe\StripeObject), passport?: (object{files: string[], type: string}&\Stripe\StripeObject), primary_verification?: (object{front_back: (object{back?: string, front: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), secondary_verification?: (object{front_back: (object{back?: string, front: string}&\Stripe\StripeObject), type: string}&\Stripe\StripeObject), visa?: (object{files: string[], type: string}&\Stripe\StripeObject)}&\Stripe\StripeObject) $documents Documents that may be submitted to satisfy various informational requests.
  * @property null|string $email The person's email address.
  * @property null|string $given_name The person's first name.
- * @property null|(object{type: string}&\Stripe\StripeObject)[] $id_numbers The identification numbers (e.g., SSN) associated with the person.
+ * @property null|(object{type: string, value?: string}&\Stripe\StripeObject)[] $id_numbers The identification numbers (e.g., SSN) associated with the person.
  * @property null|string $legal_gender The person's gender (International regulations require either &quot;male&quot; or &quot;female&quot;).
  * @property bool $livemode Has the value <code>true</code> if the object exists in live mode or the value <code>false</code> if the object exists in test mode.
  * @property null|\Stripe\StripeObject $metadata Set of key-value pairs that you can attach to an object. This can be useful for storing additional information about the object in a structured format.

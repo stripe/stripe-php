@@ -201,7 +201,7 @@ class Session extends \Stripe\ApiResource
     /**
      * Updates a Checkout Session object.
      *
-     * Related guide: <a href="/payments/advanced/dynamic-updates">Dynamically update a
+     * Related guide: <a href="/payments/checkout/dynamic-updates">Dynamically update a
      * Checkout Session</a>
      *
      * @param string $id the ID of the resource to update
